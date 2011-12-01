@@ -5,25 +5,27 @@
   For this purpose, I will make best explain my reading to you via these notes.
 
   As we all known that Robert love is grand master on kernel hacking.LKD is a nice to get started to linux kernel.
-* 
-* 5-System calls
+
+* System calls
   NB:
   Now,11-25-11,you know I need get more knowledge on kernel hacking.
-* Get startted
-  As we all known,all the hardware machine rescources are on the control of kernel.
-  By the reason,if we need the resorce ,we shuold to apply for it to kernel.This is the way,you can do is comply with it. 
-  Syscall is a meesenger between applications and the kernel,keep it in mind.
-  The reason for the existence of syscall is to provide  a stable system.
-  Do you think so?
-* Communicating with the kernel
+** Get startted
+   As we all known,all the hardware machine rescources are on the control of kernel.
+   By the reason,if we need the resorce ,we shuold to apply for it to kernel.This is the way,you can do is comply with it. 
+   Syscall is a meesenger between applications and the kernel,keep it in mind.
+   The reason for the existence of syscall is to provide  a stable system.
+   Do you think so?
+** Communicating with the kernel
 ** Syscalls serve 3 primary purposes.
    1.It provides an abstracted hardware interface for user-space.
    2.Middle-man,ensure system security and stability.
    3.Build a foundation to virtualized system provide processes.
-* Three legal entry point into kernel
-   1.Systemcall
-   2.Exceptions
-   3.Traps
-* API,POSIX,libc
-  The manner in which the function is used is not any of the kernel's business.
-* Syscall
+** Three legal entry point into kernel
+    1.Systemcall
+    2.Exceptions
+    3.Traps
+** API,POSIX,libc
+   The manner in which the function is used is not any of the kernel's business.
+** Syscall
+** System call context
+   
