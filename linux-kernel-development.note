@@ -1,3 +1,17 @@
+* Topic list
+
+  | struct list_head                   | linux/list.h |
+  | list_add       list_add_tail       |              |
+  | list_move      list_move_tail      |              |
+  | list_del                           |              |
+  | list_splice    list_splice_init    |              |
+  | list_for_each                      |              |
+  | list_entry     list_for_each_entry |              |
+  | list_for_each_entry_safe           |              |
+* Functions
+  
+* File
+
 * Introduction to the linux kernel 
   NB:
   This is my first formal,solemn note of reading books.
@@ -28,4 +42,11 @@
    The manner in which the function is used is not any of the kernel's business.
 ** Syscall
 ** System call context
-   
+* Kernel data structures
+  There are 4 built-in data structures which are all our old friends.
+  Linked lists,queues,maps,Binary trees.
+** Linked lists
+   Singly , doubly ,circular linked list.
+   Although the Linux kernel’s linked list implementation is unique, it is fundamentally a
+   circular doubly linked list. Using this type of linked list provides the greatest flexibility.
+
