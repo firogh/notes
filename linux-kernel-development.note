@@ -50,3 +50,30 @@
    Although the Linux kernel’s linked list implementation is unique, it is fundamentally a
    circular doubly linked list. Using this type of linked list provides the greatest flexibility.
 
+
+* Interrupts and interrupt handlers
+** Common concepts
+   Interrupts;exceptions;IRQ lines; Interrupt handlers,ISR is part of 
+   the device's driver;Interrupt/atomic context.
+   Top halves versus bottom halves
+** 
+  1.CPU is very fast than  other devices.
+  2.To respondce to devices ,cpu can use polling and interrupt mechanisms.Which on is better.
+  3.Device interrupt controller -> CPU -> kernel
+  4.asynchronously , synchronous; interrupts, exceptions.
+  5.IRQ lines
+
+
+
+* An introduction to kernel synchronization
+** Important concepts
+   * Critical regions;race conditions;
+     pseudo-concurrency; true concurrency;
+** 
+
+* Memory management
+** Important concepts
+   1.Page:kernel use this struct to manage physical and virtual pages.
+   2.Zones:the kernel uses the zones to group pages of similar properties.
+   3.Per-cpu data:
+* VFS
