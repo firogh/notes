@@ -72,8 +72,36 @@
 ** 
 
 * Memory management
-** Important concepts
-   1.Page:kernel use this struct to manage physical and virtual pages.
-   2.Zones:the kernel uses the zones to group pages of similar properties.
-   3.Per-cpu data:
+** FAQ 
+   1.Why kernel can't treat all pages as identical in terms of hardware limitations.
+   
+** Concepts
+   1.Page:the kernel treats physical pages as the basic unit of memory management.
+   2.MMU:the hardware that manages memory and performs virtual to physical address.
+   3.Zone:The kernel uses the zones to group pages of similar properties.
+   4.Slab:act as a generic data structure-caching layer.
+   5.caches:the slab layer divides different objects into groups.
+   6.Interrupt stacks:provide a single per-processor stack used for interrupt handlers.
+   7.Kernel stack:minimize your usage,serveral hundred Bytes.
+   8.High memory:physical memory that higher 896MB
+   9.Logical address:Just offset(3G~3G+896MB) of the physical address,no need to mmu.
+   10.Virtual address:(3G~4G).Use mmu to translate it to physical address. 
+   11.Per-Cpu data:data that is unique to a given processor.
+   11.1.Reasons for using Per-cpu data:reduce lock.
+** Mechanism
+   1.Memory access
+   alloc_pages,__get_free_pages:allocates contiguous physical pages
+   alloc_page,__get_free_page: same to premises.
+   get_zeroed_page:page filled with zeros.
+   kmalloc:obtaining kernel memory in byte-sized chunks.ultimately alloc_pages.
+   vmalloc:only virtually contiguous can be guaranteed,beget TLB trashing
+   kmem_getpages:allocate memory sufficient to hold the cache.
+   kmem_cache_create:
+   kmem_cache_alloc:allocate object from cache.
+   kmap:mappings low and high memory on both cpu,permanently.
+   kmap_atomic:can use in interrupt handlers.
+   get_cpu:get current processor and disable kernel preemption.difference to smp_processor_id().
+   put_cpu:enable kernel preemption.
+
+** 
 * VFS

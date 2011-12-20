@@ -1,0 +1,9 @@
+* Convention
+** Naming
+*** Function
+    1.double underline: you should know what you do.
+*** Variable
+    1.nr=number;
+* Programming and Coding
+** Kernel stack
+   1.keep the sum of all local variables to a maximum of  serveral hundred Bytes.
