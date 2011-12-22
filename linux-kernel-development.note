@@ -50,7 +50,6 @@
    Although the Linux kernel’s linked list implementation is unique, it is fundamentally a
    circular doubly linked list. Using this type of linked list provides the greatest flexibility.
 
-
 * Interrupts and interrupt handlers
 ** Common concepts
    Interrupts;exceptions;IRQ lines; Interrupt handlers,ISR is part of 
@@ -117,7 +116,26 @@
    5.Directory entry:each component of a path is called a dentry.
    6.inode and file metadata:data about the file's data is stored in a seprate data structure from the file,called the inode.
    7.superblock:stores the filesystem's own control information.
-
+   8.Filesystem metadata:includes information about both the individual files and the filesystem as a whole.
+   9.The four primary object types of the VFS are
+   9.1.The superblock object, which represents a specific mounted filesystem.
+   9.2.The inode object, which represents a specific file.
+   9.3.The dentry object, which represents a directory entry, which is a single component of a path.
+   9.4.The file object, which represents an open file as associated with a process.
+** Mechanism
+   struct super_block,inode,dentry,file,file_system_type,vfsmount,files_struct,fs_struct,mnt_namespace.
+* The block I/O layer 
+** Concepts
+   1.Block devices:are hardware devices distinguished by the random access of fixed-size chunks of data.
+   2.Blocks:the fixed-size chunks of data.
+   3.Character/char device:are accessed as a stream of sequential data,one byte after another.
+   4.Sector:the smallest addressable unit on a block device.512B.
+   5.Buffer:when a block is stored in memory,it is stored in buffer.
+   Each buffer is associated with exactly one block.
+   6.Buffer head:the kernel required some associated control information to accompany the data is the descriptor.
+** Mechanism
+   struct bio:the basic container for block I/O within the kernel.
+   struct buffer_head:
 * The  process address space
 ** Concepts
    1.Memory areas:these intervals of legal addresses.
