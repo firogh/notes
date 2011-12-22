@@ -3,7 +3,11 @@
 *** Function
     1.double underline: you should know what you do.
 *** Variable
-    1.nr=number;
+    1.nr=number;tsk=task;
 * Programming and Coding
 ** Kernel stack
    1.keep the sum of all local variables to a maximum of  serveral hundred Bytes.
+** Utility
+*** Process and memory
+    1.cat /proc/<pid>/maps 
+    2.pmap

@@ -87,7 +87,7 @@
    9.Logical address:Just offset(3G~3G+896MB) of the physical address,no need to mmu.
    10.Virtual address:(3G~4G).Use mmu to translate it to physical address. 
    11.Per-Cpu data:data that is unique to a given processor.
-   11.1.Reasons for using Per-cpu data:reduce lock.
+   11.1.Reasons for using Per-cpu data:reduce lock;reduces cache invalidation.
 ** Mechanism
    1.Memory access
    alloc_pages,__get_free_pages:allocates contiguous physical pages
@@ -105,3 +105,55 @@
 
 ** 
 * VFS
+** Concepts
+   1.VFS:it is the subsystem of the kernel that implements the file and
+   filesystem-related interfaces provided to user-space programs.VFS is the
+   glue that enables system calls such as open(),read(),and write() to work regardless 
+   of the filesystem or underlying physical medium.
+   2.Filesystem:is a hierarchical storage of data adhering to a specific structure.
+   3.File:is an ordered string of bytes.
+   4.Directory:is analogous to a folder and usuallu contains related files.
+   Unix,direcories are actually normal files that simply list the files contianed therein.
+   5.Directory entry:each component of a path is called a dentry.
+   6.inode and file metadata:data about the file's data is stored in a seprate data structure from the file,called the inode.
+   7.superblock:stores the filesystem's own control information.
+
+* The  process address space
+** Concepts
+   1.Memory areas:these intervals of legal addresses.
+   2.BSS:blcok started by symbol.
+   3.Memory descriptor:The kernel represents a process's address space with a data structure.kernel threads do not have a process address space.
+   4.Kernel thread:process that have no user context.
+   5.Virtual memory areas:the same to memory areas ,in the linux kernel.
+   6.Page Tables: that maps virtual pages to physical pages
+   7.Page global directory (PGD):
+   8.Page middle directory (PMD):
+   9.Page table entries (PTE):
+   10.Translation lookaside buffer(TLB):
+** Mechanism
+   find_vma:search for the VMA in which a given memory address resides.
+   find_vma_prev:similar to find_vma.
+   find_vam_intersection:
+   mmap:the function is uesed by the kernel to create a new linear address interval;
+   do_map:is the function used to add an address interval to a process's address space.
+* The page cache and page writebcak
+** Concepts
+   Page cache:minimize disk I/O by storing data in physical memory that would otherwise require disk access.
+   Page writeback:
+   Temporal locality:access to a particular piece of data tends to be clustered in time.
+   Backing store:
+   Cache hit,Cache miss:
+   No write,Write-through cache,Write-back/Copy-back/Write-behind cache:
+   Dirty list:datas on disk is dirty -- out of date.
+   Cache eviction:selecting clean  pages and simply replacing them with something else.
+   Clairvoyant algorithm:Least recnetly used(LRU),Two-list strategy(LRU/2),
+   cache cold,cache warm:
+   Radix trees:
+   Trie:
+** Mechanisim
+   struct address_space:better name is perhaps page_cache_entity or physical_pages_of_a_file.
+   struct address_space_operations:opertions on cache entity.
+
+
+
+
