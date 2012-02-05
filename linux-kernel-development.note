@@ -217,3 +217,22 @@
 
 
 
+* Devices and modules
+** Concept
+   1.Device types:Block devices,Character devices,Network devices.
+   2.Blcok devices:support seeking,the random access of data.
+   block devices are accessed via a special file called a block device node and 
+   generally mounted as a filesystem.
+   3.Character device: are accessed via character device node,directly,unlike blcok device.
+   4.Network devices:are accessed via socket API not the device node.
+   5.Miscellaneous devices:a simplified form of character devices.
+   6.Module:a loadable kernel object.
+    
+* Portability
+** Concepts
+   1.Word:the amount of data that a machine can process at one time.A word is an integer number of bytes.
+   The size of the C long type is guaranteed to be the machine's word size.
+   2.LP64:
+   3.Naturally aligned:a variable exists at a memory address that is a multiple of its size.
+   4.Byte ordering: is the order of bytes within a word.
+

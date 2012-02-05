@@ -11,3 +11,60 @@
 *** Process and memory
     1.cat /proc/<pid>/maps 
     2.pmap
+* Memory management
+** Memory addressing
+*** Concept
+    1.Logical address:Included in the machine language instructions to specify the address of an operand or of an instruction.Logical address consists of a segment selector and an offset.
+    2.Linear/virtual address:u32,4,294,967,296.Linear addresses are usually represented in hexadecimal notation.
+    3.Physical address:Used to address memory cells in memory chips.u32,or u36.
+    4.Segment slector:16-bit.
+    5.Segmentation registers:only purpose is to hold segment seletcors.
+    6.Current Privilege Level(CPL):Included in cs register ,use 2-bit to specifies Kernel(0) or user(3) mode.
+    7.Segment descriptors:describes the segment characteristics.Segment descriptors are stored either in the GDT or LDT.
+    8.Call gate: is a mechanism provided by x86 cpu to change the privilege level of  the cpu while invoking a predefined function.
+    9.Page:for the sake of efficiency,liner address are grouped in fixed-leghth intervals.contiguous linear address within a page are mapped into contiguous physical address.
+    10.Page frame:each page frame contians a page ,identically.Page frame is a part of RAM,howerver,page is just a block of data,whic may be stored in any page frame or on disk.
+    11.Page tables:the data structures that map linear to physical address,stored in main memory.cr0 specifies the paging mode.
+    12.PAE:
+    13.Line: consists of a few dozen contiguous bytes that are transferred in burst mode.
+    14.Translation lookaside buffers(TLB):speed up linear address translation.
+*** Mechanism    
+    1.The MMU transforms a logical address into a linear address by means of segmentation unit;subsequently,paging unit transforms the linear address into a physiacl address.
+    
+
+
+
+
+* I/O architecture
+** Concept
+   1.Buses:let information flow between CPUs,RAM, the score of  I/O devices that can be connected to a personal computer.
+   2.System bus:connects most of the internal hardware devices.
+   3.Bridges:The hardware devices that link serveral buses of different types in the same computer together.
+   4.Frontside bus:connects the CPUs to the RAM controller.
+   5.Backside bus:connects the CPUs directly to the external harware cache.
+   6.I/O ports:each device connected to the I/O bus has its own set of I/O addresses.
+   7.I/O interfaces: is a hardware circuit inserted between a group of I/O ports and the corresponding device controller.
+   8.Device controllers: interpret intstructions and modify state register.
+   9.
+
+* Device driver
+** Concepts
+   1 The sysfs filsystem:exposes the hierarchical relationships among the componets of the device model.
+   2 The proc filesystem: was the first special filesystem designed to allow User Mode applications to access kernel internal data structures.
+   3 Kobject: each kobject corresponds to a directory in that filesystem.
+   4 Kset: is a collection of kobjects of the same type that is included in the same type of contatiner.
+   5 A device driver: is the set of kernel routines that makes a hardware device respond to the programming interface defined by the canonical set of VFS functions(open,read,lseek,ioctl,and so forth) that control a device.
+   6 Synchronous DMA:the data transfers are triggered by processes.
+   7.Asynchronous:the data transfers are trigged by hardware devices.
+
+** Mechanisms
+    1.Workflow fo device driver:Registration,initialization,monitoring,
+
+
+
+* The virtual filesystem
+** Concepts
+   1.Namespace of the process:every process might have its own tree of mounted filesystem.
+
+
+
