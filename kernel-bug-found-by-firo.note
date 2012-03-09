@@ -1,0 +1,12 @@
+This note is used for keep the linux kernel bug found by myself.
+The formation of this note is below.
+NO. + found time
+bug file + location
+descriptions
+
+1.3/9/2012
+mm/mmap.c arch_get_unmapped_area 
+Invoke tow timesfunction find_vma for unchanged variable vma.
+
+
+

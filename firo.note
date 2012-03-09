@@ -59,6 +59,14 @@ Semi-vegetarian
     一切服从于生物学，凡是无助于此的，一概置之不理。 
 
 ** Chronobiology & Schedule
+3.1~6.30 total:120days
+
+1.Every day learn one algorithm.
+2.C/C++ & Kernel hacking
+3.Python 
+4.DS & CN & Lisp  
+5.Github open project
+
 | time          | action                                                          | property                           |
 | 6:30 ~ 7:10   | Getting up,washing, brushing and gargling,defecation,break fast |                                    |
 | 7:10 ~ 8:00   | Go to  work                                                     |                                    |
@@ -110,18 +118,22 @@ Semi-vegetarian
 *** C (May be C++)
 *** Python
 *** Lisp
-*** Javascript
-** DS
-   1 Mathematical training
-   2 Discrete mathematics & en.wikipedia.org/wiki/Discrete_mathematics
+*** Ruby
+*** DS
+    1 Mathematical training
+    2 Discrete mathematics & en.wikipedia.org/wiki/Discrete_mathematics
 ** AL
 ** CN
+*** Programming Languages:  Application and Interpretation
 *** The theory of compution
 ** AR
-** Kernel & kvm
-** Openstack nova
+** OS
+*** Kernel & kvm
 ** Hacker
-** Github
+** SP
+*** Github
+** SE
+** Openstack
 ** etc
 *** Public-key cryptography
 * Health
