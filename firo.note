@@ -1,18 +1,14 @@
 			firo
 	Now，1/28/2012,2 years and 4 months have been passed。I will follow the great people ,find myself ,on the road.
 	I will use 2 years and 8 months to make a recovery. My health body, minds, soul. 
-***** Idol:  钟越民, 韩寒,da Vinci,さかた ぎんとき
-* Minds: ==============================================
-* 钟越民式的豁达，Positive psychology
-* 一步一步慢慢来。
-* 过程中你想要的是什么？
-* 
-* Body：===============================================
-* Diet(Vegetarian)
-Semi-vegetarian
+***** Idol:  钟越民, 韩寒,da Vinci,ぎんとき
+* Body
+** Physical training fitness
+*** Muscle training
+*** Jogging 
+** Diet(Vegetarian)
 | Glass cups              |  0  |  
-* Clothing and shoes (No jeans):
-|                         |     |
+** Clothing and shoes (No jeans):
 | Underpants              |   2 |
 | Vest                    | 0/2 |
 | Shirt                   | 0/2 |
@@ -30,19 +26,24 @@ Semi-vegetarian
 | Scarf                   |   0 |
 | Pajamas                 |   0 |
 | Overcoat                |   1 |
-
-* House(Bed,bath,toliet)
-** Bathing
-|   |   |
-|   |   |
-* Physical training fitness
-** Muscle training
-** Jogging 
-* Brake during works
-*k Works
-* Sleep
-* Seating
-  1. Steelcase think chair
+** Housing (Bed,bath,toliet)
+** Brake during works
+** Sleep
+** Seating
+   1. Steelcase think chair
+** Armor
+*** Mi-one
+*** Y460
+**** Ubuntu 11.10
+***** Gnome 3
+***** Emacs 23
+***** Vim
+***** Chrome
+****** Vimium
+***** Dia
+***** SynergyKM
+*** Kinesis keyboard
+*** Travalue bag
 * Lifestyle
 ** Habit
    1.Relax for 10 minutes per hour.
@@ -50,27 +51,15 @@ Semi-vegetarian
    3.7.5 hours the best for health.
    4.Staight backs. 
 *** Lyubishchev
-    不承担必须完成的任务
-    不接受紧急的任务 
     一累马上停止工作休息 
     不同内容书籍交替着看 
     睡的多，一天十小时左右 
     累人工作和愉快工作结合在一起 
     一切服从于生物学，凡是无助于此的，一概置之不理。 
-
 ** Chronobiology & Schedule
-3.1~6.30 total:120days
-
-1.Every day learn one algorithm.
-2.C/C++ & Kernel hacking
-3.Python 
-4.DS & CN & Lisp  
-5.Github open project
-
 | time          | action                                                          | property                           |
-| 6:30 ~ 7:10   | Getting up,washing, brushing and gargling,defecation,break fast |                                    |
-| 7:10 ~ 8:00   | Go to  work                                                     |                                    |
-| 8:00 ~ 12:00  | T1                                                              |                                    |
+| 6:50 ~ 7:30   | Getting up,washing, brushing and gargling,defecation,break fast |                                    |
+| 7:30 ~ 12:00  | T1                                                              |                                    |
 | 12:00 ~ 1:00  | Lunch and Siesta                                                |                                    |
 | 1:00 ~ 6:00   | T2                                                              |                                    |
 | 6:00 ~ 9:00   | T3,dinner                                                       |                                    |
@@ -80,64 +69,39 @@ Semi-vegetarian
 | 1:00 ~ 3:00   | Sleep                                                           | Gall bladder detoxification        |
 | 3:00 ~ 5:00   | Sleep                                                           | Lung detoxification                |
 | 5:00 ~ 7:00   | Sleep,Toliet                                                    | Detoxification of the colon        |
-| 7:00 ~ 7:30   | Breakfast, health before 7:30                                   | Intestinal absorption of nutrients |
-|               |                                                                 |                                    |
-* Armor
-** Mi-one
-*** Miui Android 2.3.5 
-**** Chrome beta for android
-**** Onenote mobile
-** Y460
-*** Ubuntu 11.10
-**** Gnome 3
-**** Emacs 23
-**** Vim
-**** Chrome
-***** Vimium
-**** Dia
-**** SynergyKM
-** Kinesis keyboard
-** Travalue bag
+| 6:50 ~ 7:30   | Breakfast, health before 7:30                                   | Intestinal absorption of nutrients |
 * Ability:==============================================
-* High efficient learning method
-  1 Inspect knowledge and info from voerall to small part。
-  2 Unerstanding is first!
-* English
-* Music
-* Logic
-* Mathematics
-* Composition
-* Martial arts
-* Drawing
-** Xiaoyang's tanets 
+** Learning
+   1 Inspect knowledge and info from voerall to small part。
+   2 Unerstanding is first!
+** Language
+*** English 
+*** Japanese
+** Music
+** Logic
+** Mathematics
+** Composition
+** Martial arts
+** Drawing
+*** Xiaoyang's tanets 
 首先是掌握透视法则
 然后就是明暗关系
 最后就是一些技巧，主要是用以把握各种形态，和形体的画法，打稿子之类的
-* Computer science & Hacing
-** PL
-*** C (May be C++)
-*** Python
-*** Lisp
-*** Ruby
+** Hacing
+*** PL
 *** DS
     1 Mathematical training
     2 Discrete mathematics & en.wikipedia.org/wiki/Discrete_mathematics
-** AL
-** CN
-*** Programming Languages:  Application and Interpretation
-*** The theory of compution
-** AR
-** OS
-*** Kernel & kvm
-** Hacker
-** SP
-*** Github
-** SE
-** Openstack
-** etc
-*** Public-key cryptography
+*** AL
+*** CN
+*** AR
+*** OS
+*** SP
+*** SE
+*** etc
+**** Public-key cryptography
+** Etiquette
 * Health
-* Works: ==============================================
 * Akasha:
 ** topic and resource
 *** Theory of multiple intelligences
@@ -165,7 +129,6 @@ Semi-vegetarian
 
     This module is available for you to manage and maintain 
 
-* YADE:
 * Stranger novel
 * Essays and comment
 * The sail of time (岁月的帆)
