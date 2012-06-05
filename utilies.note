@@ -1,8 +1,10 @@
 
 
-start of kernel or OS
+* start of kernel or OS
 dmesg
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
 
-
+* Binary file
+nm 
+readelf -S module.ko
