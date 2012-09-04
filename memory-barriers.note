@@ -1,0 +1,15 @@
+0 Fundmental concepts
+Out-of-order execution
+
+
+
+1 Why does memroy barriers exist?
+In short, because reordering memory references allows much better
+perfoemance, and so memory barriers are needed to force ordering 
+in things like synchronizaiton primitives whose correct operation 
+depends on ordered memory references.
+
+
+
+
+
