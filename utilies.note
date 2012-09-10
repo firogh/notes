@@ -8,3 +8,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
 * Binary file
 nm 
 readelf -S module.ko
+
+ctags
+ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
+
