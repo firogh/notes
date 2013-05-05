@@ -1,0 +1,5 @@
+
+
+
+** /proc/net
+softnet_stat,dev,ptype create in net_dev_init();

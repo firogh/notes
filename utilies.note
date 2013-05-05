@@ -12,3 +12,28 @@ readelf -S module.ko
 ctags
 ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
 
+git 
+git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
+
+
+qemu
+qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img -k en-us 
+
+
+indent
+indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs
+
+find
+find /sys/devices/system/cpu/cpu0/cache/ -type f -printf '%P: ' -exec cat '{}' \;
+
+
+show
+dstat
+
+
+sed -ri 's/printf\("\\n"\);/pmon_printf\(INIT_INFO_LEVEL,"\\n"\);/g'  $(grep  'printf("\\n");' -rl ./)
+
+sed -ri '1,/^#include/{/^#include/i\
+#include <include/pmon_print.h>
+}' $(grep 'printf("\\n");' -rl ./Targets/Bonito3a780e)
+awk '{if(/^#include/)a++;if(a==1){print "sway2004009\n"$0;}else print $0;}' urfile
