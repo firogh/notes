@@ -19,12 +19,25 @@ Tameni	Family Liang Cuifang, Knowledge
 5-----------6-----------7-----------8----------9----------10----------11------------12-----------
 ---->
 05-10 ~ 05-23:Ready for readhat
-1 kernel net
+1 kernel net-dev	Protocol:		ipv6,igmp,tcp,udp,sctp,icmp
+			Skill(intern):		vlan, bridge, bonding, ipsec, tunnel
+			NIC driver(intern):	10G ixgle, bn2x, benet, 
+						1G tg3, bn2x, e1000e
 2 shell
-3 English
+3 Vim gdb
+4 English
 06-01 ~ 09-01: Probationary period in redhat
+07-15: Guilin
 09-19: Guilin
 10-01: Guilin
+		10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	
+net-dev		ipv6	igmp	tcp	udp	icmp	vlan	bridge	bonding	ipsec	tunnel	nic-e100
+shell	
+vim-gdb
+english
+philosophy
+review
+	
 
 
 Now Chronobiology
@@ -49,15 +62,15 @@ Time		Action						Comments
 06:00		...						05:00 ~ 07:00 Detoxification of the colon
 
 Schedule	11 hours
-net-dev:	7 hours
-shell:		1 hour
-Philosophy	1 hour
-Review		1 Hour
+net-dev:	7 hours: 8,9,11,13,14,16,17
+shell:		1 hour: 15
+Philosophy	1 hour: 20
+Review(WM)	1 Hour  22
+Vim, gdb...	1 hour	21
 
 
-
-
-
+09:54: Getting up, Pee, Douban
+10:13: Plan
 
 
 
