@@ -37,3 +37,4 @@ sed -ri '1,/^#include/{/^#include/i\
 #include <include/pmon_print.h>
 }' $(grep 'printf("\\n");' -rl ./Targets/Bonito3a780e)
 awk '{if(/^#include/)a++;if(a==1){print "sway2004009\n"$0;}else print $0;}' urfile
+indent -npro -kr -i8 -ts8 -sob -l280 -ss -ncs -cp1 *.c *.h
