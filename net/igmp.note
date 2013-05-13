@@ -1,0 +1,14 @@
+igmp
+====
+
+Structure
+=========
+依然范特西
+
+
+Function
+========
+Transfer host/router-ip		ip-header+igmp-header v1/v2/v3		peer, mrouter
+				receive:igmp_rcv
+
+

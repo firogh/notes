@@ -1,0 +1,16 @@
+icmp
+====
+
+Structure
+=========
+协议本身，是一种没有特定实体的信息。 如果一味寻找其实体，是很可笑的做法。
+这不代表协议实体不存在，只是不容易察觉，必须放到特定的环境下。
+Beginning	icmp_init
+
+Function
+========
+Transfer	host/router-ip	ip header + icmp header + data			peer/router-ip
+				receive:strut icmp_control icmp_pointers[]
+				send:	icmp_send()			
+
+

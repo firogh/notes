@@ -1,0 +1,101 @@
+bridging
+========
+Bridging is a routing at L2 in essence.
+
+Classification
+==============
+Repeater
+中继器的目的是在Bit级别对网络信号进行再生和重定时，从而使得它们能够在网络上传输更长的距离。
+
+Ethernet hub
+Multiport repeater.
+
+Network bridging
+它设计用来创建两个或多个LAN分段。其中，每一个分段都是一个独立的冲突域。
+
+Network switch
+Generally speaking, I can say that there is really no difference between a bridge and a switch.
+
+LAN
+You should note that a LAN is nothing but a multiport bridge.
+
+Transparent bridging
+It is also called learning bridging
+
+Bridged (or switched) network
+An L2 network implemented with bridges.
+
+Accessbridges (commonly called access switches):
+the bridges that give network connectivity to the hosts. Access
+bridges are mainly used to forward traffic between the hosts linked to the same bridge, but they also have one
+or more links to the upper-layer bridges.
+
+Structure
+=========
+Spanning tree protocol(Rapid STP,Multiple STP)
+the algorithm is not executed on a single host that later distributes the result to all the others; 
+instead, this is a distributed protocol.
+
+BPUD
+Bridge protocol data units
+Configuration BPDU
+Used to define the loop-free topology. 
+Topology Change Notification (TCN) BPDU
+Used by a bridge to notify the root bridge about a detected topology change. 
+
+BPDU Aging
+On a stable network, the time depends mainly on how loaded the bridges are and how fast they can process BPDUs.
+
+
+Root Bridge
+The root bridge is the only bridge that generates BPDUs
+The root bridge makes sure each bridge in the network comes to know about a topology change when one occurs
+
+Designated Bridges
+While each tree has only one root bridge, there is one designated bridge for each LAN, 
+which becomes the bridge all hosts and bridges on the LAN use to reach the root.
+The designated bridge is chosen by determining which bridge on the LAN has the lowest path cost to the root bridge.
+
+Bridge Port
+While root ports lead toward the root of the tree (i.e., the root bridge), designated ports lead toward the leaves.
+
+
+
+
+
+
+Function
+========
+Rassive learning
+Flooding
+Aging
+Bridging Loops
+
+
+
+Switch:
+
+
+
+
+Time-line
+========
+newe_bridge_dev() create net_device and net_bridge.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

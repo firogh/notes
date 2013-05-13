@@ -1,0 +1,27 @@
+内核协议栈是平的！
+=================
+
+
+协议栈本身，完完全全就是功能的体现！其背后的结构是被轻视的，因为他不像女人—— 原来就是存在的且结构是至关重要的！
+是被人为创造出来的，完成人类的赋予的互联的使命。从人道主义上看，我们几乎可以忽略掉协议栈的结构。
+
+乍看一眼，协议栈是很吓人的，惊悚不为过。
+
+分型艺术中的Mandelbrot set
+--------------------------
+协议栈本质上是 Transfer这个功能。客观上担当了行为发起与接受主体。
+而我要揭示在这一过程中存在的Mandelbrot set —— 局部间相似，局部与整体相似。
+从接受的角度
+ip --> inet_protos[]
+struct net_protocol inet_protos[MAX_INET_PROTOS]是作为接受主体存在的，准确说是后ip的接受者。
+这些受体包括tcp, udp, icmp, igmp. 如，我们选取了icmp。
+ip --> inet_protos[] --> icmp_rcv --> icmp_pointers[] 
+struct icmp_control icmp_pointers[NR_ICMP_TYPES + 1]也是一个受！类似称之为后icmp的接受者。
+包括dest_unreach, source_quench, time_exceeded, parameterprob ...
+看到这里，我们就能建立"线性"的映射。
+inet_protos <=> icmp_pointers
+tcp, udp, icmp, igmp <=> dest_unreach, source_quench, parameterprob...
+
+类似的，我们选取igmp。
+ip --> inet_protos[] --> igmp_rcv 
+
