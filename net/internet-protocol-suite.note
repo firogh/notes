@@ -3,7 +3,7 @@
 
 
 协议栈本身，完完全全就是功能的体现！其背后的结构是被轻视的，因为他不像女人—— 原来就是存在的且结构是至关重要的！
-是被人为创造出来的，完成人类的赋予的互联的使命。从人道主义上看，我们几乎可以忽略掉协议栈的结构。
+而协议栈是被人为创造出来的，完成人类的赋予的互联的使命。从独裁主义上看，可以忽略掉协议栈的结构，干好你的活！
 
 乍看一眼，协议栈是很吓人的，惊悚不为过。
 
@@ -24,4 +24,64 @@ tcp, udp, icmp, igmp <=> dest_unreach, source_quench, parameterprob...
 
 类似的，我们选取igmp。
 ip --> inet_protos[] --> igmp_rcv 
+
+
+同样的，在vlan注册当中我们也会发现同样的，分形艺术。
+此时struct ptype_base[], 行为上就是一个Hash链表了。
+ptype_base[],本质上就是 inet_protos or icmp_pointers.
+同样在执行switch的功能，大多数人称之为hook，钩子机制。 hook会让人觉得迷惑，因为你不知道从哪里开始勾，很乱。
+我一直坚持理解时思维应该是平的，smooth！
+这三个switch处在不同的层次。ptype_base -> inet_protos -> icmp_pointers.
+接下来，会有趣。为什么会是这样的处理顺序，作为一个普通人，我们如何知道，数据是如何被处理的呢？
+只是普通的不能普通，从外到内逐步swith过程而已！
+
+
+
+switch
+=======
+struct proto tcp_prot;
+struct proto_ops inet_stream_ops;
+struct inet_protosw inetsw[]
+struct inet_connection_sock_af_ops ipv4_specific;
+struct net_protocol inet_protos[]
+
+out
+====
+inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
+ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
+ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->ip_finish_output2()->
+neigh_hh_output()/dst->neighbour->output见neigh_event_ns()...->dev_queue_xmit()->dev_hard_start_xmit()
+
+
+in
+===
+do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
+ip_route_input()->ip_route_input_slow():local_input dst.input=ip_local_deliver()
+					ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
+dst_input()->
+ip_local_deliver()->NF_INET_LOCAL_IN->ip_local_deliver_finish()->inet_protos.tcp_v4_rcv()
+ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
+
+
+register
+=======
+outer
+-----
+e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
+vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
+
+
+分形艺术轮回之地
+===============
+大抵会回到这里。
+揭示终极的分形艺术。
+文件操作，驱动使用，
+create,			open,	read/write, send, recv, close, delete
+module_init, regiser	open				
+
+
+
+
+
+
 

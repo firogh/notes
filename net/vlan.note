@@ -7,4 +7,28 @@ Structure
 =========
 
 
+Function
+========
+
+
+Timeline
+========
+
+initialize
+vlan_proto_init()
+这个函数最重要的是映射了iocctl函数， 因为接下来的所有操作都要用到ioctl。
+
+application
+vconfig eth0 1
+vlan_ioctl_handler()->register_vlan_device():
+alloc net_device.
+vlan_setup()函数非常重要，设置dev->priv_flags 为 802.1q！tx queue 为0.
+设置open函数为vlan_dev_open;
+register_vlan_dev(）把这个设备注册到内核。
+
+
+
+
+
+
 

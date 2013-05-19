@@ -52,9 +52,9 @@ Time		Action						Comments
 06:00		...						05:00 ~ 07:00 Detoxification of the colon
 
 Schedule	11hrs		11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	
-net-dev		7hrs:8,9,11	igmp	bridge	bridge	ipv6	ipv6			
-		13,14,16	ip-frag	bridge	bridge	bridge	
-		20,21		bridge	bridge	vlan		tcp	tcp
+net-dev		7hrs:8,9,11	igmp	bridge	bridge	vlan	L2	L2	Free		
+		13,14,16	ip-frag	bridge	bridge	vlan	L2	Qdisc	Freeipv4
+		20,21		bridge	bridge	vlan	vlan	L2	free	tcp	tcp	tcp	tcp	tcp	tcp	tcp	tcp	tcp
 shell		1hr:10	
 vim-gdb		1hr:15
 philosophy	1 hour: 17
@@ -77,3 +77,6 @@ review(WM)	1 Hour: 22,0.5hour
 
 05-12
 09:30 Bridge
+
+05-14
+10:00 vlan
