@@ -1,37 +1,11 @@
-bridging
-========
-Bridging is a routing at L2 in essence.
+Bridging
 
-Classification
-==============
-Repeater
-中继器的目的是在Bit级别对网络信号进行再生和重定时，从而使得它们能够在网络上传输更长的距离。
+== Sturcture ==
+Bridging is a router using MAC address at L2 in essence.
+A bridge transparently relays traffic between multiple network interfaces. 
+In plain English this means that a bridge connects two or more physical Ethernets together to form one bigger (logical) Ethernet.
 
-Ethernet hub
-Multiport repeater.
 
-Network bridging
-它设计用来创建两个或多个LAN分段。其中，每一个分段都是一个独立的冲突域。
-
-Network switch
-Generally speaking, I can say that there is really no difference between a bridge and a switch.
-
-LAN
-You should note that a LAN is nothing but a multiport bridge.
-
-Transparent bridging
-It is also called learning bridging
-
-Bridged (or switched) network
-An L2 network implemented with bridges.
-
-Accessbridges (commonly called access switches):
-the bridges that give network connectivity to the hosts. Access
-bridges are mainly used to forward traffic between the hosts linked to the same bridge, but they also have one
-or more links to the upper-layer bridges.
-
-Structure
-=========
 Spanning tree protocol(Rapid STP,Multiple STP)
 the algorithm is not executed on a single host that later distributes the result to all the others; 
 instead, this is a distributed protocol.

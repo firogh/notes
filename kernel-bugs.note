@@ -1,0 +1,5 @@
+drivers/net/wireless/libertas/cfg.c:1115 lbs_associate() error: potential null dereference 'cmd'.  (kzalloc returns null)
+drivers/net/wireless/rtlwifi/efuse.c:378 read_efuse() error: potential null dereference 'efuse_word'.  (kmalloc returns null)
+drivers/staging/rtl8192e/rtllib_rx.c:1496 rtllib_rx() error: we previously assumed 'ieee' could be null (see line 1464)
+vers/media/media-device.c:146 __media_device_enum_links() warn: check that 'pad' doesn't leak information (struct has a hole after 'index')
+drivers/media/media-device.c:167 __media_device_enum_links() warn: check that 'link' doesn't leak information (struct has a hole after 'index')
