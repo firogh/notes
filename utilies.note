@@ -40,3 +40,6 @@ awk '{if(/^#include/)a++;if(a==1){print "sway2004009\n"$0;}else print $0;}' urfi
 indent -npro -kr -i8 -ts8 -sob -l280 -ss -ncs -cp1 *.c *.h
 egrep -v   '(CC)|(CHECK) | (LD)| (A[RS])' warns.txt > egwarns.txt
 egrep -v   '(CC)|(CHECK) | (LD)| (A[RS])|(ignoring unreachable code)'
+
+
+ git ls-files -d |xargs -i git checkout {}
