@@ -52,7 +52,6 @@ ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
 ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->ip_finish_output2()->
 neigh_hh_output()/dst->neighbour->output见neigh_event_ns()...->dev_queue_xmit()->dev_hard_start_xmit()
 
-
 in
 ===
 do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->

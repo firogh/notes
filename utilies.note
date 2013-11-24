@@ -1,4 +1,6 @@
 
+git describe --contains
+git tag --contains <id> 
 
 * start of kernel or OS
 dmesg

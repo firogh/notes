@@ -1,70 +1,90 @@
-
-Entity		Now			Change				Future
+Soma					Now							Future						
 --------------------------------------------------------------------------------
-Body					Fitness
 Face
 Skin
 Arm
-Leg                                     Jogging
-Abdomen                                 Sit-ups
-Chest                                   Push-ups 30+1/day
+Leg											 
+Abdomen					Sit-ups						Beefcake
+Chest                   Push-ups 30+1/day	
 Shoulder
 
-----------------------------------------------------------------------------------
+
 Diet
+----------------------------------------------------------------------------------
 Water
 
+
+Money
+-----------------------------------------------------------------------------------
+Xu Chen					-2000						NULL
+An Kang					-1200						NULL
+CMB						27
+CCB						0
+CCBCC					0	
+Cashes					1100	
+Alipay					1400
+Sum						-700
+
+
+Budget
 ----------------------------------------------------------------------------------
-Clothing                                No jeans
-Boxer brief     2               
-Vest                          
-T-shirt                                
-Trousers                               
-Casual shorts                          
-Canvas shoes                           
-Skateboard shoes                       
-Slippers                               
-Mask                                   
-Gloves                                 
-Scarf                                  
-Pajamas                                
-Overcoat                               
+Rent					-1006 * 1
+Breakfast				-7 * 30
+Lunch					-19 * 30
+Dinner					0 
+Traffic					-4 * 30
+Fruit					-2 * 30
+Sum						-2000
+Salary					4630
+Sum						2630
+
+
+
+
+Clothing(no jeans		Now							Future								
+----------------------------------------------------------------------------------
+Vest					0							2       
+Boxer brief				2							 
+T-shirt                 5							5               
+Scarf                   1             
+Dress shirt				3							3(-2 + 2)
+Thermal underware		0							1
+Trousers				5							             
+Casual shorts           0							(+2)               
+Canvas shoes            1              
+Skateboard shoes		1                
+Slippers                1							
+Mask                    1
+Gloves                  0               
                                        
------------------------------------------------------------------------------------
+
 Travel					Environmental protection                      
-Bag             Travalue bag            
-                Laptop computer cases
-
-
 -----------------------------------------------------------------------------------
-Equipment
-Phone		Mi-one
-		MIUI-V5
-Laptop		Y460
-		Ubuntu 13.04
-		Gnome 3
-		Vim 7.3
-		Chrome 26
-Keyboard								Mechanical Keyboard
-Hard drive	Buffalo ministation
+Luggage & Bag           Travalue bag            
+						Laptop computer cases
+
+
+Accessory				Now								Future
+-----------------------------------------------------------------------------------
+Phone					Mi-one							Nexus 5
+						MIUI-V5			
+Laptop					Y460							Intel haswell | Chrome pixel
+						Fedora 20
+						Gnome 3.10
+						Vim 7.4
+						Chrome 31
+Keyboard				Laptop version					
+Hard drive				Buffalo ministation				NULL
 
 -----------------------------------------------------------------------------------
 Residency
-Razor		Schick quatto titanium
-Chair									Steelcase think chair
-Mug		2
-
-
+Razor					Schick quatto titanium
+Chair													Steelcase think chair
+Mug						2
 
 -----------------------------------------------------------------------------------
-Expenditure				Hacker
-Dafei		-3000
-Cash		4000
-Total		1000
-
------------------------------------------------------------------------------------
-Behavior	Style
-Drink		2.5L
+Behavior				Style
+Drink					2.5L
 Eat
 Sit
 Stand
@@ -72,8 +92,8 @@ Work
 Sleep
 Bath
 Wash
-Listen		40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour
-Masturbation	One time per week
+Listen					40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour
+Masturbation			One time per week
 
 
 
@@ -81,5 +101,3 @@ Masturbation	One time per week
 Physical exercise
 Strength training
 Quadriceps		
-
-
