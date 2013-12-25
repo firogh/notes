@@ -44,7 +44,6 @@ Cognitive paradigm
 ==================
 Intuition mixed				chrolet: means a chronous flow.
 							entity
-							Combination
 							time 0			chrolet			end
 							|---------------------------------|
 
@@ -55,15 +54,13 @@ Comments
 entity是chrolet的起点，构成也是终点。
 Synchronous：在一个chrolet中的小chrolet的开始和结束together with in time，不会别另外一个小chrolet插入打乱。 is an adjective describing objects or events that are coordinated in time. 
 Asynchronous： is an adjective describing objects or events that are not coordinated in time. In information technology, the term has several different usages.
-Combination
-===========
-在整个新的理论中combination，是核心还需要大量的基础夯实。
-组合的特征就是多样性，也就是从起点entity 0 到达end entity的路上会有很多的
-chrolet， 也就是说解决问题的方法有很多。当然， 这是我在描述解决一个问题的情况。
-所以首先要，find entitys。
-另外，对于一个个体的认知也是围绕entitys 和 chrolet来找的。
-明天nginx！
 
+Untitled
+=============
+in-do-out					find the entities
+Category on entities		chrolet 要符合end entities
+
+time arrange
 
 世界/知识特征--范畴
 ============
