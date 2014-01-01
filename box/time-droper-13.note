@@ -131,11 +131,122 @@ Support Jianying
 Finish speedtest dynamic uri num coding.
 +30
 
+###25 Dec
+=9
++4
+Getting up
+then wash...
++22
+Leaved for work
+Jp words
++50
+Arrive at DH
+=10
+Chrolet:
+Wystream report!
+Speedtest.
+Wyweb environment.
++12
+Resolve weiyun-web nginx disconnect error. change server from 112.65.195.222 to 123.151.45.27.
+=12
+Summary the process of fix ablove nginx wy disconnect error.
+talks with Tom
+Diner
+=1
++45
+Write test steps.
+talks with wuwei.
+search speedtest curl info.
+=4
+Add tune upload size interface for speedtest.
+Use Cheku network environment.
+=6
+Over
 
+###26 Dec
+=10
+speedtest summary 30'
+iozone-Makefile  60'
++13
 
+=13
 
+=14
++4
+start to coding c-upload 
+找到一个程序， socket的。
++17
+socket的部分完成
++31
+fork
++43
+调试 host 解析
+=18
+Coding complete.
++20
 
+### 27 Dec
+=10
+speedtest
 
+likai
+
+wyacc
+
+speedtest with updaload
+
+###28 Dec
+c's task
+
+###29 Dec
+#c's task
+
+###30 Dec
+=10
+Chrolet:
+wystream. 1 hour
+speedtest. 1 hour
+note get info 
+note neo-organum 
++10
+Write weiyunstream test summary.Then waite wuwei't new reply.
+Fix speedtest bug.
+=11
++11
+Handle wuwei's weiyun upload problems.
+iozone-Makefile delayed because the lacks of aio.h in uclibc
+=12
++41
+Dinner.
+=13
++25
+Broken
+=2
+Start to collect infomations.
+scp 
+try ftp telnet tftp failed.
+samba. fine.
+=4
++35
+merge wyacc wystream cancel.
+=5
+
+###31 Dec
+=10
+Chrolet:
+Speedtest.
+weiyun accelerator.
++15
+Game pc
+syslog-ng high performance.
+=11
+os conferrence.
++50
+nginx hiwifi website.
+=12
++10
+wang chao chang li kun
+nginx location
 
 
 
