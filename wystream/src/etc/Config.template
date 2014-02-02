@@ -1,9 +1,0 @@
-<XML>
-  <CONFIG>
-    <NAME value="wystream" />
-    <LISTEN_IP value="WY_LAN_LISTEN_IP" />
-    <LISTEN_PORT value="9988" />
-    <CACHE_ROOT value="/tmp/data/http_stream_cache/" />
-    <LOG_PRINT value="1" />
-  </CONFIG>
-</XML>
