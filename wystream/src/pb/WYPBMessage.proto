@@ -1,0 +1,59 @@
+package WYStreamMessage;
+
+message PBHead{
+    enum Type
+    {
+        //通用协议
+        ReqMsg = 1;
+        RspMsg = 2;
+    }
+	
+	enum Cmd
+	{
+		Invalid            = 0;
+
+		//文件代理模块中接入层与Cache层之间的协议
+		//FileTransPieceMsg  = 500; //转存分片
+		//FileQueryOffsetMsg = 501; //查询已经上传的偏移量
+
+		FileQueryOffsetMsg = 1001; //查询已经上传的偏移量
+		
+		//上传模块
+		DiskFileUpload     = 2301; //文件上传请求
+	} 
+	
+    required int64 uin          = 1;    //请求uin：请求包和响应包必填
+    required uint32 seq         = 2;    //消息包序列号：请求包和响应包必填
+
+    optional Type type          = 3;    //表示该消息是请求消息还是响应消息：请求包和响应包必填
+    optional Cmd cmd            = 4;    //命令号：请求包和响应包必填
+
+    //接下来是响应包头信息
+    optional int32 retcode      = 101;  //响应包返回码
+    optional string retmsg      = 102;  //响应描述
+
+}
+
+message DataOffsetRequestPBBody
+{
+    required int64 file_size        = 1;    
+    required int64 file_offset      = 2;    //该分片相对于整个文件的偏移量
+    required int64 piece_size       = 3;    //分片大小
+    required bytes piece_data       = 4;    //分片数据
+    required bytes ukey             = 5;    //ukey  
+    required bytes file_key         = 6;    //filesha
+    required string file_path       = 7;    //file_path
+    required string piece_md5       = 8;    //piece_md5
+    required string ftn_host        = 9;    //ftn的域名
+    optional string file_md5        = 10;   //file_md5
+}
+
+message DataOffsetResponsePBBody
+{
+	required int32 flag         = 1;	//flag为0需要继续上传
+	optional int64 next_offset  = 2;	//flag为0时:下一个需要上传的分片偏移量
+	optional int32 code         = 3;	//当存储的包头中出错的时候，该值存储这个错误码
+} 
+
+
+

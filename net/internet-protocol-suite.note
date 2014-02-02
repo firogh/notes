@@ -37,41 +37,44 @@ ptype_base[],本质上就是 inet_protos or icmp_pointers.
 
 
 
-switch
-=======
+###switch
 struct proto tcp_prot;
 struct proto_ops inet_stream_ops;
 struct inet_protosw inetsw[]
 struct inet_connection_sock_af_ops ipv4_specific;
 struct net_protocol inet_protos[]
 
-out
-====
+###out
 inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
 ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->ip_finish_output2()->
-neigh_hh_output()/dst->neighbour->output见neigh_event_ns()...->dev_queue_xmit()->dev_hard_start_xmit()
+																								neigh_hh_output()
+																								dst->neighbour->output见neigh_event_ns()...
+}dev_queue_xmit()->dev_hard_start_xmit()
 
-in
-===
+###in & forward
 do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
 ip_route_input()->ip_route_input_slow():local_input dst.input=ip_local_deliver()
-					ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
-dst_input()->
+										ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
+}dst_input()->
 ip_local_deliver()->NF_INET_LOCAL_IN->ip_local_deliver_finish()->inet_protos.tcp_v4_rcv()
 ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
 
+net_tx_action->output_queue/每个设备的qdisc and  clear_bit__QDISC_STATE_SCHED qdisc_run add back
+__QDISC_STATE_SCHED是否加入softdata
+qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
+__qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
+driver tx, stack xmit
 
-register
-=======
-outer
------
+
+
+###register
+=outer
 e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
 vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
 
 
-分形艺术轮回之地
-===============
+###分形艺术轮回之地
 大抵会回到这里。
 揭示终极的分形艺术。
 文件操作，驱动使用，

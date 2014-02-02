@@ -1,0 +1,22 @@
+#!/bin/sh /etc/rc.common
+# Copyright (c) 2012 Hiwifi Co., Ltd.
+
+START=99
+
+SERVICE_WRITE_PID=1
+SERVICE_DAEMONIZE=1
+
+WYSTREAM_BIN=/usr/local/wystream/bin/wystream
+WYSTREAM_TEMPLATE_CFG=/usr/local/wystream/etc/Config.template
+WYSTREAM_CFG=/usr/local/wystream/etc/Config.xml
+
+start() {
+	kproxy -A -W 9988
+	lan_ipaddr=`uci show network.lan.ipaddr | sed 's/.*=//'`
+	sed -r  's/WY_LAN_LISTEN_IP/'"$lan_ipaddr"'/g' $WYSTREAM_TEMPLATE_CFG > $WYSTREAM_CFG 
+	service_start $WYSTREAM_BIN
+}
+
+stop() {
+	service_stop $WYSTREAM_BIN
+}

@@ -1,0 +1,66 @@
+
+package weiyun;
+
+//通用包信息定义
+//传输pb消息的详细构造结构：ComHead + MsgHead + MsgBody
+message MsgHead
+{
+    enum Type
+    {
+        //通用协议
+        ReqMsg = 1;
+        RspMsg = 2;
+    }
+
+    required int64 uin          = 1;    //请求uin：请求包和响应包必填
+    required uint32 seq         = 2;    //消息包序列号：请求包和响应包必填
+
+    optional Type type          = 3;    //表示该消息是请求消息还是响应消息：请求包和响应包必填
+    optional int32 cmd          = 4;    //命令号：请求包和响应包必填
+
+    //接下来是响应包头信息
+    optional int32 retcode      = 101;  //响应包返回码
+    optional string retmsg      = 102;  //响应描述
+}
+
+enum Cmd
+{
+    ClientFileTransQueryMsg     = 1001; //该控制头来查询文件是否需要上传以及从什么位置开始上传：tcp文件上传代理非分片使用
+}
+
+//消息体定义
+message MsgBody
+{
+    optional ReqMsgBody ReqMsg_body = 1;    //请求消息包体
+    optional RspMsgBody RspMsg_body = 2;    //响应消息包体
+    //message类型的成员在获取的时候需要在前面加上mutable_，例如：weiyun::ReqMsgBody* pstReqMsgBody = stReqMsgBody.mutable_reqmsg_body();
+}
+
+//请求消息体定义
+message ReqMsgBody
+{
+    optional ClientFileTransQueryMsgReq ClientFileTransQueryMsgReq_body = 1001; 
+}
+//响应消息体定义
+message RspMsgBody
+{
+    optional ClientFileTransQueryMsgRsp ClientFileTransQueryMsgRsp_body = 1001; 
+}
+
+//tcp文件代理接入模块:对各个终端的协议
+message ClientFileTransQueryMsgReq
+{
+    required int64 file_size        = 1;    
+    required bytes ukey             = 2;    //ukey-608 bytes
+    required bytes file_key         = 3;    //filesha-20 bytes
+    required string upload_domain   = 4;
+    optional string file_name       = 5;    //filename
+    optional bytes file_md5         = 6;    //file_md5-16 bytes
+}
+message ClientFileTransQueryMsgRsp
+{
+    optional int32 flag         = 1;        //flag为0需要继续上传
+    optional int64 next_offset  = 2;        //flag为0时:需要上传的偏移量
+    optional int32 process      = 3;        //文件传输进度--值的范围为[0,10000]
+}
+
