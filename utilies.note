@@ -45,3 +45,5 @@ egrep -v   '(CC)|(CHECK) | (LD)| (A[RS])|(ignoring unreachable code)'
 
 
  git ls-files -d |xargs -i git checkout {}
+ 
+  rpm -qa --queryformat="%30{NAME} %{SIZE}\n" | sort -k 2 -n | awk '{printf("%30s, %d\n", $1,$2/1024/1024)}'
