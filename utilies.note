@@ -52,7 +52,3 @@ egrep -v   '(CC)|(CHECK) | (LD)| (A[RS])|(ignoring unreachable code)'
 mkfifo /tmp/pipe
 ssh root@192.168.199.1 "/tmp/data/usr/sbin/tcpdump tcp   -i br-lan -w -  -n -s 0" > /tmp/pipe
 sudo wireshark -i /tmp/pipe
-
-
-
-
