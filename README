@@ -1,5 +1,9 @@
-These are my private notes on my reading and thinking.
-I want to make it useful to you when read and think.
+This app is used for patch a certern version of hiwifi os rom.
 
-Sincerely,firo
-6/18/2012
+Every patch should be a *.tgz file.
+
+Every patch should be compressed with all it's files in a single folder.
+
+Every patch should have a file called script. and two funcions, <patch> and <unpatch> which will be called automatically when install.
+
+Every patch will have a folder in /etc/patches and have it's own folder there, the work should be done there, two

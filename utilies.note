@@ -52,3 +52,26 @@ egrep -v   '(CC)|(CHECK) | (LD)| (A[RS])|(ignoring unreachable code)'
 mkfifo /tmp/pipe
 ssh root@192.168.199.1 "/tmp/data/usr/sbin/tcpdump tcp   -i br-lan -w -  -n -s 0" > /tmp/pipe
 sudo wireshark -i /tmp/pipe
+
+
+sed -r '/destination\(d_center\);/i\xxoo' /etc/syslog-ng.conf_sample
+
+
+sed -r ':1;N;$!b1;s/(.*)}/\1xxoo\n}/' t.sh
+
+
+rdesktop -g 1366x768 -u administrator 192.168.5.189
+
+
+__var=bbb
+eval "export -- \"$__var=aaaaaaaaaa\""
+set | grep bbb
+__var='bbb'
+bbb='aaaaaaaaaa'
+
+
+exiftool -json Baccano\!\ 永生之酒\(バッカーノ！\)\ ORIGINAL\ SOUNDTRACK\ SPIRAL\ MELODIES/12.緩みきった官能のダンス.mp3
+
+id3tag -2 *.mp3
+
+ for file in *.mp3;do f=$(echo "$file" |awk -F ' ' '{print $2}' | awk -F '.' '{print $1}'); id3tag -s "$f" "$file";  done
