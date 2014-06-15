@@ -1,9 +1,14 @@
-This app is used for patch a certern version of hiwifi os rom.
-
-Every patch should be a *.tgz file.
-
-Every patch should be compressed with all it's files in a single folder.
-
-Every patch should have a file called script. and two funcions, <patch> and <unpatch> which will be called automatically when install.
-
-Every patch will have a folder in /etc/patches and have it's own folder there, the work should be done there, two
+This is my private notes on my reading.
+I want to make it useful to you when you read the same books like me.
+firo 11-26-11
+The uniform format and style of all notes.
+1.All notes are accomplished with emacs-org-mode.
+2.Every topic in the note is described through five views.
+2.1.Enssence
+2.2.What
+2.3.Why
+2.4.How
+2.5.Other
+3.All the notes can be discributed under the CC BY-NC-SA license, for more details you can access http://creativecommons.org/licenses/by-nc-sa/3.0/ .
+4.In the future , I will provide the pdf version if need.
+firo 11-29-11
