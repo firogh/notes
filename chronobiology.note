@@ -1,51 +1,39 @@
-Chronobiology												Time	Len(hour)
-Dwell			Getting up: Lemon-water 800ml,				06:30	0.25	
-				Defecation, Washing, 
-				Brushing, gargling
-Cogito			Janpanese									07:15	
-				vocabulary: 6/20
-				syntax							
-Meals			Breakfast,									07:30 
-				Lunch, 
-				Dinner
-Traffic			Bus, subway, walking								1 
-Cogito			CS											20:00
-Cogito														21:30
-				Japanese									
-				Writing										22:00	
-Fintness													22:30	0.5
-				腹肌
-				俯卧撑
-Washing			Body										22:45	0.25
-Lyubishchev		Statistics time								22:55	0.1	
-Dwell			
-				Sleep										23:00	8
-=========================================================================
-Relax			Siesta, 10mph
+###Chronobiology	Time		Len(hour)																				
+Dwell			07:00		0.25     	Getting up: Lemon-water 800ml	Defecation, Washing,Brushing, gargling		 
+Cogito			07:15		        	Janpanese: vocabulary 6/20,syntax											
+Traffic			07:30                	Bus, subway, walking														
+Breakfast		09:00                	Must																		
+Lunch           13:00                 
+Dinner			19:00                      
+Cogito			20:00                	CS																			
+				                     	Japanese																	
+Writing			22:00		        	critique,absurd
+Fintness		23:00		0.5     	abdominals, chest muscle													
+Bathing			23:15		0.25    	Body																		
+Lyubishchev		23:30		0.1			Statistics time																
+Dwell			23:30		8       	sleep																		
+Relax									Siesta, 10mph
+Washing									Clothes									
 
-Washing			Clothes									
+###In
 
 
+###Out
+==libnl				
+				06				07				08				09				10				11				12			
+skbedit action
+cgroup classifier
+tun/tap dev
+gre tunnel dev
+tc classifier/action
 
-There is really only one way to learn how to do something and that is to do it.
-big come from 逼格!
+==kernel janitor gernel network
+				06				07				08				09				10				11				12			
+gen:			12 patches monthly, 3 pathces weekly
+net:								3 p/w 
 
-##Culture
-Reading & Writing
-##Technology
-June, July, August
-libnl 
-1) 添加 skbedit action 的支持；
-2) 添加 cgroup classifier 的支持；
-3) 添加 tun/tap 设备的支持；
-4) 添加 gre tunnel 设备的支持。
-对比内核已经实现的 TC classifier 和 TC action，你会发现 libnl 实现了不到其中一半，
-kernel gernel  network
-##Life
-吃穿， 住行， 玩。
 
 ###2014
-
 ###01 Jan
 Learnign japanese gramar
 
