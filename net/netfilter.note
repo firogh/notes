@@ -1,0 +1,72 @@
+
+This post is a tempt to cognitive netfilter under the akasha or ergo architecture.
+Design pattern
+Observer
+
+WFF
+Netfilter hooks point.
+Hook callback structure struct nf_hook_ops
+
+Inference rules
+Un/Registration of netfilter hooks
+Hook callback functions.
+
+
+Connection tracking
+semantics
+The days when packet filtering policies were based uniquely on the packet
+header information, such as the IP source, destination, and ports, are over.
+Over the years, this approach has been demonstrated to be insufficient pro-
+tection against probes and denial-of-service attacks.
+It's 弱爆了...
+
+WFF
+ipv4_conntrack_ops[]
+
+nf_conntrack_tuple
+nf_conn
+
+Inference rules
+Un/Registration of netfilter hooks
+nf_conntrack_l3proto_ipv4_init(void)->nf_register_hooks(ipv4_conntrack_ops,
+
+Hook callback functions
+ipv4_conntrack_in
+ipv4_conntrack_local,
+
+
+
+IPTables
+WFF
+filter_ops = xt_hook_link
+fliter_ops.hook = iptable_filter_hook.
+
+struct xt_table packet_filter
+
+Inference rules
+moudle_init->iptable_filter_init(void)->xt_hook_link->nf_register_hook(filter_ops.. nf hook init
+
+ipt_register_table(packet_filter)  .. iptable init(xt_qqvoice is just a match).
+
+iptable_filter_hook
+
+NAT
+WFF
+nf_nat_ipv4_ops[]
+
+struct xt_table nf_nat_ipv4_table
+
+Inference rules
+moudle_init->iptable_nat_init->nf_register_hooks(nf_nat_ipv4_ops
+
+ipt nat init
+net->ipv4.nat_table = ipt_register_table(net, &nf_nat_ipv4_table, repl)
+
+proto init
+moudle init -> nf_nat_l3proto_ipv4_init
+
+nf_nat_ipv4_in,
+nf_nat_ipv4_out, nf_nat_ipv4_local_fn,
+nf_nat_ipv4_fn,
+
+

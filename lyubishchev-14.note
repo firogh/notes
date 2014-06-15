@@ -125,9 +125,23 @@ Test dd seek and skip option.
 Buy two a-shirt on Vancl.
 
 
+###08 Apr
+=10
++23
 
-#TODO:
-CMB bank card
+###18 Apr
+=12
+Chrolet tc-qos
+stream 
+
+### 21 Apr
+1. hwf panic loger
+2. sqos qlen not consistency
+3. user overflow
+4. traffics disorder.
+5. menuconfig
+
+
 
 
 

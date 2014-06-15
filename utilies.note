@@ -5,6 +5,8 @@ git tag --contains <id>
 * start of kernel or OS
 dmesg
 
+tar czvf appex.tgz --exclude-vcs 
+
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys
 
 * Binary file
@@ -75,3 +77,33 @@ exiftool -json Baccano\!\ 永生之酒\(バッカーノ！\)\ ORIGINAL\ SOUNDTRA
 id3tag -2 *.mp3
 
  for file in *.mp3;do f=$(echo "$file" |awk -F ' ' '{print $2}' | awk -F '.' '{print $1}'); id3tag -s "$f" "$file";  done
+
+
+ rpm -qa --qf '%{INSTALLTIME} %-40{NAME} %{INSTALLTIME:date}\n' | sort -n | cut -d' ' -f2-
+ 
+
+
+ find . -name '*.o' -exec nm -D {} \; -print
+ 
+
+ find . -name '*.o' -print0 | xargs -0 nm -A | egrep ' (i|y)$'
+
+
+ man capabilities
+ 
+
+
+ cat /proc/sys/net/netfilter/nf_conntrack_count;  cat /proc/net/nf_conntrack | wc -l ; 
+ 
+find commit id of a tag
+ git rev-parse v2.6.12-rc2
+reverse find all the blame from start commit id to now
+git blame --reverse 9e734775f7c22d2f89943ad6c745571f1930105f..   include/linux/netlink.h
+
+
+ git log -S "RTN_UNSPEC" --source --all
+
+make CHECK="~/smatch/smatch -p=kernel" C=1 bzImage modules | tee b.log 
+
+
+sudo vmware-modconfig --console --install-all
