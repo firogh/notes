@@ -156,7 +156,7 @@ Test dd seek and skip option.
 ###01 Apr
 =9
 +26
-Buy two a-shirt on Vancl.
+Buy two a-shirt on Vancle.
 
 
 ###08 Apr
@@ -168,21 +168,38 @@ Buy two a-shirt on Vancl.
 Chrolet tc-qos
 stream 
 
-### 21 Apr
+###21 Apr
 1. hwf panic loger
 2. sqos qlen not consistency
 3. user overflow
 4. traffics disorder.
 5. menuconfig
 
+###16 Jun
+* watchdog
+* ngx arp
+* debug log analysis
+* speedtest.sh
 
+=11-30:Analys Hi-hardrive.
+=12-17:Profile nginx arp
+* high pressvie load two bin, collect data store in hiwifi mail box
+* failed to get frequency of arp.lua
+=17:30
+* modfied smartqos/kcore/kproxy stop level and smartqos app 
+=18:00
+* make hiwifi patch 0.2.52  
+=19:00
+* test smart and etc module
+* commit modified. failed to 9003.
 
+###17 06
+* finish smartqos app upgrade!
+=1135 
 
 
 ###06 Jul
-JLPT-N2
-Register JLPT-N1
-
+JLPT-N2 Register JLPT-N1
 
 ###07 Dec
 JLPT-N1
