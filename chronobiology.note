@@ -15,25 +15,46 @@ Dwell			23:30		8       	sleep
 Relax									Siesta, 10mph
 Washing									Clothes									
 
-###In
-
-
-###Out
-==libnl				
-				06				07				08				09				10				11				12			
-skbedit action
-cgroup classifier
-tun/tap dev
-gre tunnel dev
-tc classifier/action
-
-==kernel janitor gernel network
-				06				07				08				09				10				11				12			
-gen:			12 patches monthly, 3 pathces weekly
-net:								3 p/w 
-
-
 ###2014
+##Health
+* Fitness
+	吃高蛋白补, 锻炼撕裂肌肉
+	喝蛋白粉
+	全麦面包, 牛奶
+	有氧减肌肉
+锻炼肌肉是撕裂愈合的过程, 腹肌除外, 锻炼后休息1~3天
+拍照记录
+仰卧起坐, 蹲起, 俯卧撑 每天30个.
+
+
+##Eating
+* Dianping
+
+##Coding
+* libnl				
+	skbedit action
+	cgroup classifier
+	tun/tap dev
+	gre tunnel dev
+	tc classifier/action
+
+* kernel janitor gernel network
+	generic
+	netdev
+
+##Travel
+Dali			2014-12
+
+##Reading
+
+##Writing
+
+
+###2015
+Redhat 
+Yunnan Remote working
+
+
 ###01 Jan
 Learnign japanese gramar
 
@@ -193,9 +214,79 @@ stream
 * test smart and etc module
 * commit modified. failed to 9003.
 
-###17 06
+###17 Jun
 * finish smartqos app upgrade!
 =1135 
+* finish profile nginx arp performace, origin collecting data spreat.
+=1220
+* clean trac tickets
+* rever release 9004 mistake commits.
+* fix compiled failed error and make config.
+* refine watchdog.
+=2101
+* inet_chk merge in one process, done!
+###18 Jun
+* inet_chk mem-leak..
+* hwf_health_chk log analysis 
+* watchdog clean and mointor  
+* router log
+=1000
+* analysis inet_chk memory leak
+	lua, uci maybe not the crimer!
+=1030
+* fix HC5663 rom error, re-menuconfig!
+=1110
+* analysis hwf_health-chk
+	define important level: 
+	=1130 yulong.an smarqos faq
+=1223
+* continue to analysis hwf-health-chk log
+* make hwf-patch for sysupgrade
+* fix build rom error!
+
+###19 Jun
+=1000
+* co-operatively with weilin on hwf-patch
+=1045
+* analysis smartqos
+	collect origin data
+	measure the sqos packet len and speedtest's value always the smame.
+=1230
+* make log spcifications
+* detect smartqos error, machine is trump!
+=1518
+* review liudong pppd code.
+=1608
+* watchdog design.
+
+###23 Jun
+=0930
+* Clean my dirty work table :-)
+=1000
+* Trace the build error for HC6361, not result.
+=1030
+* Read system monitor article on wikipedia
+=1130
+* Collect net info in netstat
+=1200
+* Can not access internet, try to solve.
+	1. inet_chk so sloby...
+	2. serial port maybe damage my router.
+	3. retstart and reconnect dhcp server, get well.
+=1300
+* Eatting	60'
+=1400
+*Coding hiwifi watch dog. 45'
+=1445
+* Request user problems from chen.xu then process
+	+Network detect webpaage, talk with chaogang.
+	collect user info:phone, web post
+	upgrade my device try to reproduce this problme.
+	fialed to repeat.
+
+	
+ 
+
 
 
 ###06 Jul

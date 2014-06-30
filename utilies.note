@@ -62,7 +62,7 @@ sed -r '/destination\(d_center\);/i\xxoo' /etc/syslog-ng.conf_sample
 sed -r ':1;N;$!b1;s/(.*)}/\1xxoo\n}/' t.sh
 
 
-rdesktop -g 1366x768 -u administrator 192.168.5.189
+rdesktop -g 1366x768 -u administrator 192.168.10.189
 
 
 __var=bbb
@@ -107,3 +107,6 @@ make CHECK="~/smatch/smatch -p=kernel" C=1 bzImage modules | tee b.log
 
 
 sudo vmware-modconfig --console --install-all
+
+
+%s/\s\+$//g
