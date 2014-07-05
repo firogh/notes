@@ -1,0 +1,87 @@
+
+
+
+###ctags
+ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
+
+
+###eval
+* create variable name
+	__var="name"
+	eval "export -- \"$__var=firo\""
+	set | grep firo
+	__var='name'
+	bbb='firo'
+
+###find
+* find symbols in object 
+	find . -name 'a.out' -exec nm -D {} \; -print
+	find . -name '*.o' -print0 | xargs -0 nm -A | egrep ' (i|y)$'
+=rm
+find . -name ‘your_pattern*’ -exec rm -f {} \;
+find . -name ‘your_pattern*’ -delete
+
+###git 
+git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
+
+git ls-files -d |xargs -i git checkout {}
+
+git log -S "RTN_UNSPEC" --source --all
+* reverse find all the blame from start commit id to now
+	git blame --reverse 9e734775f7c22d2f89943ad6c745571f1930105f..   include/linux/netlink.h
+
+* find kernel version of path
+	git describe --contains
+	git tag --contains <id>
+
+* find commit id of a tag
+	git rev-parse v2.6.12-rc2
+
+
+
+
+
+###id3tag
+id3tag -2 *.mp3
+for file in *.mp3;do f=$(echo "$file" |awk -F ' ' '{print $2}' | awk -F '.' '{print $1}'); id3tag -s "$f" "$file";  done
+exiftool -json Baccano\!\ 永生之酒\(バッカーノ！\)\ ORIGINAL\ SOUNDTRACK\ SPIRAL\ MELODIES/12.緩みきった官能のダンス.mp3
+
+
+###indent
+indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs *.c *.h
+
+###qemu
+qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img -k en-us
+
+
+###readelf
+readelf -S module.ko
+
+###rdesktop
+rdesktop -r clipboard:CLIPBOARD  -g 1366x768 -u administrator 192.168.10.40
+
+###rpm
+rpm -qa --qf '%{INSTALLTIME} %-40{NAME} %{INSTALLTIME:date}\n' | sort -n | cut -d' ' -f2-
+
+rpm -qa --queryformat="%30{NAME} %{SIZE}\n" | sort -k 2 -n | awk '{printf("%30s, %d\n", $1,$2/1024/1024)}'
+
+###sed
+sed -r ':1;N;$!b1;s/(.*)}/\1xxoo\n}/' t.sh
+
+###smatch
+make CHECK="~/smatch/smatch -p=kernel" C=1 bzImage modules | tee b.log
+
+###ssh
+mkfifo /tmp/pipe
+ssh root@192.168.199.1 "/tmp/data/usr/sbin/tcpdump tcp   -i br-lan -w -  -n -s 0" > /tmp/pipe
+sudo wireshark -i /tmp/pipe
+
+###vim
+%s/\s\+$//g
+
+###vmware
+sudo vmware-modconfig --console --install-all
+
+
+
+
