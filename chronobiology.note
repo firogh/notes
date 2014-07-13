@@ -26,12 +26,11 @@ Washing									Clothes
 拍照记录
 仰卧起坐, 蹲起, 俯卧撑 每天30个.
 
-
 ##Eating
 * Dianping
 
 ##Coding
-* libnl				
+* libnl	
 	skbedit action
 	cgroup classifier
 	tun/tap dev
@@ -291,7 +290,14 @@ The last day of June, day by day, time by time.
 
 
 ###06 Jul
-JLPT-N2 Register JLPT-N1
+* Failed to things -- JLPT-N2 Register JLPT-N1
+
+###07 Jul
+*...
+
+###09 Jul
+*Install debug-package-m in debugfs
+
 
 ###07 Dec
 JLPT-N1
