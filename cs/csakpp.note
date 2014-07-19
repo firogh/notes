@@ -58,7 +58,7 @@ http://c-faq.com/
 ##Assembly
 Linux GNU assembly
 
-###revision control
+###Revision control
 ##base concepts
 ##git
 Write and Submit your first Linux kernel Patch
@@ -66,8 +66,11 @@ http://www.youtube.com/watch?v=LLBrBBImJt4
 
 ##svn
 
-###protocol
+###Protocol
 http://www.securitywizardry.com/packets/pdf/
+
+###Proxifier
+
 
 ###Compiler
 ##GCC 

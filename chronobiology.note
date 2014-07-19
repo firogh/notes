@@ -1,19 +1,18 @@
 ###Chronobiology	Time		Len(hour)																				
-Dwell			07:00		0.25     	Getting up: Lemon-water 800ml	Defecation, Washing,Brushing, gargling		 
-Cogito			07:15		        	Janpanese: vocabulary 6/20,syntax											
-Traffic			07:30                	Bus, subway, walking														
-Breakfast		09:00                	Must																		
-Lunch           13:00                 
-Dinner			19:00                      
-Cogito			20:00                	CS																			
-				                     	Japanese																	
-Writing			22:00		        	critique,absurd
-Fintness		23:00		0.5     	abdominals, chest muscle													
-Bathing			23:15		0.25    	Body																		
-Lyubishchev		23:30		0.1			Statistics time																
-Dwell			23:30		8       	sleep																		
-Relax									Siesta, 10mph
-Washing									Clothes									
+Dwell				07:00		0.25     	Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
+Cogito				07:15		        	#Janpanese: vocabulary 6/20 syntax											
+Traffic				07:30                	Bus subway walking														
+Breakfast			09:00                	Must																		
+Lunch				13:00                 
+Dinner				19:00                      
+Fintness			23:00		0.25     	abdominals chest muscle													
+Bathing				23:15		0.25    	Body																		
+Dwell				23:30		7.5       	Sleep																		
+Cogito				20:00                	CS Japanese																	
+Writing										critique absurd
+Lyubishchev									Statistics time																
+Relax										Siesta 10mph
+Washing										Clothes									
 
 ###2014
 ##Health
@@ -31,15 +30,7 @@ Washing									Clothes
 
 ##Coding
 * libnl	
-	skbedit action
-	cgroup classifier
-	tun/tap dev
-	gre tunnel dev
-	tc classifier/action
-
 * kernel janitor gernel network
-	generic
-	netdev
 
 ##Travel
 Dali			2014-12
