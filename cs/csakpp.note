@@ -6,6 +6,7 @@ For this moment, it's the appropriate time for me to catlog a sumary what comput
 Yes, it maybe fuzzy to other reader. The book <a href="http://csapp.cs.cmu.edu/">CSAPP</a> is great book I have been read. By giving the respect to CSAPP, I named this article with CSAKPP :-)
 
 <图片1>
+
 ###Epistemology
 Learning by using! because of  unfeasible and mind.
 Faq list
@@ -124,6 +125,11 @@ ftp://kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html
 ##fs
 文件的概念，文件的管理，文件系统
 
+##Proc fs
+##mkdir 
+proc_net_mkdir
+
+
 ##system calls
 系统调用的概念，系统调用的处理，系统调用类型
 
@@ -133,10 +139,6 @@ Taming the OOM killer
 ##Netifiler
 nfconntrack
 NAT
-
-##Proc fs
-##mkdir 
-proc_net_mkdir
 
 ##Lock
 lock original primitives 
@@ -208,5 +210,14 @@ test software function.
 test software internal logic.
 #static testing tools
 lint
+
+#Opensource project
+=GNU
+* glibc coreutils gcc gdb-binutils make
+=Kernel relating
+* util-linux nl  iproute2 net-tools dracut git linux
+=etc
+* procps findutils iputils tcpdump
+
 
 
