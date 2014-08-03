@@ -12,7 +12,7 @@ Cogito				20:00                	CS Japanese
 Writing										critique absurd
 Lyubishchev									Statistics time																
 Relax										Siesta 10mph
-Washing										Clothes									
+Washing										Clothes
 
 ###2014
 ##Health
@@ -293,16 +293,44 @@ The last day of June, day by day, time by time.
 * Back  Sat Jul 19 21:57:31 CST 2014
 
 ###24 Jul
-=Todo-list
 * Healthchk diagnose, user tragging
+	/etc/inittab
+	package/base-files/files/etc/init.d/boot
+	release menuconfig
+	rm package-hiwifi hwf-health-chk
+	add package-hiwifi healthchk
+
 * Smartqos-speedtest 
 * inetchk
 * netifd
+
+#28 Jul
+
+#30 Jul
+=1121
+* hidameon
+	finish code modular
+		filename
+=1200
+	filename ok, code ok.		
+=1230
+=
+
+#31 Jul
+=Todo-list
+* hidaemon test.
+	move upload kpanic in while loop
+* hipatch 
+* tgp
+
+	done!
+
 
 =Faq-list
 
 =Akasha-list
 * Child tickets need formate and eligble.
+
 
 
 ###07 Dec
