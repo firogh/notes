@@ -1,8 +1,20 @@
 
-=coding standards
+#Coding standards
 * GNU coding standards
 * Linux kernel coding style
+= Shell coding standard
 
-=peer review
+
+#Review
+
+
+#Best coding practices
+=Commenting
+* Copyleft/right,
+* Author and maintainer
+* Update log
+* Name of the module
+* Usage
+
 
 

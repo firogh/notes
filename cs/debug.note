@@ -1,5 +1,8 @@
 
 
+#Gdb usage struc
+
+
 #Collect debug assist info, reference source
 /proc (specially /proc/sys/)
 
@@ -45,10 +48,16 @@ void print_stacktrace()
 =demangle c++ symbols 
 * c++filt command
 * addr2line -f -C -a xxx -e ooo
+=read symbol
 
 ##tips
 #signal
 This is just a hiwifi wonderful kernel patch #931
-echo 1 > /proc/sys/kernel/debug_signals
+echo 1 > /proc/sys/kernel/debug_signal
+
+#demagling
+/home/build/x/ab/mips-openwrt-linux-addr2line -C -f -e /data/logs/hwf-health-chk/debug-root/HC6361/0.9005.5384s/debugfs/tmp/data/usr/bin/aria2c  0x00607188
+aria2::ZeroBtMessage::~ZeroBtMessage()
+
 
 

@@ -1,0 +1,11 @@
+
+
+pptp
+
+
+shadowsocks
+user -> iptables -> shadowsocks(redir.c (struct server)->(struct remote)) -> server
+
+ssh redsocks
+user -> iptables -> redsocks -> ssh -> server
+

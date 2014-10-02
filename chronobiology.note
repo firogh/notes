@@ -5,10 +5,10 @@ Traffic				07:30                	Bus subway walking
 Breakfast			09:00                	Must																		
 Lunch				13:00                 
 Dinner				19:00                      
-Fintness			23:00		0.25     	abdominals chest muscle													
-Bathing				23:15		0.25    	Body																		
-Dwell				23:30		7.5       	Sleep																		
 Cogito				20:00                	CS Japanese																	
+Fintness			22:30		0.25     	abdominals chest muscle													
+Bathing				22:45		0.25    	Body																		
+Dwell				23:00		8.00       	Sleep																		
 Writing										critique absurd
 Lyubishchev									Statistics time																
 Relax										Siesta 10mph
@@ -326,12 +326,233 @@ The last day of June, day by day, time by time.
 	done!
 
 
-=Faq-list
+#04 Aug
+=Todo-list
+* hipatch has contents: hidaemon syslog
+	1' 1030 ~ 1130
+* tgp-lua
+	2' 1130 ~ 1430
+* speedtest
+	2' 1430 ~ 1630
 
-=Akasha-list
-* Child tickets need formate and eligble.
+=1300
+* hipatch write script for hidamone
+	finish
+
+=1400
+* qos optimized
+=1430
+* make a move
+* hidaemon
+	merge tao.lin's modefications
+	kpanic log path
+
+#05 Aug
+=Todo list
+* tgp 
+	1030~1230 120'
+	1110:1001.lua
+	1130:1002.lua
+	1150:1003.lua
+	1220:1004.lua
+
+* qos config lua openapi
+* speedtest
 
 
+#10 Aug
+=1435
+reorganize ~ 20'
+
+=1526
+Finish reorgnaine files used 50', more using proximiate 30'	
+
+=1528
+relax 2 minutes
+=1530
+* start to understand rcu usage, more deatils in use-rcu.note
+	estimate 30', but use 3 hours.
+=1830
+* 休息10', real relax time is 1hours
+
+=1933
+* libnetlink 30'
+
+=2007
+* eating dinner.
+* watch lol gaming
+
+=2230
+* libnl
+* zhoubao
+=2320
+* bath and sleep
+
+#11 Aug
+=0800
+* wake up
+* washing ...
+* subway, bus
+* breakfast
+=0950
+* arrive work station
+* record morning
+=1000
+* write todo list
+=1013
+* write tgp plugin
+* fix sqos api review error
+* compile  1 2 1s error 
+* demonstration and modify doc
+* BUG
+=1540
+
+
+=Todo list
+* tgp 
+	write plugin and test 30'
+	tell it to jiapei
+* smartqos
+	API 30'
+	BUG 10'
+* speedtest
+	optimize download algorithm, simulate speedtest.net 30'
+* weekly meeting
+
+* smartqos demonstration for copyright 20' befor 1130
+	install/uninstall
+	start stop
+	speed limit
+	free wifi
+	qqvoice
+	key comments
+#12 Aug
+=Todo list
+* smartqos capsulate
+* tgp plugin
+* speedtest
+
+#13 Aug
+=1518
+* fix kcore flash.
+* sqos api unset device config
+=1556
+
+#14 Aug
+=Todo list
+* new sqos
+* sqos guest
+* speedtest
+
+
+#14
+
+#15 Aug
+=Todo list
+* munin
+* qos guest peak
+* speedtest
+
+#17 Aug
+
+#18 Aug
+=Todo list
+* speedtest
+* smartqos bug
+	add tc in hotplug 
+	lose traffic
+	recognize
+
+#21 Aug
+=Todo list
+* smartqos
+	guest free
+	kproxy
+	
+
+#22 Aug
+=Todo list
+* 
+
+#25 Aug
+=Todo list
+* smatqos uci state
+* Kproxy mark syn	20'
+* smartqos guest tc		30'
+* smartqos shadow socks	30'
+* smartqos open api
+
+#15 Sep
+=Todo list
+
+=1000
+Coperate with chaoang, sqos UI error.
+=1010
+Compile error locates.
+=1030
+talks sqos new feature show limits config list.
+help a user, guest network level 5 show plugin.
+=1130
+断线问题
+房东雨优化补丁
+
+协助用户使用访客网络解决商场流动人数多, 限速困难问题.
+追踪pppoe不定时断网问题, 排除与inetchk 关系, 开了kernel signal debug , 交给刘东再看看.
+
+#16 Sep
+#ifndef CONFIG_NO_HIWIFI_QOSMARK
+    skb->qosmark = po->sk.sk_qosmark;
+#endif
+
+
+#22 Sep
+=qosmark
+	* code commit
+	* Write wiki
+
+=inetchk
+	* execute all code
+	* upload tar
+	* use /tmp/resolve.conf.auto
+
+=HB5811 cloud check
+	* first device no cmagent
+
+
+
+
+1. /etc/hosts tw is parent host ip in cascade mode
+ 964 root      1672 S    udhcpc -p /var/run/udhcpc-br-lan.pid -s /lib/netifd/dhcp.script -R -a -f -t 0 -i br-lan -r 10.1.1.1
+
+
+#02 Sep
+=Qdisc
+
+=device model
+
+=API level
+* netif_xxx
+* devivce_xxx
+
+=link layer
+
+=protocol
+* tunnel, gre...
+* vlan
+
+
+
+
+
+=Faq list
+
+=Akasha list
+* Housing Fund
+* Body care
 
 ###07 Dec
 JLPT-N1
+
+
+
+

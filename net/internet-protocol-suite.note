@@ -48,8 +48,8 @@ struct net_protocol inet_protos[]
 inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
 ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->ip_finish_output2()->
-																								neigh_hh_output()
-																								dst->neighbour->output见neigh_event_ns()...
+																	neigh_hh_output() 
+																	dst->neighbour->output=bac,
 }dev_queue_xmit()->dev_hard_start_xmit()
 
 ###in & forward

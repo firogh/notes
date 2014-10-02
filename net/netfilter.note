@@ -12,7 +12,7 @@ Un/Registration of netfilter hooks
 Hook callback functions.
 
 
-Connection tracking
+#Connection tracking
 semantics
 The days when packet filtering policies were based uniquely on the packet
 header information, such as the IP source, destination, and ports, are over.
