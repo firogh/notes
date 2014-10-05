@@ -1,14 +1,6 @@
-内核协议栈是平的！
-=================
 
 
-协议栈本身，完完全全就是功能的体现！其背后的结构是被轻视的，因为他不像女人—— 原来就是存在的且结构是至关重要的！
-而协议栈是被人为创造出来的，完成人类的赋予的互联的使命。从独裁主义上看，可以忽略掉协议栈的结构，干好你的活！
 
-乍看一眼，协议栈是很吓人的，惊悚不为过。
-
-分型艺术中的Mandelbrot set
---------------------------
 协议栈本质上是 Transfer这个功能。客观上担当了行为发起与接受主体。
 而我要揭示在这一过程中存在的Mandelbrot set —— 局部间相似，局部与整体相似。
 从接受的角度
@@ -47,13 +39,14 @@ struct net_protocol inet_protos[]
 ###out
 inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
-ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->ip_finish_output2()->
-																	neigh_hh_output() 
-																	dst->neighbour->output=bac,
+ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->
+ip_finish_output()->ip_finish_output2()->
+							neigh_hh_output() /cachae hardware header.
+							dst->neighbour->output=neigh_resolve_output(arp_hh_ops see arp_创建):dev_hard_header()
 }dev_queue_xmit()->dev_hard_start_xmit()
 
 ###in & forward
-do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
+do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv():protocol handler->NF_INET_PRE_ROUTING->ip_rcv_finish()->
 ip_route_input()->ip_route_input_slow():local_input dst.input=ip_local_deliver()
 										ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
 }dst_input()->
@@ -66,6 +59,9 @@ qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
 __qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
 driver tx, stack xmit
 
+#skb->protocol
++ assignment in ip_output by = htons(ETH_P_IP)
++ assignment in  driver by = eth_type_trans()
 
 
 ###register

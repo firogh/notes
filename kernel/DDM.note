@@ -1,3 +1,17 @@
+
+#Bibilography
+Driver porting: Device model overview: http://lwn.net/Articles/31185/
+/Documentation/driver-model
+The Linux Kernel Driver Model
+
+
+#Why DDM?
+The device model was originally intended to make power management tasks easier 
+through the maintenance of a representation of the host system's hardware structure.
+
+
+
+
 # linux 设备驱动模型
 分为三层：
 从结构上看，每一层都有对应的数据结构。

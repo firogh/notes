@@ -117,3 +117,6 @@ latencies
 =However, note that RCU read-side critical sections that begin after the beginning of a given grace period can and will extend beyond the end of that grace period.?
 =RCU read-side critical sections must be permitted in NMI handlers as well as irq handlers?
 =classic RCU will happily awaken each and every sleeping CPU at least once per grace period in some cases?
+
+=rcu_deference
+

@@ -107,6 +107,7 @@ Talk with Vampire about pppoe acc app.
 =12
 +09
 
+FIRO
 
 ###03 Mar
 =10
@@ -533,18 +534,68 @@ help a user, guest network level 5 show plugin.
 =API level
 * netif_xxx
 * devivce_xxx
+dev 开头的时间比较老. netdev的新一点...
+dev 和设备属性靠的更近比如mtu mac的设置这些.
+netdev 和协议栈的的内容相关.
+device_ 偏model
+netif_ 偏低
+吐槽:命名是在是太烂了 dev_open竟然是只打开网络设备....chrdev_open, blkdev_open 哭死在厕所.
 
 =link layer
+一个状态机要运转必须有外部激励,在大部分网络协议中外部激励主要有 3 种:
+(1) 用户的配置命令
+(2) 对端交流对象的数据报文
+(3) 定时器
+
+
++application
+*http dhcp nfs
++presetation
+* ...
++session
+*pptp socks
++transprot
+* tcp
++network
+* ip
++data link : ieee 802.2, HDLC cisco
+tcp/ip's link layer is simple but not comprehensive! So we use OSI data link, 
+strip out physical info which include by tcp/ip's link!
+* LLC logical link control/Subnetwork Access Protocol (SNAP)
+	PPP
+	arp
+	net/llc
+	llc                    13941  2 stp,bridge
+* Aggregation MAC Link aggregation control protocol
+	LAC, bonding 4/802.3ad in linux kernel!
+	drivers/net/bonding/
+* MAC media access control  802.3
+	CSMA/CA QOS VLAN
+	802.3 include etehrnet
+
+
++physical 802.3
 
 =protocol
 * tunnel, gre...
 * vlan
 
+=netdev parts
+* init: 
 
 
 
+=rgister
+driver-> pci-> driver.
+
+=napi netpoll
+
+=rcu in netdev
 
 =Faq list
+* vpn
+* proxy
+	browser based service.
 
 =Akasha list
 * Housing Fund
@@ -552,7 +603,3 @@ help a user, guest network level 5 show plugin.
 
 ###07 Dec
 JLPT-N1
-
-
-
-

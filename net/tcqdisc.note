@@ -18,6 +18,19 @@ Marking: Marking is a mechanism by which the packet is altered.
 
 
 #MOST_WANTED
+=conflict tc qidsc del with softnet_data->softnet_data
+ [PATCH] pkt_sched: Destroy gen estimators under rtnl_lock().
+http://thread.gmane.org/gmane.linux.network/102444/focus=102592
+After synchronize_rcu() in dev_deactivate() we are sure any qdisc_run(),
+from dev_queue_xmit() or net_tx_action() can only see and lock noop_qdisc.
+This was happened in dev_deactivate_many()
+
+=difference between synchronize_net and  synchronize_rcu?
+http://article.gmane.org/gmane.linux.network/196309/match=net_device+dismantle
+In this patch, we replace synchronize_rcu with synchronize_net().
+
+
+
 
 
 #FAQ
