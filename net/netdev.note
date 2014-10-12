@@ -1,3 +1,30 @@
+###INIT
+===System initialization
+
+start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
+{
+	do_basic_setup()  
+	{
+		driver_init
+		sock_init
+		do_initcalls()
+		{
+			net_dev_init: Initializing the Device Handling Layer
+			{
+				per-CPU 
+				proc
+				sysfs
+				ptype_base
+				dst_init
+				softirq: net_rx/tx_action
+				dev_cpu_callback: CPU hotplug.
+			}
+		}
+
+	}
+	free_init_mem()
+	run_init_process()
+}
 
 #Protocols
 Protocols are the framework for all communication.

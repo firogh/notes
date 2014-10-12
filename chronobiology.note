@@ -5,10 +5,9 @@ Traffic				07:30                	Bus subway walking
 Breakfast			09:00                	Must																		
 Lunch				13:00                 
 Dinner				19:00                      
-Cogito				20:00                	CS Japanese																	
-Fintness			22:30		0.25     	abdominals chest muscle													
-Bathing				22:45		0.25    	Body																		
-Dwell				23:00		8.00       	Sleep																		
+Fintness			22:00		0.25     	abdominals chest muscle													
+Bathing				22:15		0.25    	Body																		
+Dwell				22:30		8.00       	Sleep																		
 Writing										critique absurd
 Lyubishchev									Statistics time																
 Relax										Siesta 10mph
@@ -573,7 +572,6 @@ strip out physical info which include by tcp/ip's link!
 	CSMA/CA QOS VLAN
 	802.3 include etehrnet
 
-
 +physical 802.3
 
 =protocol
@@ -583,14 +581,34 @@ strip out physical info which include by tcp/ip's link!
 =netdev parts
 * init: 
 
-
-
 =rgister
 driver-> pci-> driver.
 
 =napi netpoll
+napi poll device
+netpoll for boot time
 
 =rcu in netdev
+
+#08 Oct
+=0700
+Mastrbutation
+=0735
+Relax
+=0800
+Washing
+=0900
+McDonald breakfast
+=0920
+Surf internet on autocracy notes
+=1053
+*TODO
+* SQOS dmesg log format and content.
+
+
+
+
+
 
 =Faq list
 * vpn
@@ -603,3 +621,4 @@ driver-> pci-> driver.
 
 ###07 Dec
 JLPT-N1
+
