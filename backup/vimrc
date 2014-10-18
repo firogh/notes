@@ -1,0 +1,78 @@
+"set mouse=r
+"execute pathogen#infect()
+
+"filetype plugin indent on
+if has("cscope")
+	set csprg=cscope
+	set csto=0
+	set cst
+	set nocsverb
+	" add any database in current diectory
+	if filereadable("cscope.out")
+		cs add cscope.out
+	" else add DB pointed to by environmnent
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
+set title
+"autocmd BufRead * let &titlestring = expand("%:p")
+
+"set t_Co=256
+"let g:molokai_original=1
+"syntax on
+"hi cCustomFunc  gui=bold guifg=green
+"hi cCustomClass gui=reverse guifg=#00FF00
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+set number
+"set autoindent
+"set cindent
+"set list
+"set listchars=tab:▸\ ,eol:¬
+map Y y$
+"set mouse=a
+imap jj <ESC>
+map qq :q!<cr>
+map -- :e#<cr>
+map <c-j> :ts 
+"map <c-b> :cs find g 
+map <c-h> :cs find c <c-r><c-w><cr>
+"set fdm=syntax
+":hi Folded guibg=blue guifg=blue ctermfg=blue ctermbg=none
+":hi FoldColumn guibg=blue guifg=grey20 ctermfg=6 ctermbg=15
+"set foldlevel=100
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR> 
+"map <F3> : call CompileGcc()<CR>
+map <C-\> :ts <C-R><C-W><CR>
+"map <c-m> :cs find g <c-r><c-w><cr>
+syntax enable
+set background=dark
+"colorscheme solarized
+set term=screen-256color
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="low"
+"let g:solarized_termcolors=16
+"autocmd BufEnter *.note colorscheme	murphy
+
+"au FileType c,cpp,sh,croql setlocal comments-=:/
+
+"au FileType * setl fo-=cro
+colorscheme molokai
+"High light my personal note sytle --Firo
+highlight equalline cterm=bold ctermbg=none ctermfg=DarkMagenta
+match equalline /^=.*/
+
+highlight sharpline cterm=bold ctermbg=none ctermfg=yellow
+2match sharpline /^#.*/
+
+highlight starline cterm=bold ctermbg=none ctermfg=green
+let m = matchadd("starline", '^\*.*')
+"3match subline /^\*.*/
+
+highlight plusline cterm=bold ctermbg=none ctermfg=darkred
+let m = matchadd("plusline", '^+.*')
+

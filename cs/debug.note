@@ -61,3 +61,14 @@ aria2::ZeroBtMessage::~ZeroBtMessage()
 
 
 
+name.c:2445: REQUIRE((((source) != ((void *)0)) && (((const isc__magic_t *)(source))->magic == ((('D') << 24 | ('N') << 16 | ('S') << 8 | ('n')))))) failed, back trace
+#0 0x7fba521689e7 in ??
+#1 0x7fba5216893a in ??
+#2 0x7fba52a76c8c in ??
+#3 0x40a239 in ??
+#4 0x40a2da in ??
+#5 0x40a498 in ??
+#6 0x40f70a in ??
+#7 0x7fba5218b10b in ??
+#8 0x7fba50feb52a in ??
+#9 0x7fba5006b77d in ??
