@@ -561,15 +561,71 @@ Surf internet on autocracy notes
 
 #18 Oct
 
+#20 Oct
+=1000
+Fix daily compile error fuser depend libncurses
 
-=Faq list
+=1040
+Assist Kai Chen, i2c init script.
+
+=11:00
+Assist Fei Yan, debug leak two day data, cause: wan renew.
+
+=11:40
+Fix BL-855R, CONFIG_RT2860V2_AP_RTMP_INTERNAL_TX_ALC is not set
+
+1427
+
+#21 Oct
+smartqos config clean pannic, cat msleep 10 seconds background, remove smartqos
+/ROOT/www/hwf-health-chk.hiwifi.com/logs/0.9006.2.6020s/HC5661-D4EE07/0E/31/76/a2-0.9006.2.6020s-kpanic-20141020041502-D4EE070E3176
+
+#22 Oct
+=1020
+
+#27 Oct
+compile error.
+smartqos duplicate user.
+
+
+
+
+=Workaround
+* smartqos tc setup
 * vpn
-* proxy
-	browser based service.
 
-=Akasha list
+=TODO
+* Medical examination
+* House funding
+* How do I leave such field?
+* 北京空气为什么污染这么严重？
+* Record bus stamp of arriving bustation
+* Trousers
+* Physical exercise schedule table
 * Housing Fund
 * Body care
+
+#What is I really want                                            
+A process, not a target. Process of living, working, loving        
+                             
+#Most Wanted
+* Health and nature life.
+* My family lover and friends
+* Freelancer kernel developer
+                                                                  
+#Aaron Swartz,25:20                                                
+I feel very strongly that it's not enough to just live in           
+the world as it is, it's just kind of take what you're given,        
+and you know follow the things that adults told you to do,            
+and that your parents told you to do, and that society tells to do.     
+I think you should always be questioning.                              
+I take this very scientific attitude that every thing you've             
+learned  is just provisional, you know, it's always open to               
+recantation or refutation or questioning, and I think  the same applies to 
+society. Once I realized that there were real serious problems,
+fundamental problems that I could do something to address,  
+I didn't see a way to forget that, I didn't see a way not to.
+
 
 ###07 Dec
 JLPT-N1

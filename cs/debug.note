@@ -72,3 +72,21 @@ name.c:2445: REQUIRE((((source) != ((void *)0)) && (((const isc__magic_t *)(sour
 #7 0x7fba5218b10b in ??
 #8 0x7fba50feb52a in ??
 #9 0x7fba5006b77d in ??
+
+=debugme
+#define debugme(fmt, args...) if (1) {FILE *fdebug=fopen("/d.log", "a+"); time_t tdebug; time(&tdebug);fprintf(fdebug,"%s", asctime(localtime(&tdebug)));fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);}
+
+
+#ssgoagbroad-start
+the principle of debug is start at the begin.
+accept()函数不会用, 如果早点在accept打log就看到了.
+
+#smartqos custom qdisc - self inferrence
+要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
+
+#find the key ponit
+custom qdisc
+
+
+
+

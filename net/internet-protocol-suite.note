@@ -84,3 +84,6 @@ inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem
 iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
 
 
+#TCP
+=port
+inet_hash_connect()
