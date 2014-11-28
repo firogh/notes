@@ -2,6 +2,7 @@
 
 #Gdb usage struc
 
+=thread apply all bt full
 
 #Collect debug assist info, reference source
 /proc (specially /proc/sys/)

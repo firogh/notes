@@ -1,6 +1,5 @@
 
 
-
 协议栈本质上是 Transfer这个功能。客观上担当了行为发起与接受主体。
 而我要揭示在这一过程中存在的Mandelbrot set —— 局部间相似，局部与整体相似。
 从接受的角度
@@ -34,7 +33,8 @@ struct proto tcp_prot;
 struct proto_ops inet_stream_ops;
 struct inet_protosw inetsw[]
 struct inet_connection_sock_af_ops ipv4_specific;
-struct net_protocol inet_protos[]
+struct net_protocol inet_protos[] //Layer 4 rcv!
+struct net_device_ops //Layer 2 xmit functions.
 
 ###out
 inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->

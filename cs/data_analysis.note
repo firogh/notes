@@ -1,0 +1,38 @@
+
+
+#The process of data analysis
+=Data requirements
+
+=Data collection
+
+=Data processing
+
+=Data cleaning
+
+=Exploratory data analysis
+
+=Modeling and algorithms
+
+=Data product
+
+=Communication
+
+
+#analysis
+=requirements
+* Why pppoe reconnect?
++ Case 1: Terminated by ISP.
++ Case 2: Interrupted by customer or circumstance.
+	Unplug the network cable
+	Power off restart
++ Case 3: System error.
+	Interrupted by inetchk
++ Case 4: PPPoE error.
+
+=Collection
+* syslog
++ cmagent
++ pppd
+
+=Processing
+
