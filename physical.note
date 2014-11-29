@@ -34,19 +34,23 @@ Commodity & Fruit		-0.1
 Sum						-3.2
 
 ###Clothing(no jeans)	Now												Future								
-A-shirt					2 Playboy										
+Tank tops				2 Playboy										
 Sweatshirts & Hoodies	1 Adidas										+1
 Boxer brief				2												+0 
 T-shirt                 5												5               
 Dress shirt				3												3(-2 + 2)
 Thermal underware		0												1
 Trousers				5												
+Hoodies					1 adidas
 Casual shorts           0												(+2)               
+Sweatpants				3 anta, adidas, A&F
+Down jackets/coats		2 null/ Jack jones
 
 ###Accessories 
-Scarf                   1            
+Scarf                   1	Cacuss 
 Mask                    1
 Gloves                  0               
+Beanie					1	Whitebird
 
 ###Shoes
 Sneaker					0												2 Converse and Warrior
@@ -61,20 +65,21 @@ Luggage & Bag           Travalue bag
 
 ###Accessory			Now												Future
 Phone					Nexus 5
-						Android 4.4.3
+						Android 5.0
 Laptop					Y460											Intel haswell | Chrome pixel
-						Fedora 20										Fedora 21
-						Gnome 3.12										Gnome 3.14
+						Fedora 21										
+						Gnome 3.14.2								
 						Vim 7.4
-						Chrome 35
+						Chrome 39
 Keyboard				Laptop built-in	
 Hard drive				Buffalo ministation								NULL
 
 ###Residency
-Razor					Schick quatto titanium
+Razor					Schick quatto titanium and hydro
 Chair																	Steelcase think chair
-Mug						1
+Mug						1												2
 
 ###Physical exercise
+Dumbbells				1 30KG langwei
 Strength training
 Quadriceps
