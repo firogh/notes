@@ -584,24 +584,49 @@ smartqos config clean pannic, cat msleep 10 seconds background, remove smartqos
 =1020
 
 #27 Oct
-compile error.
+Compile error.
 smartqos duplicate user.
-
 
 #12 Nov
 =1031
 
 #26 Nov
 * GDB need more infomations.
+* Analysis  pppoe
 
 #28 Nov
+* ...
+
+#06 Dec
 =Workaround
-* Analysis  pppoe
-* Patents
+* Job hopping
+* Kernel stuff
+* Physical execises
 
+#08 Dec
+* add signal filter ver 2
 
+#09 Dec
+* pppoe_analysis 
 
-=TODO
+#10 Dec
+=Workaround
+* add signal filter support ver 3
+* reduce delay-syslog
+* deal pppoe syslog and hive problems
+* inetchk 
+
+=Workaround
+* pppoe faile data report
+* add mqtt to hidaemon
+* reduce syslog upload
+* add stop interface to disable data upload
+* kernel bug type
+* life cognitive
+* analysis complicated pppoe fail stuff.
+* setup smartqos in hotplug
+
+=Tal
 * Haitao
 * Medical examination
 * CHeck House funding in phone

@@ -19,15 +19,20 @@
 
 
 #analysis
-=requirements
-* Why pppoe reconnect?
-+ Case 1: Terminated by ISP.
+=Requirements why pppoe reconnect?
+* Normal disconnection
++ Case 1: Terminated by ISP
 + Case 2: Interrupted by customer or circumstance.
-	Unplug the network cable
-	Power off restart
-+ Case 3: System error.
+	-Unplug the network cable willn't influnce pppoe
+	Power off restart, need kernel start time
++ Case 3: PPPoE persist
+	PPPoE session is lost, but connection state still show established. Finnaly, restart by inetchk ifup
+	singal 15
+	#TODO: Fix inetchk wrong time to ifup wan.
+
+* Abnormal disconnection
++ Case 4: System error
 	Interrupted by inetchk
-+ Case 4: PPPoE error.
 
 =Collection
 * syslog

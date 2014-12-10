@@ -24,11 +24,7 @@ observation
 ###Algorithm
 Algorithms: Design Techniques and Analysis
 
-###疾风剑豪
-* E Q E
-E小兵Q 英雄E小兵回来/走掉.
-* Q E Q Q R Q
-Q小兵 E 小兵(靠近英雄) Q Q(旋风吹飞英雄) R Q(绝杀英雄)
+
 
 ###Programming tool
 * vim
@@ -56,7 +52,7 @@ C Programming FAQs
 http://c-faq.com/
 
 ##Python
-
++ simpler starter
 
 ##Assembly
 Linux GNU assembly
