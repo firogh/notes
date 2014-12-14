@@ -89,11 +89,20 @@ accept()函数不会用, 如果早点在accept打log就看到了.
 custom qdisc
 
 #Collect signal info for debug
-= name, who
-+ for siganl shell command, we need to konw script's name, maybe the ppid and pid
-+ for binary execution, we need ppid and pid name
+= Who and what is singal?
+* kernel stuff
+* old IPC ghost then sysV IPC.
+* SIGKILL can't be blocked. SIGTERM can be installed a new sigaction.
+* kallsymbol
 
-= action of receive's correspond signal
+= name, who
+* for siganl shell command, we need to konw script's name, maybe the ppid and pid.
+* for binary execution, we need ppid and pid name.
+
+= action of receiver's correspond signal
+* Ignore should be ommitted.
+
+
 
 
 
