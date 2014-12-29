@@ -609,22 +609,42 @@ smartqos duplicate user.
 #09 Dec
 * pppoe_analysis 
 
-#10 Dec
+#12 Dec
+* reduce delay-syslog
+* inetchk 
+* add mqtt to hidaemon
+
+#15 Dec
 =Workaround
 * add signal filter support ver 3
-* reduce delay-syslog
 * deal pppoe syslog and hive problems
-* inetchk 
+* talk with liudong
+
+#22 Dec
+* limit parallel process for crond
+	run_process
+	* if under number control -> run
+	* else beyond max wait time -> run
+	* else enqueue backlog queue
+
+	timeout kill process
+
+
+=9008
+* hidaemon disable upload syslog
+* fcig-turbo
+* hidaemon dot d
++ inethk is alreday.
+* 
+
 
 =Workaround
-* pppoe faile data report
-* add mqtt to hidaemon
-* reduce syslog upload
+* pppoe fail connection data report
+* analysis complicated pppoe fail stuff.
 * add stop interface to disable data upload
+* setup smartqos in hotplug
 * kernel bug type
 * life cognitive
-* analysis complicated pppoe fail stuff.
-* setup smartqos in hotplug
 
 =Tal
 * Haitao
@@ -638,7 +658,7 @@ smartqos duplicate user.
 * Housing Fund
 * Body care
 
-#What is I really want                                            
+#What is I really want
 A process, not a target. Process of living, working, loving        
                              
 #Most Wanted
@@ -658,7 +678,6 @@ recantation or refutation or questioning, and I think  the same applies to
 society. Once I realized that there were real serious problems,
 fundamental problems that I could do something to address,  
 I didn't see a way to forget that, I didn't see a way not to.
-
 
 ###07 Dec
 JLPT-N1

@@ -15,3 +15,7 @@ git log -S "RTN_UNSPEC" --source --all
 
 * find commit id of a tag
     git rev-parse v2.6.12-rc2
+
+#revert changes
+=checkout all changes
+
