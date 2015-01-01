@@ -1,3 +1,9 @@
+---
+layout: post
+date: 2014-12-28
+title: Kernel siganl
+category: kernels
+---
 
 #Data struct
 =struct signal_sturct: 

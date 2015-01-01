@@ -1,3 +1,10 @@
+---
+layout: post
+date: 2014-12-28
+title: Physical life
+category: akasha
+---
+
 ###Money
 Annisary incoming		5.4 * 9 =	+48.6
 Month incoming			5.4
