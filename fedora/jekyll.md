@@ -24,4 +24,15 @@ http://ruby.taobao.org
 	m, cats, slug, ext = *name.match(MATCHER)
 	date = "2014-12-28"
 
+#Write your own jekyll plugin
+* Place it in _plugins/ with extension .rb
+* Configure your _config.yaml with
+safe: false
+
+#Make github pages directly show static html without build!
+* Method 1: touch .nojekyll file: 
+https://help.github.com/articles/using-jekyll-with-pages/#turning-jekyll-off
+* Method 1: move your github pages repository .git/ to subdirectory _site/, then git commit it!
+it's means that ripe out all file other then site it's self, 
+you need to keep your _config.yaml, _layouts/ and something else in other git repository.
 
