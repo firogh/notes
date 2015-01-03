@@ -1,25 +1,14 @@
-###Language
-yhy19760822
-Japanese								600hours		
-	Vocabulary			1000/6000				
-	Syntax				200	
-	Apply
+---
+layout: post
+date: 2014-12-28
+title: The perspective of thinking
+category: cogito
+---
 
-English
-	Vocabulary			
+#IBM maturity model
+https://www-935.ibm.com/services/uk/cio/pdf/leverage_wp_data_gov_council_maturity_model.pdf
 
-Chinese
+#The surveillance of IBM maturity model
+Identify Locate Track Predict
 
-
-###CS
-Kernel patch	
-
-
-###Neo-organum
-Cognitive model
-
-
-###Literature
-
-=fdfd
 

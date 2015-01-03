@@ -28,9 +28,13 @@ http://www.ibm.com/developerworks/library/l-task-killable/
 
 * others
 each time a switch is made from kernel mode to user mode, 
-arch-specific: entry.S -> do_siganl
+arch-specific: entry.S -> do_siganl()
 { 
 	get_signal_deliver()
+	{
+		if fatal -> do_greoup_exit()->...__cleanup_sighand()
+	}
+
 	handle_signal() -> k->u(hanle)-sigreturn->k
 }
 
