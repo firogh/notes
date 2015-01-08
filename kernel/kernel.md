@@ -29,6 +29,7 @@ Yes, I can do it! I found kerneloops.org(It's hard to access, because of DB erro
 It's the best work for me:
 1. Connect with community.
 2. Improve understanding of kernel.
+It's so hard, I can't do anyone .....:-(((((((((
 
 =kernel junitor and some other work
 clean kernel code

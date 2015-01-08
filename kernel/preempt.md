@@ -1,3 +1,18 @@
+---
+layout: post
+date: 2014-12-28
+title: Kernel siganl
+category: kernels
+---
+
+#Schedule strategies
+* Multiprogramming
+Similar to batch mode, divide by waitting for peripherals
+
+* Copperative multitasking
+
+
+
 
 
 PREEMPT_ACTIVE:表示这个进程将要或是已经被抢占了.没有这个标志位shcedule将把这个进程移除rq. 就没法再 调度这个进程了.
