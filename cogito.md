@@ -11,4 +11,9 @@ https://www-935.ibm.com/services/uk/cio/pdf/leverage_wp_data_gov_council_maturit
 #The surveillance of IBM maturity model
 Identify Locate Track Predict
 
+#What to learn
+* Origins
+* Things you dont know how to use.
 
+
+#By their very nature they are thus hard to classify.

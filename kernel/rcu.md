@@ -1,6 +1,17 @@
 #History
 brlock
 
+#Common concepts
+* RCU supports concurrency between a single updater and multiple readers.
+
+* The basic idea behind RCU (read-copy update) is to split destructive
+operations into two parts, one that prevents anyone from seeing the data
+item being destroyed, and one that actually carries out the destruction.
+A "grace period" must elapse between the two parts, and this grace period
+must be long enough that any readers accessing the item being deleted have 
+since dropped their references.
+
+
 #What is rcu
 #type-variants-sd-al (extension)
 =type
@@ -57,25 +68,15 @@ latencies
 * RCU-tiny
 * Tree RCU
 * RCU-task
-	
 
 
 #How to use?
-=好不好用
-
-=a replacement of rw-lock
-
-=a Restricted Reference-Counting Mechanism 
-* 32 个赞
-
-=a Bulk Reference-Counting Mechanism
-
-
-=a Poor Man's Garbage Collector
-
-=a Way of Providing Existence Guarantees
-
-=a Way of Waiting for Things to Finish
+a replacement of rw-lock
+a Restricted Reference-Counting Mechanism 
+a Bulk Reference-Counting Mechanism
+a Poor Man's Garbage Collector
+a Way of Providing Existence Guarantees
+a Way of Waiting for Things to Finish
 
 
 #Classic RCU
@@ -102,11 +103,10 @@ latencies
 				rcu_mb_needed by the CPU that detects that the sum of the old counters is zero
 				 rcu_mb_done only by the corresponding CPU, and even then only after executing a memory barrier.
 #Tree RCU
-#parts-variants-sd-al
-=parts 
-*Downside of classical RCU in update
-	the update-side primitives which determine when pre-existing read-side critical sections have finished, were designed with only a few tens of CPUs in mind.
-	 Their scalability is limited by a global lock that must be acquired by each CPU at least once during each grace period.
+* Downside of classical RCU in update
+The update-side primitives which determine when pre-existing read-side critical sections have finished, 
+	were designed with only a few tens of CPUs in mind.
+Their scalability is limited by a global lock that must be acquired by each CPU at least once during each grace period.
 
 
 #FAQ

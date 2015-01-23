@@ -75,7 +75,7 @@ name.c:2445: REQUIRE((((source) != ((void *)0)) && (((const isc__magic_t *)(sour
 *#9 0x7fba5006b77d in ??
 
 =debugme
-* #define debugme(fmt, args...) if (1) {FILE *fdebug=fopen("/d.log", "a+"); time_t tdebug; time(&tdebug);fprintf(fdebug,"%s", asctime(localtime(&tdebug)));fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);}
+* #define debugme(fmt, args...) do {FILE *fdebug=fopen("/d.log", "a+"); time_t tdebug; time(&tdebug);fprintf(fdebug,"%s", asctime(localtime(&tdebug)));fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
 
 
 #ssgoagbroad-start
@@ -103,7 +103,14 @@ custom qdisc
 * Ignore should be ommitted.
 
 
-
+#define debugme(fmt, args...) \
+	do { \
+		FILE *fdebug = fopen("/d.log", "a+"); \
+		time_t tdebug; time(&tdebug); \
+		fprintf(fdebug,"%s", asctime(localtime(&tdebug))); \
+		fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__); \
+		fprintf(fdebug, fmt, ##args);fclose(fdebug); \
+	} while(0)
 
 
 	

@@ -43,6 +43,3 @@ j long jump
 b short jump
 a0, a1...99% is parameters.
 
-
-
-

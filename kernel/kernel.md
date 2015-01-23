@@ -1,4 +1,8 @@
 
+
+#Reference
+http://stackoverflow.com/questions/914693/learning-kernel-programming/27782191#27782191
+
 #What happened to kernel and me
 This article is the my enssence answer  to "kernel".
 How could I become a linux kernel hacker. The question is exist for a long long time.
