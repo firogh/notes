@@ -17,6 +17,8 @@ Waistline				84cm																			82.25cm ~ 73.5cm
 Hip line				87cm																			94cm ~ 112cm
 Shoulder width																							176/4=44 ~ 52cm
 
+
+
 #Diet
 Water					2.5L
 Walnut					4		Fatty acid
@@ -34,6 +36,11 @@ Zinc					15mg
 +MAF
 =Warm-up
 =quaque die alterna 
+100 俯卧撑
+80 卷腹
+4组 飞鸟, 4组卧上推
+4组 坐姿平举, 4组坐姿前平举, 4组坐姿上推
+
 
 #Diseases
 =Chronic sinusitis

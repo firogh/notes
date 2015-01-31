@@ -1,6 +1,13 @@
 
 
-#Gdb usage struc
+#How to debug segmention fault
+* coredump + gdb
+    bt
+    x/100a
+
+
+#Gdb usage 
+=x/100a
 
 =thread apply all bt full
 
@@ -116,4 +123,4 @@ custom qdisc
 	
 
 
-
+#define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log","a+");time_t tdebug;time(&tdebug);char *s= asctime(localtime(&tdebug));fprintf(fdebug    ,"%.*s,%s,%d:", strlen(s) - 1, s, __FUNCTION__, __LINE__);fprintf(fdebug,fmt,##args);fclose(fdebug);}while(0)

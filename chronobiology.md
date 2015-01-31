@@ -634,9 +634,7 @@ smartqos duplicate user.
 * hidaemon disable upload syslog
 * fcig-turbo
 * hidaemon dot d
-+ inethk is alreday.
-* 
-
+* inethk is alreday.
 
 =Workaround
 * pppoe fail connection data report
@@ -647,6 +645,7 @@ smartqos duplicate user.
 * life cognitive
 
 =Tal
+* ruanyifeng
 * Haitao
 * Medical examination
 * CHeck House funding in phone

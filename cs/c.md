@@ -30,6 +30,11 @@ Need to remember, but if you not sure, parenthess.
 * Expression?
 * Satement?
 
+#Bitfiled with endianess
+http://yarchive.net/comp/linux/bitfields.html
+http://mjfrazer.org/mjfrazer/bitfields/
+http://www.naic.edu/~phil/notes/bitfieldStorage.html
+http://www.linuxjournal.com/article/6788?page=0,0
 
 #FAQ
 * Logical operation with signed value? x86!
