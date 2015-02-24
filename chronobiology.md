@@ -19,7 +19,7 @@ wystream
 
 ###13 Jan
 =10
-Battfiled 3 teach.
+Battlefiled 3 teach.
 +40 
 wystream environment.
 +55 start to collect information

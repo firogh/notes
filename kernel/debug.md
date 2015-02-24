@@ -43,3 +43,19 @@ j long jump
 b short jump
 a0, a1...99% is parameters.
 
+
+#From ASM to c language
+* expand inline function
+* locate __asm__() 内嵌汇编, 能快速定位代码! 但很少! slhc_uncompress()
+* 找常量!
+* loop codes formate!
++ef8:   00a01021    move    v0,a1
+ efc:   88440003    lwl a0,3(v0)
+ f00:   24450004    addiu   a1,v0,4                                                                                                           
+ f04:   98440000    lwr a0,0(v0)                                                                                                               
+ f08:   00641821    addu    v1,v1,a0                                                                                                            
+ f0c:   0064202b    sltu    a0,v1,a0                                                                                                             
++f10:   14a7fff9    bne a1,a3,ef8 <slhc_uncompress+0x444>                                                                                         
+ f14:   00831821    addu    v1,a0,v1
+
+

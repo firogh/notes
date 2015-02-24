@@ -10,3 +10,10 @@
  starting with 31 just several lines above). 
 
 #What is abi
+
+
+* why get_unaligned_be16?
+
+
+
+

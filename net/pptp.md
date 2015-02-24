@@ -13,20 +13,21 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 192.168.199.0   0.0.0.0         255.255.255.0   U     0      0        0 br-lan
 
 #pptp header
-IP | GRE | PPP | IP
+IP | GRE | pptp_gre_header | PPP | IP
 
 #input
 ip -> gre -> ppp -> ip
-ip_local_deliver_finish()(netfilter NF LOCAL IN smartqos local in) ->inet_protos.gre_rcv -> gre_proto[GREPROTO_PPTP]=pptp_rcv -> sk_receive_skb ->sk_backlog_rcv -> pptp_rcv_core -> ppp_input ->ppp_do_recv 
+ip_local_deliver_finish()(netfilter NF LOCAL IN smartqos local in) ->inet_protos.gre_rcv -> gre_proto[GREPROTO_PPTP]=pptp_rcv{pptp_gre_header} -> sk_receive_skb ->sk_backlog_rcv -> pptp_rcv_core -> ppp_input -> ppp_do_recv 
 -> ppp_receive_frame -> ppp_receive_nonmp_frame -> netif_rx -> netif_rx_internal -> enqueue_to_backlog -> ____napi_schedule(sd, &sd->backlog);
 -> netif_receive_skb...
 
 #output
 ip_output ...-> ppp_start_xmit -> ppp_xmit_process -> ppp_send_frame -> add ppp header -> ppp_push 
-->pch->chan->ops->start_xmit=pptp_xmit-> add gre and ip header. -> ip_local_out ->
+->pch->chan->ops->start_xmit=pptp_xmit -> add gre and ip header. -> ip_local_out ->
 +another send skb functions is ip_build_and_send_pkt()
 { this functions hook is init in pptp_connect() -> ppp_register_channel(&po->chan) }
-{ppp_connect()'s init functions is pptp_create, see pptp_init_module -> register_pppox_proto(PX_PROTO_PPTP, &pppox_pptp_proto) pptp_create.}
+{ppp_connect()'s init functions is pptp_create, see pptp_init_module -> 
+register_pppox_proto(PX_PROTO_PPTP, &pppox_pptp_proto) pptp_create.}
 when invoke pptp_create? socket()!
 
 if layer 4 protocol is gre then pass.

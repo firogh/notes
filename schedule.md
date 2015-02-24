@@ -1,27 +1,24 @@
-#Things of day
-=Chronobiology	Time		Len(hour)																				
-=Record note of  sinusitis
-Dwell				07:00		0.25     	Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
-Cogito				07:15		        	#Janpanese: vocabulary 6/20 syntax											
-Traffic				07:30                	Bus subway walking														
-Breakfast			09:00                	Must																		
-Lunch				13:00                 
-Dinner				19:00                      
-Fintness			21:00		0.75		abdominals chest muscle													
-Bathing				22:15		0.25    	Body																		
-Dwell				22:30		8.00       	Sleep																		
-Writing										critique absurd
-Lyubishchev									Statistics time																
-Relax										Siesta 10 mph
-Washing										Clothes
-
-=Physical exercise schedule table
+#Chronobiology of day 
+Dwell				Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
+Traffic				Bus subway walking														
+Breakfast			Must																		
+Lunch				
+Dinner				
+Fintness			abdominals chest muscle													
+Bathing			   	Body																		
+Sleep
+Writing				critique absurd
+Lyubishchev			Statistics time																
+Relax				Siesta 10 mph
+Washing				Face
 
 
 #Things of week
 =House clean, saturday morning.
 =Watching cloths, saturday moring.
 
+
+=Physical exercise schedule table
 
 ###2014
 ##Health

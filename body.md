@@ -1,8 +1,15 @@
-#Soma					Now												Fitness							Future						
+
+#Soma					Now										Future						
 Face
-Skin
-						A fight! Turn to white...
-Belly, Abdomen			Crunsh(Not Situps), Leg raise
+Skin					A fight! Turn to white...
+* Belly, Abdomen			
+Crunsh(Not Situps), Leg raise
+1、配合有氧运动减脂，这是关键，否则仰卧起坐也不用做了，最好的减脂运动就是有氧运动，这个说来话长，不深入了；
+2、每天都要对腹肌进行刺激，这样才能保证不退化；
+3、放弃大强度疲劳训练；
+4、腹肌训练放在每次训练的最后；
+5、每次训练只要选择一个动作，做3组，每组20-30次即可，当然要达到有效地刺激；
+
 Chest,Pectorails		Dumbbell fly; Bench press; Pushups 30+1/day	
 Back					Pull-up
 Shoulder,Deltoid		Front raise;Shoulder fly; Handstand push-up
@@ -12,49 +19,36 @@ Eyes
 Ears					40 ~ 60 decibel, wear headset not beyond 3 ~ 4 
 						hour, relax/half hour 
 Masturbation			2 times max per week the less the better.
-Bust					85cm																			96cm ~ 106.7cm
-Waistline				84cm																			82.25cm ~ 73.5cm
-Hip line				87cm																			94cm ~ 112cm
-Shoulder width																							176/4=44 ~ 52cm
-
-
-
-#Diet
-Water					2.5L
-Walnut					4		Fatty acid
-Apple					1		Vitamin C								2
-Protein					50~70g egg white, soybean, beef, fish, milk
-Centrum					...
-Zinc					15mg
-
-#Sleep
-22:30 ~ 6:30
-
-#Health
-
+Shoulder width			53										176/4=44 ~ 52cm
+肩围					106
+Height					177cm
+Weight					67kg									77kg
++Burst/胸围				85cm									106
+上臂围					27cm									36
+Thigh/大腿围			51cm									54
++Waistline/腰围			84										79
+Hip line				87cm									94cm ~ 112cm
 #Fittness
-+MAF
-=Warm-up
-=quaque die alterna 
-100 俯卧撑
-80 卷腹
-4组 飞鸟, 4组卧上推
-4组 坐姿平举, 4组坐姿前平举, 4组坐姿上推
++TODO 
 
 
-#Diseases
-=Chronic sinusitis
+* Warm-up
+* 完美健身方法之复合训练动作: http://www.yaling8.com/way/47.html
+大肌群（胸、肩、背、腿、臂）
+胸: 杠铃卧推, 飞鸟
+腿: 杠铃深蹲, 
+背:  
 
-=Keratosis pilaris
+* 
+哑铃卧推、哑铃划船、哑铃深蹲、硬拉、哑铃直立划船
 
-
-
+* 练后拉伸
+多吃
+睡眠长肉, 休息好, 不能熬夜.
 
 #Body bio-chaging
 After 25, loses muscle mass 4% of remainging mass 
-per deacde.
-After 50, 10%
-
+per deacde. After 50, 10%.
 heart, mobility, metabolism
 
 #Execise time
@@ -79,24 +73,22 @@ to you aerobic activity
 6. exercise can be, FUN!
 
 #Types of exercise & Exercise method
-= Aerobic
+* Aerobic
 walking, running, swimming, cycling and climbing stairs
 
-= Anaerobic
+* Anaerobic
 Lifting weights, jumping, running in a short powerful sprint
 
-= Strength training
+* Strength training
 + Strength, anaerobic endurance and size of muscles
 Bicep curl, chair squats, shoulder raises wall push ups
 +8 to 10 times for 2 sets or twitce
 Never hold your breath
 streach each muscle after your workout
 
+* Resistance exercises
 
-=Resistance exercises
-
-=Flexibility
-
+* Flexibility
 
 #Dayliy exercise
 Walk after breakfast, lunch, dinner, each day 10 minutes
@@ -111,5 +103,3 @@ coordination, stength and stamina.
 10 ~15 cups of water.
 weight in pounds / 2 = the ounces of water 
 1.6L
-Nongfu spring 1.5 L
-
