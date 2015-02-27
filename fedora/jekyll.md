@@ -1,5 +1,9 @@
-
-
+---
+tags: fedora
+title: jekyll
+date: 2015-02-27 15:46:11
+category: fedora
+---
 #install ruby-dev
 sudo yum install gcc-c++ gcc ruby-devel.x86_64
 

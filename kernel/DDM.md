@@ -1,4 +1,9 @@
-
+---
+tags: kernel
+title: DDM
+date: 2015-02-27 15:46:12
+category: kernel
+---
 #Bibilography
 Driver porting: Device model overview: http://lwn.net/Articles/31185/
 /Documentation/driver-model

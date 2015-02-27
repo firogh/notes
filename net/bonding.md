@@ -1,4 +1,9 @@
-
+---
+tags: net
+title: bonding
+date: 2015-02-27 15:46:13
+category: net
+---
 == Structure ==
 Aggregating multiple network interfaces into a single logical "bonded" interface.
 Bonded interface

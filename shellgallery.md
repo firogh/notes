@@ -1,5 +1,9 @@
-
-
+---
+tags: akasha
+title: shellgallery
+date: 2015-02-27 15:46:13
+category: akasha
+---
 ###ctags
 ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
 

@@ -1,5 +1,9 @@
-
-
+---
+tags: kernel
+title: build
+date: 2015-02-27 15:46:12
+category: kernel
+---
 #config
 =if no .config, every config tools make a .config from scrach!
 

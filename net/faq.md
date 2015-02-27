@@ -1,3 +1,9 @@
+---
+tags: net
+title: faq
+date: 2015-02-27 15:46:13
+category: net
+---
 #first_device 用途？
 subsys 在前, device在后.
 

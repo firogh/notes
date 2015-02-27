@@ -1,4 +1,9 @@
-
+---
+tags: net
+title: pptp
+date: 2015-02-27 15:46:13
+category: net
+---
 #Route ip-list to pptp-vpn
 11: pptp-vpn: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1482 qdisc pfifo_fast state UNKNOWN qlen 3
     link/ppp 

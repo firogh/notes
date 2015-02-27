@@ -1,4 +1,9 @@
-
+---
+tags: cs
+title: proc
+date: 2015-02-27 15:46:14
+category: cs
+---
 #How many parts does procfs has?
 =4 parts
 * process-specific read only /proc/<pid>/

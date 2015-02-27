@@ -1,5 +1,9 @@
-
-
+---
+tags: kernel
+title: patch
+date: 2015-02-27 15:46:12
+category: kernel
+---
 static int crashlog_die_notify(struct notifier_block *self, unsigned long val, void *ptr)
 {
    struct die_args *args;

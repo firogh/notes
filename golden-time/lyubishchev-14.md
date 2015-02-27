@@ -1,3 +1,9 @@
+---
+tags: golden-time
+title: lyubishchev-14
+date: 2015-02-27 15:46:13
+category: golden-time
+---
 ###2014
 
 ###01 Jan

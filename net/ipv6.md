@@ -1,4 +1,9 @@
-
+---
+tags: net
+title: ipv6
+date: 2015-02-27 15:46:14
+category: net
+---
 == Structure ==
 IPv6 packet 
 IPv6 address

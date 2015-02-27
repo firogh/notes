@@ -1,6 +1,9 @@
-
-
-
+---
+tags: fedora
+title: sogoupinyin
+date: 2015-02-27 15:46:11
+category: fedora
+---
 #Remove ibus
 
 #Install fcitx 

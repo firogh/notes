@@ -1,3 +1,9 @@
+---
+tags: net
+title: vlan
+date: 2015-02-27 15:46:13
+category: net
+---
 vlan
 ====
 net/8021q/

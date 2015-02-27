@@ -1,4 +1,9 @@
-
+---
+tags: cs
+title: coding_conventions
+date: 2015-02-27 15:46:14
+category: cs
+---
 #Coding standards
 * GNU coding standards
 * Linux kernel coding style

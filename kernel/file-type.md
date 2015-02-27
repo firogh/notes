@@ -1,3 +1,9 @@
+---
+tags: kernel
+title: file-type
+date: 2015-02-27 15:46:12
+category: kernel
+---
 #ELF executable and linkable format.
 Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 
 ##Structure

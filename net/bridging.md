@@ -1,3 +1,9 @@
+---
+tags: net
+title: bridging
+date: 2015-02-27 15:46:13
+category: net
+---
 Bridging
 
 * A bridge behaves like a virtual network switch, 一样.

@@ -1,4 +1,9 @@
-
+---
+tags: net
+title: tcqdisc
+date: 2015-02-27 15:46:13
+category: net
+---
 #Bibliography
 http://tldp.org/HOWTO/Traffic-Control-HOWTO/intro.html
 lartc.rog

@@ -1,3 +1,9 @@
+---
+tags: kernel
+title: kvm
+date: 2015-02-27 15:46:13
+category: kernel
+---
 * KVM architecture
 * Kernel running flow
   svm.ko -> svm_init(svm.c) -> kvm_init(kvm_main.c) -> 

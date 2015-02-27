@@ -1,3 +1,9 @@
+---
+tags: akasha
+title: schedule
+date: 2015-02-27 15:46:14
+category: akasha
+---
 #Chronobiology of day 
 Dwell				Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
 Traffic				Bus subway walking														

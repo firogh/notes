@@ -1,6 +1,9 @@
-
-
-
+---
+tags: net
+title: pmtu
+date: 2015-02-27 15:46:13
+category: net
+---
 #/proc/sys/net/ipv4/ip_no_pmtu_disc
 0 enable, 1 disable
 

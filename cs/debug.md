@@ -1,5 +1,9 @@
-
-
+---
+tags: cs
+title: debug
+date: 2015-02-27 15:46:14
+category: cs
+---
 #How to debug segmention fault
 * coredump + gdb
     bt

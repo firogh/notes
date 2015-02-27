@@ -1,3 +1,9 @@
+---
+tags: golden-time
+title: lyubishchev-13
+date: 2015-02-27 15:46:13
+category: golden-time
+---
 ###16 Dec
 =10
 +40

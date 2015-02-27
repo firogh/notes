@@ -1,5 +1,9 @@
-
-
+---
+tags: akasha
+title: workaround
+date: 2015-02-27 15:46:15
+category: akasha
+---
 
 #Style
 = Do things in priority.

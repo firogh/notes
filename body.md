@@ -1,4 +1,9 @@
-
+---
+tags: akasha
+title: body
+date: 2015-02-27 15:46:15
+category: akasha
+---
 #Soma					Now										Future						
 Face
 Skin					A fight! Turn to white...

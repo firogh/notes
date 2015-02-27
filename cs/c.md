@@ -1,5 +1,9 @@
-
-
+---
+tags: cs
+title: c
+date: 2015-02-27 15:46:14
+category: cs
+---
 #COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY
 http://www.tenouk.com/ModuleW.html
 

@@ -1,5 +1,9 @@
-
-
+---
+tags: net
+title: internet-protocol-suite
+date: 2015-02-27 15:46:13
+category: net
+---
 协议栈本质上是 Transfer这个功能。客观上担当了行为发起与接受主体。
 而我要揭示在这一过程中存在的Mandelbrot set —— 局部间相似，局部与整体相似。
 从接受的角度

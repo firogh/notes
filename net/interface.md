@@ -1,9 +1,9 @@
-
-
-
-
-
-
+---
+tags: net
+title: interface
+date: 2015-02-27 15:46:13
+category: net
+---
 root@Hiwifi:/# ip ad
 1: lo: <LOOPBACK> mtu 16436 qdisc noop state DOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00

@@ -1,6 +1,9 @@
-
-
-
+---
+tags: akasha
+title: weeklyreport
+date: 2015-02-27 15:46:13
+category: akasha
+---
 #for release 9007
 * add user log for smartqos
 * disable daliy upload systemload

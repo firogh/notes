@@ -1,3 +1,9 @@
+---
+tags: cs
+title: csakpp
+date: 2015-02-27 15:46:14
+category: cs
+---
 It has been 5.5 years since I first touch  the light of computer science.
 More over, I have been dicided to become a linux kernel hacker for a long time. 
 Saddly, I am still not a real kernel hacker. 

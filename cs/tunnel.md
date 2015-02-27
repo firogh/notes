@@ -1,4 +1,9 @@
-
+---
+tags: cs
+title: tunnel
+date: 2015-02-27 15:46:14
+category: cs
+---
 #Basic concepts
 =VPN is created by establishing a virtual point-to-point connection through the use of
 1. dedicated connections(permanent)

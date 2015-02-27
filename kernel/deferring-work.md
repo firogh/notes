@@ -1,5 +1,9 @@
-
-
+---
+tags: kernel
+title: deferring-work
+date: 2015-02-27 15:46:13
+category: kernel
+---
 # Differences between softirq and workqueue
 
 Softirq(tasklet)

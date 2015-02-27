@@ -1,5 +1,9 @@
-
-
+---
+tags: kernel
+title: kernel-module
+date: 2015-02-27 15:46:12
+category: kernel
+---
 #Fundmental in kernel module
 
 ##EXPORT_SYMBOL
