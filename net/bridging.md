@@ -1,5 +1,7 @@
 Bridging
 
+* A bridge behaves like a virtual network switch, 一样.
+
 == Sturcture ==
 Bridging is a router using MAC address at L2 in essence.
 A bridge transparently relays traffic between multiple network interfaces. 

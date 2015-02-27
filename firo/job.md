@@ -28,7 +28,6 @@ Geek Inc
 #Job-hopping
 =target job
 Kernel(especially netdev)
-Telecommuting
 
 =Hopping plan
 + Share love, Join kernel community, submit patches
