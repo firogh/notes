@@ -4,10 +4,10 @@ title: vlan
 date: 2015-02-27 15:46:13
 category: net
 ---
+
 vlan
 ====
 net/8021q/
-
 
 == Structure ==
 Vlans are a way to split up a layer2 broadcasting domain, VLANs allow you to create multiple separated networks with only a single switch.
@@ -40,14 +40,8 @@ vlan 什么都别想, 你总的有个vlan吧. 对上来就创建一个vlan-devic
 vconfig add eth0 vid
 for trunk routing between the different vlans we need ip_forward
 
-
-
 == Depth exploration ==
 802.1q standard
-
-
-
-
 
 == SOURCE ==
 initialize
@@ -61,10 +55,4 @@ alloc net_device.
 vlan_setup()函数非常重要，设置dev->priv_flags 为 802.1q！tx queue 为0.
 设置open函数为vlan_dev_open;
 register_vlan_dev(）把这个设备注册到内核。
-
-
-
-
-
-
 

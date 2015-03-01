@@ -6,7 +6,6 @@ category: net
 ---
 ###INIT
 ===System initialization
-
 start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 {
 	do_basic_setup()  
@@ -65,8 +64,7 @@ tcp->ip-> dev_queue_xmit
 
 #rx path
 phy
-broadcom b44.c
-->
+broadcom b44.c->
 {
 	softirq
 	napi
@@ -110,7 +108,6 @@ bogosities which nobody ever actually deployed.
 SNAP register_snap_client used by appltalk, IPX, they broke TCP/IP protocol suites!
 llc和SNAP 主要是为了兼容apple 和 novell IPX协议族.
 IP 不需要 no meaning!
-
 
 #ARP Neigh
 =For IPv4 Network!

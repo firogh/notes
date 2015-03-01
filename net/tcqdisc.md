@@ -4,12 +4,11 @@ title: tcqdisc
 date: 2015-02-27 15:46:13
 category: net
 ---
+
 #Bibliography
 http://tldp.org/HOWTO/Traffic-Control-HOWTO/intro.html
 lartc.rog
 http://ace-host.stuart.id.au/russell/files/tc/
-
-
 
 #parts-variants-sd-al
 Shaping: Shapers delay packets to meet a desired rate.
@@ -18,9 +17,6 @@ Classifying: Classifiers sort or separate traffic into queues.
 Policing: Policers measure and limit traffic in a particular queue.
 Dropping: Dropping discards an entire packet, flow or classification.
 Marking: Marking is a mechanism by which the packet is altered.
-
-
-
 
 #MOST_WANTED
 =conflict tc qidsc del with softnet_data->softnet_data
@@ -33,10 +29,6 @@ This was happened in dev_deactivate_many()
 =difference between synchronize_net and  synchronize_rcu?
 http://article.gmane.org/gmane.linux.network/196309/match=net_device+dismantle
 In this patch, we replace synchronize_rcu with synchronize_net().
-
-
-
-
 
 #FAQ
 #tc filter add dev eth0 parent 10:0 protocol ip prio 1 u32 match ip src 4.3.2.1/32 match ip sport 80 0xffff flowid 10:1
@@ -78,12 +70,9 @@ final
 tcf_proto -> tc_u_hnode -> tc_u_knode -> sel
 也就是用户太的selector没变存到内核中了.
 
-
 enqueue -> filter_list ->u32->classify() this classify is implement by u32!
 tcf_proto_ops->.kind = "u32", .classify   =   u32_classify,
 police and action invoke in tcf_action_exec , act register by tcf_register_action.
-
-
 
 #tcf_chain
 tcf_proto insert tc filter chain of qdisc or class by prior
@@ -94,8 +83,6 @@ tcf_proto insert tc filter chain of qdisc or class by prior
 filter classid and flowid is the same meaning in russell tc doc
 
 #TCA_KIND in filter is u32...register_tcf_proto_ops
-
-
 
 #for qdisc
 RTM_NEWQDISC tc_modify_qdisc

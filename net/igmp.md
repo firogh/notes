@@ -38,9 +38,3 @@ Compatibility with IGMPv1 router
 
 Compatibility with IGMPv1 host
 ------------------------------
-
-
-
-
-
-
