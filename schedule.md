@@ -39,12 +39,7 @@ Washing				Face
 +拍照记录
 +...仰卧起坐, 蹲起, 俯卧撑 每天30个.
 
-##Eating
-* Dianping
 
-##Coding
-* libnl	
-* kernel janitor gernel network
 
 ##Travel
 Dali			2014-12
