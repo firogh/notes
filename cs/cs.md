@@ -100,6 +100,7 @@ http://web.ics.purdue.edu/~cs240/misc/errors.html
 ##net tools
 create net dev interface
 nmap
+scapy
 
 ##daemonize
 http://fixunix.com/unix/84640-daemon-controlling-terminal.html
@@ -231,4 +232,11 @@ lint
 * util-linux nl  iproute2 net-tools dracut git linux
 =etc
 * procps findutils iputils tcpdump
+
+
+#Software design
+
+#Web
+* cgi
+
 
