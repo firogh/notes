@@ -81,13 +81,13 @@ vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内�
 create,			open,	read/write, send, recv, close, delete
 module_init, regiser	open				
 
-
-
 inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
-
 iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
-
 
 #TCP
 =port
 inet_hash_connect()
+
+#package name in different layer
+An individual package of transmitted data is commonly called a frame on the link layer, L2; 
+a packet on the network layer; a segment on the transport layer; and a message on the application layer.
