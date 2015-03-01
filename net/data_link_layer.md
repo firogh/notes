@@ -1,6 +1,6 @@
 ---
 tags: net
-title: data-link-layer
+title: data link layer
 date: 2015-02-27 15:46:13
 category: net
 ---
@@ -101,9 +101,5 @@ AF_PACKET sockets hand frames directly to dev_queue_xmit
 arp in ipv4
 ndp in ipv6
 
-
 #Understand __QUEUE_STATE_FROZEN
 http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
-
-
-
