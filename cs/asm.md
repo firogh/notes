@@ -1,8 +1,8 @@
 ---
-tags: mips
+tags: cs
 title: asm
 date: 2015-02-27 15:46:14
-category: mips
+category: cs
 ---
 bdi 4, 8 delay solt
 
