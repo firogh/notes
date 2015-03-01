@@ -4,6 +4,31 @@ title: data-link-layer
 date: 2015-02-27 15:46:13
 category: net
 ---
+
+#Common concepts
+* MTU
+This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively. 
+This characteristic of the link layer is called the MTU, its maximum transmission unit.
+
+* PMTU
+/proc/sys/net/ipv4/ip_no_pmtu_disc
+0 enable, 1 disable
+
+cat /proc/sys/net/core/warnings
+
+/proc/sys/net/ipv4/tcp_mtu_probing
+!0 enable tcp_mtu_probing()
+If you are using Jumbo Frames, we recommend setting tcp_mtu_probing = 1 to 
+help avoid the problem of MTU black holes. Setting it to 2 sometimes causes performance problems.
+
+net/ipv4/icmp.c
+icmp_unreach(
+type 3, code 4
+icmph->type == ICMP_DEST_UNREACH //3
+case ICMP_FRAG_NEEDED //4
+icmp_err,
+
+
 Function
 =========
 input
@@ -39,3 +64,7 @@ dev_hard_start_xmit()->:
 dev_gso_segment()->skb_gso_segment()->ptyep_base.inet_gso_segment()->inet_protos.tcp_tso_segment()
 dev->hard_start_xmit()=e100_xmit_frame()
 async:net_tx_action()->qdisc_run()
+
+
+#Understand __QUEUE_STATE_FROZEN
+http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632

@@ -1,12 +1,30 @@
 ---
-tags: net
-title: ipv6
-date: 2015-02-27 15:46:14
+layout: post
+date: 2014-12-28
+title: ipv4
 category: net
 ---
 
 #Reference
 [What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
+#ipv4 address
+* A类 0*******，
+范围00000000~01111111 即0~127
+ 10.0.0.0~10.255.255.255
+* B类 10******，
+范围10000000~10111111 即128~191
+ 172.16.0.0~172.31.255.255
+* c类 110***** 
+范围11000000~11011111 即192~223
+192.168.0.0~192.168.255.255
+* D类
+范围224~239用于组播
+* E类
+范围240~255 用于科学试验
+
+#ip frag and assembly
+
+
 
 #What is?
 NAPT66
@@ -54,51 +72,3 @@ Prefix for network address.
 
 Stateless Address Autoconfiguration
 -----------------------------------
-A host autoconfigure its interfaces in IP version 6.就是自动配IP这个很神.
-Creation of Link-Local Addresses
-fe80::interface id/10
-Duplicate Address Detection
-The procedure for detecting duplicate addresses uses Neighbor Solicitation and Advertisement messages
-Creation of Global Addresses
-
-Stateful Autoconfiguration mechanism
-------------------------------------
-DHCPv6
-
-
-== Explore ==
-== Depth exploration ==
-== Lateral exploration ==
-Packet size issue
------------------
-link layer must have an MTU of 1280 bytes  otherwise supports fragmention and reassembly.
-
-Uper-layer checksum
--------------------
-The transport layer or other upper layer used src and dst address to make up a pseudo-header
-which in it's checksum compution.
-
-
-
-== Vertical exploration ==
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
