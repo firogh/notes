@@ -132,11 +132,3 @@ ndisc_constructor()
 {
 	THAT IS the same as IPv4 
 }
-
-
-
-
-
-
-
-

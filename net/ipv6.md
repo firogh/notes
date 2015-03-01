@@ -4,6 +4,12 @@ title: ipv6
 date: 2015-02-27 15:46:14
 category: net
 ---
+
+#Reference
+[What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
+
+#What is?
+NAPT66
 == Structure ==
 IPv6 packet 
 IPv6 address

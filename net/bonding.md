@@ -67,9 +67,3 @@ Vertical Exploration
 == Apply ==
 ======
 
-
-
-
-
-
-

@@ -41,11 +41,6 @@ The designated bridge is chosen by determining which bridge on the LAN has the l
 Bridge Port
 While root ports lead toward the root of the tree (i.e., the root bridge), designated ports lead toward the leaves.
 
-
-
-
-
-
 Function
 ========
 Rassive learning
@@ -53,12 +48,7 @@ Flooding
 Aging
 Bridging Loops
 
-
-
 Switch:
-
-
-
 
 Time-line
 ========
