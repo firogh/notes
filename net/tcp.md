@@ -4,8 +4,6 @@ title: tcp
 date: 2015-02-27 15:46:14
 category: net
 ---
-TCP output engine
-=================
 
 == Structure ==
 TCP packet

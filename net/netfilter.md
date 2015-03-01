@@ -4,6 +4,9 @@ title: netfilter
 date: 2015-02-27 15:46:13
 category: net
 ---
+#iptables
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+
 #netfilter hooks priorities
     NF_IP_PRI_RAW = -300,
     NF_IP_PRI_SELINUX_FIRST = -225,
@@ -46,6 +49,10 @@ ipv4_helper,
 ipv4_confirm,
 
 #NAT
+
+https://www.ietf.org/rfc/rfc3489.txt
+symmetric nat, 端口不复用, 访问同一个服务器.
+
 =Init Build
 ~/linux/net/ipv4/netfilter/iptable_nat.c
 iptable_nat_init()

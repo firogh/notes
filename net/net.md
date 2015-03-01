@@ -1,34 +1,31 @@
 ---
 tags: net
-title: internet-protocol-suite
+title: Linux Network stack
 date: 2015-02-27 15:46:13
 category: net
 ---
-协议栈本质上是 Transfer这个功能。客观上担当了行为发起与接受主体。
-而我要揭示在这一过程中存在的Mandelbrot set —— 局部间相似，局部与整体相似。
-从接受的角度
-ip --> inet_protos[]
-struct net_protocol inet_protos[MAX_INET_PROTOS]是作为接受主体存在的，准确说是后ip的接受者。
-这些受体包括tcp, udp, icmp, igmp. 如，我们选取了icmp。
-ip --> inet_protos[] --> icmp_rcv --> icmp_pointers[] 
-struct icmp_control icmp_pointers[NR_ICMP_TYPES + 1]也是一个受！类似称之为后icmp的接受者。
-包括dest_unreach, source_quench, time_exceeded, parameterprob ...
-看到这里，我们就能建立"线性"的映射。
-inet_protos <=> icmp_pointers
-tcp, udp, icmp, igmp <=> dest_unreach, source_quench, parameterprob...
 
-类似的，我们选取igmp。
-ip --> inet_protos[] --> igmp_rcv 
+#Reference
+[Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
+
+#System call
+Details and skills in Unix network programming.
+* sockfs -- using read, write, close to manipulate socket fd.
+[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
+
+* What is socket?
+A socket is one endpoint of a two-way communication link between two programs running on the network.
+An Internet socket is characterized by at least the following :
+Local socket address: Local IP address and port number
+Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
+Remote socket address, if connected to another socket.
+struct sockaddr
+
+#Transport layer
+* Port
 
 
-同样的，在vlan注册当中我们也会发现同样的，分形艺术。
-此时struct ptype_base[], 行为上就是一个Hash链表了。
-ptype_base[],本质上就是 inet_protos or icmp_pointers.
-同样在执行switch的功能，大多数人称之为hook，钩子机制。 hook会让人觉得迷惑，因为你不知道从哪里开始勾，很乱。
-我一直坚持理解时思维应该是平的，smooth！
-这三个switch处在不同的层次。ptype_base -> inet_protos -> icmp_pointers.
-接下来，会有趣。为什么会是这样的处理顺序，作为一个普通人，我们如何知道，数据是如何被处理的呢？
-只是普通的不能普通，从外到内逐步swith过程而已！
+* TCP
 
 
 
