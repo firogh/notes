@@ -27,3 +27,7 @@ make modules_install INSTALL_MOD_PATH=/home/firo/kmods
 make menuconfig
 make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
+
+#src-tree
+include/linux: share with userspace
+include/net: kernel stuff

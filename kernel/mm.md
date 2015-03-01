@@ -135,3 +135,6 @@ Mips cpu can be aware of this address!
 
 * How to deal with useless page? : > /home/firo/bigdata
 
+
+#Page swap
+The available RAM memory in a computer is never enough to meet user needs or to always satisfy memory-intensive applications.

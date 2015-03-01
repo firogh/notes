@@ -1,6 +1,6 @@
 ---
 tags: kernel
-title: types
+title: kernel data structures
 date: 2015-02-27 15:46:13
 category: kernel
 ---

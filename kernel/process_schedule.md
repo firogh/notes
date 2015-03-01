@@ -22,6 +22,10 @@ Book: Linux kernel development
 so if !CONFIG_PREEMPT* is cooperative!
 * CFS: Pick the task with the smallest vruntime. That's it!
 
+# Schdule point of preempt 
+1 After Interrupt return,preempt_count_irq.
+2 cond_resched
+3 preempt_count
 
 #Preemption
 * Linux kernel user mode is always User preemption.

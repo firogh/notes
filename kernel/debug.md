@@ -5,6 +5,8 @@ title: Kernel debug method
 category: kernel
 ---
 
+* how to get from bug report to the source of bug
+
 #Debugging support in the kernel
 
 #Debugging by Printing

@@ -7,6 +7,53 @@ category: kernel
 #Reference
 http://stackoverflow.com/questions/914693/learning-kernel-programming/27782191#27782191
 
+*Book
+...
+
+* Website
+
+#Content of kernel developing
+* Attitudes & methods in kernel developing
+	Nothing new under sun.
+
+* kernel developing environment
+
+* language
+	English
+	C
+	shell
+	python
+	Make
+
+* Tools
+	vim
+	gcc
+	sed, awk
+
+* The principles of OS
+1. 进程管理
+进程的定义和PCB，进程和线程的区别，进程的三个基本状态及它们之间的转换关系，进程的同步，竞争和死锁，进程间通信
+
+2. 内存管理
+分页式管理，分段式管理，虚拟内存的概念，页面置换算法，内存分配算法
+
+3. 设备管理
+中断的概念，中断处理，I/O控制方式，缓冲区管理，设备驱动，磁盘调度和高速缓存
+
+4. 文件管理
+文件的概念，文件的管理，文件系统
+
+5. 系统调用
+系统调用的概念，系统调用的处理，系统调用类型
+关于操作系统理论方面的书籍，推荐Andrew S. Tanenbaum编写的《Operating Systems: Design and Implementation》一书。
+
+* Hardware
+Cpu, register, address
+http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
+Interrupts
+Timer
+TLB
+
 #What happened to kernel and me
 This article is the my enssence answer  to "kernel".
 How could I become a linux kernel hacker. The question is exist for a long long time.
