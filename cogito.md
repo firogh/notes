@@ -100,6 +100,7 @@ It is by spending oneself that one become rich.
 属性
 * Your brain is little amnesia
 Just understand the original
+origin is not elements, it is foundations 
 
 * 很多时候其实我们的忙碌都是做着自己并不在乎的事情！
 

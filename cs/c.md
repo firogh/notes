@@ -7,6 +7,11 @@ category: cs
 #COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY
 http://www.tenouk.com/ModuleW.html
 
+#Book
+C Traps and Pitfalls
+Expert C Programming
+
+
 #linkage
 Happened in link(ld) step.
 Link source object and library.(so-called environment.)

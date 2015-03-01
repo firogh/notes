@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2014-12-28
-title: 
-category: kernel
+title: Todo list of literature
+category: literature
 ---
 
 #todo list

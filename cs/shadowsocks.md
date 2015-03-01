@@ -4,6 +4,7 @@ title: shadowsocks
 date: 2015-02-27 15:46:14
 category: cs
 ---
+
 #redir
 am_ss_redir_OBJECTS = ss_redir-utils.$(OBJEXT) \
     ss_redir-jconf.$(OBJEXT) \

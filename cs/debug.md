@@ -128,3 +128,12 @@ custom qdisc
 
 
 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log","a+");time_t tdebug;time(&tdebug);char *s= asctime(localtime(&tdebug));fprintf(fdebug    ,"%.*s,%s,%d:", strlen(s) - 1, s, __FUNCTION__, __LINE__);fprintf(fdebug,fmt,##args);fclose(fdebug);}while(0)
+
+
+#locate codes
+* Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
+
+#trouble shooting
+* diff with good
+
+

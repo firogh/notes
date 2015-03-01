@@ -4,7 +4,9 @@ title: file
 date: 2015-02-27 15:46:12
 category: kernel
 ---
-
+#Reference
+http://www.iecc.com/linker/linker10.html
+http://www.linuxjournal.com/article/1060
 
 #ELF executable and linkable format.
 Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 

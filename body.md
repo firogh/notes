@@ -4,6 +4,7 @@ date: 2015-02-27 15:46:15
 category: akasha
 tags: akasha
 ---
+
 #Soma					Now										Future						
 Face
 Skin					A fight! Turn to white...
@@ -33,10 +34,36 @@ Weight					67kg									77kg
 Thigh/大腿围			51cm									54
 +Waistline/腰围			84										79
 Hip line				87cm									94cm ~ 112cm
+
+#Skin care
+* 不熬夜, 早睡, 早起!
+
+* Fitness
+
+* Cleansing
+	Daily ?
+	Lab series multi-action face wash
+
+* Toning
+	Water, more water.
+
+* Moisturizing
+	Kiehl‘s ultra facial cream!
+
+* Exfoliants
+	For face, once a week.
+		?
+		
+	Body care, daily
+		Body scrub - oh, baby	
+		Body lotion - 郁美净
+	
+
+* Sun protection
+
+
 #Fittness
 +TODO 
-
-
 * Warm-up
 * 完美健身方法之复合训练动作: http://www.yaling8.com/way/47.html
 大肌群（胸、肩、背、腿、臂）

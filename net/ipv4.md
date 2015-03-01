@@ -19,3 +19,5 @@ category: kernel
 范围224~239用于组播
 * E类
 范围240~255 用于科学试验
+
+#ip frag and assembly
