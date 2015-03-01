@@ -4,6 +4,22 @@ title: bug
 date: 2015-02-27 15:46:12
 category: kernel
 ---
+
+This note is used for keep the linux kernel bug found by myself.
+The formation of this note is below.
+NO. + found time
+bug file + location
+descriptions
+
+0 3/9/2012
+mm/mmap.c arch_get_unmapped_area 
+Invoke tow timesfunction find_vma for unchanged variable vma.It is not bug!!!Just for interesting
+
+1 9/15/2012
+pci_root_buses 
+
+
+
 drivers/net/wireless/libertas/cfg.c:1115 lbs_associate() error: potential null dereference 'cmd'.  (kzalloc returns null)
 drivers/net/wireless/rtlwifi/efuse.c:378 read_efuse() error: potential null dereference 'efuse_word'.  (kmalloc returns null)
 drivers/staging/rtl8192e/rtllib_rx.c:1496 rtllib_rx() error: we previously assumed 'ieee' could be null (see line 1464)
@@ -31,3 +47,5 @@ kernel/signal.c:1207:5: warning: format '%s' expects argument of type 'char *', 
 
 * Carefully, investgate th invoke path.
 * config CONFIG_DEBUG_ATOMIC_SLEEP on
+
+

@@ -23,6 +23,6 @@ https://unix.stackexchange.com/questions/90027/what-is-the-sequence-loading-linu
 
 3 rc 里面smartqos之类的.
 
-
-
+##Load module into kernel
+vmlinux.lds.h linker scipts include helper macros.
 
