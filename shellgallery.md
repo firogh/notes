@@ -91,3 +91,5 @@ sudo mv -f /usr/share/fonts/google-droid /usr/share/fonts/.google-droid
 
 #kvm
 qemu-kvm -m 512 -kernel kernel -initrd initrd    -append 'vga=773 selinux=0'  -drive file=root,format=raw,if=virtio
+
+find ./ -type d  | grep -v git | while read line;do echo $line; ls $line | wc -l ;done
