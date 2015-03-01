@@ -1,6 +1,6 @@
 ---
 tags: kernel
-title: kernel-activites
+title: kernel activites
 date: 2015-02-27 15:46:12
 category: kernel
 ---

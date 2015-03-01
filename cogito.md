@@ -60,6 +60,7 @@ Abstraction level
 * 每个人都有自己内心的弱点, 不必害怕他们.
 
 * 男的喜欢屁股翘胸大, 身材火辣, 年轻漂亮的女生. 反过来, 女生, 也喜欢,阳刚威武, 身材健硕, 肌肉结实, 成熟富有男人味, 俊朗外表, 有安全感的, 视觉享受的男士!
+The mystery method
 
 * 每个人都有不足, 不要活在别人的框架里面, Aaron Swartz,25:20
 I feel very strongly that it's not enough to just live in 

@@ -2,7 +2,7 @@
 layout: post
 date: 2014-12-28
 title: 漂亮的话
-category: kernel
+category: literature
 ---
 
 #Griffith

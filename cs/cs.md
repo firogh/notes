@@ -44,6 +44,7 @@ Algorithms: Design Techniques and Analysis
 ###Programming tool
 * vim
 Learning the vi Editor
+easymotion
 * Make
 http://www.gnu.org/software/make/manual/make.html
 * gdb
