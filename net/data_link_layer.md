@@ -93,13 +93,57 @@ The function allocates internal data structures,notifies other subsystems about 
 registers files in /proc, and so on. 
 A key task is to register a handler in the kernel that handles the traffic for a protocol.
 
+AF_PACKET sockets hand frames directly to dev_queue_xmit
 #Capture frames
 PF_PACKET
 AF_PACKET sockets hand frames directly to dev_queue_xmit
 
-#neigh subsys
-arp in ipv4
-ndp in ipv6
+#tx path
+tcp->ip-> dev_queue_xmit
+{
+	neigh
+	dev watchdog
+	softirq
+}
 
+#rx path
+phy
+broadcom b44.c
+->
+{
+	softirq
+	napi
+}
+
+#the header
+in net/ipv4/ip_output.c we find skb->protocol = htons(ETH_P_IP);
+include/linux/netdevice.h
+dev_hard_header
+net/ethernet/eth.c
+eth_header_ops, ts eth_header
+
+IEEE 802.1—概述、体系结构和网络互连，以及网络管理和性能测量。 
+IEEE 802.2—逻辑链路控制LLC。最高层协议与任何一种局域网MAC子层的接口。 
+IEEE 802.3—CSMA/CD网络，定义CSMA/CD总线网的MAC子层和物理层的规范。 
+IEEE 802.4—令牌总线网。定义令牌传递总线网的MAC子层和物理层的规范。 
+IEEE 802.5—令牌环形网。定义令牌传递环形网的MAC子层和物理层的规范。 
+IEEE 802.6—城域网。 
+IEEE 802.7—宽带技术。 
+IEEE 802.8—光纤技术。 
+IEEE 802.9—综合话音数据局域网。 
+IEEE 802.10—可互操作的局域网的安全。 
+IEEE 802.11—无线局域网。 
+IEEE 802.12—优先高速局域网(100Mb/s)。 
+IEEE 802.13—有线电视(Cable-TV)。 
+
+#LLC SNAP
+=INIT begin in llc_init
++dev_add_pack(&llc_packet_type), this function hanlder is used in netif_receive_skb!
+static struct packet_type llc_packet_type __read_mostly = { .type = cpu_to_be16(ETH_P_802_2),.func = llc_rcv, };
+
+=RUNTIME input flow , it was just a protocol handler used in netif_receive_skb, add by dev_add_pack like ip_rcv
++ driver:b44_rx -> 
+{//the key point is eth_type_trans function.
+skb->protocol = eth_type_trans(skb, bp->dev);
 #Understand __QUEUE_STATE_FROZEN
 http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
