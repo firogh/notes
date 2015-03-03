@@ -128,3 +128,5 @@ switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以�
 *What is the type in ip link?
 net_poll
 napi
+
+* What is Head-of-line blocking

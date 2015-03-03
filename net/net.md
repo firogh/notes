@@ -13,6 +13,8 @@ category: net
 An implementation of the TCP/IP protocol suite for the LINUX operating system.  
 INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
 
+* Encapuslation
+
 # socket
 * What is socket?
 A socket is one endpoint of a two-way communication link between two programs running on the network.
@@ -22,19 +24,67 @@ Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
 Remote socket address, if connected to another socket.
 struct sockaddr
 
+* Abstruction Concepts of socket
+sock_common: 5 tuples, the essence of sock
+inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
+sock: add trnasparent and manage stuff
+unix_sock: unix_address
+netlink_sock:portid
+socket: BSD socket with VFS stuff
+inet_sock: INET sock, sock_common inet-nise!ip addr, Multicast, TTL 
+inet_connection_sock: INET connection oriented sock, Pluggable congestion control hook, Delayed ACK control data
+tcp_sock: tcp sock, snd_cwnd, tcp_options_received, reordering, keepalive_probes
+
+#Session
+In computer science, in particular networking, a session is a semi-permanent interactive information interchange
+session，中文经常翻译为会话，其本来的含义是指*有始有终*的一系列动作/消息
+[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
+[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
+
+#Virtul circuit
+A virtual circuit (VC) is a means of transporting data over a packet switched computer network 
+in such a way that it appears as though there is a dedicated physical layer link between the source and destination end systems of this data. 
+
+ 
 
 #System call
 Details and skills in Unix network programming.
 * sockfs -- using read, write, close to manipulate socket fd.
 [Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
 
-#Transport layer
-* Multiplexing -- Port
+#Transport layer -- common
+* Multiplexing --  Ports can provide multiple endpoints on a single node. 
 
 
-* TCP
+#TCP
+* Connection-oriented communication -- Session and virtual circuits
+Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
+Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
+Layer 4 virtual circuits uses segment number fix routed reorder delivery. Same order delivery.
+
+* Reliability -- assured,Error detection and correction
+Error --  checksum, the transport protocol may check that the data is not corrupted
+ACK is an indiction of segments lost.
+correction -- Retransmission, ARQ,Automatic repeat request schemes may be used to retransmit lost or corrupted data.
+verify correct receipt by sending an ACK or NACK message to the sender. 
+
+* Flow control
+Sliding Window
+
+* Congestion control
+icsk_ca_ops;
 
 TCP send queue len /proc/sys/net/core/wmem_default
+
+#Network layer
+* Error detection, unreliable
+Best effort service,IP has a simple error handling algorithm: throw away the datagram and try to send an ICMP message back to the source
+
+* Host addressing
+
+
+#Data Link layer
+TC Qdisc
 
 
 ###switch
