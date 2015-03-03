@@ -8,11 +8,12 @@ category: net
 #Reference
 [Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
 
-#System call
-Details and skills in Unix network programming.
-* sockfs -- using read, write, close to manipulate socket fd.
-[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
+#Common concepts
+* INET     
+An implementation of the TCP/IP protocol suite for the LINUX operating system.  
+INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
 
+# socket
 * What is socket?
 A socket is one endpoint of a two-way communication link between two programs running on the network.
 An Internet socket is characterized by at least the following :
@@ -21,12 +22,19 @@ Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
 Remote socket address, if connected to another socket.
 struct sockaddr
 
+
+#System call
+Details and skills in Unix network programming.
+* sockfs -- using read, write, close to manipulate socket fd.
+[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
+
 #Transport layer
-* Port
+* Multiplexing -- Port
 
 
 * TCP
 
+TCP send queue len /proc/sys/net/core/wmem_default
 
 
 ###switch
