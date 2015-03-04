@@ -4,6 +4,16 @@ title: kernel
 date: 2015-02-27 15:46:12
 category: kernel
 ---
+#Hacking
+* How to find hooked functions
+For example, all start_xmit of ppp_channel_ops, 
+pppol2tp_chan_ops, pppol2tp_xmit,
+pptp_chan_ops pptp_xmit
+pppoe_chan_ops pppoe_xmit
+
+grep -nr 'ppp_channel_ops' /path/to/{l2tp, pptp, pppoe}
+
+
 #Reference
 http://stackoverflow.com/questions/914693/learning-kernel-programming/27782191#27782191
 
