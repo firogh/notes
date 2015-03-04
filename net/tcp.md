@@ -20,8 +20,6 @@ TCP options
 ----------
 
 
-
-
 == Apply ==
 Create TCP options
 ==================

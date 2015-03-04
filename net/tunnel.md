@@ -7,7 +7,7 @@ category: kernel
 
 #class
 network layer over network layer: gre
-link layer over network layer: l2tp
+link layer over network layer: l2tp, pptp
 
 #Basic concepts
 * VPN is created by establishing a virtual point-to-point connection through the use of
