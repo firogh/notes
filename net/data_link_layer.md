@@ -5,6 +5,8 @@ date: 2015-02-27 15:46:13
 category: net
 ---
 
+#Reference
+
 #Common concepts
 * MTU
 This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively. 
@@ -28,36 +30,6 @@ icmph->type == ICMP_DEST_UNREACH //3
 case ICMP_FRAG_NEEDED //4
 icmp_err,
 
-
-#input
-NAPI poll_list net_device
-driver intr e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:add napi to poll_list and __raise_softirq_irqoff()
-aync:net_rx_action()->netdev->poll()=e100_poll()->e100_rx_clean()...netif_receive_skb()->
-
-Non-NAPI input_pkt_queue skb
-driver intr vortex_rx()->netif_rx()->napi_schedule(backlog)->add napi to poll_list and__raise_softirq_irqoff()
-async:net_rx_action()->backlog->poll()=process_backlog()->netif_receive_skb()->
-
-后来
-netif_receive_skb()->ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
-ip_route_input()->ip_route_input_slow():local_input dst.input=ip_local_deliver()
-					ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
-dst_input()->
-ip_local_deliver()->NF_INET_LOCAL_IN->ip_local_deliver_finish()->inet_protos.tcp_v4_rcv()
-ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
-
-Differences
-1 NAPI has not  netif_rx():input_pkt_queue.
-2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
-3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
-
-#output
-dev_queue_xmit()->:
-qdisc_run()__qdisc_run()->qdisc_restart()->dev_hard_start_xmit()
-dev_hard_start_xmit()->:
-dev_gso_segment()->skb_gso_segment()->ptyep_base.inet_gso_segment()->inet_protos.tcp_tso_segment()
-dev->hard_start_xmit()=e100_xmit_frame()
-async:net_tx_action()->qdisc_run()
 
 ###System initialization
 start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
@@ -85,42 +57,56 @@ start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 	run_init_process()
 }
 
-#protocols handler init
-For a protocol included statically in the kernel, the initialization function executes at boot time; 
-for a protocol compiled as a module, the initialization function
-executes when the module is loaded.
-The function allocates internal data structures,notifies other subsystems about the protocol’s existence, 
-registers files in /proc, and so on. 
-A key task is to register a handler in the kernel that handles the traffic for a protocol.
-
-AF_PACKET sockets hand frames directly to dev_queue_xmit
-#Capture frames
-PF_PACKET
-AF_PACKET sockets hand frames directly to dev_queue_xmit
-
-#tx path
-tcp->ip-> dev_queue_xmit
-{
-	neigh
-	dev watchdog
-	softirq
+#ipv4 Neighbor output
+* ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
+if !dev->header_ops
+	neigh->ops = &arp_direct_ops
+	neigh->output = neigh_direct_output
+else if ARPHRD_ROSE/AX25/NETROM
+	arp_broken_ops
+	neigh->ops->output
+else if dev->header_ops->cache
+	neigh->ops = &arp_hh_ops
+else
+	arp_generic_ops
+                                                          
+if (neigh->nud_state & NUD_VALID)                  
+	neigh->output = neigh->ops->connected_output;   
+else                                  
+	neigh->output = neigh->ops->output;
 }
 
-#rx path
-phy
-broadcom b44.c
-->
-{
-	softirq
-	napi
-}
+* ip_output_finish2 -> dst_neigh_output -> neigh_resolve_output
 
-#the header
+*  ipv4 Neighbor output instance of ethernet
+see alloc_etherdev_mqs-> ether_setup{
+dev->header_ops = &eth_header_ops;
+dev->type       = ARPHRD_ETHER;
+eth_header_ops.cache = eth_header_cache
+}
+so neigh->ops = &arp_hh_ops; neigh->output = neigh_resolve_output in arp_hh_ops
+
+	//tg3_init_one
+	dev->netdev_ops = &tg3_netdev_ops;
+	dev->ethtool_ops = &tg3_ethtool_ops;
+	dev->watchdog_timeo = TG3_TX_TIMEOUT;
+
+	//In ppp
+static void ppp_setup(struct net_device *dev) 
+{                                           
+    dev->netdev_ops = &ppp_netdev_ops;       
+    dev->hard_header_len = PPP_HDRLEN;        
+    dev->mtu = PPP_MRU;
+    dev->addr_len = 0;  
+    dev->tx_queue_len = 3
+    dev->type = ARPHRD_PPP
+
+#the hard header
 in net/ipv4/ip_output.c we find skb->protocol = htons(ETH_P_IP);
 include/linux/netdevice.h
-dev_hard_header
+dev_hard_header -> dev->header_ops->create = eth_header
 net/ethernet/eth.c
-eth_header_ops, ts eth_header
+eth_header_ops, eth_header
 
 IEEE 802.1—概述、体系结构和网络互连，以及网络管理和性能测量。 
 IEEE 802.2—逻辑链路控制LLC。最高层协议与任何一种局域网MAC子层的接口。 

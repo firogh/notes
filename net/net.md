@@ -7,6 +7,7 @@ category: net
 
 #Reference
 [Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
+[TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
 #Common concepts
 * INET     
@@ -14,7 +15,11 @@ An implementation of the TCP/IP protocol suite for the LINUX operating system.
 INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
 
 * Encapuslation
+tcp ip
 
+* package name in different layer
+An individual package of transmitted data is commonly called a frame on the link layer, L2; 
+a packet on the network layer; a segment on the transport layer; and a message on the application layer.
 # socket
 * What is socket?
 A socket is one endpoint of a two-way communication link between two programs running on the network.
@@ -27,7 +32,7 @@ struct sockaddr
 * Abstruction Concepts of socket
 sock_common: 5 tuples, the essence of sock
 inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
-sock: add trnasparent and manage stuff
+sock: network sock
 unix_sock: unix_address
 netlink_sock:portid
 socket: BSD socket with VFS stuff
@@ -45,18 +50,37 @@ session，中文经常翻译为会话，其本来的含义是指*有始有终*�
 A virtual circuit (VC) is a means of transporting data over a packet switched computer network 
 in such a way that it appears as though there is a dedicated physical layer link between the source and destination end systems of this data. 
 
- 
+#Implemention of protocols
+* inet_create
+sock->ops = inet_protosw->ops = inet_stream_ops
 
-#System call
+* proto_ops -- fops 
+is a good name stand for all PF_*, all 协议族, but sock_generic_ops is better 具体协议与BSD socket api的通用接口
+
+* proto, -- specific fs, like ext,  btfs
+sock的lab决定具体的slab, 如tcp_sock/udp_sock, 根本的发送方法tcp_sendmsg, 协议的真正实体!
+
+* 越来越具体
+BSD socket api ->proto_ops(sock type base)协议通用api ->proto (udp/tcp_prot)
+sys_bind -> inet_stream_ops ->inet_bind ->sk_prot->bind(likely, is NULL)
+write->inet_stream_ops->sendmsg->tcp_sendmsg
+
+* inet_connection_sock_af_ops
+icsk->icsk_af_ops
+
+* net_protocol -- rcv
+是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
+
+#BSD socket layer
 Details and skills in Unix network programming.
 * sockfs -- using read, write, close to manipulate socket fd.
 [Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
 
 #Transport layer -- common
 * Multiplexing --  Ports can provide multiple endpoints on a single node. 
+inet_hash_connect()
 
-
-#TCP
+#TCP -- or some connetion scok
 * Connection-oriented communication -- Session and virtual circuits
 Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
 Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
@@ -73,6 +97,11 @@ Sliding Window
 
 * Congestion control
 icsk_ca_ops;
+tcp_ack {
+tcp_cong_avoid
+tcp_fastretrans_alert
+tcp_slow_start
+}
 
 TCP send queue len /proc/sys/net/core/wmem_default
 
@@ -82,45 +111,130 @@ Best effort service,IP has a simple error handling algorithm: throw away the dat
 
 * Host addressing
 
+* Netfilter
+
 
 #Data Link layer
 TC Qdisc
+#ipv4 Neighbor output
+* ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
+if !dev->header_ops
+	neigh->ops = &arp_direct_ops
+	neigh->output = neigh_direct_output
+else if ARPHRD_ROSE/AX25/NETROM
+	arp_broken_ops
+	neigh->ops->output
+else if dev->header_ops->cache
+	neigh->ops = &arp_hh_ops
+else
+	arp_generic_ops
+                                                          
+if (neigh->nud_state & NUD_VALID)                  
+	neigh->output = neigh->ops->connected_output;   
+else                                  
+	neigh->output = neigh->ops->output;
+}
 
+* ip_output_finish2 -> dst_neigh_output -> neigh_resolve_output
 
-###switch
-struct proto tcp_prot;
-struct proto_ops inet_stream_ops;
-struct inet_protosw inetsw[]
-struct inet_connection_sock_af_ops ipv4_specific;
-struct net_protocol inet_protos[] //Layer 4 rcv!
-struct net_device_ops //Layer 2 xmit functions.
+*  ipv4 Neighbor output instance of ethernet
+see alloc_etherdev_mqs-> ether_setup{
+dev->header_ops = &eth_header_ops;
+dev->type       = ARPHRD_ETHER;
+eth_header_ops.cache = eth_header_cache
+}
+so neigh->ops = &arp_hh_ops; neigh->output = neigh_resolve_output in arp_hh_ops
+
+	//tg3_init_one
+	dev->netdev_ops = &tg3_netdev_ops;
+	dev->ethtool_ops = &tg3_ethtool_ops;
+	dev->watchdog_timeo = TG3_TX_TIMEOUT;
+
+	//In ppp
+static void ppp_setup(struct net_device *dev) 
+{                                           
+    dev->netdev_ops = &ppp_netdev_ops;       
+    dev->hard_header_len = PPP_HDRLEN;        
+    dev->mtu = PPP_MRU;
+    dev->addr_len = 0;  
+    dev->tx_queue_len = 3
+    dev->type = ARPHRD_PPP
+
+#the hard header
+in net/ipv4/ip_output.c we find skb->protocol = htons(ETH_P_IP);
+include/linux/netdevice.h
+dev_hard_header -> dev->header_ops->create = eth_header
+net/ethernet/eth.c
+eth_header_ops, eth_header
 
 ###out
-inet_stream_ops.tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
+inet_stream_ops->tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
-ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->
-ip_finish_output()->ip_finish_output2()->
-							neigh_hh_output() /cachae hardware header.
-							dst->neighbour->output=neigh_resolve_output(arp_hh_ops see arp_创建):dev_hard_header()
-}dev_queue_xmit()->dev_hard_start_xmit()
+ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->
+
+ip_finish_output2-> dst_neigh_output
+{ 
+	neigh_hh_output // hh already in below:-)
+	or 
+	n->output = neigh_resolve_output{dev_hard_header}
+}
+->dev_queue_xmit()
+{
+
+	__dev_xmit_skb->__qdisc_run->qdisc_restart()->dev_hard_start_xmit()
+	or 
+	validate_xmit_skb->skb_gso_segment->skb_mac_gso_segment-> ptype->callbacks.gso_segment=inet_gso_segment->tcp4_gso_segment,
+	dev_hard_start_xmit()
+}
+xmit_one->
+{
+	dev_queue_xmit_nit is Sun's Network Interface Tap (NIT)
+	netdev_start_xmit->ops->ndo_start_xmit{this functions is init in createing device} = e100_xmit_frame
+}
+
+softirq:net_tx_action()->qdisc_run()
 
 ###in & forward
-do_softirq()->net_rx_action()...->netif_receive_skb()->ptype_base.ip_rcv():protocol handler->NF_INET_PRE_ROUTING->ip_rcv_finish()->
-ip_route_input()->ip_route_input_slow():local_input dst.input=ip_local_deliver()
-										ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() dst.output=ipoutput()
-}dst_input()->
-ip_local_deliver()->NF_INET_LOCAL_IN->ip_local_deliver_finish()->inet_protos.tcp_v4_rcv()
-ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
+* NAPI poll_list net_device
+driver intr e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:add napi to poll_list and __raise_softirq_irqoff()
+do_softirq->net_rx_action()->netdev->poll()=e100_poll()->e100_rx_clean()...netif_receive_skb()->
 
+* Non-NAPI input_pkt_queue skb
+driver intr vortex_rx()->netif_rx()->napi_schedule(backlog)->add napi to poll_list and__raise_softirq_irqoff()
+async:net_rx_action()->backlog->poll()=process_backlog()->netif_receive_skb()->
+
+* common path
+ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
+ip_route_input()->ip_route_input_slow()
+{
+	local_input dst.input??=ip_local_deliver()
+	ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() 紧接着dst.output??=ip_output()
+}
+dst_input()->
+{
+	ip_local_deliver()->NF_INET_LOCAL_IN->ip_local_deliver_finish()->inet_protos.tcp_v4_rcv()
+	or 
+	ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
+}
+
+* Differences
+1 NAPI has not  netif_rx():input_pkt_queue.
+2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
+3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
+
+* Need clean
 net_tx_action->output_queue/每个设备的qdisc and  clear_bit__QDISC_STATE_SCHED qdisc_run add back
 __QDISC_STATE_SCHED是否加入softdata
 qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
 __qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
 driver tx, stack xmit
 
+
+
+
 #skb->protocol
 + assignment in ip_output by = htons(ETH_P_IP)
-+ assignment in  driver by = eth_type_trans()
++ assignment in driver by = eth_type_trans() in greth_rx
 
 
 ###register
@@ -129,20 +243,17 @@ e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核
 vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
 
 
-###分形艺术轮回之地
-大抵会回到这里。
-揭示终极的分形艺术。
-文件操作，驱动使用，
-create,			open,	read/write, send, recv, close, delete
-module_init, regiser	open				
-
+###network init
 inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
+
+#Net  link
 iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
 
-#TCP
-=port
-inet_hash_connect()
 
-#package name in different layer
-An individual package of transmitted data is commonly called a frame on the link layer, L2; 
-a packet on the network layer; a segment on the transport layer; and a message on the application layer.
+#PF_*
+* Capture frames
+PF_PACKET
+AF_PACKET sockets hand frames directly to dev_queue_xmit
+
+
+
