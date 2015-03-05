@@ -138,6 +138,15 @@ Best effort service,IP has a simple error handling algorithm: throw away the dat
 
 
 #data link layer
+* The link layer 
+is the group of methods and communications protocols that only operate on the link that a host is physically connected to. 
+
+* The link 
+is the physical and logical network component used to interconnect hosts or nodes in the network 
+
+* a link protocol 
+is a suite of methods and standards that operate only between adjacent network nodes of a local area network segment 
+or a wide area network connection.
 
 * MTU
 This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively. 
@@ -168,14 +177,72 @@ TCP/IP -> Ethenet II frame
 IPX/APPLETALK -> 802.3/LLC(802.2), SNAP, mac 发来的包走这条路.
 
 #net_device
-*Understand __QUEUE_STATE_FROZEN
-http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
+link -> net_device -> if
+driver -> manipulate dev->state through netif_*_on/off -> dev->flags
++rfc2863
++ [operational state](https://www.kernel.org/doc/Documentation/networking/operstates.txt)
++ [Monitoring Interface Administrative State and Physical State on Cumulus Linux](https://support.cumulusnetworks.com/hc/en-us/articles/202693826-Monitoring-Interface-Administrative-State-and-Physical-State-on-Cumulus-Linux)
+* dev->operstate
+admin state is if flag
+operate state is link_state
+Administrative state is the result of "ip link set dev
+<dev> up or down" and reflects whether the administrator wants to use
+the device for traffic.
+enp9s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
+operate is DOWN, amdin is UP>
+ Operational state
+shows the ability of an interface to transmit this user data.
+    "UNKNOWN", "NOTPRESENT", "DOWN", "LOWERLAYERDOWN",
+    "TESTING", "DORMANT",    "UP" 
+IF_OPER_UNKNOWN,
+see rfc2863
+
+* dev->link_mode 
+IF_LINK_MODE_DORMANT wifi
+IF_LINK_MODE_DEFAULT wire
+对应dev->operstate in 转化方法rfc2863_policy()
+
+* dev->state
+__LINK_STATE_START,     这是内核自身的标记位__dev_open init_dummy_netdev __dev_close_many      
+__LINK_STATE_PRESENT,         也是内核自己的, 用的比 START早
+__LINK_STATE_NOCARRIER,        
+__LINK_STATE_LINKWATCH_PENDING, 也是辅助状态不明, nocarrier和dormant都可接收的
+__LINK_STATE_DORMANT
+
+* dev->flags dev_get_flags()
++ if flags form man netdevice or or kernel src codes
+/sys/class/net/<dev>/flags
+              IFF_UP            Interface is running.
+              IFF_BROADCAST     Valid broadcast address set.
+              IFF_DEBUG         Internal debugging flag.
+              IFF_LOOPBACK      Interface is a loopback interface.
+              IFF_POINTOPOINT   Interface is a point-to-point link.
+              IFF_RUNNING       Resources allocated.
+              IFF_NOARP         No arp protocol, L2 destination address not set.
+              IFF_PROMISC       Interface is in promiscuous mode.
+              IFF_NOTRAILERS    Avoid use of trailers.
+              IFF_ALLMULTI      Receive all multicast packets.
+              IFF_MASTER        Master of a load balancing bundle.
+              IFF_SLAVE         Slave of a load balancing bundle.
+
+              IFF_MULTICAST     Supports multicast
+              IFF_PORTSEL       Is able to select media type via ifmap.
+              IFF_AUTOMEDIA     Auto media selection active.
+              IFF_DYNAMIC       The addresses are lost when the interface goes
+                                down.
+              IFF_LOWER_UP      Driver signals L1 up (since Linux 2.6.17)
+              IFF_DORMANT       Driver signals dormant (since Linux 2.6.17)
+              IFF_ECHO          Echo sent packets (since Linux 2.6.25)
+
+* netdev_queue->state 
+[Understand __QUEUE_STATE_FROZEN](http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632)
+    __QUEUE_STATE_DRV_XOFF,     netif_tx_stop_queue
+    __QUEUE_STATE_STACK_XOFF,    
+    __QUEUE_STATE_FROZEN,
 
 * dev_watchdog,
 
-* the generic network queueing layer
-netdev_state_t
-__LINK_STATE_START,
+
 
 #Neighbor 
 * ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
@@ -212,7 +279,7 @@ so neigh->ops = &arp_hh_ops; neigh->output = neigh_resolve_output in arp_hh_ops
 	dev->watchdog_timeo = TG3_TX_TIMEOUT;
 
 	//In ppp
-static void ppp_setup(struct net_device *dev) 
+static void ppp_setup(struct nethernetet_device *dev) 
 {                                           
     dev->netdev_ops = &ppp_netdev_ops;       
     dev->hard_header_len = PPP_HDRLEN;        
