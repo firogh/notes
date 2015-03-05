@@ -20,6 +20,16 @@ tcp ip
 * package name in different layer
 An individual package of transmitted data is commonly called a frame on the link layer, L2; 
 a packet on the network layer; a segment on the transport layer; and a message on the application layer.
+
+* apple talk in linux network stack
+talk_dgram_ops
+&atalk_family_ops
+
+* What is LAN
+
+* WAN
+[WAN](https://en.wikipedia.org/wiki/Wide_area_network)
+
 # socket
 * What is socket?
 A socket is one endpoint of a two-way communication link between two programs running on the network.
@@ -33,6 +43,7 @@ struct sockaddr
 sock_common: 5 tuples, the essence of sock
 inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
 sock: network sock
+atalk_sock: apple talk
 unix_sock: unix_address
 netlink_sock:portid
 socket: BSD socket with VFS stuff
@@ -57,7 +68,7 @@ sock->ops = inet_protosw->ops = inet_stream_ops
 * proto_ops -- fops 
 is a good name stand for all PF_*, all 协议族, but sock_generic_ops is better 具体协议与BSD socket api的通用接口
 
-* proto, -- specific fs, like ext,  btfs
+* proto, -- specific fs, like ext,  btfs in *inetsw*
 sock的lab决定具体的slab, 如tcp_sock/udp_sock, 根本的发送方法tcp_sendmsg, 协议的真正实体!
 
 * 越来越具体
@@ -68,8 +79,12 @@ write->inet_stream_ops->sendmsg->tcp_sendmsg
 * inet_connection_sock_af_ops
 icsk->icsk_af_ops
 
-* net_protocol -- rcv
+* net_protocol -- l4 rcv in *inet_protos*
 是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
+
+* packet_type -- l3 rcv in ptype_all and ptype_base
+pt_prev->func
+
 
 #BSD socket layer
 Details and skills in Unix network programming.
@@ -115,7 +130,6 @@ Best effort service,IP has a simple error handling algorithm: throw away the dat
 
 
 #data link layer
-* TC Qdisc
 
 * MTU
 This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively. 
@@ -139,10 +153,21 @@ icmph->type == ICMP_DEST_UNREACH //3
 case ICMP_FRAG_NEEDED //4
 icmp_err,
 
+# Frame 
+[Ethernet Frame](http://www.infocellar.com/networks/ethernet/frame.htm)
++ 一种不太确定的非严格的真实划分
+TCP/IP -> Ethenet II frame
+IPX/APPLETALK -> 802.3/LLC(802.2), SNAP, mac 发来的包走这条路.
 
-#ipv4 Neighbor output
+#net_device
+*Understand __QUEUE_STATE_FROZEN
+http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
+
+* dev_watchdog,
+
+#Neighbor 
 * ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
-if !dev->header_ops
+if !dev->header_ops   //slip is the case, see sl_setup
 	neigh->ops = &arp_direct_ops
 	neigh->output = neigh_direct_output
 else if ARPHRD_ROSE/AX25/NETROM
@@ -183,14 +208,40 @@ static void ppp_setup(struct net_device *dev)
     dev->addr_len = 0;  
     dev->tx_queue_len = 3
     dev->type = ARPHRD_PPP
+}
 
-#the hard header
-in net/ipv4/ip_output.c we find skb->protocol = htons(ETH_P_IP);
-include/linux/netdevice.h
-dev_hard_header -> dev->header_ops->create = eth_header
-net/ethernet/eth.c
-eth_header_ops, eth_header
+#PPP SLIP
++
+#Data Framing
+dst_neigh_output->dev_hard_header ->  eth_header
 
+#TC Qdisc
+
++
+#LLC (TCP/IP rarely use this sub layer)
+* ptype MAC layer 之上, 可能是data link(llc) or network layer(ip)
+定义了所有从驱动上来的packet接收函数, 这里有ip_rcv 还有pppoe_rcv,llc_rcv, NO snap_rcv
+dev_add_pack
+llc_rcv{
+snap_rcv
+}
+netif_receive_skb ->ip/llc_rcv
+
+#NAPI
+
+#Driver 
+* skb->protocol
++ assignment in ip_output by = htons(ETH_P_IP)
++ assignment in driver by = eth_type_trans() 
+
++
+#MAC
+
++
+# Addressing
+LAN switching
+
+*IEEE 802 suite
 IEEE 802.1—概述、体系结构和网络互连，以及网络管理和性能测量。 
 IEEE 802.2—逻辑链路控制LLC。最高层协议与任何一种局域网MAC子层的接口。 
 IEEE 802.3—CSMA/CD网络，定义CSMA/CD总线网的MAC子层和物理层的规范。 
@@ -205,22 +256,21 @@ IEEE 802.11—无线局域网。
 IEEE 802.12—优先高速局域网(100Mb/s)。 
 IEEE 802.13—有线电视(Cable-TV)。 
 
-#LLC SNAP
-=INIT begin in llc_init
-+dev_add_pack(&llc_packet_type), this function hanlder is used in netif_receive_skb!
-static struct packet_type llc_packet_type __read_mostly = { .type = cpu_to_be16(ETH_P_802_2),.func = llc_rcv, };
+#Physical layer -- PHY
 
-=RUNTIME input flow , it was just a protocol handler used in netif_receive_skb, add by dev_add_pack like ip_rcv
-+ driver:b44_rx -> 
-{//the key point is eth_type_trans function.
-skb->protocol = eth_type_trans(skb, bp->dev);
-#Understand __QUEUE_STATE_FROZEN
-http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
+* Physical Coding Sublayer
+* Physical Medium Attachment Sublayer
+* Physical Medium Dependent Sublayer
 
 ###out
 inet_stream_ops->tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
-ip_output()见ip_mkroute_output->NF_INET_POST_ROUTING->ip_finish_output()->
+ip_output()
+{
+	//set in ip_mkroute_output
+	skb->dev = dev = skb_dst(skb)->dev; //!!!
+	skb->protocol = htons(ETH_P_IP);
+}->NF_INET_POST_ROUTING->ip_finish_output()->
 
 ip_finish_output2-> dst_neigh_output
 { 
@@ -251,10 +301,10 @@ do_softirq->net_rx_action()->netdev->poll()=e100_poll()->e100_rx_clean()...netif
 
 * Non-NAPI input_pkt_queue skb
 driver intr vortex_rx()->netif_rx()->napi_schedule(backlog)->add napi to poll_list and__raise_softirq_irqoff()
-async:net_rx_action()->backlog->poll()=process_backlog()->netif_receive_skb()->
+async:net_rx_action()->backlog->poll()=process_backlog()->netif_receive_skb()->deliver_skb->
 
 * common path
-ptype_base.ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
+pt_prev->func=ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
 ip_route_input()->ip_route_input_slow()
 {
 	local_input dst.input??=ip_local_deliver()
@@ -281,10 +331,6 @@ driver tx, stack xmit
 
 
 
-
-#skb->protocol
-+ assignment in ip_output by = htons(ETH_P_IP)
-+ assignment in driver by = eth_type_trans() in greth_rx
 
 
 ###register
