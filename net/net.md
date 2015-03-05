@@ -30,6 +30,14 @@ talk_dgram_ops
 * WAN
 [WAN](https://en.wikipedia.org/wiki/Wide_area_network)
 
+* relations of concept
+Qdisc -- NET_XMIT_SUCCESS
+dev -- NETDEV_TX_OK
+
+#INIT
+inet_init
+net_dev_init
+
 # socket
 * What is socket?
 A socket is one endpoint of a two-way communication link between two programs running on the network.
@@ -164,6 +172,10 @@ IPX/APPLETALK -> 802.3/LLC(802.2), SNAP, mac 发来的包走这条路.
 http://thread.gmane.org/gmane.linux.kernel/709444/focus=714632
 
 * dev_watchdog,
+
+* the generic network queueing layer
+netdev_state_t
+__LINK_STATE_START,
 
 #Neighbor 
 * ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
