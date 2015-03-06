@@ -9,34 +9,62 @@ category: net
 [Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
-#Common concepts
-* INET     
+# INET     
 An implementation of the TCP/IP protocol suite for the LINUX operating system.  
 INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
 
-* Encapuslation
-tcp ip
+# Encapuslation
 
-* package name in different layer
+#offload
+* TSO in tcp_v4_connect
+[TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
+One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
+
+
+* GSO
+[GSO: Generic Segmentation Offload](http://thread.gmane.org/gmane.linux.network/37287)
+TSO = GSO_TCPV4
+
+frags = sg I/O
+frag_list
+
+
+
+
+# package name in different layer
 An individual package of transmitted data is commonly called a frame on the link layer, L2; 
 a packet on the network layer; a segment on the transport layer; and a message on the application layer.
 
-* apple talk in linux network stack
+# apple talk in linux network stack
 talk_dgram_ops
 &atalk_family_ops
 
-* What is LAN
+# What is LAN
 
-* WAN
+# WAN
 [WAN](https://en.wikipedia.org/wiki/Wide_area_network)
 
-* relations of concept
+# relations of concept
 Qdisc -- NET_XMIT_SUCCESS
 dev -- NETDEV_TX_OK
+
 
 #INIT
 inet_init
 net_dev_init
+
+#sk_buff
+[sk_buff{} documents and resources](http://www.skbuff.net/skbuff.html)
+[How SKBs work by David S. Miller](http://www.skbuff.net/skbuff.html)
+
+* fclone -- fast clone
+[NET Implement SKB fast cloning.](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d179cd12928443f3ec29cfbc3567439644bd0afc)
+[Fast SKB cloning, continued](http://lwn.net/Articles/140552/)
+use in skb_clone function
+use case 1: tcpdump and network stack
+
+
+
 
 # socket
 * What is socket?
@@ -103,6 +131,9 @@ Details and skills in Unix network programming.
 * Multiplexing --  Ports can provide multiple endpoints on a single node. 
 inet_hash_connect()
 
+* Encapuslation to segment in skb
+	tcp_sendmsg->skb_add_data_nocache()
+
 #TCP -- or some connetion scok
 * Connection-oriented communication -- Session and virtual circuits
 Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
@@ -130,11 +161,55 @@ TCP send queue len /proc/sys/net/core/wmem_default
 
 #Network layer
 * Error detection, unreliable
-Best effort service,IP has a simple error handling algorithm: throw away the datagram and try to send an ICMP message back to the source
+Best effort service,IP has a simple error handling algorithm: 
+throw away the datagram and try to send an ICMP message back to the source
 
 * Host addressing
 
-* Netfilter
+
+##IP
+* IP Packet Fragmentation/Defragmentation
+
+* MSS tcp_sock->mss_cache in tcp_sync_mss not minus SACK option
+	in *tcp_current_mss* minus SACK option
+rfc1122
++ IP option is  fixed in a session icsk->icsk_ext_hdr_len;
++ is network header icsk->icsk_af_ops->net_header_len
++ tcp_sock->tcp_header_len all except SACK option (Not sure)
+
+#Reference
+[What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
+
+#ipv4 address
+* A类 0*******，
+范围00000000~01111111 即0~127
+ 10.0.0.0~10.255.255.255
+* B类 10******，
+范围10000000~10111111 即128~191
+ 172.16.0.0~172.31.255.255
+* c类 110***** 
+范围11000000~11011111 即192~223
+192.168.0.0~192.168.255.255
+* D类
+范围224~239用于组播
+* E类
+范围240~255 用于科学试验
+
+##IP fragmention/defragmention
+iphdr->id, iphdr->frag_off
+skb_shared_info->frag_list 
+ip_fragment/ip_defrag
+[Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
+
+### Route
+* state structure
+fib_info:route info
+fib_config:
+
+* Multi-time line
+fib_create_info(): create a fib_info
+
+### Netfilter
 
 
 #data link layer
@@ -175,6 +250,7 @@ icmp_err,
 + 一种不太确定的非严格的真实划分
 TCP/IP -> Ethenet II frame
 IPX/APPLETALK -> 802.3/LLC(802.2), SNAP, mac 发来的包走这条路.
+* jumbo frame?
 
 #net_device
 link -> net_device -> if
