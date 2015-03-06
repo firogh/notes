@@ -138,3 +138,7 @@ Mips cpu can be aware of this address!
 
 #Page swap
 The available RAM memory in a computer is never enough to meet user needs or to always satisfy memory-intensive applications.
+
+
+*pfmemalloc
+page free
