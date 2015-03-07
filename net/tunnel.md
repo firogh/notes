@@ -41,6 +41,11 @@ ssh redsocks
 user -> iptables -> redsocks -> ssh -> server
 
 * pppoe
+pppoe 的sk->sk_backlog_rcv是在pppoe_create中确定的, 这点却别与tcp socket
+pppoe_rcv_core ->　netif_rx
+从sk_receive_skb来看pppoe 和tcp都对应一个session or sock!
+对比inet_create 和 pppoe_create, 而pppoe很屌是在链路层的sock厉害!
+pppoe报文会经过两次sk_filter()
 http://blog.csdn.net/osnetdev/article/details/8958058
 &pppoe_chan_ops;
 
@@ -51,7 +56,7 @@ ppp-wan->ndo_start_xmit()=ppp_start_xmit()->ppp_xmit_process()->ppp_send_frame()
 {
 	__skb_push(skb, sizeof(*ph));
     skb_reset_network_header(skb);
-	//add pppoe_hdr
+	//add pppoe_hdr no header???
     dev_queue_xmit(skb); 
 }
 
