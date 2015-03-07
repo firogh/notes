@@ -33,9 +33,9 @@ When returning to user-space from a system call.
 When returning to user-space from an interrupt hander.
 * Linux kernel kernel mode is coppertive when CONFIG_PREEMPT is not set.
 If a task in the kernel explicitly calls schedule()
-If a task in the kernel blocks (which results in a all to schedule())
+If a task in the kernel blocked (which results in a all to schedule())
 * Linux kernel kernel mode is coppertive + preemptive when CONFIG_PREEMPT is set.
-schedule + blcoks
+schedule + blcoked
 When an interrupt handler exits, before returning to kernel-space.
 When kernel code becomes preemptible again.
 

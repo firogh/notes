@@ -52,3 +52,7 @@ reponse for receiving an ACK
 tcp_data_snd_check()->tcp_write_xmit()
 
 
+#tcp_v4_rcv
+[skb->dev = NULL;](http://thread.gmane.org/gmane.linux.network/85613/focus=85614)
+
+

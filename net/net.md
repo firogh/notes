@@ -28,9 +28,6 @@ TSO = GSO_TCPV4
 frags = sg I/O
 frag_list
 
-
-
-
 # package name in different layer
 An individual package of transmitted data is commonly called a frame on the link layer, L2; 
 a packet on the network layer; a segment on the transport layer; and a message on the application layer.
@@ -48,7 +45,6 @@ talk_dgram_ops
 Qdisc -- NET_XMIT_SUCCESS
 dev -- NETDEV_TX_OK
 
-
 #INIT
 inet_init
 net_dev_init
@@ -62,9 +58,36 @@ net_dev_init
 [Fast SKB cloning, continued](http://lwn.net/Articles/140552/)
 use in skb_clone function
 use case 1: tcpdump and network stack
+fclones->fclone_ref 这就是引用, 用处见skb_clone
+skbuff_head_cache alloc的skb对应n->fclone = SKB_FCLONE_UNAVAILABLE;
 
+* pskb_pull -- p abbrivated from oprivate
+* truesize -- len of sk_buff + head_len + frags + frag_list
+* data_len -- len of frags + frag_list
+* len -- head_len + frgas + frag_list
 
+#skb reference usage
+* 计数引用 count ref skb->users -- skb_get
+	没有私有的
+* 克隆引用 clone ref skb->dataref --skb_clone, skb_cloned
+	sk_buff是私有的
+* 页碎片共享 --pskb_copy
+	sk_buff, head_len 是私用的
+* 不共享 --skb_copy skb_copy_expand
 
+#sock->pfmemealloc
+Yes, I only wanted to drop the packet if we were under pressure
+when skb was allocated. If we hit pressure between when skb was
+allocated and when __netdev_alloc_page is called,
++in sk_filter
+[netvm: Allow skb allocation to use PFMEMALLOC reserves](https://groups.google.com/forum/#!msg/linux_net/-YtWB66adxY/Qqm_y4U09IAJ)
+[netvm: Allow skb allocation to use PFMEMALLOC reserves - gmane 08/14](http://thread.gmane.org/gmane.linux.kernel/1152658)
+
+* sk_set_memalloc
+SOCK_MEMALLOC, sock has feature mem alloc for free memory.
+
+* control buffer skb-cb
+tcp_skb_cb
 
 # socket
 * What is socket?
@@ -463,6 +486,7 @@ pt_prev->func=ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
 ip_route_input()->ip_route_input_slow()
 {
 	local_input dst.input??=ip_local_deliver()
+	or
 	ip_mkroute_input()->__mkroute_input():dst.input=ip_forward() 紧接着dst.output??=ip_output()
 }
 dst_input()->
