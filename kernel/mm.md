@@ -17,8 +17,17 @@ category: kernel
 
 * Allocator
 	alloc_pages()
-
 + Simplicity!!! Physical address is connected to Virtual address by pfn = page - mem_map;
+
+##Page/buffer cache
+* struct address_space
+	page_tree
+##Page writeback
+	data synchronization, the flush threads, pdflush
+	swap
+
+##Page swap
+The available RAM memory in a computer is never enough to meet user needs or to always satisfy memory-intensive applications.
 
 #Kernel space Virtual memory
 * GFP flags
@@ -65,6 +74,25 @@ kmap_atomic()
 access_ok() is in vain, just check whteher is pointer is in user space!
 get_user_pages() used in get_cmdline();
 
+#User space virtual memory
+* struct vm_area_struct: The intervals of legal address are called *memory areas* is permitted to access.
+* struct address_space: To establish an association between the regions of the vm and the places where the related data are located.
+	i_mmap: how many processes opened this file.
+	https://lkml.org/lkml/2012/8/7/46
+* sturct mm_struct: how many files(vm_area_struct) does this process opened.
+
+* Memory mappings
+	syscall remap_file_pages Nolinear mappings is deprecated, since Linux 3.16
+
+* link 
+a virtual address and physical address. --page tale
+a memory region of a process and its virtual page addresses. --vm_area_struct
+a region of file(one physical) and all virtual address spaces(many virtual) into which the region is mapped. address_space->i_mmap.
+a physical page and the processes that share the page(used in swap case) 
+
+##get_user_pages
+get vma by addr then
+
 #Page faults
 Page fault: If a process accesses a part of virtual address space not yet associated with a page in memory
 
@@ -91,28 +119,6 @@ kernel oops
 	static Per-CPU in .data(?) below high_memory!
 	runtime Per-CPU, it's GFP_KERNEL in pcpu_create_chunk()
 
-#Process userspace virtual memory
-* struct vm_area_struct: The intervals of legal address are called *memory areas* is permitted to access.
-* struct address_space: To establish an association between the regions of the vm and the places where the related data are located.
-	i_mmap: how many processes opened this file.
-	https://lkml.org/lkml/2012/8/7/46
-* sturct mm_struct: how many files(vm_area_struct) does this process opened.
-
-* Memory mappings
-	syscall remap_file_pages Nolinear mappings is deprecated, since Linux 3.16
-
-* link 
-a virtual address and physical address. --page tale
-a memory region of a process and its virtual page addresses. --vm_area_struct
-a region of file(one physical) and all virtual address spaces(many virtual) into which the region is mapped. address_space->i_mmap.
-a physical page and the processes that share the page(used in swap case) 
-
-#Page cache buffer cache
-* struct address_space
-	page_tree
-#Page writeback
-	data synchronization, the flush threads, pdflush
-	swap
 
 #FAQ
 * Memory mode
@@ -135,10 +141,5 @@ Mips cpu can be aware of this address!
 
 * How to deal with useless page? : > /home/firo/bigdata
 
-
-#Page swap
-The available RAM memory in a computer is never enough to meet user needs or to always satisfy memory-intensive applications.
-
-
-*pfmemalloc
+*pfmemalloc -- skb 表示申请了紧急内存!
 page free
