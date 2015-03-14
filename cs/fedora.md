@@ -1,8 +1,8 @@
 ---
-tags: fedora
-title: nautilus
+tags: cs
+title: Fedora distro 物语
 date: 2015-02-27 15:46:11
-category: fedora
+category: cs
 ---
 
 #Nautilus
