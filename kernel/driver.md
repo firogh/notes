@@ -9,7 +9,6 @@ Driver porting: Device model overview: http://lwn.net/Articles/31185/
 /Documentation/driver-model
 The Linux Kernel Driver Model
 
-
 #Why DDM?
 The device model was originally intended to make power management tasks easier 
 
