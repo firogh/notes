@@ -57,3 +57,34 @@ Time 1.1 ~ 7.6				180days
 Words 4000 ~ 6000			22 ~ 33/perdays
 Grammars					5/perdays
 
+#Skateboard
+##The class
+Completed Skateboard: 整板.
+Do it yourself.
+
+
+##The structure of skateboard
+Bones的轮子，Independent 支架，Swiss 轴承，mob砂纸，Baker的板面
+=Deck
+Plan B: Too expensive
+Zero
+Enjoi
+DGK
+Girl
+Zoo York
+
+=Truck
+* Independent 
+Thunder
+Venture
+
+=Wheel
+Bones
+
+=Bering
+Bones
+
+=Grip tape
+Mob
+Grizzly Bear
+
