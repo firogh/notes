@@ -38,28 +38,22 @@ Hip line				87cm									94cm ~ 112cm
 
 ##Skin care
 * 不熬夜, 早睡, 早起!
-
 * Fitness
-
 * Cleansing
 	Daily ?
 	Lab series multi-action face wash
-
 * Toning
 	Water, more water.
-
 * Moisturizing
 	Kiehl‘s ultra facial cream!
-
 * Exfoliants
 	For face, once a week.
-		?
+	?
 		
-#Physical
-###Clothing(no jeans)	Now												Future								
-大方合体美感
+#Physical life
+##Clothing(no jeans)	Now												Future								
+* 大方合体美感
 * 让掉不合适的衣服
-
 Tank tops				2 Playboy										
 Sweatshirts & Hoodies	1 Adidas										+1
 Boxer brief				2												+0 
@@ -72,25 +66,25 @@ Casual shorts           0												(+2)
 Sweatpants				3 anta, adidas, A&F
 Down jackets/coats		2 null/ Jack jones
 
-###Shoes
+##Shoes
 Sneaker					0												2 Converse and Warrior
 Skate shoes				1	Nike										2
 Slippers                1												new 1												
 
-###Accessories 
+##Accessories 
 Scarf                   1	Cacuss 
 Mask                    1
 Gloves                  0               
 Beanie					1	Whitebird
 
-###Travel				
+##Travel				
 Luggage & Bag           Travalue bag            
 						Laptop computer cases
 
-###Money
+##Money
 
 
-###Accessory			Now												Future
+##Accessory			Now												Future
 Phone					Nexus 5
 						Android 5.0
 Laptop					Y460											Intel haswell | Chrome pixel
@@ -101,7 +95,7 @@ Laptop					Y460											Intel haswell | Chrome pixel
 Keyboard				Laptop built-in	
 Hard drive				Buffalo ministation								NULL
 
-###Residency
+##Residency
 Razor					Schick quatto titanium and hydro
 Chair																	Steelcase think chair
 Mug						1												2
