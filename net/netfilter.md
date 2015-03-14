@@ -4,68 +4,95 @@ title: netfilter
 date: 2015-02-27 15:46:13
 category: net
 ---
-#iptables
-iptables -I INPUT -p tcp --dport 22 -j ACCEPT
 
-#netfilter hooks priorities
-    NF_IP_PRI_RAW = -300,
-    NF_IP_PRI_SELINUX_FIRST = -225,
-    NF_IP_PRI_CONNTRACK = -200,
-    NF_IP_PRI_MANGLE = -150,
-    NF_IP_PRI_NAT_DST = -100,
-    NF_IP_PRI_FILTER = 0,
-    NF_IP_PRI_SECURITY = 50,
-    NF_IP_PRI_NAT_SRC = 100,
-=Answer 
-http://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-9.html
-9. Mixing NAT and Packet Filtering
+#Common concepts
+* Netfilter 
+is a framework inside the Linux kernel which offers flexibility for various networking-related operations to be implemented in form of customized handlers. 
 
-#netfilter framwork
-=Hook point
-local_in local_out
-pre_routing post_routing
+* Hook point
+local_in local_out pre_routing post_routing
 
-=Files higherach
+* Files higherach
 net/ipv4/netfilter
 net/netfilter
 net/ipv6/netfilter
-=Init
+
+* netfilter hooks priorities
+NF_IP_PRI_RAW = -300,
+NF_IP_PRI_SELINUX_FIRST = -225,
+NF_IP_PRI_CONNTRACK = -200,
+NF_IP_PRI_MANGLE = -150,
+NF_IP_PRI_NAT_DST = -100,
+NF_IP_PRI_FILTER = 0,
+NF_IP_PRI_SECURITY = 50,
+NF_IP_PRI_NAT_SRC = 100,
+[Mixing NAT and Packet Filtering](http://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-9.html)
+
+
+# Init
 ~/linux/net/netfilter/core.c
 netfilter_init()
 
-=Build function
-nf_register_hooks
-nf_ct_l4proto_register
-nf_ct_l3proto_register
-
-
 #Connection tracking
-=Init Build ipv4
+*conntrack -- user-land tools
+ obsolete /proc/net/nf_conntrack
+
+
+*tuple -- link a socket 5-arry tuple
+Each Netfilter connection is uniquely identified by a 
+(layer-3 protocol, source address, destination address, layer-4 protocol, layer-4 key) tuple
+
+* Connection tracking helper
+ connection tracking can be given knowledge of application-layer protocols
+
+* template
+netfilter: nf_conntrack: support conntrack templates
+
+## init 
 nf_conntrack_l3proto_ipv4_init()
 struct ipv4_conntrack_ops
-ipv4_conntrack_in
-ipv4_conntrack_local,
-ipv4_helper,
-ipv4_confirm,
+
+## struct
+nf_conntrack_tuple nf_conn
+sock_common		tcp_sock
+
+##HOOK functon -- xuchen
+* ipv4_conntrack_in() -- pre routing, -200
+in -> nf_conntrack_in()
+
+* ipv4_conntrack_local() --  local out , -200
+out -> nf_conntrack_in()
+
+* ipv4_helper() -- local in, post routing, 300
+
+* ipv4_confirm() -- local in, post routing, INT_MAX which is 2^31-1
+以上的工作事实上都很简单，基本思路是：
+一个包来了，转换其tuple，看其在连接跟踪表中没有，有的话，更新其状态，以其做一些与协议相关的工作，如果没有，则分配一个新的连接表项，并与skb_buff关连，但是问题是，这个表项，还没有被加入连接表当中来。其实这样做的理由很简单，因为这个时候，这个包是否有机会活命还是个未知数，例如被其它模块给Drop了……所以，要等到一切安全了，再来将这个表项插入至连接跟踪表。
+这个“一切安全”当然是Netfilter所有的模块处理完了，最完全了。
+
+徐琛,也这么说!
 
 #NAT
-
 https://www.ietf.org/rfc/rfc3489.txt
 symmetric nat, 端口不复用, 访问同一个服务器.
 
-=Init Build
-~/linux/net/ipv4/netfilter/iptable_nat.c
-iptable_nat_init()
-struct nf_nat_ipv4_ops
+##init
+iptable_nat_init
+
+##Hook function
 nf_nat_ipv4_in,
 nf_nat_ipv4_out,
 nf_nat_ipv4_local_fn, local_out
 nf_nat_ipv4_fn, local_in
 
-=Drop ICMP redict in NAT
+*NAT helper
+Similar to connection tracking helpers, NAT helpers will do a packet inspection 
+and substitute original addresses by reply addresses in the payload.
+
+* Drop ICMP redict in NAT
 http://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-10.html
 
-=SNAT iptables  POST_ROUTING
+##SNAT iptables  POST_ROUTING
 nf_nat_ipv4_out -> nf_nat_ipv4_fn -> 
 {
 nf_nat_rule_find -> ipt_do_table -> xt_snat_target_v1 -> nf_nat_setup_info 
@@ -104,13 +131,12 @@ nf_nat_rule_find -> ipt_do_table -> xt_snat_target_v1 -> nf_nat_setup_info
 	nf_nat_packet -> nf_nat_ipv4_manip_pkt,
 }
 
-=SNAT nftables
+* SNAT nftables
 nf_nat_prerouting ...-> nft_do_chain 
 
-=Tips
-+ One kind of NAT, just set one flag bit in ct->status (SRC_NAT or DST_NAT), but set both SRC/DST_DOWN!
++ One kind of NAT, just set one flag bit in ct->status (SRC_NAT or DST_NAT), but set both SRC/DST_DONE!
 
-=De-NAT
+* De-NAT
 最简单的路由器 在postrouting 做了snat（masquade）那么回来的报文怎么unsnat呢？
 我看了九贱的帖子，一笔带过了。 我不太懂的地方是在nat_packet这个函数里面在发现是rely的报文，要判断ct→status & IPS_DST_NAT 为真 才修改skb里的IP port，我不清楚reply的报文何时给ct→status打的DST_NAT的标记位，看代码好象是prerouting的ip_nat_setup_info这个函数，可是我看到必须改了ct的tuple才能给ct→status打标记位，反复的修改ct，我觉得自己想的不对。
 
@@ -136,14 +162,28 @@ nf_nat_prerouting ...-> nft_do_chain
 		...
 }
 
+#ipset
+salist for iptables
+
+#SYN proxy
+SYNPROXY target makes handling of large SYN floods possible without the large performance penalties imposed by the connection tracking in such cases. 
+On 3 November 2013, SYN proxy functionality was merged into the Netfilter, with the release of version 3.12 of the Linux kernel mainline
+
 #Filter
-=Init Build iptables
+* Init Build iptables
 ~/linux/net/ipv4/netfilter/iptable_filter.c
 iptable_filter_init()
 struct xt_table packet_filter + iptable_filter_hook
 
+
+#iptables
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+
+#nftables
+
+
 #FAQ
-=Why not use nat_bysource;
+* Why not use nat_bysource;
 
 
 
