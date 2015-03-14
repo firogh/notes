@@ -1,8 +1,7 @@
 ---
-tags: golden-time
 title: lyubishchev-14
 date: 2015-02-27 15:46:11
-category: golden-time
+category: firo
 ---
 
 ###01 Jan
