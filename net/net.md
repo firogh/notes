@@ -1,6 +1,6 @@
 ---
 tags: net
-title: Linux Network stack
+title: Linux Network Stack
 date: 2015-02-27 15:46:13
 category: net
 ---
@@ -9,9 +9,15 @@ category: net
 [Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
-# INET     
+# INET 
 An implementation of the TCP/IP protocol suite for the LINUX operating system.  
 INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
+
+#PF_*
+* Capture frames
+PF_PACKET
+AF_PACKET sockets hand frames directly to dev_queue_xmit
+
 
 # Encapuslation
 
@@ -129,24 +135,18 @@ in such a way that it appears as though there is a dedicated physical layer link
 #Implemention of protocols
 * inet_create
 sock->ops = inet_protosw->ops = inet_stream_ops
-
 * proto_ops -- fops 
 is a good name stand for all PF_*, all 协议族, but sock_generic_ops is better 具体协议与BSD socket api的通用接口
-
 * proto, -- specific fs, like ext,  btfs in *inetsw*
 sock的lab决定具体的slab, 如tcp_sock/udp_sock, 根本的发送方法tcp_sendmsg, 协议的真正实体!
-
 * 越来越具体
 BSD socket api ->proto_ops(sock type base)协议通用api ->proto (udp/tcp_prot)
 sys_bind -> inet_stream_ops ->inet_bind ->sk_prot->bind(likely, is NULL)
 write->inet_stream_ops->sendmsg->tcp_sendmsg
-
 * inet_connection_sock_af_ops
 icsk->icsk_af_ops
-
 * net_protocol -- l4 rcv in *inet_protos*
 是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
-
 * packet_type -- l3 rcv in ptype_all and ptype_base
 pt_prev->func
 
@@ -159,7 +159,6 @@ Details and skills in Unix network programming.
 #Transport layer -- common
 * Multiplexing --  Ports can provide multiple endpoints on a single node. 
 inet_hash_connect()
-
 * Encapuslation to segment in skb
 	tcp_sendmsg->skb_add_data_nocache()
 
@@ -168,45 +167,53 @@ inet_hash_connect()
 Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
 Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
 Layer 4 virtual circuits uses segment number fix routed reorder delivery. Same order delivery.
-
 * Reliability -- assured,Error detection and correction
 Error --  checksum, the transport protocol may check that the data is not corrupted
 ACK is an indiction of segments lost.
 correction -- Retransmission, ARQ,Automatic repeat request schemes may be used to retransmit lost or corrupted data.
 verify correct receipt by sending an ACK or NACK message to the sender. 
-
 * Flow control
 Sliding Window
-
 * Congestion control
 icsk_ca_ops;
 tcp_ack {
 tcp_cong_avoid
 tcp_fastretrans_alert
-tcp_slow_start
-}
-
+tcp_slow_start}
 TCP send queue len /proc/sys/net/core/wmem_default
+
+##FIXME
+* Create TCP options
+tcp_syn_build_options()
+* Receive ack
+tcp_ack()
+记录ack的数据大小mss or tcp abc
+update snd_wl1 and snd_una
+slow path update mtu mss tcp_skb_cb.sacked
+* Active send data
+tcp_sendpage()/tcp_sendmsg()->tcp_write_xmit()/tcp_push_one()->tcp_transmit_skb
+* Timer expiring retransmiter
+tcp_retransmiter_timer()...->tcp_transmit_skb()
+* reponse for receiving an ACK
+tcp_data_snd_check()->tcp_write_xmit()
+* tcp_v4_rcv
+[skb->dev = NULL;](http://thread.gmane.org/gmane.linux.network/85613/focus=85614)
 
 #Network layer
 * Error detection, unreliable
 Best effort service,IP has a simple error handling algorithm: 
 throw away the datagram and try to send an ICMP message back to the source
-
 * Host addressing
 
-
-##IP
+#IP
 * IP Packet Fragmentation/Defragmentation
-
 * MSS tcp_sock->mss_cache in tcp_sync_mss not minus SACK option
 	in *tcp_current_mss* minus SACK option
 rfc1122
 + IP option is  fixed in a session icsk->icsk_ext_hdr_len;
 + is network header icsk->icsk_af_ops->net_header_len
 + tcp_sock->tcp_header_len all except SACK option (Not sure)
-
-#Reference
+##Reference
 [What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
 
 #ipv4 address
@@ -230,18 +237,36 @@ skb_shared_info->frag_list
 ip_fragment/ip_defrag
 [Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
 
-### Route
+## Route
 * state structure
 fib_info:route info
 fib_config:
-
+* add new rule
+iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
 * Multi-time line
 fib_create_info(): create a fib_info
 
-### Netfilter
+## Netfilter
 
 
 #data link layer
+##Reference
+* IEEE 802 suite
+IEEE 802.1—概述、体系结构和网络互连，以及网络管理和性能测量。 
+IEEE 802.2—逻辑链路控制LLC。最高层协议与任何一种局域网MAC子层的接口。 
+IEEE 802.3—CSMA/CD网络，定义CSMA/CD总线网的MAC子层和物理层的规范。 
+IEEE 802.4—令牌总线网。定义令牌传递总线网的MAC子层和物理层的规范。 
+IEEE 802.5—令牌环形网。定义令牌传递环形网的MAC子层和物理层的规范。 
+IEEE 802.6—城域网。 
+IEEE 802.7—宽带技术。 
+IEEE 802.8—光纤技术。 
+IEEE 802.9—综合话音数据局域网。 
+IEEE 802.10—可互操作的局域网的安全。 
+IEEE 802.11—无线局域网。 
+IEEE 802.12—优先高速局域网(100Mb/s)。 
+IEEE 802.13—有线电视(Cable-TV)。 
+
+##Common concepts
 * The link layer 
 is the group of methods and communications protocols that only operate on the link that a host is physically connected to. 
 
@@ -274,7 +299,7 @@ icmph->type == ICMP_DEST_UNREACH //3
 case ICMP_FRAG_NEEDED //4
 icmp_err,
 
-# Frame 
+## Frame 
 [Ethernet Frame](http://www.infocellar.com/networks/ethernet/frame.htm)
 + 一种不太确定的非严格的真实划分
 TCP/IP -> Ethenet II frame
@@ -348,8 +373,6 @@ __LINK_STATE_DORMANT
 
 * dev_watchdog,
 
-
-
 #Neighbor 
 * ip_output_finish2 -> __neigh_create -> tbl->constructor -> arp_constructor{
 if !dev->header_ops   //slip is the case, see sl_setup
@@ -396,20 +419,69 @@ static void ppp_setup(struct nethernetet_device *dev)
 }
 
 #PPP SLIP
-+
+
 #Data Framing
 dst_neigh_output->dev_hard_header ->  eth_header
 
 #TC Qdisc
+##Bibliography
+http://tldp.org/HOWTO/Traffic-Control-HOWTO/intro.html
+lartc.rog
+http://ace-host.stuart.id.au/russell/files/tc/
 
-+
+##Common concepts
+Shaping: Shapers delay packets to meet a desired rate.
+Scheduling: Schedulers arrange and/or rearrange packets for output.
+Classifying: Classifiers sort or separate traffic into queues.
+Policing: Policers measure and limit traffic in a particular queue.
+Dropping: Dropping discards an entire packet, flow or classification.
+Marking: Marking is a mechanism by which the packet is altered.
+
+##Add new qdisc
+RTM_NEWQDISC -> tc_modify_qdisc
+
+##The execution of u32 tc rule
+### user space tc qidsc add 
+ u32_parse_opt 
+{
+	-> parse_selector ->...-> parse_ip
+	struct nlmsghdr *n
+	rta = NLMSG_TAIL(n)
+	rta->type = TCA_U32_SEL
+
+}
+### kernel space
+NETLINK_ROUTE -> RTM_NEWTFILTER: see tc_filter_init -> tc_ctl_tfilter->(tp->ops->change = u32_change in net/sched/cls_u32.c) 
+tcf_exts_validate: init police and action of this shel tc command, 
+put sel in tc_u_knode;
+tc_u_knode insert in tc_u_hnode
+root is tcf_proto 入殓 by prior.
+tcf_proto -> tc_u_hnode -> tc_u_knode -> sel
+也就是用户太的selector没变存到内核中了.
+enqueue -> filter_list ->u32->classify() this classify is implement by u32!
+tcf_proto_ops->.kind = "u32", .classify   =   u32_classify,
+police and action invoke in tcf_action_exec , act register by tcf_register_action.
+
+* TCA_U32_CLASSID in u32_set_parms
+filter classid and flowid is the same meaning in russell tc doc
+* TCA_KIND in filter is u32...register_tcf_proto_ops
+
+##FAQ
+* conflict tc qidsc del with softnet_data->softnet_data
+ [PATCH] pkt_sched: Destroy gen estimators under rtnl_lock().
+http://thread.gmane.org/gmane.linux.network/102444/focus=102592
+After synchronize_rcu() in dev_deactivate() we are sure any qdisc_run(),
+from dev_queue_xmit() or net_tx_action() can only see and lock noop_qdisc.
+This was happened in dev_deactivate_many()
+* difference between synchronize_net and  synchronize_rcu?
+http://article.gmane.org/gmane.linux.network/196309/match=net_device+dismantle
+In this patch, we replace synchronize_rcu with synchronize_net().
+
 #LLC (TCP/IP rarely use this sub layer)
 * ptype MAC layer 之上, 可能是data link(llc) or network layer(ip)
 定义了所有从驱动上来的packet接收函数, 这里有ip_rcv 还有pppoe_rcv,llc_rcv, NO snap_rcv
 dev_add_pack
-llc_rcv{
-snap_rcv
-}
+llc_rcv{snap_rcv}
 netif_receive_skb ->ip/llc_rcv
 
 #NAPI
@@ -419,35 +491,15 @@ netif_receive_skb ->ip/llc_rcv
 + assignment in ip_output by = htons(ETH_P_IP)
 + assignment in driver by = eth_type_trans() 
 
-+
 #MAC
-
-+
-# Addressing
-LAN switching
-
-*IEEE 802 suite
-IEEE 802.1—概述、体系结构和网络互连，以及网络管理和性能测量。 
-IEEE 802.2—逻辑链路控制LLC。最高层协议与任何一种局域网MAC子层的接口。 
-IEEE 802.3—CSMA/CD网络，定义CSMA/CD总线网的MAC子层和物理层的规范。 
-IEEE 802.4—令牌总线网。定义令牌传递总线网的MAC子层和物理层的规范。 
-IEEE 802.5—令牌环形网。定义令牌传递环形网的MAC子层和物理层的规范。 
-IEEE 802.6—城域网。 
-IEEE 802.7—宽带技术。 
-IEEE 802.8—光纤技术。 
-IEEE 802.9—综合话音数据局域网。 
-IEEE 802.10—可互操作的局域网的安全。 
-IEEE 802.11—无线局域网。 
-IEEE 802.12—优先高速局域网(100Mb/s)。 
-IEEE 802.13—有线电视(Cable-TV)。 
+* Addressing,LAN switching
 
 #Physical layer -- PHY
-
 * Physical Coding Sublayer
 * Physical Medium Attachment Sublayer
 * Physical Medium Dependent Sublayer
 
-###out
+#out
 inet_stream_ops->tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
 ip_output()
@@ -479,7 +531,7 @@ xmit_one->
 
 softirq:net_tx_action()->qdisc_run()
 
-###in & forward
+#in & forward
 * NAPI poll_list net_device
 driver intr add skb to private queue -> e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:
 add napi to poll_list and __raise_softirq_irqoff()
@@ -509,12 +561,10 @@ dst_input()->
 	or 
 	ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
 }
-
 * Differences
 1 NAPI has not  netif_rx():input_pkt_queue.
 2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
 3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
-
 * Need clean
 net_tx_action->output_queue/每个设备的qdisc and  clear_bit__QDISC_STATE_SCHED qdisc_run add back
 __QDISC_STATE_SCHED是否加入softdata
@@ -522,29 +572,7 @@ qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
 __qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
 driver tx, stack xmit
 
-
-
-
-
-###register
-=outer
-e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
-vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
-
-
-###network init
-inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
-
-#Net  link
-iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
-
-
-#PF_*
-* Capture frames
-PF_PACKET
-AF_PACKET sockets hand frames directly to dev_queue_xmit
-
-###System initialization
+#System initialization
 start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 {
 	do_basic_setup()  
@@ -569,4 +597,13 @@ start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 	free_init_mem()
 	run_init_process()
 }
+
+#network init
+inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
+
+#net device init
+=outer
+e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
+vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
+
 
