@@ -1,10 +1,10 @@
 ---
 tags: cs
-title: git
+title: Programming Utility
 date: 2015-02-27 15:46:14
 category: cs
 ---
-###git 
+#git 
 git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
 
 git ls-files -d |xargs -i git checkout {}
@@ -20,6 +20,23 @@ git log -S "RTN_UNSPEC" --source --all
 * find commit id of a tag
     git rev-parse v2.6.12-rc2
 
-#revert changes
+##revert changes
 =checkout all changes
 
+#Makefile
+
+##debug
+=Just print echo 
+make -s 
+
+=Print shell command
+make -n
+
+=Print all variables. Wired-name variable is useful to debug
+make -p
+
+=Pirnt a message
+$(warning ...)
+
+=Etc
+--warn-undefined-variables

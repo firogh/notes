@@ -1,25 +1,26 @@
 ---
 tags: cs
-title: c
+title: The  programming language
 date: 2015-02-27 15:46:14
 category: cs
 ---
-#COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY
+# The c programming language
+##COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY
 http://www.tenouk.com/ModuleW.html
 
-#Book
+##Book
 C Traps and Pitfalls
 Expert C Programming
 
 
-#linkage
+##linkage
 Happened in link(ld) step.
 Link source object and library.(so-called environment.)
 Internal linkage refers to everything only in scope of a translation unit. 
 External linkage refers to things that exist beyond a particular translation unit.
 
-#lexical pitfall
-# Greedy lexical analysis
+##lexical pitfall
+## Greedy lexical analysis
 
 * Write tokens with blank!
 x = y/*p;  /* oops, hidden error.*/
@@ -31,7 +32,7 @@ You donot need to remember it! Just use it!
 * Precedence
 Need to remember, but if you not sure, parenthess.
 
-#Common concepts
+##Common concepts
 * Every C variable declaration has two parts: a type and a list of expression-like things called declarators.
 * A declarator looks something like an expression that is expected to evaluate to the given type.
 * C compiler to translate C programs into terms that make sense to the linker.
@@ -39,13 +40,13 @@ Need to remember, but if you not sure, parenthess.
 * Expression?
 * Satement?
 
-#Bitfiled with endianess
+##Bitfiled with endianess
 http://yarchive.net/comp/linux/bitfields.html
 http://mjfrazer.org/mjfrazer/bitfields/
 http://www.naic.edu/~phil/notes/bitfieldStorage.html
 http://www.linuxjournal.com/article/6788?page=0,0
 
-#FAQ
+##FAQ
 * Logical operation with signed value? x86!
 int c = 0xFFFFFFFF;  int d = c >> 31; => d == f;
 unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
@@ -53,19 +54,27 @@ unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
 c >> 296 == c >> 8
 
 * Diffences between strlen() and sizeof()?
-char *s, s1[]; are same to strlen(), sizeof(s) == 8 in x86_64, sizeof(s1) == stlen + 1; one for \0
 
-* C volatile?
-volatile int c= 1;
-c = c; //?
+#ASM
+bdi 4, 8 delay solt
 
-* C const
-const int *x; //Is a bad declartion!
-int const *x; //Is a good declarion!
 
-+ Below codes no Warning!!!
-    int z =1;         
-    int const *y =&z ;
-We can conclude that const int *, the type specifier and qualifiers only apply to declarator y! not z!
+mips instruction size is fixed, 32bit, 4byte.
 
+instruction address:  instrction in hex formate	   instruction in string formate, 260
+8002c28c:   8c440104    lw  a0,260(v0)
+
+##lwr & lwl
+load a word
+different with endianess
+register 63.....32......0
+big endian: lwl high bits in b + 0
+little endian: lwl high in b + off
+向中心
+
+##endianess
+ar71xx big
+ralink little
+
+cpu -> toolchain
 
