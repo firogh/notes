@@ -28,6 +28,9 @@ TSO = GSO_TCPV4
 frags = sg I/O
 frag_list
 
+*GRO
+napi -> dev ->inet->skb
+
 # package name in different layer
 An individual package of transmitted data is commonly called a frame on the link layer, L2; 
 a packet on the network layer; a segment on the transport layer; and a message on the application layer.
@@ -85,6 +88,8 @@ allocated and when __netdev_alloc_page is called,
 
 * sk_set_memalloc
 SOCK_MEMALLOC, sock has feature mem alloc for free memory.
+只有到了sock层才能分辨, sock是否是memalloc的.
+sk_filter
 
 * control buffer skb-cb
 tcp_skb_cb
@@ -97,6 +102,7 @@ Local socket address: Local IP address and port number
 Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
 Remote socket address, if connected to another socket.
 struct sockaddr
+socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create
 
 * Abstruction Concepts of socket
 sock_common: 5 tuples, the essence of sock
@@ -338,6 +344,7 @@ __LINK_STATE_DORMANT
     __QUEUE_STATE_DRV_XOFF,     netif_tx_stop_queue
     __QUEUE_STATE_STACK_XOFF,    
     __QUEUE_STATE_FROZEN,
+可以确定这个frozen这个标志位就是为了dev_watchdog服务, 从所有内核态代码调用的位置得出的.
 
 * dev_watchdog,
 
@@ -474,12 +481,19 @@ softirq:net_tx_action()->qdisc_run()
 
 ###in & forward
 * NAPI poll_list net_device
-driver intr e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:add napi to poll_list and __raise_softirq_irqoff()
-do_softirq->net_rx_action()->netdev->poll()=e100_poll()->e100_rx_clean()...netif_receive_skb()->
+driver intr add skb to private queue -> e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:
+add napi to poll_list and __raise_softirq_irqoff()
+do_softirq->net_rx_action()->
++netdev->poll()=e100_poll()private function->e100_rx_clean()...->
+netif_receive_skb()->deliver_skb->
+private queue and private function
 
 * Non-NAPI input_pkt_queue skb
-driver intr vortex_rx()->netif_rx()->napi_schedule(backlog)->add napi to poll_list and__raise_softirq_irqoff()
-async:net_rx_action()->backlog->poll()=process_backlog()->netif_receive_skb()->deliver_skb->
+driver intr vortex_rx()->netif_rx()->add skb to SD input_pkt_queue->napi_schedule(backlog)->add backlog to SD poll_list __raise_softirq_irqoff()
+async:net_rx_action()->
++backlog->poll()=process_backlog()
+->netif_receive_skb()->deliver_skb->
+skb to sd input_pkt_queue process
 
 * common path
 pt_prev->func=ip_rcv()->NF_INET_PRE_ROUTING->ip_rcv_finish()->
