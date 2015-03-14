@@ -20,12 +20,41 @@ category: kernel
 in the context of whichever process happens to be running at the wrong time; 
 that is the "randomly chosen victim" aspect that Thomas was talking about.
 
-##preempt_count
+##Preemption
+* Linux kernel user mode is always User preemption.
+When returning to user-space from a system call.
+When returning to user-space from an interrupt hander.
+* Linux kernel kernel mode is coppertive when CONFIG_PREEMPT is not set.
+If a task in the kernel explicitly calls schedule()
+If a task in the kernel blocked (which results in a all to schedule())
+* Linux kernel kernel mode is coppertive + preemptive when CONFIG_PREEMPT is set.
+schedule + blcoked
+When an interrupt handler exits, before returning to kernel-space.
+When kernel code becomes preemptible again.
+
+###Entries of preempt schdule, FIXME
+1 After Interrupt return,preempt_count_irq.
+2 cond_resched
+3 preempt_count
+
+###What is the PREEMPT_ACTIVE
+* This sets a flag bit in the preemption counter that has such a large value
+	that it is never affected by the regular preemption counter increments
+
+* It indicates to the schedule function that scheduling was not 
+	invoked in the normal way but as a result of a kernel preemption.
+
+* This ensures that the next task is selected as quickly as possible without 
+	the hassle of deactivating the current one. If a high-priority task is waiting 
+	to be scheduled, it will be picked by the scheduler class and will be allowed to run.
+
+###preempt_count
 * preempt 8
 * softirq 8
 * irq	4
 * preempt active 1
 * nmi 1
+
 
 #Interrupt
 ##Interrupt Context terminology
