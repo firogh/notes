@@ -1,17 +1,16 @@
 ---
 tags: cs
-title: The  programming language
+title: The programming language
 date: 2015-02-27 15:46:14
 category: cs
 ---
 # The c programming language
-##COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY
+##compiler, assembler, linker and loader: a brief story
 http://www.tenouk.com/ModuleW.html
 
 ##Book
 C Traps and Pitfalls
 Expert C Programming
-
 
 ##linkage
 Happened in link(ld) step.
@@ -24,11 +23,8 @@ External linkage refers to things that exist beyond a particular translation uni
 
 * Write tokens with blank!
 x = y/*p;  /* oops, hidden error.*/
-
-
 * Associative
 You donot need to remember it! Just use it!
-
 * Precedence
 Need to remember, but if you not sure, parenthess.
 
@@ -52,15 +48,11 @@ int c = 0xFFFFFFFF;  int d = c >> 31; => d == f;
 unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
 * shift beyond bits long?
 c >> 296 == c >> 8
-
 * Diffences between strlen() and sizeof()?
 
 #ASM
 bdi 4, 8 delay solt
-
-
 mips instruction size is fixed, 32bit, 4byte.
-
 instruction address:  instrction in hex formate	   instruction in string formate, 260
 8002c28c:   8c440104    lw  a0,260(v0)
 
@@ -75,6 +67,4 @@ little endian: lwl high in b + off
 ##endianess
 ar71xx big
 ralink little
-
 cpu -> toolchain
-
