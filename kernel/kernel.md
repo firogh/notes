@@ -103,3 +103,104 @@ clean kernel code
 
 
 =Write kernel code
+
+#KVM
+* KVM architecture
+* Kernel running flow
+  svm.ko -> svm_init(svm.c) -> kvm_init(kvm_main.c) -> 
+* File
+  svm.c vmx.c kvm_main.c kvm_svm.h 
+* Function  
+* Struct
+  kvm_x86_ops x86.h
+  vcpu_svm    kvm_svm.h  
+ 
+
+#Signal
+* struct signal_sturct: 
+The "struct signal_struct" is the random *leftovers* from all the other stuff.
+http://thread.gmane.org/gmane.linux.kernel/512831/focus=513990
+
+* sigpending
+Store blocked signal info
+
+##Generate signal
+__send_signal();
+
+##Process siganl
+* SIGKILL (may be some other)
+process in _send_signal()-> complete_signal() tsk->state |= TASK_WAKEKILL 
+http://lwn.net/Articles/288056/
+http://www.ibm.com/developerworks/library/l-task-killable/
+
+* others
+each time a switch is made from kernel mode to user mode, 
+arch-specific: entry.S -> do_siganl()
+{ 
+	get_signal_deliver()
+	{
+		if fatal -> do_greoup_exit()->...__cleanup_sighand()
+	}
+
+	handle_signal() -> k->u(hanle)-sigreturn->k
+}
+
+##FAQ
+* Non-mask signal
+SIGKILL, SIGSTOP
+
+* __schedule()
+
+#Netlink
+* Group
+enum rtnetlink_groups
+
+##What is netlink
+Networking related kernel configuration and monitoring interfaces.
+* IPC between kernel and user spacess process.
+ioctl
+
+* prarts
+	libnl
+	libnl-route
+	libnl-genl
+	libnl-nf
+
+* How many parts does libnl-route has?
+Address,  links, neighboring, routing, TC
+
+##Faq
+* What is the shortage of libnl-route.
+    skbedit action
+    cgroup classifier
+    tun/tap dev 
+    gre tunnel dev 
+    tc classifier/action
+
+
+#Namespace
+
+#Module
+##pre-require
+modules.alias
+http://doc.opensuse.org/documentation/html/openSUSE_113/opensuse-reference/cha.udev.html
+
+http://blog.chinaunix.net/uid-22954220-id-4380202.html
+运行时, 插入u盘也是这样.
+
+2. 内核自己加载比如缺少模块的时候 网络协议, fs
+https://unix.stackexchange.com/questions/90027/what-is-the-sequence-loading-linux-kernel-module-on-startup-how-priority-is-set/90037#90037
+
+3 rc 里面smartqos之类的.
+
+##Load module into kernel
+vmlinux.lds.h linker scipts include helper macros.
+
+
+#Patch
+
+#Data structures
+* u32 __u32
+__u32 is used for user-space. declare a variabe used by icotl. qosmark.
+u32 is used for kernel.
+deatils in ldd3e chapter 10
