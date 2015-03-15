@@ -2,7 +2,7 @@
 layout: post
 date: 2014-12-28
 title: The perspective of thinking
-category: cogito
+category: firo
 ---
 
 #IBM maturity model

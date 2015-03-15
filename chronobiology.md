@@ -1,8 +1,7 @@
 ---
-tags: akasha
 title: chronobiology
 date: 2015-02-27 15:46:11
-category: akasha
+category: firo
 ---
 #Chronobiology of day 
 Dwell				Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
