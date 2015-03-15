@@ -91,6 +91,9 @@ job hopping
 smartqos failed to init 
 
 #FAQ
+##philosophy
+现象学分析方法?
+什么是观念, 概念?
 
 ##kernel
 find source code of config

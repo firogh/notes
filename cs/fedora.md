@@ -5,6 +5,9 @@ date: 2015-02-27 15:46:11
 category: cs
 ---
 
+#Goagent
+139.175.107.84|139.175.107.89|139.175.107.94|139.175.107.99|139.175.107.103|139.175.107.104|139.175.107.108|139.175.107.109|139.175.107.113|139.175.107.118|139.175.107.119|139.175.107.123
+
 #Nautilus
 * Sidebar
 Edit below file to rename dir in place menu of sidebar.
@@ -14,7 +17,6 @@ vim ~/.config/user-dirs.dirs
 #xdg 
 * Specification
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-
 
 #Raspberry pi
 
