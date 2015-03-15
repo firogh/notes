@@ -1,8 +1,7 @@
 ---
-layout: post
 date: 2014-12-28
 title: Physical life
-category: akasha
+category: firo
 ---
 
 #Body
