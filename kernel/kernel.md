@@ -204,3 +204,26 @@ vmlinux.lds.h linker scipts include helper macros.
 __u32 is used for user-space. declare a variabe used by icotl. qosmark.
 u32 is used for kernel.
 deatils in ldd3e chapter 10
+
+
+#Panic
+kernel/kernel/panic.c
+
+
+#init
+##initcall
+
+
+
+#disk 
+subsys_initcall 4 genhd_device_init with base_probe{ request_module()}
+module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
+
+
+#cmd line
+root= name_to_dev_t, mount_root in prepare_namespace
+如果/init不能 sys_access, 则prepare_namespace,切换到真正的root=指定的设备上设备在sd_probe上初始化了.
+systemd负责挂在文件系统, 切换.
+
+
+

@@ -89,5 +89,10 @@ find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d
 ###qemu
 qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img -k en-us
 
+###rdesktop
+rdesktop -K -g 1366x700 -r clipboard:PRIMARYCLIPBOARD 192.168.10.200 -r sound:local -u firo -p ""
+rdesktop -K -g 1366x700 -r clipboard:CLIPBOAD 192.168.10.200
+
 ###readelf
 readelf -S module.ko
+

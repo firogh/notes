@@ -5,6 +5,9 @@ date: 2015-02-27 15:46:12
 category: kernel
 ---
 
+#Hacks
+I suddenly find that a good way to understand fs in kernel is to manupulate a small and complete fs, like ramfs or tmpfs.
+
 #VFS
 ##Common concepts
 * VFS:Common fs interface plus fs anstraction layer! 
@@ -54,3 +57,47 @@ set inode to dentry
 * Read only kernel infomation. /proc
 ##I think, important directory need to know.
 /proc/sys/kernel
+
+
+#Sysfs
+sysfs is strongly depend on driver module, just rmmod tg3 then /sys/class/net/enp9s0 went away!
+
+#Ramfs
+fs/ramfs
+
+##reference
+[Overview of RAMFS and TMPFS on Linux](http://www.thegeekstuff.com/2008/11/overview-of-ramfs-and-tmpfs-on-linux/)
+
+
+#tmpfs
+mm/shmem.c
+[关于 tmpfs](http://wangcong.org/2012/02/17/-e5-85-b3-e4-ba-8e-tmpfs/)
+
+#rootfs
+init/do_mounts.c
+init_rootfs()
+init_mount_tree
+rootfs = IS_ENABLED(CONFIG_TMPFS) ? tmpfs : ramfs
+但是在do_basic_setup才初始化.
+rootfs_initcall(populate_rootfs);
+
+#initramfs
+init/initramfs.c
+
+##Difference with initrd
+initrd is image with specific fs type, like ext2, need driver built-in kernel.
+initramfs is a cpio, like tar only simpler, populated to rootfs in kernel, with fs type rootfs
+
+##request driver
+ata_host_register->ata_scsi_scan_host->__scsi_add_device->scsi_probe_and_add_lun ->scsi_add_lun
+
+subsys_initcall(genhd_device_init);->kobj_map_init{bdev_map.probe.get = base_probe}
+
+subsys_initcall(init_scsi);4->scsi_sysfs_register{autoprobe = 1;}
+rootfs_initcall(populate_rootfs);->{unpack_to_rootfs; 解压initramfs到rootfs}
+module_initinit_sd;6->scsi_register_driver ->driver_register->bus_add_driver ->driver_attach ->driver_probe_device-> drv->probe(dev)=sd_probe_async->add_disk -> register_disk -> get_gendisk -> kobj_lookup { bdev_map.probe.get()=base_probe(){request_module}}
+
+##mount fs
+kernel_init_freeable-> if  /init in initramfs 可以访问 根文件系统挂在和chroot交给/init也就是systemd
+如果/init不可以访问 prepare_namespace{挂在真正的文件系统}
+
