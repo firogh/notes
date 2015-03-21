@@ -10,6 +10,13 @@ category: philosophy
 [Most American dictionaries dont write the triangular colon at all: fleece /flis/](http://teflpedia.com/IPA_phoneme_/i%CB%90/)
 British iː -> American i
 British ɪə -> American ɪ -> strict IPA ɪə ̯ 
+[IPA table with sounds](http://www.internationalphoneticalphabet.org/ipa-sounds/ipa-chart-with-sounds/)
+
+###Vowels
+Short vowel[It is important to remember that the term short does not refer to the length of time a vowel sound is held or said aloud.  Rather, it is a label used to differentiate these sounds from long vowel sounds.](https://blog.udemy.com/american-english-pronunciation-2/)
+[Short and Long Vowels Differences and Examples](https://blog.udemy.com/short-and-long-vowel-differences/)
+[The Long & Short Vowels Song ♫♪♫](https://www.youtube.com/watch?v=4TjcT7Gto3U)
+
 
 ##Syntax
 造句法则
