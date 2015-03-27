@@ -17,6 +17,12 @@ Short vowel[It is important to remember that the term short does not refer to th
 [Short and Long Vowels Differences and Examples](https://blog.udemy.com/short-and-long-vowel-differences/)
 [The Long & Short Vowels Song ♫♪♫](https://www.youtube.com/watch?v=4TjcT7Gto3U)
 
+###Neutral
+I ɛ ə/ʌ ʊ
+
+###
+i: ee ea ie ei 
+I: i y
 
 ##Syntax
 造句法则

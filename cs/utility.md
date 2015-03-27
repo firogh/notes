@@ -4,6 +4,15 @@ title: Programming Utility
 date: 2015-02-27 15:46:14
 category: cs
 ---
+#Monitor
+[Linux Performance Tools](http://www.brendangregg.com/Perf/linux_observability_tools.png)
+ltrace
+strace
+ftrace
+lsof
+
+
+
 #git 
 git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
 
