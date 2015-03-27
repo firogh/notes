@@ -95,6 +95,9 @@ smartqos failed to init
 现象学分析方法?
 什么是观念, 概念?
 
+##CS
+libev 变量的生存周期
+
 ##kernel
 find source code of config
 
