@@ -3,86 +3,39 @@ title: chronobiology
 date: 2015-02-27 15:46:11
 category: firo
 ---
-#Chronobiology of day 
+
+#Chronobiology
 Dwell				Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
 Traffic				Bus subway walking														
 Breakfast			Must																		
 Lunch				
 Dinner				
 Fintness			abdominals chest muscle													
-Bathing			   	Body																		
 Sleep
 Writing				critique absurd
 Lyubishchev			Statistics time																
 Relax				Siesta 10 mph
 Washing				Face
-
-
-#Things of week
-=House clean, saturday morning.
-=Watching cloths, saturday moring.
-
-
-=Physical exercise schedule table
-
-###2014
-##Health
-* Physical exercise 
-+is any bodily activity that enhances or maintains
-	physical fitness and wellness
-+It is ecommended that people engage in some type
-	of aerobic activity for at least 30 minutes
-	on most days and preferably days of all week.	
-* Fitness
-+锻炼肌肉是撕裂愈合的过程, 腹肌除外, 锻炼后休息1~3天
-+拍照记录
-+...仰卧起坐, 蹲起, 俯卧撑 每天30个.
-
-
-
-##Travel
-Dali			2014-12
-
-##Reading
-
-##Writing
-
-
-###2015
-Redhat 
-Yunnan Remote working
-=Workaround
-* pppoe fail connection data report
-* analysis complicated pppoe fail stuff.
-* add stop interface to disable data upload
-* setup smartqos in hotplug
-* kernel bug type
-* life cognitive
-
-=Tal
-* ruanyifeng
-* Haitao
-* Medical examination
-* CHeck House funding in phone
-* How do I leave such field?
-* 北京空气为什么污染这么严重？
-* Record bus stamp of arriving bustation
-* Trousers
-* Physical exercise schedule table
-* Housing Fund
-* Body care
-
-#What is I really want
-A process, not a target. Process of living, working, loving        
-                             
-#Most Wanted
-* Health and nature life.
-* My family lover and friends
-* Freelancer kernel developer
+Physical exercise	10:00 
+Bathing			   	10:45
+House clean, saturday morning.
+Watching cloths, saturday moring.
 
 #TODO
-cmb-visa credit card
-job hopping
+Love the persons that love me, absolutely, included myself and girl friend!
+Job hopping Redhat or someplace
+Go to a place to live comfortably, grow up, meet up more and more.
+English write and spoke.
+American kernel job.
+Cognition in philosophy
+Live style 
+Dressing
+* Health
+Physical exercise 
+* Travel
+Dali			2014-12
+* Writing
+Keep diary
 
 ## literature
 关于人的思维进食
@@ -101,7 +54,6 @@ libev 变量的生存周期
 ##kernel
 find source code of config
 
-
 How to print backtrace by kernel oops, and why it's not exact?
 
 What is .byte in oops
@@ -116,7 +68,6 @@ why get_unaligned_be16?
  _THIS_IP_ vs __FUNCTIONS__
 
 ##net
-
 *first_device 用途？
 subsys 在前, device在后.
 
@@ -135,3 +86,6 @@ net_poll
 napi
 
 * What is Head-of-line blocking
+
+
+
