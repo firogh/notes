@@ -27,9 +27,31 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 胡适日记全集》第三册，1921年7月10一则
 杜威先生不曾给我们一些关于特别问题的特别主张，——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，
 使我们用这个方法去解决我们自己的特别问题。
-+   （1）历史的方法——“祖孙的方法”   the genetic method, 他从来不把一个制度或学说，看做一个孤立的东西，总被他看做一个中段；一头是他所以发生的原因，一头是他自己发生的效果；上头有他的祖父，下头有他的孙子。捉住了这两头，他再也逃不出去了！这个方法的应用，一方面是很忠厚宽恕的，因为他处处指出一个制度或学说所以发生的原因，指出他历史的背景，故能了解他在历史上的地位和价值，故不致有过分的苛责。一方面，这个方法又是很严厉的，最带有革命性质的。因为他处处拿一个学说或制度发生的结果，来评判他本身的价值，故最公平，又最利害。这种方法，是一切带有评判（Critical）精神的运动的一个武器。
-+ （2）实验的方法　　实验的方法，至少注重三件事：（一）从具体的事实与境地下手；（二）一切学说理想，一切知识，都只是待证的假设，并非天经地义；（三）一切学说与理想，都须用实行来试验过。实验是真理的唯一试金石。第一件，——注意具体的境地——使我们免去许多无谓的问题，省去许多无意识的争论。第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
+* （1）历史的方法——“祖孙的方法”   the genetic method 
+他从来不把一个制度或学说，看做一个孤立的东西，总被他看做一个中段；一头是他所以发生的原因，一头是他自己发生的效果；上头有他的祖父，下头有他的孙子。捉住了这两头，他再也逃不出去了！这个方法的应用，一方面是很忠厚宽恕的，因为他处处指出一个制度或学说所以发生的原因，指出他历史的背景，故能了解他在历史上的地位和价值，故不致有过分的苛责。一方面，这个方法又是很严厉的，最带有革命性质的。因为他处处拿一个学说或制度发生的结果，来评判他本身的价值，故最公平，又最利害。这种方法，是一切带有评判（Critical）精神的运动的一个武器。
+* （2）实验的方法　　实验的方法，至少注重三件事：
+（一）从具体的事实与境地下手；
+（二）一切学说理想，一切知识，都只是待证的假设，并非天经地义；
+（三）一切学说与理想，都须用实行来试验过。实验是真理的唯一试金石。
+第一件，——注意具体的境地——使我们免去许多无谓的问题，省去许多无意识的争论。
+第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
+第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
+
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
+
+* Abstruction method
+1. 解决知识的skeleton, 原理.
+2. 建立同其他原理相似的知识的联系
+3. 得到从一般的定义推理.
+
+* 实验的method 
+（一）从具体的事实与境地下手；
+
+
+* Exploration in Scott Young
+Depth exploration is the genetic method, 因果
+Lateral exploration 和周围的关系, 涵盖比较广.实验法从具体事实与境地下手.
+Vertical Exploration is the abstruction method, focus on mode and link to derivations. It use to connects with other knowledge.
 
 # Growing up -- 人最重要的是会成长! 
 + 生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
@@ -39,8 +61,8 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 成长不同阶段, 比如页表回收又算法,也有具体的代码实现. 我们只要知道算法就可以了.
 
 Listen, the key is to just... relax. Don't worry about the numbers, don't worry about what the other guys are thinking. 
-Dont think... just feel
 
+Dont think... just feel
 
 所谓的自我认知不是达成一切，不是什么事情都要做到完美，而是知道自己所能做到力所能及的事情和无能为力的事情，我要说的是，要学会原谅自己的无能为力 
 
@@ -54,8 +76,11 @@ Dont think... just feel
 不要以为努力过后, 就会得到, 永远也不要这样想. 
 
 # What is knowledge?
-* conception system
-knowledge is a system, not a something heaping up
+* conception system 
+knowledge is a coneption system, not a something heaping up
+We need a good construct in mind.
+mode is an abstructions.
+
 
 * 从general concept or 直观推导出.
 否则就是记忆.
