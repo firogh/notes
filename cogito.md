@@ -39,6 +39,10 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
 
+* Origin method 起源主义
+init is rule and pure
+develop is complication and unpredictable
+
 * Abstruction method
 1. 解决知识的skeleton, 原理.
 2. 建立同其他原理相似的知识的联系
