@@ -308,7 +308,7 @@ dst_input()->
 	ip_forward()->NF_INET_FORWARD->ip_forward_finish()->dst_output()见上。
 }
 * Differences
-1 NAPI has not  netif_rx():input_pkt_queue.
+1 NAPI has not netif_rx():input_pkt_queue.
 2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
 3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
 * Need clean
