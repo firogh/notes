@@ -1,6 +1,6 @@
 ---
 tags: cs
-title: debug
+title: General debug method
 date: 2015-02-27 15:46:14
 category: cs
 ---
@@ -71,8 +71,6 @@ echo 1 > /proc/sys/kernel/debug_signal
 /home/build/x/ab/mips-openwrt-linux-addr2line -C -f -e /data/logs/hwf-health-chk/debug-root/HC6361/0.9005.5384s/debugfs/tmp/data/usr/bin/aria2c  0x00607188
 aria2::ZeroBtMessage::~ZeroBtMessage()
 
-
-
 name.c:2445: REQUIRE((((source) != ((void *)0)) && (((const isc__magic_t *)(source))->magic == ((('D') << 24 | ('N') << 16 | ('S') << 8 | ('n')))))) failed, back trace
 *#0 0x7fba521689e7 in ??
 *#1 0x7fba5216893a in ??
@@ -112,23 +110,6 @@ custom qdisc
 
 = action of receiver's correspond signal
 * Ignore should be ommitted.
-
-
-#define debugme(fmt, args...) \
-	do { \
-		FILE *fdebug = fopen("/d.log", "a+"); \
-		time_t tdebug; time(&tdebug); \
-		fprintf(fdebug,"%s", asctime(localtime(&tdebug))); \
-		fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__); \
-		fprintf(fdebug, fmt, ##args);fclose(fdebug); \
-	} while(0)
-
-
-	
-
-
-#define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log","a+");time_t tdebug;time(&tdebug);char *s= asctime(localtime(&tdebug));fprintf(fdebug    ,"%.*s,%s,%d:", strlen(s) - 1, s, __FUNCTION__, __LINE__);fprintf(fdebug,fmt,##args);fclose(fdebug);}while(0)
-
 
 #locate codes
 * Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise

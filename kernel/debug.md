@@ -12,23 +12,30 @@ vers/media/media-device.c:146 __media_device_enum_links() warn: check that 'pad'
 drivers/media/media-device.c:167 __media_device_enum_links() warn: check that 'link' doesn't leak information (struct has a hole after 'index')
 
 #[Common types of computer bugs](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
-* Arithmetic bugs
-* syntax error
-* Logic error
+## Arithmetic bugs
+## syntax error
+## Logic error
 Incorrect Bounds-Checking
 off-by-one bug
 Skipping Null-Termination Issues
-* Resource bugs
+## Resource bugs
 uninitialized/nonvalidated/corrupted pointer dereference.
 Segmentation fault
-* Multi-threading programming bugs(parallel problems)
-* Interfacing bugs
-* Performance bugs
-* Teamworking bugs
-##Vulnerable bugs
-unbounded memory manipulation functions
-Non-Null Termination Issues
+* deadlock
+## Race condition bug
+Multi-threading programming bugs(parallel problems)
+## Interfacing bugs
+## Performance bugs
+## Teamworking bugs
+## Vulnerable bugs
+*unbounded memory manipulation functions
+strcpy
+* Non-Null Termination Issues
+non terminaed string
+*Formate string
 [Format Strings attacker](https://www.owasp.org/index.php/Format_string_attack) or [Uncontrolled format string](https://en.wikipedia.org/wiki/Uncontrolled_format_string)
+* integer issues
+integer overflow
 Signed Comparison Vulnerabilities
 
 ##Taxonomy of Kernel BUG
