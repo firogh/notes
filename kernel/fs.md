@@ -87,7 +87,7 @@ init/initramfs.c
 initrd is image with specific fs type, like ext2, need driver built-in kernel.
 initramfs is a cpio, like tar only simpler, populated to rootfs in kernel, with fs type rootfs
 
-##request driver
+##request hard drive driver maybe fs driver
 ata_host_register->ata_scsi_scan_host->__scsi_add_device->scsi_probe_and_add_lun ->scsi_add_lun
 
 subsys_initcall(genhd_device_init);->kobj_map_init{bdev_map.probe.get = base_probe}
@@ -97,6 +97,6 @@ rootfs_initcall(populate_rootfs);->{unpack_to_rootfs; 解压initramfs到rootfs}
 module_initinit_sd;6->scsi_register_driver ->driver_register->bus_add_driver ->driver_attach ->driver_probe_device-> drv->probe(dev)=sd_probe_async->add_disk -> register_disk -> get_gendisk -> kobj_lookup { bdev_map.probe.get()=base_probe(){request_module}}
 
 ##mount fs
-kernel_init_freeable-> if  /init in initramfs 可以访问 根文件系统挂在和chroot交给/init也就是systemd
+kernel_init_freeable-> if /init in initramfs 可以访问 根文件系统挂在和chroot交给/init也就是systemd
 如果/init不可以访问 prepare_namespace{挂在真正的文件系统}
 

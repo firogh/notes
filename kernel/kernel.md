@@ -114,6 +114,8 @@ clean kernel code
 * Struct
   kvm_x86_ops x86.h
   vcpu_svm    kvm_svm.h  
+
+##KSM
  
 
 #Signal
@@ -212,8 +214,6 @@ kernel/kernel/panic.c
 
 #init
 ##initcall
-
-
 
 #disk 
 subsys_initcall 4 genhd_device_init with base_probe{ request_module()}

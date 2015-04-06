@@ -27,7 +27,7 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 胡适日记全集》第三册，1921年7月10一则
 杜威先生不曾给我们一些关于特别问题的特别主张，——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，
 使我们用这个方法去解决我们自己的特别问题。
-* （1）历史的方法——“祖孙的方法”   the genetic method 
+* （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
 他从来不把一个制度或学说，看做一个孤立的东西，总被他看做一个中段；一头是他所以发生的原因，一头是他自己发生的效果；上头有他的祖父，下头有他的孙子。捉住了这两头，他再也逃不出去了！这个方法的应用，一方面是很忠厚宽恕的，因为他处处指出一个制度或学说所以发生的原因，指出他历史的背景，故能了解他在历史上的地位和价值，故不致有过分的苛责。一方面，这个方法又是很严厉的，最带有革命性质的。因为他处处拿一个学说或制度发生的结果，来评判他本身的价值，故最公平，又最利害。这种方法，是一切带有评判（Critical）精神的运动的一个武器。
 * （2）实验的方法　　实验的方法，至少注重三件事：
 （一）从具体的事实与境地下手；
@@ -39,18 +39,16 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
 
-* Origin method 起源主义
-init is rule and pure
-develop is complication and unpredictable
-
 * Abstruction method
 1. 解决知识的skeleton, 原理.
 2. 建立同其他原理相似的知识的联系
 3. 得到从一般的定义推理.
 
-* 实验的method 
-（一）从具体的事实与境地下手；
-
+* Origin method 起源主义 + why xxx?
+也是从具体的事实和境地下手, 比如说, debug, debug的工具是bug的一种属性上的衍生.
+正反
+init is rule and pure
+develop is complication and unpredictable
 
 * Exploration in Scott Young
 Depth exploration is the genetic method, 因果
@@ -85,9 +83,9 @@ knowledge is a coneption system, not a something heaping up
 We need a good construct in mind.
 mode is an abstructions.
 
-
 * 从general concept or 直观推导出.
 否则就是记忆.
+Category can be general
 
 * 一一性
 
@@ -96,12 +94,19 @@ mode is an abstructions.
 * The thing that hath been, it is that which shall be; and that which is done 
 is that which shall be done and there is no new thing under the sun.
 
+# 做人
+不做無異事，一日當三日，人活五十年，我活百五年。 (我以为少做 --firo.)
+讀古人的書，一方面要知道古人聰明到怎樣，一方面也要知道古人傻到怎樣。
+人生的大病根本在於不肯睜開眼睛來看世間的真實現狀.
+不受人惑 -- 胡适
+
+做人莫不可失了做事之心态-- firo
+
+
 # Society
 生活就是同傻逼的战争!
 
-* 每个人都有自己内心的弱点, 不必害怕他们.
-
-* 男的喜欢屁股翘胸大, 身材火辣, 年轻漂亮的女生. 反过来, 女生, 也喜欢,阳刚威武, 身材健硕, 肌肉结实, 成熟富有男人味, 俊朗外表, 有安全感的, 视觉享受的男士!
+每个人都有自己内心的弱点, 不必害怕他们.
 
 他人即地狱,世界是荒诞的.
 
