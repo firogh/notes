@@ -186,6 +186,14 @@ mips instruction size is fixed, 32bit, 4byte.
 instruction address:  instrction in hex formate	   instruction in string formate, 260
 8002c28c:   8c440104    lw  a0,260(v0)
 
+##ASM codes Fixme
+move <-
+j long jump
+b short jump
+a0, a1...99% is parameters.
+
+
+
 ##lwr & lwl
 load a word
 different with endianess
