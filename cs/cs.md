@@ -325,3 +325,7 @@ ELF header.
 Program header table.
 Segments.
 Section header table.
+
+# general skilll
+## locate codes in complex program source files .
+* Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
