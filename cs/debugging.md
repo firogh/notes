@@ -61,10 +61,9 @@ gcc -Wall
 3. track down the origin of the problem(s)
 4. fix it
 
-# Generating program states
+# Generating program/system states
 * Printing
-+ #define debugme(fmt, args...) do {FILE *fdebug=fopen("/d.log", "a+"); time_t tdebug; time(&tdebug);fprintf(fdebug,"%s", asctime(localtime(&tdebug)));fprintf(fdebug,"%s,%d:", __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
-FIXME: __TIME__
+刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME_, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
 
 * Debugging support in the kernel
 更为宽泛意义上的printing 方法.
@@ -138,6 +137,7 @@ make kernel/sched.s V=1
 二分调试大法
 
 ### From ASM to c language
+[lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
 * expand inline function
 * locate __asm__() 内嵌汇编, 能快速定位代码! 但很少! slhc_uncompress()
 * 找常量!
