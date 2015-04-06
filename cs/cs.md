@@ -14,10 +14,15 @@ Yes, it maybe fuzzy to other reader. The book <a href="http://csapp.cs.cmu.edu/"
 <图片1>
 
 ###Epistemology
+石里克 <普通认识论>
+胡适<实用主义>
 Learning by using! because of  unfeasible and mind.
 Faq list
 incessancily continuously Share your what read, thought
 GEB
+
+#Mathematics 
+In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
 
 #Automata
 Logic and Mathematics -> Turning machine and automata -> computer
@@ -199,7 +204,40 @@ writing your xtables
 ###想象力
 
 
+#CPU
+##Endianess
+[Endianness: Big and Little Endian Byte Order](http://www.yolinux.com/TUTORIALS/Endian-Byte-Order.html)
+应该说bit endianess 实际存储只有MSB ... LSB这一种二进制表达形式! 在上面的文章的representtion, 辅证这一点.
+这篇文章[再谈C语言位域](http://tonybai.com/2013/05/21/talk-about-bitfield-in-c-again/), 
+之所以输出逆序, 是因为错误里理解了, bit 序. bit 序是cpu 读取的方式, 不是存储的方式!
+* [bit endianness](https://en.wikipedia.org/wiki/Bit_numbering)
+这样就可以更好的理解iphdr:
+\#if defined(__LITTLE_ENDIAN_BITFIELD)
+    __u8    ihl:4,
+        version:4;
+\#elif defined (__BIG_ENDIAN_BITFIELD)
+    __u8    version:4,
+        ihl:4;
+\#else
+\#error  "Please fix <asm/byteorder.h>"
+\#endif
+ipv4 header的拓扑
+version ihl
+0100 0101
+因为le的cpu是 lsb first, 也就是从最左面的1开始读, 所以第一个是ihl
+而be的cpu是 msb first, 从最右开始所以version开头.
+
+而使用unsigned char ver_ihl
+(ver_ihl & 0xf0)>> 4 = version
+ver_ihl & 0x0f = ihl
+是无关cpu读取顺序的.
+
+
+
+
+
 ###Hardware architecture
+
 常用寄存器，常见指令
 
 实模式和保护模式

@@ -11,8 +11,30 @@ drivers/staging/rtl8192e/rtllib_rx.c:1496 rtllib_rx() error: we previously assum
 vers/media/media-device.c:146 __media_device_enum_links() warn: check that 'pad' doesn't leak information (struct has a hole after 'index')
 drivers/media/media-device.c:167 __media_device_enum_links() warn: check that 'link' doesn't leak information (struct has a hole after 'index')
 
-##BUG type
-oops
+#[Common types of computer bugs](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
+* Arithmetic bugs
+* syntax error
+* Logic error
+Incorrect Bounds-Checking
+off-by-one bug
+Skipping Null-Termination Issues
+* Resource bugs
+uninitialized/nonvalidated/corrupted pointer dereference.
+Segmentation fault
+* Multi-threading programming bugs(parallel problems)
+* Interfacing bugs
+* Performance bugs
+* Teamworking bugs
+##Vulnerable bugs
+unbounded memory manipulation functions
+Non-Null Termination Issues
+[Format Strings attacker](https://www.owasp.org/index.php/Format_string_attack) or [Uncontrolled format string](https://en.wikipedia.org/wiki/Uncontrolled_format_string)
+Signed Comparison Vulnerabilities
+
+##Taxonomy of Kernel BUG
+* [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
+* [Source of BUG](http://fedoraproject.org/wiki/KernelBugTriage#Kernel_Bug_Classification), driver or subsystem and so on.
+
 
 ##BUG made by me
 =print_signal_info wrong pritk parameters position

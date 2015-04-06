@@ -311,6 +311,7 @@ dst_input()->
 1 NAPI has not netif_rx():input_pkt_queue.
 2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
 3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
+
 * Need clean
 net_tx_action->output_queue/每个设备的qdisc and  clear_bit__QDISC_STATE_SCHED qdisc_run add back
 __QDISC_STATE_SCHED是否加入softdata
