@@ -12,6 +12,13 @@ drivers/staging/rtl8192e/rtllib_rx.c:1496 rtllib_rx() error: we previously assum
 vers/media/media-device.c:146 __media_device_enum_links() warn: check that 'pad' doesn't leak information (struct has a hole after 'index')
 drivers/media/media-device.c:167 __media_device_enum_links() warn: check that 'link' doesn't leak information (struct has a hole after 'index')
 
+# [BUG type of JimGray](http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs/)
+##Bohrbug, can be reproduce.
+##Heisenbug 不论你用多少的时间和精力来试图让bug重现，bug就是人间蒸发了
+##Mandelbug 当bug产生的原因过于复杂而难以理解时，bug的出现也变得没有规律
+##Schroedinbug
+
+
 #[Common types of computer bugs](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
 ## Arithmetic bugs
 ## syntax error
@@ -56,10 +63,17 @@ Signed Comparison Vulnerabilities
 gcc -Wall
 
 # Typical debugging process -- step 1, 2, 3 maybe loop.
+0. 合理性假设可能性, 最高的一系列原因!
 1. Generating program states, 对于内核很多时候, 我们只能有一次机会产生调试的信息, 就是panic or oops那时, 不绝对.
 2. examine program states 
 3. track down the origin of the problem(s)
 4. fix it
+
+# 合理推判
+## 我们的程序 or 系统, 库有问题.
+## 证明, 注重因果性, 而不是相关性Correlation
+充分: 因->果, 基本backtrace可以断定
+必要: 果->因, 这个bug只是这个因造成的.
 
 # Generating program/system states
 * Printing
@@ -67,6 +81,15 @@ gcc -Wall
 
 * Debugging support in the kernel
 更为宽泛意义上的printing 方法.
+kernel tracing
+http://lwn.net/Articles/291091/
+http://lwn.net/Articles/330402/
+http://lwn.net/Articles/379903/
+http://lwn.net/Articles/381064/
+http://lwn.net/Articles/383362/
+http://lwn.net/Articles/346470/
+
+
 
 * programming program not only printing
 Use atexit() register a stackdump() function
@@ -74,7 +97,7 @@ Use atexit() register a stackdump() function
 * Trace
 strace
 ltrace
-ftrace
+ftrace in kernel
 
 * Debuger Gdb kdb
 gdb /usr/src/linux/vmlinux /proc/kcore
@@ -164,3 +187,4 @@ gdb,break bt
 
 
 #FIXME/FIXIT
+

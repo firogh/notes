@@ -100,6 +100,7 @@ qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img
 #rdesktop
 rdesktop -K -g 1366x700 -r clipboard:PRIMARYCLIPBOARD 192.168.10.200 -r sound:local -u firo -p ""
 rdesktop -K -g 1366x700 -r clipboard:CLIPBOAD 192.168.10.200
+nmap  -sP 192.168.10.0/24  | grep 'Nmap scan' | awk '{print$5}' | while read line; do echo "connect to $line";  timeout -s 9 2 rdesktop -K -g 1366x700 -r clipboard:CLIPBOARD $line; done
 
 #readelf
 readelf -S module.ko
