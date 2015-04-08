@@ -9,6 +9,13 @@ High cohesion low coupling
 
 #codint for testing
 
+# [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
+## defensive programming
+Low tolerance against "potential" bugs
+Assertion, panic in user space
+
+#Skills 
+How to use assertion
 
 #clean code
 *all codes related to loop must in one block
