@@ -21,6 +21,9 @@ Faq list
 incessancily continuously Share your what read, thought
 GEB
 
+世上从不缺少解决问题的答案，缺少的是解决问题的方法。现在，linux的世界里已经不缺少牛书了，将尽一千页一本的满载答案的砖头书接踵而来，但是渐渐地发现，看书看到后面就忘了前面，回到前面有忘了后面，甚至一个章节还没看完，那个子系统已经被完全重写了。慢慢地，就会怀疑“我是不是真的变老了？真的不行了？”但是我们从没想过：“凭什么我们就如此受制于人？他就能搞懂，而我就不行呢？”。其实，我们需要的是一种重其意而忘其形的根本之道，需要的是一种兵来将挡，火来水淹的通用解决方法。而绝不是淹没于牛人们的结论中。否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
+--s3c24xx@gmail.com
+
 #Mathematics 
 In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
 
@@ -231,6 +234,11 @@ version ihl
 (ver_ihl & 0xf0)>> 4 = version
 ver_ihl & 0x0f = ihl
 是无关cpu读取顺序的.
+
+##FAQ
+ar71xx big
+ralink little
+cpu -> toolchain
 
 
 

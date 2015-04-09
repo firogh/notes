@@ -5,6 +5,9 @@ date: 2015-02-27 15:46:14
 category: cs
 ---
 
+#Reference
+DWARF
+
 #BUG
 drivers/net/wireless/libertas/cfg.c:1115 lbs_associate() error: potential null dereference 'cmd'.  (kzalloc returns null)
 drivers/net/wireless/rtlwifi/efuse.c:378 read_efuse() error: potential null dereference 'efuse_word'.  (kmalloc returns null)
@@ -28,7 +31,9 @@ off-by-one bug
 Skipping Null-Termination Issues
 ## Resource bugs
 uninitialized/nonvalidated/corrupted pointer dereference.
-Segmentation fault
+Segmentation fault in userspace
+Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
+
 踩内存
 ## Race condition bug
 Multi-threading programming bugs(parallel problems)
@@ -47,7 +52,10 @@ non terminaed string
 integer overflow
 Signed Comparison Vulnerabilities
 
-##Taxonomy of Kernel BUG
+##Special BUG
+[kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
+
+#Taxonomy of Kernel BUG
 * [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
 * [Source of BUG](http://fedoraproject.org/wiki/KernelBugTriage#Kernel_Bug_Classification), driver or subsystem and so on.
 
@@ -76,12 +84,32 @@ gcc -Wall
 必要: 果->因, 这个bug只是这个因造成的.
 
 # Generating program/system states
-* Printing
-刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME_, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
+## Printing
+* 刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME_, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
 
-* Debugging support in the kernel
+* before kernel decompress
+putstr
+
+* early printk
+Linux serial-port driver is interrupt driven, if irq-off console will not work!
+
+* printk
+
+## beyond printing
+Use atexit() register a stackdump() function
+dump_stack in kernel
+ioctl/netlink
+print signal This is just a hiwifi wonderful kernel patch #931
+
+
+## Log
+dmesg
+syslog
+
+ 
+## Debugging support in the kernel
 更为宽泛意义上的printing 方法.
-kernel tracing
+* kernel tracing
 http://lwn.net/Articles/291091/
 http://lwn.net/Articles/330402/
 http://lwn.net/Articles/379903/
@@ -89,37 +117,80 @@ http://lwn.net/Articles/381064/
 http://lwn.net/Articles/383362/
 http://lwn.net/Articles/346470/
 
+* CONFIG_DYNAMIC_DEBUG
+pr_debug()/dev_debug()
+<debugfs>/dynamic_debug/control
 
+## SysRq
+t, m
 
-* programming program not only printing
-Use atexit() register a stackdump() function
+## /proc (specially /proc/sys/) and /sys
 
-* Trace
+## Trace
 strace
 ltrace
 ftrace in kernel
+kgtp
 
-* Debuger Gdb kdb
+## Debuger Gdb kdb kgdb
 gdb /usr/src/linux/vmlinux /proc/kcore
     bt
     x/100a
 thread apply all bt full
+* How to use gdb debug loaded kernel module(maybe kernel its self)
+gdb vmlinux /proc/kcore
+core-file /proc/kcore
+p jiffies_64
+text_addr=$(cat /sys/module/char-read-write/sections/.text)
+add-symbol-file /home/nkhare/char-read-write.ko $text_addr
 
-* lockdep
+* how to get module text address
+firo@firo module$ cat /sys/module/wmi/sections/.text 
+0xffffffffa023b000
 
-* tcpdump/wireshark
+firo@firo module$ cat /proc/modules | grep wmi
+wmi 18820 0 - Live 0xffffffffa023b000
 
-* kernel oops/warn/panic
+……
+int bss_var;
+static int hello_init(void)
+{
+printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
+static int data_var=0;
+printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
+printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
+……
+}
+Module_init(hello_init);
 
-* Coredump
 
-* /proc (specially /proc/sys/)
+## Kprobes
+* kgdb
+gdb
+file vmlinux
+set remotebaud 115200
+target remote /dev/ttyS0
 
-* library dependencies of a ELF/bin
+## lockdep
+
+## tcpdump/wireshark
+
+## lsof
+
+## [kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
+狭隘的认为oops等价于内存地址出问题了, oops 本质上是__die("Oops"
+__die 却可以表明很多错误 "Bad pagetable", "Oops - badmode"   
+arm_notify_die("Oops - undefined instruction" 等等..
+oops 是超出programmer 之外的错误,属于不可控风险, 其实更危险比panic.
+panic 则是programmer 感知到的是防御式编程assertion的体现.
+
+## Coredump and /proc/kcore and kdump
+
+## library dependencies of a ELF/bin
 LD_TRACE_LOADED_OBJECTS=1 git 
 ldd /usr/bin/git
 
-* signal This is just a hiwifi wonderful kernel patch #931
+
 
 ##General case
 ###how to find or generate a backtrace
@@ -138,6 +209,10 @@ ldd /usr/bin/git
 * Stack
 
 ## Exmaine oops.txt
+* use System.map to resolve the function name of IP
+kallsyms replace ksymoops tools.
+
+* codes in oops
 ./scripts/decodecode < Oops.txt
 
 ## demangle c++ symbols 
@@ -150,7 +225,8 @@ aria2::ZeroBtMessage::~ZeroBtMessage()
 ##  Different Origins
 ### Assemblly level
 * Generat vmlinux Assemblly codes
-objdump -s vmlinux
+objdump -S vmlinux
+objdump -S char-read-write.ko
 
 * Generat single sources file assemblly  codes
 make kernel/sched.s V=1
@@ -173,6 +249,13 @@ make kernel/sched.s V=1
  f0c:   0064202b    sltu    a0,v1,a0                                                                                                             
 +f10:   14a7fff9    bne a1,a3,ef8 <slhc_uncompress+0x444>                                                                                         
  f14:   00831821    addu    v1,a0,v1
+###Track skills
+####[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
+* code reordering
+* inlining
+* Optimized-away variables
+* Tailcall optimization
+
 
 ### General track down case 
 * If an page oops close to zero, for example 0xfffffff4
@@ -184,6 +267,11 @@ gdb,break bt
 
 * smartqos custom qdisc - self inferrence
 要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
+
+### A case of oops
+Register IP: -> System.map /proc/kallsyms -> objdump -S char-read-write.ko
+
+
 
 
 #FIXME/FIXIT
