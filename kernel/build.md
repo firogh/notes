@@ -31,3 +31,12 @@ make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 #src-tree
 include/linux: share with userspace
 include/net: kernel stuff
+
+#System.map less than /proc/kallsyms
+System.map is a ”phone directory” list of function in a particular build of a kernel.
+How it is produced?
+When you compile the kernel
+nm vmlinux
+
+#GCC
+[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)

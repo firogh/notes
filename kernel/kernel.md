@@ -4,6 +4,8 @@ title: kernel
 date: 2015-02-27 15:46:12
 category: kernel
 ---
+
+
 #Hacking
 * How to find hooked functions
 For example, all start_xmit of ppp_channel_ops, 

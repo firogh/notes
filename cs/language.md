@@ -202,7 +202,12 @@ big endian: lwl high bits in b + 0
 little endian: lwl high in b + off
 向中心
 
-##endianess
-ar71xx big
-ralink little
-cpu -> toolchain
+
+#Wildcards
+[A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
+##Type
+* Standard Wildcards (globbing patterns)
+File and directory patterns
+* Regular expression
+* SQL
+
