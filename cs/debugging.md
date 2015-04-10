@@ -85,7 +85,7 @@ gcc -Wall
 
 # Generating program/system states
 ## Printing
-* 刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME_, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
+* 刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME__, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
 
 * before kernel decompress
 putstr
@@ -162,6 +162,10 @@ printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
 ……
 }
 Module_init(hello_init);
+###GDB skills
+* offset of member in struct
+gdb ./vmlinux 
+print &((struct kmem_cache *)0)->offset
 
 
 ## Kprobes
@@ -190,6 +194,10 @@ panic 则是programmer 感知到的是防御式编程assertion的体现.
 LD_TRACE_LOADED_OBJECTS=1 git 
 ldd /usr/bin/git
 
+## Kernel specific
+kernel version
+ask reporter for the .config
+decoding "code"
 
 
 ##General case
@@ -208,12 +216,14 @@ ldd /usr/bin/git
 * Registers
 * Stack
 
-## Exmaine oops.txt
+## Examine oops.txt
 * use System.map to resolve the function name of IP
 kallsyms replace ksymoops tools.
 
-* codes in oops
+* examinecodes in oops
 ./scripts/decodecode < Oops.txt
+
+echo "Code: 23 25 dc 47 6f 00 41 f6 c4 10 75 66 9c 5d fa 65 48 8b 14 25 a8 d1 00 00 48 8b 03 48 8d 04 02 4c 8b 28 4d 85 ed 74 55 48 63 53 18 <49> 8b 54 15 00 48 89 10 55 9d 4d 85 ed 74 06 66 45 85 e4 78 22" | ./kernel/scripts/decodecode 
 
 ## demangle c++ symbols 
 c++filt command
@@ -229,11 +239,17 @@ objdump -S vmlinux
 objdump -S char-read-write.ko
 
 * Generat single sources file assemblly  codes
+为了使汇编代码和C代码更好的对应起来， Linux内核的Kbuild子系统提供了这样一个功能： 任何一个C文件都可以单独编译成汇编文件，例如：
 make kernel/sched.s V=1
 
 ## Track down
 ### "Wolf fence" algorithm 
 二分调试大法
+
+##From oops to ASM
+* Fast way maybe???
+1. make kernel/xx.s
+2. grep "code in oops.txt" kernel/xx.s
 
 ### From ASM to c language
 [lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
@@ -241,6 +257,10 @@ make kernel/sched.s V=1
 * locate __asm__() 内嵌汇编, 能快速定位代码! 但很少! slhc_uncompress()
 * 找常量!
 * 找loop codes formate!
+* 通过.config or CONFIG_判断具体是那个相同函数.
+* 字符的数字敏感
+0000000034333545 doesnt have a bit 7 set in any byte.
+
 +ef8:   00a01021    move    v0,a1
  efc:   88440003    lwl a0,3(v0)
  f00:   24450004    addiu   a1,v0,4                                                                                                           
@@ -249,6 +269,16 @@ make kernel/sched.s V=1
  f0c:   0064202b    sltu    a0,v1,a0                                                                                                             
 +f10:   14a7fff9    bne a1,a3,ef8 <slhc_uncompress+0x444>                                                                                         
  f14:   00831821    addu    v1,a0,v1
+
+### From ASM to c language x86
+* local_irq_save/disable
+   c: 9c                    pushfq		//not sure 
+   d: 5d                    pop    %rbp //not sure
+   e: fa                    cli
+
+* per-CPU
+  f: 65 48 8b 14 25 a8 d1  mov    %gs:0xd1a8,%rdx
+
 ###Track skills
 ####[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 * code reordering
@@ -261,12 +291,9 @@ make kernel/sched.s V=1
 * If an page oops close to zero, for example 0xfffffff4
 It maybe ERR_PTR(-12);
 
-* Exit bug
-Use atexit() register a stackdump() function
-gdb,break bt
-
 * smartqos custom qdisc - self inferrence
 要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
+
 
 ### A case of oops
 Register IP: -> System.map /proc/kallsyms -> objdump -S char-read-write.ko
