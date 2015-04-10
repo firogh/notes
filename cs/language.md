@@ -202,6 +202,8 @@ big endian: lwl high bits in b + 0
 little endian: lwl high in b + off
 向中心
 
+##x86
+
 
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)

@@ -227,5 +227,8 @@ root= name_to_dev_t, mount_root in prepare_namespace
 如果/init不能 sys_access, 则prepare_namespace,切换到真正的root=指定的设备上设备在sd_probe上初始化了.
 systemd负责挂在文件系统, 切换.
 
+#src-tree
+include/linux: share with userspace
+include/net: kernel stuff
 
 

@@ -58,7 +58,9 @@ Vertical Exploration is the abstruction method, focus on mode and link to deriva
 # Growing up -- 人最重要的是会成长! 
 + 生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
 
-成长开始于注意到缺陷, 疑问
+* 成长开始于注意到缺陷, 疑问
+那种概念模糊的地方就是有问题, 比如两个指针相加.
+
 
 成长不同阶段, 比如页表回收又算法,也有具体的代码实现. 我们只要知道算法就可以了.
 
