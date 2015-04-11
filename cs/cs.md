@@ -48,14 +48,60 @@ More details in hardware notes
 # OS
 ## Process management
 进程的定义和PCB，进程和线程的区别，进程的三个基本状态及它们之间的转换关系，进程的同步，竞争和死锁，进程间通信
+###Representation 
+* Programe  memory
+Stack(User/Kernel)
+Heap
+Data segment(data/bss)
+Code segment
+* PCB
+Resource
+Processor Context
+Process state
 ###daemonize
 http://fixunix.com/unix/84640-daemon-controlling-terminal.html
 
 ## Memory managerment
 分页式管理，分段式管理，虚拟内存的概念，页面置换算法，内存分配算法
+### Paging
+paging is one of the memory management schemes by which 
+a computer stores and retrieves data from the secondary storage for use in main memory.
+* Page fault
+###Page replacement algorithm
+OPT
+FIFO
+Second-chance
+LRU
+### x86 memory segmentation
+linux 基本不用
+[Linux中的段](http://oss.org.cn/kernel-book/ch02/2.3.7.htm)
+* GDT
+* TSS
+[Use of TSS in LinuxSS](https://en.wikipedia.org/wiki/Task_state_segment#Use_of_TSS_in_Linux)
+* Linear address
+### [Virtual memory](https://en.wikipedia.org/wiki/Virtual_memory#Paged_virtual_memory)
+It maps memory addresses used by a program, called virtual addresses, into physical addresses in computer memory.
+* Logic/Virtual address
+* Page table
+### Memory allocation
+* Buddy memory allocation. 
+* Slab allocation/Memory Pool
 
 ##Device management
 中断的概念，中断处理，I/O控制方式，缓冲区管理，设备驱动，磁盘调度和高速缓存
+###Low I/O type
+* Programmed I/O/Polling
+* DMA
+* Interrupt I/O
+* Channel I/O
+###I/O scheduling
+Elevator algorithm
+
+###Asynchronous I/O NEED CLEAN
+* synchronous I/O multiplexing and I/O event notification facility
+select/poll/epoll
+For the ease of use, the select loop is implemented as an *event loop* with callbacks.
+libevent and libev is a well-designed *event loop*.Check shadowsocks for using of libev.
 
 ## File system 
 文件的概念，文件的管理，文件系统
@@ -69,18 +115,25 @@ test software function.
 ##White-box testing
 test software internal logic.
 
-#Asynchronous io NEED CLEAN
-##Common concepts
-a hard drive seeking a track to read or write; this is often orders of magnitude slower than the switching of electric current.
-* The simplest software solution. polling-based system.
-##Forms
-* Prcesses, pipeline
-* synchronous I/O multiplexing and I/O event notification facility
-select, poll
-epoll
-For the ease of use, the select loop is implemented as an *event loop* with callbacks.
-##libevent and libev is a well-designed *event loop*.
-Check shadowsocks for using of libev.
+#Buffer
+a data buffer (or just buffer) is a region of a physical memory storage 
+used to temporarily store data while it is being moved from one place to another.
+* Page cache, Buffer head
+* Pipe
+
+#Cache
+a cache is a component that stores data so future requests for that data can be served faster; 
+the data stored in a cache might be the results of an earlier computation, 
+or the duplicates of data stored elsewhere. 
+##CPU cache
+##GPU cache
+##Disk cache
+##Web cache
+
+#Scheduling
+## Process scheduler
+## Network scheduler
+## I/O scheduling
 
 #File formate
 ##ELF -- ELF executable and linkable format.

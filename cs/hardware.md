@@ -24,6 +24,18 @@ See MIPS run
 ## Interrupts
 ## Timer
 ## TLB
+##CPU cahe
+A CPU cache is a cache used by the central processing unit (CPU) of a computer 
+to reduce the average time to access data from the main memory.
+### Associativity - CPU Cache algorithms
+* Two-way set associative cache
+### Cache coherence
+cache coherence is the consistency of shared resource data that ends up stored in multiple local caches.
+* MSI
+###Cache type
+* Instructin cache
+* Data cache
+* TLB - Translation lookaside buffer
 
 ##Endianess
 [Endianness: Big and Little Endian Byte Order](http://www.yolinux.com/TUTORIALS/Endian-Byte-Order.html)
@@ -56,3 +68,7 @@ cpu -> toolchain
 ar71xx big
 ralink little
 
+#86
+##Register
+* gs
+The linux kernel uses GS to access cpu-specific memory.
