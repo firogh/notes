@@ -143,3 +143,6 @@ Mips cpu can be aware of this address!
 
 *pfmemalloc -- skb 表示申请了紧急内存!
 page free
+
+##OOM
+Taming the OOM killer

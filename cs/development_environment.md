@@ -2,7 +2,7 @@
 tags: kernel
 title: The linux development environment
 date: 2015-02-27 15:46:12
-category: kernel
+category: cs
 ---
 # Reference
 [Programming tool](https://en.wikipedia.org/wiki/Programming_tool)
@@ -11,15 +11,23 @@ category: kernel
 # Development environment
 ## Source code editor
 * vim
+easymotion
 
 ## Code navigation tools
 * ctags
 ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
-
 * cscope
 * GNU global
 * LXR Cross Referencer
 * Google code search
+* How to find hook functions of a struct ops
+For example, all start_xmit of ppp_channel_ops, 
+pppol2tp_chan_ops, pppol2tp_xmit,
+pptp_chan_ops pptp_xmit
+pppoe_chan_ops pppoe_xmit
+or grep -nr 'ppp_channel_ops' /path/to/{l2tp, pptp, pppoe}
+* locate codes in complex program source files .
+Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
 
 ## Revision control
 * [git](http://git-scm.com/docs)
@@ -42,8 +50,21 @@ ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
 * readelf
 * objdump
 * tcpdump
+##Manipulate ELF
+ELF header, readelf -h
+Program header table, readelf -l
+Segments, readelf --segments 
+Sections, readelf --sections
+Section header table, readelf -S 
+.symtab, Symbol table store index of string
+.strtab, String table is a array of all strings split by \0
+.hash, utiliy for quire symbols
+.shstrtab, Section header string table store section name for ELF,like .text, .data...
+
 
 ## Test
+* kvm 
+* supermin
 
 ## Debug
 More details in debugging note
@@ -100,4 +121,5 @@ make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 * System.map less 
 When you compile the kernel
 nm vmlinux
+readelf -s 
 * /proc/kallsyms
