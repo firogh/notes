@@ -8,19 +8,11 @@ category: cs
 #Reference
 DWARF
 
-#BUG
-drivers/net/wireless/libertas/cfg.c:1115 lbs_associate() error: potential null dereference 'cmd'.  (kzalloc returns null)
-drivers/net/wireless/rtlwifi/efuse.c:378 read_efuse() error: potential null dereference 'efuse_word'.  (kmalloc returns null)
-drivers/staging/rtl8192e/rtllib_rx.c:1496 rtllib_rx() error: we previously assumed 'ieee' could be null (see line 1464)
-vers/media/media-device.c:146 __media_device_enum_links() warn: check that 'pad' doesn't leak information (struct has a hole after 'index')
-drivers/media/media-device.c:167 __media_device_enum_links() warn: check that 'link' doesn't leak information (struct has a hole after 'index')
-
 # [BUG type of JimGray](http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs/)
 ##Bohrbug, can be reproduce.
 ##Heisenbug 不论你用多少的时间和精力来试图让bug重现，bug就是人间蒸发了
 ##Mandelbug 当bug产生的原因过于复杂而难以理解时，bug的出现也变得没有规律
 ##Schroedinbug
-
 
 #[Common types of computer bugs](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
 ## Arithmetic bugs
@@ -33,8 +25,7 @@ Skipping Null-Termination Issues
 uninitialized/nonvalidated/corrupted pointer dereference.
 Segmentation fault in userspace
 Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
-
-踩内存
+Buffer overflow/踩内存
 ## Race condition bug
 Multi-threading programming bugs(parallel problems)
 * deadlock
@@ -68,7 +59,11 @@ Signed Comparison Vulnerabilities
 	__send_signal()
 
 # Anti debugging
+## Syntax checking
 gcc -Wall
+bash -n
+## static code analysis
+smatch
 
 # Typical debugging process -- step 1, 2, 3 maybe loop.
 0. 合理性假设可能性, 最高的一系列原因!

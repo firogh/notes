@@ -36,4 +36,4 @@ Other?
 ##FAQ
 * swtich_to?
 
-
+* __schedule()
