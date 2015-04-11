@@ -205,7 +205,7 @@ big endian: lwl high bits in b + 0
 little endian: lwl high in b + off
 向中心
 
-##x86
+#x86
 
 
 #Wildcards
