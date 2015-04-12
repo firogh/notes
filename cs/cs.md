@@ -39,8 +39,6 @@ Algorithms: Design Techniques and Analysis
 Publish-Subscribe Mechanism 
 observation
 
-# Net
-More details in net notes 
 
 # Hardware
 More details in hardware notes 
@@ -109,11 +107,27 @@ libevent and libev is a well-designed *event loop*.Check shadowsocks for using o
 ## System calls
 系统调用的概念，系统调用的处理，系统调用类型
 
-#Testing
-##Black-box testing
-test software function.
-##White-box testing
-test software internal logic.
+#I/O
+CPU and main memory is the brain of a computer.
+Any transfer of information to or from the CPU/memory combo, for example by reading data from a disk drive, is considered I/O. 
+##CPU-device I/O
+### Memory-mapped I/O
+### Ported-mapped I/O
+
+##Non CPU-device I/O
+### I/O channels
+
+##Interface
+[Methods for designing a CPU's I/O interface generally fall into one of the following categories:](http://www.cs.uwm.edu/classes/cs458/Lecture/HTML/ch11s02.html)
+Completely separate memory and I/O. buses DMA?
+Common buses, separate control lines. Port-I/O
+Common buses and control line. Memroy-maped I/O
+###Higher level implemention
+device or partion of device -> file -> stream
+memory->file->stream
+####[stream](https://en.wikipedia.org/wiki/Stream_(computing))
+* [Standard streams](https://en.wikipedia.org/wiki/Standard_streams)
+interface is stdio or the kernel version.
 
 #Buffer
 a data buffer (or just buffer) is a region of a physical memory storage 
@@ -147,3 +161,12 @@ ELF header.
 Program header table.
 Segments.
 Section header table.
+
+# Net
+More details in net notes 
+
+#Testing
+##Black-box testing
+test software function.
+##White-box testing
+test software internal logic.

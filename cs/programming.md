@@ -1,6 +1,6 @@
 ---
 tags: cs
-title: coding
+title: Programming
 date: 2015-02-27 15:46:14
 category: cs
 ---
@@ -10,7 +10,7 @@ High cohesion low coupling
 
 #Programming style
 
-#codint for testing
+#coding for testing
 
 # [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
 ## defensive programming
