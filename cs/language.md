@@ -183,7 +183,31 @@ unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
 c >> 296 == c >> 8
 * Diffences between strlen() and sizeof()?
 
-#ASM
+#Shell
+
+##eval
+* create variable name
+	__var="name"
+	eval "export -- \"$__var=firo\""
+	set | grep firo
+	__var='name'
+	bbb='firo'
+
+##expr
+expr "$name" : '\(.*\)\.conf'
+
+##find
+* find symbols in object 
+	find . -name 'a.out' -exec nm -D {} \; -print
+	find . -name '*.o' -print0 | xargs -0 nm -A | egrep ' (i|y)$'
+* rm
+find . -name ‘your_pattern*’ -exec rm -f {} \;
+find . -name ‘your_pattern*’ -delete
+
+#pipe
+find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
+
+#MIPS
 bdi 4, 8 delay solt
 mips instruction size is fixed, 32bit, 4byte.
 instruction address:  instrction in hex formate	   instruction in string formate, 260
@@ -215,4 +239,6 @@ little endian: lwl high in b + off
 File and directory patterns
 * Regular expression
 * SQL
+
+
 

@@ -75,7 +75,7 @@ linux 基本不用
 [Linux中的段](http://oss.org.cn/kernel-book/ch02/2.3.7.htm)
 * GDT
 * TSS
-[Use of TSS in LinuxSS](https://en.wikipedia.org/wiki/Task_state_segment#Use_of_TSS_in_Linux)
+[Use of TSS in Linux](https://en.wikipedia.org/wiki/Task_state_segment#Use_of_TSS_in_Linux)
 * Linear address
 ### [Virtual memory](https://en.wikipedia.org/wiki/Virtual_memory#Paged_virtual_memory)
 It maps memory addresses used by a program, called virtual addresses, into physical addresses in computer memory.
@@ -123,11 +123,12 @@ Completely separate memory and I/O. buses DMA?
 Common buses, separate control lines. Port-I/O
 Common buses and control line. Memroy-maped I/O
 ###Higher level implemention
-device or partion of device -> file -> stream
-memory->file->stream
+device or partion of device/memory -> file 
+io -> stream
 ####[stream](https://en.wikipedia.org/wiki/Stream_(computing))
 * [Standard streams](https://en.wikipedia.org/wiki/Standard_streams)
-interface is stdio or the kernel version.
+interface is stdio library or the kernel version.
+* codata
 
 #Buffer
 a data buffer (or just buffer) is a region of a physical memory storage 
