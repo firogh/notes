@@ -44,4 +44,26 @@ init=/bin/bash
 disable NetworkManager
 
 
+#dropbear
+=generate private key
+dropbearkey -t rsa -f ~/.ssh/id_rsa.db
+=yank public key
+dropbearkey -y -f ~/.ssh/id_rsa.db
+=login in
+dbclient -y -i ~/.ssh/id_rsa.db user@ip
+=trans file
+scp -S dbclient -i ~/.ssh/id_rsa fileName user@ip:/dir
+#id3tag
+id3tag -2 *.mp3
+for file in *.mp3;do f=$(echo "$file" |awk -F ' ' '{print $2}' | awk -F '.' '{print $1}'); id3tag -s "$f" "$file";  done
+exiftool -json Baccano\!\ 永生之酒\(バッカーノ！\)\ ORIGINAL\ SOUNDTRACK\ SPIRAL\ MELODIES/12.緩みきった官能のダンス.mp3
 
+#indent
+indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs *.c *.h
+#qemu
+qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img -k en-us
+
+#rdesktop
+rdesktop -K -g 1366x700 -r clipboard:PRIMARYCLIPBOARD 192.168.10.200 -r sound:local -u firo -p ""
+rdesktop -K -g 1366x700 -r clipboard:CLIPBOAD 192.168.10.200
+nmap  -sP 192.168.10.0/24  | grep 'Nmap scan' | awk '{print$5}' | while read line; do echo "connect to $line";  timeout -s 9 2 rdesktop -K -g 1366x700 -r clipboard:CLIPBOARD $line; done

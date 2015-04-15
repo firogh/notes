@@ -72,3 +72,9 @@ ralink little
 ##Register
 * gs
 The linux kernel uses GS to access cpu-specific memory.
+
+* gdtr
+GDT
+
+* tr
+TSS addressing
