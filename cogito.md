@@ -15,7 +15,7 @@ https://www-935.ibm.com/services/uk/cio/pdf/leverage_wp_data_gov_council_maturit
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
 and you know follow the things that adults told you to do,and that your parents told you to do, and that society tells to do.
 I think you should always be questioning.I take this very scientific attitude that 
-+every thing you've learned  is just provisional, you know, it's always open to recantation or refutation or questioning, 
+every thing you've learned  is just provisional, you know, it's always open to recantation or refutation or questioning, 
 and I think  the same applies to society. Once I realized that there were real serious problems, fundamental problems 
 that I could do something to address, I didnt see a way to forget that, I didnt see a way not to.
 
@@ -56,11 +56,10 @@ Lateral exploration 和周围的关系, 涵盖比较广.实验法从具体事实
 Vertical Exploration is the abstruction method, focus on mode and link to derivations. It use to connects with other knowledge.
 
 # Growing up -- 人最重要的是会成长! 
-+ 生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
+生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
 
 * 成长开始于注意到缺陷, 疑问
 那种概念模糊的地方就是有问题, 比如两个指针相加.
-
 
 成长不同阶段, 比如页表回收又算法,也有具体的代码实现. 我们只要知道算法就可以了.
 
@@ -72,7 +71,7 @@ Dont think... just feel
 
 当缺点和不足出现了, 你意识到它, 并且有意识地去思考这种不足的原因,你就在成长中! 有自己的想法, 这才是成长的本质, 其他都不算成长. 
 
-很多时候其实我们的忙碌都是做着自己并不在乎的事情！
++ 很多时候其实我们的忙碌都是做着自己并不在乎的事情！
 
 一个有创造力的人把太多的时间耗在阅读上，是一种浪费 --尼采
 对于一个哲学家来说，最重要的是独立思考，自己来创造，说出非他不能说出的话来。
@@ -109,6 +108,8 @@ is that which shall be done and there is no new thing under the sun.
 生活就是同傻逼的战争!
 
 每个人都有自己内心的弱点, 不必害怕他们.
+
+Love the persons that love me, absolutely, included myself and girl friend!
 
 他人即地狱,世界是荒诞的.
 

@@ -20,7 +20,7 @@ AF_PACKET sockets hand frames directly to dev_queue_xmit
 
 # Encapuslation
 
-#offload
+# offload
 * TSO in tcp_v4_connect
 [TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
 One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
@@ -153,24 +153,42 @@ inet_hash_connect()
 	tcp_sendmsg->skb_add_data_nocache()
 
 #TCP -- or some connetion scok
-* Connection-oriented communication -- Session and virtual circuits
-Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
-Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
-Layer 4 virtual circuits uses segment number fix routed reorder delivery. Same order delivery.
-* Reliability -- assured,Error detection and correction
-Error --  checksum, the transport protocol may check that the data is not corrupted
-ACK is an indiction of segments lost.
-correction -- Retransmission, ARQ,Automatic repeat request schemes may be used to retransmit lost or corrupted data.
-verify correct receipt by sending an ACK or NACK message to the sender. 
-* Flow control
-Sliding Window
-* Congestion control
+## Componets
+### Handshak
+### Sliding window protocol
+Sliding window protocols are used where reliable in-order delivery of packets is required.
+For every ack packet received, the window slides by one packet (logically) to transmit one new packet.
+### ARQ
+ack and timeout
+Sliding window protocol is based on automatic repeat request/ARQ
+My conclusion: in practice TCP is a mixture between both GBN and SR.
+*Go-Back-N
+
+* Selective repeat
+###Congestion control
 icsk_ca_ops;
 tcp_ack {
 tcp_cong_avoid
 tcp_fastretrans_alert
 tcp_slow_start}
 TCP send queue len /proc/sys/net/core/wmem_default
+
+## Services
+* Connection-oriented communication -- Session and virtual circuits
+Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
+Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
+Layer 4 virtual circuits uses segment number fix routed reorder delivery. Same order delivery.
+* In-order
+* Flow control
+* Congestion avoidence
+* Reliability -- assured,Error detection and correction
+Error --  checksum, the transport protocol may check that the data is not corrupted
+ACK is an indiction of segments lost.
+correction -- Retransmission, ARQ, Automatic repeat request schemes may be used to retransmit lost or corrupted data.
+verify correct receipt by sending an ACK or NACK message to the sender.
+##FAQ
+* What about TCP sequence number warp around
+PAWS use timestamp and RTT to solve this problem.
 
 ##FIXME
 * Create TCP options
@@ -206,20 +224,18 @@ rfc1122
 ##Reference
 [What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
 
-#ipv4 address
-* A类 0*******，
-范围00000000~01111111 即0~127
- 10.0.0.0~10.255.255.255
-* B类 10******，
-范围10000000~10111111 即128~191
- 172.16.0.0~172.31.255.255
-* c类 110***** 
-范围11000000~11011111 即192~223
-192.168.0.0~192.168.255.255
-* D类
-范围224~239用于组播
-* E类
-范围240~255 用于科学试验
+## Classless Inter-Domain Routing
+CIDR is a method for allocating IP addresses and routing Internet Protocol packets. 
+IETF introduced CIDR in 1993 to replace the classful network.
+* prefix/length
+* Prefix aggregation
+
+##Supernetwork
+prefix/route aggregation
+decrease the memroy and the time of search route table.
+
+## Private network
+In the Internet addressing architecture, a private network is a network that uses private IP address space.
 
 ##IP fragmention/defragmention
 iphdr->id, iphdr->frag_off
@@ -235,12 +251,11 @@ fib_config:
 iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
 * Multi-time line
 fib_create_info(): create a fib_info
-
 ## Netfilter
 
-#data link layer
+# Data link layer
 
-#Physical layer -- PHY
+# Physical layer -- PHY
 * Physical Coding Sublayer
 * Physical Medium Attachment Sublayer
 * Physical Medium Dependent Sublayer
@@ -319,7 +334,7 @@ qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
 __qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
 driver tx, stack xmit
 
-#System initialization
+#Net initialization
 start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 {
 	do_basic_setup()  

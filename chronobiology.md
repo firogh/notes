@@ -5,43 +5,41 @@ category: firo
 ---
 
 #Chronobiology
-Dwell				Getting up: Lemon-water 800ml Defecation Washing Brushing gargling		 
-Traffic				Bus subway walking														
-Breakfast			Must																		
-Lunch				
-Dinner				
-Fintness			abdominals chest muscle													
-Sleep
-Writing				critique absurd
-Lyubishchev			Statistics time																
-Relax				Siesta 10 mph
-Washing				Face
-Physical exercise	10:00 
-Bathing			   	10:45
-House clean, saturday morning.
-Watching cloths, saturday moring.
+Principle: health, effective
+* develop good eating babits.
+	Avoid eating junk food as much as possible.
+
+* Drink a lot of water everyday.
+
+* Better sleep
+Sleep before 23 a clock 8 hours.
+Get up at 7:00 a clock.
+
+* Perform a lot of Physical activity, Fitness.
+Rest 10 minutes/hour
+Do Physical exercise at 22:00 
+Abdominals chest muscle.
+
+* Keep yourself clean.
+House clean
+Take a Bath at 10:45, every day.
+Watch Clothes 
+
+* Maintain Mental fitness and Be happy.
+Talking with family
+
+* Writing
+Lyubishchev
+Keep diary
 
 #TODO
-Love the persons that love me, absolutely, included myself and girl friend!
-Job hopping Redhat or someplace
 Go to a place to live comfortably, grow up, meet up more and more.
+Job hopping Redhat or some other place
 English write and spoke.
 American kernel job.
 Cognition in philosophy
 Live style 
 Dressing
-* Health
-Physical exercise 
-* Travel
-Dali			2014-12
-* Writing
-Keep diary
-
-## literature
-关于人的思维进食
-
-## HIWFI
-smartqos failed to init 
 
 #FAQ
 ##philosophy
@@ -86,6 +84,14 @@ net_poll
 napi
 
 * What is Head-of-line blocking
+
+## Linguistic
+* 西方哲人眼中的文字观
+
+#Sat Apr 18 10:04:59
+* Clean house
+* Learn how-to rest
+* Interview questions
 
 
 

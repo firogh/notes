@@ -68,7 +68,7 @@ cpu -> toolchain
 ar71xx big
 ralink little
 
-#86
+#x86
 ##Register
 * gs
 The linux kernel uses GS to access cpu-specific memory.
@@ -78,3 +78,21 @@ GDT
 
 * tr
 TSS addressing
+
+#Interrupt
+If interrupt occured in user mode, then cpu will context swith for potential reschedule.
+The Interrupt Descriptor Table (IDT) is a data structure used by the x86 architecture to implement an interrupt vector table. 
+##Hardware interrupts 
+are used by devices to communicate that they require attention from the operating system.
+asynchronus
+more details in init_IRQ() or set_irq() in driver.
+
+##software interrupt 
+synchronus
+more details in trap_init().
+* exception or trap
+is caused either by an exceptional condition in the processor itself, 
+divide zero painc?
+* special instruction, for example INT 0x80
+or a special instruction in the instruction set which causes an interrupt when it is executed.
+
