@@ -240,5 +240,11 @@ File and directory patterns
 * Regular expression
 * SQL
 
+#Regualar expression
+##Basic
 
+##Extend
+
+##Vim regex
+http://vimregex.com/
 

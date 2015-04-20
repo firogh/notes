@@ -112,6 +112,7 @@ CPU and main memory is the brain of a computer.
 Any transfer of information to or from the CPU/memory combo, for example by reading data from a disk drive, is considered I/O. 
 ##CPU-device I/O
 ### Memory-mapped I/O
+ioremap: physical address->logical address, simlar to vmalloc except we need not page.
 ### Ported-mapped I/O
 
 ##Non CPU-device I/O
