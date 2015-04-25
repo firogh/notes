@@ -44,13 +44,16 @@ Bubble locate, begin with the fundermental system api for example socket(), bind
 ### Linker
 * GNU ld
 * gold
+###Kernel build
+* build arm on x86
+ make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
 
 
 ## Reverse engineering
 * readelf
 * objdump
 * tcpdump
-##Manipulate ELF
+###Manipulate ELF
 ELF header, readelf -h
 Program header table, readelf -l
 Segments, readelf --segments 
@@ -61,10 +64,21 @@ Section header table, readelf -S
 .hash, utiliy for quire symbols
 .shstrtab, Section header string table store section name for ELF,like .text, .data...
 
+##Mail
+mutt
+fetchmail
+fetchmail -d0 -vk pop.gmail.com
+msmtp
+/home/firo/.msmtprc
+procmail
+
 
 ## Test
 * kvm 
 * supermin
+
+###Kernel modification test
+git status  | grep 'modified:' | while read line; do file=$(echo $line | awk '{print $2}'); echo $file; make ${file/%.c/.o};done
 
 ## Debug
 More details in debugging note
@@ -83,6 +97,15 @@ git log -S "RTN_UNSPEC" --source --all
 
 * find commit id of a tag
     git rev-parse v2.6.12-rc2
+#git sendmail
+shadowsocks
+/etc/proxychains.conf
+/home/firo/.gitconfig
+proxychains git send-email --to dbaryshkov@gmail.com --cc rmk+kernel@arm.linux.org.uk --cc linux-pcmcia@lists.infradead.org  0001-Drivers-pcmcia-Fix-memroy-leak-in-sa11xx_drv_pcmcia_.patch
+
+#git diff
+git -c core.whitespace=tab-in-indent diff --check
+
 
 
 #Make
@@ -107,12 +130,12 @@ $(warning ...)
 
 * make bzImage  #kmods will not build that configured with M! 
 * make modules_install INSTALL_MOD_PATH=/home/firo/kmods
+###make ARCH=arm menuconfig
 
 ##build signle kernel module
 make menuconfig
 make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
-
 
 #GCC
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
