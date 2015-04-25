@@ -1,0 +1,3080 @@
+  CHK     include/config/kernel.release
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+  CHECK   scripts/mod/empty.c
+  CHECK   drivers/accessibility/braille/braille_console.c
+  CHECK   drivers/acpi/tables.c
+drivers/acpi/tables.c:285:37: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/tables.c:285:37:    expected void [noderef] <asn:2>*virt
+drivers/acpi/tables.c:285:37:    got char *<noident>
+drivers/acpi/tables.c:326:44: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/tables.c:326:44:    expected void [noderef] <asn:2>*virt
+drivers/acpi/tables.c:326:44:    got struct acpi_table_header *[addressable] table
+drivers/acpi/tables.c:349:44: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/tables.c:349:44:    expected void [noderef] <asn:2>*virt
+drivers/acpi/tables.c:349:44:    got struct acpi_table_header *[addressable] table
+  CHECK   drivers/acpi/blacklist.c
+  CHECK   drivers/acpi/osl.c
+drivers/acpi/osl.c:384:40: warning: incorrect type in return expression (different address spaces)
+drivers/acpi/osl.c:384:40:    expected void [noderef] <asn:2>*
+drivers/acpi/osl.c:384:40:    got char *
+drivers/acpi/osl.c:426:17: warning: cast removes address space of expression
+drivers/acpi/osl.c:450:36: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/osl.c:450:36:    expected char *map
+drivers/acpi/osl.c:450:36:    got void [noderef] <asn:2>*virt
+drivers/acpi/osl.c:477:36: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/osl.c:477:36:    expected char *map
+drivers/acpi/osl.c:477:36:    got void [noderef] <asn:2>*virt
+drivers/acpi/osl.c:695:32: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/osl.c:695:32:    expected char *dest_p
+drivers/acpi/osl.c:695:32:    got void [noderef] <asn:2>*
+drivers/acpi/osl.c:698:39: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/osl.c:698:39:    expected void [noderef] <asn:2>*addr
+drivers/acpi/osl.c:698:39:    got char *dest_p
+drivers/acpi/osl.c:948:1: warning: context imbalance in 'acpi_os_read_memory' - wrong count at exit
+drivers/acpi/osl.c:1007:1: warning: context imbalance in 'acpi_os_write_memory' - wrong count at exit
+drivers/acpi/osl.c:1704:16: warning: context imbalance in 'acpi_os_acquire_lock' - wrong count at exit
+drivers/acpi/osl.c:1715:6: warning: context imbalance in 'acpi_os_release_lock' - unexpected unlock
+  CHECK   drivers/acpi/utils.c
+  CHECK   drivers/acpi/reboot.c
+  CHECK   drivers/acpi/nvs.c
+drivers/acpi/nvs.c:139:54: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/nvs.c:139:54:    expected void volatile [noderef] <asn:2>*addr
+drivers/acpi/nvs.c:139:54:    got void *kaddr
+drivers/acpi/nvs.c:142:66: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/nvs.c:142:66:    expected void [noderef] <asn:2>*virt
+drivers/acpi/nvs.c:142:66:    got void *kaddr
+drivers/acpi/nvs.c:181:38: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/nvs.c:181:38:    expected void *kaddr
+drivers/acpi/nvs.c:181:38:    got void [noderef] <asn:2>*
+drivers/acpi/nvs.c:183:46: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/nvs.c:183:46:    expected void *kaddr
+drivers/acpi/nvs.c:183:46:    got void [noderef] <asn:2>*
+  CHECK   drivers/acpi/wakeup.c
+  CHECK   drivers/acpi/sleep.c
+  CHECK   drivers/acpi/device_pm.c
+  CHECK   drivers/acpi/proc.c
+  CHECK   drivers/acpi/bus.c
+drivers/acpi/bus.c:50:20: warning: symbol 'acpi_root' was not declared. Should it be static?
+  CHECK   drivers/acpi/glue.c
+  CHECK   drivers/acpi/scan.c
+drivers/acpi/scan.c:44:1: warning: symbol 'acpi_device_lock' was not declared. Should it be static?
+drivers/acpi/scan.c:45:1: warning: symbol 'acpi_wakeup_device_list' was not declared. Should it be static?
+  CHECK   drivers/acpi/resource.c
+  CHECK   drivers/acpi/acpi_processor.c
+  CHECK   drivers/acpi/processor_core.c
+  CHECK   drivers/acpi/processor_pdc.c
+  CHECK   drivers/acpi/ec.c
+drivers/acpi/ec.c:130:16: warning: symbol 'boot_ec' was not declared. Should it be static?
+  CHECK   drivers/acpi/dock.c
+  CHECK   drivers/acpi/pci_root.c
+  CHECK   drivers/acpi/pci_link.c
+  CHECK   drivers/acpi/pci_irq.c
+  CHECK   drivers/acpi/acpi_lpss.c
+  CHECK   drivers/acpi/acpi_apd.c
+  CHECK   drivers/acpi/acpi_platform.c
+  CHECK   drivers/acpi/acpi_pnp.c
+drivers/acpi/acpi_pnp.c:384:13: warning: symbol 'acpi_pnp_init' was not declared. Should it be static?
+  CHECK   drivers/acpi/int340x_thermal.c
+  CHECK   drivers/acpi/power.c
+  CHECK   drivers/acpi/event.c
+  CHECK   drivers/acpi/sysfs.c
+  CHECK   drivers/acpi/property.c
+  CHECK   drivers/acpi/acpi_cmos_rtc.c
+  CHECK   drivers/acpi/debugfs.c
+drivers/acpi/debugfs.c:13:15: warning: symbol 'acpi_debugfs_dir' was not declared. Should it be static?
+drivers/acpi/debugfs.c:16:13: warning: symbol 'acpi_debugfs_init' was not declared. Should it be static?
+  CHECK   drivers/acpi/numa.c
+  CHECK   drivers/acpi/video_detect.c
+  CHECK   drivers/acpi/acpi_lpat.c
+  CHECK   drivers/acpi/acpica/dsargs.c
+  CHECK   drivers/acpi/acpica/dscontrol.c
+  CHECK   drivers/acpi/acpica/dsfield.c
+  CHECK   drivers/acpi/acpica/dsinit.c
+  CHECK   drivers/acpi/acpica/dsmethod.c
+  CHECK   drivers/acpi/acpica/dsmthdat.c
+  CHECK   drivers/acpi/acpica/dsobject.c
+  CHECK   drivers/acpi/acpica/dsopcode.c
+  CHECK   drivers/acpi/acpica/dsutils.c
+  CHECK   drivers/acpi/acpica/dswexec.c
+  CHECK   drivers/acpi/acpica/dswload.c
+  CHECK   drivers/acpi/acpica/dswload2.c
+  CHECK   drivers/acpi/acpica/dswscope.c
+  CHECK   drivers/acpi/acpica/dswstate.c
+  CHECK   drivers/acpi/acpica/evevent.c
+  CHECK   drivers/acpi/acpica/evgpe.c
+  CHECK   drivers/acpi/acpica/evgpeblk.c
+  CHECK   drivers/acpi/acpica/evgpeinit.c
+  CHECK   drivers/acpi/acpica/evgpeutil.c
+  CHECK   drivers/acpi/acpica/evglock.c
+  CHECK   drivers/acpi/acpica/evhandler.c
+drivers/acpi/acpica/evhandler.c:60:4: warning: symbol 'acpi_gbl_default_address_spaces' was not declared. Should it be static?
+  CHECK   drivers/acpi/acpica/evmisc.c
+  CHECK   drivers/acpi/acpica/evregion.c
+  CHECK   drivers/acpi/acpica/evrgnini.c
+  CHECK   drivers/acpi/acpica/evsci.c
+  CHECK   drivers/acpi/acpica/evxface.c
+  CHECK   drivers/acpi/acpica/evxfevnt.c
+  CHECK   drivers/acpi/acpica/evxfgpe.c
+  CHECK   drivers/acpi/acpica/evxfregn.c
+  CHECK   drivers/acpi/acpica/exconfig.c
+  CHECK   drivers/acpi/acpica/exconvrt.c
+  CHECK   drivers/acpi/acpica/excreate.c
+  CHECK   drivers/acpi/acpica/exdebug.c
+  CHECK   drivers/acpi/acpica/exdump.c
+  CHECK   drivers/acpi/acpica/exfield.c
+  CHECK   drivers/acpi/acpica/exfldio.c
+  CHECK   drivers/acpi/acpica/exmutex.c
+  CHECK   drivers/acpi/acpica/exnames.c
+  CHECK   drivers/acpi/acpica/exoparg1.c
+  CHECK   drivers/acpi/acpica/exoparg2.c
+  CHECK   drivers/acpi/acpica/exoparg3.c
+  CHECK   drivers/acpi/acpica/exoparg6.c
+  CHECK   drivers/acpi/acpica/exprep.c
+  CHECK   drivers/acpi/acpica/exmisc.c
+  CHECK   drivers/acpi/acpica/exregion.c
+  CHECK   drivers/acpi/acpica/exresnte.c
+  CHECK   drivers/acpi/acpica/exresolv.c
+  CHECK   drivers/acpi/acpica/exresop.c
+  CHECK   drivers/acpi/acpica/exstore.c
+  CHECK   drivers/acpi/acpica/exstoren.c
+  CHECK   drivers/acpi/acpica/exstorob.c
+  CHECK   drivers/acpi/acpica/exsystem.c
+  CHECK   drivers/acpi/acpica/exutils.c
+  CHECK   drivers/acpi/acpica/hwacpi.c
+  CHECK   drivers/acpi/acpica/hwesleep.c
+  CHECK   drivers/acpi/acpica/hwgpe.c
+  CHECK   drivers/acpi/acpica/hwpci.c
+  CHECK   drivers/acpi/acpica/hwregs.c
+  CHECK   drivers/acpi/acpica/hwsleep.c
+  CHECK   drivers/acpi/acpica/hwvalid.c
+  CHECK   drivers/acpi/acpica/hwxface.c
+  CHECK   drivers/acpi/acpica/hwxfsleep.c
+  CHECK   drivers/acpi/acpica/nsaccess.c
+  CHECK   drivers/acpi/acpica/nsalloc.c
+  CHECK   drivers/acpi/acpica/nsarguments.c
+  CHECK   drivers/acpi/acpica/nsconvert.c
+  CHECK   drivers/acpi/acpica/nsdump.c
+  CHECK   drivers/acpi/acpica/nseval.c
+  CHECK   drivers/acpi/acpica/nsinit.c
+  CHECK   drivers/acpi/acpica/nsload.c
+  CHECK   drivers/acpi/acpica/nsnames.c
+  CHECK   drivers/acpi/acpica/nsobject.c
+  CHECK   drivers/acpi/acpica/nsparse.c
+  CHECK   drivers/acpi/acpica/nspredef.c
+drivers/acpi/acpica/acpredef.h:213:34: warning: symbol 'acpi_gbl_predefined_methods' was not declared. Should it be static?
+  CHECK   drivers/acpi/acpica/nsprepkg.c
+  CHECK   drivers/acpi/acpica/nsrepair.c
+  CHECK   drivers/acpi/acpica/nsrepair2.c
+  CHECK   drivers/acpi/acpica/nssearch.c
+  CHECK   drivers/acpi/acpica/nsutils.c
+  CHECK   drivers/acpi/acpica/nswalk.c
+  CHECK   drivers/acpi/acpica/nsxfeval.c
+  CHECK   drivers/acpi/acpica/nsxfname.c
+  CHECK   drivers/acpi/acpica/nsxfobj.c
+  CHECK   drivers/acpi/acpica/psargs.c
+  CHECK   drivers/acpi/acpica/psloop.c
+  CHECK   drivers/acpi/acpica/psobject.c
+  CHECK   drivers/acpi/acpica/psopcode.c
+  CHECK   drivers/acpi/acpica/psopinfo.c
+  CHECK   drivers/acpi/acpica/psparse.c
+  CHECK   drivers/acpi/acpica/psscope.c
+  CHECK   drivers/acpi/acpica/pstree.c
+  CHECK   drivers/acpi/acpica/psutils.c
+  CHECK   drivers/acpi/acpica/pswalk.c
+  CHECK   drivers/acpi/acpica/psxface.c
+  CHECK   drivers/acpi/acpica/rsaddr.c
+  CHECK   drivers/acpi/acpica/rscalc.c
+  CHECK   drivers/acpi/acpica/rscreate.c
+  CHECK   drivers/acpi/acpica/rsdump.c
+  CHECK   drivers/acpi/acpica/rsdumpinfo.c
+  CHECK   drivers/acpi/acpica/rsinfo.c
+  CHECK   drivers/acpi/acpica/rsio.c
+  CHECK   drivers/acpi/acpica/rsirq.c
+  CHECK   drivers/acpi/acpica/rslist.c
+  CHECK   drivers/acpi/acpica/rsmemory.c
+  CHECK   drivers/acpi/acpica/rsmisc.c
+  CHECK   drivers/acpi/acpica/rsserial.c
+  CHECK   drivers/acpi/acpica/rsutils.c
+  CHECK   drivers/acpi/acpica/rsxface.c
+  CHECK   drivers/acpi/acpica/tbdata.c
+  CHECK   drivers/acpi/acpica/tbfadt.c
+  CHECK   drivers/acpi/acpica/tbfind.c
+  CHECK   drivers/acpi/acpica/tbinstal.c
+  CHECK   drivers/acpi/acpica/tbprint.c
+  CHECK   drivers/acpi/acpica/tbutils.c
+  CHECK   drivers/acpi/acpica/tbxface.c
+  CHECK   drivers/acpi/acpica/tbxfload.c
+  CHECK   drivers/acpi/acpica/tbxfroot.c
+  CHECK   drivers/acpi/acpica/utaddress.c
+  CHECK   drivers/acpi/acpica/utalloc.c
+  CHECK   drivers/acpi/acpica/utbuffer.c
+  CHECK   drivers/acpi/acpica/utcopy.c
+  CHECK   drivers/acpi/acpica/utexcep.c
+  CHECK   drivers/acpi/acpica/utdebug.c
+  CHECK   drivers/acpi/acpica/utdecode.c
+  CHECK   drivers/acpi/acpica/utdelete.c
+  CHECK   drivers/acpi/acpica/uterror.c
+  CHECK   drivers/acpi/acpica/uteval.c
+  CHECK   drivers/acpi/acpica/utglobal.c
+include/acpi/acpixf.h:138:1: warning: symbol 'acpi_gbl_enable_interpreter_slack' was not declared. Should it be static?
+include/acpi/acpixf.h:147:1: warning: symbol 'acpi_gbl_auto_serialize_methods' was not declared. Should it be static?
+include/acpi/acpixf.h:154:1: warning: symbol 'acpi_gbl_create_osi_method' was not declared. Should it be static?
+include/acpi/acpixf.h:160:1: warning: symbol 'acpi_gbl_use_default_register_widths' was not declared. Should it be static?
+include/acpi/acpixf.h:169:1: warning: symbol 'acpi_gbl_verify_table_checksum' was not declared. Should it be static?
+include/acpi/acpixf.h:174:1: warning: symbol 'acpi_gbl_enable_aml_debug_object' was not declared. Should it be static?
+include/acpi/acpixf.h:182:1: warning: symbol 'acpi_gbl_copy_dsdt_locally' was not declared. Should it be static?
+include/acpi/acpixf.h:190:1: warning: symbol 'acpi_gbl_do_not_use_xsdt' was not declared. Should it be static?
+include/acpi/acpixf.h:200:1: warning: symbol 'acpi_gbl_use32_bit_fadt_addresses' was not declared. Should it be static?
+include/acpi/acpixf.h:208:1: warning: symbol 'acpi_gbl_truncate_io_addresses' was not declared. Should it be static?
+include/acpi/acpixf.h:214:1: warning: symbol 'acpi_gbl_disable_auto_repair' was not declared. Should it be static?
+include/acpi/acpixf.h:220:1: warning: symbol 'acpi_gbl_disable_ssdt_table_install' was not declared. Should it be static?
+include/acpi/acpixf.h:226:1: warning: symbol 'acpi_gbl_osi_data' was not declared. Should it be static?
+include/acpi/acpixf.h:233:1: warning: symbol 'acpi_gbl_reduced_hardware' was not declared. Should it be static?
+include/acpi/acpixf.h:239:1: warning: symbol 'acpi_gbl_trace_flags' was not declared. Should it be static?
+include/acpi/acpixf.h:240:1: warning: symbol 'acpi_gbl_trace_method_name' was not declared. Should it be static?
+include/acpi/acpixf.h:247:1: warning: symbol 'acpi_dbg_level' was not declared. Should it be static?
+include/acpi/acpixf.h:248:1: warning: symbol 'acpi_dbg_layer' was not declared. Should it be static?
+drivers/acpi/acpica/acglobal.h:142:1: warning: symbol 'acpi_gbl_startup_flags' was not declared. Should it be static?
+drivers/acpi/acpica/acglobal.h:143:1: warning: symbol 'acpi_gbl_shutdown' was not declared. Should it be static?
+drivers/acpi/acpica/acglobal.h:300:1: warning: symbol 'acpi_gbl_db_output_flags' was not declared. Should it be static?
+  CHECK   drivers/acpi/acpica/uthex.c
+  CHECK   drivers/acpi/acpica/utids.c
+  CHECK   drivers/acpi/acpica/utinit.c
+  CHECK   drivers/acpi/acpica/utlock.c
+  CHECK   drivers/acpi/acpica/utmath.c
+  CHECK   drivers/acpi/acpica/utmisc.c
+  CHECK   drivers/acpi/acpica/utmutex.c
+  CHECK   drivers/acpi/acpica/utobject.c
+  CHECK   drivers/acpi/acpica/utosi.c
+  CHECK   drivers/acpi/acpica/utownerid.c
+  CHECK   drivers/acpi/acpica/utpredef.c
+  CHECK   drivers/acpi/acpica/utresrc.c
+  CHECK   drivers/acpi/acpica/utstate.c
+  CHECK   drivers/acpi/acpica/utstring.c
+  CHECK   drivers/acpi/acpica/utxface.c
+  CHECK   drivers/acpi/acpica/utxfinit.c
+  CHECK   drivers/acpi/acpica/utxferror.c
+  CHECK   drivers/acpi/acpica/utxfmutex.c
+  CHECK   drivers/acpi/apei/apei-base.c
+drivers/acpi/apei/apei-base.c:302:23: warning: symbol 'apei_resources_all' was not declared. Should it be static?
+drivers/acpi/apei/apei-base.c:463:5: warning: symbol 'arch_apei_filter_addr' was not declared. Should it be static?
+drivers/acpi/apei/apei-base.c:768:12: warning: symbol 'arch_apei_enable_cmcff' was not declared. Should it be static?
+drivers/acpi/apei/apei-base.c:775:13: warning: symbol 'arch_apei_report_mem_error' was not declared. Should it be static?
+  CHECK   drivers/acpi/apei/hest.c
+  CHECK   drivers/acpi/apei/erst.c
+drivers/acpi/apei/erst.c:282:13: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/apei/erst.c:282:13:    expected void *src
+drivers/acpi/apei/erst.c:282:13:    got void [noderef] <asn:2>*
+drivers/acpi/apei/erst.c:285:13: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/apei/erst.c:285:13:    expected void *dst
+drivers/acpi/apei/erst.c:285:13:    got void [noderef] <asn:2>*
+drivers/acpi/apei/erst.c:287:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/apei/erst.c:287:25:    expected void volatile [noderef] <asn:2>*addr
+drivers/acpi/apei/erst.c:287:25:    got void *src
+drivers/acpi/apei/erst.c:293:17: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/apei/erst.c:293:17:    expected void volatile [noderef] <asn:2>*addr
+drivers/acpi/apei/erst.c:293:17:    got void *src
+drivers/acpi/apei/erst.c:294:17: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/apei/erst.c:294:17:    expected void volatile [noderef] <asn:2>*addr
+drivers/acpi/apei/erst.c:294:17:    got void *dst
+drivers/acpi/apei/erst.c:808:27: warning: incorrect type in argument 1 (different address spaces)
+drivers/acpi/apei/erst.c:808:27:    expected void *to
+drivers/acpi/apei/erst.c:808:27:    got void [noderef] <asn:2>*static [toplevel] vaddr
+drivers/acpi/apei/erst.c:809:20: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/apei/erst.c:809:20:    expected struct cper_record_header *rcd_erange
+drivers/acpi/apei/erst.c:809:20:    got void [noderef] <asn:2>*static [toplevel] vaddr
+drivers/acpi/apei/erst.c:846:17: warning: incorrect type in assignment (different address spaces)
+drivers/acpi/apei/erst.c:846:17:    expected struct cper_record_header *rcd_tmp
+drivers/acpi/apei/erst.c:846:17:    got void [noderef] <asn:2>*
+  CHECK   drivers/acpi/apei/ghes.c
+drivers/acpi/apei/ghes.c:534:25: error: incompatible types in comparison expression (different address spaces)
+drivers/acpi/apei/ghes.c:614:25: error: incompatible types in comparison expression (different address spaces)
+  CHECK   drivers/acpi/ac.c
+  CHECK   drivers/acpi/button.c
+  CHECK   drivers/acpi/fan.c
+  CHECK   drivers/acpi/pci_slot.c
+  CHECK   drivers/acpi/processor_driver.c
+  CHECK   drivers/acpi/processor_throttling.c
+drivers/acpi/processor_throttling.c:724:18: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:724:18: warning: incorrect type in argument 2 (different address spaces)
+drivers/acpi/processor_throttling.c:724:18:    expected unsigned long const [noderef] <asn:3>*addr
+drivers/acpi/processor_throttling.c:724:18:    got unsigned long *<noident>
+./arch/x86/include/asm/percpu.h:540:34: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:724:18: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:724:18: warning: incorrect type in argument 2 (different address spaces)
+drivers/acpi/processor_throttling.c:724:18:    expected unsigned long const [noderef] <asn:3>*addr
+drivers/acpi/processor_throttling.c:724:18:    got unsigned long *<noident>
+./arch/x86/include/asm/percpu.h:523:38: warning: cast removes address space of expression
+./arch/x86/include/asm/percpu.h:523:59: warning: incorrect type in initializer (different address spaces)
+./arch/x86/include/asm/percpu.h:523:59:    expected unsigned long [noderef] <asn:3>*a
+./arch/x86/include/asm/percpu.h:523:59:    got unsigned long *
+drivers/acpi/processor_throttling.c:745:18: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:745:18: warning: incorrect type in argument 2 (different address spaces)
+drivers/acpi/processor_throttling.c:745:18:    expected unsigned long const [noderef] <asn:3>*addr
+drivers/acpi/processor_throttling.c:745:18:    got unsigned long *<noident>
+./arch/x86/include/asm/percpu.h:540:34: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:745:18: warning: cast removes address space of expression
+drivers/acpi/processor_throttling.c:745:18: warning: incorrect type in argument 2 (different address spaces)
+drivers/acpi/processor_throttling.c:745:18:    expected unsigned long const [noderef] <asn:3>*addr
+drivers/acpi/processor_throttling.c:745:18:    got unsigned long *<noident>
+./arch/x86/include/asm/percpu.h:523:38: warning: cast removes address space of expression
+./arch/x86/include/asm/percpu.h:523:59: warning: incorrect type in initializer (different address spaces)
+./arch/x86/include/asm/percpu.h:523:59:    expected unsigned long [noderef] <asn:3>*a
+./arch/x86/include/asm/percpu.h:523:59:    got unsigned long *
+  CHECK   drivers/acpi/processor_idle.c
+  CHECK   drivers/acpi/processor_thermal.c
+  CHECK   drivers/acpi/processor_perflib.c
+  CHECK   drivers/acpi/container.c
+  CHECK   drivers/acpi/thermal.c
+  CHECK   drivers/acpi/acpi_memhotplug.c
+  CHECK   drivers/acpi/ioapic.c
+drivers/acpi/ioapic.c:192:5: warning: symbol 'acpi_ioapic_add' was not declared. Should it be static?
+drivers/acpi/ioapic.c:203:5: warning: symbol 'acpi_ioapic_remove' was not declared. Should it be static?
+  CHECK   drivers/acpi/battery.c
+  CHECK   drivers/acpi/hed.c
+  CHECK   drivers/acpi/bgrt.c
+  CHECK   drivers/acpi/video.c
+  CHECK   drivers/ata/libata-core.c
+  CHECK   drivers/ata/libata-scsi.c
+drivers/ata/libata-scsi.c:1932:9: warning: context imbalance in 'ata_scsi_rbuf_get' - wrong count at exit
+drivers/ata/libata-scsi.c:1953:31: warning: context imbalance in 'ata_scsi_rbuf_fill' - unexpected unlock
+drivers/ata/libata-scsi.c:1951:48: warning: context imbalance in 'atapi_qc_complete' - unexpected unlock
+  CHECK   drivers/ata/libata-eh.c
+  CHECK   drivers/ata/libata-transport.c
+  CHECK   drivers/ata/libata-trace.c
+  CHECK   drivers/ata/libata-sff.c
+drivers/ata/libata-sff.c:1302:9: warning: context imbalance in 'ata_sff_hsm_move' - different lock contexts for basic block
+  CHECK   drivers/ata/libata-pmp.c
+  CHECK   drivers/ata/libata-acpi.c
+  CHECK   drivers/ata/ahci.c
+drivers/ata/ahci.c:97:9: warning: Initializer entry defined twice
+drivers/ata/ahci.c:97:9:   also defined here
+  CHECK   drivers/ata/libahci.c
+  CHECK   drivers/ata/ata_piix.c
+  CHECK   drivers/base/component.c
+  CHECK   drivers/base/core.c
+  CHECK   drivers/base/bus.c
+  CHECK   drivers/base/dd.c
+  CHECK   drivers/base/syscore.c
+  CHECK   drivers/base/driver.c
+  CHECK   drivers/base/class.c
+  CHECK   drivers/base/platform.c
+  CHECK   drivers/base/cpu.c
+  CHECK   drivers/base/firmware.c
+  CHECK   drivers/base/init.c
+  CHECK   drivers/base/map.c
+  CHECK   drivers/base/devres.c
+  CHECK   drivers/base/attribute_container.c
+  CHECK   drivers/base/transport_class.c
+  CHECK   drivers/base/topology.c
+  CHECK   drivers/base/container.c
+  CHECK   drivers/base/property.c
+  CHECK   drivers/base/cacheinfo.c
+  CHECK   drivers/base/devtmpfs.c
+drivers/base/devtmpfs.c:357:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/base/devtmpfs.c:357:25:    expected char [noderef] <asn:1>*dev_name
+drivers/base/devtmpfs.c:357:25:    got char static *<noident>
+drivers/base/devtmpfs.c:357:38: warning: incorrect type in argument 2 (different address spaces)
+drivers/base/devtmpfs.c:357:38:    expected char [noderef] <asn:1>*dir_name
+drivers/base/devtmpfs.c:357:38:    got char *<noident>
+drivers/base/devtmpfs.c:357:53: warning: incorrect type in argument 3 (different address spaces)
+drivers/base/devtmpfs.c:357:53:    expected char [noderef] <asn:1>*type
+drivers/base/devtmpfs.c:357:53:    got char static *<noident>
+drivers/base/devtmpfs.c:383:26: warning: incorrect type in argument 1 (different address spaces)
+drivers/base/devtmpfs.c:383:26:    expected char [noderef] <asn:1>*dev_name
+drivers/base/devtmpfs.c:383:26:    got char static *<noident>
+drivers/base/devtmpfs.c:383:38: warning: incorrect type in argument 2 (different address spaces)
+drivers/base/devtmpfs.c:383:38:    expected char [noderef] <asn:1>*dir_name
+drivers/base/devtmpfs.c:383:38:    got char static *<noident>
+drivers/base/devtmpfs.c:383:43: warning: incorrect type in argument 3 (different address spaces)
+drivers/base/devtmpfs.c:383:43:    expected char [noderef] <asn:1>*type
+drivers/base/devtmpfs.c:383:43:    got char static *<noident>
+drivers/base/devtmpfs.c:383:66: warning: incorrect type in argument 5 (different address spaces)
+drivers/base/devtmpfs.c:383:66:    expected void [noderef] <asn:1>*data
+drivers/base/devtmpfs.c:383:66:    got char *<noident>
+drivers/base/devtmpfs.c:386:19: warning: incorrect type in argument 1 (different address spaces)
+drivers/base/devtmpfs.c:386:19:    expected char const [noderef] <asn:1>*filename
+drivers/base/devtmpfs.c:386:19:    got char static *<noident>
+drivers/base/devtmpfs.c:387:20: warning: incorrect type in argument 1 (different address spaces)
+drivers/base/devtmpfs.c:387:20:    expected char const [noderef] <asn:1>*filename
+drivers/base/devtmpfs.c:387:20:    got char static *<noident>
+  CHECK   drivers/base/power/sysfs.c
+  CHECK   drivers/base/power/generic_ops.c
+  CHECK   drivers/base/power/common.c
+  CHECK   drivers/base/power/qos.c
+  CHECK   drivers/base/power/runtime.c
+  CHECK   drivers/base/power/main.c
+  CHECK   drivers/base/power/wakeup.c
+  CHECK   drivers/base/power/trace.c
+  CHECK   drivers/base/power/clock_ops.c
+  CHECK   drivers/base/regmap/regmap.c
+  CHECK   drivers/base/regmap/regcache.c
+  CHECK   drivers/base/regmap/regcache-rbtree.c
+  CHECK   drivers/base/regmap/regcache-lzo.c
+  CHECK   drivers/base/regmap/regcache-flat.c
+  CHECK   drivers/base/regmap/regmap-debugfs.c
+  CHECK   drivers/base/dma-mapping.c
+  CHECK   drivers/base/firmware_class.c
+  CHECK   drivers/base/node.c
+  CHECK   drivers/base/memory.c
+  CHECK   drivers/base/module.c
+  CHECK   drivers/base/hypervisor.c
+  CHECK   drivers/base/pinctrl.c
+  CHECK   drivers/bluetooth/btusb.c
+  CHECK   drivers/bluetooth/btintel.c
+  CHECK   drivers/bluetooth/btbcm.c
+  CHECK   drivers/cdrom/cdrom.c
+  CHECK   drivers/char/mem.c
+  CHECK   drivers/char/random.c
+drivers/char/random.c:1766:6: warning: symbol 'add_hwgenerator_randomness' was not declared. Should it be static?
+  CHECK   drivers/char/misc.c
+  CHECK   drivers/char/raw.c
+  CHECK   drivers/char/hpet.c
+  CHECK   drivers/char/nvram.c
+  CHECK   drivers/char/agp/backend.c
+  CHECK   drivers/char/agp/frontend.c
+drivers/char/agp/frontend.c:45:23: warning: symbol 'agp_fe' was not declared. Should it be static?
+drivers/char/agp/frontend.c:47:19: warning: symbol 'agp_find_mem_by_key' was not declared. Should it be static?
+drivers/char/agp/frontend.c:163:5: warning: symbol 'agp_create_segment' was not declared. Should it be static?
+drivers/char/agp/frontend.c:215:25: warning: symbol 'agp_find_private' was not declared. Should it be static?
+drivers/char/agp/frontend.c:270:6: warning: symbol 'agp_free_memory_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:276:19: warning: symbol 'agp_allocate_memory_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:488:19: warning: symbol 'agp_find_client_by_pid' was not declared. Should it be static?
+drivers/char/agp/frontend.c:513:19: warning: symbol 'agp_create_client' was not declared. Should it be static?
+drivers/char/agp/frontend.c:526:5: warning: symbol 'agp_remove_client' was not declared. Should it be static?
+drivers/char/agp/frontend.c:737:5: warning: symbol 'agpioc_acquire_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:780:5: warning: symbol 'agpioc_release_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:787:5: warning: symbol 'agpioc_setup_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:867:5: warning: symbol 'agpioc_protect_wrap' was not declared. Should it be static?
+drivers/char/agp/frontend.c:901:5: warning: symbol 'agpioc_deallocate_wrap' was not declared. Should it be static?
+  CHECK   drivers/char/agp/generic.c
+drivers/char/agp/generic.c:46:7: warning: symbol 'agp_gatt_table' was not declared. Should it be static?
+drivers/char/agp/generic.c:47:5: warning: symbol 'agp_memory_reserved' was not declared. Should it be static?
+  CHECK   drivers/char/agp/isoch.c
+  CHECK   drivers/char/agp/compat_ioctl.c
+  CHECK   drivers/char/agp/amd64-agp.c
+  CHECK   drivers/char/agp/intel-agp.c
+  CHECK   drivers/char/agp/intel-gtt.c
+  CHECK   drivers/char/agp/sis-agp.c
+  CHECK   drivers/char/agp/via-agp.c
+  CHECK   drivers/char/hw_random/core.c
+  CHECK   drivers/clk/clk-devres.c
+  CHECK   drivers/clk/clkdev.c
+  CHECK   drivers/clk/clk.c
+drivers/clk/clk.c:2669:5: warning: symbol '__clk_get' was not declared. Should it be static?
+drivers/clk/clk.c:2682:6: warning: symbol '__clk_put' was not declared. Should it be static?
+drivers/clk/clk.c:116:22: warning: context imbalance in 'clk_enable_lock' - wrong count at exit
+drivers/clk/clk.c:141:9: warning: context imbalance in 'clk_enable_unlock' - unexpected unlock
+  CHECK   drivers/clk/clk-divider.c
+drivers/clk/clk-divider.c:379:12: warning: context imbalance in 'clk_divider_set_rate' - different lock contexts for basic block
+  CHECK   drivers/clk/clk-fixed-factor.c
+  CHECK   drivers/clk/clk-fixed-rate.c
+  CHECK   drivers/clk/clk-gate.c
+drivers/clk/clk-gate.c:71:9: warning: context imbalance in 'clk_gate_endisable' - different lock contexts for basic block
+  CHECK   drivers/clk/clk-mux.c
+drivers/clk/clk-mux.c:69:12: warning: context imbalance in 'clk_mux_set_parent' - different lock contexts for basic block
+  CHECK   drivers/clk/clk-composite.c
+  CHECK   drivers/clk/clk-fractional-divider.c
+drivers/clk/clk-fractional-divider.c:36:9: warning: context imbalance in 'clk_fd_recalc_rate' - different lock contexts for basic block
+drivers/clk/clk-fractional-divider.c:65:12: warning: context imbalance in 'clk_fd_set_rate' - different lock contexts for basic block
+  CHECK   drivers/clk/clk-gpio-gate.c
+  CHECK   drivers/clk/x86/clk-lpt.c
+  CHECK   drivers/clocksource/acpi_pm.c
+  CHECK   drivers/clocksource/i8253.c
+  CHECK   drivers/connector/cn_queue.c
+  CHECK   drivers/connector/connector.c
+  CHECK   drivers/connector/cn_proc.c
+  CC      drivers/connector/cn_proc.o
+  LD      drivers/connector/built-in.o
+  CHECK   drivers/cpufreq/cpufreq.c
+drivers/cpufreq/cpufreq.c:54:1: warning: symbol 'cpufreq_governor_lock' was not declared. Should it be static?
+drivers/cpufreq/cpufreq.c:205:23: warning: symbol 'cpufreq_cpu_get_raw' was not declared. Should it be static?
+  CC      drivers/cpufreq/cpufreq.o
+  CHECK   drivers/cpufreq/freq_table.c
+drivers/cpufreq/freq_table.c:276:1: warning: symbol 'cpufreq_freq_attr_scaling_boost_freqs' was not declared. Should it be static?
+  CC      drivers/cpufreq/freq_table.o
+  CHECK   drivers/cpufreq/cpufreq_performance.c
+  CC      drivers/cpufreq/cpufreq_performance.o
+  CHECK   drivers/cpufreq/cpufreq_powersave.c
+  CC      drivers/cpufreq/cpufreq_powersave.o
+  CHECK   drivers/cpufreq/cpufreq_userspace.c
+  CC      drivers/cpufreq/cpufreq_userspace.o
+  CHECK   drivers/cpufreq/cpufreq_ondemand.c
+  CC      drivers/cpufreq/cpufreq_ondemand.o
+  CHECK   drivers/cpufreq/cpufreq_conservative.c
+  CC      drivers/cpufreq/cpufreq_conservative.o
+  CHECK   drivers/cpufreq/cpufreq_governor.c
+  CC      drivers/cpufreq/cpufreq_governor.o
+  CHECK   drivers/cpufreq/intel_pstate.c
+  CC      drivers/cpufreq/intel_pstate.o
+  LD      drivers/cpufreq/built-in.o
+  CHECK   drivers/cpufreq/acpi-cpufreq.c
+drivers/cpufreq/acpi-cpufreq.c:122:42: warning: incorrect type in argument 3 (different address spaces)
+drivers/cpufreq/acpi-cpufreq.c:122:42:    expected struct msr *msrs
+drivers/cpufreq/acpi-cpufreq.c:122:42:    got struct msr [noderef] <asn:3>*static [toplevel] msrs
+drivers/cpufreq/acpi-cpufreq.c:132:42: warning: incorrect type in argument 3 (different address spaces)
+drivers/cpufreq/acpi-cpufreq.c:132:42:    expected struct msr *msrs
+drivers/cpufreq/acpi-cpufreq.c:132:42:    got struct msr [noderef] <asn:3>*static [toplevel] msrs
+drivers/cpufreq/acpi-cpufreq.c:901:22: warning: incorrect type in assignment (different address spaces)
+drivers/cpufreq/acpi-cpufreq.c:901:22:    expected struct msr [noderef] <asn:3>*static [toplevel] msrs
+drivers/cpufreq/acpi-cpufreq.c:901:22:    got struct msr *
+drivers/cpufreq/acpi-cpufreq.c:926:27: warning: incorrect type in argument 1 (different address spaces)
+drivers/cpufreq/acpi-cpufreq.c:926:27:    expected struct msr *msrs
+drivers/cpufreq/acpi-cpufreq.c:926:27:    got struct msr [noderef] <asn:3>*static [toplevel] msrs
+  CC [M]  drivers/cpufreq/acpi-cpufreq.o
+  CHECK   drivers/cpuidle/cpuidle.c
+  CC      drivers/cpuidle/cpuidle.o
+  CHECK   drivers/cpuidle/driver.c
+  CC      drivers/cpuidle/driver.o
+  CHECK   drivers/cpuidle/governor.c
+  CC      drivers/cpuidle/governor.o
+  CHECK   drivers/cpuidle/sysfs.c
+  CC      drivers/cpuidle/sysfs.o
+  CHECK   drivers/cpuidle/governors/menu.c
+  CC      drivers/cpuidle/governors/menu.o
+  LD      drivers/cpuidle/governors/built-in.o
+  LD      drivers/cpuidle/built-in.o
+  CHECK   drivers/dma/acpi-dma.c
+  CC      drivers/dma/acpi-dma.o
+  LD      drivers/dma/built-in.o
+  CHECK   drivers/dma-buf/dma-buf.c
+  CC      drivers/dma-buf/dma-buf.o
+  CHECK   drivers/dma-buf/fence.c
+  CC      drivers/dma-buf/fence.o
+  CHECK   drivers/dma-buf/reservation.c
+  CC      drivers/dma-buf/reservation.o
+  CHECK   drivers/dma-buf/seqno-fence.c
+  CC      drivers/dma-buf/seqno-fence.o
+  LD      drivers/dma-buf/built-in.o
+  CHECK   drivers/edac/edac_stub.c
+  CC      drivers/edac/edac_stub.o
+  LD      drivers/edac/built-in.o
+  CHECK   drivers/firewire/init_ohci1394_dma.c
+  CC      drivers/firewire/init_ohci1394_dma.o
+  LD      drivers/firewire/built-in.o
+  CHECK   drivers/firmware/dmi_scan.c
+drivers/firmware/dmi_scan.c:129:13: warning: incorrect type in assignment (different address spaces)
+drivers/firmware/dmi_scan.c:129:13:    expected unsigned char [usertype] *buf
+drivers/firmware/dmi_scan.c:129:13:    got void [noderef] <asn:2>*
+drivers/firmware/dmi_scan.c:137:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/firmware/dmi_scan.c:137:25:    expected void [noderef] <asn:2>*addr
+drivers/firmware/dmi_scan.c:137:25:    got unsigned char [usertype] *buf
+drivers/firmware/dmi_scan.c:896:13: warning: incorrect type in assignment (different address spaces)
+drivers/firmware/dmi_scan.c:896:13:    expected unsigned char [usertype] *buf
+drivers/firmware/dmi_scan.c:896:13:    got void [noderef] <asn:2>*
+drivers/firmware/dmi_scan.c:902:19: warning: incorrect type in argument 1 (different address spaces)
+drivers/firmware/dmi_scan.c:902:19:    expected void volatile [noderef] <asn:2>*addr
+drivers/firmware/dmi_scan.c:902:19:    got unsigned char [usertype] *buf
+  CC      drivers/firmware/dmi_scan.o
+  CHECK   drivers/firmware/dmi-sysfs.c
+  CC      drivers/firmware/dmi-sysfs.o
+  CHECK   drivers/firmware/dmi-id.c
+  CC      drivers/firmware/dmi-id.o
+  CHECK   drivers/firmware/iscsi_ibft_find.c
+  CC      drivers/firmware/iscsi_ibft_find.o
+  CHECK   drivers/firmware/memmap.c
+  CC      drivers/firmware/memmap.o
+  CHECK   drivers/firmware/efi/efi.c
+  CC      drivers/firmware/efi/efi.o
+  CHECK   drivers/firmware/efi/vars.c
+drivers/firmware/efi/vars.c:415:33: warning: context imbalance in 'efivar_init' - different lock contexts for basic block
+drivers/firmware/efi/vars.c:482:13: warning: context imbalance in 'efivar_entry_list_del_unlock' - unexpected unlock
+drivers/firmware/efi/vars.c:531:5: warning: context imbalance in 'efivar_entry_delete' - wrong count at exit
+drivers/firmware/efi/vars.c:844:5: warning: context imbalance in 'efivar_entry_set_get_size' - different lock contexts for basic block
+drivers/firmware/efi/vars.c:924:6: warning: context imbalance in 'efivar_entry_iter_begin' - wrong count at exit
+drivers/firmware/efi/vars.c:935:6: warning: context imbalance in 'efivar_entry_iter_end' - unexpected unlock
+  CC      drivers/firmware/efi/vars.o
+  CHECK   drivers/firmware/efi/reboot.c
+  CC      drivers/firmware/efi/reboot.o
+  CHECK   drivers/firmware/efi/efivars.c
+  CC      drivers/firmware/efi/efivars.o
+  CHECK   drivers/firmware/efi/efi-pstore.c
+  CC      drivers/firmware/efi/efi-pstore.o
+  CHECK   drivers/firmware/efi/cper.c
+drivers/firmware/efi/cper.c:428:6: warning: symbol 'cper_estatus_print' was not declared. Should it be static?
+drivers/firmware/efi/cper.c:456:5: warning: symbol 'cper_estatus_check_header' was not declared. Should it be static?
+drivers/firmware/efi/cper.c:469:5: warning: symbol 'cper_estatus_check' was not declared. Should it be static?
+  CC      drivers/firmware/efi/cper.o
+  CHECK   drivers/firmware/efi/runtime-map.c
+  CC      drivers/firmware/efi/runtime-map.o
+  CHECK   drivers/firmware/efi/runtime-wrappers.c
+drivers/firmware/efi/runtime-wrappers.c:96:8: warning: symbol 'rtc_lock' was not declared. Should it be static?
+  CC      drivers/firmware/efi/runtime-wrappers.o
+  CHECK   drivers/firmware/efi/libstub/efi-stub-helper.c
+  CC      drivers/firmware/efi/libstub/efi-stub-helper.o
+  AR      drivers/firmware/efi/libstub/lib.a
+  LD      drivers/firmware/efi/built-in.o
+  LD      drivers/firmware/built-in.o
+  CHECK   drivers/gpio/devres.c
+  CC      drivers/gpio/devres.o
+  CHECK   drivers/gpio/gpiolib.c
+drivers/gpio/gpiolib.c:1317:36: warning: Variable length array is used.
+drivers/gpio/gpiolib.c:1318:36: warning: Variable length array is used.
+drivers/gpio/gpiolib.c:1324:33: error: cannot size expression
+  CC      drivers/gpio/gpiolib.o
+  CHECK   drivers/gpio/gpiolib-legacy.c
+  CC      drivers/gpio/gpiolib-legacy.o
+  CHECK   drivers/gpio/gpiolib-sysfs.c
+  CC      drivers/gpio/gpiolib-sysfs.o
+  CHECK   drivers/gpio/gpiolib-acpi.c
+  CC      drivers/gpio/gpiolib-acpi.o
+  LD      drivers/gpio/built-in.o
+  CHECK   drivers/gpu/drm/drm_mipi_dsi.c
+  CC      drivers/gpu/drm/drm_mipi_dsi.o
+  CHECK   drivers/gpu/drm/i915/i915_drv.c
+drivers/gpu/drm/i915/i915_drv.c:249:9: warning: Initializer entry defined twice
+drivers/gpu/drm/i915/i915_drv.c:251:10:   also defined here
+drivers/gpu/drm/i915/i915_drv.c:257:9: warning: Initializer entry defined twice
+drivers/gpu/drm/i915/i915_drv.c:259:10:   also defined here
+drivers/gpu/drm/i915/i915_drv.c:269:9: warning: Initializer entry defined twice
+drivers/gpu/drm/i915/i915_drv.c:270:10:   also defined here
+drivers/gpu/drm/i915/i915_drv.c:280:9: warning: Initializer entry defined twice
+drivers/gpu/drm/i915/i915_drv.c:284:10:   also defined here
+drivers/gpu/drm/i915/i915_drv.c:290:9: warning: Initializer entry defined twice
+drivers/gpu/drm/i915/i915_drv.c:295:10:   also defined here
+  CC [M]  drivers/gpu/drm/i915/i915_drv.o
+  CHECK   drivers/gpu/drm/i915/i915_params.c
+  CC [M]  drivers/gpu/drm/i915/i915_params.o
+  CHECK   drivers/gpu/drm/i915/i915_suspend.c
+  CC [M]  drivers/gpu/drm/i915/i915_suspend.o
+  CHECK   drivers/gpu/drm/i915/i915_sysfs.c
+  CC [M]  drivers/gpu/drm/i915/i915_sysfs.o
+  CHECK   drivers/gpu/drm/i915/intel_pm.c
+  CC [M]  drivers/gpu/drm/i915/intel_pm.o
+  CHECK   drivers/gpu/drm/i915/intel_runtime_pm.c
+  CC [M]  drivers/gpu/drm/i915/intel_runtime_pm.o
+  CHECK   drivers/gpu/drm/i915/i915_ioc32.c
+  CC [M]  drivers/gpu/drm/i915/i915_ioc32.o
+  CHECK   drivers/gpu/drm/i915/i915_debugfs.c
+drivers/gpu/drm/i915/i915_debugfs.c:4505:26: warning: Variable length array is used.
+drivers/gpu/drm/i915/i915_debugfs.c:4505:40: warning: Variable length array is used.
+drivers/gpu/drm/i915/i915_debugfs.c:4532:27: warning: Variable length array is used.
+drivers/gpu/drm/i915/i915_debugfs.c:4532:43: warning: Variable length array is used.
+  CC [M]  drivers/gpu/drm/i915/i915_debugfs.o
+  CHECK   drivers/gpu/drm/i915/i915_cmd_parser.c
+  CC [M]  drivers/gpu/drm/i915/i915_cmd_parser.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_batch_pool.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_batch_pool.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_context.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_context.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_render_state.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_render_state.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_debug.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_debug.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_dmabuf.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_dmabuf.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_evict.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_evict.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_execbuffer.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_execbuffer.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_gtt.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_gtt.o
+  CHECK   drivers/gpu/drm/i915/i915_gem.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_shrinker.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_shrinker.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_stolen.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_stolen.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_tiling.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_tiling.o
+  CHECK   drivers/gpu/drm/i915/i915_gem_userptr.c
+  CC [M]  drivers/gpu/drm/i915/i915_gem_userptr.o
+  CHECK   drivers/gpu/drm/i915/i915_gpu_error.c
+  CC [M]  drivers/gpu/drm/i915/i915_gpu_error.o
+  CHECK   drivers/gpu/drm/i915/i915_irq.c
+  CC [M]  drivers/gpu/drm/i915/i915_irq.o
+  CHECK   drivers/gpu/drm/i915/i915_trace_points.c
+  CC [M]  drivers/gpu/drm/i915/i915_trace_points.o
+  CHECK   drivers/gpu/drm/i915/intel_lrc.c
+  CC [M]  drivers/gpu/drm/i915/intel_lrc.o
+  CHECK   drivers/gpu/drm/i915/intel_ringbuffer.c
+  CC [M]  drivers/gpu/drm/i915/intel_ringbuffer.o
+  CHECK   drivers/gpu/drm/i915/intel_uncore.c
+  CC [M]  drivers/gpu/drm/i915/intel_uncore.o
+  CHECK   drivers/gpu/drm/i915/intel_renderstate_gen6.c
+  CC [M]  drivers/gpu/drm/i915/intel_renderstate_gen6.o
+  CHECK   drivers/gpu/drm/i915/intel_renderstate_gen7.c
+  CC [M]  drivers/gpu/drm/i915/intel_renderstate_gen7.o
+  CHECK   drivers/gpu/drm/i915/intel_renderstate_gen8.c
+  CC [M]  drivers/gpu/drm/i915/intel_renderstate_gen8.o
+  CHECK   drivers/gpu/drm/i915/intel_renderstate_gen9.c
+  CC [M]  drivers/gpu/drm/i915/intel_renderstate_gen9.o
+  CHECK   drivers/gpu/drm/i915/intel_audio.c
+  CC [M]  drivers/gpu/drm/i915/intel_audio.o
+  CHECK   drivers/gpu/drm/i915/intel_bios.c
+drivers/gpu/drm/i915/intel_bios.c:1258:37: warning: cast removes address space of expression
+drivers/gpu/drm/i915/intel_bios.c:1259:37: warning: cast removes address space of expression
+drivers/gpu/drm/i915/intel_bios.c:1271:41: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/i915/intel_bios.c:1271:41:    expected void const *<noident>
+drivers/gpu/drm/i915/intel_bios.c:1271:41:    got unsigned char [noderef] [usertype] <asn:2>*
+drivers/gpu/drm/i915/intel_bios.c:1272:52: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/i915/intel_bios.c:1272:52:    expected char *base
+drivers/gpu/drm/i915/intel_bios.c:1272:52:    got unsigned char [noderef] [usertype] <asn:2>*[assigned] bios
+drivers/gpu/drm/i915/intel_bios.c:1273:53: warning: cast removes address space of expression
+  CC [M]  drivers/gpu/drm/i915/intel_bios.o
+  CHECK   drivers/gpu/drm/i915/intel_display.c
+drivers/gpu/drm/i915/intel_display.c:11763:25: warning: expression using sizeof bool
+  CC [M]  drivers/gpu/drm/i915/intel_display.o
+  CHECK   drivers/gpu/drm/i915/intel_fbc.c
+  CC [M]  drivers/gpu/drm/i915/intel_fbc.o
+  CHECK   drivers/gpu/drm/i915/intel_fifo_underrun.c
+  CC [M]  drivers/gpu/drm/i915/intel_fifo_underrun.o
+  CHECK   drivers/gpu/drm/i915/intel_frontbuffer.c
+  CC [M]  drivers/gpu/drm/i915/intel_frontbuffer.o
+  CHECK   drivers/gpu/drm/i915/intel_modes.c
+  CC [M]  drivers/gpu/drm/i915/intel_modes.o
+  CHECK   drivers/gpu/drm/i915/intel_overlay.c
+  CC [M]  drivers/gpu/drm/i915/intel_overlay.o
+  CHECK   drivers/gpu/drm/i915/intel_psr.c
+  CC [M]  drivers/gpu/drm/i915/intel_psr.o
+  CHECK   drivers/gpu/drm/i915/intel_sideband.c
+  CC [M]  drivers/gpu/drm/i915/intel_sideband.o
+  CHECK   drivers/gpu/drm/i915/intel_sprite.c
+  CC [M]  drivers/gpu/drm/i915/intel_sprite.o
+  CHECK   drivers/gpu/drm/i915/intel_acpi.c
+  CC [M]  drivers/gpu/drm/i915/intel_acpi.o
+  CHECK   drivers/gpu/drm/i915/intel_opregion.c
+  CC [M]  drivers/gpu/drm/i915/intel_opregion.o
+  CHECK   drivers/gpu/drm/i915/intel_fbdev.c
+drivers/gpu/drm/i915/intel_fbdev.c:364:64: warning: expression using sizeof bool
+  CC [M]  drivers/gpu/drm/i915/intel_fbdev.o
+  CHECK   drivers/gpu/drm/i915/dvo_ch7017.c
+  CC [M]  drivers/gpu/drm/i915/dvo_ch7017.o
+  CHECK   drivers/gpu/drm/i915/dvo_ch7xxx.c
+  CC [M]  drivers/gpu/drm/i915/dvo_ch7xxx.o
+  CHECK   drivers/gpu/drm/i915/dvo_ivch.c
+  CC [M]  drivers/gpu/drm/i915/dvo_ivch.o
+  CHECK   drivers/gpu/drm/i915/dvo_ns2501.c
+  CC [M]  drivers/gpu/drm/i915/dvo_ns2501.o
+  CHECK   drivers/gpu/drm/i915/dvo_sil164.c
+  CC [M]  drivers/gpu/drm/i915/dvo_sil164.o
+  CHECK   drivers/gpu/drm/i915/dvo_tfp410.c
+  CC [M]  drivers/gpu/drm/i915/dvo_tfp410.o
+  CHECK   drivers/gpu/drm/i915/intel_atomic.c
+  CC [M]  drivers/gpu/drm/i915/intel_atomic.o
+  CHECK   drivers/gpu/drm/i915/intel_atomic_plane.c
+  CC [M]  drivers/gpu/drm/i915/intel_atomic_plane.o
+  CHECK   drivers/gpu/drm/i915/intel_crt.c
+  CC [M]  drivers/gpu/drm/i915/intel_crt.o
+  CHECK   drivers/gpu/drm/i915/intel_ddi.c
+  CC [M]  drivers/gpu/drm/i915/intel_ddi.o
+  CHECK   drivers/gpu/drm/i915/intel_dp.c
+  CC [M]  drivers/gpu/drm/i915/intel_dp.o
+  CHECK   drivers/gpu/drm/i915/intel_dp_mst.c
+  CC [M]  drivers/gpu/drm/i915/intel_dp_mst.o
+  CHECK   drivers/gpu/drm/i915/intel_dsi.c
+  CC [M]  drivers/gpu/drm/i915/intel_dsi.o
+  CHECK   drivers/gpu/drm/i915/intel_dsi_pll.c
+  CC [M]  drivers/gpu/drm/i915/intel_dsi_pll.o
+  CHECK   drivers/gpu/drm/i915/intel_dsi_panel_vbt.c
+  CC [M]  drivers/gpu/drm/i915/intel_dsi_panel_vbt.o
+  CHECK   drivers/gpu/drm/i915/intel_dvo.c
+  CC [M]  drivers/gpu/drm/i915/intel_dvo.o
+  CHECK   drivers/gpu/drm/i915/intel_hdmi.c
+  CC [M]  drivers/gpu/drm/i915/intel_hdmi.o
+  CHECK   drivers/gpu/drm/i915/intel_i2c.c
+  CC [M]  drivers/gpu/drm/i915/intel_i2c.o
+  CHECK   drivers/gpu/drm/i915/intel_lvds.c
+  CC [M]  drivers/gpu/drm/i915/intel_lvds.o
+  CHECK   drivers/gpu/drm/i915/intel_panel.c
+  CC [M]  drivers/gpu/drm/i915/intel_panel.o
+  CHECK   drivers/gpu/drm/i915/intel_sdvo.c
+  CC [M]  drivers/gpu/drm/i915/intel_sdvo.o
+  CHECK   drivers/gpu/drm/i915/intel_tv.c
+  CC [M]  drivers/gpu/drm/i915/intel_tv.o
+  CHECK   drivers/gpu/drm/i915/i915_vgpu.c
+  CC [M]  drivers/gpu/drm/i915/i915_vgpu.o
+  CHECK   drivers/gpu/drm/i915/i915_dma.c
+drivers/gpu/drm/i915/i915_dma.c:663:39: warning: Variable length array is used.
+  CC [M]  drivers/gpu/drm/i915/i915_dma.o
+  LD [M]  drivers/gpu/drm/i915/i915.o
+  CHECK   drivers/gpu/drm/radeon/radeon_drv.c
+drivers/gpu/drm/radeon/radeon_drv.c:166:5: warning: symbol 'radeon_no_wb' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:167:5: warning: symbol 'radeon_modeset' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:168:5: warning: symbol 'radeon_dynclks' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:169:5: warning: symbol 'radeon_r4xx_atom' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:170:5: warning: symbol 'radeon_agpmode' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:171:5: warning: symbol 'radeon_vram_limit' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:172:5: warning: symbol 'radeon_gart_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:173:5: warning: symbol 'radeon_benchmarking' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:174:5: warning: symbol 'radeon_testing' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:175:5: warning: symbol 'radeon_connector_table' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:176:5: warning: symbol 'radeon_tv' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:177:5: warning: symbol 'radeon_audio' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:178:5: warning: symbol 'radeon_disp_priority' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:179:5: warning: symbol 'radeon_hw_i2c' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:180:5: warning: symbol 'radeon_pcie_gen2' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:181:5: warning: symbol 'radeon_msi' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:182:5: warning: symbol 'radeon_lockup_timeout' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:183:5: warning: symbol 'radeon_fastfb' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:184:5: warning: symbol 'radeon_dpm' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:185:5: warning: symbol 'radeon_aspm' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:186:5: warning: symbol 'radeon_runtime_pm' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:187:5: warning: symbol 'radeon_hard_reset' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:188:5: warning: symbol 'radeon_vm_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:189:5: warning: symbol 'radeon_vm_block_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:190:5: warning: symbol 'radeon_deep_color' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:191:5: warning: symbol 'radeon_use_pflipirq' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:192:5: warning: symbol 'radeon_bapm' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:193:5: warning: symbol 'radeon_backlight' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:194:5: warning: symbol 'radeon_auxch' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_drv.c:195:5: warning: symbol 'radeon_mst' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_drv.o
+  CHECK   drivers/gpu/drm/radeon/radeon_device.c
+drivers/gpu/drm/radeon/radeon_device.c:1873:5: warning: symbol 'radeon_debugfs_init' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_device.c:1878:6: warning: symbol 'radeon_debugfs_cleanup' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_device.o
+  CHECK   drivers/gpu/drm/radeon/radeon_asic.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_asic.o
+  CHECK   drivers/gpu/drm/radeon/radeon_kms.c
+drivers/gpu/drm/radeon/radeon_kms.c:56:5: warning: symbol 'radeon_driver_unload_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:94:5: warning: symbol 'radeon_driver_load_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:245:43: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:245:43:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_kms.c:245:43:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:302:43: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:302:43:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_kms.c:302:43:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:314:43: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:314:43:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_kms.c:314:43:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:450:43: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:450:43:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_kms.c:450:43:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:572:43: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:572:43:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_kms.c:572:43:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:583:26: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/radeon/radeon_kms.c:583:26:    expected void [noderef] <asn:1>*to
+drivers/gpu/drm/radeon/radeon_kms.c:583:26:    got unsigned int [usertype] *[assigned] value_ptr
+drivers/gpu/drm/radeon/radeon_kms.c:601:6: warning: symbol 'radeon_driver_lastclose_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:615:5: warning: symbol 'radeon_driver_open_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:682:6: warning: symbol 'radeon_driver_postclose_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:717:6: warning: symbol 'radeon_driver_preclose_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:741:5: warning: symbol 'radeon_get_vblank_counter_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:762:5: warning: symbol 'radeon_enable_vblank_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:788:6: warning: symbol 'radeon_disable_vblank_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:817:5: warning: symbol 'radeon_get_vblank_timestamp_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:881:29: warning: symbol 'radeon_ioctls_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_kms.c:926:5: warning: symbol 'radeon_max_kms_ioctl' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_kms.o
+  CHECK   drivers/gpu/drm/radeon/radeon_atombios.c
+drivers/gpu/drm/radeon/radeon_atombios.c:1773:6: warning: symbol 'radeon_atom_get_tv_timings' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atombios.c:2978:10: warning: symbol 'radeon_atom_get_engine_clock' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atombios.c:2987:10: warning: symbol 'radeon_atom_get_memory_clock' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atombios.c:2996:6: warning: symbol 'radeon_atom_set_engine_clock' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atombios.c:3007:6: warning: symbol 'radeon_atom_set_memory_clock' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_atombios.o
+  CHECK   drivers/gpu/drm/radeon/radeon_agp.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_agp.o
+  CHECK   drivers/gpu/drm/radeon/atombios_crtc.c
+  CC [M]  drivers/gpu/drm/radeon/atombios_crtc.o
+  CHECK   drivers/gpu/drm/radeon/radeon_combios.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_combios.o
+  CHECK   drivers/gpu/drm/radeon/atom.c
+  CC [M]  drivers/gpu/drm/radeon/atom.o
+  CHECK   drivers/gpu/drm/radeon/radeon_fence.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_fence.o
+  CHECK   drivers/gpu/drm/radeon/radeon_ttm.c
+drivers/gpu/drm/radeon/radeon_ttm.c:865:5: warning: symbol 'radeon_ttm_init' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_ttm.c:928:6: warning: symbol 'radeon_ttm_fini' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_ttm.c:986:5: warning: symbol 'radeon_mmap' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21:    expected void const volatile [noderef] <asn:1>*<noident>
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21:    got unsigned int [usertype] *<noident>
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ttm.c:1076:21: warning: cast removes address space of expression
+  CC [M]  drivers/gpu/drm/radeon/radeon_ttm.o
+  CHECK   drivers/gpu/drm/radeon/radeon_object.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_object.o
+  CHECK   drivers/gpu/drm/radeon/radeon_gart.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_gart.o
+  CHECK   drivers/gpu/drm/radeon/radeon_legacy_crtc.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_legacy_crtc.o
+  CHECK   drivers/gpu/drm/radeon/radeon_legacy_encoders.c
+drivers/gpu/drm/radeon/radeon_legacy_encoders.c:273:1: warning: symbol 'radeon_legacy_get_backlight_level' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_legacy_encoders.c:286:1: warning: symbol 'radeon_legacy_set_backlight_level' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_legacy_encoders.c:364:6: warning: symbol 'radeon_legacy_backlight_init' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_legacy_encoders.c:1737:1: warning: symbol 'radeon_add_legacy_encoder' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_legacy_encoders.o
+  CHECK   drivers/gpu/drm/radeon/radeon_connectors.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_connectors.o
+  CHECK   drivers/gpu/drm/radeon/radeon_encoders.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_encoders.o
+  CHECK   drivers/gpu/drm/radeon/radeon_display.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_display.o
+  CHECK   drivers/gpu/drm/radeon/radeon_cursor.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_cursor.o
+  CHECK   drivers/gpu/drm/radeon/radeon_i2c.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_i2c.o
+  CHECK   drivers/gpu/drm/radeon/radeon_clocks.c
+drivers/gpu/drm/radeon/radeon_clocks.c:35:10: warning: symbol 'radeon_legacy_get_engine_clock' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_clocks.c:65:10: warning: symbol 'radeon_legacy_get_memory_clock' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_clocks.c:385:6: warning: symbol 'radeon_legacy_set_engine_clock' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_clocks.o
+  CHECK   drivers/gpu/drm/radeon/radeon_fb.c
+drivers/gpu/drm/radeon/radeon_fb.c:274:22: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/radeon/radeon_fb.c:274:22:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/radeon/radeon_fb.c:274:22:    got void *kptr
+drivers/gpu/drm/radeon/radeon_fb.c:286:27: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/radeon/radeon_fb.c:286:27:    expected char [noderef] <asn:2>*screen_base
+drivers/gpu/drm/radeon/radeon_fb.c:286:27:    got void *kptr
+  CC [M]  drivers/gpu/drm/radeon/radeon_fb.o
+  CHECK   drivers/gpu/drm/radeon/radeon_gem.c
+drivers/gpu/drm/radeon/radeon_gem.c:32:6: warning: symbol 'radeon_gem_object_free' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_gem.c:140:5: warning: symbol 'radeon_gem_object_open' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_gem.c:170:6: warning: symbol 'radeon_gem_object_close' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_gem.o
+  CHECK   drivers/gpu/drm/radeon/radeon_ring.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_ring.o
+  CHECK   drivers/gpu/drm/radeon/radeon_irq_kms.c
+drivers/gpu/drm/radeon/radeon_irq_kms.c:48:13: warning: symbol 'radeon_driver_irq_handler_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_irq_kms.c:112:6: warning: symbol 'radeon_driver_irq_preinstall_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_irq_kms.c:144:5: warning: symbol 'radeon_driver_irq_postinstall_kms' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_irq_kms.c:157:6: warning: symbol 'radeon_driver_irq_uninstall_kms' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_irq_kms.o
+  CHECK   drivers/gpu/drm/radeon/radeon_cs.c
+drivers/gpu/drm/radeon/radeon_cs.c:278:45: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_cs.c:278:45:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_cs.c:278:45:    got unsigned long long [usertype] *[assigned] chunk_array_ptr
+drivers/gpu/drm/radeon/radeon_cs.c:293:27: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/radeon/radeon_cs.c:293:27:    expected struct drm_radeon_cs_chunk [noderef] <asn:1>**chunk_ptr
+drivers/gpu/drm/radeon/radeon_cs.c:293:27:    got void [noderef] <asn:1>*<noident>
+drivers/gpu/drm/radeon/radeon_cs.c:294:49: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/radeon/radeon_cs.c:294:49:    expected void const [noderef] <asn:1>*from
+drivers/gpu/drm/radeon/radeon_cs.c:294:49:    got struct drm_radeon_cs_chunk [noderef] <asn:1>**chunk_ptr
+  CC [M]  drivers/gpu/drm/radeon/radeon_cs.o
+  CHECK   drivers/gpu/drm/radeon/radeon_bios.c
+drivers/gpu/drm/radeon/radeon_bios.c:121:30: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/radeon/radeon_bios.c:121:30:    expected void const *src
+drivers/gpu/drm/radeon/radeon_bios.c:121:30:    got unsigned char [noderef] [usertype] <asn:2>*[assigned] bios
+drivers/gpu/drm/radeon/radeon_bios.c:63:30: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:63:49: warning: dereference of noderef expression
+./arch/x86/include/asm/io.h:216:15: warning: memcpy with byte count of 262144
+drivers/gpu/drm/radeon/radeon_bios.c:89:9: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:90:9: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:92:26: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:92:42: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:118:30: warning: dereference of noderef expression
+drivers/gpu/drm/radeon/radeon_bios.c:118:49: warning: dereference of noderef expression
+  CC [M]  drivers/gpu/drm/radeon/radeon_bios.o
+  CHECK   drivers/gpu/drm/radeon/radeon_benchmark.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_benchmark.o
+  HOSTCC  drivers/gpu/drm/radeon/mkregtable
+  MKREGTABLE drivers/gpu/drm/radeon/r100_reg_safe.h
+  MKREGTABLE drivers/gpu/drm/radeon/rn50_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/r100.c
+  CC [M]  drivers/gpu/drm/radeon/r100.o
+  MKREGTABLE drivers/gpu/drm/radeon/r300_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/r300.c
+drivers/gpu/drm/radeon/r300.c:92:39: warning: incorrect type in initializer (different address spaces)
+drivers/gpu/drm/radeon/r300.c:92:39:    expected void [noderef] <asn:2>*ptr
+drivers/gpu/drm/radeon/r300.c:92:39:    got void *ptr
+  CC [M]  drivers/gpu/drm/radeon/r300.o
+  MKREGTABLE drivers/gpu/drm/radeon/r420_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/r420.c
+  CC [M]  drivers/gpu/drm/radeon/r420.o
+  CHECK   drivers/gpu/drm/radeon/rs400.c
+  CC [M]  drivers/gpu/drm/radeon/rs400.o
+  MKREGTABLE drivers/gpu/drm/radeon/rs600_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/rs600.c
+drivers/gpu/drm/radeon/rs600.c:647:30: warning: incorrect type in initializer (different address spaces)
+drivers/gpu/drm/radeon/rs600.c:647:30:    expected void [noderef] <asn:2>*ptr
+drivers/gpu/drm/radeon/rs600.c:647:30:    got void *<noident>
+  CC [M]  drivers/gpu/drm/radeon/rs600.o
+  CHECK   drivers/gpu/drm/radeon/rs690.c
+  CC [M]  drivers/gpu/drm/radeon/rs690.o
+  MKREGTABLE drivers/gpu/drm/radeon/rv515_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/rv515.c
+  CC [M]  drivers/gpu/drm/radeon/rv515.o
+  CHECK   drivers/gpu/drm/radeon/r520.c
+  CC [M]  drivers/gpu/drm/radeon/r520.o
+  CHECK   drivers/gpu/drm/radeon/r600.c
+drivers/gpu/drm/radeon/r600.c:2605:1: error: directive in argument list
+drivers/gpu/drm/radeon/r600.c:2607:1: error: directive in argument list
+  CC [M]  drivers/gpu/drm/radeon/r600.o
+  CHECK   drivers/gpu/drm/radeon/rv770.c
+drivers/gpu/drm/radeon/rv770.c:1096:1: error: directive in argument list
+drivers/gpu/drm/radeon/rv770.c:1098:1: error: directive in argument list
+  CC [M]  drivers/gpu/drm/radeon/rv770.o
+  CHECK   drivers/gpu/drm/radeon/radeon_test.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_test.o
+  MKREGTABLE drivers/gpu/drm/radeon/r200_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/r200.c
+  CC [M]  drivers/gpu/drm/radeon/r200.o
+  CHECK   drivers/gpu/drm/radeon/radeon_legacy_tv.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_legacy_tv.o
+  MKREGTABLE drivers/gpu/drm/radeon/r600_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/r600_cs.c
+drivers/gpu/drm/radeon/r600_cs.c:2268:5: warning: symbol 'r600_cs_parse' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_cs.c:2437:5: warning: symbol 'r600_dma_cs_next_reloc' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_cs.c:2473:5: warning: symbol 'r600_dma_cs_parse' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/r600_cs.o
+  CHECK   drivers/gpu/drm/radeon/r600_blit_shaders.c
+drivers/gpu/drm/radeon/r600_blit_shaders.c:41:11: warning: symbol 'r6xx_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:367:11: warning: symbol 'r7xx_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:684:11: warning: symbol 'r6xx_vs' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:704:11: warning: symbol 'r6xx_ps' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:716:11: warning: symbol 'r6xx_ps_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:717:11: warning: symbol 'r6xx_vs_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:718:11: warning: symbol 'r6xx_default_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_blit_shaders.c:719:11: warning: symbol 'r7xx_default_size' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/r600_blit_shaders.o
+  CHECK   drivers/gpu/drm/radeon/radeon_pm.c
+drivers/gpu/drm/radeon/radeon_pm.c:69:6: warning: symbol 'radeon_pm_acpi_event_handler' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_pm.o
+  CHECK   drivers/gpu/drm/radeon/atombios_dp.c
+  CC [M]  drivers/gpu/drm/radeon/atombios_dp.o
+  CHECK   drivers/gpu/drm/radeon/r600_hdmi.c
+drivers/gpu/drm/radeon/r600_hdmi.c:177:6: warning: symbol 'r600_hdmi_update_acr' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:217:6: warning: symbol 'r600_set_avi_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:313:6: warning: symbol 'r600_hdmi_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:339:6: warning: symbol 'r600_set_vbi_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:350:6: warning: symbol 'r600_set_audio_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:392:6: warning: symbol 'r600_set_mute' was not declared. Should it be static?
+drivers/gpu/drm/radeon/r600_hdmi.c:468:6: warning: symbol 'r600_hdmi_enable' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/r600_hdmi.o
+  CHECK   drivers/gpu/drm/radeon/dce3_1_afmt.c
+drivers/gpu/drm/radeon/dce3_1_afmt.c:30:6: warning: symbol 'dce3_2_afmt_hdmi_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:48:6: warning: symbol 'dce3_2_afmt_dp_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:66:6: warning: symbol 'dce3_2_afmt_write_sad_regs' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:116:6: warning: symbol 'dce3_2_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:170:6: warning: symbol 'dce3_2_hdmi_update_acr' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:202:6: warning: symbol 'dce3_2_set_audio_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce3_1_afmt.c:223:6: warning: symbol 'dce3_2_set_mute' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/dce3_1_afmt.o
+  CHECK   drivers/gpu/drm/radeon/evergreen.c
+drivers/gpu/drm/radeon/evergreen.c:2864:1: error: directive in argument list
+drivers/gpu/drm/radeon/evergreen.c:2866:1: error: directive in argument list
+  CC [M]  drivers/gpu/drm/radeon/evergreen.o
+  MKREGTABLE drivers/gpu/drm/radeon/evergreen_reg_safe.h
+  MKREGTABLE drivers/gpu/drm/radeon/cayman_reg_safe.h
+  CHECK   drivers/gpu/drm/radeon/evergreen_cs.c
+drivers/gpu/drm/radeon/evergreen_cs.c:2634:5: warning: symbol 'evergreen_cs_parse' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_cs.c:2755:5: warning: symbol 'evergreen_dma_cs_parse' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_cs.c:3457:5: warning: symbol 'evergreen_ib_parse' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_cs.c:3502:5: warning: symbol 'evergreen_dma_ib_parse' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/evergreen_cs.o
+  CHECK   drivers/gpu/drm/radeon/evergreen_blit_shaders.c
+drivers/gpu/drm/radeon/evergreen_blit_shaders.c:41:11: warning: symbol 'evergreen_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_blit_shaders.c:303:11: warning: symbol 'evergreen_default_size' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/evergreen_blit_shaders.o
+  CHECK   drivers/gpu/drm/radeon/evergreen_hdmi.c
+drivers/gpu/drm/radeon/evergreen_hdmi.c:37:6: warning: symbol 'dce4_audio_enable' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:67:6: warning: symbol 'evergreen_hdmi_update_acr' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:97:6: warning: symbol 'dce4_afmt_write_latency_fields' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:119:6: warning: symbol 'dce4_afmt_hdmi_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:137:6: warning: symbol 'dce4_afmt_dp_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:155:6: warning: symbol 'evergreen_hdmi_write_sad_regs' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:208:6: warning: symbol 'evergreen_set_avi_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:231:6: warning: symbol 'dce4_hdmi_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:274:6: warning: symbol 'dce4_dp_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:300:6: warning: symbol 'dce4_set_vbi_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:311:6: warning: symbol 'dce4_hdmi_set_color_depth' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:348:6: warning: symbol 'dce4_set_audio_packet' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:379:6: warning: symbol 'dce4_set_mute' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:390:6: warning: symbol 'evergreen_hdmi_enable' was not declared. Should it be static?
+drivers/gpu/drm/radeon/evergreen_hdmi.c:421:6: warning: symbol 'evergreen_dp_enable' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/evergreen_hdmi.o
+  CHECK   drivers/gpu/drm/radeon/radeon_trace_points.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_trace_points.o
+  CHECK   drivers/gpu/drm/radeon/ni.c
+drivers/gpu/drm/radeon/ni.c:1370:6: warning: symbol 'cayman_cp_int_cntl_setup' was not declared. Should it be static?
+drivers/gpu/drm/radeon/ni.c:1726:5: warning: symbol 'cayman_gpu_check_soft_reset' was not declared. Should it be static?
+drivers/gpu/drm/radeon/ni.c:2368:6: warning: symbol 'cayman_vm_decode_fault' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/ni.o
+  CHECK   drivers/gpu/drm/radeon/cayman_blit_shaders.c
+drivers/gpu/drm/radeon/cayman_blit_shaders.c:41:11: warning: symbol 'cayman_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cayman_blit_shaders.c:320:11: warning: symbol 'cayman_default_size' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/cayman_blit_shaders.o
+  CHECK   drivers/gpu/drm/radeon/atombios_encoders.c
+drivers/gpu/drm/radeon/atombios_encoders.c:75:1: warning: symbol 'atombios_get_backlight_level' was not declared. Should it be static?
+drivers/gpu/drm/radeon/atombios_encoders.c:87:1: warning: symbol 'atombios_set_backlight_level' was not declared. Should it be static?
+drivers/gpu/drm/radeon/atombios_encoders.c:178:6: warning: symbol 'radeon_atom_backlight_init' was not declared. Should it be static?
+drivers/gpu/drm/radeon/atombios_encoders.c:2704:1: warning: symbol 'radeon_add_atom_encoder' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/atombios_encoders.o
+  CHECK   drivers/gpu/drm/radeon/radeon_semaphore.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_semaphore.o
+  CHECK   drivers/gpu/drm/radeon/radeon_sa.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_sa.o
+  CHECK   drivers/gpu/drm/radeon/atombios_i2c.c
+drivers/gpu/drm/radeon/atombios_i2c.c:105:5: warning: symbol 'radeon_atom_hw_i2c_xfer' was not declared. Should it be static?
+drivers/gpu/drm/radeon/atombios_i2c.c:155:5: warning: symbol 'radeon_atom_hw_i2c_func' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/atombios_i2c.o
+  CHECK   drivers/gpu/drm/radeon/si.c
+drivers/gpu/drm/radeon/si.c:1541:5: warning: symbol 'si_mc_load_microcode' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:3768:5: warning: symbol 'si_gpu_check_soft_reset' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:4181:6: warning: symbol 'si_vram_gtt_location' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:5176:6: warning: symbol 'si_init_uvd_internal_cg' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:5667:5: warning: symbol 'si_get_csb_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:5699:6: warning: symbol 'si_get_csb_buffer' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si.c:5791:6: warning: symbol 'si_rlc_reset' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/si.o
+  CHECK   drivers/gpu/drm/radeon/si_blit_shaders.c
+drivers/gpu/drm/radeon/si_blit_shaders.c:31:11: warning: symbol 'si_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si_blit_shaders.c:253:11: warning: symbol 'si_default_size' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/si_blit_shaders.o
+  CHECK   drivers/gpu/drm/radeon/radeon_prime.c
+drivers/gpu/drm/radeon/radeon_prime.c:32:17: warning: symbol 'radeon_gem_prime_get_sg_table' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:40:6: warning: symbol 'radeon_gem_prime_vmap' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:53:6: warning: symbol 'radeon_gem_prime_vunmap' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:60:23: warning: symbol 'radeon_gem_prime_import_sg_table' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:83:5: warning: symbol 'radeon_gem_prime_pin' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:98:6: warning: symbol 'radeon_gem_prime_unpin' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:112:27: warning: symbol 'radeon_gem_prime_res_obj' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_prime.c:119:16: warning: symbol 'radeon_gem_prime_export' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_prime.o
+  CHECK   drivers/gpu/drm/radeon/cik.c
+drivers/gpu/drm/radeon/cik.c:1843:5: warning: symbol 'ci_mc_load_microcode' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:5200:5: warning: symbol 'cik_gpu_check_soft_reset' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:6219:6: warning: symbol 'cik_enter_rlc_safe_mode' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:6240:6: warning: symbol 'cik_exit_rlc_safe_mode' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:6666:6: warning: symbol 'cik_update_cg' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:6798:6: warning: symbol 'cik_init_cp_pg_table' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:7057:5: warning: symbol 'cik_get_csb_size' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik.c:7089:6: warning: symbol 'cik_get_csb_buffer' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/cik.o
+  CHECK   drivers/gpu/drm/radeon/cik_blit_shaders.c
+drivers/gpu/drm/radeon/cik_blit_shaders.c:31:11: warning: symbol 'cik_default_state' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik_blit_shaders.c:246:11: warning: symbol 'cik_default_size' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/cik_blit_shaders.o
+  CHECK   drivers/gpu/drm/radeon/r600_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/r600_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rs780_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/rs780_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rv6xx_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/rv6xx_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rv770_dpm.c
+drivers/gpu/drm/radeon/rv770_dpm.c:48:17: warning: symbol 'rv770_get_ps' was not declared. Should it be static?
+drivers/gpu/drm/radeon/rv770_dpm.c:55:25: warning: symbol 'rv770_get_pi' was not declared. Should it be static?
+drivers/gpu/drm/radeon/rv770_dpm.c:62:29: warning: symbol 'evergreen_get_pi' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/rv770_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rv730_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/rv730_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rv740_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/rv740_dpm.o
+  CHECK   drivers/gpu/drm/radeon/rv770_smc.c
+  CC [M]  drivers/gpu/drm/radeon/rv770_smc.o
+  CHECK   drivers/gpu/drm/radeon/cypress_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/cypress_dpm.o
+  CHECK   drivers/gpu/drm/radeon/btc_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/btc_dpm.o
+  CHECK   drivers/gpu/drm/radeon/sumo_dpm.c
+drivers/gpu/drm/radeon/sumo_dpm.c:82:24: warning: symbol 'sumo_get_pi' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/sumo_dpm.o
+  CHECK   drivers/gpu/drm/radeon/sumo_smc.c
+  CC [M]  drivers/gpu/drm/radeon/sumo_smc.o
+  CHECK   drivers/gpu/drm/radeon/trinity_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/trinity_dpm.o
+  CHECK   drivers/gpu/drm/radeon/trinity_smc.c
+  CC [M]  drivers/gpu/drm/radeon/trinity_smc.o
+  CHECK   drivers/gpu/drm/radeon/ni_dpm.c
+drivers/gpu/drm/radeon/ni_dpm.c:726:22: warning: symbol 'ni_get_pi' was not declared. Should it be static?
+drivers/gpu/drm/radeon/ni_dpm.c:733:14: warning: symbol 'ni_get_ps' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/ni_dpm.o
+  CHECK   drivers/gpu/drm/radeon/si_smc.c
+  CC [M]  drivers/gpu/drm/radeon/si_smc.o
+  CHECK   drivers/gpu/drm/radeon/si_dpm.c
+drivers/gpu/drm/radeon/si_dpm.c:344:26: warning: symbol 'cac_weights_pitcairn' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si_dpm.c:1100:26: warning: symbol 'cac_weights_oland' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si_dpm.c:3757:4: warning: symbol 'si_get_ddr3_mclk_frequency_ratio' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si_dpm.c:3770:4: warning: symbol 'si_get_mclk_frequency_ratio' was not declared. Should it be static?
+drivers/gpu/drm/radeon/si_dpm.c:3852:6: warning: symbol 'si_trim_voltage_table_to_fit_state_table' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/si_dpm.o
+  CHECK   drivers/gpu/drm/radeon/kv_smc.c
+  CC [M]  drivers/gpu/drm/radeon/kv_smc.o
+  CHECK   drivers/gpu/drm/radeon/kv_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/kv_dpm.o
+  CHECK   drivers/gpu/drm/radeon/ci_smc.c
+  CC [M]  drivers/gpu/drm/radeon/ci_smc.o
+  CHECK   drivers/gpu/drm/radeon/ci_dpm.c
+  CC [M]  drivers/gpu/drm/radeon/ci_dpm.o
+  CHECK   drivers/gpu/drm/radeon/dce6_afmt.c
+drivers/gpu/drm/radeon/dce6_afmt.c:32:5: warning: symbol 'dce6_endpoint_rreg' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:46:6: warning: symbol 'dce6_endpoint_wreg' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:91:6: warning: symbol 'dce6_afmt_select_pin' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:107:6: warning: symbol 'dce6_afmt_write_latency_fields' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:136:6: warning: symbol 'dce6_afmt_hdmi_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:161:6: warning: symbol 'dce6_afmt_dp_write_speaker_allocation' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:186:6: warning: symbol 'dce6_afmt_write_sad_regs' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:255:6: warning: symbol 'dce6_hdmi_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:274:6: warning: symbol 'dce6_dp_audio_set_dto' was not declared. Should it be static?
+drivers/gpu/drm/radeon/dce6_afmt.c:299:6: warning: symbol 'dce6_dp_enable' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/dce6_afmt.o
+  CHECK   drivers/gpu/drm/radeon/radeon_vm.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_vm.o
+  CHECK   drivers/gpu/drm/radeon/radeon_ucode.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_ucode.o
+  CHECK   drivers/gpu/drm/radeon/radeon_ib.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_ib.o
+  CHECK   drivers/gpu/drm/radeon/radeon_sync.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_sync.o
+  CHECK   drivers/gpu/drm/radeon/radeon_audio.c
+drivers/gpu/drm/radeon/radeon_audio.c:263:40: warning: Using plain integer as NULL pointer
+drivers/gpu/drm/radeon/radeon_audio.c:407:53: warning: Using plain integer as NULL pointer
+  CC [M]  drivers/gpu/drm/radeon/radeon_audio.o
+  CHECK   drivers/gpu/drm/radeon/radeon_dp_auxch.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_dp_auxch.o
+  CHECK   drivers/gpu/drm/radeon/radeon_dp_mst.c
+drivers/gpu/drm/radeon/radeon_dp_mst.c:215:20: warning: symbol 'radeon_mst_best_encoder' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_dp_mst.c:327:32: warning: symbol 'mst_cbs' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_dp_mst.c:333:25: warning: symbol 'radeon_mst_find_connector' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_dp_mst.c:589:6: warning: symbol 'radeon_dp_mst_encoder_destroy' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_dp_mst.o
+  CHECK   drivers/gpu/drm/radeon/radeon_mn.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_mn.o
+  CHECK   drivers/gpu/drm/radeon/r600_dma.c
+  CC [M]  drivers/gpu/drm/radeon/r600_dma.o
+  CHECK   drivers/gpu/drm/radeon/rv770_dma.c
+  CC [M]  drivers/gpu/drm/radeon/rv770_dma.o
+  CHECK   drivers/gpu/drm/radeon/evergreen_dma.c
+  CC [M]  drivers/gpu/drm/radeon/evergreen_dma.o
+  CHECK   drivers/gpu/drm/radeon/ni_dma.c
+  CC [M]  drivers/gpu/drm/radeon/ni_dma.o
+  CHECK   drivers/gpu/drm/radeon/si_dma.c
+  CC [M]  drivers/gpu/drm/radeon/si_dma.o
+  CHECK   drivers/gpu/drm/radeon/cik_sdma.c
+drivers/gpu/drm/radeon/cik_sdma.c:320:6: warning: symbol 'cik_sdma_enable' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik_sdma.c:517:5: warning: symbol 'cik_sdma_resume' was not declared. Should it be static?
+drivers/gpu/drm/radeon/cik_sdma.c:546:6: warning: symbol 'cik_sdma_fini' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/cik_sdma.o
+  CHECK   drivers/gpu/drm/radeon/radeon_uvd.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_uvd.o
+  CHECK   drivers/gpu/drm/radeon/uvd_v1_0.c
+  CC [M]  drivers/gpu/drm/radeon/uvd_v1_0.o
+  CHECK   drivers/gpu/drm/radeon/uvd_v2_2.c
+  CC [M]  drivers/gpu/drm/radeon/uvd_v2_2.o
+  CHECK   drivers/gpu/drm/radeon/uvd_v3_1.c
+  CC [M]  drivers/gpu/drm/radeon/uvd_v3_1.o
+  CHECK   drivers/gpu/drm/radeon/uvd_v4_2.c
+  CC [M]  drivers/gpu/drm/radeon/uvd_v4_2.o
+  CHECK   drivers/gpu/drm/radeon/radeon_vce.c
+drivers/gpu/drm/radeon/radeon_vce.c:500:5: warning: symbol 'radeon_vce_validate_handle' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_vce.o
+  CHECK   drivers/gpu/drm/radeon/vce_v1_0.c
+  CC [M]  drivers/gpu/drm/radeon/vce_v1_0.o
+  CHECK   drivers/gpu/drm/radeon/vce_v2_0.c
+drivers/gpu/drm/radeon/vce_v2_0.c:103:6: warning: symbol 'vce_v2_0_enable_mgcg' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/vce_v2_0.o
+  CHECK   drivers/gpu/drm/radeon/radeon_kfd.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_kfd.o
+  CHECK   drivers/gpu/drm/radeon/radeon_ioc32.c
+drivers/gpu/drm/radeon/radeon_ioc32.c:361:16: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ioc32.c:361:16: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ioc32.c:361:16: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ioc32.c:361:16: warning: cast removes address space of expression
+drivers/gpu/drm/radeon/radeon_ioc32.c:393:6: warning: symbol 'radeon_compat_ioctl' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_ioc32.c:413:6: warning: symbol 'radeon_kms_compat_ioctl' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_ioc32.o
+  CHECK   drivers/gpu/drm/radeon/radeon_atpx_handler.c
+drivers/gpu/drm/radeon/radeon_atpx_handler.c:61:6: warning: symbol 'radeon_has_atpx' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atpx_handler.c:551:6: warning: symbol 'radeon_register_atpx_handler' was not declared. Should it be static?
+drivers/gpu/drm/radeon/radeon_atpx_handler.c:568:6: warning: symbol 'radeon_unregister_atpx_handler' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/radeon/radeon_atpx_handler.o
+  CHECK   drivers/gpu/drm/radeon/radeon_acpi.c
+  CC [M]  drivers/gpu/drm/radeon/radeon_acpi.o
+  LD [M]  drivers/gpu/drm/radeon/radeon.o
+  CHECK   drivers/gpu/drm/ttm/ttm_agp_backend.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_agp_backend.o
+  CHECK   drivers/gpu/drm/ttm/ttm_memory.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_memory.o
+  CHECK   drivers/gpu/drm/ttm/ttm_tt.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_tt.o
+  CHECK   drivers/gpu/drm/ttm/ttm_bo.c
+drivers/gpu/drm/ttm/ttm_bo.c:494:17: warning: context imbalance in 'ttm_bo_cleanup_refs_and_unlock' - unexpected unlock
+drivers/gpu/drm/ttm/ttm_bo.c:591:25: warning: context imbalance in 'ttm_bo_delayed_delete' - different lock contexts for basic block
+drivers/gpu/drm/ttm/ttm_bo.c:710:12: warning: context imbalance in 'ttm_mem_evict_first' - different lock contexts for basic block
+drivers/gpu/drm/ttm/ttm_bo.c:1612:12: warning: context imbalance in 'ttm_bo_swapout' - different lock contexts for basic block
+  CC [M]  drivers/gpu/drm/ttm/ttm_bo.o
+  CHECK   drivers/gpu/drm/ttm/ttm_bo_util.c
+drivers/gpu/drm/ttm/ttm_bo_util.c:209:30: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:209:30:    expected void *[assigned] addr
+drivers/gpu/drm/ttm/ttm_bo_util.c:209:30:    got void [noderef] <asn:2>*
+drivers/gpu/drm/ttm/ttm_bo_util.c:211:30: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:211:30:    expected void *[assigned] addr
+drivers/gpu/drm/ttm/ttm_bo_util.c:211:30:    got void [noderef] <asn:2>*
+drivers/gpu/drm/ttm/ttm_bo_util.c:231:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:231:25:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/ttm/ttm_bo_util.c:231:25:    got void *virtual
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:40: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:40:    expected void [noderef] <asn:2>*<noident>
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:40:    got unsigned int [usertype] *
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:49: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:49:    expected void [noderef] <asn:2>*<noident>
+drivers/gpu/drm/ttm/ttm_bo_util.c:246:49:    got unsigned int [usertype] *
+drivers/gpu/drm/ttm/ttm_bo_util.c:273:28: warning: incorrect type in argument 2 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:273:28:    expected void const volatile [noderef] <asn:2>*src
+drivers/gpu/drm/ttm/ttm_bo_util.c:273:28:    got void *[assigned] src
+drivers/gpu/drm/ttm/ttm_bo_util.c:309:21: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:309:21:    expected void volatile [noderef] <asn:2>*dst
+drivers/gpu/drm/ttm/ttm_bo_util.c:309:21:    got void *[assigned] dst
+drivers/gpu/drm/ttm/ttm_bo_util.c:359:27: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:359:27:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/ttm/ttm_bo_util.c:359:27:    got void *[addressable] new_iomap
+drivers/gpu/drm/ttm/ttm_bo_util.c:519:38: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:519:38:    expected void *virtual
+drivers/gpu/drm/ttm/ttm_bo_util.c:519:38:    got void [noderef] <asn:2>*
+drivers/gpu/drm/ttm/ttm_bo_util.c:522:38: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:522:38:    expected void *virtual
+drivers/gpu/drm/ttm/ttm_bo_util.c:522:38:    got void [noderef] <asn:2>*
+drivers/gpu/drm/ttm/ttm_bo_util.c:612:28: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/ttm/ttm_bo_util.c:612:28:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/ttm/ttm_bo_util.c:612:28:    got void *virtual
+  CC [M]  drivers/gpu/drm/ttm/ttm_bo_util.o
+  CHECK   drivers/gpu/drm/ttm/ttm_bo_vm.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_bo_vm.o
+  CHECK   drivers/gpu/drm/ttm/ttm_module.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_module.o
+  CHECK   drivers/gpu/drm/ttm/ttm_object.c
+drivers/gpu/drm/ttm/ttm_object.c:387:13: warning: context imbalance in 'ttm_ref_object_release' - unexpected unlock
+  CC [M]  drivers/gpu/drm/ttm/ttm_object.o
+  CHECK   drivers/gpu/drm/ttm/ttm_lock.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_lock.o
+  CHECK   drivers/gpu/drm/ttm/ttm_execbuf_util.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_execbuf_util.o
+  CHECK   drivers/gpu/drm/ttm/ttm_page_alloc.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_page_alloc.o
+  CHECK   drivers/gpu/drm/ttm/ttm_bo_manager.c
+  CC [M]  drivers/gpu/drm/ttm/ttm_bo_manager.o
+  CHECK   drivers/gpu/drm/ttm/ttm_page_alloc_dma.c
+drivers/gpu/drm/ttm/ttm_page_alloc_dma.c:990:43: warning: Using plain integer as NULL pointer
+  CC [M]  drivers/gpu/drm/ttm/ttm_page_alloc_dma.o
+  LD [M]  drivers/gpu/drm/ttm/ttm.o
+  LD      drivers/gpu/drm/built-in.o
+  CHECK   drivers/gpu/drm/drm_crtc_helper.c
+  CC [M]  drivers/gpu/drm/drm_crtc_helper.o
+  CHECK   drivers/gpu/drm/drm_dp_helper.c
+  CC [M]  drivers/gpu/drm/drm_dp_helper.o
+  CHECK   drivers/gpu/drm/drm_probe_helper.c
+  CC [M]  drivers/gpu/drm/drm_probe_helper.o
+  CHECK   drivers/gpu/drm/drm_plane_helper.c
+  CC [M]  drivers/gpu/drm/drm_plane_helper.o
+  CHECK   drivers/gpu/drm/drm_dp_mst_topology.c
+  CC [M]  drivers/gpu/drm/drm_dp_mst_topology.o
+  CHECK   drivers/gpu/drm/drm_atomic_helper.c
+  CC [M]  drivers/gpu/drm/drm_atomic_helper.o
+  CHECK   drivers/gpu/drm/drm_edid_load.c
+  CC [M]  drivers/gpu/drm/drm_edid_load.o
+  CHECK   drivers/gpu/drm/drm_fb_helper.c
+drivers/gpu/drm/drm_fb_helper.c:1649:27: warning: expression using sizeof bool
+  CC [M]  drivers/gpu/drm/drm_fb_helper.o
+  LD [M]  drivers/gpu/drm/drm_kms_helper.o
+  CHECK   drivers/gpu/drm/drm_auth.c
+  CC [M]  drivers/gpu/drm/drm_auth.o
+  CHECK   drivers/gpu/drm/drm_bufs.c
+drivers/gpu/drm/drm_bufs.c:213:45: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_bufs.c:213:45:    expected void *handle
+drivers/gpu/drm/drm_bufs.c:213:45:    got void [noderef] <asn:2>*
+drivers/gpu/drm/drm_bufs.c:216:45: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_bufs.c:216:45:    expected void *handle
+drivers/gpu/drm/drm_bufs.c:216:45:    got void [noderef] <asn:2>*
+drivers/gpu/drm/drm_bufs.c:331:36: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/drm_bufs.c:331:36:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/drm_bufs.c:331:36:    got void *handle
+drivers/gpu/drm/drm_bufs.c:348:36: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/drm_bufs.c:348:36:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/drm_bufs.c:348:36:    got void *handle
+drivers/gpu/drm/drm_bufs.c:454:28: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/drm_bufs.c:454:28:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/drm_bufs.c:454:28:    got void *handle
+  CC [M]  drivers/gpu/drm/drm_bufs.o
+  CHECK   drivers/gpu/drm/drm_cache.c
+  CC [M]  drivers/gpu/drm/drm_cache.o
+  CHECK   drivers/gpu/drm/drm_context.c
+  CC [M]  drivers/gpu/drm/drm_context.o
+  CHECK   drivers/gpu/drm/drm_dma.c
+  CC [M]  drivers/gpu/drm/drm_dma.o
+  CHECK   drivers/gpu/drm/drm_fops.c
+  CC [M]  drivers/gpu/drm/drm_fops.o
+  CHECK   drivers/gpu/drm/drm_gem.c
+  CC [M]  drivers/gpu/drm/drm_gem.o
+  CHECK   drivers/gpu/drm/drm_ioctl.c
+  CC [M]  drivers/gpu/drm/drm_ioctl.o
+  CHECK   drivers/gpu/drm/drm_irq.c
+  CC [M]  drivers/gpu/drm/drm_irq.o
+  CHECK   drivers/gpu/drm/drm_lock.c
+  CC [M]  drivers/gpu/drm/drm_lock.o
+  CHECK   drivers/gpu/drm/drm_memory.c
+drivers/gpu/drm/drm_memory.c:128:29: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_memory.c:128:29:    expected void *handle
+drivers/gpu/drm/drm_memory.c:128:29:    got void [noderef] <asn:2>*
+drivers/gpu/drm/drm_memory.c:137:29: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_memory.c:137:29:    expected void *handle
+drivers/gpu/drm/drm_memory.c:137:29:    got void [noderef] <asn:2>*
+drivers/gpu/drm/drm_memory.c:149:28: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/drm_memory.c:149:28:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/drm_memory.c:149:28:    got void *handle
+  CC [M]  drivers/gpu/drm/drm_memory.o
+  CHECK   drivers/gpu/drm/drm_drv.c
+  CC [M]  drivers/gpu/drm/drm_drv.o
+  CHECK   drivers/gpu/drm/drm_vm.c
+drivers/gpu/drm/drm_vm.c:260:44: warning: incorrect type in argument 1 (different address spaces)
+drivers/gpu/drm/drm_vm.c:260:44:    expected void volatile [noderef] <asn:2>*addr
+drivers/gpu/drm/drm_vm.c:260:44:    got void *handle
+  CC [M]  drivers/gpu/drm/drm_vm.o
+  CHECK   drivers/gpu/drm/drm_agpsupport.c
+  CC [M]  drivers/gpu/drm/drm_agpsupport.o
+  CHECK   drivers/gpu/drm/drm_scatter.c
+  CC [M]  drivers/gpu/drm/drm_scatter.o
+  CHECK   drivers/gpu/drm/drm_pci.c
+  CC [M]  drivers/gpu/drm/drm_pci.o
+  CHECK   drivers/gpu/drm/drm_platform.c
+  CC [M]  drivers/gpu/drm/drm_platform.o
+  CHECK   drivers/gpu/drm/drm_sysfs.c
+  CC [M]  drivers/gpu/drm/drm_sysfs.o
+  CHECK   drivers/gpu/drm/drm_hashtab.c
+  CC [M]  drivers/gpu/drm/drm_hashtab.o
+  CHECK   drivers/gpu/drm/drm_mm.c
+  CC [M]  drivers/gpu/drm/drm_mm.o
+  CHECK   drivers/gpu/drm/drm_crtc.c
+  CC [M]  drivers/gpu/drm/drm_crtc.o
+  CHECK   drivers/gpu/drm/drm_modes.c
+  CC [M]  drivers/gpu/drm/drm_modes.o
+  CHECK   drivers/gpu/drm/drm_edid.c
+  CC [M]  drivers/gpu/drm/drm_edid.o
+  CHECK   drivers/gpu/drm/drm_info.c
+  CC [M]  drivers/gpu/drm/drm_info.o
+  CHECK   drivers/gpu/drm/drm_debugfs.c
+  CC [M]  drivers/gpu/drm/drm_debugfs.o
+  CHECK   drivers/gpu/drm/drm_encoder_slave.c
+  CC [M]  drivers/gpu/drm/drm_encoder_slave.o
+  CHECK   drivers/gpu/drm/drm_trace_points.c
+  CC [M]  drivers/gpu/drm/drm_trace_points.o
+  CHECK   drivers/gpu/drm/drm_global.c
+  CC [M]  drivers/gpu/drm/drm_global.o
+  CHECK   drivers/gpu/drm/drm_prime.c
+  CC [M]  drivers/gpu/drm/drm_prime.o
+  CHECK   drivers/gpu/drm/drm_rect.c
+  CC [M]  drivers/gpu/drm/drm_rect.o
+  CHECK   drivers/gpu/drm/drm_vma_manager.c
+  CC [M]  drivers/gpu/drm/drm_vma_manager.o
+  CHECK   drivers/gpu/drm/drm_flip_work.c
+  CC [M]  drivers/gpu/drm/drm_flip_work.o
+  CHECK   drivers/gpu/drm/drm_modeset_lock.c
+  CC [M]  drivers/gpu/drm/drm_modeset_lock.o
+  CHECK   drivers/gpu/drm/drm_atomic.c
+drivers/gpu/drm/drm_atomic.c:274:5: warning: symbol 'drm_atomic_crtc_get_property' was not declared. Should it be static?
+drivers/gpu/drm/drm_atomic.c:695:5: warning: symbol 'drm_atomic_get_property' was not declared. Should it be static?
+  CC [M]  drivers/gpu/drm/drm_atomic.o
+  CHECK   drivers/gpu/drm/drm_bridge.c
+  CC [M]  drivers/gpu/drm/drm_bridge.o
+  CHECK   drivers/gpu/drm/drm_ioc32.c
+drivers/gpu/drm/drm_ioc32.c:460:17: warning: cast removes address space of expression
+drivers/gpu/drm/drm_ioc32.c:460:14: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_ioc32.c:460:14:    expected struct drm_buf_desc [noderef] <asn:1>*list
+drivers/gpu/drm/drm_ioc32.c:460:14:    got struct drm_buf_desc *<noident>
+drivers/gpu/drm/drm_ioc32.c:521:17: warning: cast removes address space of expression
+drivers/gpu/drm/drm_ioc32.c:521:14: warning: incorrect type in assignment (different address spaces)
+drivers/gpu/drm/drm_ioc32.c:521:14:    expected struct drm_buf_pub [noderef] <asn:1>*list
+drivers/gpu/drm/drm_ioc32.c:521:14:    got struct drm_buf_pub *<noident>
+  CC [M]  drivers/gpu/drm/drm_ioc32.o
+  CHECK   drivers/gpu/drm/ati_pcigart.c
+  CC [M]  drivers/gpu/drm/ati_pcigart.o
+  CHECK   drivers/gpu/drm/drm_panel.c
+  CC [M]  drivers/gpu/drm/drm_panel.o
+  LD [M]  drivers/gpu/drm/drm.o
+  CHECK   drivers/gpu/vga/vgaarb.c
+  CC      drivers/gpu/vga/vgaarb.o
+  CHECK   drivers/gpu/vga/vga_switcheroo.c
+  CC      drivers/gpu/vga/vga_switcheroo.o
+  LD      drivers/gpu/vga/built-in.o
+  LD      drivers/gpu/built-in.o
+  CHECK   drivers/hid/hid-core.c
+  CC      drivers/hid/hid-core.o
+  CHECK   drivers/hid/hid-input.c
+  CC      drivers/hid/hid-input.o
+  CHECK   drivers/hid/hid-debug.c
+  CC      drivers/hid/hid-debug.o
+  CHECK   drivers/hid/hidraw.c
+  CC      drivers/hid/hidraw.o
+  LD      drivers/hid/hid.o
+  CHECK   drivers/hid/hid-generic.c
+  CC      drivers/hid/hid-generic.o
+  CHECK   drivers/hid/hid-a4tech.c
+  CC      drivers/hid/hid-a4tech.o
+  CHECK   drivers/hid/hid-apple.c
+  CC      drivers/hid/hid-apple.o
+  CHECK   drivers/hid/hid-belkin.c
+  CC      drivers/hid/hid-belkin.o
+  CHECK   drivers/hid/hid-cherry.c
+  CC      drivers/hid/hid-cherry.o
+  CHECK   drivers/hid/hid-chicony.c
+  CC      drivers/hid/hid-chicony.o
+  CHECK   drivers/hid/hid-cypress.c
+  CC      drivers/hid/hid-cypress.o
+  CHECK   drivers/hid/hid-ezkey.c
+  CC      drivers/hid/hid-ezkey.o
+  CHECK   drivers/hid/hid-kensington.c
+  CC      drivers/hid/hid-kensington.o
+  CHECK   drivers/hid/hid-lg.c
+  CC      drivers/hid/hid-lg.o
+  CHECK   drivers/hid/hid-lgff.c
+  CC      drivers/hid/hid-lgff.o
+  CHECK   drivers/hid/hid-lg2ff.c
+  CC      drivers/hid/hid-lg2ff.o
+  CHECK   drivers/hid/hid-lg3ff.c
+  CC      drivers/hid/hid-lg3ff.o
+  CHECK   drivers/hid/hid-lg4ff.c
+  CC      drivers/hid/hid-lg4ff.o
+  LD      drivers/hid/hid-logitech.o
+  CHECK   drivers/hid/hid-magicmouse.c
+  CC      drivers/hid/hid-magicmouse.o
+  CHECK   drivers/hid/hid-microsoft.c
+  CC      drivers/hid/hid-microsoft.o
+  CHECK   drivers/hid/hid-monterey.c
+  CC      drivers/hid/hid-monterey.o
+  CHECK   drivers/hid/hid-ntrig.c
+  CC      drivers/hid/hid-ntrig.o
+  CHECK   drivers/hid/hid-plantronics.c
+  CC      drivers/hid/hid-plantronics.o
+  CHECK   drivers/hid/usbhid/hid-core.c
+  CC      drivers/hid/usbhid/hid-core.o
+  CHECK   drivers/hid/usbhid/hid-quirks.c
+  CC      drivers/hid/usbhid/hid-quirks.o
+  CHECK   drivers/hid/usbhid/hiddev.c
+  CC      drivers/hid/usbhid/hiddev.o
+  CHECK   drivers/hid/usbhid/hid-pidff.c
+  CC      drivers/hid/usbhid/hid-pidff.o
+  LD      drivers/hid/usbhid/usbhid.o
+  LD      drivers/hid/usbhid/built-in.o
+  LD      drivers/hid/built-in.o
+  CHECK   drivers/hwmon/hwmon.c
+  CC      drivers/hwmon/hwmon.o
+  LD      drivers/hwmon/built-in.o
+  CHECK   drivers/hwmon/coretemp.c
+  CC [M]  drivers/hwmon/coretemp.o
+  CHECK   drivers/i2c/i2c-boardinfo.c
+  CC      drivers/i2c/i2c-boardinfo.o
+  CHECK   drivers/i2c/algos/i2c-algo-bit.c
+  CC [M]  drivers/i2c/algos/i2c-algo-bit.o
+  CHECK   drivers/i2c/busses/i2c-i801.c
+  CC [M]  drivers/i2c/busses/i2c-i801.o
+  LD      drivers/i2c/built-in.o
+  CHECK   drivers/i2c/i2c-core.c
+drivers/i2c/i2c-core.c:2425:36: warning: dubious: x | !y
+  CC [M]  drivers/i2c/i2c-core.o
+  CHECK   drivers/i2c/i2c-mux.c
+  CC [M]  drivers/i2c/i2c-mux.o
+  CHECK   drivers/idle/intel_idle.c
+drivers/idle/intel_idle.c:927:6: warning: symbol 'intel_idle_state_table_update' was not declared. Should it be static?
+  CC      drivers/idle/intel_idle.o
+  LD      drivers/idle/built-in.o
+  CHECK   drivers/input/input.c
+  CC      drivers/input/input.o
+  CHECK   drivers/input/input-compat.c
+  CC      drivers/input/input-compat.o
+  CHECK   drivers/input/input-mt.c
+  CC      drivers/input/input-mt.o
+  CHECK   drivers/input/ff-core.c
+  CC      drivers/input/ff-core.o
+  LD      drivers/input/input-core.o
+  CHECK   drivers/input/ff-memless.c
+  CC      drivers/input/ff-memless.o
+  CHECK   drivers/input/mousedev.c
+  CC      drivers/input/mousedev.o
+  CHECK   drivers/input/evdev.c
+  CC      drivers/input/evdev.o
+  CHECK   drivers/input/keyboard/atkbd.c
+  CC      drivers/input/keyboard/atkbd.o
+  LD      drivers/input/keyboard/built-in.o
+  CHECK   drivers/input/misc/xen-kbdfront.c
+  CC      drivers/input/misc/xen-kbdfront.o
+  LD      drivers/input/misc/built-in.o
+  CHECK   drivers/input/mouse/psmouse-base.c
+  CC      drivers/input/mouse/psmouse-base.o
+  CHECK   drivers/input/mouse/synaptics.c
+drivers/input/mouse/synaptics.c:884:77: warning: dubious: !x | y
+  CC      drivers/input/mouse/synaptics.o
+  CHECK   drivers/input/mouse/focaltech.c
+drivers/input/mouse/focaltech.c:380:6: warning: symbol 'focaltech_set_resolution' was not declared. Should it be static?
+  CC      drivers/input/mouse/focaltech.o
+  CHECK   drivers/input/mouse/alps.c
+  CC      drivers/input/mouse/alps.o
+  CHECK   drivers/input/mouse/elantech.c
+  CC      drivers/input/mouse/elantech.o
+  CHECK   drivers/input/mouse/logips2pp.c
+  CC      drivers/input/mouse/logips2pp.o
+  CHECK   drivers/input/mouse/lifebook.c
+  CC      drivers/input/mouse/lifebook.o
+  CHECK   drivers/input/mouse/sentelic.c
+  CC      drivers/input/mouse/sentelic.o
+  CHECK   drivers/input/mouse/trackpoint.c
+  CC      drivers/input/mouse/trackpoint.o
+  CHECK   drivers/input/mouse/cypress_ps2.c
+  CC      drivers/input/mouse/cypress_ps2.o
+  LD      drivers/input/mouse/psmouse.o
+  LD      drivers/input/mouse/built-in.o
+  LD      drivers/input/built-in.o
+  CHECK   drivers/input/sparse-keymap.c
+  CC [M]  drivers/input/sparse-keymap.o
+  CHECK   drivers/input/joydev.c
+  CC [M]  drivers/input/joydev.o
+  CHECK   drivers/input/serio/serio.c
+  CC      drivers/input/serio/serio.o
+  CHECK   drivers/input/serio/i8042.c
+  CC      drivers/input/serio/i8042.o
+  CHECK   drivers/input/serio/serport.c
+  CC      drivers/input/serio/serport.o
+  CHECK   drivers/input/serio/libps2.c
+  CC      drivers/input/serio/libps2.o
+  LD      drivers/input/serio/built-in.o
+  CHECK   drivers/input/serio/serio_raw.c
+  CC [M]  drivers/input/serio/serio_raw.o
+  CHECK   drivers/iommu/iommu.c
+  CC      drivers/iommu/iommu.o
+  CHECK   drivers/iommu/iommu-traces.c
+  CC      drivers/iommu/iommu-traces.o
+  CHECK   drivers/iommu/iommu-sysfs.c
+  CC      drivers/iommu/iommu-sysfs.o
+  CHECK   drivers/iommu/iova.c
+  CC      drivers/iommu/iova.o
+  CHECK   drivers/iommu/amd_iommu.c
+  CC      drivers/iommu/amd_iommu.o
+  CHECK   drivers/iommu/amd_iommu_init.c
+drivers/iommu/amd_iommu_init.c:157:6: warning: symbol 'amd_iommu_pc_present' was not declared. Should it be static?
+  CC      drivers/iommu/amd_iommu_init.o
+  CHECK   drivers/iommu/dmar.c
+  CC      drivers/iommu/dmar.o
+  CHECK   drivers/iommu/intel-iommu.c
+drivers/iommu/intel-iommu.c:446:5: warning: symbol 'intel_iommu_gfx_mapped' was not declared. Should it be static?
+drivers/iommu/intel-iommu.c:1089:13: warning: symbol 'domain_unmap' was not declared. Should it be static?
+drivers/iommu/intel-iommu.c:1115:6: warning: symbol 'dma_free_pagelist' was not declared. Should it be static?
+drivers/iommu/intel-iommu.c:3388:20: warning: symbol 'intel_dma_ops' was not declared. Should it be static?
+  CC      drivers/iommu/intel-iommu.o
+  CHECK   drivers/iommu/intel_irq_remapping.c
+  CC      drivers/iommu/intel_irq_remapping.o
+  CHECK   drivers/iommu/irq_remapping.c
+  CC      drivers/iommu/irq_remapping.o
+  LD      drivers/iommu/built-in.o
+  CHECK   drivers/leds/led-core.c
+  CC      drivers/leds/led-core.o
+  CHECK   drivers/leds/led-class.c
+  CC      drivers/leds/led-class.o
+  CHECK   drivers/leds/led-triggers.c
+  CC      drivers/leds/led-triggers.o
+  LD      drivers/leds/built-in.o
+  CHECK   drivers/macintosh/mac_hid.c
+  CC      drivers/macintosh/mac_hid.o
+  LD      drivers/macintosh/built-in.o
+  CHECK   drivers/md/md.c
+  CC      drivers/md/md.o
+  CHECK   drivers/md/bitmap.c
+  CC      drivers/md/bitmap.o
+  LD      drivers/md/md-mod.o
+  CHECK   drivers/md/dm-uevent.c
+  CC      drivers/md/dm-uevent.o
+  CHECK   drivers/md/dm.c
+  CC      drivers/md/dm.o
+  CHECK   drivers/md/dm-table.c
+  CC      drivers/md/dm-table.o
+  CHECK   drivers/md/dm-target.c
+  CC      drivers/md/dm-target.o
+  CHECK   drivers/md/dm-linear.c
+  CC      drivers/md/dm-linear.o
+  CHECK   drivers/md/dm-stripe.c
+drivers/md/dm-stripe.c:326:33: warning: Variable length array is used.
+  CC      drivers/md/dm-stripe.o
+  CHECK   drivers/md/dm-ioctl.c
+  CC      drivers/md/dm-ioctl.o
+  CHECK   drivers/md/dm-io.c
+  CC      drivers/md/dm-io.o
+  CHECK   drivers/md/dm-kcopyd.c
+  CC      drivers/md/dm-kcopyd.o
+  CHECK   drivers/md/dm-sysfs.c
+  CC      drivers/md/dm-sysfs.o
+  CHECK   drivers/md/dm-stats.c
+  CC      drivers/md/dm-stats.o
+  LD      drivers/md/dm-mod.o
+  CHECK   drivers/md/dm-builtin.c
+  CC      drivers/md/dm-builtin.o
+  CHECK   drivers/md/dm-bufio.c
+  CC      drivers/md/dm-bufio.o
+  CHECK   drivers/md/dm-snap.c
+  CC      drivers/md/dm-snap.o
+  CHECK   drivers/md/dm-exception-store.c
+  CC      drivers/md/dm-exception-store.o
+  CHECK   drivers/md/dm-snap-transient.c
+  CC      drivers/md/dm-snap-transient.o
+  CHECK   drivers/md/dm-snap-persistent.c
+  CC      drivers/md/dm-snap-persistent.o
+  LD      drivers/md/dm-snapshot.o
+  CHECK   drivers/md/dm-raid1.c
+drivers/md/dm-raid1.c:258:34: warning: Variable length array is used.
+drivers/md/dm-raid1.c:637:34: warning: Variable length array is used.
+drivers/md/dm-raid1.c:1370:36: warning: Variable length array is used.
+  CC      drivers/md/dm-raid1.o
+  LD      drivers/md/dm-mirror.o
+  CHECK   drivers/md/dm-log.c
+  CC      drivers/md/dm-log.o
+  CHECK   drivers/md/dm-region-hash.c
+  CC      drivers/md/dm-region-hash.o
+  CHECK   drivers/md/dm-zero.c
+  CC      drivers/md/dm-zero.o
+  LD      drivers/md/built-in.o
+  CHECK   drivers/media/dvb-core/dvbdev.c
+  CC [M]  drivers/media/dvb-core/dvbdev.o
+  CHECK   drivers/media/dvb-core/dmxdev.c
+  CC [M]  drivers/media/dvb-core/dmxdev.o
+  CHECK   drivers/media/dvb-core/dvb_demux.c
+  CC [M]  drivers/media/dvb-core/dvb_demux.o
+  CHECK   drivers/media/dvb-core/dvb_filter.c
+  CC [M]  drivers/media/dvb-core/dvb_filter.o
+  CHECK   drivers/media/dvb-core/dvb_ca_en50221.c
+  CC [M]  drivers/media/dvb-core/dvb_ca_en50221.o
+  CHECK   drivers/media/dvb-core/dvb_frontend.c
+  CC [M]  drivers/media/dvb-core/dvb_frontend.o
+  CHECK   drivers/media/dvb-core/dvb_net.c
+  CC [M]  drivers/media/dvb-core/dvb_net.o
+  CHECK   drivers/media/dvb-core/dvb_ringbuffer.c
+  CC [M]  drivers/media/dvb-core/dvb_ringbuffer.o
+  CHECK   drivers/media/dvb-core/dvb_math.c
+  CC [M]  drivers/media/dvb-core/dvb_math.o
+  LD [M]  drivers/media/dvb-core/dvb-core.o
+  CHECK   drivers/media/i2c/ir-kbd-i2c.c
+  CC [M]  drivers/media/i2c/ir-kbd-i2c.o
+  LD      drivers/media/pci/pt3/built-in.o
+  LD      drivers/media/pci/smipcie/built-in.o
+  LD      drivers/media/pci/built-in.o
+  LD      drivers/media/platform/omap/built-in.o
+  LD      drivers/media/platform/built-in.o
+  CHECK   drivers/media/rc/rc-main.c
+  CC [M]  drivers/media/rc/rc-main.o
+  CHECK   drivers/media/rc/rc-ir-raw.c
+  CC [M]  drivers/media/rc/rc-ir-raw.o
+  LD [M]  drivers/media/rc/rc-core.o
+  CHECK   drivers/media/tuners/tuner-xc2028.c
+  CC [M]  drivers/media/tuners/tuner-xc2028.o
+  CHECK   drivers/media/tuners/tuner-simple.c
+  CC [M]  drivers/media/tuners/tuner-simple.o
+  CHECK   drivers/media/tuners/tuner-types.c
+drivers/media/tuners/tuner-types.c:1947:34: error: cannot size expression
+  CC [M]  drivers/media/tuners/tuner-types.o
+  CHECK   drivers/media/tuners/mt20xx.c
+  CC [M]  drivers/media/tuners/mt20xx.o
+  CHECK   drivers/media/tuners/tda8290.c
+  CC [M]  drivers/media/tuners/tda8290.o
+  CHECK   drivers/media/tuners/tea5767.c
+  CC [M]  drivers/media/tuners/tea5767.o
+  CHECK   drivers/media/tuners/tea5761.c
+  CC [M]  drivers/media/tuners/tea5761.o
+  CHECK   drivers/media/tuners/tda9887.c
+  CC [M]  drivers/media/tuners/tda9887.o
+  CHECK   drivers/media/tuners/tda827x.c
+  CC [M]  drivers/media/tuners/tda827x.o
+  CHECK   drivers/media/tuners/tda18271-maps.c
+  CC [M]  drivers/media/tuners/tda18271-maps.o
+  CHECK   drivers/media/tuners/tda18271-common.c
+  CC [M]  drivers/media/tuners/tda18271-common.o
+  CHECK   drivers/media/tuners/tda18271-fe.c
+  CC [M]  drivers/media/tuners/tda18271-fe.o
+  LD [M]  drivers/media/tuners/tda18271.o
+  CHECK   drivers/media/tuners/xc5000.c
+  CC [M]  drivers/media/tuners/xc5000.o
+  CHECK   drivers/media/tuners/xc4000.c
+  CC [M]  drivers/media/tuners/xc4000.o
+  CHECK   drivers/media/tuners/mc44s803.c
+  CC [M]  drivers/media/tuners/mc44s803.o
+  CHECK   drivers/media/usb/uvc/uvc_driver.c
+  CC [M]  drivers/media/usb/uvc/uvc_driver.o
+  CHECK   drivers/media/usb/uvc/uvc_queue.c
+  CC [M]  drivers/media/usb/uvc/uvc_queue.o
+  CHECK   drivers/media/usb/uvc/uvc_v4l2.c
+  CC [M]  drivers/media/usb/uvc/uvc_v4l2.o
+  CHECK   drivers/media/usb/uvc/uvc_video.c
+  CC [M]  drivers/media/usb/uvc/uvc_video.o
+  CHECK   drivers/media/usb/uvc/uvc_ctrl.c
+  CC [M]  drivers/media/usb/uvc/uvc_ctrl.o
+  CHECK   drivers/media/usb/uvc/uvc_status.c
+  CC [M]  drivers/media/usb/uvc/uvc_status.o
+  CHECK   drivers/media/usb/uvc/uvc_isight.c
+  CC [M]  drivers/media/usb/uvc/uvc_isight.o
+  CHECK   drivers/media/usb/uvc/uvc_debugfs.c
+  CC [M]  drivers/media/usb/uvc/uvc_debugfs.o
+  CHECK   drivers/media/usb/uvc/uvc_entity.c
+  CC [M]  drivers/media/usb/uvc/uvc_entity.o
+  LD [M]  drivers/media/usb/uvc/uvcvideo.o
+  CHECK   drivers/media/v4l2-core/v4l2-dev.c
+  CC [M]  drivers/media/v4l2-core/v4l2-dev.o
+  CHECK   drivers/media/v4l2-core/v4l2-ioctl.c
+drivers/media/v4l2-core/v4l2-ioctl.c:232:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:252:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:257:17: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:274:17: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:297:17: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:357:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:428:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:441:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:441:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:477:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:496:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:582:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:597:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:607:9: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:811:25: error: cannot size expression
+drivers/media/v4l2-core/v4l2-ioctl.c:846:9: error: cannot size expression
+  CC [M]  drivers/media/v4l2-core/v4l2-ioctl.o
+  CHECK   drivers/media/v4l2-core/v4l2-device.c
+  CC [M]  drivers/media/v4l2-core/v4l2-device.o
+  CHECK   drivers/media/v4l2-core/v4l2-fh.c
+  CC [M]  drivers/media/v4l2-core/v4l2-fh.o
+  CHECK   drivers/media/v4l2-core/v4l2-event.c
+  CC [M]  drivers/media/v4l2-core/v4l2-event.o
+  CHECK   drivers/media/v4l2-core/v4l2-ctrls.c
+  CC [M]  drivers/media/v4l2-core/v4l2-ctrls.o
+  CHECK   drivers/media/v4l2-core/v4l2-subdev.c
+  CC [M]  drivers/media/v4l2-core/v4l2-subdev.o
+  CHECK   drivers/media/v4l2-core/v4l2-clk.c
+  CC [M]  drivers/media/v4l2-core/v4l2-clk.o
+  CHECK   drivers/media/v4l2-core/v4l2-async.c
+  CC [M]  drivers/media/v4l2-core/v4l2-async.o
+  CHECK   drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+  CC [M]  drivers/media/v4l2-core/v4l2-compat-ioctl32.o
+  LD [M]  drivers/media/v4l2-core/videodev.o
+  CHECK   drivers/media/v4l2-core/v4l2-common.c
+  CC [M]  drivers/media/v4l2-core/v4l2-common.o
+  CHECK   drivers/media/v4l2-core/v4l2-dv-timings.c
+drivers/media/v4l2-core/v4l2-dv-timings.c:34:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:35:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:36:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:37:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:38:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:39:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:40:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:41:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:42:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:43:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:44:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:45:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:46:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:47:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:48:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:49:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:50:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:51:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:52:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:53:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:54:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:55:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:56:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:57:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:58:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:59:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:60:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:61:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:62:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:63:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:64:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:65:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:66:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:67:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:68:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:69:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:70:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:71:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:72:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:73:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:74:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:75:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:76:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:77:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:78:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:79:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:80:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:81:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:82:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:83:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:84:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:85:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:86:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:87:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:88:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:89:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:90:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:91:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:92:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:93:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:94:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:95:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:96:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:97:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:98:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:99:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:100:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:101:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:102:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:103:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:104:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:105:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:106:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:107:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:108:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:109:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:110:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:111:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:112:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:113:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:114:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:115:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:116:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:117:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:118:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:119:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:120:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:121:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:122:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:123:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:124:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:125:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:126:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:127:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:128:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:129:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:130:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:131:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:132:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:133:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:134:9: error: unknown field name in initializer
+drivers/media/v4l2-core/v4l2-dv-timings.c:135:9: error: too many errors
+  CC [M]  drivers/media/v4l2-core/v4l2-dv-timings.o
+  CHECK   drivers/media/v4l2-core/videobuf2-core.c
+  CC [M]  drivers/media/v4l2-core/videobuf2-core.o
+drivers/media/v4l2-core/videobuf2-core.c: In function 'vb2_thread_stop':
+drivers/media/v4l2-core/videobuf2-core.c:3228:26: warning: unused variable 'fileio' [-Wunused-variable]
+  struct vb2_fileio_data *fileio = q->fileio;
+                          ^
+  CHECK   drivers/media/v4l2-core/videobuf2-memops.c
+  CC [M]  drivers/media/v4l2-core/videobuf2-memops.o
+  CHECK   drivers/media/v4l2-core/videobuf2-vmalloc.c
+  CC [M]  drivers/media/v4l2-core/videobuf2-vmalloc.o
+  LD      drivers/media/built-in.o
+  CHECK   drivers/media/media-device.c
+  CC [M]  drivers/media/media-device.o
+  CHECK   drivers/media/media-devnode.c
+  CC [M]  drivers/media/media-devnode.o
+  CHECK   drivers/media/media-entity.c
+drivers/media/media-entity.c:238:17: warning: Variable length array is used.
+drivers/media/media-entity.c:239:17: warning: Variable length array is used.
+  CC [M]  drivers/media/media-entity.o
+  LD [M]  drivers/media/media.o
+  CHECK   drivers/memstick/core/memstick.c
+  CC [M]  drivers/memstick/core/memstick.o
+  CHECK   drivers/memstick/host/jmb38x_ms.c
+  CC [M]  drivers/memstick/host/jmb38x_ms.o
+  CHECK   drivers/mfd/mfd-core.c
+  CC [M]  drivers/mfd/mfd-core.o
+  CHECK   drivers/mfd/lpc_ich.c
+  CC [M]  drivers/mfd/lpc_ich.o
+  CHECK   drivers/misc/kgdbts.c
+  CC      drivers/misc/kgdbts.o
+  CHECK   drivers/misc/mei/init.c
+  CC [M]  drivers/misc/mei/init.o
+  CHECK   drivers/misc/mei/hbm.c
+  CC [M]  drivers/misc/mei/hbm.o
+  CHECK   drivers/misc/mei/interrupt.c
+  CC [M]  drivers/misc/mei/interrupt.o
+  CHECK   drivers/misc/mei/client.c
+  CC [M]  drivers/misc/mei/client.o
+  CHECK   drivers/misc/mei/main.c
+  CC [M]  drivers/misc/mei/main.o
+  CHECK   drivers/misc/mei/amthif.c
+  CC [M]  drivers/misc/mei/amthif.o
+  CHECK   drivers/misc/mei/wd.c
+  CC [M]  drivers/misc/mei/wd.o
+  CHECK   drivers/misc/mei/bus.c
+  CC [M]  drivers/misc/mei/bus.o
+  CHECK   drivers/misc/mei/nfc.c
+  CC [M]  drivers/misc/mei/nfc.o
+  CHECK   drivers/misc/mei/debugfs.c
+  CC [M]  drivers/misc/mei/debugfs.o
+  LD [M]  drivers/misc/mei/mei.o
+  CHECK   drivers/misc/mei/pci-me.c
+  CC [M]  drivers/misc/mei/pci-me.o
+  CHECK   drivers/misc/mei/hw-me.c
+  CC [M]  drivers/misc/mei/hw-me.o
+  LD [M]  drivers/misc/mei/mei-me.o
+  LD      drivers/misc/built-in.o
+  CHECK   drivers/mmc/core/core.c
+  CC [M]  drivers/mmc/core/core.o
+  CHECK   drivers/mmc/core/bus.c
+  CC [M]  drivers/mmc/core/bus.o
+  CHECK   drivers/mmc/core/host.c
+  CC [M]  drivers/mmc/core/host.o
+  CHECK   drivers/mmc/core/mmc.c
+  CC [M]  drivers/mmc/core/mmc.o
+  CHECK   drivers/mmc/core/mmc_ops.c
+  CC [M]  drivers/mmc/core/mmc_ops.o
+  CHECK   drivers/mmc/core/sd.c
+  CC [M]  drivers/mmc/core/sd.o
+  CHECK   drivers/mmc/core/sd_ops.c
+  CC [M]  drivers/mmc/core/sd_ops.o
+  CHECK   drivers/mmc/core/sdio.c
+  CC [M]  drivers/mmc/core/sdio.o
+  CHECK   drivers/mmc/core/sdio_ops.c
+  CC [M]  drivers/mmc/core/sdio_ops.o
+  CHECK   drivers/mmc/core/sdio_bus.c
+  CC [M]  drivers/mmc/core/sdio_bus.o
+  CHECK   drivers/mmc/core/sdio_cis.c
+  CC [M]  drivers/mmc/core/sdio_cis.o
+  CHECK   drivers/mmc/core/sdio_io.c
+  CC [M]  drivers/mmc/core/sdio_io.o
+  CHECK   drivers/mmc/core/sdio_irq.c
+  CC [M]  drivers/mmc/core/sdio_irq.o
+  CHECK   drivers/mmc/core/quirks.c
+  CC [M]  drivers/mmc/core/quirks.o
+  CHECK   drivers/mmc/core/slot-gpio.c
+  CC [M]  drivers/mmc/core/slot-gpio.o
+  CHECK   drivers/mmc/core/debugfs.c
+  CC [M]  drivers/mmc/core/debugfs.o
+  LD [M]  drivers/mmc/core/mmc_core.o
+  CHECK   drivers/mmc/host/sdhci-pci-data.c
+  CC      drivers/mmc/host/sdhci-pci-data.o
+  CHECK   drivers/mmc/host/sdhci-pci-o2micro.c
+  CC      drivers/mmc/host/sdhci-pci-o2micro.o
+  LD      drivers/mmc/host/built-in.o
+  CHECK   drivers/mmc/host/sdhci.c
+  CC [M]  drivers/mmc/host/sdhci.o
+  CHECK   drivers/mmc/host/sdhci-pci.c
+  CC [M]  drivers/mmc/host/sdhci-pci.o
+  LD      drivers/mmc/built-in.o
+  CHECK   drivers/net/Space.c
+  CC      drivers/net/Space.o
+  CHECK   drivers/net/loopback.c
+  CC      drivers/net/loopback.o
+  LD      drivers/net/ethernet/agere/built-in.o
+  CHECK   drivers/net/ethernet/broadcom/tg3.c
+  CC [M]  drivers/net/ethernet/broadcom/tg3.o
+  LD      drivers/net/ethernet/cadence/built-in.o
+  LD      drivers/net/ethernet/qualcomm/built-in.o
+  LD      drivers/net/ethernet/rocker/built-in.o
+  LD      drivers/net/ethernet/built-in.o
+  CHECK   drivers/net/phy/phy.c
+  CC      drivers/net/phy/phy.o
+  CHECK   drivers/net/phy/phy_device.c
+  CC      drivers/net/phy/phy_device.o
+  CHECK   drivers/net/phy/mdio_bus.c
+  CC      drivers/net/phy/mdio_bus.o
+  LD      drivers/net/phy/libphy.o
+  CHECK   drivers/net/phy/fixed_phy.c
+  CC      drivers/net/phy/fixed_phy.o
+  LD      drivers/net/phy/built-in.o
+  CHECK   drivers/net/phy/broadcom.c
+  CC [M]  drivers/net/phy/broadcom.o
+  CHECK   drivers/net/wireless/ath/main.c
+  CC [M]  drivers/net/wireless/ath/main.o
+  CHECK   drivers/net/wireless/ath/regd.c
+  CC [M]  drivers/net/wireless/ath/regd.o
+  CHECK   drivers/net/wireless/ath/hw.c
+  CC [M]  drivers/net/wireless/ath/hw.o
+  CHECK   drivers/net/wireless/ath/key.c
+  CC [M]  drivers/net/wireless/ath/key.o
+  CHECK   drivers/net/wireless/ath/dfs_pattern_detector.c
+  CC [M]  drivers/net/wireless/ath/dfs_pattern_detector.o
+  CHECK   drivers/net/wireless/ath/dfs_pri_detector.c
+  CC [M]  drivers/net/wireless/ath/dfs_pri_detector.o
+  LD [M]  drivers/net/wireless/ath/ath.o
+  CHECK   drivers/net/wireless/ath/ath9k/beacon.c
+  CC [M]  drivers/net/wireless/ath/ath9k/beacon.o
+  CHECK   drivers/net/wireless/ath/ath9k/gpio.c
+  CC [M]  drivers/net/wireless/ath/ath9k/gpio.o
+  CHECK   drivers/net/wireless/ath/ath9k/init.c
+  CC [M]  drivers/net/wireless/ath/ath9k/init.o
+  CHECK   drivers/net/wireless/ath/ath9k/main.c
+  CC [M]  drivers/net/wireless/ath/ath9k/main.o
+  CHECK   drivers/net/wireless/ath/ath9k/recv.c
+  CC [M]  drivers/net/wireless/ath/ath9k/recv.o
+  CHECK   drivers/net/wireless/ath/ath9k/xmit.c
+  CC [M]  drivers/net/wireless/ath/ath9k/xmit.o
+  CHECK   drivers/net/wireless/ath/ath9k/link.c
+  CC [M]  drivers/net/wireless/ath/ath9k/link.o
+  CHECK   drivers/net/wireless/ath/ath9k/antenna.c
+  CC [M]  drivers/net/wireless/ath/ath9k/antenna.o
+  CHECK   drivers/net/wireless/ath/ath9k/channel.c
+  CC [M]  drivers/net/wireless/ath/ath9k/channel.o
+  CHECK   drivers/net/wireless/ath/ath9k/mci.c
+  CC [M]  drivers/net/wireless/ath/ath9k/mci.o
+  CHECK   drivers/net/wireless/ath/ath9k/pci.c
+  CC [M]  drivers/net/wireless/ath/ath9k/pci.o
+  CHECK   drivers/net/wireless/ath/ath9k/ahb.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ahb.o
+  CHECK   drivers/net/wireless/ath/ath9k/debug.c
+  CC [M]  drivers/net/wireless/ath/ath9k/debug.o
+  LD [M]  drivers/net/wireless/ath/ath9k/ath9k.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9002_hw.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9002_hw.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_hw.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_hw.o
+  CHECK   drivers/net/wireless/ath/ath9k/hw.c
+  CC [M]  drivers/net/wireless/ath/ath9k/hw.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_phy.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_phy.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9002_phy.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9002_phy.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar5008_phy.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar5008_phy.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9002_calib.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9002_calib.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_calib.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_calib.o
+  CHECK   drivers/net/wireless/ath/ath9k/calib.c
+  CC [M]  drivers/net/wireless/ath/ath9k/calib.o
+  CHECK   drivers/net/wireless/ath/ath9k/eeprom.c
+  CC [M]  drivers/net/wireless/ath/ath9k/eeprom.o
+  CHECK   drivers/net/wireless/ath/ath9k/eeprom_def.c
+  CC [M]  drivers/net/wireless/ath/ath9k/eeprom_def.o
+  CHECK   drivers/net/wireless/ath/ath9k/eeprom_4k.c
+  CC [M]  drivers/net/wireless/ath/ath9k/eeprom_4k.o
+  CHECK   drivers/net/wireless/ath/ath9k/eeprom_9287.c
+  CC [M]  drivers/net/wireless/ath/ath9k/eeprom_9287.o
+  CHECK   drivers/net/wireless/ath/ath9k/ani.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ani.o
+  CHECK   drivers/net/wireless/ath/ath9k/mac.c
+  CC [M]  drivers/net/wireless/ath/ath9k/mac.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9002_mac.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9002_mac.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_mac.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_mac.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_eeprom.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_eeprom.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_paprd.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_paprd.o
+  CHECK   drivers/net/wireless/ath/ath9k/btcoex.c
+  CC [M]  drivers/net/wireless/ath/ath9k/btcoex.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_mci.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_mci.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_aic.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_aic.o
+  CHECK   drivers/net/wireless/ath/ath9k/ar9003_rtt.c
+  CC [M]  drivers/net/wireless/ath/ath9k/ar9003_rtt.o
+  LD [M]  drivers/net/wireless/ath/ath9k/ath9k_hw.o
+  CHECK   drivers/net/wireless/ath/ath9k/common.c
+  CC [M]  drivers/net/wireless/ath/ath9k/common.o
+  CHECK   drivers/net/wireless/ath/ath9k/common-init.c
+  CC [M]  drivers/net/wireless/ath/ath9k/common-init.o
+  CHECK   drivers/net/wireless/ath/ath9k/common-beacon.c
+  CC [M]  drivers/net/wireless/ath/ath9k/common-beacon.o
+  CHECK   drivers/net/wireless/ath/ath9k/common-debug.c
+  CC [M]  drivers/net/wireless/ath/ath9k/common-debug.o
+  CHECK   drivers/net/wireless/ath/ath9k/common-spectral.c
+  CC [M]  drivers/net/wireless/ath/ath9k/common-spectral.o
+  LD [M]  drivers/net/wireless/ath/ath9k/ath9k_common.o
+  LD      drivers/net/built-in.o
+  CHECK   drivers/pci/access.c
+  CC      drivers/pci/access.o
+  CHECK   drivers/pci/bus.c
+  CC      drivers/pci/bus.o
+  CHECK   drivers/pci/probe.c
+  CC      drivers/pci/probe.o
+  CHECK   drivers/pci/host-bridge.c
+  CC      drivers/pci/host-bridge.o
+  CHECK   drivers/pci/remove.c
+  CC      drivers/pci/remove.o
+  CHECK   drivers/pci/pci.c
+drivers/pci/pci.c:37:5: warning: symbol 'isa_dma_bridge_buggy' was not declared. Should it be static?
+drivers/pci/pci.c:4483:1: warning: symbol 'bus_attr_resource_alignment' was not declared. Should it be static?
+  CC      drivers/pci/pci.o
+  CHECK   drivers/pci/pci-driver.c
+  CC      drivers/pci/pci-driver.o
+  CHECK   drivers/pci/search.c
+  CC      drivers/pci/search.o
+  CHECK   drivers/pci/pci-sysfs.c
+  CC      drivers/pci/pci-sysfs.o
+  CHECK   drivers/pci/rom.c
+drivers/pci/rom.c:225:36: warning: incorrect type in return expression (different address spaces)
+drivers/pci/rom.c:225:36:    expected void [noderef] <asn:2>*
+drivers/pci/rom.c:225:36:    got void *
+  CC      drivers/pci/rom.o
+  CHECK   drivers/pci/setup-res.c
+  CC      drivers/pci/setup-res.o
+  CHECK   drivers/pci/irq.c
+  CC      drivers/pci/irq.o
+  CHECK   drivers/pci/vpd.c
+  CC      drivers/pci/vpd.o
+  CHECK   drivers/pci/setup-bus.c
+  CC      drivers/pci/setup-bus.o
+  CHECK   drivers/pci/vc.c
+  CC      drivers/pci/vc.o
+  CHECK   drivers/pci/proc.c
+  CC      drivers/pci/proc.o
+  CHECK   drivers/pci/slot.c
+  CC      drivers/pci/slot.o
+  CHECK   drivers/pci/quirks.c
+  CC      drivers/pci/quirks.o
+  CHECK   drivers/pci/hotplug/pci_hotplug_core.c
+  CC      drivers/pci/hotplug/pci_hotplug_core.o
+  CHECK   drivers/pci/hotplug/acpi_pcihp.c
+  CC      drivers/pci/hotplug/acpi_pcihp.o
+  LD      drivers/pci/hotplug/pci_hotplug.o
+  CHECK   drivers/pci/hotplug/pciehp_core.c
+  CC      drivers/pci/hotplug/pciehp_core.o
+  CHECK   drivers/pci/hotplug/pciehp_ctrl.c
+  CC      drivers/pci/hotplug/pciehp_ctrl.o
+  CHECK   drivers/pci/hotplug/pciehp_pci.c
+  CC      drivers/pci/hotplug/pciehp_pci.o
+  CHECK   drivers/pci/hotplug/pciehp_hpc.c
+  CC      drivers/pci/hotplug/pciehp_hpc.o
+  CHECK   drivers/pci/hotplug/pciehp_acpi.c
+  CC      drivers/pci/hotplug/pciehp_acpi.o
+  LD      drivers/pci/hotplug/pciehp.o
+  CHECK   drivers/pci/hotplug/acpiphp_core.c
+  CC      drivers/pci/hotplug/acpiphp_core.o
+  CHECK   drivers/pci/hotplug/acpiphp_glue.c
+  CC      drivers/pci/hotplug/acpiphp_glue.o
+  LD      drivers/pci/hotplug/acpiphp.o
+  LD      drivers/pci/hotplug/built-in.o
+  CHECK   drivers/pci/hotplug/shpchp_core.c
+  CC [M]  drivers/pci/hotplug/shpchp_core.o
+  CHECK   drivers/pci/hotplug/shpchp_ctrl.c
+  CC [M]  drivers/pci/hotplug/shpchp_ctrl.o
+  CHECK   drivers/pci/hotplug/shpchp_pci.c
+  CC [M]  drivers/pci/hotplug/shpchp_pci.o
+  CHECK   drivers/pci/hotplug/shpchp_sysfs.c
+  CC [M]  drivers/pci/hotplug/shpchp_sysfs.o
+  CHECK   drivers/pci/hotplug/shpchp_hpc.c
+  CC [M]  drivers/pci/hotplug/shpchp_hpc.o
+  LD [M]  drivers/pci/hotplug/shpchp.o
+  CHECK   drivers/pci/pcie/aspm.c
+  CC      drivers/pci/pcie/aspm.o
+  CHECK   drivers/pci/pcie/portdrv_core.c
+  CC      drivers/pci/pcie/portdrv_core.o
+  CHECK   drivers/pci/pcie/portdrv_pci.c
+  CC      drivers/pci/pcie/portdrv_pci.o
+  CHECK   drivers/pci/pcie/portdrv_bus.c
+  CC      drivers/pci/pcie/portdrv_bus.o
+  CHECK   drivers/pci/pcie/portdrv_acpi.c
+  CC      drivers/pci/pcie/portdrv_acpi.o
+  LD      drivers/pci/pcie/pcieportdrv.o
+  CHECK   drivers/pci/pcie/aer/aerdrv_errprint.c
+  CC      drivers/pci/pcie/aer/aerdrv_errprint.o
+  CHECK   drivers/pci/pcie/aer/aerdrv_core.c
+drivers/pci/pcie/aer/aerdrv_core.c:576:13: warning: cast to non-scalar
+drivers/pci/pcie/aer/aerdrv_core.c:576:13: warning: cast from non-scalar
+  CC      drivers/pci/pcie/aer/aerdrv_core.o
+  CHECK   drivers/pci/pcie/aer/aerdrv.c
+  CC      drivers/pci/pcie/aer/aerdrv.o
+  CHECK   drivers/pci/pcie/aer/aerdrv_acpi.c
+  CC      drivers/pci/pcie/aer/aerdrv_acpi.o
+  LD      drivers/pci/pcie/aer/aerdriver.o
+  CHECK   drivers/pci/pcie/aer/ecrc.c
+  CC      drivers/pci/pcie/aer/ecrc.o
+  LD      drivers/pci/pcie/aer/built-in.o
+  CHECK   drivers/pci/pcie/pme.c
+  CC      drivers/pci/pcie/pme.o
+  LD      drivers/pci/pcie/built-in.o
+  CHECK   drivers/pci/hotplug-pci.c
+  CC      drivers/pci/hotplug-pci.o
+  CHECK   drivers/pci/msi.c
+drivers/pci/msi.c:80:23: warning: symbol 'pcibios_msi_controller' was not declared. Should it be static?
+  CC      drivers/pci/msi.o
+  CHECK   drivers/pci/htirq.c
+  CC      drivers/pci/htirq.o
+  CHECK   drivers/pci/ats.c
+  CC      drivers/pci/ats.o
+  CHECK   drivers/pci/iov.c
+drivers/pci/iov.c:223:12: warning: symbol 'pcibios_sriov_enable' was not declared. Should it be static?
+drivers/pci/iov.c:350:12: warning: symbol 'pcibios_sriov_disable' was not declared. Should it be static?
+  CC      drivers/pci/iov.o
+  CHECK   drivers/pci/pci-acpi.c
+  CC      drivers/pci/pci-acpi.o
+  CHECK   drivers/pci/pci-label.c
+  CC      drivers/pci/pci-label.o
+  CHECK   drivers/pci/pci-stub.c
+  CC      drivers/pci/pci-stub.o
+  LD      drivers/pci/built-in.o
+  CHECK   drivers/pcmcia/cs.c
+  CC      drivers/pcmcia/cs.o
+  CHECK   drivers/pcmcia/socket_sysfs.c
+  CC      drivers/pcmcia/socket_sysfs.o
+  CHECK   drivers/pcmcia/cardbus.c
+drivers/pcmcia/cardbus.c:67:11: warning: symbol 'cb_alloc' was not declared. Should it be static?
+drivers/pcmcia/cardbus.c:107:6: warning: symbol 'cb_free' was not declared. Should it be static?
+  CC      drivers/pcmcia/cardbus.o
+  LD      drivers/pcmcia/pcmcia_core.o
+  CHECK   drivers/pcmcia/ds.c
+  CC      drivers/pcmcia/ds.o
+  CHECK   drivers/pcmcia/pcmcia_resource.c
+  CC      drivers/pcmcia/pcmcia_resource.o
+  CHECK   drivers/pcmcia/cistpl.c
+drivers/pcmcia/cistpl.c:1291:5: warning: symbol 'pcmcia_parse_tuple' was not declared. Should it be static?
+  CC      drivers/pcmcia/cistpl.o
+  CHECK   drivers/pcmcia/pcmcia_cis.c
+  CC      drivers/pcmcia/pcmcia_cis.o
+  LD      drivers/pcmcia/pcmcia.o
+  CHECK   drivers/pcmcia/rsrc_mgr.c
+  CC      drivers/pcmcia/rsrc_mgr.o
+  CHECK   drivers/pcmcia/rsrc_nonstatic.c
+  CC      drivers/pcmcia/rsrc_nonstatic.o
+  LD      drivers/pcmcia/pcmcia_rsrc.o
+  LD      drivers/pcmcia/built-in.o
+  CHECK   drivers/pcmcia/yenta_socket.c
+  CC [M]  drivers/pcmcia/yenta_socket.o
+  CHECK   drivers/pcmcia/pd6729.c
+  CC [M]  drivers/pcmcia/pd6729.o
+  CHECK   drivers/pcmcia/i82092.c
+  CC [M]  drivers/pcmcia/i82092.o
+  CHECK   drivers/phy/phy-core.c
+  CC      drivers/phy/phy-core.o
+  LD      drivers/phy/built-in.o
+  CHECK   drivers/pinctrl/core.c
+  CC      drivers/pinctrl/core.o
+  CHECK   drivers/pinctrl/pinctrl-utils.c
+  CC      drivers/pinctrl/pinctrl-utils.o
+  LD      drivers/pinctrl/freescale/built-in.o
+  CHECK   drivers/pinctrl/intel/pinctrl-baytrail.c
+  CC      drivers/pinctrl/intel/pinctrl-baytrail.o
+  LD      drivers/pinctrl/intel/built-in.o
+  LD      drivers/pinctrl/built-in.o
+  CHECK   drivers/platform/x86/intel-smartconnect.c
+  CC      drivers/platform/x86/intel-smartconnect.o
+  LD      drivers/platform/x86/built-in.o
+  CHECK   drivers/platform/x86/ideapad-laptop.c
+  CC [M]  drivers/platform/x86/ideapad-laptop.o
+  CHECK   drivers/platform/x86/wmi.c
+  CC [M]  drivers/platform/x86/wmi.o
+  CHECK   drivers/platform/x86/intel_ips.c
+drivers/platform/x86/intel_ips.c:1463:52: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1463:52:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1463:52:    got void *
+drivers/platform/x86/intel_ips.c:394:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:394:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:394:9:    got void *
+drivers/platform/x86/intel_ips.c:429:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:429:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:429:9:    got void *
+drivers/platform/x86/intel_ips.c:714:19: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:714:19:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:714:19:    got void *
+drivers/platform/x86/intel_ips.c:726:33: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:726:33:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:726:33:    got void *
+drivers/platform/x86/intel_ips.c:727:32: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:727:32:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:727:32:    got void *
+drivers/platform/x86/intel_ips.c:728:31: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:728:31:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:728:31:    got void *
+drivers/platform/x86/intel_ips.c:729:32: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:729:32:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:729:32:    got void *
+drivers/platform/x86/intel_ips.c:850:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:850:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:850:15:    got void *
+drivers/platform/x86/intel_ips.c:853:26: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:853:26:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:853:26:    got void *
+drivers/platform/x86/intel_ips.c:869:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:869:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:869:15:    got void *
+drivers/platform/x86/intel_ips.c:879:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:879:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:879:15:    got void *
+drivers/platform/x86/intel_ips.c:897:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:897:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:897:15:    got void *
+drivers/platform/x86/intel_ips.c:989:23: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:989:23:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:989:23:    got void *
+drivers/platform/x86/intel_ips.c:993:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:993:25:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:993:25:    got void *
+drivers/platform/x86/intel_ips.c:1047:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1047:25:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1047:25:    got void *
+drivers/platform/x86/intel_ips.c:1095:30: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1095:30:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1095:30:    got void *
+drivers/platform/x86/intel_ips.c:1171:19: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1171:19:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1171:19:    got void *
+drivers/platform/x86/intel_ips.c:1172:18: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1172:18:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1172:18:    got void *
+drivers/platform/x86/intel_ips.c:1184:23: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1184:23:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1184:23:    got void *
+drivers/platform/x86/intel_ips.c:1185:23: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1185:23:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1185:23:    got void *
+drivers/platform/x86/intel_ips.c:1209:25: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1209:25:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1209:25:    got void *
+drivers/platform/x86/intel_ips.c:1211:17: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1211:17:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1211:17:    got void *
+drivers/platform/x86/intel_ips.c:1218:17: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1218:17:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1218:17:    got void *
+drivers/platform/x86/intel_ips.c:1554:21: warning: incorrect type in assignment (different address spaces)
+drivers/platform/x86/intel_ips.c:1554:21:    expected void *regmap
+drivers/platform/x86/intel_ips.c:1554:21:    got void [noderef] <asn:2>*
+drivers/platform/x86/intel_ips.c:1562:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1562:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1562:15:    got void *
+drivers/platform/x86/intel_ips.c:1569:15: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1569:15:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1569:15:    got void *
+drivers/platform/x86/intel_ips.c:1586:13: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1586:13:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1586:13:    got void *
+drivers/platform/x86/intel_ips.c:1621:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1621:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1621:9:    got void *
+drivers/platform/x86/intel_ips.c:1623:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1623:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1623:9:    got void *
+drivers/platform/x86/intel_ips.c:1626:24: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1626:24:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1626:24:    got void *
+drivers/platform/x86/intel_ips.c:1627:24: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1627:24:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1627:24:    got void *
+drivers/platform/x86/intel_ips.c:1628:25: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1628:25:    expected void const volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1628:25:    got void *
+drivers/platform/x86/intel_ips.c:1662:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1662:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1662:9:    got void *
+drivers/platform/x86/intel_ips.c:1663:9: warning: incorrect type in argument 2 (different address spaces)
+drivers/platform/x86/intel_ips.c:1663:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1663:9:    got void *
+drivers/platform/x86/intel_ips.c:1676:20: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1676:20:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1676:20:    got void *regmap
+drivers/platform/x86/intel_ips.c:1716:20: warning: incorrect type in argument 1 (different address spaces)
+drivers/platform/x86/intel_ips.c:1716:20:    expected void volatile [noderef] <asn:2>*addr
+drivers/platform/x86/intel_ips.c:1716:20:    got void *regmap
+  CC [M]  drivers/platform/x86/intel_ips.o
+  LD      drivers/platform/built-in.o
+  CHECK   drivers/pnp/core.c
+  CC      drivers/pnp/core.o
+  CHECK   drivers/pnp/card.c
+  CC      drivers/pnp/card.o
+  CHECK   drivers/pnp/driver.c
+  CC      drivers/pnp/driver.o
+  CHECK   drivers/pnp/resource.c
+  CC      drivers/pnp/resource.o
+  CHECK   drivers/pnp/manager.c
+  CC      drivers/pnp/manager.o
+  CHECK   drivers/pnp/support.c
+  CC      drivers/pnp/support.o
+  CHECK   drivers/pnp/interface.c
+  CC      drivers/pnp/interface.o
+  CHECK   drivers/pnp/quirks.c
+  CC      drivers/pnp/quirks.o
+  CHECK   drivers/pnp/system.c
+  CC      drivers/pnp/system.o
+  LD      drivers/pnp/pnp.o
+  CHECK   drivers/pnp/pnpacpi/core.c
+  CC      drivers/pnp/pnpacpi/core.o
+  CHECK   drivers/pnp/pnpacpi/rsparser.c
+  CC      drivers/pnp/pnpacpi/rsparser.o
+  LD      drivers/pnp/pnpacpi/pnp.o
+  LD      drivers/pnp/pnpacpi/built-in.o
+  LD      drivers/pnp/built-in.o
+  CHECK   drivers/power/power_supply_core.c
+  CC      drivers/power/power_supply_core.o
+  CHECK   drivers/power/power_supply_sysfs.c
+  CC      drivers/power/power_supply_sysfs.o
+  CHECK   drivers/power/power_supply_leds.c
+  CC      drivers/power/power_supply_leds.o
+  LD      drivers/power/power_supply.o
+  LD      drivers/power/built-in.o
+  CHECK   drivers/pps/pps.c
+  CC [M]  drivers/pps/pps.o
+  CHECK   drivers/pps/kapi.c
+  CC [M]  drivers/pps/kapi.o
+  CHECK   drivers/pps/sysfs.c
+  CC [M]  drivers/pps/sysfs.o
+  LD [M]  drivers/pps/pps_core.o
+  CHECK   drivers/ptp/ptp_clock.c
+  CC [M]  drivers/ptp/ptp_clock.o
+  CHECK   drivers/ptp/ptp_chardev.c
+  CC [M]  drivers/ptp/ptp_chardev.o
+  CHECK   drivers/ptp/ptp_sysfs.c
+  CC [M]  drivers/ptp/ptp_sysfs.o
+  LD [M]  drivers/ptp/ptp.o
+  CHECK   drivers/ras/ras.c
+  CC      drivers/ras/ras.o
+  CHECK   drivers/ras/debugfs.c
+drivers/ras/debugfs.c:7:5: warning: symbol 'ras_userspace_consumers' was not declared. Should it be static?
+drivers/ras/debugfs.c:37:12: warning: symbol 'ras_add_daemon_trace' was not declared. Should it be static?
+drivers/ras/debugfs.c:53:13: warning: symbol 'ras_debugfs_init' was not declared. Should it be static?
+  CC      drivers/ras/debugfs.o
+  LD      drivers/ras/built-in.o
+  CHECK   drivers/reset/core.c
+  CC      drivers/reset/core.o
+  LD      drivers/reset/built-in.o
+  CHECK   drivers/rtc/rtc-lib.c
+  CC      drivers/rtc/rtc-lib.o
+  CHECK   drivers/rtc/hctosys.c
+  CC      drivers/rtc/hctosys.o
+  CHECK   drivers/rtc/class.c
+  CC      drivers/rtc/class.o
+  CHECK   drivers/rtc/interface.c
+  CC      drivers/rtc/interface.o
+  CHECK   drivers/rtc/rtc-dev.c
+  CC      drivers/rtc/rtc-dev.o
+  CHECK   drivers/rtc/rtc-proc.c
+  CC      drivers/rtc/rtc-proc.o
+  CHECK   drivers/rtc/rtc-sysfs.c
+  CC      drivers/rtc/rtc-sysfs.o
+  LD      drivers/rtc/rtc-core.o
+  CHECK   drivers/rtc/rtc-cmos.c
+  CC      drivers/rtc/rtc-cmos.o
+  LD      drivers/rtc/built-in.o
+  CHECK   drivers/scsi/device_handler/scsi_dh.c
+  CC      drivers/scsi/device_handler/scsi_dh.o
+  LD      drivers/scsi/device_handler/built-in.o
+  CHECK   drivers/scsi/scsi.c
+  CC      drivers/scsi/scsi.o
+  CHECK   drivers/scsi/hosts.c
+  CC      drivers/scsi/hosts.o
+  CHECK   drivers/scsi/scsi_ioctl.c
+  CC      drivers/scsi/scsi_ioctl.o
+  CHECK   drivers/scsi/scsicam.c
+  CC      drivers/scsi/scsicam.o
+  CHECK   drivers/scsi/scsi_error.c
+  CC      drivers/scsi/scsi_error.o
+  CHECK   drivers/scsi/scsi_lib.c
+drivers/scsi/scsi_lib.c:500:6: warning: symbol 'scsi_requeue_run_queue' was not declared. Should it be static?
+drivers/scsi/scsi_lib.c:2727:6: warning: symbol 'scsi_evt_thread' was not declared. Should it be static?
+  CC      drivers/scsi/scsi_lib.o
+  CHECK   drivers/scsi/constants.c
+  CC      drivers/scsi/constants.o
+  CHECK   drivers/scsi/scsi_lib_dma.c
+  CC      drivers/scsi/scsi_lib_dma.o
+  CHECK   drivers/scsi/scsi_scan.c
+  CC      drivers/scsi/scsi_scan.o
+  CHECK   drivers/scsi/scsi_sysfs.c
+drivers/scsi/scsi_sysfs.c:201:25: warning: symbol 'dev_attr_hstate' was not declared. Should it be static?
+drivers/scsi/scsi_sysfs.c:376:24: warning: symbol 'scsi_shost_attr_group' was not declared. Should it be static?
+  CC      drivers/scsi/scsi_sysfs.o
+  CHECK   drivers/scsi/scsi_devinfo.c
+  CC      drivers/scsi/scsi_devinfo.o
+  CHECK   drivers/scsi/scsi_sysctl.c
+  CC      drivers/scsi/scsi_sysctl.o
+  CHECK   drivers/scsi/scsi_proc.c
+  CC      drivers/scsi/scsi_proc.o
+  CHECK   drivers/scsi/scsi_trace.c
+  CC      drivers/scsi/scsi_trace.o
+  CHECK   drivers/scsi/scsi_logging.c
+  CC      drivers/scsi/scsi_logging.o
+  CHECK   drivers/scsi/scsi_pm.c
+  CC      drivers/scsi/scsi_pm.o
+  LD      drivers/scsi/scsi_mod.o
+  CHECK   drivers/scsi/sd.c
+  CC      drivers/scsi/sd.o
+  CHECK   drivers/scsi/sd_dif.c
+  CC      drivers/scsi/sd_dif.o
+  LD      drivers/scsi/sd_mod.o
+  CHECK   drivers/scsi/sr.c
+  CC      drivers/scsi/sr.o
+  CHECK   drivers/scsi/sr_ioctl.c
+  CC      drivers/scsi/sr_ioctl.o
+  CHECK   drivers/scsi/sr_vendor.c
+  CC      drivers/scsi/sr_vendor.o
+  LD      drivers/scsi/sr_mod.o
+  CHECK   drivers/scsi/sg.c
+drivers/scsi/sg.c:1086:41: warning: incorrect type in argument 5 (different address spaces)
+drivers/scsi/sg.c:1086:41:    expected char [noderef] <asn:1>*arg
+drivers/scsi/sg.c:1086:41:    got char *<noident>
+  CC      drivers/scsi/sg.o
+  LD      drivers/scsi/built-in.o
+  CHECK   drivers/sfi/sfi_acpi.c
+  CC      drivers/sfi/sfi_acpi.o
+  CHECK   drivers/sfi/sfi_core.c
+drivers/sfi/sfi_core.c:170:20: warning: incorrect type in assignment (different address spaces)
+drivers/sfi/sfi_core.c:170:20:    expected struct sfi_table_header *th
+drivers/sfi/sfi_core.c:170:20:    got void [noderef] <asn:2>*
+drivers/sfi/sfi_core.c:181:34: warning: incorrect type in argument 1 (different address spaces)
+drivers/sfi/sfi_core.c:181:34:    expected void [noderef] <asn:2>*virt
+drivers/sfi/sfi_core.c:181:34:    got struct sfi_table_header *[assigned] th
+drivers/sfi/sfi_core.c:183:30: warning: incorrect type in return expression (different address spaces)
+drivers/sfi/sfi_core.c:183:30:    expected struct sfi_table_header *
+drivers/sfi/sfi_core.c:183:30:    got void [noderef] <asn:2>*
+drivers/sfi/sfi_core.c:195:34: warning: incorrect type in argument 1 (different address spaces)
+drivers/sfi/sfi_core.c:195:34:    expected void [noderef] <asn:2>*virt
+drivers/sfi/sfi_core.c:195:34:    got struct sfi_table_header *th
+drivers/sfi/sfi_core.c:317:17: warning: incorrect type in assignment (different address spaces)
+drivers/sfi/sfi_core.c:317:17:    expected struct sfi_table_simple *static [toplevel] syst_va
+drivers/sfi/sfi_core.c:317:17:    got void [noderef] <asn:2>*
+drivers/sfi/sfi_core.c:346:15: warning: incorrect type in assignment (different address spaces)
+drivers/sfi/sfi_core.c:346:15:    expected void *start
+drivers/sfi/sfi_core.c:346:15:    got void [noderef] <asn:2>*
+drivers/sfi/sfi_core.c:378:34: warning: incorrect type in argument 1 (different address spaces)
+drivers/sfi/sfi_core.c:378:34:    expected void [noderef] <asn:2>*virt
+drivers/sfi/sfi_core.c:378:34:    got void *start
+drivers/sfi/sfi_core.c:382:26: warning: incorrect type in argument 1 (different address spaces)
+drivers/sfi/sfi_core.c:382:26:    expected void [noderef] <asn:2>*virt
+drivers/sfi/sfi_core.c:382:26:    got void *start
+drivers/sfi/sfi_core.c:508:26: warning: incorrect type in argument 1 (different address spaces)
+drivers/sfi/sfi_core.c:508:26:    expected void [noderef] <asn:2>*virt
+drivers/sfi/sfi_core.c:508:26:    got struct sfi_table_simple *static [toplevel] syst_va
+drivers/sfi/sfi_core.c:512:17: warning: incorrect type in assignment (different address spaces)
+drivers/sfi/sfi_core.c:512:17:    expected struct sfi_table_simple *static [toplevel] syst_va
+drivers/sfi/sfi_core.c:512:17:    got void [noderef] <asn:2>*
+  CC      drivers/sfi/sfi_core.o
+  LD      drivers/sfi/built-in.o
+  CHECK   drivers/spi/spi.c
+  CC      drivers/spi/spi.o
+  LD      drivers/spi/built-in.o
+  CHECK   drivers/staging/staging.c
+  CHECK   drivers/thermal/thermal_core.c
+  CC      drivers/thermal/thermal_core.o
+  CHECK   drivers/thermal/thermal_hwmon.c
+  CC      drivers/thermal/thermal_hwmon.o
+  CHECK   drivers/thermal/fair_share.c
+  CC      drivers/thermal/fair_share.o
+  CHECK   drivers/thermal/step_wise.c
+  CC      drivers/thermal/step_wise.o
+  CHECK   drivers/thermal/user_space.c
+  CC      drivers/thermal/user_space.o
+  LD      drivers/thermal/thermal_sys.o
+  LD      drivers/thermal/built-in.o
+  CHECK   drivers/tty/tty_io.c
+  CC      drivers/tty/tty_io.o
+  CHECK   drivers/tty/n_tty.c
+  CC      drivers/tty/n_tty.o
+  CHECK   drivers/tty/tty_ioctl.c
+  CC      drivers/tty/tty_ioctl.o
+  CHECK   drivers/tty/tty_ldisc.c
+  CC      drivers/tty/tty_ldisc.o
+  CHECK   drivers/tty/tty_buffer.c
+  CC      drivers/tty/tty_buffer.o
+  CHECK   drivers/tty/tty_port.c
+  CC      drivers/tty/tty_port.o
+  CHECK   drivers/tty/tty_mutex.c
+  CC      drivers/tty/tty_mutex.o
+  CHECK   drivers/tty/tty_ldsem.c
+  CC      drivers/tty/tty_ldsem.o
+  CHECK   drivers/tty/pty.c
+  CC      drivers/tty/pty.o
+  CHECK   drivers/tty/tty_audit.c
+  CC      drivers/tty/tty_audit.o
+  CHECK   drivers/tty/sysrq.c
+drivers/tty/sysrq.c:58:16: warning: symbol 'platform_sysrq_reset_seq' was not declared. Should it be static?
+drivers/tty/sysrq.c:59:5: warning: symbol 'sysrq_reset_downtime_ms' was not declared. Should it be static?
+  CC      drivers/tty/sysrq.o
+  CHECK   drivers/tty/hvc/hvc_console.c
+  CC      drivers/tty/hvc/hvc_console.o
+  CHECK   drivers/tty/hvc/hvc_irq.c
+  CC      drivers/tty/hvc/hvc_irq.o
+  CHECK   drivers/tty/hvc/hvc_xen.c
+drivers/tty/hvc/hvc_xen.c:233:20: warning: incorrect type in assignment (different address spaces)
+drivers/tty/hvc/hvc_xen.c:233:20:    expected struct xencons_interface *intf
+drivers/tty/hvc/hvc_xen.c:233:20:    got void [noderef] <asn:2>*
+drivers/tty/hvc/hvc_xen.c:343:37: warning: incorrect type in argument 1 (different address spaces)
+drivers/tty/hvc/hvc_xen.c:343:37:    expected void volatile [noderef] <asn:2>*addr
+drivers/tty/hvc/hvc_xen.c:343:37:    got struct xencons_interface *intf
+  CC      drivers/tty/hvc/hvc_xen.o
+  LD      drivers/tty/hvc/built-in.o
+  CHECK   drivers/tty/serial/serial_core.c
+drivers/tty/serial/serial_core.c:683:29: warning: incorrect type in assignment (different base types)
+drivers/tty/serial/serial_core.c:683:29:    expected int [signed] flags
+drivers/tty/serial/serial_core.c:683:29:    got restricted upf_t [usertype] flags
+drivers/tty/serial/serial_core.c:757:19: warning: incorrect type in assignment (different base types)
+drivers/tty/serial/serial_core.c:757:19:    expected restricted upf_t [usertype] new_flags
+drivers/tty/serial/serial_core.c:757:19:    got int [signed] flags
+  CC      drivers/tty/serial/serial_core.o
+  CHECK   drivers/tty/serial/earlycon.c
+  CC      drivers/tty/serial/earlycon.o
+  CHECK   drivers/tty/serial/8250/8250_core.c
+drivers/tty/serial/8250/8250_core.c:3178:32: warning: incorrect type in assignment (different base types)
+drivers/tty/serial/8250/8250_core.c:3178:32:    expected restricted upf_t [usertype] flags
+drivers/tty/serial/8250/8250_core.c:3178:32:    got unsigned int const [unsigned] flags
+drivers/tty/serial/8250/8250_core.c:3310:39: warning: context imbalance in 'serial8250_console_write' - unexpected unlock
+  CC      drivers/tty/serial/8250/8250_core.o
+  CHECK   drivers/tty/serial/8250/8250_pnp.c
+  CC      drivers/tty/serial/8250/8250_pnp.o
+  CHECK   drivers/tty/serial/8250/8250_dma.c
+  CC      drivers/tty/serial/8250/8250_dma.o
+  LD      drivers/tty/serial/8250/8250.o
+  CHECK   drivers/tty/serial/8250/8250_pci.c
+  CC      drivers/tty/serial/8250/8250_pci.o
+  CHECK   drivers/tty/serial/8250/8250_early.c
+  CC      drivers/tty/serial/8250/8250_early.o
+  LD      drivers/tty/serial/8250/built-in.o
+  CHECK   drivers/tty/serial/kgdboc.c
+  CC      drivers/tty/serial/kgdboc.o
+  LD      drivers/tty/serial/built-in.o
+  CHECK   drivers/tty/vt/vt_ioctl.c
+  CC      drivers/tty/vt/vt_ioctl.o
+  CHECK   drivers/tty/vt/vc_screen.c
+  CC      drivers/tty/vt/vc_screen.o
+  CHECK   drivers/tty/vt/selection.c
+  CC      drivers/tty/vt/selection.o
+  CHECK   drivers/tty/vt/keyboard.c
+  CC      drivers/tty/vt/keyboard.o
+  CHECK   drivers/tty/vt/consolemap.c
+  CC      drivers/tty/vt/consolemap.o
+  CHECK   drivers/tty/vt/consolemap_deftbl.c
+drivers/tty/vt/consolemap_deftbl.c:10:4: warning: symbol 'dfont_unicount' was not declared. Should it be static?
+drivers/tty/vt/consolemap_deftbl.c:46:5: warning: symbol 'dfont_unitable' was not declared. Should it be static?
+  CC      drivers/tty/vt/consolemap_deftbl.o
+  CHECK   drivers/tty/vt/vt.c
+drivers/tty/vt/vt.c:225:5: warning: symbol 'console_blank_hook' was not declared. Should it be static?
+drivers/tty/vt/vt.c:1240:12: warning: symbol 'rgb_from_256' was not declared. Should it be static?
+drivers/tty/vt/vt.c:2485:19: warning: symbol 'console_driver' was not declared. Should it be static?
+  CC      drivers/tty/vt/vt.o
+  CHECK   drivers/tty/vt/defkeymap.c
+drivers/tty/vt/defkeymap.c:27:9: warning: symbol 'shift_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:46:9: warning: symbol 'altgr_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:65:9: warning: symbol 'ctrl_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:84:9: warning: symbol 'shift_ctrl_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:103:9: warning: symbol 'alt_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:122:9: warning: symbol 'ctrl_alt_map' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:148:14: warning: symbol 'keymap_count' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:156:6: warning: symbol 'func_buf' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:187:6: warning: symbol 'funcbufptr' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:188:5: warning: symbol 'funcbufsize' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:189:5: warning: symbol 'funcbufleft' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:191:6: warning: symbol 'func_table' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:225:18: warning: symbol 'accent_table' was not declared. Should it be static?
+drivers/tty/vt/defkeymap.c:262:14: warning: symbol 'accent_table_size' was not declared. Should it be static?
+  CC      drivers/tty/vt/defkeymap.o
+  LD      drivers/tty/vt/built-in.o
+  LD      drivers/tty/built-in.o
+  CHECK   drivers/usb/common/common.c
+  CC      drivers/usb/common/common.o
+  LD      drivers/usb/common/usb-common.o
+  LD      drivers/usb/common/built-in.o
+  CHECK   drivers/usb/core/usb.c
+  CC      drivers/usb/core/usb.o
+  CHECK   drivers/usb/core/hub.c
+  CC      drivers/usb/core/hub.o
+  CHECK   drivers/usb/core/hcd.c
+  CC      drivers/usb/core/hcd.o
+  CHECK   drivers/usb/core/urb.c
+  CC      drivers/usb/core/urb.o
+  CHECK   drivers/usb/core/message.c
+  CC      drivers/usb/core/message.o
+  CHECK   drivers/usb/core/driver.c
+  CC      drivers/usb/core/driver.o
+  CHECK   drivers/usb/core/config.c
+  CC      drivers/usb/core/config.o
+  CHECK   drivers/usb/core/file.c
+  CC      drivers/usb/core/file.o
+  CHECK   drivers/usb/core/buffer.c
+  CC      drivers/usb/core/buffer.o
+  CHECK   drivers/usb/core/sysfs.c
+  CC      drivers/usb/core/sysfs.o
+  CHECK   drivers/usb/core/endpoint.c
+  CC      drivers/usb/core/endpoint.o
+  CHECK   drivers/usb/core/devio.c
+  CC      drivers/usb/core/devio.o
+  CHECK   drivers/usb/core/notify.c
+  CC      drivers/usb/core/notify.o
+  CHECK   drivers/usb/core/generic.c
+  CC      drivers/usb/core/generic.o
+  CHECK   drivers/usb/core/quirks.c
+  CC      drivers/usb/core/quirks.o
+  CHECK   drivers/usb/core/devices.c
+  CC      drivers/usb/core/devices.o
+  CHECK   drivers/usb/core/port.c
+  CC      drivers/usb/core/port.o
+  CHECK   drivers/usb/core/hcd-pci.c
+  CC      drivers/usb/core/hcd-pci.o
+  CHECK   drivers/usb/core/usb-acpi.c
+  CC      drivers/usb/core/usb-acpi.o
+  LD      drivers/usb/core/usbcore.o
+  LD      drivers/usb/core/built-in.o
+  CHECK   drivers/usb/early/ehci-dbgp.c
+  CC      drivers/usb/early/ehci-dbgp.o
+  LD      drivers/usb/early/built-in.o
+  CHECK   drivers/usb/host/pci-quirks.c
+  CC      drivers/usb/host/pci-quirks.o
+  CHECK   drivers/usb/host/xhci-pci.c
+  CC      drivers/usb/host/xhci-pci.o
+  CHECK   drivers/usb/host/ehci-hcd.c
+  CC      drivers/usb/host/ehci-hcd.o
+  CHECK   drivers/usb/host/ehci-pci.c
+  CC      drivers/usb/host/ehci-pci.o
+  CHECK   drivers/usb/host/ohci-hcd.c
+drivers/usb/host/ohci-hub.c:265:9: warning: context imbalance in 'ohci_rh_resume' - different lock contexts for basic block
+  CC      drivers/usb/host/ohci-hcd.o
+  CHECK   drivers/usb/host/ohci-pci.c
+  CC      drivers/usb/host/ohci-pci.o
+  CHECK   drivers/usb/host/uhci-hcd.c
+  CC      drivers/usb/host/uhci-hcd.o
+  CHECK   drivers/usb/host/xhci.c
+  CC      drivers/usb/host/xhci.o
+  CHECK   drivers/usb/host/xhci-mem.c
+  CC      drivers/usb/host/xhci-mem.o
+  CHECK   drivers/usb/host/xhci-ring.c
+  CC      drivers/usb/host/xhci-ring.o
+  CHECK   drivers/usb/host/xhci-hub.c
+  CC      drivers/usb/host/xhci-hub.o
+  CHECK   drivers/usb/host/xhci-dbg.c
+  CC      drivers/usb/host/xhci-dbg.o
+  CHECK   drivers/usb/host/xhci-trace.c
+  CC      drivers/usb/host/xhci-trace.o
+  LD      drivers/usb/host/xhci-hcd.o
+  LD      drivers/usb/host/built-in.o
+  CHECK   drivers/usb/mon/mon_main.c
+  CC      drivers/usb/mon/mon_main.o
+  CHECK   drivers/usb/mon/mon_stat.c
+  CC      drivers/usb/mon/mon_stat.o
+  CHECK   drivers/usb/mon/mon_text.c
+  CC      drivers/usb/mon/mon_text.o
+  CHECK   drivers/usb/mon/mon_bin.c
+  CC      drivers/usb/mon/mon_bin.o
+  LD      drivers/usb/mon/usbmon.o
+  LD      drivers/usb/mon/built-in.o
+  CHECK   drivers/usb/serial/usb-serial.c
+  CC      drivers/usb/serial/usb-serial.o
+  CHECK   drivers/usb/serial/generic.c
+  CC      drivers/usb/serial/generic.o
+  CHECK   drivers/usb/serial/bus.c
+  CC      drivers/usb/serial/bus.o
+  CHECK   drivers/usb/serial/console.c
+  CC      drivers/usb/serial/console.o
+  LD      drivers/usb/serial/usbserial.o
+  LD      drivers/usb/serial/built-in.o
+  CHECK   drivers/usb/serial/pl2303.c
+  CC [M]  drivers/usb/serial/pl2303.o
+  LD      drivers/usb/built-in.o
+  CHECK   drivers/video/hdmi.c
+  CC      drivers/video/hdmi.o
+  CHECK   drivers/video/backlight/backlight.c
+  CC      drivers/video/backlight/backlight.o
+  LD      drivers/video/backlight/built-in.o
+  CHECK   drivers/video/console/dummycon.c
+  CC      drivers/video/console/dummycon.o
+  CHECK   drivers/video/console/vgacon.c
+  CC      drivers/video/console/vgacon.o
+  CHECK   drivers/video/console/fbcon.c
+  CC      drivers/video/console/fbcon.o
+  CHECK   drivers/video/console/bitblit.c
+  CC      drivers/video/console/bitblit.o
+  CHECK   drivers/video/console/softcursor.c
+  CC      drivers/video/console/softcursor.o
+  CHECK   drivers/video/console/tileblit.c
+  CC      drivers/video/console/tileblit.o
+  CHECK   drivers/video/console/fbcon_rotate.c
+  CC      drivers/video/console/fbcon_rotate.o
+  CHECK   drivers/video/console/fbcon_cw.c
+  CC      drivers/video/console/fbcon_cw.o
+  CHECK   drivers/video/console/fbcon_ud.c
+  CC      drivers/video/console/fbcon_ud.o
+  CHECK   drivers/video/console/fbcon_ccw.c
+  CC      drivers/video/console/fbcon_ccw.o
+  LD      drivers/video/console/built-in.o
+  CHECK   drivers/video/fbdev/core/fb_notify.c
+  CC      drivers/video/fbdev/core/fb_notify.o
+  CHECK   drivers/video/fbdev/core/fb_cmdline.c
+  CC      drivers/video/fbdev/core/fb_cmdline.o
+  CHECK   drivers/video/fbdev/core/fbmem.c
+  CC      drivers/video/fbdev/core/fbmem.o
+  CHECK   drivers/video/fbdev/core/fbmon.c
+  CC      drivers/video/fbdev/core/fbmon.o
+  CHECK   drivers/video/fbdev/core/fbcmap.c
+  CC      drivers/video/fbdev/core/fbcmap.o
+  CHECK   drivers/video/fbdev/core/fbsysfs.c
+  CC      drivers/video/fbdev/core/fbsysfs.o
+  CHECK   drivers/video/fbdev/core/modedb.c
+  CC      drivers/video/fbdev/core/modedb.o
+  CHECK   drivers/video/fbdev/core/fbcvt.c
+  CC      drivers/video/fbdev/core/fbcvt.o
+  LD      drivers/video/fbdev/core/fb.o
+  CHECK   drivers/video/fbdev/core/cfbfillrect.c
+  CC      drivers/video/fbdev/core/cfbfillrect.o
+  CHECK   drivers/video/fbdev/core/cfbcopyarea.c
+  CC      drivers/video/fbdev/core/cfbcopyarea.o
+  CHECK   drivers/video/fbdev/core/cfbimgblt.c
+  CC      drivers/video/fbdev/core/cfbimgblt.o
+  CHECK   drivers/video/fbdev/core/sysfillrect.c
+  CC      drivers/video/fbdev/core/sysfillrect.o
+  CHECK   drivers/video/fbdev/core/syscopyarea.c
+  CC      drivers/video/fbdev/core/syscopyarea.o
+  CHECK   drivers/video/fbdev/core/sysimgblt.c
+  CC      drivers/video/fbdev/core/sysimgblt.o
+  CHECK   drivers/video/fbdev/core/fb_sys_fops.c
+  CC      drivers/video/fbdev/core/fb_sys_fops.o
+  CHECK   drivers/video/fbdev/core/fb_defio.c
+  CC      drivers/video/fbdev/core/fb_defio.o
+  LD      drivers/video/fbdev/core/built-in.o
+  CHECK   drivers/video/fbdev/xen-fbfront.c
+drivers/video/fbdev/xen-fbfront.c:423:30: warning: incorrect type in assignment (different address spaces)
+drivers/video/fbdev/xen-fbfront.c:423:30:    expected char [noderef] <asn:2>*screen_base
+drivers/video/fbdev/xen-fbfront.c:423:30:    got unsigned char *fb
+  CC      drivers/video/fbdev/xen-fbfront.o
+  CHECK   drivers/video/fbdev/vesafb.c
+  CC      drivers/video/fbdev/vesafb.o
+  CHECK   drivers/video/fbdev/efifb.c
+  CC      drivers/video/fbdev/efifb.o
+  LD      drivers/video/fbdev/built-in.o
+  CHECK   drivers/video/logo/logo.c
+  CC      drivers/video/logo/logo.o
+  LOGO    drivers/video/logo/logo_linux_clut224.c
+  CHECK   drivers/video/logo/logo_linux_clut224.c
+  CC      drivers/video/logo/logo_linux_clut224.o
+  LD      drivers/video/logo/built-in.o
+  LOGO    drivers/video/logo/logo_superh_mono.c
+  LOGO    drivers/video/logo/logo_linux_mono.c
+  LOGO    drivers/video/logo/logo_superh_vga16.c
+  LOGO    drivers/video/logo/logo_linux_vga16.c
+  LOGO    drivers/video/logo/logo_blackfin_vga16.c
+  LOGO    drivers/video/logo/clut_vga16.c
+  LOGO    drivers/video/logo/logo_parisc_clut224.c
+  LOGO    drivers/video/logo/logo_mac_clut224.c
+  LOGO    drivers/video/logo/logo_superh_clut224.c
+  LOGO    drivers/video/logo/logo_sun_clut224.c
+  LOGO    drivers/video/logo/logo_blackfin_clut224.c
+  LOGO    drivers/video/logo/logo_dec_clut224.c
+  LOGO    drivers/video/logo/logo_spe_clut224.c
+  LOGO    drivers/video/logo/logo_m32r_clut224.c
+  LOGO    drivers/video/logo/logo_sgi_clut224.c
+  LD      drivers/video/built-in.o
+  CHECK   drivers/watchdog/watchdog_core.c
+  CC      drivers/watchdog/watchdog_core.o
+  CHECK   drivers/watchdog/watchdog_dev.c
+  CC      drivers/watchdog/watchdog_dev.o
+  LD      drivers/watchdog/watchdog.o
+  LD      drivers/watchdog/built-in.o
+  CHECK   drivers/watchdog/iTCO_wdt.c
+  CC [M]  drivers/watchdog/iTCO_wdt.o
+  CHECK   drivers/watchdog/iTCO_vendor_support.c
+  CC [M]  drivers/watchdog/iTCO_vendor_support.o
+  CHECK   drivers/xen/cpu_hotplug.c
+  CC      drivers/xen/cpu_hotplug.o
+  CHECK   drivers/xen/fallback.c
+  CC      drivers/xen/fallback.o
+  CHECK   drivers/xen/grant-table.c
+drivers/xen/grant-table.c:641:15: warning: incorrect type in assignment (different address spaces)
+drivers/xen/grant-table.c:641:15:    expected void *vaddr
+drivers/xen/grant-table.c:641:15:    got void [noderef] <asn:2>*
+drivers/xen/grant-table.c:649:17: warning: incorrect type in argument 1 (different address spaces)
+drivers/xen/grant-table.c:649:17:    expected void volatile [noderef] <asn:2>*addr
+drivers/xen/grant-table.c:649:17:    got void *vaddr
+drivers/xen/grant-table.c:668:9: warning: incorrect type in argument 1 (different address spaces)
+drivers/xen/grant-table.c:668:9:    expected void volatile [noderef] <asn:2>*addr
+drivers/xen/grant-table.c:668:9:    got void *[addressable] [toplevel] [assigned] vaddr
+  CC      drivers/xen/grant-table.o
+  CHECK   drivers/xen/features.c
+  CC      drivers/xen/features.o
+  CHECK   drivers/xen/balloon.c
+  CC      drivers/xen/balloon.o
+  CHECK   drivers/xen/manage.c
+  CC      drivers/xen/manage.o
+  CHECK   drivers/xen/preempt.c
+drivers/xen/preempt.c:33:13: warning: incorrect type in initializer (different address spaces)
+drivers/xen/preempt.c:33:13:    expected void const [noderef] <asn:3>*__vpp_verify
+drivers/xen/preempt.c:33:13:    got bool extern [toplevel] *<noident>
+drivers/xen/preempt.c:33:13: warning: expression using sizeof bool
+drivers/xen/preempt.c:33:13: warning: expression using sizeof bool
+drivers/xen/preempt.c:33:13: warning: expression using sizeof bool
+drivers/xen/preempt.c:33:13: warning: expression using sizeof bool
+drivers/xen/preempt.c:33:13: warning: expression using sizeof bool
+drivers/xen/preempt.c:39:17: warning: incorrect type in initializer (different address spaces)
+drivers/xen/preempt.c:39:17:    expected void const [noderef] <asn:3>*__vpp_verify
+drivers/xen/preempt.c:39:17:    got bool extern [toplevel] *<noident>
+drivers/xen/preempt.c:39:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:39:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:39:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:39:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:39:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:41:17: warning: incorrect type in initializer (different address spaces)
+drivers/xen/preempt.c:41:17:    expected void const [noderef] <asn:3>*__vpp_verify
+drivers/xen/preempt.c:41:17:    got bool extern [toplevel] *<noident>
+drivers/xen/preempt.c:41:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:41:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:41:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:41:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:41:17: warning: expression using sizeof bool
+drivers/xen/preempt.c:31:27: warning: symbol 'xen_maybe_preempt_hcall' was not declared. Should it be static?
+  CC      drivers/xen/preempt.o
+  CHECK   drivers/xen/events/events_base.c
+drivers/xen/events/events_base.c:1624:6: warning: symbol 'xen_callback_vector' was not declared. Should it be static?
+  CC      drivers/xen/events/events_base.o
+  CHECK   drivers/xen/events/events_2l.c
+drivers/xen/events/events_2l.c:264:13: warning: symbol 'xen_debug_interrupt' was not declared. Should it be static?
+  CC      drivers/xen/events/events_2l.o
+  CHECK   drivers/xen/events/events_fifo.c
+  CC      drivers/xen/events/events_fifo.o
+  LD      drivers/xen/events/events.o
+  LD      drivers/xen/events/built-in.o
+  CHECK   drivers/xen/xenbus/xenbus_client.c
+  CC      drivers/xen/xenbus/xenbus_client.o
+  CHECK   drivers/xen/xenbus/xenbus_comms.c
+  CC      drivers/xen/xenbus/xenbus_comms.o
+  CHECK   drivers/xen/xenbus/xenbus_xs.c
+  CC      drivers/xen/xenbus/xenbus_xs.o
+  CHECK   drivers/xen/xenbus/xenbus_probe.c
+drivers/xen/xenbus/xenbus_probe.c:781:37: warning: incorrect type in assignment (different address spaces)
+drivers/xen/xenbus/xenbus_probe.c:781:37:    expected struct xenstore_domain_interface *extern [addressable] [toplevel] [assigned] xen_store_interface
+drivers/xen/xenbus/xenbus_probe.c:781:37:    got void [noderef] <asn:2>*
+  CC      drivers/xen/xenbus/xenbus_probe.o
+  CHECK   drivers/xen/xenbus/xenbus_probe_backend.c
+  CC      drivers/xen/xenbus/xenbus_probe_backend.o
+  LD      drivers/xen/xenbus/xenbus.o
+  CHECK   drivers/xen/xenbus/xenbus_dev_frontend.c
+  CC      drivers/xen/xenbus/xenbus_dev_frontend.o
+  CHECK   drivers/xen/xenbus/xenbus_dev_backend.c
+  CC      drivers/xen/xenbus/xenbus_dev_backend.o
+  CHECK   drivers/xen/xenbus/xenbus_probe_frontend.c
+  CC      drivers/xen/xenbus/xenbus_probe_frontend.o
+  LD      drivers/xen/xenbus/built-in.o
+  CHECK   drivers/xen/pci.c
+  CC      drivers/xen/pci.o
+  CHECK   drivers/xen/dbgp.c
+  CC      drivers/xen/dbgp.o
+  CHECK   drivers/xen/acpi.c
+  CC      drivers/xen/acpi.o
+  CHECK   drivers/xen/xen-acpi-pad.c
+  CC      drivers/xen/xen-acpi-pad.o
+  CHECK   drivers/xen/pcpu.c
+  CC      drivers/xen/pcpu.o
+  CHECK   drivers/xen/biomerge.c
+  CC      drivers/xen/biomerge.o
+  CHECK   drivers/xen/xen-balloon.c
+  CC      drivers/xen/xen-balloon.o
+  CHECK   drivers/xen/xen-selfballoon.c
+  CC      drivers/xen/xen-selfballoon.o
+  CHECK   drivers/xen/sys-hypervisor.c
+  CC      drivers/xen/sys-hypervisor.o
+  CHECK   drivers/xen/platform-pci.c
+  CC      drivers/xen/platform-pci.o
+  CHECK   drivers/xen/swiotlb-xen.c
+  CC      drivers/xen/swiotlb-xen.o
+  CHECK   drivers/xen/efi.c
+drivers/xen/efi.c:323:27: warning: symbol 'xen_efi_probe' was not declared. Should it be static?
+  CC      drivers/xen/efi.o
+  CHECK   drivers/xen/xlate_mmu.c
+drivers/xen/xlate_mmu.c:96:5: warning: symbol 'xen_xlate_remap_gfn_array' was not declared. Should it be static?
+drivers/xen/xlate_mmu.c:126:5: warning: symbol 'xen_xlate_unmap_gfn_range' was not declared. Should it be static?
+  CC      drivers/xen/xlate_mmu.o
+  LD      drivers/xen/built-in.o
+  CHECK   drivers/xen/tmem.c
+  CC [M]  drivers/xen/tmem.o
+  CHECK   drivers/xen/privcmd.c
+include/xen/xen-ops.h:110:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:110:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:110:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:110:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:110:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:115:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:115:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:115:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:115:9: warning: expression using sizeof bool
+include/xen/xen-ops.h:115:9: warning: expression using sizeof bool
+drivers/xen/privcmd.c:529:35: warning: cast removes address space of expression
+drivers/xen/privcmd.c:529:32: warning: incorrect type in assignment (different address spaces)
+drivers/xen/privcmd.c:529:32:    expected unsigned long [noderef] [usertype] <asn:1>*[addressable] [assigned] user_mfn
+drivers/xen/privcmd.c:529:32:    got unsigned long [usertype] *<noident>
+  CC [M]  drivers/xen/privcmd.o
+  LD [M]  drivers/xen/xen-privcmd.o
+  LD      drivers/built-in.o
