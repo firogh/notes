@@ -97,6 +97,11 @@ git log -S "RTN_UNSPEC" --source --all
 
 * find commit id of a tag
     git rev-parse v2.6.12-rc2
+#git pull
+git pull {repo} {remotebranchname}:{localbranchname}
+git pull origin xyz:xyz
+git pull next master:now
+
 #git sendmail
 shadowsocks
 /etc/proxychains.conf

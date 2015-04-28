@@ -67,4 +67,17 @@ release(),
 # Bus, device, driver.
 
 
+#devres
+* devm_kfree
+[devm_kfree does not need for fail case of probe function and for remove function.](http://lists.freedesktop.org/archives/dri-devel/2013-May/038943.html)
+__device_release_driver
+really_probe
+
+* a must use devm_kfree Julia Lawall
+ The function at91_dt_node_to_map is ultimately called by the function
+> pinctrl_get, which is an exported function.  Since it is possible that this
+> function is not called from within a probe function, for safety, the kfree
+> is converted to a devm_kfree, to both free the data and remove it from the
+> device in a failure situation.
+
 
