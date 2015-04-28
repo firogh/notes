@@ -83,7 +83,6 @@ git status  | grep 'modified:' | while read line; do file=$(echo $line | awk '{p
 ## Debug
 More details in debugging note
 #Git 
-git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
 
 git ls-files -d |xargs -i git checkout {}
 
@@ -107,6 +106,8 @@ shadowsocks
 /etc/proxychains.conf
 /home/firo/.gitconfig
 proxychains git send-email --to dbaryshkov@gmail.com --cc rmk+kernel@arm.linux.org.uk --cc linux-pcmcia@lists.infradead.org  0001-Drivers-pcmcia-Fix-memroy-leak-in-sa11xx_drv_pcmcia_.patch
+
+git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
 
 #git diff
 git -c core.whitespace=tab-in-indent diff --check
