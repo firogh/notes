@@ -26,6 +26,10 @@ uninitialized/nonvalidated/corrupted pointer dereference.
 Segmentation fault in userspace
 Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
 Buffer overflow/踩内存
+
+* [Double kfree errors](http://lwn.net/Articles/174494/)
+The devm_* series functions introduce more double free error in driver code.
+
 ## Race condition bug
 Multi-threading programming bugs(parallel problems)
 * deadlock

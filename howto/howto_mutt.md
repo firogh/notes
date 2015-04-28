@@ -19,15 +19,20 @@ vim/emacs用来编辑邮件.
 ###收邮件
 其实, 并不像网上博客中说的那样, fetchmail 和procmail并不是必须的.
 参考mutt官网的[UserStory/GMailOverIMAP](http://dev.mutt.org/trac/wiki/UseCases/Gmail)
+你就可以想Web gmail一样实时推送邮件到你mutt了.
 之后在.muttrc中加入:
 	bind index G imap-fetch-mail
-这样你就可以用G这个命令在mutt中更新gmail了, 但mutt中删掉的邮件不会同步到gmail上, 也不会
-再从gmail总同步过来.
+这样你就可以用G这个命令在mutt中主动同步gmail了.
 此时翻墙用户启动mutt, proxychains会输出代理信息过滤到/dev/null
 	proxychains mutt 2> /dev/null
 
 ###mutt 与发邮件
 具体的配置看wangcong的[使用mutt处理电子邮件](http://wangcong.org/2007/03/09/-e4-bd-bf-e7-94-a8mutt-e5-a4-84-e7-90-86-e7-94-b5-e5-ad-90-e9-82-ae-e4-bb-b6-2/)
+
+### 删邮件
+在.muttrc配置如下，你在mutt中delete的mail在gmail的web上看不到了.
+	set delete=yes
+可能需要在mutt中配置gamil trash, 求反馈.
 
 ###其他
 * 国内gmail用户要用proxychains 做下代理, 这样就能使用gmail了.
@@ -41,3 +46,8 @@ vim/emacs用来编辑邮件.
 所以按着习惯和美感应该是
 	set indent_str=">"
 
+* mutt取消当前命令用ctrl g
+
+* 靠gmail 存了两份发送邮件...
+	把这句注释掉, gmail自己本身会缓存的.
+	set record = "+[Gmail]/Sent Mail"
