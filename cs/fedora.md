@@ -44,6 +44,7 @@ init=/bin/bash
 disable NetworkManager
 
 
+
 #dropbear
 =generate private key
 dropbearkey -t rsa -f ~/.ssh/id_rsa.db
@@ -53,6 +54,9 @@ dropbearkey -y -f ~/.ssh/id_rsa.db
 dbclient -y -i ~/.ssh/id_rsa.db user@ip
 =trans file
 scp -S dbclient -i ~/.ssh/id_rsa fileName user@ip:/dir
+
+# gpg
+6A6608B8
 #id3tag
 id3tag -2 *.mp3
 for file in *.mp3;do f=$(echo "$file" |awk -F ' ' '{print $2}' | awk -F '.' '{print $1}'); id3tag -s "$f" "$file";  done
