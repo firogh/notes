@@ -8,6 +8,20 @@ category: firo
 #IBM maturity model
 https://www-935.ibm.com/services/uk/cio/pdf/leverage_wp_data_gov_council_maturity_model.pdf
 
+# overview
+* 理性
+模仿与思考
+只能达成概念上的一一性
+大多数, 都是很诚实的.
+既然是概念, 就应停留在语言层面.人类的就够了.
+不是所有知识都能通过实践获得.非实践知识,
+not sure, 看到别人的聪明也要看到傻
+实践验证应该是以概念体系位整体, 不应该是某个思维碎片.
+* 实践
+trail and error
+还是要看到优劣, 所谓批判.
+
+
 # Critical  cognition
 明确概念的内涵和外延 --石里克.
 
@@ -38,22 +52,50 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
 
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
+trial and error
 
 * Abstruction method
 1. 解决知识的skeleton, 原理.
 2. 建立同其他原理相似的知识的联系
 3. 得到从一般的定义推理.
 
-* Origin method 起源主义 + why xxx?
+* Origin trace 起源主义 + why xxx?
 也是从具体的事实和境地下手, 比如说, debug, debug的工具是bug的一种属性上的衍生.
-正反
 init is rule and pure
-develop is complication and unpredictable
+
+* Original construct
+对于理解者, 分为:
+从0思考, 
+模拟, 无论是实践还是理性的认知理解.
+这种差异根本性的构建了理解者的知识模型.
+
+
 
 * Exploration in Scott Young
 Depth exploration is the genetic method, 因果
 Lateral exploration 和周围的关系, 涵盖比较广.实验法从具体事实与境地下手.
 Vertical Exploration is the abstruction method, focus on mode and link to derivations. It use to connects with other knowledge.
+
+# What is knowledge?
+不是所有知识都能通过实践获得.非实践知识,或许人类语言理解就可以了.
+* conception system 
+knowledge is a coneption system, not a something heaping up
+We need a good construct in mind.
+mode is an abstructions.
+
+* 从general concept or 直观推导出.
+否则就是记忆.
+Category can be general
+
+* 一一性
+
+* 知识的含量, 通过概念的统摄能力看到, 而不是抽象度.
+
+* The thing that hath been, it is that which shall be; and that which is done 
+is that which shall be done and there is no new thing under the sun.
+问题总是复杂的, 解决方法总是简单的  --xiaolai.li
+
+
 
 # Growing up -- 人最重要的是会成长! 
 生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
@@ -77,23 +119,6 @@ Dont think... just feel
 对于一个哲学家来说，最重要的是独立思考，自己来创造，说出非他不能说出的话来。
 
 不要以为努力过后, 就会得到, 永远也不要这样想. 
-
-# What is knowledge?
-* conception system 
-knowledge is a coneption system, not a something heaping up
-We need a good construct in mind.
-mode is an abstructions.
-
-* 从general concept or 直观推导出.
-否则就是记忆.
-Category can be general
-
-* 一一性
-
-* 知识的含量, 通过概念的统摄能力看到, 而不是抽象度.
-
-* The thing that hath been, it is that which shall be; and that which is done 
-is that which shall be done and there is no new thing under the sun.
 
 # 做人
 不做無異事，一日當三日，人活五十年，我活百五年。 (我以为少做 --firo.)
