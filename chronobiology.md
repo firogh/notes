@@ -93,7 +93,31 @@ napi
 * Learn how-to rest
 * Interview questions
 
-#Watching AV and Masturbation 
+#Fri May  1 CST 2015
+##Watching AV and Masturbation 
 Fri May  1 10:17:02 CST 2015 
 1 hour
+
+## 整理看过动画列表
+11:17 1 hr
+
+## 午餐
+12:20 4 hr 40 minute
+去吃番茄鸡蛋面, 胃口来了.
+吃完饭决定去打lol, 打了4个小时.
+还是女警用着习惯.
+
+## 规划下面试个找房子
+18:00 5 minutes
+房东回来谈续租的事
+今天整理下一下开发的项目
+重点是smartqos 和kproxy.
+重新修订下简历, 有点太简单了.
+明后天再向内核提交补丁.
+
+## Kproxy
+18:10
+
+
+
 
