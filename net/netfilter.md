@@ -8,7 +8,7 @@ category: net
 # Reference
 [Linux netfilter Hacking HOWTO](http://www.netfilter.org/documentation/HOWTO//netfilter-hacking-HOWTO.html)
 [NAT - Network Address Translation](http://www.karlrupp.net/en/computer/nat_tutorial)
-man iptables*
+man iptables and man iptables-extension
 
 # Introduction to netfilter
 Netfilter 是Kernel提供在BSD socket API之外进行网络操作的框架. 
@@ -83,8 +83,8 @@ netfilter hook ->  iptable_mangle_hook -> ipt_do_table ->...
 Conntrack 的实现不依赖iptables, 很独立.
 
 ## init 
+nf_conntrack_standalone_init()
 nf_conntrack_l3proto_ipv4_init()
-struct ipv4_conntrack_ops
 
 ## conntrack -- user-land tools
 obsolete /proc/net/nf_conntrack
@@ -110,6 +110,7 @@ netfilter: nf_conntrack: support conntrack templates
 #NAT
 https://www.ietf.org/rfc/rfc3489.txt
 symmetric nat, 端口不复用, 访问同一个服务器.
+linux 内核的NAT是基于iptables 和 conntrack实现的.
 
 ##init
 iptable_nat_init
@@ -121,7 +122,7 @@ and substitute original addresses by reply addresses in the payload.
 ## Drop ICMP redict in NAT
 http://www.netfilter.org/documentation/HOWTO/NAT-HOWTO-10.html
 
-##SNAT iptables  POST_ROUTING
+## SNAT
 nf_nat_ipv4_out -> nf_nat_ipv4_fn -> 
 {
 nf_nat_rule_find -> ipt_do_table -> xt_snat_target_v1 -> nf_nat_setup_info 
@@ -175,7 +176,8 @@ nf_nat_prerouting ...-> nft_do_chain
 
 收报-PREOUTING-> DNAT->修改skb:nf_nat_packet 
 {
-    enum nf_nat_manip_type mtype = HOOK2MANIP(hooknum);   //因为是在PREROUTING, 所以是DNAT, 我以前一直以为, de-snat在postrouting中做的. 
+    enum nf_nat_manip_type mtype = HOOK2MANIP(hooknum);   
+	//因为是在PREROUTING, 所以是DNAT, 我以前一直以为, de-snat在postrouting中做的. 
                                            
     if (mtype == NF_NAT_MANIP_SRC)          
         statusbit = IPS_SRC_NAT;             
@@ -186,7 +188,8 @@ nf_nat_prerouting ...-> nft_do_chain
     if (dir == IP_CT_DIR_REPLY) 
 		statusbit ^= IPS_NAT_MASK;        //翻转一下变成SNAT 
     /* Non-atomic: these bits don't change. */                                                                                                    
-    if (ct->status & statusbit) {                 //正好和发包是的   ct->status |= IPS_SRC_NAT;匹配了, 开始de-snat.                    
+    if (ct->status & statusbit) {                 
+	//正好和发包是的   ct->status |= IPS_SRC_NAT;匹配了, 开始de-snat.                    
 		struct nf_conntrack_tuple target;
 		...
 }
@@ -197,7 +200,8 @@ salist for iptables
 #SYN proxy
 SYNPROXY target makes handling of large SYN floods possible without 
 the large performance penalties imposed by the connection tracking in such cases. 
-On 3 November 2013, SYN proxy functionality was merged into the Netfilter, with the release of version 3.12 of the Linux kernel mainline
+On 3 November 2013, SYN proxy functionality was merged into the Netfilter, 
+with the release of version 3.12 of the Linux kernel mainline
 
 #nftables
 
