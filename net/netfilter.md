@@ -23,9 +23,7 @@ Netfilter的历史请查阅wikipedia.
 内核基于netfilter构建了 iptables 和 connection track两套系统.
 从这两个系统, 衍生出了众多的功能, 如防火墙filter, NAT, mangle, kproxy等等.
 netfilter
----------
 ct| |iptables
--------------
 nat,filter,mangle,kproxy,smartqos
 当然, 也可能不依赖iptables 和 conntrack, 或者部分依赖.
 
