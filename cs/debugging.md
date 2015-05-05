@@ -293,6 +293,8 @@ It maybe ERR_PTR(-12);
 * smartqos custom qdisc - self inferrence
 要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
 
+* 追BUG实际上就是, 找关联度最高的, 最好不要从头开始推理, 太耗时.
+
 
 ### A case of oops
 Register IP: -> System.map /proc/kallsyms -> objdump -S char-read-write.ko

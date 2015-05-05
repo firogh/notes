@@ -146,114 +146,14 @@ Details and skills in Unix network programming.
 * sockfs -- using read, write, close to manipulate socket fd.
 [Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
 
-#Transport layer -- common
-* Multiplexing --  Ports can provide multiple endpoints on a single node. 
-inet_hash_connect()
-* Encapuslation to segment in skb
-	tcp_sendmsg->skb_add_data_nocache()
-
-#TCP -- or some connetion scok
-## Componets
-### Handshak
-### Sliding window protocol
-Sliding window protocols are used where reliable in-order delivery of packets is required.
-For every ack packet received, the window slides by one packet (logically) to transmit one new packet.
-### ARQ
-ack and timeout
-Sliding window protocol is based on automatic repeat request/ARQ
-My conclusion: in practice TCP is a mixture between both GBN and SR.
-*Go-Back-N
-
-* Selective repeat
-###Congestion control
-icsk_ca_ops;
-tcp_ack {
-tcp_cong_avoid
-tcp_fastretrans_alert
-tcp_slow_start}
-TCP send queue len /proc/sys/net/core/wmem_default
-
-## Services
-* Connection-oriented communication -- Session and virtual circuits
-Connection-oriented (CO-mode[1]) communication is a network communication mode in telecommunications and computer networking, where a communication session or a semi-permanent connection is established before any useful data can be transferred, and where a stream of data is delivered in the same order as it was sent
-Connection-oriented communication may be a circuit switched connection, or a packet-mode virtual circuit connection. 
-Layer 4 virtual circuits uses segment number fix routed reorder delivery. Same order delivery.
-* In-order
-* Flow control
-* Congestion avoidence
-* Reliability -- assured,Error detection and correction
-Error --  checksum, the transport protocol may check that the data is not corrupted
-ACK is an indiction of segments lost.
-correction -- Retransmission, ARQ, Automatic repeat request schemes may be used to retransmit lost or corrupted data.
-verify correct receipt by sending an ACK or NACK message to the sender.
-##FAQ
-* What about TCP sequence number warp around
-PAWS use timestamp and RTT to solve this problem.
-
-##FIXME
-* Create TCP options
-tcp_syn_build_options()
-* Receive ack
-tcp_ack()
-记录ack的数据大小mss or tcp abc
-update snd_wl1 and snd_una
-slow path update mtu mss tcp_skb_cb.sacked
-* Active send data
-tcp_sendpage()/tcp_sendmsg()->tcp_write_xmit()/tcp_push_one()->tcp_transmit_skb
-* Timer expiring retransmiter
-tcp_retransmiter_timer()...->tcp_transmit_skb()
-* reponse for receiving an ACK
-tcp_data_snd_check()->tcp_write_xmit()
-* tcp_v4_rcv
-[skb->dev = NULL;](http://thread.gmane.org/gmane.linux.network/85613/focus=85614)
+#Transport layer
+Details in l4.md
 
 #Network layer
-* Error detection, unreliable
-Best effort service,IP has a simple error handling algorithm: 
-throw away the datagram and try to send an ICMP message back to the source
-* Host addressing
-
-#IP
-* IP Packet Fragmentation/Defragmentation
-* MSS tcp_sock->mss_cache in tcp_sync_mss not minus SACK option
-	in *tcp_current_mss* minus SACK option
-rfc1122
-+ IP option is  fixed in a session icsk->icsk_ext_hdr_len;
-+ is network header icsk->icsk_af_ops->net_header_len
-+ tcp_sock->tcp_header_len all except SACK option (Not sure)
-##Reference
-[What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
-
-## Classless Inter-Domain Routing
-CIDR is a method for allocating IP addresses and routing Internet Protocol packets. 
-IETF introduced CIDR in 1993 to replace the classful network.
-* prefix/length
-* Prefix aggregation
-
-##Supernetwork
-prefix/route aggregation
-decrease the memroy and the time of search route table.
-
-## Private network
-In the Internet addressing architecture, a private network is a network that uses private IP address space.
-
-##IP fragmention/defragmention
-iphdr->id, iphdr->frag_off
-skb_shared_info->frag_list 
-ip_fragment/ip_defrag
-[Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
-
-## Route
-* state structure
-fib_info:route info
-fib_config:
-* add new rule
-iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
-* Multi-time line
-fib_create_info(): create a fib_info
-## Netfilter
+Details in l3.md
 
 # Data link layer
+Details in l2.md
 
 # Physical layer -- PHY
 * Physical Coding Sublayer

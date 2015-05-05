@@ -82,6 +82,14 @@ Vertical Exploration is the abstruction method, focus on mode and link to deriva
 knowledge is a coneption system, not a something heaping up
 We need a good construct in mind.
 mode is an abstructions.
+学习就是简历一套知识框架的过程, 在框架下概念彼此联系.
+如果没能建成, 实践久, 就会忘掉.
+框架的建立, 就是从宏观概念待细节的探索.
+而且这个框架必须是完整健全的人类语言形式的.
+可以很少, 但必须是明确的, 不能有歧义.
+为了保证语义的明晰,概况能力, 必须要减少表述的内容.
+
+
 
 * 从general concept or 直观推导出.
 否则就是记忆.
@@ -120,7 +128,11 @@ Dont think... just feel
 
 不要以为努力过后, 就会得到, 永远也不要这样想. 
 
-# 做人
+# 人生
+人生没有目标, 也要好好活着!
+
+10点睡觉, 洗澡, 锻炼健身, 时间统计.
+
 不做無異事，一日當三日，人活五十年，我活百五年。 (我以为少做 --firo.)
 讀古人的書，一方面要知道古人聰明到怎樣，一方面也要知道古人傻到怎樣。
 人生的大病根本在於不肯睜開眼睛來看世間的真實現狀.
