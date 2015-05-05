@@ -20,32 +20,42 @@ Netfilter的本质就是内核协议栈上的Hook的集合.
 到底什么是well-defined, 我个人理解就是这5个点可以cover住所有协议栈中的packet.
 与Netfilter类似框架, 主要是BSD系的IPFilter, ipfirewall, PF, NPF等.
 Netfilter的历史请查阅wikipedia.
-
-# Iptables and xtables
-内核基于netfilter构建了a packet selecttion system named iptables(包括内核和用户态两部分). 
-iptables 的ip是IP(Internet Protocol).
-xtable是内核iptables抽象nat, mangle, filter(防火墙)的得到共有的部分.
-[Overview of xtables in wikipedia](http://en.wikipedia.org/wiki/Iptables#Overview)
+内核基于netfilter构建了 iptables 和 connection track两套系统.
+从这两个系统, 衍生出了众多的功能, 如防火墙filter, NAT, mangle, kproxy等等.
 -------------------------|
-| netfilter              |
+|       netfilter        |
 |------------------------|
 |ct|        |  iptables  |
 |--|        |------------|
 | nat, filter, mangle... |
---------------------------
 
-## Details of iptables
-* source
+
+# netfilter
+## source
 netfilter 公共: net/netfilter
 ipv4协议的netfilter细节在: net/ipv4/netfilter/
 
+## Init
+~/linux/net/netfilter/core.c
+netfilter_init()
+
+## Hook point
+local_in local_out forward pre_routing post_routing
+
+
+# Iptables 
+Iptables is a packet selecttion system (包括内核和用户态两部分). 
+iptables 的ip是IP(Internet Protocol).
+xtable是内核iptables抽象nat, mangle, filter(防火墙)的得到共有的部分.
+[Overview of xtables in wikipedia](http://en.wikipedia.org/wiki/Iptables#Overview)
+
+## Details of iptables
 * iptables command
 直观上iptables命令最重要的组成部分: table, chain, match 参数, -j target
 如:iptables -t filter -I INPUT -p tcp --dport 22 -j ACCEPT
 特别: 从-p开始到-j 之前这是一个 match!
 更多的match 和 target, please, man iptables-extension
 一个table的内置chain,就是他所在的hook点.
-
 
 * kernel code
 ipt_do_table() 就是内核处理nat, filter, mangle的公用函数.
@@ -68,25 +78,6 @@ xt_target: xt_register_target
 
 ### The mangle journal
 netfilter hook ->  iptable_mangle_hook -> ipt_do_table ->...
-
-# netfilter
-## Init
-~/linux/net/netfilter/core.c
-netfilter_init()
-
-## Hook point
-local_in local_out forward pre_routing post_routing
-
-## table priorities
-NF_IP_PRI_RAW = -300,
-NF_IP_PRI_SELINUX_FIRST = -225,
-NF_IP_PRI_CONNTRACK = -200,
-NF_IP_PRI_MANGLE = -150,
-NF_IP_PRI_NAT_DST = -100,
-NF_IP_PRI_FILTER = 0,
-NF_IP_PRI_SECURITY = 50,
-NF_IP_PRI_NAT_SRC = 100,
-[Mixing NAT and Packet Filtering](http://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-9.html)
 
 # Connection tracking
 Conntrack 的实现不依赖iptables, 很独立.
