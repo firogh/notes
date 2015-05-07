@@ -1,15 +1,15 @@
 ---
 tags: net
-title: interface
+title: Linux net device
 date: 2015-02-27 15:46:13
 category: net
 ---
 
-#Common Interface felling
-##No driver tg3
+# Common Interface felling
+## No driver tg3
 I remove all kernel 4.0  moduls that ip ad just only output lo interface info.
 
-##Hiwifi
+## Hiwifi
 * Disable network(netifd) in hiwifi openwrt
 root@Hiwifi:/# ip ad
 1: lo: <LOOPBACK> mtu 16436 qdisc noop state DOWN
@@ -58,94 +58,78 @@ root@Hiwifi:/# ip ad
 
 #Bridging
 * A bridge behaves like a virtual network switch, 一样.
-== Sturcture ==
 Bridging is a router using MAC address at L2 in essence.
 A bridge transparently relays traffic between multiple network interfaces. 
 In plain English this means that a bridge connects two or more physical Ethernets together to form one bigger (logical) Ethernet.
 
-
-Spanning tree protocol(Rapid STP,Multiple STP)
+## Spanning tree protocol(Rapid STP,Multiple STP)
 the algorithm is not executed on a single host that later distributes the result to all the others; 
 instead, this is a distributed protocol.
 
-BPUD
-Bridge protocol data units
-Configuration BPDU
+## BPUD Bridge protocol data units
+* Configuration BPDU
 Used to define the loop-free topology. 
 Topology Change Notification (TCN) BPDU
 Used by a bridge to notify the root bridge about a detected topology change. 
 
-BPDU Aging
+* BPDU Aging
 On a stable network, the time depends mainly on how loaded the bridges are and how fast they can process BPDUs.
 
-
-Root Bridge
+* Root Bridge
 The root bridge is the only bridge that generates BPDUs
 The root bridge makes sure each bridge in the network comes to know about a topology change when one occurs
 
-Designated Bridges
+* Designated Bridges
 While each tree has only one root bridge, there is one designated bridge for each LAN, 
 which becomes the bridge all hosts and bridges on the LAN use to reach the root.
 The designated bridge is chosen by determining which bridge on the LAN has the lowest path cost to the root bridge.
 
-Bridge Port
+* Bridge Port
 While root ports lead toward the root of the tree (i.e., the root bridge), designated ports lead toward the leaves.
 
-Function
-========
+## Function
 Rassive learning
 Flooding
 Aging
 Bridging Loops
-
 Switch:
 
-Time-line
-========
+## Details
 newe_bridge_dev() create net_device and net_bridge.
 
-#vlan
-net/8021q/
-== Structure ==
+# vlan
 Vlans are a way to split up a layer2 broadcasting domain, VLANs allow you to create multiple separated networks with only a single switch.
 In a vlan-capable network there are 2 types of connections : "access" connections and "trunk" connections
 Vlan packet
 
-== Understand ==
-Vlan packet
-===========
+## Vlan packet
 Preamble 56 alternating bits | SFD10101011 | dst mac | src mac | TPID 0x8100 | TCI:PCP DEI VID| Ether type 0x86DD ipv6 ...|CRC FCS
-802.1Q/Vlan header
-----------
+
+## 802.1Q/Vlan header
 TPID is the same as 0x86DD just a Ether type 0x8100  | PCP 3bis  DEI 1bit VID 12bis
 
-Access connection
-=================
+## Access connection
 An access connection looks like a normal connection to an ethernet switch, 
 only that switch will only forward your packets within the same vlan, so they will not be able to reach ports that are in a different vlan.
 For access ports, the switch will add (or overwrite) this tag value on any incoming(it means transfer out of host) packet before forwarding
 
-Trunk connnection
-================
+## Trunk connnection
 "Trunk" ports can communicate with multiple vlans, but you need to send special packets that contain 
 both the packet and an indication in what vlan they are to be forwarded.
 For trunk ports, the value is supposed to be present. If it is not, the value of the "native vlan" will be added.
 
-Split up a layer2 broadcasting domain
-=====================================
+## Split up a layer2 broadcasting domain
 vlan 什么都别想, 你总的有个vlan吧. 对上来就创建一个vlan-device.
 vconfig add eth0 vid
 for trunk routing between the different vlans we need ip_forward
 
-== Depth exploration ==
-802.1q standard
-
-== SOURCE ==
-initialize
+## Details of implemention
+net/8021q/
+### initialize
 vlan_proto_init()
 这个函数最重要的是映射了iocctl函数， 因为接下来的所有操作都要用到ioctl。
 
-application
+### application
 vconfig eth0 1
 vlan_ioctl_handler()->register_vlan_device():
 alloc net_device.
