@@ -158,7 +158,11 @@ ansi
 -Q: print function and statisc?
 -Wextra: 用处不大.
 -U: undefine a preprocessor macro.
--pipe: make compiltion faster
+-pipe: make compilation faster, replace xx.S with |
+-Wpadded: we can rearrange the fields of structure to make the structure smaller
+-time
+-x c: c language
+-: stdin
 
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 
