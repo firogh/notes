@@ -21,6 +21,22 @@ cpu -> tr -> tss -> esp0 => 内核栈->保存用户态cs eip esp等.
 Hardware context switch.
 pt_regs
 
+## kernel stack
+从system_call中, 我们可以发现:
+GET_THREAD_INFO(%ebp)
+
+master idle进程的kernel stack在init/init_task.c:init_thread_union
+其他进程的kernel stack是fork产生.
+this_cpu_write(kernel_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
+this_cpu_write(cpu_current_top_of_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
+
+
+
+
+# Idle
+主处理器上的idle由原始进程(pid=0)演变而来。从处理器上的idle由init进程fork得到，但是它们的pid都为0
+init_idle.
+
 # Porcess context
 ## Userspace context
 .txt, .data, .bss, userspace stack, heap, library.
@@ -86,6 +102,9 @@ so if !CONFIG_PREEMPT* is cooperative!
 scheduler_tick()
 try_to_wake_up() when a process that has a higher priority than *current* is awakened.
 Other?
+
+## SAVE_ALL
+no include cs ss ip sp eflag why?
 
 #Deamonize
 ## fork, oraphan

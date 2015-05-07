@@ -57,6 +57,10 @@ When kernel code becomes preemptible again.
 
 
 #Interrupt
+## init
+native_init_IRQ()->  set_intr_gate(i, irq_entries_start...
+irq_entries_start define in arch/x86/kernel/entry_32.S
+
 ##Interrupt Context terminology
 * in_irq
 in __irq_enter I found preempt_count_add(HARDIRQ_OFFSET) only in here!

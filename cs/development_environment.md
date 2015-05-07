@@ -144,6 +144,22 @@ make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 
 #GCC
+## useful various options
+-E -s -c 
+-I -L -l
+ansi
+-fsyntax-only 
+-Werror
+-save-temps
+-H: show all header used
+-v
+-Wall
+-fPIC: for shared library
+-Q: print function and statisc?
+-Wextra: 用处不大.
+-U: undefine a preprocessor macro.
+-pipe: make compiltion faster
+
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 
 ##Symbol table
