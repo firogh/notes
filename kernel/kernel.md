@@ -175,3 +175,9 @@ systemd负责挂在文件系统, 切换.
 #src-tree
 include/linux: share with userspace
 include/net: kernel stuff
+
+# Assembly in kernel
+为了简单! 内核修改特权寄存器和指令, 用汇编实现简单.
+尽可能加速. c到汇编, 编译器相对保守, 
+
+
