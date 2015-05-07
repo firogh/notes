@@ -1,42 +1,71 @@
 ---
 tags: kernel
-title: process-management
+title: Linux process management
 date: 2015-02-27 15:46:12
 category: kernel
 ---
-# 进程的栈顶指针esp
-一个进程有两个栈，用户态和内核态各一个。所以就有两个栈顶指针。这两个栈顶指针，同一时刻只能存在一个，因为进程要不处于用户态要不就是内核态，别无其他。esp既表示进程的用户栈，也表进程的内核栈，要看进程处于用户态还是内核态。当进程由用户态切换到内核态时，把用户态SS和esp指针保存在进程的内核栈上，再读去TSS段中进程的内核态指针付给ss和esp。从内核态返回时，弹出进程内核栈上用户态ss和esp值。那么TSS段中进程的内核态指针是从哪里来的呢？进程切换process switch也叫上下文切换context switch只发生在内核态，必须理解而不是记住。一个进程会用到许多cpu的寄存器比如esp，eip等等，他们被称作Hardware context硬件上下文，如果进程是培养皿中的一条幼虫，那么硬件上下问就是培养液了。不同的虫子需要不同的培养液，新的培养液进来，旧的培养液也需要保存，以备稍后使用。当进程切换时，我们要保存当前被切换出去进程的硬件上下文，以备将来切换回来使用。应该明白为什么进程切换也叫上下文切换了。怎么保存上下文呢？在进程的task_struct结构的成员变量thread_struct结构保存被切换出去进程的硬件上下文。我们所关心的换出的进程的esp指针也保存在thread_struct当中了。当然，对于被切换进来的进程我们用这个进程的thread_struct成员中的esp 值更新硬件的esp寄存器，也需要更新GDT中的TSS里的esp0,以备将来用来从用户态切换到内核态时，找到进程内核栈的栈顶指针。That's all。
 
-# Context switch
-task_struct.stack tong thread_info
-## User to kernel mode switch
+# Protection ring
+## Kernel mode:
+## User mode
+限制访问地址空间, 内核数据结构, I/O 指令, 中断代码等.
+
+## Mode switch
+esp既表示进程的用户栈，也表进程的内核栈，要看进程处于用户态还是内核态。
+读TSS段中进程的内核态指针付给ss和esp。
+把用户态SS和esp指针保存在进程的内核栈上，
+从内核态返回时，弹出进程内核栈上用户态ss和esp值。
+那么TSS段中进程的内核态指针是从哪里来的呢？
+
 cpu -> tr -> tss -> esp0 => 内核栈->保存用户态cs eip esp等.
-* syscall
-* exception
-page fault
-* interrupt
+Hardware context switch.
+pt_regs
 
-## Multitasking
+# Porcess context
+## Userspace context
+.txt, .data, .bss, userspace stack, heap, library.
+## Kernespace context
+task_struct, mm_struct, pgd, kernelspace stack.
+## Hardware context
+Registers
+
+## Context switch
+A context switch (also sometimes referred to as a process switch or a task switch) 
+is the switching of the CPU (central processing unit) from one process or thread to another.
+
+## 进程切换process switch
+也叫上下文切换context switch只发生在内核态，必须理解而不是记住。
+一个进程会用到许多cpu的寄存器比如esp，eip等等，他们被称作Hardware context硬件上下文，
+如果进程是培养皿中的一条幼虫，那么硬件上下问就是培养液了。不同的虫子需要不同的培养液，
+新的培养液进来，旧的培养液也需要保存，以备稍后使用。
+当进程切换时，我们要保存当前被切换出去进程的硬件上下文，以备将来切换回来使用。
+应该明白为什么进程切换也叫上下文切换了。怎么保存上下文呢？
+在进程的task_struct结构的成员变量thread_struct结构保存被切换出去进程的硬件上下文。
+我们所关心的换出的进程的esp指针也保存在thread_struct当中了。
+当然，对于被切换进来的进程我们用这个进程的thread_struct成员中的esp 值更新硬件的esp寄存器，
+也需要更新GDT中的TSS里的esp0,以备将来用来从用户态切换到内核态时，找到进程内核栈的栈顶指针。
+
+## switch_to
+__schedule()->swtich_to
+### load TSS
 进程切换只发生在内核态
 /*将next进程的内核栈指针(next->thread->sp0)值更新到当前CPU的TSS中*/
 load_sp0(tss, next);
 task_struct.thread.sp0
 thread_struct
 
-## Interrupt
-
 ## type of Context switch
-* Hardware context switch
+* context switch by hardware
 Old linux kernel
-* Software context switch
+* context switch by software
 kernel 2.6
 
 
-#Process flag
+# Process flag
 PF_MEMALLOC [Kill PF_MEMALLOC abuse](http://thread.gmane.org/gmane.linux.kernel/914878)
 
-#Process schedule
-##Reference
+# Process schedule
+## Reference
 codes: comments of __schedule()
 Book: Linux kernel development 
 
@@ -58,7 +87,51 @@ scheduler_tick()
 try_to_wake_up() when a process that has a higher priority than *current* is awakened.
 Other?
 
-##FAQ
-* swtich_to?
+#Deamonize
+## fork, oraphan
+similar &
+not a goup leader inherit with parent pgid for setsid
+## setsid
+* session leader
+* process group leader
+A signal directed to a process group is delivered individually to 
+all of the processes that are members of the group. 
+* deatch controlling terminals(confusing)
+## chdir
+## umask
+## deal with fd
+below both output
+守护进程继承了shell的屏幕和键盘输入.
+pid_t pid= fork();
+if (pid != 0) {
+	system("sleep 3");
+	printf("parent exit\n");
+} else {
+	printf("child start\n");
+	setsid(); 
+	fprintf(stdout, "out child\n");
+	fprintf(stderr, "err child\n");
 
-* __schedule()
+	system("sleep 7");
+
+	fprintf(stdout, "after out child\n");
+	fprintf(stderr, "after err child\n");
+	printf("child exit\n");
+}
+# Zombie process
+## <defunct>
+forked child not reaped by parent will hooked in process list.
+if parent was killed and exit <defunct> will repaped.
+<defunct>表明父活着, 但不收尸.
+## double fork for parent long live 
+mirgate subchild to init, parent just reap child.
+
+#FAQ
+* thread_info
+可以快速访问task_struct.
+
+* swtch_stack
+线程切换
+
+
+
