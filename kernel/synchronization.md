@@ -107,6 +107,12 @@ up the semaphore is released.
 ### Per-cpu
 
 # RCU Read copy-update
+RCU is a library for the Linux kernel that allows kernel subsystems to 
+synchronize access to shared data in an efficient manner.
+## requirements
+(1) support for concurrent readers, even during updates;
+(2) low computation and storage overhead; and 
+(3) deterministic completion time.
 ##Why RCU
 1 RCU supports concurrency between a single updater and multiple readers is the  essential of RCU!
 2. dealcok immunity
@@ -124,6 +130,10 @@ must be long enough that any readers accessing the item being deleted have
 since dropped their references.
 If any statement in a given RCU read-side critical section precedes a grace period, 
 then all statements in that RCU read-side critical section must complete before that grace period ends.
+
+A thread uses RCU synchronization by calling synchronize_rcu,
+which guarantees not to return until all the RCU critical sections executing 
+when synchronize_rcu was called have completed.
 ##FAQ
 * Difference with primitive and atomic
 * Grace period is synchroinze_rcu or a softirq justment
@@ -168,6 +178,9 @@ The update-side primitives which determine when pre-existing read-side critical 
 	were designed with only a few tens of CPUs in mind.
 Their scalability is limited by a global lock that must be acquired by each CPU at least once during each grace period.
 ##How to use?
+Developers can use RCU critical sections and RCU synchronization to 
+build data structures that allow concurrent reading, even during updates.
+[RCU Usage In the Linux Kernel: One Decade Later](http://www2.rdrop.com/users/paulmck/techreports/RCUUsage.2013.02.24a.pdf)
 a replacement of rw-lock
 a Restricted Reference-Counting Mechanism 
 a Bulk Reference-Counting Mechanism
