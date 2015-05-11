@@ -5,12 +5,21 @@ date: 2015-02-27 15:46:12
 category: kernel
 ---
 
-#Kernel activities
+# The player
 * Interrupt -- irq,softirq
-* Process	-- user process, kernel thread(workqueue)
+* Process -- user process, kernel thread(workqueue)
+
+# Common concpets
+userspace: A process executing its own code outside the kernel.
 
 ##What is context?
-###process context: 
+###process context/user context: 
+The kernel executing on behalf of a particular process 
+(ie. a system call or trap) or kernel thread. 
+You can tell which process with the current macro.) 
+Not to be confused with userspace. 
+Can be interrupted by software or hardware interrupts.
+
 * register, kernel task_struct, stack. user text stack heap
 ###interrupt context: 
 * Firo thinks the key point is interrupt context is irrelevant to process context!
@@ -84,11 +93,14 @@ local_irq_disable,不是, 但是no operation with preempt_count() 这种情况x8
 [Deal PF_MEMALLOC in softirq](http://thread.gmane.org/gmane.linux.kernel/1152658)
 
 ##softirq
+同一个softirq可以在不同的CPU上同时运行，softirq必须是可重入的。
 * not allow execute nest but can recusive lock:local_bh_disable 
 current->preemt_count + SOFIRQ_OFFSET also disable preempt current process.
 * hardirq on, can't sleep
 * not percpu
-* tasklet and kernel timer is based on softirq
+## tasklet and kernel timer is based on softirq
+新增softirq, 是要重新编译内核的, 试试tasklet也不错.
+.不允许两个两个相同类型的tasklet同时执行，即使在不同的处理器上
 * First of all, it's a conglomerate of mostly unrelated jobs, 
  which run in the context of a randomly chosen victim 
  w/o the ability to put any control on them. --Thomas Gleixner
@@ -139,5 +151,3 @@ http://lwn.net/Articles/380937/
 ##irq and lock
 irq and lock are complete different things!
 when need to disable irq just get rid of mess of shared data.
-
-

@@ -115,12 +115,16 @@ git -c core.whitespace=tab-in-indent diff --check
 
 
 #Make
+## useful usage
+make cynthia
+make -q : need rebuild?
+
 ##debug
 * Just print echo 
 make -s 
 * Print shell command
 make -n
-* Print all variables. Wired-name variable is useful to debug
+* Print all variables. not really execute. Wired-name variable is useful to debug
 make -p
 * Pirnt a message
 $(warning ...)
@@ -145,9 +149,9 @@ make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 
 #GCC
 ## useful various options
--E -s -c 
+-E -S -c 
 -I -L -l
-ansi
+-ansi
 -fsyntax-only 
 -Werror
 -save-temps
@@ -163,6 +167,12 @@ ansi
 -time
 -x c: c language
 -: stdin
+
+## asmlinkage
+However, for C functions invoked from assembly code, 
+we should explicitly declare the function's calling convention, 
+because the parameter passing code in assembly side has been fixed. 
+
 
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 

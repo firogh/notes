@@ -30,9 +30,6 @@ master idle进程的kernel stack在init/init_task.c:init_thread_union
 this_cpu_write(kernel_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
 this_cpu_write(cpu_current_top_of_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
 
-
-
-
 # Idle
 主处理器上的idle由原始进程(pid=0)演变而来。从处理器上的idle由init进程fork得到，但是它们的pid都为0
 init_idle.
