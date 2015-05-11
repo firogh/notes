@@ -1,6 +1,6 @@
 ---
-date: 2015-04-25
-title: [知识搬运]如何使用RCU in linux kernel
+date: 2015-05-11
+title: 如何使用RCU in linux kernel
 category: howto
 ---
 
