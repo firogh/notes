@@ -1,6 +1,6 @@
 ---
 date: 2015-04-25
-title: Linux kernel 开发攻略 
+title: Linux kernel hacking 攻略 
 category: howto
 ---
 
@@ -17,4 +17,16 @@ category: howto
 
 	git branch now next/master
 	git pull next master:now
+
+# kernel hacking tips
+kernel patch
+manuplation of page table
+add new system_call
+workqueue
+
+
+# consideration of kernel hacking
+## memory alloction
+## The player -- the context of ruuning
+## synchroniation
 

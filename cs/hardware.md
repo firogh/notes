@@ -29,9 +29,13 @@ A CPU cache is a cache used by the central processing unit (CPU) of a computer
 to reduce the average time to access data from the main memory.
 ### Associativity - CPU Cache algorithms
 * Two-way set associative cache
+
 ### Cache coherence
-cache coherence is the consistency of shared resource data that ends up stored in multiple local caches.
+Cache coherence is the consistency of shared resource data that ends up stored in multiple local caches.
+Cache conerence is mantained by mostly archtecure like cpu
+
 * MSI
+
 ###Cache type
 * Instructin cache
 * Data cache

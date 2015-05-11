@@ -26,7 +26,7 @@ Intr “Restore disabled interrupts.”
 Free “Do not use freed memory.”
 Float “Do not use floating point in the kernel.”
 Size “Allocate enough memory to hold the type for which you are allocating.”
-* Sparse
+## Sparse
 ## Coccinelle
 Documentation/coccinelle.txt
 http://pagesperso-systeme.lip6.fr/Julia.Lawall/tutorial.pdf
