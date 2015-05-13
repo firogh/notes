@@ -73,11 +73,50 @@ Old linux kernel
 * context switch by software
 kernel 2.6
 
+# Common concepts
+Multiprocessing for SMP
 
 # Process flag
 PF_MEMALLOC [Kill PF_MEMALLOC abuse](http://thread.gmane.org/gmane.linux.kernel/914878)
 
-# Process schedule
+# Process user ID
+## Effective user/group ID
+euid:4777
+egid:2777
+chmod u+s cynthia
+root进程执行cynthia后euid变为firo, saved user id变为root
+
+## Example
+u+s 就可以
+firo@firo tmp$ iptables -L
+iptables v1.4.21: can't initialize iptables table `filter': Permission denied (you must be root)
+Perhaps iptables or your kernel needs to be upgraded.
+
+chmod +s /usr/sbin/iptables
+
+firo@firo tmp$ iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination 
+
+chmod -s /usr/sbin/iptables
+
+iptables -L
+iptables v1.4.21: can't initialize iptables table `filter': Permission denied (you must be root)
+Perhaps iptables or your kernel needs to be upgraded.
+
+
+# Scheduling strategies
+multiprogramming
+time-sharing(multi tasking)
+real-time
+
+# Multitasking 
 ## Reference
 codes: comments of __schedule()
 Book: Linux kernel development 
@@ -139,15 +178,13 @@ if (pid != 0) {
 forked child not reaped by parent will hooked in process list.
 if parent was killed and exit <defunct> will repaped.
 <defunct>表明父活着, 但不收尸.
-## double fork for parent long live 
+## Double fork for parent long live 
 mirgate subchild to init, parent just reap child.
 
-#FAQ
+# FAQ
 * thread_info
 可以快速访问task_struct.
 
 * swtch_stack
 线程切换
-
-
 

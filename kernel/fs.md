@@ -100,3 +100,29 @@ module_initinit_sd;6->scsi_register_driver ->driver_register->bus_add_driver ->d
 kernel_init_freeable-> if /init in initramfs 可以访问 根文件系统挂在和chroot交给/init也就是systemd
 如果/init不可以访问 prepare_namespace{挂在真正的文件系统}
 
+
+# FAQ
+## forbid ln
+hard link to directory, recursive
+hard link to file accross partitions, may led confilict with inode number.
+
+
+## stick bit
+chmod +t
+1777
+只有owner 和root才能删除这个文件, 用于/tmp
+
+## time of file
+### atime
+perhaps the most stupid Unix design idea of all times," adding: "[T]hink about this a bit: 'For every file that is read from the disk, lets do a ... write to the disk! And, for every file that is already cached and which we read from the cache ... do a write to the disk!'" He further emphasized the performance impact thus:
+#### find relatime options
+cat /proc/mounts
+man mount 
+
+
+### chang time
+meta data
+
+### modification time
+content of file
+

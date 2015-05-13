@@ -12,6 +12,10 @@ system call
 ##ABI
 elf, cpu specific
 
+### x32 ABI
+ILP32
+LP64
+
 
 #System call
 
