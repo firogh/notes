@@ -185,6 +185,9 @@ c >> 296 == c >> 8
 
 #Shell
 
+## ls 
+-l: show hardlinks of file/dir in 2nd column
+drwsrwsr-T: T stand for sticky bit no other execution bit
 ##eval
 * create variable name
 	__var="name"
@@ -204,7 +207,7 @@ expr "$name" : '\(.*\)\.conf'
 find . -name ‘your_pattern*’ -exec rm -f {} \;
 find . -name ‘your_pattern*’ -delete
 
-#pipe
+##pipe
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
 
 #MIPS

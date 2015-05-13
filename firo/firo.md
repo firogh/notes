@@ -93,6 +93,6 @@ I am 25 years old. I came frome Dalian. I am a outgoing man.
 I like philosohy and kernel hacking. I get a bachelor degree of
 computer science of Dalian Nationalities University in 2012
 I have 2 years working experiences on linux and kernel hacking.
-I have used linux for 6 years. Linux is the only one operating system
+I have used linux for 5 years. Linux is the only one operating system
 in my computer. I am very familar with linux.
 
