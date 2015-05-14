@@ -185,6 +185,9 @@ c >> 296 == c >> 8
 
 #Shell
 
+## test
+### -n is not equivalent to ! -z
+Be caution! just juse -z and !-z
 ## ls 
 -l: show hardlinks of file/dir in 2nd column
 drwsrwsr-T: T stand for sticky bit no other execution bit
@@ -206,6 +209,9 @@ expr "$name" : '\(.*\)\.conf'
 * rm
 find . -name ‘your_pattern*’ -exec rm -f {} \;
 find . -name ‘your_pattern*’ -delete
+
+## grep
+-c: count of match
 
 ##pipe
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
@@ -238,8 +244,10 @@ little endian: lwl high in b + off
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
 ##Type
-* Standard Wildcards (globbing patterns)
+### Standard Wildcards (globbing patterns)
 File and directory patterns
+?: must stand for a character
+
 * Regular expression
 * SQL
 
