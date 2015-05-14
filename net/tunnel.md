@@ -8,6 +8,32 @@ category: net
 network layer over network layer: gre
 link layer over network layer: l2tp, pptp
 
+# Proxy
+[透明代理、匿名代理、混淆代理、高匿代理有什么区别？](http://www.coder4.com/archives/4434)
+## 正向代理forward proxy
+shadowsocks goagent
+
+## Reverse proxy
+负载均衡的服务器, 缓存的静态内容的server
+
+## 透明代理
+hiwifi router kproxy nginx, kproxy 是更细粒度的iptables.
+所谓透明代理就是正向代理且client零配置.
+
+## DMZ
+Demilitarized zone, 解除军事武装区 or 非军事区!
+这个跨领域的名字听上去, 好叼叼的, 现实中南极洲和三八线都是非军事区.
+为什么叫这个名字, 暗指firewall没有设置太多限制规则的一部分网络地址空间.
+内网和外网是争端的主角, 而DMZ是个缓冲区.
+
+### simplest sample
+iptables -A INPUT -p tcp -d 10.42.0.52 --dport 53 -j ACCEPT
+iptables -A FORWARD -p tcp -d 192.168.1.2 --dport 53 -j ACCEPT
+iptabltes -t nat -A PREOUTTING -p -tcp 10.42.0.52 --dport 53 -j DNAT --to 192.168.1.2:53
+我们就知道了dmz有整体有两部分构成ACCEPT and DNAT
+同时涉及到一个dmz地址空间{dmzwan10.42.0.52:53, dmzlan:192.168.1.2:53}
+
+
 #Basic concepts
 * VPN is created by establishing a virtual point-to-point connection through the use of
 1. dedicated connections(permanent)
