@@ -83,6 +83,11 @@ rootfs_initcall(populate_rootfs);
 #initramfs
 init/initramfs.c
 
+initrd->initramfs
+{
+	linus' ramfs -> /tmpfs
+}
+
 ##Difference with initrd
 initrd is image with specific fs type, like ext2, need driver built-in kernel.
 initramfs is a cpio, like tar only simpler, populated to rootfs in kernel, with fs type rootfs

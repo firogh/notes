@@ -82,13 +82,17 @@ Vertical Exploration is the abstruction method, focus on mode and link to deriva
 knowledge is a coneption system, not a something heaping up
 We need a good construct in mind.
 mode is an abstructions.
-学习就是简历一套知识框架的过程, 在框架下概念彼此联系.
+学习就是建立一套知识框架的过程, 在框架下概念彼此联系.
 如果没能建成, 实践久, 就会忘掉.
 框架的建立, 就是从宏观概念待细节的探索.
 而且这个框架必须是完整健全的人类语言形式的.
 可以很少, 但必须是明确的, 不能有歧义.
 为了保证语义的明晰,概况能力, 必须要减少表述的内容.
 
+* 什么时候用, 怎么用
+谁产生的, 怎么产生的 or 什么样子
+ 
+对齐, 编译器生成struct代码的时候用, 
 
 
 * 从general concept or 直观推导出.
