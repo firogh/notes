@@ -1,5 +1,5 @@
 ---
-date: 2015-04-25
+date: 2015-05-19
 title: 如何学习
 category: howto
 ---
