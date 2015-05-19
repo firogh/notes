@@ -12,8 +12,9 @@ Principle: health, effective
 * Drink a lot of water everyday.
 
 * Better sleep
-Sleep before 23 a clock 8 hours.
-Get up at 7:00 a clock.
+Sleep about 10:30 and get up at 6:30.
+During 8 hours.
+
 
 * Perform a lot of Physical activity, Fitness.
 Rest 10 minutes/hour
