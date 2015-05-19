@@ -216,6 +216,9 @@ find . -name ‘your_pattern*’ -delete
 ##pipe
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
 
+# ASM in c code
+[How to Use Inline Assembly Language in C Code](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html#Using-Assembly-Language-with-C)
+
 #MIPS
 bdi 4, 8 delay solt
 mips instruction size is fixed, 32bit, 4byte.
@@ -239,7 +242,11 @@ little endian: lwl high in b + off
 向中心
 
 #x86
+[Intel’s ‘cmpxchg’ instruction](http://heather.cs.ucdavis.edu/~matloff/50/PLN/lock.pdf)
+eax: e stand for 32
+rax: r stand for 64
 
+## registers' purpose
 
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
