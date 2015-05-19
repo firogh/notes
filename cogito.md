@@ -23,7 +23,7 @@ trail and error
 
 
 # Critical  cognition
-Original construct --Firo
+* Original construct --Firo
 对于理解者, 分为:
 从0思考, 
 模拟, 无论是实践还是理性的认知理解.
@@ -71,6 +71,11 @@ trial and error
 2. 建立同其他原理相似的知识的联系
 3. 得到从一般的定义推理.
 
+* 为什么用, 怎么用, why/how to use
+谁产生的, 怎么产生的 or 什么样子
+对齐, cpu 访问内存的时候用, 直接受用于编译的结果.
+编译器生成struct代码的时候, 产生的代码安基础类型对齐, 
+
 * Exploration in Scott Young
 Depth exploration is the genetic method, 因果
 Lateral exploration 和周围的关系, 涵盖比较广.实验法从具体事实与境地下手.
@@ -88,11 +93,6 @@ mode is an abstructions.
 而且这个框架必须是完整健全的人类语言形式的.
 可以很少, 但必须是明确的, 不能有歧义.
 为了保证语义的明晰,概况能力, 必须要减少表述的内容.
-
-* 什么时候用, 怎么用
-谁产生的, 怎么产生的 or 什么样子
-对齐, 编译器生成struct代码的时候用, 
-
 
 * 从general concept or 直观推导出.
 否则就是记忆.
