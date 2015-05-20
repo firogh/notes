@@ -249,6 +249,14 @@ rax: r stand for 64
 the lock prefix make instruction atomic!
 
 ## registers' purpose
+##Register
+* gs
+The linux kernel uses GS to access cpu-specific memory.
+* gdtr
+GDT
+* tr
+TSS addressing
+
 
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
