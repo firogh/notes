@@ -160,6 +160,18 @@ Cache conerence is mantained by mostly archtecure like cpu
 ##Disk cache
 ##Web cache
 
+#Data struct aligment
+[The Lost Art of C Structure Packing](http://www.catb.org/esr/structure-packing/)
+Data alignment means putting the data at a memory address equal to some multiple of the word size, 
+which increases the system's performance due to the way the CPU handles memory.
+
+To align the data, it may be necessary to insert some meaningless bytes between 
+the end of the last data structure and the start of the next, which is data structure padding.
+
+[Typical alignment of C structs on x86](http://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86)
+
+[UNALIGNED MEMORY ACCESSES](https://www.kernel.org/doc/Documentation/unaligned-memory-access.txt)
+
 #Scheduling
 ## Process scheduler
 ## Network scheduler
