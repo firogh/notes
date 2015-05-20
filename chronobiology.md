@@ -14,7 +14,10 @@ Principle: health, effective
 * Better sleep
 Sleep about 10:30 and get up at 6:30.
 During 8 hours.
-
+现在我每晚要到凌晨2点才能入睡, 我决定
+1. 晚上22点半就入睡
+2. 躺在床上不玩手机
+3. 早上6点半起床
 
 * Perform a lot of Physical activity, Fitness.
 Rest 10 minutes/hour

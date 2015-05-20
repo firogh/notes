@@ -54,7 +54,6 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 Firo note:
 Origin trace 起源主义, 更偏重发生的原因,起源.
 
-
 * （2）实验的方法　　实验的方法，至少注重三件事：
 （一）从具体的事实与境地下手；
 （二）一切学说理想，一切知识，都只是待证的假设，并非天经地义；
