@@ -138,9 +138,6 @@ struct x {
     short y;
 };//Fedora 21 x86_64
 sizeof(x) = 32
-1. basic alignment is long == 8, if delete m, basic alignment is 4;
-2. basic alignment only can be scalar type.
-
 
 ##Declarations
 A declaration specifies the interpretation and attributes of a set of identifiers.
