@@ -115,6 +115,8 @@ spinlock_bh wider then spinlock
 
 ###tasklet
 tasklet like a workqueue, sofirq like kthread. that is wonderful, does it?
+tasklet 被__tasklet_schedule到某个cpu的percu 变量tasklet_vec.tail上保证了
+只有一个cpu执行同一时刻.
 
 #Process
 ##kthread and workqueue

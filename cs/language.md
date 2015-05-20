@@ -245,6 +245,8 @@ little endian: lwl high in b + off
 [Intel’s ‘cmpxchg’ instruction](http://heather.cs.ucdavis.edu/~matloff/50/PLN/lock.pdf)
 eax: e stand for 32
 rax: r stand for 64
+[lock prefix in x86](http://x86.renejeschke.de/html/file_module_x86_id_159.html)
+the lock prefix make instruction atomic!
 
 ## registers' purpose
 
