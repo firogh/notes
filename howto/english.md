@@ -11,6 +11,7 @@ category: howto
 漏屋
 [为什么要听ESL Pod和English Pod](http://www.douban.com/group/topic/16946115/)
 [二语习得理论靠谱吗？](http://www.zhihu.com/question/20274480)
+[奶爸的英语教室](http://site.douban.com/195274/widget/notes/11672256/note/249929892/)
 
 ## 听力is first
 赖世雄美语音标
