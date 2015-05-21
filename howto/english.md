@@ -1,7 +1,7 @@
 ---
 date: 2015-03-20
-title: The language
-category: philosophy
+title: The English Language
+category: howto
 ---
 
 
