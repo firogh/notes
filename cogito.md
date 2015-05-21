@@ -86,6 +86,8 @@ Vertical Exploration is the abstruction method, focus on mode and link to deriva
 knowledge is a coneption system, not a something heaping up
 We need a good construct in mind.
 mode is an abstructions.
+认知的unit是概念!!!
+错误的认知, 来自错误的概念!
 学习就是建立一套知识框架的过程, 在框架下概念彼此联系.
 如果没能建成, 实践久, 就会忘掉.
 框架的建立, 就是从宏观概念待细节的探索.
