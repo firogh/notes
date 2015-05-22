@@ -6,33 +6,28 @@ category: firo
 
 #Chronobiology
 Principle: health, effective
-* develop good eating babits.
-	Avoid eating junk food as much as possible.
+* Develop good eating babits.
+Avoid eating junk food as much as possible.
 
 * Drink a lot of water everyday.
 
-* Better sleep
-Sleep about 10:30 and get up at 6:30.
-During 8 hours.
-现在我每晚要到凌晨2点才能入睡, 我决定
-1. 晚上22点半就入睡
-2. 躺在床上不玩手机
-3. 早上6点半起床
-
-* Perform a lot of Physical activity, Fitness.
-Rest 10 minutes/hour
-Do Physical exercise at 22:00 
-Abdominals chest muscle.
-
-* Keep yourself clean.
-House clean
-Take a Bath at 10:45, every day.
-Watch Clothes 
+* Rest 10 minutes/hour
 
 * Maintain Mental fitness and Be happy.
 Talking with family
 
-* Writing
+* Physical execise 21:30, 45 minutes
+有氧和无氧隔天锻炼.
+Aerobic exercise: 跑步
+Anaerobic exercise 
+
+* Take a bath 22:15
+
+* Better sleep, 8 hours
+Sleep about 22:30 and get up at 6:30.
+躺在床上不玩手机
+
+* Writing, before 22:40, 10 minutes
 Lyubishchev
 Keep diary
 
