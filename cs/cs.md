@@ -160,17 +160,55 @@ Cache conerence is mantained by mostly archtecure like cpu
 ##Disk cache
 ##Web cache
 
-#Data struct aligment
+# Data struct aligment
 [The Lost Art of C Structure Packing](http://www.catb.org/esr/structure-packing/)
+[Typical alignment of C structs on x86](http://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86)
+## 为什么需要结构体对齐?
+struct foo {
+char c;
+int i;
+};
+如果是32位, cpu 一次取4byte a word 数据.
+如果我们把i的前3byte和c存到一起, 剩下1byte of i自己单独存.
+那么我们访问i这个数据就要读两个4byte a word. 对cpu来说性能损耗.
+如果我们把i单独放到4byte 对齐的地址, 那么我们只需要一次cpu读取.fast!
+
+## 产生非对齐访问的场景
+ 1. Casting variables to types of different lengths, 比如char * 到int *
+ 2. Pointer arithmetic followed by access to at least 2 bytes of data , 不太理解.
+
+## 我们做什么?
+* 什么也不干, 按默认对齐来Natural alignment
+* 为了不影响性能, 同时减少内存使用, 编程时最好显示reorder.
+* get/put_unaligned  to avoid analigned access.
+* 通过attribute aligned指定对齐要求.
+* 数据要在不同体系, 32/64之间使用, 比如网络,写到disk, 我们必须要attribute packed
+也就是说不对齐, 不同平台对齐可能不同, 我们不能让数据corruption.
+
+## 如果数据不对齐有什么, cpu怎么办?
+[必读UNALIGNED MEMORY ACCESSES](https://www.kernel.org/doc/Documentation/unaligned-memory-access.txt)
+1. 如果用了packed, 编译器会生成extra代码阻止非对齐访问, performance loss.
+2. cpu呢? 可能正确处理raise a exception to fix it with performance loss.
+
+## Calculate the sizeof of aligned c struct
 Data alignment means putting the data at a memory address equal to some multiple of the word size, 
 which increases the system's performance due to the way the CPU handles memory.
+1. find the widest scalar member and attribute( aligned(x)) to determin alignment.
+找到结构体内scalar和attribute最大的对齐要求.
+2. fill the member to alignement without wrap
+把结构的成员一次填满对齐宽度, 不够的填到下个对齐宽度, 空出来留着padding
+3. pading to alignment
+填上所有空.
 
-To align the data, it may be necessary to insert some meaningless bytes between 
-the end of the last data structure and the start of the next, which is data structure padding.
+## 关于kernel中put/get_unaligned实现
+access_ok, do nothing in essence
+byteshift, 移位每次访问u8, 
+packed_struct: 交给gcc
+memove, byte-wise copy
 
-[Typical alignment of C structs on x86](http://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86)
-
-[UNALIGNED MEMORY ACCESSES](https://www.kernel.org/doc/Documentation/unaligned-memory-access.txt)
+## Faq
+* struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned ));
+sizeof S1 = 16 in 64-bit
 
 #Scheduling
 ## Process scheduler

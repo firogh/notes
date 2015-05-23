@@ -124,6 +124,14 @@ storage duration, and part of the type of the entities that the declarators deno
 ## Marco
 [如果#操作符出现在对象宏的替换列表中,则仅作为一个普通字符,不具有下述含义](http://blog.csdn.net/huyansoft/article/details/2484297)
 
+## Expressions
+* cast
+A cast does not yield an lvalue.
+
+## Lexical element
+### Character constants
+An integer character constant has type int.
+
 ##lexical pitfall
 ## Greedy lexical analysis
 * Write tokens with blank!
