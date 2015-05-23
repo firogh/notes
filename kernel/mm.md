@@ -39,6 +39,7 @@ kmalloc()
 kmem_cache_alloc()/slab
 
 ## Vmalloc
+may sleep.
 ### Hwo Vmalloc works? 
 Work in HIGHMEM and NORMALMEM
 The skeleton is rbtree, root is global variable vmap_area_root.rb_node.
