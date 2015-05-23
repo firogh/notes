@@ -109,11 +109,20 @@ up the semaphore is released.
 # RCU Read copy-update
 RCU is a library for the Linux kernel that allows kernel subsystems to 
 synchronize access to shared data in an efficient manner.
+## Why RCU
+[Read-Copy Update Mutual-Exclusion in Linux](http://lse.sourceforge.net/locking/rcu/rcupdate_doc.html)
+[Read Copy Update HOWTO](http://lse.sourceforge.net/locking/rcu/HOWTO/index.html)
+[因为rwlock, brlock在多核性能下降.需要个高性能的锁](https://www.ibm.com/developerworks/cn/linux/l-rcu/)
+
+## How to use RCU
+list rcu
+
+
 ## requirements
 (1) support for concurrent readers, even during updates;
 (2) low computation and storage overhead; and 
 (3) deterministic completion time.
-##Why RCU
+## Rdvantages of RCU
 1 RCU supports concurrency between a single updater and multiple readers is the  essential of RCU!
 2. dealcok immunity
 ##What's bad

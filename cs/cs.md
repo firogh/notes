@@ -207,8 +207,12 @@ packed_struct: 交给gcc
 memove, byte-wise copy
 
 ## Faq
-* struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned ));
+* How does gcc attribute((aligned)) work?
+struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned ));
 sizeof S1 = 16 in 64-bit
+
+* In what situation can unaligned accesss make a kernel panic?
+may be arch/mips/kernel/unaligned.c
 
 #Scheduling
 ## Process scheduler
