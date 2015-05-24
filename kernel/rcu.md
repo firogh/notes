@@ -1,21 +1,33 @@
 ---
 tags: kernel
 title: The Journey to RCU
-date: 2015-02-27 15:46:12
+date: 2015-05-24 09:52:12
 category: kernel
 ---
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=444737&auto=1&height=66"></iframe>
 
-# RCU Read copy-update
+# Reference
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=444737&auto=1&height=66"></iframe>
+[Read Copy Update HOWTO](http://lse.sourceforge.net/locking/rcu/HOWTO/index.html)
+[Read-Copy Update Mutual-Exclusion in Linux](http://lse.sourceforge.net/locking/rcu/rcupdate_doc.html)
+[Thanh Do's notes Read-copy update. In Ottawa Linux Symposium, July 2001](http://pages.cs.wisc.edu/~thanhdo/qual-notes/sync/sync2-rcu.txt)
+
+# Why do need RCU
+For [scalable](http://en.wikipedia.org/wiki/Scalability) mutual exclusion.
+scale有两个词源涵义Proto-Germanic原始日耳曼, 酒杯, 盘子, 称重的盘子, 后来演化成标量的意思.
+scalar在数学上是标量, 在c语言指int float, Scalar processor标量计算机也是来源于此.
+另一个出处是Latin拉丁文scandere, 有攀爬之意, 进而衍生出扩展之意.
+From wikipedia,  A system whose performance improves after adding hardware, 
+proportionally to the capacity added, is said to be a scalable system.
+[因为rwlock, brlock在多核性能下降.需要个高性能的锁](https://www.ibm.com/developerworks/cn/linux/l-rcu/)
+言下之意, 就是其他的mutual exclusion 机制不能很好的扩展, 需要RCU.
+
+
+# How to use RCU
+list rcu
+
+# What is RCU
 RCU is a library for the Linux kernel that allows kernel subsystems to 
 synchronize access to shared data in an efficient manner.
-## Why RCU
-[Read-Copy Update Mutual-Exclusion in Linux](http://lse.sourceforge.net/locking/rcu/rcupdate_doc.html)
-[Read Copy Update HOWTO](http://lse.sourceforge.net/locking/rcu/HOWTO/index.html)
-[因为rwlock, brlock在多核性能下降.需要个高性能的锁](https://www.ibm.com/developerworks/cn/linux/l-rcu/)
-
-## How to use RCU
-list rcu
 
 ## requirements
 (1) support for concurrent readers, even during updates;
