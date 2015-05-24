@@ -7,6 +7,7 @@ category: kernel
 
 # Reference
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=444737&auto=1&height=66"></iframe>
+[官网Read-Copy Update Mutual Exclusion](http://lse.sourceforge.net/locking/rcupdate.html)
 [Read Copy Update HOWTO](http://lse.sourceforge.net/locking/rcu/HOWTO/index.html)
 [Read-Copy Update Mutual-Exclusion in Linux](http://lse.sourceforge.net/locking/rcu/rcupdate_doc.html)
 [Thanh Do's notes Read-copy update. In Ottawa Linux Symposium, July 2001](http://pages.cs.wisc.edu/~thanhdo/qual-notes/sync/sync2-rcu.txt)
@@ -20,91 +21,50 @@ From wikipedia,  A system whose performance improves after adding hardware,
 proportionally to the capacity added, is said to be a scalable system.
 [因为rwlock, brlock在多核性能下降.需要个高性能的锁](https://www.ibm.com/developerworks/cn/linux/l-rcu/)
 言下之意, 就是其他的mutual exclusion 机制不能很好的扩展, 需要RCU.
-
+Read Copy Update HOWTO介绍了当初RCU开发的动机:
+* Increase in cost of conventional locks
+第一个原因也是最重要的, 最根本原因.
+传统的锁the contended lock如spinlock实现上不断访问内存轮询锁当前状态, cpu和内存速度的*越来越*巨大差异;
+一种新的锁机制减少访问内存,就成了强烈的需求.
+* Cache benefits of lock-free reads
+传统锁/tried-and-true 如spinlock一类的实现在多核下, 在出现锁竞争时会导致[cache line bouncing](http://www.quora.com/What-is-cache-line-bouncing-How-spinlock-may-trigger-this-frequently). 
+3个cpu, A占有spinlock, 另外两个轮询尝试获取在test and set版本的
+spinlock, 如果Bcpu 修改lock那么C cpu的d cache line 就会强制无效,
+之后c 也修改lock, B的d cache line就无效了.之后B又来了, 就这样.
+在不同cpu之间同步数据, 会耗费很多cpu 指令周期.   
+像[x86的spinlock的实现用lock指令前缀锁住总线](https://www.ibm.com/developerworks/cn/linux/l-cn-spinlock/), 
+其他cpu or dma就不能访问内存, 降低系统的性能, ibm这篇文章说P6之后的处理器减少这种危害.
+* Avoiding complicated races
+No deadlock, 减少了开发维护.
 
 # How to use RCU
 list rcu
+[What is RCU? Part 2: Usage](https://lwn.net/Articles/263130/)
+[RCU Usage In the Linux Kernel: One Decade Later](http://www2.rdrop.com/users/paulmck/techreports/RCUUsage.2013.02.24a.pdf)
 
 # What is RCU
-RCU is a library for the Linux kernel that allows kernel subsystems to 
-synchronize access to shared data in an efficient manner.
+[What is RCU, Really?](http://www.rdrop.com/~paulmck/RCU/whatisRCU.html)
+[What is RCU, Fundamentally?](https://lwn.net/Articles/262464/)
+[RCU part 3: the RCU API](http://lwn.net/Articles/264090/)
+RCU supports concurrency between a single updater and multiple readers!
+## Design pattern
+* Publish-Subscribe 
+For updater before synchnization_rcu(); similar to softirq rcu
+* Observer 
+For updater to wait For Pre-Existing RCU Readers to Complete
+Maintain Multiple Versions of Recently Updated Objects
 
-## requirements
-(1) support for concurrent readers, even during updates;
-(2) low computation and storage overhead; and 
-(3) deterministic completion time.
-## Rdvantages of RCU
-1 RCU supports concurrency between a single updater and multiple readers is the  essential of RCU!
-2. dealcok immunity
-##What's bad
-less applicable to update-only workloads
-##How rcu work
-* Reader
-RCU ensures that reads are coherent by maintaining multiple versions of objects and ensuring that they are not freed up until all pre-existing read-side critical sections complete.
-* Copy updater
-The basic idea behind RCU (read-copy update) is to split destructive
-operations into two parts, one that prevents anyone from seeing the data
-item being destroyed, and one that actually carries out the destruction.
-A "grace period" must elapse between the two parts, and this grace period
-must be long enough that any readers accessing the item being deleted have 
-since dropped their references.
-If any statement in a given RCU read-side critical section precedes a grace period, 
-then all statements in that RCU read-side critical section must complete before that grace period ends.
+# Positivism Implementions
+## Classic RCU
+Classic RCU requires that read-side critical sections obey the same rules 
+obeyed by the critical sections of pure spinlocks: 
+blocking or sleeping of any sort is strictly prohibited.
+## Preemtible RCU
+[The design of preemptible read-copy-update](http://lwn.net/Articles/253651/)
+## Tree RCU 
+For hundreds and thounds CPU cores
 
-A thread uses RCU synchronization by calling synchronize_rcu,
-which guarantees not to return until all the RCU critical sections executing 
-when synchronize_rcu was called have completed.
-##FAQ
+#FAQ
 * Difference with primitive and atomic
 * Grace period is synchroinze_rcu or a softirq justment
 * __rcu sparse will warn you if you access that pointer without the services of one of the variants of rcu_dereference().
-
-=Limitations of RCU-rt?
-=In contrast to SRCU, preemptible RCU only permits blocking within primitives that are both subject to prikority inheritance and non-blocking in a non-CONFIG_PREEMPT kernel.
-=No need of mb in preempt read-side?
-=irq in rcu_sched_qs
-=However, note that RCU read-side critical sections that begin after the beginning of a given grace period can and will extend beyond the end of that grace period.?
-=RCU read-side critical sections must be permitted in NMI handlers as well as irq handlers?
-=classic RCU will happily awaken each and every sleeping CPU at least once per grace period in some cases?
-##Implemention
-In process switch, marker a  flag that will not use old data.
-For SMP, Softirq callback release old data; 
-For UP, free after synchronize_rcu.
-Softirq rcu_data,rcu_bh_data
-### Classic RCU  - maybe RCU tiny
-	http://www.rdrop.com/users/paulmck/RCU/whatisRCU.html
-Classic RCU requires that read-side critical sections obey the same rules obeyed by the critical sections of pure spinlocks: blocking or sleeping of any sort is strictly prohibited.
-CPUmask
-### Preemtible RCU -
-[The design of preemptible read-copy-update](http://lwn.net/Articles/253651/)
- a multi-stage grace-period detection algorithm
-call callback when wailist[old] == 0; 
-	block only in priority inheritance non-blocking in non-preemt kernel
-* softirq
-	two stages grace period
-	wait queues
-	rcu_process_callbacks
-	rcu_flipctr: a per-CPU two-element
-		[a]:tracks critical sections that started before the current gp stage.
-		[b]:tracks new rcu read-side critical sections, namely those starting during the current gp stage.
-	rcu_ctrlblk.completed & 0x1
-	rcu_flip_flag: synchronize the start of each grace-period stage: once a given CPU has responded to its rcu_flip_flag, it must refrain from incrementing the old grace-period stage. 
-	rcu_mb_flag: rcu_flipped  force each CPU to execute a memory barrier at the end of each grace-period stage.
-				rcu_mb_needed by the CPU that detects that the sum of the old counters is zero
-				 rcu_mb_done only by the corresponding CPU, and even then only after executing a memory barrier.
-###Tree RCU for hundreds and thounds CPU cores
-* Downside of classical RCU in update
-The update-side primitives which determine when pre-existing read-side critical sections have finished, 
-	were designed with only a few tens of CPUs in mind.
-Their scalability is limited by a global lock that must be acquired by each CPU at least once during each grace period.
-##How to use?
-Developers can use RCU critical sections and RCU synchronization to 
-build data structures that allow concurrent reading, even during updates.
-[RCU Usage In the Linux Kernel: One Decade Later](http://www2.rdrop.com/users/paulmck/techreports/RCUUsage.2013.02.24a.pdf)
-a replacement of rw-lock
-a Restricted Reference-Counting Mechanism 
-a Bulk Reference-Counting Mechanism
-a Poor Man's Garbage Collector
-a Way of Providing Existence Guarantees
-a Way of Waiting for Things to Finish
-
