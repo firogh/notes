@@ -4,7 +4,7 @@ title: The Journey to RCU
 date: 2015-02-27 15:46:12
 category: kernel
 ---
-
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=444737&auto=1&height=66"></iframe>
 
 # RCU Read copy-update
 RCU is a library for the Linux kernel that allows kernel subsystems to 
