@@ -61,6 +61,8 @@ obeyed by the critical sections of pure spinlocks:
 blocking or sleeping of any sort is strictly prohibited.
 ## Preemtible RCU
 [The design of preemptible read-copy-update](http://lwn.net/Articles/253651/)
+stage 的切换是由rcu_read_unlock 推动的!
+
 ## Tree RCU 
 For hundreds and thounds CPU cores
 
