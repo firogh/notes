@@ -19,7 +19,7 @@ Expert C Programming
 [compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
 ## Type
 * Object type and function type
-* Object -- void, scalar, composite
+* Object -- void, scalar,aggregate types, composite
 * Scalar type -- Arithmetic types and pointer types
 [What does Scalar mean?](http://www.techopedia.com/definition/16441/scalar)
 scalar 词源上由scale演化而来, scalar type来自scalar processor and vector processor.
@@ -35,6 +35,48 @@ unsigned int i = 1; long f = -10;if ( i > f ) printf("ok\n"); true 证明确实u
 unsigned int i = -3; long f = -5u;if ( i > f ) printf("ok\n"); true
 c11上是ok的!
 * 做signed 和unsigned 貌似both convert to unsigned gcc才给警告, 否则不给即便是signed和unsigned比较. 
+## lvalue rvalue modfiable rvalue
+[Understanding lvalues and rvalues in C and C++](http://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c)
+
+## Array decay
+数组退化的初衷, 可能是K&R当年计算资源紧缺, 导致不允许函数传值copy数组内容.
+总之标准委员会介入之前就决定.
+[[C] [原创]数组与指针---都是"退化"惹的祸](http://bbs.chinaunix.net/thread-1031622-1-1.html)
+关于char *s错误声明的讲解不错!
+[Exception to array not decaying into a pointer?](http://stackoverflow.com/questions/17752978/exception-to-array-not-decaying-into-a-pointer)
+在c11 6.3.2.1 Lvalues, arrays, and function designators第3点说明了
+array不会退化的4种场景. Except when it is 
+* the operand of the sizeof operator, 
+* the _Alignof operator, or the
+* unary & operator, or 
+* is a string literal used to initialize an array, an expression that has type 
+‘‘array of type’’ is converted to an expression with type ‘‘pointer to type’’ 
+that points to the initial element of the array object and is not an lvalue. 
+If the array object has register storage class, the behavior is undefined.
+这4种场景之外, 那么array名退化的结果是pointer.
+这个pointer和我们最常用的pointer如int *p有什么区别呢?
+首先array decay是type上的转化array -> pointer.
+其次数组名原来是lvalue -> not an lvalue更谈不上modifiable.
+type: tyepof(array[0]) * 
+value: &array[0] or array
+property: not lvalue
+当然这只是c11上的说明, 我们只要明白为什么不能修改一个decay数组名就行了.
+实现的个人猜测是: 根据lvalue的定义decay后数组名还是lvalue, 只不过一直都不是modifiable.
+
+* 为什么作为函数形参的数组名可以++, 而作为变量的数组名就不可以.
+因为形参数组名被当初pointer处理modifiable lvalue, 而实参数组名只是传值而已.
+而普通数组名是一个lvalue,不能修改.
+### Why innermost dimension can be omit in array
+用不到.
+In essence, all arrays in C are one-dimensional.
+
+Because the array will decay to pointer and to calculate offset to 
+the elements of the array you do not need to know the innermost dimension. 
+
+Compiler has to know by how much to increment the pointer when 
+indexing on the first dimension for example. So if an int array is named a,
+
+
 ## Integer Promotion
 [Deep C: Integer Promotion](http://www.idryman.org/blog/2012/11/21/integer-promotion/)
 * [Integral Promotions](https://msdn.microsoft.com/en-us/library/fc9te331.aspx)
