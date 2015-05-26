@@ -16,7 +16,7 @@ category: howto
 ## 听力is first
 赖世雄美语音标
 pronunciation workshop
-[English as a Second Language Podcast]https://www.eslpod.com/website/show_all.php?cat_id=-59456&low_rec=1600)
+[English as a Second Language Podcast](https://www.eslpod.com/website/show_all.php?cat_id=-59456&low_rec=1600)
 [Pronunciation workshop](http://v.youku.com/v_show/id_XMTY4MTE4ODMy.html?f=4411294)
 AAT
 [Sounds of Speech in Iowa](http://www.uiowa.edu/~acadtech/phonetics/english/english.html)
