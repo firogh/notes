@@ -193,7 +193,10 @@ int c = 0xFFFFFFFF;  int d = c >> 31; => d == f;
 unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
 * shift beyond bits long?
 c >> 296 == c >> 8
-* Diffences between strlen() and sizeof()?
+* 变量同名不同类型不同文件, 通过extern, 否则就是multiple definition
+这是c语言最为迷糊的地方.简单说来类似union, 具体我也不清楚.
+1. 所有名字引用同一个object
+2. 不同文件中不同类型的sizeof和当前文件类型一直.
 
 # C standard library
 NULL?
