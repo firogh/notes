@@ -49,7 +49,7 @@ category: howto
 上面这些问题, 就是一个知识的挂架skeleton了.
 这里回答了, 认知对象的选择, 其他问题:
 
-	什么重要(我们甚至需要了解背后的实现); 
+	什么重要(我们甚至需要了解背后的实现); 大量deployed. 
 	什么不重要(简单了解就够了);
 	什么不需要了解, 在浪费时间.
 	那些知识甚至骨架类的知识你都不需要了解.
@@ -60,6 +60,15 @@ category: howto
 	必须要知道所有认知都有改口的余地.
 	问题总是复杂的, 解决办法却很简单!
 	太阳下没新鲜事.
+
+#### Example
+上面的描述可以递归应用.
+如可以针对一个抽象概念如algorithm, 
+why how what是什么? 
+[Core algorithms deployed](http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed#)是什么
+针对具体知识如RCU
+Check A journey to RCU
+
 ### 学习的方法
 或许叫认知的方法更好一些.
 从学的角度将, 我们的目的就是结合自身的需求完成对不同类知识的认知.
@@ -84,6 +93,7 @@ category: howto
 
 	胡适历史的方法, 注重起源
 	Abstruction method: 构建知识之间的联系, 概念系统, 以及同现有的知识连接.
+	Examine the deployed
 	实验的方法, 注重实践验证
 ### 学以致用
 学习了那么多, 使用才是目的:
@@ -92,5 +102,5 @@ category: howto
 	这里的实践, 不仅仅是验证, 而是真正的投入到有用的事情上来.
 ### 结束语
 学习本身就是找到看世界的角度. 
-
-
+我们使用大量提问, 让我们发现重要的概念.
+最终构成我们的知识与学习过程.

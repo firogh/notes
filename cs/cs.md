@@ -32,8 +32,9 @@ Logic and Mathematics -> Turning machine and automata -> computer
 # Language
 More details in programming language notes
 
-#Algorithm
+# Algorithm
 Algorithms: Design Techniques and Analysis
+kernel/algorithm.md
 
 #Design pattern
 Publish-Subscribe Mechanism 

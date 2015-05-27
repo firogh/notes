@@ -14,6 +14,9 @@ https://www.kernel.org/doc/
 http://kernelnewbies.org/KernelJanitors/Todo
 http://eudyptula-challenge.org/
 
+# Design pattern
+[Linux kernel design patterns](http://lwn.net/Articles/336224/)
+
 # Find bug
 * Considered fault types
 Block “To avoid deadlock, do not call blocking functions with interrupts disabled or a spinlock held.”
