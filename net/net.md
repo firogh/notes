@@ -9,6 +9,37 @@ category: net
 [Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
+# Network
+## 为什么Internet产生?
+就好比问, 色情片为什么出现一样. 人类的发明都是对自身需求的回应.
+Internet 解决信息传递的问题.信息传递只是手段, 古已有之, 比如信鸽, 狼烟等.
+
+## Internet 都能做什么?
+看片等...
+ 
+## 什么是Internet
+### Etymology and definations
+英文[network](http://keithbriggs.info/network.html), 其中work, 构造之意.
+etymonline 给出结缔成网之意, net-like arrangement of threads, wires, etc.
+Network -> Telecommunications network -> Computer network -> Internet
+
+The Internet is a global system of interconnected computer networks that use 
+the standard Internet protocol suite (TCP/IP) to link several billion devices worldwide.
+
+# Network stack
+Network stack严格的表述是network protocol stack.
+通常简称[protocol stack](http://en.wikipedia.org/wiki/Protocol_stack), 即协议栈
+[Internet protocol suite or TCP/IP](http://en.wikipedia.org/wiki/Internet_protocol_suite)就是一种[protocol stack.](http://en.wikipedia.org/wiki/List_of_network_protocol_stacks)
+The protocol stack is an implementation of a computer networking protocol suite. 
+
+## 为什么protocol stack分层? 怎么分?
+这是非常有深度的问题! 可以说本文价值所在.
+
+
+
+
+
+
 # INET 
 An implementation of the TCP/IP protocol suite for the LINUX operating system.  
 INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
