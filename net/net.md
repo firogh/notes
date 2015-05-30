@@ -91,28 +91,131 @@ transport layer 的巨大意义, 就被显示出来了, 他是必须的.
 优点如维基所说:
 Because each protocol module usually communicates with two others, 
 they are commonly imagined as layers in a stack of protocols. 
-还有其他的有点.
+[更完整的陈述](http://en.wikipedia.org/wiki/Communications_protocol#Layering)
 
 # Design of [Communications protocol](http://en.wikipedia.org/wiki/Communications_protocol)
 [The Design Philosophy of the DARPA Internet Protocols](http://ccr.sigcomm.org/archive/1995/jan95/ccr-9501-clark.pdf)
+[Reviews from RICE edu](http://www.cs.rice.edu/~eugeneng/teaching/s04/comp629/reviews/Cla88.txt)
+[Reviews of Michael S. Liu Yale](http://zoo.cs.yale.edu/classes/cs633/Reviews/Cla88.msl38.html)
 我们在这里探讨的是通用的信息交换协议, 也就是说UDP, TCP, IP共有的性质, 之后我们会结合Stevens的
 书籍和linux 内核的实现, 去探讨这些协议具体的差异, 当然是偏重为什么导致这种差异.
 方法还是思考(意淫).
-
-
-
-
+我们还是从地址开始，
+Address formate: 有了地址我们就要有地址的具体格式如哪个街道，哪个小区几号楼几室。
+Route: 找到收信人, 计算机网络包括linker, network 和transportlayer
+Data formate: 接下来就是信封格式，对应头部。
+Reliability:发的信可能丢了，要在写一封吗？
+Detection of transmission errors:如信被人篡改了,如[浔阳楼宋江题反诗，梁山泊戴宗传假信](http://www.iqiyi.com/dianshiju/20110608/3773df277f51d210.html)
+这些都是信息交换常见的问题场景.还有一些和计算机相关的问题.
+Connection-oriented communication: in order and connect-wared
+Flow control
+Congestion control
+信息交换协议, 基本上就是解决这些问题.TCP, UDP, IP这些协议也全是为了解决这些问题.
+另外, 用户态用stream socket指代了connection-oriented, realiability等问题. 
+是一个高度复杂的概念, 用户态可以通过sock的类型安排协议, 传输层和网络层都不是必须.
 
 # INET 
+现在我们来看具体的network stack的实现.
+linux kernel的tcp/ip实现是有自己的名字的就叫INET!
 An implementation of the TCP/IP protocol suite for the LINUX operating system.  
-INET is implemented using the  BSD Socket interface as the means of communication with the user level. 
+INET is implemented using the  BSD Socket interface as the means of communication 
+with the user level. 
+[DevConf 2014 Kernel Networking Walkthrough](http://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
+## 协议栈运行的本质?
+出去一层层依据协议类型和参数[Encapuslation](http://en.wikipedia.org/wiki/Encapsulation_\(networking\))
+进来一层层decapuslation 报文头部, 根据头部, 协议, 还有参数进行操作.
+INET的实现包括两部分, 协议相关的和内核相关的.
+我们首先来看看内核相关的基础设施.
 
-#PF_*
-* Capture frames
-PF_PACKET
-AF_PACKET sockets hand frames directly to dev_queue_xmit
+## [skb](http://vger.kernel.org/~davem/skb.html)
+[Basic functions for sk_buff](http://www.skbuff.net/skbbasic.html)
+[SKB data area handling](http://vger.kernel.org/~davem/skb_data.html)
+[Things that need to get done in the Linux kernel networking](http://vger.kernel.org/~davem/net_todo.html)
+现在poor network stack 基本功能已经实现了, 用户要在twitter上分享一个心机婊的自拍照.
+另外, 我认为心机婊还是非常可爱的一群人.协议栈接到用户态的数据后,
+内核要用一个buff存储照片, 好了把照片copy进去.我们走道了transport layer.
+我们要encapuslate一个poor transport header. 靠忘记在照片数据前面留点空间给头部了.
+可以遇见的往下走的网络层和linker也会遇到这问题, 留大点.
+每encapuslate都应该有一个pointer指向这个header, 便于下次加头部时候能
+推算((char *)old header pointer - new header len)出写入到buff的起始地址.
+同样我们也应该知道这个buffer的起始地址.
+当我们穿过协议栈时, 我们需要一个list成员, 把这个数据放到相应协议层处理队列上去.
+实际内存区域buff, 指向buff的各种表明位置的指针, 还有一个关联buff的list成员. 
+如何组织他们?这里把实际的报文数据和管理相关的数据分开管理最合适了.
+就有了内核sk_buff这个结构了.
 
-# Encapuslation
+我们再来看看发包的过程, 
+在申请发送数据的缓存区, 我们也要为管理数据sk_buff申请空间.
+我们已经设计好了, 不是吗? alloc_skb跟我们的想法一致.
+接下来, 我们为了不在吃苦头, 我们需要为各层留个header的空间.
+我们先来看看skb_reverve 和skb_put 这个两个函数都修改了tail这个成员
+那么这个data 和tail代表什么涵义呢? 代表实际有效数据的起始和结尾!
+这个语义非常重要, 必须理解记忆!
+我们如何知道改刘多少呢? 另外, 实际上我们先加头和先加数据都是可以的.
+读了上面的design philosophy你就应该知道, transport和network层原来
+是一个东西.对于头部大小的确定, 显然, 如果不是固定的大小,
+由不同协议自身来定使最好的, 像tcp 和ip这种时不时还毛出个option, 显然
+你是无法在最开始旧reserve出来空间大小的. 那copy用户态数据也要延迟了....
+ip_ufo_append_data函数中我们可以看到skb_reverve是为linker header留了空间.
+而udp和ip是通过skb_put来计算tail的偏移.
+skb_reserve的comment上面写明只能用在没有有效数据sk buff.
+现在, 我们看看skb_push与skb_put的比较语义研究.
+skb的data和tai标志有效数据的起始位置.
+skb_push关注data, skb_put关注tail. push和put都有往里放的涵义.
+push有promote 提升含义. 隐含扩大data的涵义.
+put是常见的放在什么上的涵义.是建立在已有数据的接触上, 显然skb_put就是
+做这样的事情, 放一个在旧的上之后增加tail
+好吧这算是意淫.我只想让你知道data和tail的语义非常重要.
+如果我们要是按照先添加报文header再添加数据, 就是一个个skb_put, copy操作.
+如果你是事前reserve了那就是skb_push.
+往前加是push, 后加是put, easy.
+真实的协议栈header数msg的添加, 会有很多不同的实现, 也就是put和push多种使用方法.
+就这样, 我门算是把头部和数据加到了skb中. 
+有一个问题比如我们的照片太大了20MB, 而一个skb通常的内核肯定不能分除这么大那么.
+就有多个skb的来存储了.
+[Skbuffs - A tutorial](http://people.sissa.it/~inno/pubs/skb.pdf)
+[Network buffers The BSD, Unix SVR4 and Linux approaches](http://people.sissa.it/~inno/pubs/skb-reduced.pdf)
+[skb_shared_info](http://marc.info/?l=linux-netdev&m=115508038817177&w=2)
+
+内核的命名方式, 有时糟糕透了, 完全不符合:
+
+	概念性or推理性的认知.
+skb->data_len这个成员就非常不直观!他是paged-data的长度.
+data_len= len - (tail-data)
+难道, data到tail这段就不是数据了吗? 非常杀脑细胞.
+那么该如何理解这个data len呢? 
+如有有paged data那么data 和tail所在区就叫head了.有了paged data整个结构看上去有
+点像章鱼, 所以有了head.
+
+那, 要把用户的数据copy过来, skb_put这个函数, 更新sk_buff的相关指针?更新那几个呢?
+copy相关数据, 就可以入栈.
+之后, 我们来到了transport层.我们要encapuslate一个tcp or udp的头.
+看个世界的
+
+struct sk_buff		*next;
+struct sk_buff		*prev;
+
+
+# SG IO
+如果device support NETIF_F_SG 直接copy_form user msghdr to frgs[] zero copy!
+p_append_data
+这是设备的一个feature. 内核和协议栈只是小角色, 边角料.
+
+[NETIF_F_FRAGLIST and NETIF_F_SG difference](http://thread.gmane.org/gmane.linux.network/153666)
+
+
+
+
+ 
+* FAQ , 每一层包的大小.
+
+# BSD socket layer
+socket的参数protocol不是指trnasport layer,而是domain的一个instance(ETH_P_IP)
+另外socket的第一个参数被称为domain而不是协议族, 暗含像PF_PACKET这种定义.
+但实际上PF_Packet只是一种socket, 参见man 7 packet.
+PF前缀这里体现了内核定义的混乱! 他不符合protocol layer的定义, 所以不是protocol!
+
+
 
 # offload
 * TSO in tcp_v4_connect
@@ -133,16 +236,6 @@ a packet on the network layer; a segment on the transport layer; and a message o
 # apple talk in linux network stack
 talk_dgram_ops
 &atalk_family_ops
-
-# What is LAN
-
-# WAN
-[WAN](https://en.wikipedia.org/wiki/Wide_area_network)
-
-# relations of concept
-Qdisc -- NET_XMIT_SUCCESS
-dev -- NETDEV_TX_OK
-
 #sk_buff
 [sk_buff{} documents and resources](http://www.skbuff.net/skbuff.html)
 [How SKBs work by David S. Miller](http://www.skbuff.net/skbuff.html)
