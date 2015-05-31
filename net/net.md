@@ -6,7 +6,6 @@ category: net
 ---
 
 #Reference
-[Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/#.VB6Vx9c6mKc.twitter)
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
 # Network
@@ -114,19 +113,7 @@ Congestion control
 另外, 用户态用stream socket指代了connection-oriented, realiability等问题. 
 是一个高度复杂的概念, 用户态可以通过sock的类型安排协议, 传输层和网络层都不是必须.
 
-# INET 
-现在我们来看具体的network stack的实现.
-linux kernel的tcp/ip实现是有自己的名字的就叫INET!
-An implementation of the TCP/IP protocol suite for the LINUX operating system.  
-INET is implemented using the  BSD Socket interface as the means of communication 
-with the user level. 
-[DevConf 2014 Kernel Networking Walkthrough](http://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
-## 协议栈运行的本质?
-出去一层层依据协议类型和参数[Encapuslation](http://en.wikipedia.org/wiki/Encapsulation_\(networking\))
-进来一层层decapuslation 报文头部, 根据头部, 协议, 还有参数进行操作.
-INET的实现包括两部分, 协议相关的和内核相关的.
-我们首先来看看内核相关的基础设施.
-
+# Kernel network infrastructure
 ## [skb](http://vger.kernel.org/~davem/skb.html)
 [Basic functions for sk_buff](http://www.skbuff.net/skbbasic.html)
 [SKB data area handling](http://vger.kernel.org/~davem/skb_data.html)
@@ -337,61 +324,33 @@ kmap_atomic如果是直接映射区的页表由cpu主动完成.从一个page里�
 要用kmap_atomic来一下.
 * page_address这个函数如果已经映射page_solt里面取, pas保证了多个vaddr 映射到paddr.
 继续看, 下面看三个非常复杂的三个函数, 好吧是因为我之前没看过.
-
-
-
-
-skb_unclone?
-这是一个skb_clone 替换skb_get的例子.
-
-
-# SG IO
-如果device support NETIF_F_SG 直接copy_form user msghdr to frgs[] zero copy!
-p_append_data
-这是设备的一个feature. 内核和协议栈只是小角色, 边角料.
-
-[NETIF_F_FRAGLIST and NETIF_F_SG difference](http://thread.gmane.org/gmane.linux.network/153666)
-validate_xmit_skb()->__skb_linearize()
-ip fragment 不是为了fraglist而是把skb变小. 所以这里可能有问题linearize后skb过大.
-如果经过ip_fragment应该,不会出现, 自己倒腾的就可能.
-compound page
-
-
- 
-* FAQ , 每一层包的大小.
-
-# BSD socket layer
-socket的参数protocol不是指trnasport layer,而是domain的一个instance(ETH_P_IP)
-另外socket的第一个参数被称为domain而不是协议族, 暗含像PF_PACKET这种定义.
-但实际上PF_Packet只是一种socket, 参见man 7 packet.
-PF前缀这里体现了内核定义的混乱! 他不符合protocol layer的定义, 所以不是protocol!
-
-
-
-# offload
-* TSO in tcp_v4_connect
-[TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
-One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
-* GSO
-[GSO: Generic Segmentation Offload](http://thread.gmane.org/gmane.linux.network/37287)
-TSO = GSO_TCPV4
-frags = sg I/O
-frag_list
-*GRO
-napi -> dev ->inet->skb
-
-# package name in different layer
-An individual package of transmitted data is commonly called a frame on the link layer, L2; 
-a packet on the network layer; a segment on the transport layer; and a message on the application layer.
-
-# apple talk in linux network stack
-talk_dgram_ops
-&atalk_family_ops
-#sk_buff
-[sk_buff{} documents and resources](http://www.skbuff.net/skbuff.html)
-[How SKBs work by David S. Miller](http://www.skbuff.net/skbuff.html)
-
-* fclone -- fast clone
+___pskb_trim, pskb_pull, pskb_expand_head; 
+* 最核心的就是pskb_expand_head.
+先把他看了, 函数注释说sk_buff不变, 且返回后需要重新reload. 改的是skb 的head data.
+如何sk_buff shared BUG()!显然pskb是针对private non-shared, 如果针对shared改了那么
+别的执行流上sk_buff的成员都失效, 有可能coredump!所以直接BUG()了.
+还有nhead < 0 直接BUG, why? 因为下面的memcpy
+显示申请新空间, ok.之后旧的数据copy过来. ok
+之后是shinfo, 为了性能优化考了nr frags个, 屌.
+这里copy shinfo时dst是data+size, 这个size是slab的对应obj的size不是
+上面申请时的size为什么这么做? obj 的size 应该大于申请的size.
+这里是尽量利用所有空间了.更新下sk_buff相应成员OK了.
+期间还处理skb_cloned的情况为什么? shared直接BUG
+如果cloned则在多个sk_buff之间共享frags, skb_orphan_frags, 先把frags copy到现申请内核page
+之后put user page, 在把内核page装入frags, 在get 内核page.
+expand之后, 包括frags旧都是内核数据了.之后把旧的skb head data数据释放掉.
+也就是说, 为什么我们不能直接把用户的frags, fill到新的head data的shinfo呢?
+* skb_orphan_frags 大哥问号.
+反正expand后head 大了, frags 内核page了, frag list 也get了.
+* pskb_pull:我不看了, 函数注释很明确.
+     The function makes a sense only on a fragmented &sk_buff,
+       it expands header moving its tail forward and copying necessary
+       data from fragmented part.
+* pskb_trim:基本上看懂就是加上了paged 数据的处理
+* skb_unclone: pskb_expand_head(skb, 0, 0, pri);
+* skb_copy:之后全都线性了.  pskb_expand_head(skb, 0, 0, pri); identical to old data.
+其他的以后再看吧, 这些够用了.
+## fclone -- fast clone
 [NET Implement SKB fast cloning.](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d179cd12928443f3ec29cfbc3567439644bd0afc)
 [Fast SKB cloning, continued](http://lwn.net/Articles/140552/)
 use in skb_clone function
@@ -403,102 +362,33 @@ skbuff_head_cache alloc的skb对应n->fclone = SKB_FCLONE_UNAVAILABLE;
 * data_len -- len of frags + frag_list
 * len -- head_len + frgas + frag_list
 
-#skb reference usage
-* 计数引用 count ref skb->users -- skb_get
-	没有私有的
-* 克隆引用 clone ref skb->dataref --skb_clone, skb_cloned
-	sk_buff是私有的
-* 页碎片共享 --pskb_copy
-	sk_buff, head_len 是私用的
-* 不共享 --skb_copy skb_copy_expand
 
-#sock->pfmemealloc
-Yes, I only wanted to drop the packet if we were under pressure
-when skb was allocated. If we hit pressure between when skb was
-allocated and when __netdev_alloc_page is called,
-+in sk_filter
-[netvm: Allow skb allocation to use PFMEMALLOC reserves](https://groups.google.com/forum/#!msg/linux_net/-YtWB66adxY/Qqm_y4U09IAJ)
-[netvm: Allow skb allocation to use PFMEMALLOC reserves - gmane 08/14](http://thread.gmane.org/gmane.linux.kernel/1152658)
-
-* sk_set_memalloc
-SOCK_MEMALLOC, sock has feature mem alloc for free memory.
-只有到了sock层才能分辨, sock是否是memalloc的.
-sk_filter
-
-* control buffer skb-cb
-tcp_skb_cb
-
-# socket
-* What is socket?
-A socket is one endpoint of a two-way communication link between two programs running on the network.
-An Internet socket is characterized by at least the following :
-Local socket address: Local IP address and port number
-Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
-Remote socket address, if connected to another socket.
-struct sockaddr
-socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create
-
-* Abstruction Concepts of socket
-sock_common: 5 tuples, the essence of sock
-inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
-sock: network sock
-atalk_sock: apple talk
-unix_sock: unix_address
-netlink_sock:portid
-socket: BSD socket with VFS stuff
-inet_sock: INET sock, sock_common inet-nise!ip addr, Multicast, TTL 
-inet_connection_sock: INET connection oriented sock, Pluggable congestion control hook, Delayed ACK control data
-tcp_sock: tcp sock, snd_cwnd, tcp_options_received, reordering, keepalive_probes
-
-#Session
-In computer science, in particular networking, a session is a semi-permanent interactive information interchange
-session，中文经常翻译为会话，其本来的含义是指*有始有终*的一系列动作/消息
-[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
-[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
-
-#Virtul circuit
-A virtual circuit (VC) is a means of transporting data over a packet switched computer network 
-in such a way that it appears as though there is a dedicated physical layer link between the source and destination end systems of this data. 
-
-#Implemention of protocols
-* inet_create
-sock->ops = inet_protosw->ops = inet_stream_ops
-* proto_ops -- fops 
-is a good name stand for all PF_*, all 协议族, but sock_generic_ops is better 具体协议与BSD socket api的通用接口
-* proto, -- specific fs, like ext,  btfs in *inetsw*
-sock的lab决定具体的slab, 如tcp_sock/udp_sock, 根本的发送方法tcp_sendmsg, 协议的真正实体!
-* 越来越具体
-BSD socket api ->proto_ops(sock type base)协议通用api ->proto (udp/tcp_prot)
-sys_bind -> inet_stream_ops ->inet_bind ->sk_prot->bind(likely, is NULL)
-write->inet_stream_ops->sendmsg->tcp_sendmsg
-* inet_connection_sock_af_ops
-icsk->icsk_af_ops
-* net_protocol -- l4 rcv in *inet_protos*
-是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
-* packet_type -- l3 rcv in ptype_all and ptype_base
-pt_prev->func
-
-
-#BSD socket layer
-Details and skills in Unix network programming.
-* sockfs -- using read, write, close to manipulate socket fd.
-[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
-
-#Transport layer
-Details in l4.md
-
-#Network layer
-Details in l3.md
-
-# Data link layer
-Details in l2.md
-
-# Physical layer -- PHY
-* Physical Coding Sublayer
-* Physical Medium Attachment Sublayer
-* Physical Medium Dependent Sublayer
-
-#out
+正文开始
+# Linux network stack workthrough
+skb的流向和socket有关skb就是在socket中流的.
+所以找到socket就行了.
+[DevConf 2014 Kernel Networking Walkthrough](http://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
+[introduction to linux kernel tcp/ip ptocotol stack](http://www.slideshare.net/minibobo/linux-tcp-ip?related=1)
+taobao的第5也说明了问题.
+这是通常的skb的流向. 就是在socket里面按着协议走, 包括tcp的重传.
+还有一种, 就是想kproxy那种, 人为的干扰skb的走向, netif_receive_skb就是一个点.
+netif_receive_skb之后就是标准的内核协议栈的事情了包括bonding啊, vlan, bridge这些什么的.
+我觉得这么说还是不够深度, 我们确实在探索skb在协议栈中的流转.
+我们都知道协议栈中skb按着协议走的, 如果能指出什么时候我们可以合法地让报文转个向.
+就能打到我们的目的, 多少能提升下对workthrough的理解的深度;)
+* af_packet相关的
+dev_queue_xmit的dev_queue_xmit_nit中clone后deliver_skb送上去.
+netif_receive_skb 的__netif_receive_skb_core 的deliver_skb. 有个问题?
+为什么skb直接送上去了没有skb_get之类的.原来每个deliver_skb都有
+atomic_inc(&skb->users);为什么不是skb_get
+* 主动调用netif_receive_skb 
+很多pptp协议就是这么干的.
+其实最经典还是pskb_copy和clone的那个场景!
+这个应该多积累, 我感觉挺重要的.
+[Understanding TCP/IP Network Stack & Writing Network Apps](http://www.cubrid.org/blog/dev-platform/understanding-tcp-ip-network-stack/)
+这篇文章的介绍很好.
+好吧我是有这个传统的很早以前, 我就喜欢这么搞....
+## out
 inet_stream_ops->tcp_sendmsg()->tcp_push()->__tcp_push_pending_frames()->tcp_write_xmit()->tcp_transmit_skb()->ipv4_specific.ip_queue_xmit()->
 ip_local_out()->__ip_local_out()->NF_INET_LOCAL_OUT->dst_output()->
 ip_output()
@@ -530,7 +420,7 @@ xmit_one->
 
 softirq:net_tx_action()->qdisc_run()
 
-#in & forward
+## in & forward
 * NAPI poll_list net_device
 driver intr add skb to private queue -> e100_intr()->__netif_rx_schedule()->__napi_schedule(netdev,nic->napi)->:
 add napi to poll_list and __raise_softirq_irqoff()
@@ -572,6 +462,148 @@ qdisc_restart: 如果队列有数据就返回大于零 继续减小weight_p
 __qdisc_run queue no data __QDISC_STATE_SCHED not set, only in this case!
 driver tx, stack xmit
 
+# Linux network technical feature
+内核协议栈(包含底层设备链路层)提供了很多技术机制, 比如
+SG I/O, TSO, RPS, NAPI等等. 这些技术的目的都是什么呢?
+这个问题重要到, 如果你知道了他, 这些技术就不再那么高深么测了, 神秘感全无.
+最为重要的就是, 你再也不用为了记住这些技术而头疼了.
+首先协议栈本身, 就是完成信息交换这个简单的目的. 搞出那么多名堂来是为什么呢?
+就内核提供这些技术而言, 基本上都是为了提高性能!
+我严格区分性能提高, 功能实现. 虽然很多技术的疆界不是那么明晰.
+## SG IO
+如果device support NETIF_F_SG 直接copy_form user msghdr to frgs[] zero copy!
+p_append_data
+这是设备的一个feature. 内核和协议栈只是小角色, 边角料.
+
+[NETIF_F_FRAGLIST and NETIF_F_SG difference](http://thread.gmane.org/gmane.linux.network/153666)
+validate_xmit_skb()->__skb_linearize()
+ip fragment 不是为了fraglist而是把skb变小. 所以这里可能有问题linearize后skb过大.
+如果经过ip_fragment应该,不会出现, 自己倒腾的就可能.
+compound page
+
+
+## offload
+* TSO in tcp_v4_connect
+[TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
+One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
+* GSO
+[GSO: Generic Segmentation Offload](http://thread.gmane.org/gmane.linux.network/37287)
+TSO = GSO_TCPV4
+frags = sg I/O
+frag_list
+*GRO
+napi -> dev ->inet->skb
+
+# INET 
+现在我们来看具体的network stack的实现.
+linux kernel的tcp/ip实现是有自己的名字的就叫INET!
+An implementation of the TCP/IP protocol suite for the LINUX operating system.  
+INET is implemented using the  BSD Socket interface as the means of communication 
+with the user level. 
+## 内核协议栈的代码可以分为:
+1. 协议相关, bsd socket也算是吧, qdisc也是.
+2. 内核提供的基础架构skb
+3. 内核的优化rss, rps, gso, napi之类的.
+4. 增强功能af_packet, netlink, netfilter, 不属于协议的, 也算不上内核的东西,只是
+一个外界的需求抓包哎, 防火墙之类的.
+接下来要看看具体的linux TCP/IP network stack的实现了.
+有些实现看似夹着协议的前缀如__ip_append_data实际上内核优化frags的体现, 不要眯了眼.
+但是, 通过这些隐含的功能去探索, 标注,理解代码却非常赞!
+## 协议栈运行的本质?
+出去一层层依据协议类型和参数[Encapuslation](http://en.wikipedia.org/wiki/Encapsulation_\(networking\))
+进来一层层decapuslation 报文头部, 根据头部, 协议, 还有参数进行操作.
+
+## package name in different layer
+An individual package of transmitted data is commonly called a frame on the link layer, L2; 
+a packet on the network layer; a segment on the transport layer; and a message on the application layer.
+
+
+## FIXME Implemention of protocols
+* inet_create
+sock->ops = inet_protosw->ops = inet_stream_ops
+* proto_ops -- fops 
+is a good name stand for all PF_*, all 协议族, but sock_generic_ops is better 具体协议与BSD socket api的通用接口
+* proto, -- specific fs, like ext,  btfs in *inetsw*
+sock的lab决定具体的slab, 如tcp_sock/udp_sock, 根本的发送方法tcp_sendmsg, 协议的真正实体!
+* 越来越具体
+BSD socket api ->proto_ops(sock type base)协议通用api ->proto (udp/tcp_prot)
+sys_bind -> inet_stream_ops ->inet_bind ->sk_prot->bind(likely, is NULL)
+write->inet_stream_ops->sendmsg->tcp_sendmsg
+* inet_connection_sock_af_ops
+icsk->icsk_af_ops
+* net_protocol -- l4 rcv in *inet_protos*
+是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
+* packet_type -- l3 rcv in ptype_all and ptype_base
+pt_prev->func
+
+
+
+# BSD socket layer
+Details and skills in Unix network programming.
+socket的参数protocol不是指trnasport layer,而是domain的一个instance(ETH_P_IP)
+另外socket的第一个参数被称为domain而不是协议族, 暗含像PF_PACKET这种定义.
+但实际上PF_Packet只是一种socket, 参见man 7 packet.
+PF前缀这里体现了内核定义的混乱! 他不符合protocol layer的定义, 所以不是protocol!
+## sockfs 
+using read, write, close to manipulate socket fd.
+[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
+
+## sock->pfmemealloc
+Yes, I only wanted to drop the packet if we were under pressure
+when skb was allocated. If we hit pressure between when skb was
+allocated and when __netdev_alloc_page is called,
++in sk_filter
+[netvm: Allow skb allocation to use PFMEMALLOC reserves](https://groups.google.com/forum/#!msg/linux_net/-YtWB66adxY/Qqm_y4U09IAJ)
+[netvm: Allow skb allocation to use PFMEMALLOC reserves - gmane 08/14](http://thread.gmane.org/gmane.linux.kernel/1152658)
+
+## socket
+* What is socket?
+A socket is one endpoint of a two-way communication link between two programs running on the network.
+An Internet socket is characterized by at least the following :
+Local socket address: Local IP address and port number
+Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
+Remote socket address, if connected to another socket.
+struct sockaddr
+socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create
+
+* Abstruction Concepts of socket
+sock_common: 5 tuples, the essence of sock
+inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
+sock: network sock
+atalk_sock: apple talk
+unix_sock: unix_address
+netlink_sock:portid
+socket: BSD socket with VFS stuff
+inet_sock: INET sock, sock_common inet-nise!ip addr, Multicast, TTL 
+inet_connection_sock: INET connection oriented sock, Pluggable congestion control hook, Delayed ACK control data
+tcp_sock: tcp sock, snd_cwnd, tcp_options_received, reordering, keepalive_probes
+
+* sk_set_memalloc
+SOCK_MEMALLOC, sock has feature mem alloc for free memory.
+只有到了sock层才能分辨, sock是否是memalloc的.
+sk_filter
+
+## Session
+In computer science, in particular networking, a session is a semi-permanent interactive information interchange
+session，中文经常翻译为会话，其本来的含义是指*有始有终*的一系列动作/消息
+[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
+[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
+
+## Virtul circuit
+A virtual circuit (VC) is a means of transporting data over a packet switched computer network 
+in such a way that it appears as though there is a dedicated physical layer link between the source and destination end systems of this data. 
+
+#Transport layer
+Details in l4.md
+#Network layer
+Details in l3.md
+# Data link layer
+Details in l2.md
+# Physical layer -- PHY
+* Physical Coding Sublayer
+* Physical Medium Attachment Sublayer
+* Physical Medium Dependent Sublayer
+
 #Net initialization
 start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 {
@@ -597,12 +629,16 @@ start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
 	run_init_process()
 }
 
-#network init
+## network init
 inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
 
-#net device init
+## net device init
 * net_dev_init
 * nic init
 e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
 vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
+ 
+# FAQ 
+每一层包的大小.
+
 
