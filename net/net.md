@@ -211,12 +211,138 @@ data_len= len - (tail-data)
  第四个亮点, 我们将回到协议栈本身, 谈谈为什么linux内核网络栈是怎么实现的.
 现在是周日凌晨1点09距离周一还有23个小时, 哎.
 好, 我们开始探索协议栈的数据流也就是报文生命周期的问题.
-如何正确的理解, 什么时候该使用什么函数呢? 有什么特征
-git show 18fa11efc279c20af5eefff2bbe814ca067
+为了更好的理解协议栈的数据流walkthrough, 我们先看看skb_get/clone/copy, pskb_copy这几
+个函数的使用特征, 也就是什么时候该使用什么函数.
+先从最简答的skb_get开始, skb_get背后的技术[reference counting](http://en.wikipedia.org/wiki/Reference_counting)引用计数.
+严格说来, 引用计数不是一种synchronization方法! 对数据并发依然需要同步方法.
+引用计数, 最常用在内存对象的生命周期管理, 在c里面, 对象有三种周期, auto, static, allocate.
+引用计数就是管理allocate, 动态分配的heap上的内存. 引用计数, 保证数据的可访问.
+但是访问共享数据依然需要同步方法避免竞态的出现.
+所以skb_get, 使用场景readonly, 也就是不能修改报文的所有skb, skb data都不可以.
+一个错误的使用场景:
+
+	git show 18fa11efc279c20af5eefff2bbe814ca067
+在dev_queue_xmit, 一进来就修改了skb->mac_header in skb_reset_mac_header().
+接下来还有skb_update_prio(). 总之很多修改, 在skb_get之后, 再有两个以上的并发
+访问修改skb, 就是并发访问, 因为所有的skb成员mac_header priority都是共享数据啊!
+首先, 你使用skb_get就以为着你知道, 可定存在着另一个进程 or 中断会对这个skb进行访问.
+使用skb_get的情况就是, 你能肯定, 其他流程, 包括你这个流程没有修改skb的内容, or
+对并发访问做了良好的同步处理.显然后面这种并发的处理通常是不合适的, 一个skb的内容依靠
+获取锁的顺序, 显然是令人难以接收的. 我现在是4.0的代码,通过cscope只看到了87次skb_get
+的使用, 近35次是driver, net/irda占了30次, 另外net/nfc, net/llc占了13次, 
+也就是说内核协议栈很少使用这个方法!我会把其他几个重点看下:
+net/netlink/af_netlink.c
+
+	if (skb_shared(p->skb)) {
+		p->skb2 = skb_clone(p->skb, p->allocation);
+	} else {
+		p->skb2 = skb_get(p->skb);
+	...
+	netlink_broadcast_deliver(sk, p->skb2)//这个函数修改了skb
+这段代码,如果被多个人共享, 显然要clone一个;反之, 到现在只有我们一个user.
+按照通常, 我们就直接修改了, 想想这样对吗?你直接改了, 那么别人也可以这么干.
+所以skb_get 第一种使用方法就是:
+
+	如果不是共享的skb_get, 后直修改使用.
+	如果是共享的, skb_clone!
+	这么做的好处是减少了一次skb_clone, 只有在第二个人修改时才clone.
+这是skb_get在修改的情况使用, 在这里我们使用的技巧是, 节省了一次clone的使用.
+我们在这里使用了skb_get, 却做了修改. 这有反于, 我门通常认识的skb_get的使用.
+但要记住这里不是并发访问!我们是可以修改的.为什么使用skb_get是为了在并发的情况
+节省一次skb_clone.
+貌似fast open很火啊
+net/ipv4/tcp_fastopen.c tcp_fastopen_create_child()这个函数:
+
+	if (unlikely(skb_shared(skb)))
+		skb2 = skb_clone(skb, GFP_ATOMIC);
+        else
+                skb2 = skb_get(skb);
+使用了同样的技巧!
+同样代码出现在net/packet/af_packet.c tpacket_rcv()
+
+第二种用法
+net/core/skbuff.c skb_clone_fraglist这个函数
+就是skb_get最原始的用法, 不修改这是保证对象存活.
+net/tipc/msg.h <<tipc_skb_peek>>, 也是这种用法.
+这种方法, 实际上是最为复杂, 因为他暗含着某处代码会把skb是放掉!
+就看到这里吧, 或许, 还有其他的方法.
+
+再看skb_clone, 上面也涉及到了.还是看些对比的用法.
+tcp_transmit_skb这个函数:
+
+	if (unlikely(skb_cloned(skb)))
+                skb = pskb_copy(skb, gfp_mask);
+        else
+                skb = skb_clone(skb, gfp_mask);
+用到了类似的skb_get的模式.
+skb_shared 很好理解users > 1 is true.
+skb_cloned 就有点复杂了:
+
+	return skb->cloned &&
+               (atomic_read(&skb_shinfo(skb)->dataref) & SKB_DATAREF_MASK) != 1;
+这里的问题是, 我们为什么不能通过skb->cloned表明是否是cloned的skb, 我们知道
+skb_clone会n->cloned = 1;把new oldskb都置cloned标志.
+这里还检测了dataref是否>1. 我们摘掉clone后dataref是被加1的, 那什么情况cloned有,
+但dataref不是< 2;那就是clone后一个报文kfree_skb了, kfree_skb虽然能释放一个clone出
+来的skb却对另一个clone的skb爱莫能助. 所以虽然, cloned标志位存在但clone实质已无;
+Got it?回到tcp_transmit_skb, 这里如果我们没有cloned 就clone一个如果cloneed.
+这是什么逻辑?这里的差异是否创造一个skb head data的副本. 
+答案在这里[pskb_copy() in tcp_transmit_skb()](http://thread.gmane.org/gmane.linux.network/206211/focus=206215)
+我们仅从pskb_copy 和skb_clone函数的语义是不可能知道这个答案, 这超出了函数能表达的
+涵义范围, 此时我们只能了解整个函数栈的数据流图才行.
+tcp_transmit_skb我们要对skb 和skb data 都要修改, 这是目标.
+如果cloned我们对skb data修改势必造成早先cloned出来的skb corruption!可能里面的
+各种header指针不对了.在AF_PACKET这种情况就是, tcpdump希望收到原始的报文, 因为
+我们的retransmit是修改了skb data造成AF PACKET收到的将不是他希望的就报文, 有可能
+tcpdump收到的是一个修改一般的报文, 更糟.
+什么也不管直接pskb copy, consume掉就的skb, 是可以的.所以这里还是换汤不换药,为了
+节省一次pskb copy!
+这里我们发现了三条数据流, 发送, 重传, af packet, 下面会再次探索.
+所以这些skb_get/clone/copy, pskb用法:
+
+	都是结合skb_cloned skb_shared一起用的, 当然不绝对如
+	skb_get就可以用引用计数器那种. 具体怎么用还是要结合代码进行分析的!
+	貌似skb_copy 和 pskb_copy, 应该是一个差不多的用法见skb_unshare这个函数.
+
+还有一个问题, skb_get和 skb_clone pskb_copy, 这三种算法如果重叠着用会出现什么问题?
+比如先skb_get了一下, 之后有clone了.是完全不相干的逻辑, 在skb_clone时考虑到这点所以
+调用的是atomic_set(&n->users, 1);, 没有直接复制.
+
+也差不多该分析, 协议栈的数据流图, 在这之前先挑重点总结下linux/skbuff.h里面的函数
+先整体分析下类:
+申请skb 空间: alloc_skb, build_skb, __napi_alloc_skb, __alloc_rx_skb
+frag fraglist相关:
+skb释放: kfree_skb, consume_skb等等
+协议相关的: vlan checksum, memcpy_from_msg等
+链表操作:
+操纵skb 和skb data: get clone copy put push
+skb成员赋值的操作: 比较多余, 可能比较工整写, 模块化.
+还有一些比较附在的操作函数, 在这里分析一下:
+* skb_pull
+和skb_push, 相对, 应该是拆包的时候用的.
+* __skb_trim: 重新设置了 len.不是坚守也可能变大.非线性什么不做, 给个警告.
+* ___pskb_trim: 考虑了paged data.
+* skb_header_pointer: 这个函数在smartqos里面用过, 主要就是考虑大nonlinear区的问题.
+用来在skb去一块数据, 如果数据大小在headlen里面最容易了, 直接返回data + offset.
+否则skb_copy_bits
+* skb_copy_bits: WARNING fraglist藏在skb_walk_frags里面.
+核心就是一个frags的for循环一点点小心翼翼的copy就行了. 
+要注意这里有个kmap_atomic的操作!这是加深对page理解的千载难逢的机会.
+kmap_atomic如果是直接映射区的页表由cpu主动完成.从一个page里面copy东西的时候.
+低端页返回地址, 高端页映射到kmap_pte.之后开始copy.copy完了kunmap_atomic.
+这里的问题是为什么要在这里做这种映射?
+可能是用户态的高端page传到内核, __ip_append_data里面的__skb_fill_page_desc
+会把page存到frags[i]里面.可能在进程上下文这些页面ok, 但是到了内核态切不是相关
+进程的上下文, 这时候高端页,的映射页表就不对了, 因为每个进程的页表是不同的, 所以
+要用kmap_atomic来一下.
+* page_address这个函数如果已经映射page_solt里面取, pas保证了多个vaddr 映射到paddr.
+继续看, 下面看三个非常复杂的三个函数, 好吧是因为我之前没看过.
+
+
+
+
+skb_unclone?
 这是一个skb_clone 替换skb_get的例子.
-
-
-
 
 
 # SG IO
@@ -226,8 +352,9 @@ p_append_data
 
 [NETIF_F_FRAGLIST and NETIF_F_SG difference](http://thread.gmane.org/gmane.linux.network/153666)
 validate_xmit_skb()->__skb_linearize()
-
-
+ip fragment 不是为了fraglist而是把skb变小. 所以这里可能有问题linearize后skb过大.
+如果经过ip_fragment应该,不会出现, 自己倒腾的就可能.
+compound page
 
 
  
