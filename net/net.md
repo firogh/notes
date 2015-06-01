@@ -539,7 +539,85 @@ pt_prev->func
 
 
 # BSD socket layer
-Details and skills in Unix network programming.
+Details and skills in Stevens Unix network programming.
+我们现在开始探索linux 网络协议栈的socket layer.
+以socket()这个系统调用开始.
+我门首先要了解什么是socket. 就好像, 小时候拿两个纸杯中间用线连起来,
+模拟电话传消息一样. socket 起始也这么会事, 可以说socket也是一种
+communication protocol, 和network layer 一样地址就是最重要的, 也是第一位的.
+What is socket in wikipedia?
+A socket is one endpoint of a two-way communication link between two programs 
+running on the network. An Internet socket is characterized by at least the following :
+Local socket address: Local IP address and port number
+Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
+Remote socket address, if connected to another socket.
+我们在用户态这头有endpoint, 套接字的一头. 还需要另外一头.
+没错!我们要找到另外一头. 怎么找? 比如你和小伙伴, 那么纸杯+线的就够了.
+如果你要给异地的情人 or 亲人通话, 那个破纸杯肯定不够了. 这时候你就需要真的电话了
+玩cs野战的时候, 对讲机就够了.所以说, 从通信手段上就决定了我们的另一头的位置.
+这样说有些本末倒置, 毕竟, 你是先有了说话的对象之后决定具体用什么方法.
+那在网络世界, 所谓的说话对象是什么呢? 其实是, network layers.
+正是layer, 才是网络世界的真正实体, 比如抓包你像和自己的linker层建立一个socket
+电话线, 用来私语.比如ping你想和另外一台主机的network 层眉目传情.
+最常见的就是应用层的信息交互, 也就是常见的tcp or udp socket.
+所以回头来看看我们的socket系统调用:
+
+	int socket(int domain, int type, int protocol);
+你看到没有socket的第一个参数是叫domain, 不是狭隘的protocol协议族之类的!
+什么叫domain, 就是领域, 范围的意思, 这完全符合socket作为一个工具的性质!
+你要先确定你沟通的范围, man手册给出的例子, 注意这里是以AF开头, 明白了吧:
+
+	       Name                Purpose                          Man page
+       AF_UNIX, AF_LOCAL   Local communication              unix(7)
+       AF_INET             IPv4 Internet protocols          ip(7)
+       AF_INET6            IPv6 Internet protocols          ipv6(7)
+       AF_IPX              IPX - Novell protocols
+       AF_NETLINK          Kernel user interface device     netlink(7)
+       AF_X25              ITU-T X.25 / ISO-8208 protocol   x25(7)
+       AF_AX25             Amateur radio AX.25 protocol
+       AF_ATMPVC           Access to raw ATM PVCs
+       AF_APPLETALK        AppleTalk                        ddp(7)
+       AF_PACKET           Low level packet interface       packet(7)
+       AF_ALG              Interface to kernel crypto API
+AF_UNIX/LOCAL: 你在同一台电脑上的应用层通信.
+AF_NETLINK: 应用层和内核通信(linker, ip, tcp等多层, 甚至是非网络的内容).
+AF_APPLETALK: 这个主要是苹果的设备进行通信, 具体不了解.
+AF_PACKET: 这个就是dev_queue_xmit和netif_receive_skb照顾的接口, 应用层与linker层通信.
+AF_INET: 这个是应用层与internet网络上的主机进行通信, 范围很广,遍布互联网,多个层.
+现实中通信质量是有区别的, 就好比你是用上世界哔哔机, 大哥大还是现在android 苹果.
+socket的第2个参数, 就是确定通信质量的.
+       SOCK_STREAM     Provides sequenced, reliable, two-way, connection-based byte streams.  
+			An out-of-band data transmission  mechanism  may  be supported.
+       SOCK_DGRAM      Supports datagrams (connectionless, unreliable messages of a fixed maximum length).
+       SOCK_SEQPACKET  Provides  a  sequenced,  reliable, two-way connection-based data transmission path 
+			for datagrams of fixed maximum length; a consumer is required to read 
+			an entire packet with each input system call.
+       SOCK_RAW        Provides raw network protocol access.
+       SOCK_RDM        Provides a reliable datagram layer that does not guarantee ordering.
+       SOCK_PACKET     Obsolete and should not be used in new programs; see packet(7).
+SOCK_RDM完全没有听过啊, 不过注意RDM表示reliable, 但是不代表有序ordering, 
+也就是说, 包不会丢失有重传, 但收到顺序不保证.这里想说的是, 一个socket的各种性质是分开的.
+而这些性质就是所谓的通信质量! You buy a bog, 顺序反了就成a bog buy you.
+我见过的就是stream, dgram, raw三种.
+现在我们来探索下所谓的raw和stream, dgram到底有什么区别.这些都是非常基本的概念, 
+之前都被我忽略掉了.
+man手册上 A raw socket receives or sends the raw datagram not including link level headers.
+加上对于af packet我们知道他是在dev_queue_xmit和netif_receive_skb处得到, 所以这个raw是相对来说.
+他包含了一些协议的头部, 但同时限于ip往上的头部.
+而stream和dgram. 看上去和dgram很像, 但raw可能收到重复的packet而dgram缺不会(就原始协议来讲)
+ping就是用的这种socket:
+
+	socket(AF_INET, SOCK_RAW, IPPROTO_ICMP)
+为什么要用这种, 我说的协议的语义上.stream和dgram不行吗?
+原因是ping连接到的是icmp 他是在network层. 而另另外的stream 和dgram都是封装了
+transport layer的内容后直接到的network 层的ip, 我们没有办法访问到icmp协议.
+raw的另外一个特性, 就是
+
+
+
+
+之于第三个嘛, android还有国产天语阿里云和google nexus 6之分.
+
 socket的参数protocol不是指trnasport layer,而是domain的一个instance(ETH_P_IP)
 另外socket的第一个参数被称为domain而不是协议族, 暗含像PF_PACKET这种定义.
 但实际上PF_Packet只是一种socket, 参见man 7 packet.
@@ -556,14 +634,6 @@ allocated and when __netdev_alloc_page is called,
 [netvm: Allow skb allocation to use PFMEMALLOC reserves](https://groups.google.com/forum/#!msg/linux_net/-YtWB66adxY/Qqm_y4U09IAJ)
 [netvm: Allow skb allocation to use PFMEMALLOC reserves - gmane 08/14](http://thread.gmane.org/gmane.linux.kernel/1152658)
 
-## socket
-* What is socket?
-A socket is one endpoint of a two-way communication link between two programs running on the network.
-An Internet socket is characterized by at least the following :
-Local socket address: Local IP address and port number
-Protocol: A transport protocol (e.g., TCP, UDP, raw IP, or others).
-Remote socket address, if connected to another socket.
-struct sockaddr
 socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create
 
 * Abstruction Concepts of socket
@@ -582,6 +652,7 @@ tcp_sock: tcp sock, snd_cwnd, tcp_options_received, reordering, keepalive_probes
 SOCK_MEMALLOC, sock has feature mem alloc for free memory.
 只有到了sock层才能分辨, sock是否是memalloc的.
 sk_filter
+
 
 ## Session
 In computer science, in particular networking, a session is a semi-permanent interactive information interchange
