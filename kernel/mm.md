@@ -5,6 +5,10 @@ title: Linux kernel memory management
 category: kernel
 ---
 
+# page
+[An introduction to compound pages](https://lwn.net/Articles/619514/)
+
+
 # Memroy mangement
 ## GFP flags
 __GFP_IO: allow disk IO
