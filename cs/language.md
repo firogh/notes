@@ -302,6 +302,9 @@ find . -name ‘your_pattern*’ -delete
 ##pipe
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
 
+#AWK
+netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+
 #Regualar expression
 ##Basic
 ##Extend
