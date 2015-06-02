@@ -611,22 +611,171 @@ ping就是用的这种socket:
 为什么要用这种, 我说的协议的语义上.stream和dgram不行吗?
 原因是ping连接到的是icmp 他是在network层. 而另另外的stream 和dgram都是封装了
 transport layer的内容后直接到的network 层的ip, 我们没有办法访问到icmp协议.
-raw的另外一个特性, 就是
+raw的另外一个特性, 就是允许跨国transport layer自己构建包.
+这让我想起了电影里面钻到电线里面的情节, 没错你的能力够你也可以.
+从没有保证这点看raw和dgram很像. 而dgram就是传输层的raw!
+下面我们来看看, 到底一个高质量的通信线路是什么样的, 具有什么性质.
+stream 是一个非常重要, 且牛x的概念, 我在I/O部分, 解释过.
+这里简单说一句, stream最牛b的地方在于他在数学上是有专门的定义!
+那么在这里stream 表示的是复合的概念, 对于tcp实现就是:
+connection-oriented, reliability, error-check, flow control, congestion control
+记住这五个概念这是所有高质量传输的共性.
+接下来简单的说一下. 
 
+## connection-based
+到底什么是面向连接的网上只有wikipedia给的解释最合理, 其他的扯到了别的性质.
+两点: session and in order.
 
+* Session
+In computer science, in particular networking, a session is a semi-permanent 
+interactive information interchange. 
+session，中文经常翻译为会话，其本来的含义是指*有始有终*的一系列动作/消息
+[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
+[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
+这个对应tcp的三次握手, 4次挥手, 
+* in order
+涉及到的另外一个概念Virtul circuit
+A virtual circuit (VC) is a means of transporting data over a packet switched
+ computer network in such a way that it appears as though there is a dedicated 
+physical layer link between the source and destination end systems of this data. 
+对应tcp 的接收队列, seq number
 
+## Reliability
+sliding window
+ARQ(go back n)
+显然seq number这些也是需要的.
 
-之于第三个嘛, android还有国产天语阿里云和google nexus 6之分.
+## error-check
+checksum
 
+## flow control
+qdisc
+
+## congestion control
+cubic, reno这些.
+slow start
+
+之于第三个socket()参数嘛, android还有国产天语阿里云和google nexus 6之分.
 socket的参数protocol不是指trnasport layer,而是domain的一个instance(ETH_P_IP)
 另外socket的第一个参数被称为domain而不是协议族, 暗含像PF_PACKET这种定义.
 但实际上PF_Packet只是一种socket, 参见man 7 packet.
 PF前缀这里体现了内核定义的混乱! 他不符合protocol layer的定义, 所以不是protocol!
-## sockfs 
-using read, write, close to manipulate socket fd.
-[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
 
-## sock->pfmemealloc
+介绍完socket()接口后我们进一步, 来看看这个socket()产生的具体'纸杯线'
+也就是所谓的sock, 文章的质量是不能降低, 不仅意味着, 不能吸引到读者更重要的是
+浪费了自己的时间. 所以再开始sock的探索前, 要明确我们要的是什么? 这很难.
+FIXME, 我不知道, 先看着吧.好吧先看workthough, 之后看下address, 就完了.就这么定了.
+显示alloc sock: sock_alloc 这和alloc_skb没什么本质差异.这个socket就是[霸王的卵](http://movie.douban.com/subject/5308201/)
+这里有个问题内核使用sockfs来完成socket结构的申请, 把sock和一个inode放到一起了.
+为什么? 这事为了使其它的read write close之类的也能对socket fd生效.
+要知道网络这几个接口, 脑袋是有反骨的, 死活没有融合到unix的哲学当中:
+
+	一切皆文件
+愣是多了几个socket, bin connect, accept才降服, open弱爆了.
+[Linux Sockets and the Virtual Filesystem](http://isomerica.net/~dpn/socket_vfs.pdf)
+这一句非常屌:　
+
+	sock->type = type;
+申请完sock后就是, [incarnation](http://en.wikipedia.org/wiki/Incarnation) a sock, 这个需要dominator的帮助.
+domainator在内核叫net_proto_family, 也没什么错. 因为角度不同:
+
+	struct net_proto_family __rcu *net_families[NPROTO] __read_mostly;
+通过sock_register注册一共三十几个全在这呢, cscope全能看到.这表明我们还在sock层.
+挑几个重要的:inet_create, netlink_create, unix_create, packet_create
+到现在你应该明白, 整个socket就是一个[受肉仪式](http://movie.douban.com/subject/7051375/)
+妈妈生孩子是受肉, 格里菲斯鲜红的贝黑利特也是.我们先看inet_create()
+这里用到了inetsw(和inetsw_array本质一样)是个链表数组表头是SOCK_RAW/STREAM/DGRAM/MAX
+这些, node是inet_protosw结构包含proto, type, protocol等.
+proto就是protocol对应的协议, 这个必须记住!
+struct proto_ops inet_stream_ops.这里是对应的sock的操作. 我们思考一下.
+感觉上我们只要有一个proto就够了, 为什么多了一个proto_ops为什么?
+我直观上认为proto 本身就是ops了!
+实际上这些proto_ops是proto的抽象, 中间层, 最终还是要调用proto, 如tcp_prot
+只能怪proto_ops名字起地不好.更好的名字是:
+proto_ops -> inet_ops(内核里真没这个名字)
+proto -> proto_ops
+算了.
+受肉开始:
+
+	sock->ops = answer->ops;sock是socket, ops是proto_ops如inet_stream_ops
+此时socket对应的是domain和type抽象结合的ops, 如inet_stream_ops. 这就是亮点.
+实际上是属于socket layer的ops!应为落脚点是stream/sockraw这些
+接下来申请真正的sock结构
+
+	sk = sk_prot_alloc(prot
+交织的线
+socket -> sock
+proto_ops -> proto
+sock这个结构是真正属于domain的, 不同于socket. socket和sock是指针的关系.
+而sock和tcp/inet sock这些是千面神的关系, 一个本体.
+申请后就是处世化, 先是inet 层, 之后是具体的proto 如sk->sk_prot->init
+
+	tcp_v4_init_sock
+这是和协议相关的, 这里inet_connection_sock *icsk = inet_csk(sk);
+先获得tcp connect的属性的sock, 初始化这个ops:
+
+	icsk->icsk_af_ops = &ipv4_specific;
+我们详细看看, 这个函数的语义, icsk_af_ops这里指定了, 所谓的基于连接的
+socket的ops方法.这是什么语义呢? 或者说为什么来了个这个.
+为什么叫这个名字, 首先能确认的是icsk_af_ops都是和ip相关的也就是"地址"了.
+显然纵观tcp的5个属性只有icsk这个是和地址关系最为密切的!所以network层相关的
+放到这里ok!
+我们看到了一个熟悉的面孔tcp_transmit_skb() 就是skb_clone和pskb遇到的.
+这个函数调用了icsk->icsk_af_ops->queue_xmit=ip_queue_xmit
+这下子就全明白了, tcp的下面的疆界是icsk_af_ops!!!
+这也是ip的起始之地, 轮回的广场!
+我们来回忆一下整个受肉的过程.
+先是sockfs那里申请socket 拿到proto_ops.
+之后是申请sock, inet_sock初始化, tcp初始化和icsk->icsk_af_ops = &ipv4_specific;
+完了.
+socket和inode放到一起.
+下面几个tcp/inet/icsk sock 一初始化就完了. 起始很简单.
+接下来, socket和fd关联下就完了, 这就是walkthrough啊:
+sock_map_fd这个函数是真正关联read和socket的!
+
+	sock_alloc_file 关联socket_file_ops到file!read就是这里取的.
+看下connect
+sock = sockfd_lookup_light(fd,
+完了, sock是socket.
+
+看下read
+file->f_op->read_iter =sock_read_iter-> sock->ops->recvmsg
+其中struct socket *sock = file->private_data;
+那么这个inode有毛用啊?可能是inode保存了, mode, u/gid为了权限吧.貌似这样.FIXME!
+好吧这样 bsd socket layer就结束了.
+显示申请socket 和inode 初始化proto_ops.
+申请sock附上proto, 之后是inet_sock, 再是具体协议相关的tcp_sock,
+ 和icsk_af_ops = &ipv4_specific
+之后是file结构和对应socket_file_ops没了, 真的完了.
+换了raw 和icmp呢?kao,竟然就叫ping_prot, 这他妈逼格也太高了吧.
+直接通过socket_file_ops连接到了ping_v4_sendmsg 直接ipv4了
+收的化是用户态&sk->sk_receive_queue. ping_recvmsg->skb_recv_datagram
+底层是icmp_rcv-> icmp_pointers->ping_rcv ->sock_queue_rcv_skb到sk_receive_queue
+ping可以用dgram和raw两种方法实现.
+看来这就是netstat看不到ping的原因.虽然不是端口
+发送的时候inet_sendmsg -> ping_get_port->inet_num, 竟然是ping table比较ping的地址
+再看一言PF packet
+po的名字太恶心叫 p_sock 不好吗?
+        po->prot_hook.func = packet_rcv;
+
+        if (sock->type == SOCK_PACKET)
+                po->prot_hook.func = packet_rcv_spkt;
+
+        po->prot_hook.af_packet_priv = sk;
+这就是packet的真相, 实现的不错!
+
+那么socket layer还有什么
+sk_backlog_rcv 是在!sock_owned_by_user(sk)调用的.貌似用户态在ioctl吧.
+暂时backlog 收包.那么l2tp_ip_recv 调sk_receive_skb->他 做什么用呢?
+原来是所谓的l2tpcontrol报文啊.
+proto是l2tp_ip_prot
+也就是说sock 层可以暂存报文.
+没了
+感觉sock就是初始化sock, 之后收包找sock, 发包ping需要bind port就完了.
+收发包用什么队列还是proto自己说了算的.
+
+## FAQ
+* FIXME sock->pfmemealloc
 Yes, I only wanted to drop the packet if we were under pressure
 when skb was allocated. If we hit pressure between when skb was
 allocated and when __netdev_alloc_page is called,
@@ -636,37 +785,32 @@ allocated and when __netdev_alloc_page is called,
 
 socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create
 
-* Abstruction Concepts of socket
-sock_common: 5 tuples, the essence of sock
-inet_timewait_sock: deal heavily loaded servers without violating the protocol specification 
-sock: network sock
-atalk_sock: apple talk
-unix_sock: unix_address
-netlink_sock:portid
-socket: BSD socket with VFS stuff
-inet_sock: INET sock, sock_common inet-nise!ip addr, Multicast, TTL 
-inet_connection_sock: INET connection oriented sock, Pluggable congestion control hook, Delayed ACK control data
-tcp_sock: tcp sock, snd_cwnd, tcp_options_received, reordering, keepalive_probes
+* FIXME inet_timewait_sock 
+deal heavily loaded servers without violating the protocol specification 
 
 * sk_set_memalloc
 SOCK_MEMALLOC, sock has feature mem alloc for free memory.
 只有到了sock层才能分辨, sock是否是memalloc的.
 sk_filter
+在socket layer, 我们看到我们有linker以上的收发包的能力, 内核栈还是很灵活的.
 
-
-## Session
-In computer science, in particular networking, a session is a semi-permanent interactive information interchange
-session，中文经常翻译为会话，其本来的含义是指*有始有终*的一系列动作/消息
-[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
-[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
-
-## Virtul circuit
-A virtual circuit (VC) is a means of transporting data over a packet switched computer network 
-in such a way that it appears as though there is a dedicated physical layer link between the source and destination end systems of this data. 
-
+下面进入到核心tcp 和 ip协议.
 #Transport layer
+不涉及具体的协议内容:), 只是看看内核都做了哪些优化, 变种特工.
+tcp的核心发包函数tcp_write_xmit and tcp_transmit_skb
+上面主要是和cork和nagle有关
+完了
+在tcp协议的5点基础属性, 后世对tcp做了很多优化!
+
+
 Details in l4.md
 #Network layer
+ip_append_data 和ip_push_pending_frames弄frag_list
+ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
+把&sk->sk_write_queue上的数据最后编程skb链表变成了, 还skb pull掉了潜在的ip 头部
+第一个skb->frag_list的成员. 用的不太多啊.
+ip_append_data中间出了以为如果可以ufo 那么就到frags的碗里去!
+否则就生成一串skb挂到&sk->sk_write_queue上, 
 Details in l3.md
 # Data link layer
 Details in l2.md
@@ -708,8 +852,3 @@ inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem
 * nic init
 e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
 vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
- 
-# FAQ 
-每一层包的大小.
-
-
