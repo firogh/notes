@@ -5,6 +5,17 @@ date: 2015-02-27 15:46:12
 category: kernel
 ---
 
+
+# open()
+最烦, 看什么系统调用参数了. 
+那一大堆很少用到的组合还有undefined, 太扯淡了.
+也说不上碎碎的问题, 要理解着来, 看man 手册, 贴子显然不是
+最后的注意还是看实现吧.
+build_open_flags()还是看不出
+man里面有一句
+ The (undefined) effect of O_RDONLY | O_TRUNC varies among implementations.  
+On many systems the file is actually truncated.
+
 #Hacks
 I suddenly find that a good way to understand fs in kernel is to manupulate a small and complete fs, like ramfs or tmpfs.
 
