@@ -8,6 +8,8 @@ category: kernel
 # page
 [An introduction to compound pages](https://lwn.net/Articles/619514/)
 
+# Design your own memory managerment 设计你自己的内存管理机制
+
 
 # Memroy mangement
 ## GFP flags
