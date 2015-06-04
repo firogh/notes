@@ -32,6 +32,11 @@ trail and error
 
 明确概念的内涵和外延 --石里克.
 
+吾尝终日而思矣，不如须臾之所学也；吾尝跂而望矣，不如登高之博见也。
+登高而招，臂非加长也，而见者远；顺风而呼，声非加疾也，而闻者彰。
+假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。
+君子生非异也，善假于物也。 --荀子 劝学
+
 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地; --Aaron Swartz,25:20
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
 and you know follow the things that adults told you to do,and that your parents told you to do, and that society tells to do.
