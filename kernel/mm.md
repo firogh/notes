@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2014-12-28
-title: Linux kernel memory management
+title: Linux memory management
 category: kernel
 ---
 
