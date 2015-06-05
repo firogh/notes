@@ -191,6 +191,7 @@ Check A journey to RCU
 
 
 ### 学以致用
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=32070019&auto=0&height=66"></iframe>
 
 	Anti-cogniation!
 上面所有的认知都停留在思维层面．这些知识都不是来自真实的使用场景．
@@ -216,7 +217,7 @@ Check A journey to RCU
 
 所以别管什么狗屁认知理论了, 说一千句都没有你干一件牛逼.
 社区那些大牛所创造的成就, 那个是从书里读出来的?都是实践一点点改变创造
-而来.
+而来. 别逃避, 上吧.
 
 ### 结束语
 学习本身就是找到看世界的角度. 
