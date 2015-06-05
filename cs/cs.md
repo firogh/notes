@@ -4,13 +4,22 @@ title: Computer science a kernel programmer's perspective
 date: 2015-02-27 15:46:14
 category: cs
 ---
+# Reference
+[Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
+
+## FIXME concepts
+code: 手电筒 ->　莫尔斯码
+Numeral system: 手指头　-> 二进制
+logic: 三段论 -> bool -> 电路开关 亚里士多德 布尔 香农
+A Symbolic Analysis of Relay and Switching Circuits
+The Mathematical Theory of Communication
+触发器 英国射电物理学家 William Henry Eccles
+晶体管
 
 #Epistemology
 石里克 <普通认识论>
 胡适<实用主义>
-Faq list
-Incessancily continuously Share your what read, thought
-GEB
+
 * s3c24xx@gmail.com
 凭什么我们就如此受制于人or 书？他就能搞懂，而我就不行呢？”。
 其实，我们需要的是一种重其意而忘其形的根本之道，
