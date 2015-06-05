@@ -9,6 +9,27 @@ category: kernel
 [An introduction to compound pages](https://lwn.net/Articles/619514/)
 
 # Design your own memory managerment 设计你自己的内存管理机制
+内存的存在是为了弥合cpu和disk之间速度差异, 所谓的加速.
+加入内存不存在, cpu 如何访问disk. 算了脑洞太大了...有空再想.FIXME
+我们假定内存合理的存在了, 那么我们如何把内存资源分配给?
+受virtual memory干扰太强了.
+感觉上我是不会直接想出VM来, 每个进程分一块, 这个不合理进程多了, 就不够了.
+我已经无能为力了, 那就看看这个东西谁发明的吧.
+德国物理学家Fritz-Rudolf Güntsch at the Technische Universität Berlin 
+in 1956 in his doctoral thesis第一次提出了VM的概念.
+让我门回到正题上来, 那么memory managerment到底解决的是什么问题呢?
+先不去关内核和disk的关系, 因为他实际是cpu和内存之间的逻辑延伸.
+没错我们在解决的是资源分配的问题, 计划经济, 资本主义都是资源分配模式.
+VM确实牛x, 我们就按着这个来吧.
+首先你的知道物理内存的信息, 先不管.
+之后就是设计一套虚拟和物理映射机制.
+这里我们对page VM, intel 的segment VM探索.
+直接看Page tables.
+之后就是虚拟内存管理.
+算了, 这真的实在没什么好脑洞的.
+反倒是按着标准的思维流程更好一些.
+
+
 
 
 # Memroy mangement
