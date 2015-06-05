@@ -24,24 +24,6 @@ Firo
 09 13 1989
 Present: Skateboard: Redhat.
 
-Miss xxx
-06 06 1994
-Present:
-
-#Job hooping
-*15 March +Dimisson and resignation
-
-*25 Apr Share option
-
-*target job
-Kernel(especially netdev)
-
-*Hopping plan
-Share love, Join kernel community, submit patches
-Imporve kernel problem resolving abilites
-More codes in kernel netdev.
-Know more essential generic kernel knowledge.
-
 #Japanes
 *Money Monthly
 100YEN			5.83RMB
