@@ -17,6 +17,10 @@ C11
 C Traps and Pitfalls
 Expert C Programming
 [compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
+## Label
+It is considered to be safer that the label reflect what happens at the
+destination, and not the reason for reaching the label. --Julia
+
 ## Type
 * Object type and function type
 * Object -- void, scalar,aggregate types, composite

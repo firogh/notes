@@ -30,50 +30,6 @@ Intr “Restore disabled interrupts.”
 Free “Do not use freed memory.”
 Float “Do not use floating point in the kernel.”
 Size “Allocate enough memory to hold the type for which you are allocating.”
-## Sparse
-## Coccinelle
-Documentation/coccinelle.txt
-http://pagesperso-systeme.lip6.fr/Julia.Lawall/tutorial.pdf
-
-##BUG list
-./drivers/pcmcia/sa11xx_base.c need clk_put
-
-
-##patch formate
-* Julia Lawall Sorry to be picky, 
-but normally people put a space after the colon.  Also,
-the subject line could be shorter: Remove unneeded cast.  
-The description part of the subject doesnt have to be unique, 
-just the whole thing, asfter the [PATCH] part.
-
-* Dan Carpenter
-Otherwise your patch was fine, btw.  Other improvements.
-Don't put "Drivers:" in the subject.
-On Wed, Apr 22, 2015 at 09:10:50PM +0800, Firo Yang wrote:
-> From: Firo Yang <firogm@gmail.com>
-Don't include this line.  We can get it from you email address.
-
-Include everyone from the ./scripts/get_maintainer.pl output except
-don't include linux-kernel@vger.kernel.org if there is another mailing
-list there already.
-
-* To find  patch prefix
-git log --oneline  path/to/file.c
-
-* upgrad patch
-git format-patch --subject-prefix="PATCH v2" master..firo2
-
-* example mail in thread
-proxychains git send-email --subject "[PATCH v2 0/15] Remove unneeded casts of memory-alloc function return values" --thread --compose --confirm=compose --to firogm@gmail.com *.patch
-
-* [PATCH 0/N] manully
-see above
-
-* Patch kind
-Style fix in
--	remove_wait_queue(entry->wait_address,&entry->wait);
-+	remove_wait_queue(entry->wait_address, &entry->wait);
-
 
 #KVM
 * KVM architecture
