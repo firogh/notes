@@ -2,3 +2,12 @@
 
 #Static analysis
 * Spar
+
+# misuse unsigned
+acpi_gpiochip_pin_to_gpio_offset in acpi_gpio_adr_space_handler
+change gpio pin from unsigned to signed in acpi callback
+    The signed error will be wrongly used as valid gpio offset
+
+# memory leak
+request_firmware_nowait
+fw_work = kzalloc(sizeof(struct firmware_work), gfp);

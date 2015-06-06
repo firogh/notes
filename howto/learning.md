@@ -189,9 +189,8 @@ Check A journey to RCU
 	一种是由内在自己主导的塑造过程, 具有强烈的个人主义磁场.
 国内电影最内体现拼凑的塑造过程, 当然, 国外也有;导致了非常明晰的差异.
 
-
-### 学以致用
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=32070019&auto=0&height=66"></iframe>
+### 学以致用
 
 	Anti-cogniation!
 上面所有的认知都停留在思维层面．这些知识都不是来自真实的使用场景．
