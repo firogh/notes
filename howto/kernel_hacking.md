@@ -4,34 +4,28 @@ title: Linux kernel hacking 攻略
 category: howto
 ---
 
+
 #git
 [gittutorial - A tutorial introduction to Git](http://git-scm.com/docs/gittutorial)
-
 # linux source code
 [Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)
 要add git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git不是https.
-
 我之前改了好多bug基于linus的分支, 提交后被告知别人已改. 后来Julia告诉我要基于linux-next开发.
-
 我的linux next remote 就叫next, 基于其创建开发分支.
 
 	git branch now next/master
 	git pull next master:now
-
 # Fix kernel mistakes
 内核至今如此优秀就是因为, 成千上万前赴后继的开发者笔耕不缀的结果.
 别当豆包不当干粮, 虽然, 你不能设计出很牛的算法, or 什么子系统,
 但是内核还有很多问题有待解决, 正所谓老虎也要打, 苍蝇也要拍; 千里之堤毁于蚁穴.
 我提过好些这种patch Dan Carpenter都告诉我Linus已经改了.
-
-## TODO
+## kernel newbie上有个list
 [KernelJanitors/Todo](http://kernelnewbies.org/KernelJanitors/Todo)
-* Style fix in
+* Style fix
 如:
 remove_wait_queue(entry->wait_address,&entry->wait);
 remove_wait_queue(entry->wait_address, &entry->wait);
-
-
 ## Smatch
 smatch这个工具是Dan写的主要就是为了找到内核的小问题, 基本用法:
 
@@ -55,6 +49,7 @@ http://pagesperso-systeme.lip6.fr/Julia.Lawall/tutorial.pdf
 	5455c8c firmware: Fix memory leak in error path
 	e0fd9b1 firmware: use const for remaining firmware names
 	f9692b2 firmware: fix possible use after free on name on a
+主义冒号:后一定要有一个空格!
 你会还是看下Document下的submitting的文档.
 之后commit:
 先是类似上面的一行oneline 简要说明
@@ -95,7 +90,14 @@ make path/to/modification/file.o
 
 这些都是比较简单(代码量上)的patch, 要想提交深度的还需要对某方面的深度.
 基本上这就完了, 你的真正的patch就给社区了.
+# 进阶decent
+这个是昨天晚上改drivers代码时候, 看到TODO的注释猛然想到的.
 
+	grep -nr 'FIXME' --include="*.c"  ./ | tee fixmek.log
+	grep -nr 'TODO' --include="*.c" ./ | tee todok.log
+	wc -l fixmek.log 
+有6000多个.
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=32063363&auto=1&height=66"></iframe>
 # Deeply involved
 http://vger.kernel.org/~davem/net_todo.html
 这个列表上的基本都过期了....哎
@@ -105,15 +107,12 @@ http://vger.kernel.org/~davem/net_todo.html
 体系出来:-) 确实随着现代信息科学给社会带来的巨大变化, 哲学也必须要更新.
 才能更好的服务于人.
 这几天就在, 找内核哪里还不完善, 自己能补上, 今天6号了.
-
-
 #patch formate advices
 * Julia Lawall Sorry to be picky, 
 but normally people put a space after the colon.  Also,
 the subject line could be shorter: Remove unneeded cast.  
 The description part of the subject doesnt have to be unique, 
 just the whole thing, asfter the [PATCH] part.
-
 * Dan Carpenter
 Otherwise your patch was fine, btw.  Other improvements.
 Don't put "Drivers:" in the subject.
@@ -124,7 +123,6 @@ Don't include this line.  We can get it from you email address.
 Include everyone from the ./scripts/get_maintainer.pl output except
 don't include linux-kernel@vger.kernel.org if there is another mailing
 list there already.
-
 * To find  patch prefix
 
 	git log --oneline  path/to/file.c
@@ -134,3 +132,13 @@ list there already.
 * 提交多个patch 要手动生成一个[PATCH 0/N], 这个0就是要写简要描述的.
 
 	proxychains git send-email --subject "[PATCH v2 0/15] Remove unneeded casts of memory-alloc function return values" --thread --compose --confirm=compose --to firogm@gmail.com *.patch
+* Dave Miller偏好
+@@ -325,13 +325,15 @@ static inline void empty_child_dec(struct key_vector *n)
+  static struct key_vector *leaf_new(t_key key, struct fib_alias *fa)
+  {
+-       struct tnode *kv = kmem_cache_alloc(trie_leaf_kmem, GFP_KERNEL);
+-       struct key_vector *l = kv->kv;
++       struct tnode *kv;
++       struct key_vector *l;
+Dave Miller usually prefers it if variables are ordered from longest to shortest.  
+So you should probably have l defined first, and then kv.
