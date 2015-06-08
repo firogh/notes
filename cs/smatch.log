@@ -1,0 +1,15 @@
+#0  match_condition (expr=<optimized out>) at check_deref_check.c:81
+#1  0x0000000000412fd6 in pass_sym_list_to_client (data=0x7f84cdbf3450, fn=<optimized out>) at smatch_hooks.c:211
+#2  __pass_to_client (data=data@entry=0x7f84cdbf3450, type=type@entry=CONDITION_HOOK) at smatch_hooks.c:231
+#3  0x0000000000408112 in split_conditions (expr=0x7f84cdbf3450) at smatch_conditions.c:420
+#4  0x0000000000408577 in handle_preop (expr=<optimized out>) at smatch_conditions.c:143
+#5  split_conditions (expr=expr@entry=0x7f84cdbf3490) at smatch_conditions.c:394
+#6  0x0000000000408ad3 in __split_whole_condition (expr=0x7f84cdbf3490) at smatch_conditions.c:444
+#7  0x00000000004045fd in __split_stmt (stmt=stmt@entry=0x7f84cdce1910) at smatch_flow.c:871
+#8  0x0000000000404551 in split_compound (stmt=0x7f84cdce1820) at smatch_flow.c:795
+#9  __split_stmt (stmt=0x7f84cdce1820) at smatch_flow.c:848
+#10 0x00000000004060f5 in split_function (sym=sym@entry=0x7f84cdc05cc8) at smatch_flow.c:1366
+#11 0x0000000000407566 in split_functions (sym_list=0x7f84cf3c5f10) at smatch_flow.c:1547
+#12 smatch (argc=<optimized out>, argv=<optimized out>) at smatch_flow.c:1579
+#13 0x00000000004027ca in main ()
+
