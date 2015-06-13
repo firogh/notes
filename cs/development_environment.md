@@ -96,6 +96,13 @@ git log -S "RTN_UNSPEC" --source --all
 
 * find commit id of a tag
     git rev-parse v2.6.12-rc2
+
+*  blame before a commit
+git blame sha1^ -- path/to/file
+
+* find commit after specific commit
+git log  --oneline  --ancestry-path   c146066ab^^..HEAD  net/ipv4/ip_output.c
+
 #git pull
 git pull {repo} {remotebranchname}:{localbranchname}
 git pull origin xyz:xyz
@@ -111,8 +118,6 @@ git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=fi
 
 #git diff
 git -c core.whitespace=tab-in-indent diff --check
-
-
 
 #Make
 ## useful usage
