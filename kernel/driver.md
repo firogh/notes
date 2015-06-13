@@ -79,5 +79,6 @@ really_probe
 > function is not called from within a probe function, for safety, the kfree
 > is converted to a devm_kfree, to both free the data and remove it from the
 > device in a failure situation.
-
-
+*for noop devm_kmalloc_release 
+devm_kmalloc()->dr = alloc_dr(devm_kmalloc_release, size, gfp);
+see release_nodes() ->kfree(dr);

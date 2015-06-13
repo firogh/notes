@@ -15,6 +15,13 @@ category: howto
 
 	git branch now next/master
 	git pull next master:now
+
+# 为什么你要提patch, 社区的困惑是什么?
+每个kernel newbie 都应该完整看完这个mail list
+http://thread.gmane.org/gmane.linux.kernel/683798/focus=684297
+你能看到鹰派的Al还有温和派Andrew Morton.
+
+
 # Fix kernel mistakes
 内核至今如此优秀就是因为, 成千上万前赴后继的开发者笔耕不缀的结果.
 别当豆包不当干粮, 虽然, 你不能设计出很牛的算法, or 什么子系统,
@@ -39,6 +46,7 @@ Coccinelle是 Julia Lawall 写的静态检测工具.very nice.
 自己研究吧
 Documentation/coccinelle.txt
 http://pagesperso-systeme.lip6.fr/Julia.Lawall/tutorial.pdf
+
 ## 生成patch
 先修改.
 之后git add
@@ -66,6 +74,14 @@ commit后, 生成patch
 
 	0001-firmware-Fix-memory-leak-in-error-path.patch
 commit id 是5455c8c3284a63e2673d1be7f040fb245cbf9be9
+
+## 测试patch
+curl: (60) Peer's certificate issuer has been marked as not trusted by the user.
+More details here: http://curl.haxx.se/docs/sslcerts.html
+这个边界问题, 改了好一会, 这么解决:
+mv ~/.pki ~/.pki.sav
+
+
 
 ## 发送patch
 天朝用户自己打梯子吧proxychains shadowsocks.
@@ -97,7 +113,7 @@ make path/to/modification/file.o
 	grep -nr 'TODO' --include="*.c" ./ | tee todok.log
 	wc -l fixmek.log 
 有6000多个.
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=32063363&auto=1&height=66"></iframe>
+
 # Deeply involved
 http://vger.kernel.org/~davem/net_todo.html
 这个列表上的基本都过期了....哎
