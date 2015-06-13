@@ -20,6 +20,11 @@ category: howto
 每个kernel newbie 都应该完整看完这个mail list
 http://thread.gmane.org/gmane.linux.kernel/683798/focus=684297
 你能看到鹰派的Al还有温和派Andrew Morton.
+至少把这个看完:
+https://lwn.net/Articles/284099/
+
+为什么http://kernelnewbies.org/这么重要网站, 不做的好一点, 至少界面友好点.
+应该找个机会, 整一下.
 
 
 # Fix kernel mistakes
