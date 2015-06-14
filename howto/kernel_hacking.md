@@ -20,6 +20,7 @@ kernel panic 和oops的问题, 基本上个人感觉难度非常太大就无极�
 我几次挫败都是, 因为没能找到合适内核事情去做, 最终没有下文了. 
 今天, 我在给社区提了20个左右的patch 10几个被接收了. 我现在找到了一条成长路.
 ## 内核我现在认为可以给新人做得事
+https://lwn.net/Articles/284099/  这个帖子, 提供了新手可以做得事情, 我觉得非常好.
 smatch coccinelle的分析结果.
 源码中标注的FIXME和TODO.
 内核bugzilla kerneloops上问题, 这个很难.
@@ -49,8 +50,6 @@ smatch coccinelle的分析结果.
 每个kernel newbie 都应该完整看完这个mail list
 http://thread.gmane.org/gmane.linux.kernel/683798/focus=684297
 你能看到鹰派的Al还有温和派Andrew Morton.
-至少把这个看完:
-https://lwn.net/Articles/284099/
 为什么http://kernelnewbies.org/这么重要网站, 不做的好一点, 至少界面友好点.
 应该找个机会, 整一下.
 # Fix kernel mistakes
