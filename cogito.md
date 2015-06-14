@@ -8,20 +8,6 @@ category: firo
 #IBM maturity model
 https://www-935.ibm.com/services/uk/cio/pdf/leverage_wp_data_gov_council_maturity_model.pdf
 
-# overview
-* 理性
-模仿与思考
-只能达成概念上的一一性
-大多数, 都是很诚实的.
-既然是概念, 就应停留在语言层面.人类的就够了.
-不是所有知识都能通过实践获得.非实践知识,
-not sure, 看到别人的聪明也要看到傻
-实践验证应该是以概念体系位整体, 不应该是某个思维碎片.
-* 实践
-trail and error
-还是要看到优劣, 所谓批判.
-
-
 # Critical  cognition
 * Original construct --Firo
 对于理解者, 分为:
