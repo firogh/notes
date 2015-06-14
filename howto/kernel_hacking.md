@@ -4,6 +4,35 @@ title: Linux kernel hacking 攻略
 category: howto
 ---
 
+# kernel hacker之路
+我实在太想聊这个话题 -- 内核hacker的成长之路!
+不是教你写第一个kernel module, 就灭火了. 而是持续的一步步成长为
+内核的中坚力量, 甚至是maintainer.
+作为一个内核爱好者, 从接触到现在已经3年半了. 然而, 我对自己是非常失望的.
+因为我看了3年多的书, 从今年(15)5月才开始, 给社区提补丁.
+起始我在12年的11月份曾经给社区, 提过几次补丁. 后来有那么两三次, 想帮着修复
+kernel panic 和oops的问题, 基本上个人感觉难度非常太大就无极而终了.
+5月份这次, 我是因为实在不想在看书籍了, 市面上稍微有点名的书籍, 我都看过.
+实在太厌烦再看书了, 我把自己和另外一个内核hacker 王聪做了对比, 得出结论:
+
+	赶快滚去给社区提patch! 
+我挨个看了王聪给社区提的前50个patch. 都是很简单的修改.
+我几次挫败都是, 因为没能找到合适内核事情去做, 最终没有下文了. 
+今天, 我在给社区提了20个左右的patch 10几个被接收了. 我现在找到了一条成长路.
+## 内核我现在认为可以给新人做得事
+smatch coccinelle的分析结果.
+源码中标注的FIXME和TODO.
+内核bugzilla kerneloops上问题, 这个很难.
+找一个和内核相关的工作驱动啊, 网络开发, 虚拟化, 存储都非常赞.
+自己搞个feature, 感觉更难, 这个需要需求驱动.
+作为新人, 我觉得前两个就可以获取很多成长.
+## 适合内核hacker的成长.
+兴趣
+要不断提升提的patch难度, 不能一直搞smatch的警告, 有梯度.
+持续的坚持.
+良好的学习方法.
+
+无论如何, 我要开始这么干了!
 
 #git
 [gittutorial - A tutorial introduction to Git](http://git-scm.com/docs/gittutorial)
@@ -16,17 +45,14 @@ category: howto
 	git branch now next/master
 	git pull next master:now
 
-# 为什么你要提patch, 社区的困惑是什么?
+# 你提patch, 社区的困惑是什么?
 每个kernel newbie 都应该完整看完这个mail list
 http://thread.gmane.org/gmane.linux.kernel/683798/focus=684297
 你能看到鹰派的Al还有温和派Andrew Morton.
 至少把这个看完:
 https://lwn.net/Articles/284099/
-
 为什么http://kernelnewbies.org/这么重要网站, 不做的好一点, 至少界面友好点.
 应该找个机会, 整一下.
-
-
 # Fix kernel mistakes
 内核至今如此优秀就是因为, 成千上万前赴后继的开发者笔耕不缀的结果.
 别当豆包不当干粮, 虽然, 你不能设计出很牛的算法, or 什么子系统,
@@ -51,7 +77,6 @@ Coccinelle是 Julia Lawall 写的静态检测工具.very nice.
 自己研究吧
 Documentation/coccinelle.txt
 http://pagesperso-systeme.lip6.fr/Julia.Lawall/tutorial.pdf
-
 ## 生成patch
 先修改.
 之后git add
@@ -79,15 +104,8 @@ commit后, 生成patch
 
 	0001-firmware-Fix-memory-leak-in-error-path.patch
 commit id 是5455c8c3284a63e2673d1be7f040fb245cbf9be9
-
 ## 测试patch
-curl: (60) Peer's certificate issuer has been marked as not trusted by the user.
-More details here: http://curl.haxx.se/docs/sslcerts.html
-这个边界问题, 改了好一会, 这么解决:
-mv ~/.pki ~/.pki.sav
-
-
-
+复杂的patch要编译内核, 安装的机器上跑一下.
 ## 发送patch
 天朝用户自己打梯子吧proxychains shadowsocks.
 基本步骤是
