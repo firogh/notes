@@ -2,7 +2,7 @@
 layout: post
 date: 2014-12-28
 title: The perspective of thinking
-category: firo
+category: philosophy
 ---
 # Critical  cognition
 明确概念的内涵和外延 --石里克.
@@ -20,7 +20,7 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 人类是无法知道真理的，他们所能做的，最多就是通过不断的实验和错误来摸索、接近真理。 --Karl Popper, 索罗斯 
 明变, 求因, 评判,实验是真理的唯一试金石 -- 胡适
 
-# 胡适日记全集》第三册，1921年7月10一则
+# 胡适日记全集 第三册，1921年7月10一则
 杜威先生不曾给我们一些关于特别问题的特别主张，——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，
 使我们用这个方法去解决我们自己的特别问题。
 * （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
