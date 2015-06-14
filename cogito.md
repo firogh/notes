@@ -66,25 +66,20 @@ Origin trace 起源主义, 更偏重发生的原因,起源.
 第一件，——注意具体的境地——使我们免去许多无谓的问题，省去许多无意识的争论。
 第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
-
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
 trial and error
-
 * Abstruction method
 1. 解决知识的skeleton, 原理.
 2. 建立同其他原理相似的知识的联系
 3. 得到从一般的定义推理.
-
 * 为什么用, 怎么用, why/how to use
 谁产生的, 怎么产生的 or 什么样子
 对齐, cpu 访问内存的时候用, 直接受用于编译的结果.
 编译器生成struct代码的时候, 产生的代码安基础类型对齐, 
-
 * Exploration in Scott Young
 Depth exploration is the genetic method, 因果
 Lateral exploration 和周围的关系, 涵盖比较广.实验法从具体事实与境地下手.
 Vertical Exploration is the abstruction method, focus on mode and link to derivations. It use to connects with other knowledge.
-
 # What is knowledge?
 不是所有知识都能通过实践获得.非实践知识,或许人类语言理解就可以了.
 * conception system 
@@ -99,39 +94,26 @@ mode is an abstructions.
 而且这个框架必须是完整健全的人类语言形式的.
 可以很少, 但必须是明确的, 不能有歧义.
 为了保证语义的明晰,概况能力, 必须要减少表述的内容.
-
 * 从general concept or 直观推导出.
 否则就是记忆.
 Category can be general
-
 * 一一性
-
 * 知识的含量, 通过概念的统摄能力看到, 而不是抽象度.
-
 * The thing that hath been, it is that which shall be; and that which is done 
 is that which shall be done and there is no new thing under the sun.
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 # Growing up -- 人最重要的是会成长! 
 生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
-
 * 成长开始于注意到缺陷, 疑问
 那种概念模糊的地方就是有问题, 比如两个指针相加.
-
 成长不同阶段, 比如页表回收又算法,也有具体的代码实现. 我们只要知道算法就可以了.
-
 Listen, the key is to just... relax. Don't worry about the numbers, don't worry about what the other guys are thinking. 
-
 Dont think... just feel
-
 所谓的自我认知不是达成一切，不是什么事情都要做到完美，而是知道自己所能做到力所能及的事情和无能为力的事情，我要说的是，要学会原谅自己的无能为力 
-
 当缺点和不足出现了, 你意识到它, 并且有意识地去思考这种不足的原因,你就在成长中! 有自己的想法, 这才是成长的本质, 其他都不算成长. 
-
 + 很多时候其实我们的忙碌都是做着自己并不在乎的事情！
-
 一个有创造力的人把太多的时间耗在阅读上，是一种浪费 --尼采
 对于一个哲学家来说，最重要的是独立思考，自己来创造，说出非他不能说出的话来。
-
 不要以为努力过后, 就会得到, 永远也不要这样想. 
 # 人生
 人们一边浪费自己的时间, 一边希望获得更久一些.
