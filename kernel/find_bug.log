@@ -60,3 +60,11 @@ drivers/md/md.c:6394:26: warning: logical not is only applied to the left hand s
     
     By the way, I also fixed a line over 80 charaters warning outputed
     by ./scripts/checkpatch.pl
+
+
+# inline
+size net/ipv6/ip6_output.o
+   text	   data	    bss	    dec	    hex	filename
+  17340	     96	      0	  17436	   441c	net/ipv6/ip6_output.o
+17340	     96	      0	  17436	   441c	net/ipv6/ip6_output.o
+
