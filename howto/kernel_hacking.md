@@ -32,6 +32,9 @@ smatch coccinelle的分析结果.
 终有一天会聚成沧海, 前提是你等得到那天, 不要亏待自己.
 内核之路始终时不那么清晰, 但是反思过后, 你便知道, 该去做什么了.
 这也许是最难受的情况了.
+Linus 之前说过, 搞得内核你得用起来. uml 是个不错的开端.
+用起来才是王道!
+
 #git
 [gittutorial - A tutorial introduction to Git](http://git-scm.com/docs/gittutorial)
 # linux source code
