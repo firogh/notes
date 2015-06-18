@@ -6,27 +6,23 @@ category: firo
 
 #Chronobiology
 Principle: health, effective
-* Develop good eating babits.
-Avoid eating junk food as much as possible.
-
-* Drink a lot of water everyday.
-
-* Rest 10 minutes/hour
-
-* Maintain Mental fitness and Be happy.
-Talking with family
-
 * Physical execise 21:30, 45 minutes
 有氧和无氧隔天锻炼.
 Aerobic exercise: 跑步
 Anaerobic exercise 
-
+同时联系英语听力.
 * Take a bath 22:15
-
-* Better sleep, 8 hours
-Sleep about 22:30 and get up at 6:30.
+* Sleep at 22:30
+Sleep 8 hours
 躺在床上不玩手机
-
+* Getting up at 6:30
+* 伸展下筋骨去洗漱.
+* Develop good eating habits.
+Avoid eating junk food as much as possible.
+* Drink a lot of water everyday.
+* Rest 10 minutes/hour
+* Maintain Mental fitness and Be happy.
+Talking with family
 * Writing, before 22:40, 10 minutes
 Lyubishchev
 Keep diary
