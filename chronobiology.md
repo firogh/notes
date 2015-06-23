@@ -6,10 +6,11 @@ category: firo
 
 #Chronobiology
 Principle: health, effective
-* Physical execise 21:30, 45 minutes
+## Physical execise 21:30, 45 minutes
 有氧和无氧隔天锻炼.
 Aerobic exercise: 跑步
-Anaerobic exercise 
+Anaerobic exercise: 囚徒健身
+一个20天计划, 一天6艺一式, 隔天自增第二式, 以此类推.
 同时联系英语听力.
 * Take a bath 22:15
 * Sleep at 22:30
