@@ -128,6 +128,30 @@ ioremap: physical address->logical address, simlar to vmalloc except we need not
 ##Non CPU-device I/O
 ### I/O channels
 
+## 同步与异步IO
+今天我们要辨析一下同步和异步IO. 我们先解释最基础的概念, 之后用生活化的例子
+完成认知.
+首先是blocking 和 non-blocking这两个概念. 这两个概念实质上是和IO没有关系.
+他们是在说, 比如读数据, 如果没有数据我该怎么办. 也就是说, 他是在IO不存的时候,
+在语义上才是有效, 如果你要读的数据始终存在, 那么你还会考虑阻塞与不阻塞的问题吗?
+那你应该考虑什么? 同步还是异步IO, 倒地什么是同步或者异步呢?
+英文synchronous, syn 和chronous构成, syn是在一起的意思而chronous是时间的意思.
+也就是说在一个时间点上在一起, 那么是谁和谁在意一起呢?其中一个是IO可以肯定, 另外一个
+就是执行IO的发起者, 通常也就是进程. 简单说来这个IO是由进程执行的.
+那么异步IO呢, asynchronous是a + synchronous. a表否定, 我们知道在IO进行的过程中我们的
+进程是始终存在的, 也就是说IO 和进程共享着相同的时间进度, 但是却不在一起.也就是说,
+IO不是由我们的进程完成而是别的进程完成, 是谁呢,是内核线程.
+那么我们就知道只有linux上的aio是符合异步IO的标准, 而多路复用, 如epoll返回是我们和IO是在
+一起, 我们要调用read之类的完成他.
+下面用一个生活化的例子, 说明下linux下的IO.
+比如你要买<百年孤独> 还要买件衬衫, 你会怎么买
+你要先去书店, 如果店家没有货, 如果一个小时后货补齐了你可以等,
+长点你就不愿意等了. 也就是阻塞和不阻塞.之后你要去衣服点.也是同样.
+假如都没货, 你有等不下去, 怎么办? 你又不能一会儿去这家问下书怎么样? 一会儿去衣服店询问.
+这太累人了. 最好的方式, 你告诉店家我要什么, 到货了给我打个电话, 我在过来.
+这就是io多路复用. 可是还有更高明的方法, 没错就是京东了, 我网上下订单, 第二天直接送到家了.
+京东, 为什么成功? 你知道了吧.用户省心啊.对应异步io
+
 ##Interface
 [Methods for designing a CPU's I/O interface generally fall into one of the following categories:](http://www.cs.uwm.edu/classes/cs458/Lecture/HTML/ch11s02.html)
 Completely separate memory and I/O. buses DMA?
