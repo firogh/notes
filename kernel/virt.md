@@ -123,3 +123,13 @@ qemu可以作为虚拟化的工具和kvm,xen联动, 重点看这个.
 
 下面是设备的虚拟化, 这个还是看书去吧.
 
+# 代码实现
+* KVM architecture
+* Kernel running flow
+  svm.ko -> svm_init(svm.c) -> kvm_init(kvm_main.c) ->
+* File
+  svm.c vmx.c kvm_main.c kvm_svm.h
+* Function
+* Struct
+  kvm_x86_ops x86.h
+  vcpu_svm    kvm_svm.h
