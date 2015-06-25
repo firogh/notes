@@ -8,7 +8,6 @@ category: kernel
 本文着重探讨下kvm的实现, 11年在snia的实习的时候, 接触过一点.
 已经过去将近4年了,  当初看到qemu的代码, 被吓到了, 我靠, 这代码量赶上内核了!
 现在kvm核心就1069行当前kernel 4.1 rc7, qemu虽然赶不上kernel但是也不少1144756.
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=1872802&auto=1&height=66"></iframe>
 看过指环王的, 都知道神奇中土大陆是托尔金虚构的魔幻世界,那里活着阿拉贡和
 他的朋友们, 以及他们精彩的历程.人的想象力, 如此神奇, 他能使人超越时间与
 空间去体验到不同生命历程.
