@@ -8,13 +8,59 @@ category: kernel
 # Reference
 [Core algorithms deployed](http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed#)
 
+# Introduction 
 说实话, 这年头想要做点学问还是需要点定力的.
 就拿内核中的数据结构与算法来说, 也不是说, 别人来了句, 我靠, awesome!
 你也过来瞅两眼, 也能心生感慨, what the fuck! how can this be true?
-我说的定力, 不是两耳闻听窗外事, 一心还读圣贤书!
+我说的定力, 不是两耳闻听窗外事, 一心还读圣贤书!而是思维的能力.
 这是见真章的地方, 不动脑子是玩不转的, 最终浮于表面, 不得所获.
 
 kfifo 和lock-less list 是kernel中两个基础的数据结构, 用得也不多.
 说实在的这些都不是什么特别难的技术, 但是这种较真的东西使最能考察一个人的能力的.
 什么能力? 写个链表, 队列谁不会? 这里考察的是人的创造力!
+所谓创造力就是一种组合的能力.拆分也是一种组合.
+
+今天, 我们来聊一聊算法. 数据结构在我看来是算法的一种.
+到底是什么呢? algorithm这个词来自中古拉丁文algorismus音译自一位阿拉伯数学家的名字
+al-Khwarizmi, 这只是一个姓, 类似中文赵钱孙李, al-Khwarizmi这个姓表示
+[花剌子模](https://zh.wikipedia.org/wiki/%E8%8A%B1%E5%89%8C%E5%AD%90%E6%A8%A1)地方的人.数学家的全名是Abū ‘Abdallāh Muḥammad ibn Mūsā al-Khwārizmī
+花剌子模有太阳升起之地之意源于这个国家被大量沙漠围住, 气候干燥. 而lowland, 则是因为其海拔很低.
+显然, 这不是我们关心的算法本质. 那么, 为什么欧洲人会把al-Khwarizmi, 作为算法的称谓呢?
+al-Khwarizmi向西方引入了10进制计数法和代数. 同时他的名字慢慢被赋予了现代算法的涵义.
+也就是algorithm的涵义是慢慢衍生出来的.
+那我们能否给算法下一个定义呢:
+
+	An informal definition could be "a set of rules that precisely defines a sequence of operations."
+简单说, 就是一个执行序列. 这有点太概况了.我们需要一个更精准的定义.
+同时, 我并不把他限制在计算机科学内.
+如果你读过石里克的[普通认识论](http://book.douban.com/subject/1443472/)你就会知道, 光的定义也是一波三折.
+所谓的定义, 实际上事物某些属性的集合!
+我们来考察算法的属性.诚如前面的定义算法是一个执行序列.
+那么算法的表现形式呢? 他是抽象的, 根植于人类的思维逻辑当中. 而人的逻辑是通过
+语言表述的.所以算法的重要属性就是他是语言这种形式表现出来的.
+所以我们的定义, 变成一个被执行的语言序列.
+我们还是不满足, 你难道就让我去用这么一句话, 去面对面试时候的各种算法题吗?
+现在我们从算法解决的问题入手? 这是算法的目的. 我的目的是让算法更加的通俗易懂.
+不是让人们说道, 算法就会去向排序, 二叉树. 这跳跃太大了, 在算法的基础定义和实际的算法之间,
+还有一些内容, 值得我们挖掘.我们考察排序和二叉树, 这两种算法:
+
+	A sorting algorithm is an algorithm that puts elements of a list in a certain order.
+从排序算法的定义中, 我们窥探到了算法的一些本质属性. 使对象具备某种属性.这里面有序就是一种属性.
+再来看二叉树:
+
+	a binary tree is a tree data structure in which each node has at most two children, 
+	which are referred to as the left child and the right child.
+无论是二叉树, 还是排序, 我们都能感受到, 算法在展现一种魔法, 使用元素的建立某种空间结构/关系.
+而且这种空间关系
+
+
+
+
+
+
+
+
+
+
+
 
