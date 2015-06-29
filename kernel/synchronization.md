@@ -47,7 +47,7 @@ Dining philosophers problem
 * Prioirty inversion
 * Busy waiting
 
-#Mutual exclusion
+# Mutual exclusion
 ## spinlock - unsleepable mutex
 [Linux 内核的排队自旋锁FIFO Ticket Spinlock](https://www.ibm.com/developerworks/cn/linux/l-cn-spinlock/)
 spinlock保护的critical section执行时间短且不睡眠, 副产品就是避免了
@@ -56,6 +56,14 @@ context switch, 相对semaphore效率高.
 上的巨大损耗.
 * rw_lock
 
+## Mutex
+Monitor lock before sleep.
+
+## RCU -- lockless
+Check The Journey to RCU for more details
+## Per-cpu
+
+# Cooperative
 ## semaphore 
 it was implement based on spinlock.
 it can have more than one holder at any time (the number decided at initialization time), 
@@ -64,13 +72,7 @@ if you can not get a semaphore, your task will put itself on the wait queue, and
 up the semaphore is released.
 sleepable
 preemptable
-
-## Mutex
-Monitor lock before sleep.
-
-## RCU -- lockless
-Check The Journey to RCU for more details
-## Per-cpu
+## TCP handshake
 
 # Memory barrier
 ## Refernce
