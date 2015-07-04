@@ -31,9 +31,18 @@ etymonline.com
 通过语法学句子.
 [英语魔法师之语法俱乐部](http://book.douban.com/subject/1014914/)
 
-#Speaking English
-我阅读英文没有问题, 很多计算机paper 拿过来就读, 可是听力和说就是个问题.
-我一直觉得英语国际音标有问题, 他不能有效的帮助英语学习者改善挺说的问题.
+# Speaking English
+首先我们要从整体上认识英语发音, 这些根本的原则能指导我们发音, 尤其是
+要不准的地方.毛泽东的"只见树木，不见森林". 之后逐渐分割分割问题, 解答问题.
+## 一种理论 -- 口腔后部发音
+[汉语发音与英语发音有哪些区别？](http://wy.wenyisoft.com/english2.0/jsp/art.do?method=detail&id=189&link11=%E7%AD%96%E7%95%A5%E6%8C%87%E5%AF%BC&fg1=%2F&link22=%E5%8F%A3%E8%AF%AD%E7%AD%96%E7%95%A5%E6%8C%87%E5%AF%BC&idd=89&iddd=186&left=2&cate=89)
+[英语发音采用的是口腔后部发音体系](http://blog.ifeng.com/article/21032264.html)和[英语后部发音法]
+此文, 作者列出如seat 和 sit，had 和 head，full 和 fool，bed 和bad等, 如果不认真听,
+我几乎听不出来.我相信, 如果没有有意识训练过, 很多人也分不清.
+英语为什么要用口腔后部发声法来发音呢？
+
+
+
 我的思路是:听音拼字、见字读音
 1. 看到单词, 能反映出音标.这样我的说就没问题了.因为积累了一些错误的单词发音,
 所以看到单词就能知道相应的音标对我来说用处很大.
@@ -41,24 +50,18 @@ etymonline.com
 在网上找到了[Phonics 自然拼读法](http://en.wikipedia.org/wiki/Phonics)
 基本上和我的思路一直.
 
-## Self diagnose
-我并不是全部听不懂, 只是部分内容.
-听不懂的句子分析
-1. 单词不认识, 如prenup
-2. 认识的单词, 挺清楚了音, 但联想到错误的词了.如我听到san这个音但是想到send,而不是sign
-3. 音没听到 Im not actually pregnant里面的not没听出来.
-#Phonetic Alphabet
+# Phonetic Alphabet
 [Most American dictionaries dont write the triangular colon at all: fleece /flis/](http://teflpedia.com/IPA_phoneme_/i%CB%90/)
 British iː -> American i
 British ɪə -> American ɪ -> strict IPA ɪə ̯ 
 [IPA table with sounds](http://www.internationalphoneticalphabet.org/ipa-sounds/ipa-chart-with-sounds/)
 
-###Vowels
+### Vowels
 Short vowel[It is important to remember that the term short does not refer to the length of time a vowel sound is held or said aloud.  Rather, it is a label used to differentiate these sounds from long vowel sounds.](https://blog.udemy.com/american-english-pronunciation-2/)
 [Short and Long Vowels Differences and Examples](https://blog.udemy.com/short-and-long-vowel-differences/)
 [The Long & Short Vowels Song ♫♪♫](https://www.youtube.com/watch?v=4TjcT7Gto3U)
 
-###Neutral
+### Neutral
 I ɛ ə/ʌ ʊ
 i: ee ea ie ei 
 I: i y
