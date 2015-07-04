@@ -30,6 +30,13 @@ master idle进程的kernel stack在init/init_task.c:init_thread_union
 this_cpu_write(kernel_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
 this_cpu_write(cpu_current_top_of_stack,(unsigned long)task_stack_page(next_p) +THREAD_SIZE);
 
+# Schedule cfs
+sum_runtime = sysctl_sched_min_granularity * nr_running（if 进程数 > 5）
+sum_runtime = sysctl_sched_latency = 20 ms （if 进程数 <= 5） 
+sysctl_sched_min_granularity = 4ms
+ideal_time = sum_runtime * se.weight/cfs_rq.weight
+vruntime +=  delta * NICE_0_LOAD/ se.weight;(if curr.nice!=NICE_0_LOAD)
+
 # Idle
 主处理器上的idle由原始进程(pid=0)演变而来。从处理器上的idle由init进程fork得到，但是它们的pid都为0
 init_idle.

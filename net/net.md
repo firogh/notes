@@ -775,6 +775,10 @@ proto是l2tp_ip_prot
 收发包用什么队列还是proto自己说了算的.
 
 ## FAQ
+### socket lock
+[lock_sock or sock_hold](http://www.spinics.net/lists/netdev/msg136306.html)
+[bh_lock_sock](http://www.linuxfoundation.org/collaborate/workgroups/networking/socket_locks)
+
 * FIXME sock->pfmemealloc
 Yes, I only wanted to drop the packet if we were under pressure
 when skb was allocated. If we hit pressure between when skb was
