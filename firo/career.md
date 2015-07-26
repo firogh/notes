@@ -1,4 +1,9 @@
-
+---
+tags: firo
+title: Career 生涯
+date: 2015-07-26 15:46:11
+category: firo
+---
 
 # 关于薪资问题
 全面回答包括股票期权. 
