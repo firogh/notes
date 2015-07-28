@@ -13,6 +13,7 @@ http://elinux.org/Kernel_Debugging_Tips
 https://www.kernel.org/doc/
 http://kernelnewbies.org/KernelJanitors/Todo
 http://eudyptula-challenge.org/
+[走近Linux内核-- 王聪](http://wangcong.org/2007/03/09/-e8-b5-b0-e8-bf-91linux-e5-86-85-e6-a0-b8/)
 
 # Design pattern
 [Linux kernel design patterns](http://lwn.net/Articles/336224/)

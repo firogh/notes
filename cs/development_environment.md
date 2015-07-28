@@ -103,6 +103,9 @@ git blame sha1^ -- path/to/file
 * find commit after specific commit
 git log  --oneline  --ancestry-path   c146066ab^^..HEAD  net/ipv4/ip_output.c
 
+* find when line was deleted
+git log -c -S'missingtext' /path/to/file
+
 #git pull
 git pull {repo} {remotebranchname}:{localbranchname}
 git pull origin xyz:xyz
