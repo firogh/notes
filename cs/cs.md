@@ -7,6 +7,37 @@ category: cs
 # Reference
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
 
+
+计算机科学是什么? 包括那些内容? 那些内容对我来说重要?
+这些问题我都没有认真的思考过. 对于一直希望成为一名romote kernel programmer的
+我来说, 内核就是一切吗? 从事内核工作的和崔添翼在Jane street的Ocaml, 又有什么区别呢?
+和那些从事openembedded开发, openstack, python, php之类有什么不同呢?还有和汇编开发有什么区别呢?
+还有搞算法,数学一类的工作有什么差异, 这些内容都不是绝对互斥的. 还有Makefile, automake这些技术.
+还有编译技术gcc automake, 又如何呢? 还有解bug这种没有具体形式的工作. 
+相同的地方都是本质都是思维运作, 算法和数学最能体现出这点.
+不同点是什么呢? 语言! 还有特质化的内容.
+
+我们来看另外一个问题, 如何才能算上出类拔萃的程序员, 如果让崔添翼来搞内核, 会是我现在这个样子吗?
+这些年嵌入到内核的函数调用是对的吗? 有那么值吗?是否有更好的方法成为一个优秀的内核开发者呢?
+优秀的内核开发者应该具备那些素质呢?
+
+回到上面列举的计算机科学的种种技术上来, 我们可以肯定, 所有的技术, 框架都是被所谓的计算机的语言所描述的!
+通过语言的方式呈现在我们面前.
+assembly language, c, make, python php lisp ocaml等等.
+所以计算机语言是作为计算机技术的基础, 但并不是核心.
+人类语言是对世界的描述, 而计算机语言是对计算机的描述, 他们很类似.
+
+同为计算机语言的assembly language 和c python lisp这些语言有什么差异呢?
+可以说, 作为所有其他语言基石的汇编语言, 值得我们去一探究竟.
+assembly language 经过汇编编程machine code.
+machine code 类似shell脚本, 而cpu类似shell解释器.
+先看看gnu as的实现. You can find it in:
+git://sourceware.org/git/binutils-gdb.git
+核心是md_assemble, 果然复杂, 但是用过objdump都知道汇编语句和机器吗有种几乎直接对应的关系.
+我们还是再从语言的层面来挖掘汇编.
+为什么叫assembly?
+
+
 ## FIXME concepts
 code: 手电筒 ->　莫尔斯码
 Numeral system: 手指头　-> 二进制
@@ -25,7 +56,7 @@ The Mathematical Theory of Communication
 其实，我们需要的是一种重其意而忘其形的根本之道，
 需要的是一种兵来将挡，火来水淹的通用解决方法。
 而绝不是淹没于牛人们的结论中。
-+ 否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
+否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
 
 #Mathematics 
 In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
@@ -283,8 +314,6 @@ ver_ihl & 0x0f = ihl
 cpu -> toolchain
 ar71xx big
 ralink little
-
-
 #File formate
 ##ELF -- ELF executable and linkable format.
 Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 
