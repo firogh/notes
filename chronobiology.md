@@ -6,7 +6,7 @@ category: firo
 
 #Chronobiology
 Principle: health, effective
-## Physical execise 21:30, 45 minutes
+* Physical execise 21:30, 45 minutes
 有氧和无氧隔天锻炼.
 Aerobic exercise: 跑步
 Anaerobic exercise: 囚徒健身
@@ -28,21 +28,23 @@ Talking with family
 Lyubishchev
 Keep diary
 
-#TODO
+#TODO Tal
 Go to a place to live comfortably, grow up. 
-Job hopping Redhat or some other place
 English write and spoke.
 American kernel job.
 Cognition in philosophy
 Live style 
 Dressing
-#FAQ
-##philosophy
+
+# Career
+Working style, modular	
+
+# philosophy
 现象学分析方法?
 什么是观念, 概念?
-##CS
+# CS
 libev 变量的生存周期
-##kernel
+# kernel
 find source code of config
 How to print backtrace by kernel oops, and why it's not exact?
 What is .byte in oops
@@ -52,7 +54,7 @@ What is .byte in oops
 What is abi
 why get_unaligned_be16?
  _THIS_IP_ vs __FUNCTIONS__
-##net
+## net
 *first_device 用途？
 subsys 在前, device在后.
 * What is bridge?
@@ -67,9 +69,15 @@ switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以�
 net_poll
 napi
 * What is Head-of-line blocking
-## Linguistic
+
+# shopping
+Face masker
+
+# Linguistic
 * 西方哲人眼中的文字观
-#Sat Apr 18 10:04:59
+positive psychology
+
+#Sat Apr 18 10:04:59 2015
 * Clean house
 * Learn how-to rest
 * Interview questions
@@ -94,3 +102,5 @@ Fri May  1 10:17:02 CST 2015
 明后天再向内核提交补丁.
 ## Kproxy
 18:10
+
+
