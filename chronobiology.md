@@ -72,6 +72,13 @@ napi
 
 # shopping
 Face masker
+克林莱天然橡胶手套
+白博士泡沫式厨房清洁剂
+擦擦克林
+威猛先生
+长柄刷子 
+淋浴喷头
+抹布
 
 # Linguistic
 * 西方哲人眼中的文字观
@@ -103,4 +110,4 @@ Fri May  1 10:17:02 CST 2015
 ## Kproxy
 18:10
 
-
+kkkkkkkkkkkkkk

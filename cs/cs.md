@@ -6,7 +6,7 @@ category: cs
 ---
 # Reference
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
-
+[ Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 
 计算机科学是什么? 包括那些内容? 那些内容对我来说重要?
 这些问题我都没有认真的思考过. 对于一直希望成为一名romote kernel programmer的
@@ -35,8 +35,65 @@ machine code 类似shell脚本, 而cpu类似shell解释器.
 git://sourceware.org/git/binutils-gdb.git
 核心是md_assemble, 果然复杂, 但是用过objdump都知道汇编语句和机器吗有种几乎直接对应的关系.
 我们还是再从语言的层面来挖掘汇编.
-为什么叫assembly?
+为什么叫assembly? 中文取了组合这个意思.
+丛英文词源我更偏重于 to + simulate,去模拟的意思, 汇编是对机器码的一种模拟.
+汇编和机器码近似一对一的关系, 所以问题变成机器码machine code是什么了.
+从[Computer architecture](https://en.wikipedia.org/wiki/Computer_architecture)我们得到了一个全家认识.
+另外加上, 在薛英面试我的时候的问的原子变量对cache line有什么影响问题.
+从语言ISA和cache line外加microarchitecture, system design这几个方面, 建立起计算机技术的基础.
+下面的问题
+1. ISA由哪几种指令组成, 
+2. microarchitecture的组成部分是什么.
+3. C语言(起始就是ISA汇编)特别是内核的技术原子变量这些应用场景下, ISA和microarchitecture有什么关系.
+有必要重申本文的目的, 我是为了完成对计算机科学的认知, 之前的学习都是走马观花, 所以整体技术水平依然很烂.
+通过把所有计算机技术宏观的分为:
 
+	语言和思维两方面.
+我来解释下, 比如一个c语言程序, 语言是c, 程序的内容则是思维!
+我们在来看cpu这个东西. 语言就是硬件电路,晶体管之类的, 而里面的alu mmu tlb ISA cache就是思维内容 .
+很容易想到量一种关系, 
+	语言所表示的内容, 解释器/执行器
+类似的shell 脚本和shell 解释器.
+归根结底的汇编语言和microarchitecture也就是cpu.
+高层的解释器对于底层来说, 尤其是cpu来说都编程了内容.
+正因为所有的语言和解释器最终都被还原到ISA和microarchitecture, 所以有必要去了解他们二者.
+物理层面的内容本文不会涉及的.
+我们先看ISA.我们都知道语言有个范式, 汇编语言的范式是什么呢?
+http://www.zhihu.com/question/21843639
+貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
+换个角度理解, [低级语言与硬件结构的关系](http://202.116.24.124/computer/content/theory/web/Chap04/4.1.3.HTM)
+[Programming language generations](https://en.wikipedia.org/wiki/Programming_language_generations)
+ISA和assembly language基本上差不多了, 80%以上的交集吧.
+所以通过ISA可以对assembly language了解个大概!
+### ISA
+data type
+instructions: 算术, 控制, 数据传送
+register file
+addressing modes(include memory mode)
+interrupt and exception handling, 
+external I/O
+### Microarchitecture.
+* pipeline, 为什么流水工作效率高?复用? 一整条流水线对应一种指令:运算指令(算术 控制) or 数据传输指令(load sotre)对于RISC
+IF阶段也可以访问存储器,要和load sotre分开. IF是对指令的读取. load store是对数据, 这是icache和dcache产生的原因, FIXME.
+结构冒险说的就是i/dcache没分开, IF 和MEM冲突了.
+数据冒险, 指令件参数依赖造成的问题.
+控制冒险, 流水越深,危害越大.软件排空流水的方法是加nop, x86硬件排空,分支预测减少危害. 
+* branch prediction.
+dsp用条件执行替代跳转.
+* out-of-order
+乱序执行相对于顺序执行.
+无关指令可以任意执行.
+* superscalar
+instruction cycle, 什么是cycle.
+* data level parallelism
+* thread level parallelism
+超线程, 同步问题.
+* cache
+cache miss 
+住要看cache, 乱序, 还有lock对执行的影响.
+temporal locality: for icache
+spatial locality: array
+第一次访问内存里arry[0]很慢, 可被load cacheline 后其他数组成员访问延时就飞了.
 
 ## FIXME concepts
 code: 手电筒 ->　莫尔斯码
