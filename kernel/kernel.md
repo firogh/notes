@@ -131,4 +131,16 @@ include/net: kernel stuff
 为了简单! 内核修改特权寄存器和指令, 用汇编实现简单.
 尽可能加速. c到汇编, 编译器相对保守, 
 
+# The principle of kernel & driver backport
+将高本版kernel的feature移植到低版本的kernel的过程就是backport.
+1. 尽量保持与mainline的代码一致
+2. 做好取舍不要引入太多patch. 
+## 开发流程
+理清所引入feature的代码. 主要数据结构以及功能流程.
+
+
+
+
+
+
 
