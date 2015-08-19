@@ -4,8 +4,33 @@ title: Physical life
 category: firo
 ---
 
+#Chronobiology
+身体是硬件, 思想是软件.
+Principle: health, effective
+* Physical execise 21:30, 45 minutes
+有氧和无氧隔天锻炼.
+Aerobic exercise: 跑步
+Anaerobic exercise: 囚徒健身
+一个20天计划, 一天6艺一式, 隔天自增第二式, 以此类推.
+同时联系英语听力.
+* Take a bath 22:15
+* Sleep at 22:30
+Sleep 8 hours
+躺在床上不玩手机
+* Getting up at 6:30
+* 伸展下筋骨去洗漱.
+* Develop good eating habits.
+Avoid eating junk food as much as possible.
+* Drink a lot of water everyday.
+* Rest 10 minutes/hour
+* Maintain Mental fitness and Be happy.
+Talking with family
+* Writing, before 22:40, 10 minutes
+Lyubishchev
+Keep diary
+
 #Body
-##Soma					Now										Future						
+##Soma					Now									Future	
 Face
 Skin					A fight! Turn to white...
 * Belly, Abdomen			
@@ -22,18 +47,18 @@ Shoulder,Deltoid		Front raise;Shoulder fly; Handstand push-up
 Arms, Biceps			Biceps up, Chin up
 Leg											 
 Eyes
-Ears					40 ~ 60 decibel, wear headset not beyond 3 ~ 4 
+Ears				40 ~ 60 decibel, wear headset not beyond 3 ~ 4 
 						hour, relax/half hour 
 Masturbation			2 times max per week the less the better.
 Shoulder width			53										176/4=44 ~ 52cm
-肩围					106
-Height					177cm
-Weight					67kg									77kg
-+Burst/胸围				85cm									106
-上臂围					27cm									36
+肩围				106
+Height				177cm
+Weight				67kg									77kg
++Burst/胸围			85cm									106
+上臂围				27cm									36
 Thigh/大腿围			51cm									54
 +Waistline/腰围			84										79
-Hip line				87cm									94cm ~ 112cm
+Hip line			87cm									94cm ~ 112cm
 
 ##Skin care
 * 不熬夜, 早睡, 早起!
@@ -53,28 +78,28 @@ Hip line				87cm									94cm ~ 112cm
 ##Clothing(no jeans)	Now												Future								
 * 大方合体美感
 * 让掉不合适的衣服
-Tank tops				2 Playboy										
+Tank tops		2 Playboy										
 Sweatshirts & Hoodies	1 Adidas										+1
-Boxer brief				2												+0 
+Boxer brief		2												+0 
 T-shirt                 5												5               
-Dress shirt				3												3(-2 + 2)
-Thermal underware		0												1
-Trousers				5												
-Hoodies					1 adidas
+Dress shirt		3												3(-2 + 2)
+Thermal underware	0												1
+Trousers		5												
+Hoodies			1 adidas
 Casual shorts           0												(+2)               
-Sweatpants				3 anta, adidas, A&F
-Down jackets/coats		2 null/ Jack jones
+Sweatpants		3 anta, adidas, A&F
+Down jackets/coats	2 null/ Jack jones
 
 ##Shoes
-Sneaker					0												2 Converse and Warrior
-Skate shoes				1	Nike										2
-Slippers                1												new 1												
+Sneaker			0					2 Converse and Warrior
+Skate shoes		1	Nike				2
+Slippers                1							new 1
 
 ##Accessories 
-Scarf                   1	Cacuss 
+Scarf                   1		Cacuss 
 Mask                    1
 Gloves                  0               
-Beanie					1	Whitebird
+Beanie			1	Whitebird
 
 ##Travel				
 Luggage & Bag           Travalue bag            
@@ -82,21 +107,22 @@ Luggage & Bag           Travalue bag
 
 ##Money
 
-
-##Accessory			Now												Future
-Phone					Nexus 5
-						Android 5.0
-Laptop					Y460											Intel haswell | Chrome pixel
-						Fedora 21										
-						Gnome 3.14.2								
-						Vim 7.4
-						Chrome 39
-Keyboard				Laptop built-in	
-Hard drive				Buffalo ministation								NULL
+##Accessory			Now						Future
+Phone				Nexus 5
+				Android 5.0
+Laptop				Y460						Intel haswell | Chrome pixel
+				Fedora 21										
+				Gnome 3.14.2								
+				Vim 7.4
+				Chrome 39
 
 ##Residency
-Razor					Schick quatto titanium and hydro
-Chair																	Steelcase think chair
-Mug						1												2
+Razor				Schick quatto titanium and hydro
+Chair				Steelcase think chair
+Mug				1						2
 
+
+
+# Kitchen
+Rice cooker
 
