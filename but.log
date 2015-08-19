@@ -1,6 +1,0 @@
-./arch/s390/kvm/guestdbg.c:220:11-18: WARNING opportunity for memdup_user
-
-* sst_byt_dsp_init
-devm_kalloc and kfree
-^$
-
