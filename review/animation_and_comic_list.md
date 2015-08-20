@@ -4,7 +4,7 @@ tags:
 - comic
 title: 动画与漫画列表
 date: 2015-05-01 15:46:14
-category: list
+category: review
 ---
 ![z](http://www.it.com.cn/f/games/0511/8/1108zeta001.jpg)
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=28182362&auto=1&height=66"></iframe>
