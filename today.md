@@ -4,6 +4,67 @@ date: 2015-02-27 15:46:11
 category: firo
 ---
 
+# Chronobiology
+身体是硬件, 思想是软件.
+Principle: health, effective
+* Physical execise 21:30, 45 minutes
+有氧和无氧隔天锻炼.
+Aerobic exercise: 跑步
+Anaerobic exercise: 囚徒健身
+一个20天计划, 一天6艺一式, 隔天自增第二式, 以此类推.
+同时联系英语听力.
+* Take a bath 22:15
+* Sleep at 22:30
+Sleep 8 hours
+躺在床上不玩手机
+* Getting up at 6:30
+* 伸展下筋骨去洗漱.
+* Develop good eating habits.
+Avoid eating junk food as much as possible.
+* Drink a lot of water everyday.
+* Rest 10 minutes/hour
+* Maintain Mental fitness and Be happy.
+Talking with family
+* Writing, before 22:40, 10 minutes
+Lyubishchev
+Keep diary
+## Skin care
+* 不熬夜, 早睡, 早起!
+* Fitness
+* Cleansing
+Daily ?
+Lab series multi-action face wash
+* Toning
+Water, more water.
+* Moisturizing
+Kiehl‘s ultra facial cream!
+* Exfoliants
+For face, once a week.
+?
+# Physical exercise
+* Belly, Abdomen			
+Crunsh(Not Situps), Leg raise
+1、配合有氧运动减脂，这是关键，否则仰卧起坐也不用做了，最好的减脂运动就是有氧运动，这个说来话长，不深入了；
+2、每天都要对腹肌进行刺激，这样才能保证不退化；
+3、放弃大强度疲劳训练；
+4、腹肌训练放在每次训练的最后；
+5、每次训练只要选择一个动作，做3组，每组20-30次即可，当然要达到有效地刺激；
+* Chest,Pectorails		
+Dumbbell fly; Bench press; Pushups 30+1/day	
+* Back					
+Pull-up
+* Shoulder,Deltoid		
+Front raise;Shoulder fly; Handstand push-up
+* Arms, Biceps			
+Biceps up, Chin up
+* Leg											 
+* Eyes
+* Ears				
+40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour 
+* Masturbation			
+1 time two week 
+
+
 # 柳比歇夫
 记录, 统计, 分析, 反馈
 
@@ -62,6 +123,8 @@ Face masker
 # Linguistic
 * 西方哲人眼中的文字观
 positive psychology
+# ETC
+鲍勃迪伦
 
 
 
@@ -71,6 +134,6 @@ positive psychology
 Rice cooker
 
 ## WFI
-Hardwar info 15:15
+Hardware info 15:15
 
 
