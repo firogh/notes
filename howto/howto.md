@@ -5,9 +5,13 @@ category: howto
 ---
 
 # Introduction
-本文一切观点都有改口的余地, 但我相信, 你依然能获取到有用的知识!
-这里阐述了我的学习方法与心得, 希望能帮上你.
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=1872802&auto=1&height=66"></iframe>
+这里阐述了我的学习方法与心得, 本文一切观点都有改口的余地, 但我相信, 你依然能获取到有用的知识!
+key principles:
+0. self-cognitive
+1. 尽量收集关键字, 涵盖所有方面.
+2. use key words to build structure.
+
+
 
 ### 自我认知 cirtical introspection 
 批判性思考与反思

@@ -18,7 +18,17 @@ C-states: idle core power state
 
 # Introdution
 电源管理都涉及到那些内容?
-PMU, CPU, 
+PMU MP and DEV, CPU cores, L2 cache, Coherency Fabric, Devices
+Core Power Modes: run, idle/WFI/WFE/stadnby, deep idle/power down
+* WFI: core power down except snoop and interrupt cache working
+disable clocks of the CPU 
+snoop other Cores and io agent.
+only snoop block are temporarily woken up and the block back to WFI mode after complete snoop.
+can recognize interrupt.
+* Power down: core power down, l1 flush, cache not mantained/snoop stoped, but l2 & fabric 
+can not recognize interrupt, recovery is fully depended on MP_PMU
+
+
 In hardware layer, we need [PMU](https://en.wikipedia.org/wiki/Power_Management_Unit) to complete power management.
 What is the relation of PMU and CPU?
 armadaxp的PMU与CPU物理上与逻辑上是独立的.
