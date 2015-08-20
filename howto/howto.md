@@ -5,12 +5,15 @@ category: howto
 ---
 
 # Introduction
-这里阐述了我的学习方法与心得, 本文一切观点都有改口的余地, 但我相信, 你依然能获取到有用的知识!
+生活再也不像搭积木那样简单, 棱角分明了.
 key principles:
 0. self-cognitive
 1. 尽量收集关键字, 涵盖所有方面.
 2. use key words to build structure.
 
+effective
+1. 明确工作的内容
+2. 不断想着更优秀的人会怎么做.
 
 
 ### 自我认知 cirtical introspection 

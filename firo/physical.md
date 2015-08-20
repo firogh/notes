@@ -25,7 +25,8 @@ Thigh/大腿围			51cm									54
 +Waistline/腰围			84										79
 Hip line			87cm									94cm ~ 112cm
 
-#Money
+# Personal finance
+## Personal budget
 
 #Physical life
 ##Clothing(no jeans)	Now											Future
