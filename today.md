@@ -40,7 +40,6 @@ Water, more water.
 Kiehl‘s ultra facial cream!
 * Exfoliants
 For face, once a week.
-?
 # Physical exercise
 * Belly, Abdomen			
 Crunsh(Not Situps), Leg raise
@@ -135,5 +134,9 @@ Rice cooker
 
 ## WFI
 Hardware info 15:15
+
+# 2015-08-20
+Modulize WFI patch work 15:35
+
 
 
