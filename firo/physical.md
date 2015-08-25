@@ -27,6 +27,9 @@ Hip line			87cm									94cm ~ 112cm
 
 # Personal finance
 ## Personal budget
+20
+1700 * 12 = 20400
+
 
 #Physical life
 ##Clothing(no jeans)	Now											Future

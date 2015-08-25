@@ -4,21 +4,53 @@ date: 2014-12-28
 title: The perspective of thinking
 category: philosophy
 ---
-# Critical  cognition
-明确概念的内涵和外延 --石里克.
-吾尝终日而思矣，不如须臾之所学也；吾尝跂而望矣，不如登高之博见也。
-登高而招，臂非加长也，而见者远；顺风而呼，声非加疾也，而闻者彰。
-假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。
+
+
+# Epistemology
+一个知识是对世界的一种解读, 一个视角.  
+认知的unit是概念.
+一一性
+世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
+
+认知的不完整, imperfect-understand, 可错性, 彻底可错性, 可证伪性. --Firo Soros Popper
+世界的普遍不确定性 -- Firo Soros
+
+* Arch
+收集知识, 概念, 信息 并构建出结构, 关系, 行为.  -- Firo
+
+* I/O
+批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
+可证伪性 -- Popper
+独立思考, independent cognitive -- Firo
+认识的谬误性和改造的反射性. -- Soros
+cognitive based on question, 善于发现缺点问题  --Firo
+	what why how?	-- Firo
+分清主次(从宏观入手), 重轻 -- Firo
+学以致用 实践 -- 胡适
+语言必须被还原到实际的生活场景  -- 维特根斯坦
+
+第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
+记录
+形真理? -- 怪化猫
+知识的思考, 遵循质大于量的奥义. 不在于你知道多少, 而是思考的深度.
 君子生非异也，善假于物也。 --荀子 劝学
-你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地; --Aaron Swartz,25:20
+
+* 结构 关系
+问题总是复杂的, 解决方法总是简单的  --xiaolai.li
+
+## FAQ
+彻底可错性”思想可明确表述为：“所有人类心灵的建构，
+不论建构局限在我们思维深处或表现为各种学科、
+各种意识形态或各种体制，都是有缺陷的。 -- Soros
+
+
+# Aaron Swartz
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
 and you know follow the things that adults told you to do,and that your parents told you to do, and that society tells to do.
 I think you should always be questioning.I take this very scientific attitude that 
 every thing you've learned  is just provisional, you know, it's always open to recantation or refutation or questioning, 
 and I think  the same applies to society. Once I realized that there were real serious problems, fundamental problems 
 that I could do something to address, I didnt see a way to forget that, I didnt see a way not to.
-人类是无法知道真理的，他们所能做的，最多就是通过不断的实验和错误来摸索、接近真理。 --Karl Popper, 索罗斯 
-明变, 求因, 评判,实验是真理的唯一试金石 -- 胡适
 
 # 胡适日记全集 第三册，1921年7月10一则
 杜威先生不曾给我们一些关于特别问题的特别主张，——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，
@@ -33,60 +65,6 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
-trial and error
-# What is knowledge?
-不是所有知识都能通过实践获得.非实践知识,或许人类语言理解就可以了.
-* conception system 
-knowledge is a coneption system, not a something heaping up
-We need a good construct in mind.
-mode is an abstructions.
-认知的unit是概念!!!
-错误的认知, 来自错误的概念!
-学习就是建立一套知识框架的过程, 在框架下概念彼此联系.
-如果没能建成, 实践久, 就会忘掉.
-框架的建立, 就是从宏观概念待细节的探索.
-而且这个框架必须是完整健全的人类语言形式的.
-可以很少, 但必须是明确的, 不能有歧义.
-为了保证语义的明晰,概况能力, 必须要减少表述的内容.
-* 从general concept or 直观推导出.
-否则就是记忆.
-Category can be general
-* 一一性
-* 知识的含量, 通过概念的统摄能力看到, 而不是抽象度.
-* The thing that hath been, it is that which shall be; and that which is done 
-is that which shall be done and there is no new thing under the sun.
-问题总是复杂的, 解决方法总是简单的  --xiaolai.li
-# Growing up -- 人最重要的是会成长! 
-生长需要滋润.  生活作息必须规律, 要不然要影响其他生活. 今天,就到这里吧, 让生活井井有条, 滋润.
-* 成长开始于注意到缺陷, 疑问
-那种概念模糊的地方就是有问题, 比如两个指针相加.
-成长不同阶段, 比如页表回收又算法,也有具体的代码实现. 我们只要知道算法就可以了.
-Listen, the key is to just... relax. Don't worry about the numbers, don't worry about what the other guys are thinking. 
-Dont think... just feel
-所谓的自我认知不是达成一切，不是什么事情都要做到完美，而是知道自己所能做到力所能及的事情和无能为力的事情，我要说的是，要学会原谅自己的无能为力 
-当缺点和不足出现了, 你意识到它, 并且有意识地去思考这种不足的原因,你就在成长中! 有自己的想法, 这才是成长的本质, 其他都不算成长. 
-+ 很多时候其实我们的忙碌都是做着自己并不在乎的事情！
-一个有创造力的人把太多的时间耗在阅读上，是一种浪费 --尼采
-对于一个哲学家来说，最重要的是独立思考，自己来创造，说出非他不能说出的话来。
-不要以为努力过后, 就会得到, 永远也不要这样想. 
-# 人生
-人们一边浪费自己的时间, 一边希望获得更久一些.
-人生没有目标, 也要好好活着!
-10点睡觉, 洗澡, 锻炼健身, 时间统计.
-不做無異事，一日當三日，人活五十年，我活百五年。 (我以为少做 --firo.)
-讀古人的書，一方面要知道古人聰明到怎樣，一方面也要知道古人傻到怎樣。
-人生的大病根本在於不肯睜開眼睛來看世間的真實現狀.
-不受人惑 -- 胡适
-做人莫不可失了做事之心态-- firo
-人如果不沉醉于某些东西,估计都撑不下去吧.
-所有人都是某些东西的奴隶 -- 进击的巨人
-# Society
-生活就是同傻逼的战争!
-每个人都有自己内心的弱点, 不必害怕他们.
-Love the persons that love me, absolutely, included myself and girl friend!
-他人即地狱,世界是荒诞的.
-出来卖, 活一定要好.
-人类是一种急功近利的生物，总是想用最小的付出获得最大的受益。 
 #Philosophy
 物自体->感知->经验对象->认知->概念
 我们所做的乃是把词从形而上学的使用带回到日常的使用上来”。
