@@ -26,13 +26,16 @@ category: philosophy
 cognitive based on question, 善于发现缺点问题  --Firo
 	what why how?	-- Firo
 分清主次(从宏观入手), 重轻 -- Firo
+结构主义
+Modularity -- chen.xu
+multitasking -- Computer science
 学以致用 实践 -- 胡适
 语言必须被还原到实际的生活场景  -- 维特根斯坦
 
 第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
-记录
+Plan and record  -- Firo
 形真理? -- 怪化猫
-知识的思考, 遵循质大于量的奥义. 不在于你知道多少, 而是思考的深度.
+知识的思考, 遵循质大于量的奥义. 不在于你知道多少, 而是思考的深度. -- Firo
 君子生非异也，善假于物也。 --荀子 劝学
 
 * 结构 关系
