@@ -125,9 +125,6 @@ positive psychology
 # ETC
 鲍勃迪伦
 
-
-
-
 # 2015-08-19
 ## Kitchenware Cookware and bakeware
 Rice cooker
@@ -138,5 +135,6 @@ Hardware info 15:15
 # 2015-08-20
 Modulize WFI patch work 15:35
 
-
-
+# 2015-08-26
+Fix WFI bugs and test it. 1 hour
+Submit legacy kernel patch.
