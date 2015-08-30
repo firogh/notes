@@ -6,6 +6,7 @@ category: kernel
 ---
 
 # Reference
+[wowotech](http://www.wowotech.net/pm_subsystem/generic_pm_architecture.html)
 [The cpuidle subsystem](https://lwn.net/Articles/384146/)cpuidle—Do nothing, efficiently
 [Hardware Specifications 9.4](http://www.marvell.com/embedded-processors/armada-xp/assets/HW_MV78460_OS.PDF)
 [Functional Specifications 34] (http://www.marvell.com/embedded-processors/armada-xp/assets/ARMADA-XP-Functional-SpecDatasheet.pdf)
@@ -14,6 +15,45 @@ Controlling Processor C-State Usage in Linux
 [Chapter 11. Power Management](http://doc.opensuse.org/documentation/html/openSUSE_114/opensuse-tuning/cha.tuning.power.html)
 
 C-states: idle core power state
+
+# The structure of PM source codes
+* Interface  
+syscall /sys/power
+* PM core
+kernel/power
+main.c suspend.c suspend_test.c console.c process.c
+* Device PM
+driver/base/power -- Power management interface, firo
+driver/各种设备的驱动
+driver/cpuidle --firo
+* Platform PM
+include/linux/suspend.h----定义platform dependent PM有关的操作函数集
+arch/xxx/mach-xxx/xxx.c or arch/xxx/plat-xxx/xxx.c----平台相关的电源管理操作
+* CPU control
+
+# Important data structure
+platform_suspend_ops, platform plat-* is equivalent to mach-* and microarchitecture.
+plat-* is abustruct from mach-*1 and mach-*2 and so on.
+mach-* is more closer to Board!
+所以这个platform_suspend_ops, 是非常重要的, 他包含了所有BSP底层的内容.
+竟然是用suspend_ops这个全局变量, 来承载所有platform相关的内容.
+# Steps of suspend
+* PM core
+freeze userspace 
+console
+* Device PM 
+suspend device
+
+* CPU & IRQ (Platform?, no)
+
+* syscore
+* Device PM check wakeup pendings
+
+* suspend enter (Platfrom?, yes)
+
+
+# Knowledge
+console switch、process freeze、CPU hotplug、wakeup
 
 
 # Introdution
@@ -50,3 +90,6 @@ struct cpuidle_device used by ladder or menu
 
 device_initcall -> armadaxp_init_cpuidle -> cpuidle_register_driver  cpuidle_register_device
 cpu_idle -> cpuidle_idle_call
+
+
+
