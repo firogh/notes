@@ -137,4 +137,5 @@ Modulize WFI patch work 15:35
 
 # 2015-08-26
 Fix WFI bugs and test it. 1 hour
+
 Submit legacy kernel patch.
