@@ -5,8 +5,9 @@ title: The perspective of thinking
 category: philosophy
 ---
 
-
+A man who lives on his philosophy.
 # Epistemology
+## 世界
 因果律
 出了什么问题, 怎么解决, 结果or新的问题. -- Firo
 认知的unit是概念. -- Firo 
@@ -15,36 +16,42 @@ category: philosophy
 世界的普遍不确定性 -- Firo Soros
 世界是复杂的, 不能仅仅一条道理就讲明白. 但等价交换不应忽略. -- Firo
 
+## 目标
 做学问, 一定要追根朔源, 形成某种系统, 找到背后的原理-- Firo 
 一一性  -- Moritz Schlick
 
+## 方法
 自己思考. -- Firo
+要有自己的认知框架, 从这个框架出发, 不断修正.  -- Firo
 cognitive based on question, 善于发现缺点问题  --Firo
 反射原理. -- Soros
-Self-renewal, bug fix -- Firo
-繁忙的工作生活会令人身心愉悦 -- Firo
+* 认知缺陷, 普遍怀疑
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
-Accept as true only what is indubitable. -- Descartes
-Divide every question into manageable parts. -- Descartes
-Begin with the simplest issues and ascend to the more complex. -- Descartes
-Review frequently enough to retain the whole argument at once -- Descartes
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 可证伪性 -- Popper
 认识的谬误性和改造的反射性. -- Soros
-问题总是复杂的, 解决方法总是简单的  --xiaolai.li
+Accept as true only what is indubitable. -- Descartes
+* 自我错误修复
+Review frequently enough to retain the whole argument at once -- Descartes
+Self-renewal, bug fix -- Firo
+* 整体部分
+Divide every question into manageable parts. -- Descartes
+Begin with the simplest issues and ascend to the more complex. -- Descartes
 分清主次(从宏观入手), 重轻 -- Firo
 结构主义
-Modularity, Multitasking -- Computer science
+Modularity, -- Computer science
+* 实践
 学以致用 实践 -- 胡适
 语言必须被还原到实际的生活场景  -- 维特根斯坦
 第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
-Plan and record  -- Firo
-知识的思考, 遵循质大于量的奥义. 不在于你知道多少, 而是思考的深度. -- Firo
 君子生非异也，善假于物也。 --荀子 劝学
+Plan and record  -- Firo
+Multitasking  -- CS
+繁忙的工作生活会令人身心愉悦 -- Firo
 
 * 结构 关系 原理
 定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
-
+问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 
 # Aaron Swartz
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
