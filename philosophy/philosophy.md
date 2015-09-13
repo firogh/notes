@@ -22,7 +22,7 @@ A man who lives on his philosophy.
 
 ## 方法
 自己思考. -- Firo
-要有自己的认知框架, 从这个框架出发, 不断修正.  -- Firo
+要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  -- Firo
 cognitive based on question, 善于发现缺点问题  --Firo
 反射原理. -- Soros
 * 认知缺陷, 普遍怀疑
