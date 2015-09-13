@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2014-12-28
+date: 2015-09-13
 title: The perspective of thinking
 category: philosophy
 ---
