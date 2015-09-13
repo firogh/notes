@@ -24,32 +24,53 @@ kernel/power
 main.c suspend.c suspend_test.c console.c process.c
 * Device PM
 driver/base/power -- Power management interface, firo
+power management 是针对device, bus, driver这部分的. 在suspend_devices_and_enter用到dpm_suspend_start.
 driver/各种设备的驱动
 driver/cpuidle --firo
 * Platform PM
 include/linux/suspend.h----定义platform dependent PM有关的操作函数集
+就是他platform_suspend_ops
 arch/xxx/mach-xxx/xxx.c or arch/xxx/plat-xxx/xxx.c----平台相关的电源管理操作
 * CPU control
 
 # Important data structure
+* Platform PM
 platform_suspend_ops, platform plat-* is equivalent to mach-* and microarchitecture.
 plat-* is abustruct from mach-*1 and mach-*2 and so on.
 mach-* is more closer to Board!
 所以这个platform_suspend_ops, 是非常重要的, 他包含了所有BSP底层的内容.
 竟然是用suspend_ops这个全局变量, 来承载所有platform相关的内容.
+* Device PM
+dev_pm_ops这个和上面是完全不同的两条调用路线,在suspend_devices_and_enter用到dpm_suspend_start.
 # Steps of suspend
+* Function steps
+state_store->pm_suspend->enter_state->
+{
+	valid_state & suspend_prepare
+	suspend_devices_and_enter-> {
+		suspend_console & ftrace_stop & dpm_suspend_start
+		suspend_enter->
+		{
+			disable_nonboot_cpus & arch_suspend_disable_irqs
+		}
+	}
+}
 * PM core
 freeze userspace 
 console
 * Device PM 
 suspend device
+before and first part in suspend_enter
 
-* CPU & IRQ (Platform?, no)
+* Mass stuffs
+CPU & IRQ disable
+syscore
+Device PM check wakeup pendings
+middle part in suspend_enter
 
-* syscore
-* Device PM check wakeup pendings
-
-* suspend enter (Platfrom?, yes)
+* Platform PM
+last part in suspend_enter 
+# Steps of resume
 
 
 # Knowledge
@@ -81,7 +102,35 @@ PMU省电模式:
 
 
 # kernel cpuidle subsystem
+## Steps of cpuilde
+* interface
+kernel sched and sysfs
+
+* cpuidle core
+cpuidle.c、driver.c、governor.c、sysfs.c。
+抽象出cpuidle device、cpuidle driver、cpuidle governor三个实体
+一个core对应一个cpuidle device drivers/cpuidle/cpuidle.c.
+device 和driver隔离, 通过全局变量联系 ifndef CONFIG_CPU_IDLE_MULTIPLE_DRIVERS
+管理cpuidle driver 和governor
+上层sched模块 和sysfs 提供接口 
+
+* cpuidle governors
+
+* cpuidle drivers
+drivers/cpudile/cpuidle-xxx.c or 
+arch/arm/plat-armada/cpuidle.c
+如何进入idle状态
+什么条件下会退出
+
+
+## Source code layout
+* drivers/cpuidle
 include/linux/cpuidle.h
+cpuidle core、cpuidle governors和cpuidle drivers三个模块
+* kernel\sched\idle.c
+kernel sched中的cpuidle entry
+
+## Important data structre
 struct cpuidle_driver
 struct cpuidle_state
 struct cpuidle_device used by ladder or menu

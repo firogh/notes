@@ -78,7 +78,7 @@ procmail
 * supermin
 
 ###Kernel modification test
-git status  | grep 'modified:' | while read line; do file=$(echo $line | awk '{print $2}'); echo $file; make ${file/%.c/.o};done
+git status  | grep 'modified:' | while read line; do file=$(echo $line | awk '{print $1}'); echo $file; make ${file/%.c/.o};done
 
 ## Debug
 More details in debugging note

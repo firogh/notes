@@ -139,3 +139,6 @@ Modulize WFI patch work 15:35
 Fix WFI bugs and test it. 1 hour
 
 Submit legacy kernel patch.
+
+# 2015-10-29
+Upgrade to Fedora 23

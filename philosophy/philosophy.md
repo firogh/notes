@@ -7,50 +7,43 @@ category: philosophy
 
 
 # Epistemology
-一个知识是对世界的一种解读, 一个视角.  
-认知的unit是概念.
-一一性
-世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
-
-认知的不完整, imperfect-understand, 可错性, 彻底可错性, 可证伪性. --Firo Soros Popper
+因果律
+出了什么问题, 怎么解决, 结果or新的问题. -- Firo
+认知的unit是概念. -- Firo 
+一个知识是对世界的一种解读, 一个视角.   -- Firo
+世界处在不稳定的状态. -- Firo
 世界的普遍不确定性 -- Firo Soros
+世界是复杂的, 不能仅仅一条道理就讲明白. 但等价交换不应忽略. -- Firo
 
-* Arch
-收集知识, 概念, 信息 并构建出结构, 关系, 行为.  -- Firo
+做学问, 一定要追根朔源, 形成某种系统, 找到背后的原理-- Firo 
+一一性  -- Moritz Schlick
 
-* I/O
+自己思考. -- Firo
+cognitive based on question, 善于发现缺点问题  --Firo
+反射原理. -- Soros
+Self-renewal, bug fix -- Firo
+繁忙的工作生活会令人身心愉悦 -- Firo
+认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
+Accept as true only what is indubitable. -- Descartes
+Divide every question into manageable parts. -- Descartes
+Begin with the simplest issues and ascend to the more complex. -- Descartes
+Review frequently enough to retain the whole argument at once -- Descartes
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 可证伪性 -- Popper
-独立思考, independent cognitive -- Firo
 认识的谬误性和改造的反射性. -- Soros
-cognitive based on question, 善于发现缺点问题  --Firo
-	what why how?	-- Firo
+问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 分清主次(从宏观入手), 重轻 -- Firo
 结构主义
-Modularity -- chen.xu
-multitasking -- Computer science
+Modularity, Multitasking -- Computer science
 学以致用 实践 -- 胡适
 语言必须被还原到实际的生活场景  -- 维特根斯坦
-
 第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
 Plan and record  -- Firo
-形真理? -- 怪化猫
-鵺
-真: 假闻香, 实为杀人折磨人
-理: 为了自身的存在
-海坊主
-真: 妹怨为假, 和尚真
-理: 自己内心虚伪
 知识的思考, 遵循质大于量的奥义. 不在于你知道多少, 而是思考的深度. -- Firo
 君子生非异也，善假于物也。 --荀子 劝学
 
-* 结构 关系
-问题总是复杂的, 解决方法总是简单的  --xiaolai.li
-
-## FAQ
-彻底可错性”思想可明确表述为：“所有人类心灵的建构，
-不论建构局限在我们思维深处或表现为各种学科、
-各种意识形态或各种体制，都是有缺陷的。 -- Soros
+* 结构 关系 原理
+定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
 
 
 # Aaron Swartz
