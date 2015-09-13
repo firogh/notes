@@ -141,6 +141,16 @@ include/net: kernel stuff
 
 
 
+# ARM
+## smp_ops
+Machine: Marvell Armada XP Development Board
+MACHINE_START(_type,_name)
+__section__(".arch.info.init")
+arch/arm/tools/mach-types
+armada_xp_db            MACH_ARMADA_XP_DB       ARMADA_XP_DB            3036
 
+## smp
+An Implementation Of Multiprocessor Linux Alan Cox
 
+### cpumask
 
