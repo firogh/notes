@@ -9,9 +9,38 @@ category: firo
 人生的持续乐趣来自于劳动创造. 特别是自己找到兴趣点后, 不断的探索.
 轻松安逸的生活让我内心倦怠无比, 我更适应有挑战, 忙碌的生活.
 欲望能奴役人, 也让人更充实. 我要给自己设立一个很高的目标.  Be busy.
-Career, Finance, Physical exercise, Closing, Hygiene, Diet
-Language, CS, 
-### 黄金精神
+Career, Finance, Physical exercise, Clothing, Hygiene, Diet,
+Language, CS.
+# time
+September 16, 2015, begin this plan will be during 8 months
+May 15, 2016, search new job. Redhat remote job or go abroad.
+July 15, 2016, expiration of CIeNET' contract
+HB1
+Global pay
+70K$
+remote
+# Nature
+Have sex
+
+# English 
+发音和语法
+3w
+* 发音
+# Kernel patch
+10W, 500 commits
+# work achievement
+6W
+# Problem solving
+3W
+# ETC
+Blog post
+Arch
+kernel
+language c python shell
+debug 
+
+# Philosophy
+# 黄金精神
 在我看来, 黄金精神是生命本质底蕴:
 
 	勇气, 勇敢的面对困难, 不逃避, 临危不惧, 直面人生.

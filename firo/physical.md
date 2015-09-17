@@ -57,12 +57,52 @@ Gloves                  0
 Beanie			1	Whitebird
 ##Travel				
 Luggage & Bag           Travalue bag            
-##Accessory			Now						Future
-Phone				Nexus 5
-Laptop				Y460						Intel haswell | Chrome pixel
+##Accessory		Now						Future
+Phone			Nexus 5
+Laptop			Y460						Intel haswell | Chrome pixel
 ##Residency
-Razor				Schick quatto titanium and hydro
-Chair				Steelcase think chair
-Mug				1						2
-## Kitchen
-Rice cooker
+Razor			Schick quatto titanium and hydro
+Chair			Steelcase think chair
+Mug			1						2
+## Kitchen/厨
+Rice cooker		美的, 排名考前
+IRON FRYING WOK		CCK, 制造用料比较放心, 炒菜香.
+Chopping board		? Before September 19
+Kitchen knife		? Before September 19
+Ricer
+Soybean oil
+Seasonings
+醋 vinegar
+酱油 soy
+盐 salt
+加碘盐 iodized salt
+糖 sugar
+白糖 refined sugar
+酱 soy sauce
+沙拉 salad
+辣椒 hot（red）pepper
+胡椒（black）pepper
+花椒wild pepper Chinese prickly ash powder
+色拉油salad oil 调料 fixing sauce seasoning
+砂糖 granulated sugar
+红糖 brown sugar
+冰糖 Rock Sugar
+芝麻 Sesame
+芝麻酱 Sesame paste
+芝麻油 Sesame oil
+咖喱粉curry
+番茄酱（汁） ketchup redeye
+辣根horseradish
+葱 shallot （Spring onions）
+姜 ginger
+蒜 garlic
+料酒 cooking wine
+蚝油oyster sauce
+枸杞（枇杷,欧查果 ） medlar
+八角aniseed
+酵母粉yeast barm 　　Yellow pepper
+黄椒肉桂 cinnamon (在美国十分受欢迎，很多事物都有肉桂料)
+黄油 butter
+香草精 vanilla extract(甜点必备)
+面粉 flour
+洋葱 onion
