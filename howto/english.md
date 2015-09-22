@@ -5,6 +5,33 @@ category: howto
 ---
 
 
+# 英语概念
+The English indicative
+
+Syntactic category
+
+catenative verbs 
+ subordinated verb
+# FAQ
+[complementation in english a minimalist approach](http://ebooks.unibuc.ro/filologie/cornilescu/cuprins.htm)
+To do from to-preposition phrase (purpose adjunct).
+否定更偏向于完整的事件而不是to do隐含的onset.
+Gerund & Infinitive Usage , 关键还是看是否要做, 句子更倾向哪个动词.
+At first glance, it may seem difficult to know when to use an infinitive and when to use a gerund. 
+You will find the following guidelines for gerund/infinitive usage helpful.
+* Gerunds
+Gerunds are best for use in sentences about actions that are real or complete or just an action且subject关于action不是active voic, or that have been completed.
+• I stopped worrying about the future.
+In this example, the worrying was real and it happened until I stopped.
+• We really enjoy climbing mountains.
+In this example, the climbing is real and it’s something we like to do.
+* Infinitives
+Infinitives are best for use in sentences about actions that are unreal or abstract, or that will occur in the future.
+• I’d like you to think about something.
+In this example, I’m asking you to think about something, but the thinking hasn’t happened yet.
+• Can we take a walk without you stopping to smoke?
+In this example, we’re talking about taking a walk and the smoking hasn’t happened yet.
+
 # Method of english
 [选择英语学习材料有原则，别在不靠谱的材料上浪费时间](http://daily.zhihu.com/story/2471810)
 [真正的初级教程](http://site.douban.com/195274/widget/notes/11672161/note/323335577/)
