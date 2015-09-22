@@ -21,6 +21,7 @@ Global pay
 remote
 # Nature
 Have sex
+Autonomous
 
 # English 
 发音和语法
