@@ -22,9 +22,17 @@ A man who lives on his philosophy.
 
 ## 方法
 自己思考.-- Firo
-From ground, from zero. 从零开始建立系统-- Firo 类似唐吉可德"常识孕育误区", 而笛卡尔普遍怀疑是药方.
-change-of-state calculus --Von Wright’s approach
+From ground, from zero, from origin. 从零开始建立系统-- Firo 类似唐吉可德"常识孕育误区", 而笛卡尔普遍怀疑是药方.
+Find fundamental austructed concepts and build relations of concepts.
 要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  -- Firo
+内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
+Classes of extensional definitions: enumerative definition 
+真实定义和语词定义。真实定义就是“属加种差”
+充要定义, 种差定义法”“实指定义法” 发生定义.
+comparison reflection abstraction -- concept in Wikipedia
+
+语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
+change-of-state calculus --Von Wright’s approach
 cognitive based on question, 善于发现缺点问题  --Firo
 反射原理. -- Soros
 * 认知缺陷, 普遍怀疑
@@ -33,6 +41,10 @@ cognitive based on question, 善于发现缺点问题  --Firo
 可证伪性 -- Popper
 认识的谬误性和改造的反射性. -- Soros
 Accept as true only what is indubitable. -- Descartes
+对陌生语言问题(技术)的认知,  依照Wittgenstein, 语言要还原到生活中.会发现这是一个反过程, 实际变成了, 生活映射到语言词汇的过程. -- Firo
+通过对被还原到生活的语言词汇(有些时候我们需要修改那些不适当的词汇名字), 来从新认识他在问题中的语义意义. --Firo
+比如内核时间子系统的, timekeeping, 还原到生活是日晷, 沙漏, 钟表. 再次回到程序中, 虽然只是个struct数据结构却携带这涵义丰富生活语义.--Firo
+这是为什么好的命名, 对于程序理解的重要性.想较于使用不同语言的计算机程序开发者在源码中寻找词汇的original的来说, 社会生活中etymology要复杂多. --Firo
 * 自我错误修复
 Review frequently enough to retain the whole argument at once -- Descartes
 Self-renewal, bug fix -- Firo
@@ -54,6 +66,7 @@ Multitasking  -- CS
 * 结构 关系 原理
 定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
+computer first pattern: init onset,  running nuclus,  exit, coda
 
 # Aaron Swartz
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
