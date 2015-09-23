@@ -7,11 +7,10 @@ category: howto
 
 # 英语概念
 The English indicative
-
 Syntactic category
-
 catenative verbs 
- subordinated verb
+subordinated verb
+
 # FAQ
 [complementation in english a minimalist approach](http://ebooks.unibuc.ro/filologie/cornilescu/cuprins.htm)
 To do from to-preposition phrase (purpose adjunct).
