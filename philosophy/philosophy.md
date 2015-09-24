@@ -23,7 +23,8 @@ A man who lives on his philosophy.
 ## 方法
 自己思考.-- Firo
 From ground, from zero, from origin. 从零开始建立系统-- Firo 类似唐吉可德"常识孕育误区", 而笛卡尔普遍怀疑是药方.
-Find fundamental austructed concepts and build relations of concepts.
+* Find fundamental austructed concepts and build relations of concepts.
+尽量收集全, 在遇到未知内容, 几下根关键字.
 要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  -- Firo
 内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 Classes of extensional definitions: enumerative definition 

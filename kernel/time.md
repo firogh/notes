@@ -29,16 +29,33 @@ Leap second
 获取时间
 timer
 sleep ?
+update sched info
 
-* 发生定义/设计   etymology
+* 发生定义/设计   etymology, history
 timekeeping/计时:时间刻度，外壳．
 clock source: 时间, 动力.
 clock event: 闹钟,定时器,功能.
+tick: timer的中断事件叫tick, tick device产生tick.
+tickless: 
+for timer: use HW timer one shot, set next.
+for update time: in above HW timer, not good 
+for sched: for priority distributed in time slice, use timer.
+dynamic tick/no HZ:
+No HZ in idle 
+No HZ while only 1 process running for HPC.
+tick devies 就是clock event包了层虎皮.
+tick broadcast framework: 
 * aspect
 onset: start_kernel -> timekeeping_init & time_init &(rest_init-> kernel_init-> \
 kernel_init_freeable->do_basic_setup->do_initcalls--device_initcall(init_clocksource_sysfs))
 nucleus:?
 coda:
+
+* tick device layer aspect
+per_cpu(tick_cpu_device, cpu)
+onset: time_init->mach->init_time->...clockevents_register_device->tick_check_new_device
+nucleus: a38x_timer_interrupt->a38x_clkevt.event_handler
+
 
 
 计算机概念
