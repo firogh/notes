@@ -18,7 +18,6 @@ vim ~/.config/user-dirs.dirs
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
 #Raspberry pi
-
 * Remote viewer
 vinagre
 

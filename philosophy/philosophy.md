@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2015-09-13
-title: The perspective of thinking
+title: Quantitative congnition
 category: philosophy
 ---
 
@@ -23,14 +23,18 @@ A man who lives on his philosophy.
 ## 方法
 自己思考.-- Firo
 From ground, from zero, from origin. 从零开始建立系统-- Firo 类似唐吉可德"常识孕育误区", 而笛卡尔普遍怀疑是药方.
-* Find fundamental austructed concepts and build relations of concepts.
-尽量收集全, 在遇到未知内容, 几下根关键字.
+Find fundamental austructed concepts. 尽量收集全, 在遇到未知内容, 几下根关键字.
+Build relations of concepts: ask question about where you don't  know from a perspection of Pragmatism defination!
+问题也应该是 从大到小.
+* Please do not try to examin and investgate every key words! It's just a wast of time!
 要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  -- Firo
 内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 Classes of extensional definitions: enumerative definition 
 真实定义和语词定义。真实定义就是“属加种差”
 充要定义, 种差定义法”“实指定义法” 发生定义.
 comparison reflection abstraction -- concept in Wikipedia
+
+之后, 量化问题时间, every question should be solved in 10 minutes.
 
 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
 change-of-state calculus --Von Wright’s approach
