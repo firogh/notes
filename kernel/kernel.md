@@ -138,9 +138,6 @@ include/net: kernel stuff
 ## 开发流程
 理清所引入feature的代码. 主要数据结构以及功能流程.
 
-
-
-
 # ARM
 ## smp_ops
 Machine: Marvell Armada XP Development Board
@@ -154,3 +151,5 @@ An Implementation Of Multiprocessor Linux Alan Cox
 
 ### cpumask
 
+## Interrupt
+SPI and PPI or IPI, difference?
