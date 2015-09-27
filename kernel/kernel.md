@@ -153,3 +153,18 @@ An Implementation Of Multiprocessor Linux Alan Cox
 
 ## Interrupt
 SPI and PPI or IPI, difference?
+
+
+# Faq
+MACHINE_START
+
+## Kernel/system boot hang/freeze
+### Sysrq
+Whe sysrq work?
+
+### bootargs
+debug initcall_debug
+
+
+### printk
+

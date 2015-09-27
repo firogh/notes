@@ -11,6 +11,25 @@ category: firo
 欲望能奴役人, 也让人更充实. 我要给自己设立一个很高的目标.  Be busy.
 Career, Finance, Physical exercise, Clothing, Hygiene, Diet,
 Language, CS.
+I am Darwinism, Liberalism, maybe Mohism.
+
+# Life key concepts
+## English 
+发音和语法
+3w
+* 发音
+## Kernel patch
+10W, 500 commits
+
+## Health
+Face skin and body skin
+Getting up  6:30
+Sleep	10:30
+Have sex
+
+## Shopping
+Hangers
+
 # time
 September 16, 2015, begin this plan will be during 8 months
 May 15, 2016, search new job. Redhat remote job or go abroad.
@@ -19,16 +38,6 @@ HB1
 Global pay
 70K$
 remote
-# Nature
-Have sex
-Autonomous
-
-# English 
-发音和语法
-3w
-* 发音
-# Kernel patch
-10W, 500 commits
 # work achievement
 6W
 # Problem solving
