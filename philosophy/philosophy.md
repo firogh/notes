@@ -27,14 +27,19 @@ Find fundamental austructed concepts. 尽量收集全, 在遇到未知内容, �
 Build relations of concepts: ask question about where you don't  know from a perspection of Pragmatism defination!
 问题也应该是 从大到小.
 * Please do not try to examin and investgate every key words! It's just a wast of time!
-要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  -- Firo
+* Define your question and use your method. definitive quantification
+* schedule your time. indeterminacy quantification
+如果你不能给出一个, 好的量化方案, 那就做好全局关键字手机不是多是 1.涵盖 2.和现实一致,
+之后就去做吧, 做多了自然就多了. 比起空在那里想, 来的实际多了.
+另外, 就是self-correcting.
+Autonomous
+要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  --Firo
 内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 Classes of extensional definitions: enumerative definition 
 真实定义和语词定义。真实定义就是“属加种差”
 充要定义, 种差定义法”“实指定义法” 发生定义.
 comparison reflection abstraction -- concept in Wikipedia
-
-之后, 量化问题时间, every question should be solved in 10 minutes.
+并行处理事情.
 
 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
 change-of-state calculus --Von Wright’s approach
