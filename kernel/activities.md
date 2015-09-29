@@ -153,3 +153,4 @@ http://lwn.net/Articles/380937/
 ##irq and lock
 irq and lock are complete different things!
 when need to disable irq just get rid of mess of shared data.
+
