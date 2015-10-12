@@ -27,8 +27,6 @@ Getting up  6:30
 Sleep	10:30
 Have sex
 
-## Shopping
-Hangers
 
 # time
 September 16, 2015, begin this plan will be during 8 months
