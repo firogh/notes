@@ -30,7 +30,6 @@ Hip line			87cm									94cm ~ 112cm
 20
 1700 * 12 = 20400
 
-
 #Physical life
 ##Clothing(no jeans)	Now											Future
 * 大方合体美感
@@ -69,6 +68,7 @@ Rice cooker		美的, 排名考前
 IRON FRYING WOK		CCK, 制造用料比较放心, 炒菜香.
 Chopping board		? Before September 19
 Kitchen knife		? Before September 19
+pancake turner		CCK
 Ricer
 Soybean oil
 Seasonings
@@ -106,3 +106,5 @@ Seasonings
 香草精 vanilla extract(甜点必备)
 面粉 flour
 洋葱 onion
+
+

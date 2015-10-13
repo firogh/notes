@@ -14,39 +14,6 @@ Language, CS.
 I am Darwinism, Liberalism, maybe Mohism.
 
 # Life key concepts
-## English 
-发音和语法
-3w
-* 发音
-## Kernel patch
-10W, 500 commits
-
-## Health
-Face skin and body skin
-Getting up  6:30
-Sleep	10:30
-Have sex
-
-
-# time
-September 16, 2015, begin this plan will be during 8 months
-May 15, 2016, search new job. Redhat remote job or go abroad.
-July 15, 2016, expiration of CIeNET' contract
-HB1
-Global pay
-70K$
-remote
-# work achievement
-6W
-# Problem solving
-3W
-# ETC
-Blog post
-Arch
-kernel
-language c python shell
-debug 
-
 # Philosophy
 # 黄金精神
 在我看来, 黄金精神是生命本质底蕴:

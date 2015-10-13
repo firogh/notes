@@ -1,6 +1,6 @@
 ---
 tags: firo
-title: Career 生涯
+title: My Career 职业生涯生涯规划
 date: 2015-07-26 15:46:11
 category: firo
 ---
@@ -45,6 +45,10 @@ kernel和openstack的remote工作机会更多.
 现在以外包的形式在windriver的ccm team 工作.
 这就是我职业生涯的7年时光, 过得很坎坷. 
 
+# My future plan
+Get a job in US about July, 2016
+It remains 8.5 months.
+
 # Career management
 * 如果dd做同样的事情, 他会怎么做了?
 * 你的目标是什么?
@@ -54,6 +58,41 @@ effective working steps: 高效,独立完成工作.
 知识background, 知识自身结构和我的技能树.
 社区提交补丁.
 general thought for problem solving
+
+
+## English 
+发音和语法
+3w
+* 发音
+## Kernel patch
+10W, 500 commits
+
+## Health
+Face skin and body skin
+Getting up  6:30
+Sleep	10:30
+Have sex
+
+
+# time
+September 16, 2015, begin this plan will be during 8 months
+May 15, 2016, search new job. Redhat remote job or go abroad.
+July 15, 2016, expiration of CIeNET' contract
+HB1
+Global pay
+70K$
+remote
+# work achievement
+6W
+# Problem solving
+3W
+# ETC
+Blog post
+Arch
+kernel
+language c python shell
+debug 
+
 
 ## layering of my skills
 arch + 

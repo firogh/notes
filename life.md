@@ -6,12 +6,12 @@ category: firo
 
 #TODO Tal
 Go to a place to live comfortably, grow up. 
-English write and spoke.
-American kernel job.
-Cognition in philosophy
-Live style 
-Dressing
+American kernel job & Visa
+Passport 
 
+# Cognition in philosophy
+
+# Dressing
 # Career
 Working style, modular	
 
@@ -56,10 +56,12 @@ Face masker
 长柄刷子 
 淋浴喷头
 抹布
-
+盘子 盆子
+ 
 # Linguistic
-* 西方哲人眼中的文字观
+西方哲人眼中的文字观
 positive psychology
+
 # ETC
 鲍勃迪伦
 
@@ -94,11 +96,13 @@ Keep diary
 Daily ?
 Lab series multi-action face wash
 * Toning
+
 Water, more water.
 * Moisturizing
 Kiehl‘s ultra facial cream!
 * Exfoliants
 For face, once a week.
+
 # Physical exercise
 * Belly, Abdomen			
 Crunsh(Not Situps), Leg raise
@@ -123,10 +127,8 @@ Biceps up, Chin up
 1 time two week 
 
 #Diary 
+plan record analysis feedback
 ## 1013
-### plan
-
-### record
-
-### analysis feedback
+USB ULPI
+PHY
 

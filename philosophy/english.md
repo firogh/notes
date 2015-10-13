@@ -96,6 +96,13 @@ etymonline.com
 在网上找到了[Phonics 自然拼读法](http://en.wikipedia.org/wiki/Phonics)
 基本上和我的思路一直.
 
+# 近音区分
+“Road” vs. “Load”
+“Mouth” vs. “Mouse”
+“Bad” vs. “Bed”
+“Girl” vs. “Go”
+“Hate” vs. “Hit” “Say” vs. “See” “Bee” vs. “Be” 
+
 # Phonetic Alphabet
 [Most American dictionaries dont write the triangular colon at all: fleece /flis/](http://teflpedia.com/IPA_phoneme_/i%CB%90/)
 British iː -> American i
