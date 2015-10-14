@@ -8,26 +8,39 @@ category: philosophy
 生活中，认知只存在于给新的概念下定义的时候.
 
 必须意识到, 不管你对新概念了解多久, 了解多少, 你都可以把知道的概念和不知道的念
-加到一起, 构成一个完整的逻辑流程. 也就是说, 你必须要正确的面对你不知道的内容.
- **完整逻辑 = 知道的概念 + 不知道的问题** 
+加到一起, 构成一个完整的逻辑流程. 也就是说, 认识到提出疑问的重要性. 
+ **完整逻辑 = 知道的概念 + 疑问** 
+疑问 = 能指signifier + 疑问化的所指Signified 
+ **问题必须被明确的定义, 初始的问题定义了整个思考的方向**
+
+概念的4种疑问:
+1. why 为什么产生的, 解决什么问题, 没了会怎么样.
+2. 什么样子的, 怎么设计
+3. 怎么用的
+4. feedback 用起来感受怎么样. 有什么缺点啊. 正反馈啊负反馈.
+
+那么认知的过程就是不断的划分疑问, 理顺问题的过程了.
 
 # Epistemology
-## 世界
+## Top conceptions
 因果律
-出了什么问题, 怎么解决, 结果or新的问题. -- Firo
-认知的unit是概念. -- Firo 
-一个知识是对世界的一种解读, 一个视角.   -- Firo
 世界处在不稳定的状态. -- Firo
 世界的普遍不确定性 -- Firo Soros
-世界是复杂的, 不能仅仅一条道理就讲明白. 但等价交换不应忽略. -- Firo
+认知的unit是概念. -- Firo
+世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
 
-## 目标
-做学问, 一定要追根朔源, 形成某种系统, 找到背后的原理-- Firo 
+## Benchmark or protype
+概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
+
+## Adverse factors of congition
+个人 or Government 积累掩盖篡改历史的真相.
+越是大型的魔术表演，其门道往往就越是简单！人们认定不可能发生这种事的常识，固定观念往往孕育出盲点！-- 唐吉诃德·多弗朗明哥
+正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
 
 ## 方法
 自己思考.-- Firo
-From ground, from zero, from origin. 从零开始建立系统-- Firo 类似唐吉可德"常识孕育误区", 而笛卡尔普遍怀疑是药方.
+From ground, from zero, from origin. 从零开始建立系统 -- Firo 类似唐吉可德"", 而笛卡尔普遍怀疑是药方.
 Find fundamental austructed concepts. 尽量收集全, 在遇到未知内容, 几下根关键字.
 Build relations of concepts: ask question about where you don't  know from a perspection of Pragmatism defination!
 问题也应该是 从大到小.
@@ -38,8 +51,9 @@ Build relations of concepts: ask question about where you don't  know from a per
 之后就去做吧, 做多了自然就多了. 比起空在那里想, 来的实际多了.
 另外, 就是self-correcting.
 Autonomous
+通过不断抽象, 明确概念所属的范畴,从而正确的定义理解问题.
 要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  --Firo
-内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
+内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 Classes of extensional definitions: enumerative definition
 真实定义和语词定义。真实定义就是“属加种差”
 充要定义, 种差定义法”“实指定义法” 发生定义.

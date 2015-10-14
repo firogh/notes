@@ -2,13 +2,15 @@
 tags:  
 - animation
 - comic
-title: 动画与漫画列表
+title: 我喜爱的动画与漫画
 date: 2015-05-01 15:46:14
 category: review
 ---
+
 ![z](http://www.it.com.cn/f/games/0511/8/1108zeta001.jpg)
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=28182362&auto=1&height=66"></iframe>
 推荐一些我看过且觉得值得一看的动画与漫画:
+剑风传奇
 南方公园
 攻壳机动队
 Trigun/枪神
@@ -28,12 +30,9 @@ Jojo的奇妙冒险
 EVA
 银魂
 钢之炼金术师
-剑风传奇
 新海诚的作品
 丁丁历险记
 细田守的作品
 异邦人：无皇刃谭
 恶童
-
-
-
+One puch man(动画)
