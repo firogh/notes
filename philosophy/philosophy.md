@@ -29,70 +29,62 @@ category: philosophy
 认知的unit是概念. -- Firo
 世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
 
-## Benchmark or protype
+## Criteria and benchmark or protype
 概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
+繁忙的工作生活会令人身心愉悦 -- Firo
+Plan and record  -- Firo
+Multitasking  -- CS
 
 ## Adverse factors of congition
+认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
+别人(自己存在)认识的谬误性. -- Firo Soros
 个人 or Government 积累掩盖篡改历史的真相.
 越是大型的魔术表演，其门道往往就越是简单！人们认定不可能发生这种事的常识，固定观念往往孕育出盲点！-- 唐吉诃德·多弗朗明哥
 正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
 
 ## 方法
-自己思考.-- Firo
-From ground, from zero, from origin. 从零开始建立系统 -- Firo 类似唐吉可德"", 而笛卡尔普遍怀疑是药方.
-Find fundamental austructed concepts. 尽量收集全, 在遇到未知内容, 几下根关键字.
-Build relations of concepts: ask question about where you don't  know from a perspection of Pragmatism defination!
-问题也应该是 从大到小.
-* Please do not try to examin and investgate every key words! It's just a wast of time!
-* Define your question and use your method. definitive quantification
-* schedule your time. indeterminacy quantification
-如果你不能给出一个, 好的量化方案, 那就做好全局关键字手机不是多是 1.涵盖 2.和现实一致,
-之后就去做吧, 做多了自然就多了. 比起空在那里想, 来的实际多了.
-另外, 就是self-correcting.
-Autonomous
-通过不断抽象, 明确概念所属的范畴,从而正确的定义理解问题.
-要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  --Firo
-内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
-Classes of extensional definitions: enumerative definition
-真实定义和语词定义。真实定义就是“属加种差”
-充要定义, 种差定义法”“实指定义法” 发生定义.
-comparison reflection abstraction -- concept in Wikipedia
-并行处理事情.
+自己思考. -- Firo
+From ground, from zero, from origin. 从零开始建立系统 -- Firo 
 
-语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
-change-of-state calculus --Von Wright’s approach
-cognitive based on question, 善于发现缺点问题  --Firo
-反射原理. -- Soros
-* 认知缺陷, 普遍怀疑
-认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
-批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
-可证伪性 -- Popper
-认识的谬误性和改造的反射性. -- Soros
 Accept as true only what is indubitable. -- Descartes
-对陌生语言问题(技术)的认知,  依照Wittgenstein, 语言要还原到生活中.会发现这是一个反过程, 实际变成了, 生活映射到语言词汇的过程. -- Firo
+Falsifiability可证伪性 -- Popper
+批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
+
+使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
+问题的提出基于Pragmatism. -- Firo
+提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
+当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
+
+Divide every question into manageable parts. -- Descartes
+Modularity, -- Computer science
+Begin with the simplest issues and ascend to the more complex. -- Descartes
+语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
+* 抽象明确概念所属的范畴,从而正确的定义理解问题.
+* 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
+* 充要定义, Real and nominal definitions
+* Classes of extensional definitions: enumerative definition
+* [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
+Comparison reflection abstraction -- concept in Wikipedia
+语言必须被还原到实际的生活场景  -- 维特根斯坦
+君子生非异也，善假于物也。 --荀子 劝学
+Autonomous decision -- Firo
+Change-of-state calculus --Von Wright’s approach
+
+学以致用 实践 -- Firo 胡适
+Self-correcting. -- Firo
+Review frequently enough to retain the whole argument at once -- Descartes
+第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
+改造的反射性, 反射原理. -- Soros
+
+## Instances
+* 对陌生语言问题(技术)的认知  
+依照Wittgenstein, 语言要还原到生活中.会发现这是一个反过程, 实际变成了, 生活映射到语言词汇的过程. -- Firo
 通过对被还原到生活的语言词汇(有些时候我们需要修改那些不适当的词汇名字), 来从新认识他在问题中的语义意义. --Firo
 比如内核时间子系统的, timekeeping, 还原到生活是日晷, 沙漏, 钟表. 再次回到程序中, 虽然只是个struct数据结构却携带这涵义丰富生活语义.--Firo
 这是为什么好的命名, 对于程序理解的重要性.想较于使用不同语言的计算机程序开发者在源码中寻找词汇的original的来说, 社会生活中etymology要复杂多. --Firo
-* 自我错误修复
-Review frequently enough to retain the whole argument at once -- Descartes
-Self-renewal, bug fix -- Firo
-* 整体部分
-Divide every question into manageable parts. -- Descartes
-Begin with the simplest issues and ascend to the more complex. -- Descartes
-分清主次(从宏观入手), 重轻 -- Firo
-结构主义
-Modularity, -- Computer science
-* 实践
-学以致用 实践 -- 胡适
-语言必须被还原到实际的生活场景  -- 维特根斯坦
-第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
-君子生非异也，善假于物也。 --荀子 劝学
-Plan and record  -- Firo
-Multitasking  -- CS
-繁忙的工作生活会令人身心愉悦 -- Firo
-
-* 结构 关系 原理
+## 模式 -- 结构 关系 原理
+ 这里所说的模式是事物某种既定的认知, 而方法是来揭示模式的.
 定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 computer first pattern: init onset,  running nuclus,  exit, coda
