@@ -1,11 +1,12 @@
 ---
 layout: post
 date: 2015-09-13
-title: Quantitative congnition
+title: Quantitative congnition - The philosophy on what I live
 category: philosophy
 ---
 
-A man who lives on his philosophy.
+
+在我看来， 一个人完成一次认知的过程就是收集碎片概念， 之后通过思维把他们理顺。
 # Epistemology
 ## 世界
 因果律

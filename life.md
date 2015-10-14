@@ -21,6 +21,8 @@ Working style, modular
 # CS
 libev 变量的生存周期
 # kernel
+What is platform driver?
+
 find source code of config
 How to print backtrace by kernel oops, and why it's not exact?
 What is .byte in oops
@@ -128,7 +130,20 @@ Biceps up, Chin up
 
 #Diary 
 plan record analysis feedback
-## 1013
+
+# Daily stuff
+Fix philosophy.
+English
+Experience in kernel hacking and cs
+Sleep and physical exercises
+Extend knowledge.
+
+# 1014
+
+# 1013
 USB ULPI
-PHY
+USB stick -> USB PHY/Transceiver->ULPI->SOC usb controller
+Transceivers are called Medium Attachment Units (MAUs) in IEEE 802.3 documents 
+[What is a USB transceiver?](http://electronics.stackexchange.com/questions/39381/what-is-a-usb-transceiver)
+
 
