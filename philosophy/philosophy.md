@@ -4,9 +4,13 @@ date: 2015-09-13
 title: Quantitative congnition - The philosophy on what I live
 category: philosophy
 ---
+在我看来, 一个人完成一次认知的过程就是收集碎片概念, 之后通过思维把他们理顺.
+生活中，认知只存在于给新的概念下定义的时候.
 
+必须意识到, 不管你对新概念了解多久, 了解多少, 你都可以把知道的概念和不知道的念
+加到一起, 构成一个完整的逻辑流程. 也就是说, 你必须要正确的面对你不知道的内容.
+ **完整逻辑 = 知道的概念 + 不知道的问题** 
 
-在我看来， 一个人完成一次认知的过程就是收集碎片概念， 之后通过思维把他们理顺。
 # Epistemology
 ## 世界
 因果律
@@ -36,7 +40,7 @@ Build relations of concepts: ask question about where you don't  know from a per
 Autonomous
 要有自己的认知框架, 这个框架很多时候来自与他人or社会的经验, 从这个框架出发, 不断修正, 这个框架会成为最终的系统.  --Firo
 内涵定义: Genus–differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
-Classes of extensional definitions: enumerative definition 
+Classes of extensional definitions: enumerative definition
 真实定义和语词定义。真实定义就是“属加种差”
 充要定义, 种差定义法”“实指定义法” 发生定义.
 comparison reflection abstraction -- concept in Wikipedia
