@@ -145,5 +145,7 @@ USB ULPI
 USB stick -> USB PHY/Transceiver->ULPI->SOC usb controller
 Transceivers are called Medium Attachment Units (MAUs) in IEEE 802.3 documents 
 [What is a USB transceiver?](http://electronics.stackexchange.com/questions/39381/what-is-a-usb-transceiver)
+transceiver最主要的作用是将数字信号转换为模拟信号。一般的transceiver只需要正确上电就可以了，不用配置。
+http://bbs.csdn.net/topics/360017200
 
 

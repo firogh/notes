@@ -32,11 +32,12 @@ category: philosophy
 ## Criteria and benchmark or protype
 概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
+Completeness, consistency -- Logic
 繁忙的工作生活会令人身心愉悦 -- Firo
 Plan and record  -- Firo
 Multitasking  -- CS
 怎么样才算是学到了知识呢?
-1. 所有知识都不是stand alone的.
+1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系.
 2. 要有醍醐灌顶的感觉.
 
 ## Adverse factors of congition
