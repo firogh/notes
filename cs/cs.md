@@ -8,10 +8,10 @@ category: cs
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
 [ Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 
-# Outline
+# Layers of computer
 Applications
 Operating system
-Architecture
+ISA
 Micro-architecture
 Logical gate
 Digital circuits
@@ -19,139 +19,28 @@ Analog circuits
 Electronic component
 Physics
 
+# Computer programming
+Programming language theory
+Compiler construction
+## Algorithms and data structures
+Algorithms: Design Techniques and Analysis
+kernel/algorithm.md
+## Debuging
+Mathmatic
+In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
+##Testing
+Black-box testing test software function.
+White-box testing test software internal logic.
+##Automata
+##Design pattern
+Publish-Subscribe Mechanism 
+observation
+
 # Introdution
-计算机科学是什么? 包括那些内容? 那些内容对我来说重要?
-这些问题我都没有认真的思考过. 对于一直希望成为一名romote kernel programmer的
-我来说, 内核就是一切吗? 从事内核工作的和崔添翼在Jane street的Ocaml, 又有什么区别呢?
-和那些从事openembedded开发, openstack, python, php之类有什么不同呢?还有和汇编开发有什么区别呢?
-还有搞算法,数学一类的工作有什么差异, 这些内容都不是绝对互斥的. 还有Makefile, automake这些技术.
-还有编译技术gcc automake, 又如何呢? 还有解bug这种没有具体形式的工作. 
-相同的地方都是本质都是思维运作, 算法和数学最能体现出这点.
-不同点是什么呢? 语言! 还有特质化的内容.
-
-我们来看另外一个问题, 如何才能算上出类拔萃的程序员, 如果让崔添翼来搞内核, 会是我现在这个样子吗?
-这些年嵌入到内核的函数调用是对的吗? 有那么值吗?是否有更好的方法成为一个优秀的内核开发者呢?
-优秀的内核开发者应该具备那些素质呢?
-
-回到上面列举的计算机科学的种种技术上来, 我们可以肯定, 所有的技术, 框架都是被所谓的计算机的语言所描述的!
-通过语言的方式呈现在我们面前.
-assembly language, c, make, python php lisp ocaml等等.
-所以计算机语言是作为计算机技术的基础, 但并不是核心.
-人类语言是对世界的描述, 而计算机语言是对计算机的描述, 他们很类似.
-
-同为计算机语言的assembly language 和c python lisp这些语言有什么差异呢?
-可以说, 作为所有其他语言基石的汇编语言, 值得我们去一探究竟.
-assembly language 经过汇编编程machine code.
-machine code 类似shell脚本, 而cpu类似shell解释器.
-先看看gnu as的实现. You can find it in:
-git://sourceware.org/git/binutils-gdb.git
-核心是md_assemble, 果然复杂, 但是用过objdump都知道汇编语句和机器吗有种几乎直接对应的关系.
-我们还是再从语言的层面来挖掘汇编.
-为什么叫assembly? 中文取了组合这个意思.
-丛英文词源我更偏重于 to + simulate,去模拟的意思, 汇编是对机器码的一种模拟.
-汇编和机器码近似一对一的关系, 所以问题变成机器码machine code是什么了.
-从[Computer architecture](https://en.wikipedia.org/wiki/Computer_architecture)我们得到了一个全家认识.
-另外加上, 在薛英面试我的时候的问的原子变量对cache line有什么影响问题.
-从语言ISA和cache line外加microarchitecture, system design这几个方面, 建立起计算机技术的基础.
-下面的问题
-1. ISA由哪几种指令组成, 
-2. microarchitecture的组成部分是什么.
-3. C语言(起始就是ISA汇编)特别是内核的技术原子变量这些应用场景下, ISA和microarchitecture有什么关系.
-有必要重申本文的目的, 我是为了完成对计算机科学的认知, 之前的学习都是走马观花, 所以整体技术水平依然很烂.
-通过把所有计算机技术宏观的分为:
-
-	语言和思维两方面.
-我来解释下, 比如一个c语言程序, 语言是c, 程序的内容则是思维!
-我们在来看cpu这个东西. 语言就是硬件电路,晶体管之类的, 而里面的alu mmu tlb ISA cache就是思维内容 .
-很容易想到量一种关系, 
-	语言所表示的内容, 解释器/执行器
-类似的shell 脚本和shell 解释器.
-归根结底的汇编语言和microarchitecture也就是cpu.
-高层的解释器对于底层来说, 尤其是cpu来说都编程了内容.
-正因为所有的语言和解释器最终都被还原到ISA和microarchitecture, 所以有必要去了解他们二者.
-物理层面的内容本文不会涉及的.
 我们先看ISA.我们都知道语言有个范式, 汇编语言的范式是什么呢?
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
 换个角度理解, [低级语言与硬件结构的关系](http://202.116.24.124/computer/content/theory/web/Chap04/4.1.3.HTM)
-[Programming language generations](https://en.wikipedia.org/wiki/Programming_language_generations)
-ISA和assembly language基本上差不多了, 80%以上的交集吧.
-所以通过ISA可以对assembly language了解个大概!
-### ISA
-data type
-instructions: 算术, 控制, 数据传送
-register file
-addressing modes(include memory mode)
-interrupt and exception handling, 
-external I/O
-### Microarchitecture.
-* pipeline, 为什么流水工作效率高?复用? 一整条流水线对应一种指令:运算指令(算术 控制) or 数据传输指令(load sotre)对于RISC
-IF阶段也可以访问存储器,要和load sotre分开. IF是对指令的读取. load store是对数据, 这是icache和dcache产生的原因, FIXME.
-结构冒险说的就是i/dcache没分开, IF 和MEM冲突了.
-数据冒险, 指令件参数依赖造成的问题.
-控制冒险, 流水越深,危害越大.软件排空流水的方法是加nop, x86硬件排空,分支预测减少危害. 
-* branch prediction.
-dsp用条件执行替代跳转.
-* out-of-order
-乱序执行相对于顺序执行.
-无关指令可以任意执行.
-* superscalar
-instruction cycle, 什么是cycle.
-* data level parallelism
-* thread level parallelism
-超线程, 同步问题.
-* cache
-cache miss 
-住要看cache, 乱序, 还有lock对执行的影响.
-temporal locality: for icache
-spatial locality: array
-第一次访问内存里arry[0]很慢, 可被load cacheline 后其他数组成员访问延时就飞了.
-
-## FIXME concepts
-code: 手电筒 ->　莫尔斯码
-Numeral system: 手指头　-> 二进制
-logic: 三段论 -> bool -> 电路开关 亚里士多德 布尔 香农
-A Symbolic Analysis of Relay and Switching Circuits
-The Mathematical Theory of Communication
-触发器 英国射电物理学家 William Henry Eccles
-晶体管
-
-#Epistemology
-石里克 <普通认识论>
-胡适<实用主义>
-
-* s3c24xx@gmail.com
-凭什么我们就如此受制于人or 书？他就能搞懂，而我就不行呢？”。
-其实，我们需要的是一种重其意而忘其形的根本之道，
-需要的是一种兵来将挡，火来水淹的通用解决方法。
-而绝不是淹没于牛人们的结论中。
-否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
-
-#Mathematics 
-In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
-
-#Automata
-Logic and Mathematics -> Turning machine and automata -> computer
-
-#Logic
-* Completeness, this one is most important part!
-* Consistency
-* Soundness 一一性
-
-# Language
-More details in programming language notes
-
-# Algorithm
-Algorithms: Design Techniques and Analysis
-kernel/algorithm.md
-
-#Design pattern
-Publish-Subscribe Mechanism 
-observation
-
-
-# Hardware
-More details in hardware notes 
 
 # OS
 ## Process management
@@ -195,14 +84,14 @@ It maps memory addresses used by a program, called virtual addresses, into physi
 * Buddy memory allocation. 
 * Slab allocation/Memory Pool
 
-##Device management
+## Device management
 中断的概念，中断处理，I/O控制方式，缓冲区管理，设备驱动，磁盘调度和高速缓存
-###Low I/O type
+### Low I/O type
 * Programmed I/O/Polling
 * DMA
 * Interrupt I/O
 * Channel I/O
-###I/O scheduling
+### I/O scheduling
 Elevator algorithm
 
 ###Asynchronous I/O NEED CLEAN
@@ -210,6 +99,19 @@ Elevator algorithm
 select/poll/epoll
 For the ease of use, the select loop is implemented as an *event loop* with callbacks.
 libevent and libev is a well-designed *event loop*.Check shadowsocks for using of libev.
+##File formate
+ELF -- ELF executable and linkable format.
+Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 
+###Relocatable file(object file, kernel module)
+ELF header.
+Sections.
+Section header table.
+### Executeable file, dynamic library
+ELF header.
+Program header table.
+Segments.
+Section header table.
+
 
 ## File system 
 文件的概念，文件的管理，文件系统
@@ -264,36 +166,11 @@ io -> stream
 * [Standard streams](https://en.wikipedia.org/wiki/Standard_streams)
 interface is stdio library or the kernel version.
 * codata
-
 #Buffer
 a data buffer (or just buffer) is a region of a physical memory storage 
 used to temporarily store data while it is being moved from one place to another.
 * Page cache, Buffer head
 * Pipe
-
-#Cache
-a cache is a component that stores data so future requests for that data can be served faster; 
-the data stored in a cache might be the results of an earlier computation, 
-or the duplicates of data stored elsewhere. 
-##CPU cache
-A CPU cache is a cache used by the central processing unit (CPU) of a computer 
-to reduce the average time to access data from the main memory.
-### Associativity - CPU Cache algorithms
-* Two-way set associative cache
-
-### Cache coherence
-Cache coherence is the consistency of shared resource data that ends up stored in multiple local caches.
-Cache conerence is mantained by mostly archtecure like cpu
-* MSI
-
-###Cache type
-* Instructin cache
-* Data cache
-* TLB - Translation lookaside buffer
-##GPU cache
-##Disk cache
-##Web cache
-
 # Data struct aligment
 [The Lost Art of C Structure Packing](http://www.catb.org/esr/structure-packing/)
 [Typical alignment of C structs on x86](http://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86)
@@ -353,7 +230,7 @@ may be arch/mips/kernel/unaligned.c
 ## Network scheduler
 ## I/O scheduling
 
-#Endianess
+# Endianess
 [Endianness: Big and Little Endian Byte Order](http://www.yolinux.com/TUTORIALS/Endian-Byte-Order.html)
 应该说bit endianess 实际存储只有MSB ... LSB这一种二进制表达形式! 在上面的文章的representtion, 辅证这一点.
 这篇文章[再谈C语言位域](http://tonybai.com/2013/05/21/talk-about-bitfield-in-c-again/), 
@@ -383,29 +260,8 @@ ver_ihl & 0x0f = ihl
 cpu -> toolchain
 ar71xx big
 ralink little
-#File formate
-##ELF -- ELF executable and linkable format.
-Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 
-###Relocatable file(object file, kernel module)
-ELF header.
-Sections.
-Section header table.
-### Executeable file, dynamic library
-ELF header.
-Program header table.
-Segments.
-Section header table.
 
-# Net
-More details in net notes 
-
-#Testing
-##Black-box testing
-test software function.
-##White-box testing
-test software internal logic.
-
-# Hardware
+# Computer architecture
 常用寄存器，常见指令
 实模式和保护模式
 分段和分页机制
@@ -416,7 +272,6 @@ TSS和任务管理
 ##Reference
 See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
-
 #x86 Interrupt
 If interrupt occured in user mode, then cpu will context swith for potential reschedule.
 The Interrupt Descriptor Table (IDT) is a data structure used by the x86 architecture to implement an interrupt vector table. 
@@ -424,7 +279,6 @@ The Interrupt Descriptor Table (IDT) is a data structure used by the x86 archite
 are used by devices to communicate that they require attention from the operating system.
 asynchronus
 more details in init_IRQ() or set_irq() in driver.
-
 ##software interrupt 
 synchronus
 more details in trap_init().
@@ -433,4 +287,60 @@ is caused either by an exceptional condition in the processor itself,
 divide zero painc?
 * special instruction, for example INT 0x80
 or a special instruction in the instruction set which causes an interrupt when it is executed.
-
+## ISA
+data type
+instructions: 算术, 控制, 数据传送
+register file
+addressing modes(include memory mode)
+interrupt and exception handling, 
+external I/O
+## Microarchitecture.
+* pipeline, 为什么流水工作效率高?复用? 一整条流水线对应一种指令:运算指令(算术 控制) or 数据传输指令(load sotre)对于RISC
+IF阶段也可以访问存储器,要和load sotre分开. IF是对指令的读取. load store是对数据, 这是icache和dcache产生的原因, FIXME.
+结构冒险说的就是i/dcache没分开, IF 和MEM冲突了.
+数据冒险, 指令件参数依赖造成的问题.
+控制冒险, 流水越深,危害越大.软件排空流水的方法是加nop, x86硬件排空,分支预测减少危害. 
+* branch prediction.
+dsp用条件执行替代跳转.
+* out-of-order
+乱序执行相对于顺序执行.
+无关指令可以任意执行.
+* superscalar
+instruction cycle, 什么是cycle.
+* data level parallelism
+* thread level parallelism
+超线程, 同步问题.
+* cache
+cache miss 
+住要看cache, 乱序, 还有lock对执行的影响.
+temporal locality: for icache
+spatial locality: array
+第一次访问内存里arry[0]很慢, 可被load cacheline 后其他数组成员访问延时就飞了.
+##Cache
+a cache is a component that stores data so future requests for that data can be served faster; 
+the data stored in a cache might be the results of an earlier computation, 
+or the duplicates of data stored elsewhere. 
+###CPU cache
+A CPU cache is a cache used by the central processing unit (CPU) of a computer 
+to reduce the average time to access data from the main memory.
+#### Associativity - CPU Cache algorithms
+* Two-way set associative cache
+#### Cache coherence
+Cache coherence is the consistency of shared resource data that ends up stored in multiple local caches.
+Cache conerence is mantained by mostly archtecure like cpu
+* MSI
+####Cache type
+* Instructin cache
+* Data cache
+* TLB - Translation lookaside buffer
+###GPU cache
+###Disk cache
+###Web cache
+## FIXME concepts
+code: 手电筒 ->　莫尔斯码
+Numeral system: 手指头　-> 二进制
+logic: 三段论 -> bool -> 电路开关 亚里士多德 布尔 香农
+A Symbolic Analysis of Relay and Switching Circuits
+The Mathematical Theory of Communication
+触发器 英国射电物理学家 William Henry Eccles
+晶体管

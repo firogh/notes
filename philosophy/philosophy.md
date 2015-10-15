@@ -37,7 +37,13 @@ Completeness, consistency -- Logic
 Plan and record  -- Firo
 Multitasking  -- CS
 怎么样才算是学到了知识呢?
-1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系.
+1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系. --Firo
+凭什么我们就如此受制于人or 书？他就能搞懂，而我就不行呢？”。
+其实，我们需要的是一种重其意而忘其形的根本之道，
+需要的是一种兵来将挡，火来水淹的通用解决方法。
+而绝不是淹没于牛人们的结论中。
+否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
+								 --s3c24xx@gmail.com
 2. 要有醍醐灌顶的感觉.
 
 ## Adverse factors of congition
@@ -60,6 +66,7 @@ Falsifiability可证伪性 -- Popper
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
 每一次认知都是积累pattern的过程. -- Firo
+一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后,在建立之间的关系. --Firo
 
 Divide every question into manageable parts. -- Descartes
 Modularity, -- Computer science
