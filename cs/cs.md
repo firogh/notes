@@ -251,7 +251,6 @@ version ihl
 0100 0101
 因为le的cpu是 lsb first, 也就是从最左面的1开始读, 所以第一个是ihl
 而be的cpu是 msb first, 从最右开始所以version开头.
-
 而使用unsigned char ver_ihl
 (ver_ihl & 0xf0)>> 4 = version
 ver_ihl & 0x0f = ihl
@@ -260,4 +259,3 @@ ver_ihl & 0x0f = ihl
 cpu -> toolchain
 ar71xx big
 ralink little
-

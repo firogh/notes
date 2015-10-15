@@ -4,7 +4,7 @@ title: Computer architecture
 date: 2015-10-13 14:40:13
 category: cs
 ---
-# Computer architecture
+##Reference
 常用寄存器，常见指令
 实模式和保护模式
 分段和分页机制
@@ -12,7 +12,6 @@ TSS和任务管理
 中断机制
 时钟机制
 高速缓存
-##Reference
 See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
 #x86 Interrupt
@@ -37,7 +36,6 @@ register file
 addressing modes(include memory mode)
 interrupt and exception handling, 
 external I/O
-
 ## Microarchitecture.
 * pipeline, 为什么流水工作效率高?复用? 一整条流水线对应一种指令:运算指令(算术 控制) or 数据传输指令(load sotre)对于RISC
 IF阶段也可以访问存储器,要和load sotre分开. IF是对指令的读取. load store是对数据, 这是icache和dcache产生的原因, FIXME.
@@ -60,7 +58,6 @@ cache miss
 temporal locality: for icache
 spatial locality: array
 第一次访问内存里arry[0]很慢, 可被load cacheline 后其他数组成员访问延时就飞了.
-
 ##Cache
 a cache is a component that stores data so future requests for that data can be served faster; 
 the data stored in a cache might be the results of an earlier computation, 
@@ -89,7 +86,6 @@ A Symbolic Analysis of Relay and Switching Circuits
 The Mathematical Theory of Communication
 触发器 英国射电物理学家 William Henry Eccles
 晶体管
-
 # PHY -- The physical layer
 ##  Introductions
 Fromwikipedia:
@@ -99,4 +95,3 @@ Fromwikipedia:
 https://www.kernel.org/doc/Documentation/networking/phy.txt
 PCS
 PMD
-
