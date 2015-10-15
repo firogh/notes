@@ -30,11 +30,7 @@ clean version: *tmp, *p
 * GNU coding standards
 * Linux kernel coding style
 = Shell coding standard
-
-
 #Review
-
-
 #Best coding practices
 =Commenting
 * Copyleft/right,
@@ -45,5 +41,3 @@ clean version: *tmp, *p
 
 #Coding error
 = Leak of semicolon, parentheses
-
-
