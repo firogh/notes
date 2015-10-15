@@ -35,6 +35,9 @@ category: philosophy
 繁忙的工作生活会令人身心愉悦 -- Firo
 Plan and record  -- Firo
 Multitasking  -- CS
+怎么样才算是学到了知识呢?
+1. 所有知识都不是stand alone的.
+2. 要有醍醐灌顶的感觉.
 
 ## Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
@@ -55,6 +58,7 @@ Falsifiability可证伪性 -- Popper
 问题的提出基于Pragmatism. -- Firo
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
+每一次认知都是积累pattern的过程. -- Firo
 
 Divide every question into manageable parts. -- Descartes
 Modularity, -- Computer science

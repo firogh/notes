@@ -11,6 +11,12 @@ category: review
 
 # Computer science
 Code: The hidden language of computer hardware and software
+Digital Design and Computer Architecture 2nd Edition
+
+未看口碑好:
+Computer Organization and Design, Fifth Edition
+ARM System-on-Chip Architecture (2nd Edition)
+
 
 
 # Philosophy

@@ -8,6 +8,18 @@ category: cs
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
 [ Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 
+# Outline
+Applications
+Operating system
+Architecture
+Micro-architecture
+Logical gate
+Digital circuits
+Analog circuits
+Electronic component
+Physics
+
+# Introdution
 计算机科学是什么? 包括那些内容? 那些内容对我来说重要?
 这些问题我都没有认真的思考过. 对于一直希望成为一名romote kernel programmer的
 我来说, 内核就是一切吗? 从事内核工作的和崔添翼在Jane street的Ocaml, 又有什么区别呢?
