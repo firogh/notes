@@ -142,10 +142,26 @@ Extend knowledge.
 
 # 1013
 USB ULPI
-USB stick -> USB PHY/Transceiver->ULPI->SOC usb controller
+USB stick -> USB OTG PHY/Transceiver->ULPI->SOC usb controller
 Transceivers are called Medium Attachment Units (MAUs) in IEEE 802.3 documents 
 [What is a USB transceiver?](http://electronics.stackexchange.com/questions/39381/what-is-a-usb-transceiver)
 transceiver最主要的作用是将数字信号转换为模拟信号。一般的transceiver只需要正确上电就可以了，不用配置。
 http://bbs.csdn.net/topics/360017200
+
+# Components
+OTG device init in MACHINE_START->init_machine   = ams_delta_init ->omap1_usb_init -> otg_device_init
+OTG driver init module_platform_driver(fsl_otg_driver);->fsl_otg_probe-> conf & start->request_irq(fsl_otg_isr){ suspend & resume}
+USB dr device init dr_controller_setup drivers/usb/gadget/udc/fsl_udc_core.c
+USB dr driver init module_platform_driver_probe(udc_driver, fsl_udc_probe);
+USB host device init
+USB host driver init
+
+USB的协议实现在usb.c,主机控制器在drivers/usb/host/文件夹实现
+整个usb部分由抽象层（usb.c)，规格定义(ehci-hcd.c)和具体实现(ehci-fsl.c)来分工实现
+
+## NB
+fsl_otg_conf 类似于otg_ulpi_create
+
+
 
 
