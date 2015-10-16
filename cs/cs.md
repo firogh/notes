@@ -58,106 +58,21 @@ or grep -nr 'ppp_channel_ops' /path/to/{l2tp, pptp, pppoe}
 Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
 # Build automation
 * Make
-## kbuild
-make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
-# Compile
-* gcc
-# Link
-* GNU ld
-* gold
-
-# Version control
-* [git](http://git-scm.com/docs)
-git ls-files -d |xargs -i git checkout {}
-git log -S "RTN_UNSPEC" --source --all
-* reverse find all the blame from start commit id to now
-    git blame --reverse 9e734775f7c22d2f89943ad6c745571f1930105f..   include/linux/netlink.h
-* find kernel version of path
-    git describe --contains
-    git tag --contains <id>
-* find commit id of a tag
-    git rev-parse v2.6.12-rc2
-*  blame before a commit
-git blame sha1^ -- path/to/file
-* find commit after specific commit
-git log  --oneline  --ancestry-path   c146066ab^^..HEAD  net/ipv4/ip_output.c
-* find when line was deleted
-git log -c -S'missingtext' /path/to/file
-## git pull
-git pull {repo} {remotebranchname}:{localbranchname}
-git pull origin xyz:xyz
-git pull next master:now
-##git sendmail
-shadowsocks
-/etc/proxychains.conf
-/home/firo/.gitconfig
-proxychains git send-email --to dbaryshkov@gmail.com --cc rmk+kernel@arm.linux.org.uk --cc linux-pcmcia@lists.infradead.org  0001-Drivers-pcmcia-Fix-memroy-leak-in-sa11xx_drv_pcmcia_.patch
-
-git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
-##git diff
-git -c core.whitespace=tab-in-indent diff --check
-# Debugging
-## Reverse engineering tools for debugging
-* readelf
-* objdump
-* tcpdump
-## Manipulate ELF
-ELF header, readelf -h
-Program header table, readelf -l
-Segments, readelf --segments 
-Sections, readelf --sections
-Section header table, readelf -S 
-.symtab, Symbol table store index of string
-.strtab, String table is a array of all strings split by \0
-.hash, utiliy for quire symbols
-.shstrtab, Section header string table store section name for ELF,like .text, .data...
-
-# Test
-* kvm 
-* supermin
-
-# Mail
-mutt
-fetchmail
-fetchmail -d0 -vk pop.gmail.com
-msmtp
-/home/firo/.msmtprc
-procmail
-#Make
-## useful usage
 make cynthia
-make -q : need rebuild?
-
-##debug
-* Just print echo 
-make -s 
-* Print shell command
-make -n
-* Print all variables. not really execute. Wired-name variable is useful to debug
-make -p
-* Pirnt a message
-$(warning ...)
-* Etc
---warn-undefined-variables
-
-##menuconfig
+## kbuild
 * if no .config, every config tools make a .config from scrach!
-
 * oldconfig just for new moduels patch merged in trunk. This no any relations to .config.old and /boot/config.x.y.z
-
 * make localmodconfig will reduce many unused kernel config.
-
 * make bzImage  #kmods will not build that configured with M! 
 * make modules_install INSTALL_MOD_PATH=/home/firo/kmods
-###make ARCH=arm menuconfig
-
+make ARCH=arm menuconfig
 ##build signle kernel module
 make menuconfig
 make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
-
-#GCC
-## useful various options
+make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
+# Compile
+* gcc
 -E -S -c 
 -I -L -l
 -ansi
@@ -176,21 +91,80 @@ make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 -time
 -x c: c language
 -: stdin
-
-## asmlinkage
+asmlinkage
 However, for C functions invoked from assembly code, 
 we should explicitly declare the function's calling convention, 
 because the parameter passing code in assembly side has been fixed. 
-
-
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
-
 ##Symbol table
 * System.map less 
 When you compile the kernel
 nm vmlinux
 readelf -s 
 * /proc/kallsyms
+# Link
+* GNU ld
+* gold
+# Version control
+* [git](http://git-scm.com/docs)
+git ls-files -d |xargs -i git checkout {}
+git log -S "RTN_UNSPEC" --source --all
+* reverse find all the blame from start commit id to now
+git blame --reverse 9e734775f7c22d2f89943ad6c745571f1930105f..   include/linux/netlink.h
+* find kernel version of path
+git describe --contains
+git tag --contains <id>
+* find commit id of a tag
+git rev-parse v2.6.12-rc2
+*  blame before a commit
+git blame sha1^ -- path/to/file
+* find commit after specific commit
+git log  --oneline  --ancestry-path   c146066ab^^..HEAD  net/ipv4/ip_output.c
+* find when line was deleted
+git log -c -S'missingtext' /path/to/file
+## git pull
+git pull {repo} {remotebranchname}:{localbranchname}
+git pull origin xyz:xyz
+git pull next master:now
+## git sendmail
+shadowsocks
+/etc/proxychains.conf
+/home/firo/.gitconfig
+proxychains git send-email --to dbaryshkov@gmail.com --cc rmk+kernel@arm.linux.org.uk --cc linux-pcmcia@lists.infradead.org  0001-Drivers-pcmcia-Fix-memroy-leak-in-sa11xx_drv_pcmcia_.patch
+git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=firogm@gmail.com --smtp-server-port=587 --to "kernel-janitors@vger.kernel.org" 0001-x86-Remove-unnecessary-void-pointer-casts.patch
+##git diff
+git -c core.whitespace=tab-in-indent diff --check
+# Debugging
+## Reverse engineering tools for debugging
+* readelf
+ELF header, readelf -h
+Program header table, readelf -l
+Segments, readelf --segments 
+Sections, readelf --sections
+Section header table, readelf -S 
+* objdump
+objdump -S
+* tcpdump
+## debug make
+* Just print echo 
+make -s 
+* Print shell command
+make -n
+* Print all variables. not really execute. Wired-name variable is useful to debug
+make -p
+* Pirnt a message
+$(warning ...)
+* Etc
+--warn-undefined-variables
+# Test
+* kvm  & supermin
+# Mail
+mutt
+fetchmail
+fetchmail -d0 -vk pop.gmail.com
+msmtp
+/home/firo/.msmtprc
+procmail
 # OS
 ## Process management
 进程的定义和PCB，进程和线程的区别，进程的三个基本状态及它们之间的转换关系，进程的同步，竞争和死锁，进程间通信
@@ -206,7 +180,6 @@ Processor Context
 Process state
 ###daemonize
 http://fixunix.com/unix/84640-daemon-controlling-terminal.html
-
 ## Memory managerment
 分页式管理，分段式管理，虚拟内存的概念，页面置换算法，内存分配算法
 ### Paging
@@ -232,7 +205,6 @@ It maps memory addresses used by a program, called virtual addresses, into physi
 ### Memory allocation
 * Buddy memory allocation. 
 * Slab allocation/Memory Pool
-
 ## Device management
 中断的概念，中断处理，I/O控制方式，缓冲区管理，设备驱动，磁盘调度和高速缓存
 ### Low I/O type
@@ -242,7 +214,6 @@ It maps memory addresses used by a program, called virtual addresses, into physi
 * Channel I/O
 ### I/O scheduling
 Elevator algorithm
-
 ###Asynchronous I/O NEED CLEAN
 * synchronous I/O multiplexing and I/O event notification facility
 select/poll/epoll
@@ -260,14 +231,14 @@ ELF header.
 Program header table.
 Segments.
 Section header table.
-
-
+.symtab, Symbol table store index of string
+.strtab, String table is a array of all strings split by \0
+.hash, utiliy for quire symbols
+.shstrtab, Section header string table store section name for ELF,like .text, .data...
 ## File system 
 文件的概念，文件的管理，文件系统
-
 ## System calls
 系统调用的概念，系统调用的处理，系统调用类型
-
 #I/O
 CPU and main memory is the brain of a computer.
 Any transfer of information to or from the CPU/memory combo, for example by reading data from a disk drive, is considered I/O. 
@@ -275,10 +246,8 @@ Any transfer of information to or from the CPU/memory combo, for example by read
 ### Memory-mapped I/O
 ioremap: physical address->logical address, simlar to vmalloc except we need not page.
 ### Ported-mapped I/O
-
 ##Non CPU-device I/O
 ### I/O channels
-
 ## 同步与异步IO
 今天我们要辨析一下同步和异步IO. 我们先解释最基础的概念, 之后用生活化的例子
 完成认知.
@@ -302,7 +271,6 @@ IO不是由我们的进程完成而是别的进程完成, 是谁呢,是内核线
 这太累人了. 最好的方式, 你告诉店家我要什么, 到货了给我打个电话, 我在过来.
 这就是io多路复用. 可是还有更高明的方法, 没错就是京东了, 我网上下订单, 第二天直接送到家了.
 京东, 为什么成功? 你知道了吧.用户省心啊.对应异步io
-
 ##Interface
 [Methods for designing a CPU's I/O interface generally fall into one of the following categories:](http://www.cs.uwm.edu/classes/cs458/Lecture/HTML/ch11s02.html)
 Completely separate memory and I/O. buses DMA?
@@ -326,17 +294,14 @@ used to temporarily store data while it is being moved from one place to another
 ## 为什么需要结构体对齐?
 struct foo {
 char c;
-int i;
-};
+int i;};
 如果是32位, cpu 一次取4byte a word 数据.
 如果我们把i的前3byte和c存到一起, 剩下1byte of i自己单独存.
 那么我们访问i这个数据就要读两个4byte a word. 对cpu来说性能损耗.
 如果我们把i单独放到4byte 对齐的地址, 那么我们只需要一次cpu读取.fast!
-
 ## 产生非对齐访问的场景
  1. Casting variables to types of different lengths, 比如char * 到int *
  2. Pointer arithmetic followed by access to at least 2 bytes of data , 不太理解.
-
 ## 我们做什么?
 * 什么也不干, 按默认对齐来Natural alignment
 * 为了不影响性能, 同时减少内存使用, 编程时最好显示reorder.
@@ -344,12 +309,10 @@ int i;
 * 通过attribute aligned指定对齐要求.
 * 数据要在不同体系, 32/64之间使用, 比如网络,写到disk, 我们必须要attribute packed
 也就是说不对齐, 不同平台对齐可能不同, 我们不能让数据corruption.
-
 ## 如果数据不对齐有什么, cpu怎么办?
 [必读UNALIGNED MEMORY ACCESSES](https://www.kernel.org/doc/Documentation/unaligned-memory-access.txt)
 1. 如果用了packed, 编译器会生成extra代码阻止非对齐访问, performance loss.
 2. cpu呢? 可能正确处理raise a exception to fix it with performance loss.
-
 ## Calculate the sizeof of aligned c struct
 Data alignment means putting the data at a memory address equal to some multiple of the word size, 
 which increases the system's performance due to the way the CPU handles memory.
@@ -359,26 +322,21 @@ which increases the system's performance due to the way the CPU handles memory.
 把结构的成员一次填满对齐宽度, 不够的填到下个对齐宽度, 空出来留着padding
 3. pading to alignment
 填上所有空.
-
 ## 关于kernel中put/get_unaligned实现
 access_ok, do nothing in essence
 byteshift, 移位每次访问u8, 
 packed_struct: 交给gcc
 memove, byte-wise copy
-
 ## Faq
 * How does gcc attribute((aligned)) work?
 struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned ));
 sizeof S1 = 16 in 64-bit
-
 * In what situation can unaligned accesss make a kernel panic?
 may be arch/mips/kernel/unaligned.c
-
 #Scheduling
 ## Process scheduler
 ## Network scheduler
 ## I/O scheduling
-
 # Endianess
 [Endianness: Big and Little Endian Byte Order](http://www.yolinux.com/TUTORIALS/Endian-Byte-Order.html)
 应该说bit endianess 实际存储只有MSB ... LSB这一种二进制表达形式! 在上面的文章的representtion, 辅证这一点.
