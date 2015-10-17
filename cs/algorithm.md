@@ -1,13 +1,14 @@
 ---
 tags: kernel
-title: Algorithms and data structues in Linux kernel
+title: Algorithms and data structues for kernel hacking
 date: 2015-05-27 12:42:12
 category: kernel
 ---
 
 # Reference
 [Core algorithms deployed](http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed#)
-
+Algorithms: Design Techniques and Analysis
+kernel/algorithm.md
 # Introduction 
 说实话, 这年头想要做点学问还是需要点定力的.
 就拿内核中的数据结构与算法来说, 也不是说, 别人来了句, 我靠, awesome!
@@ -287,9 +288,5 @@ for
 这也是解决比较问题的, 常见方法.
 选好辅助数据结构就是, 运用了. 运用的主要原则就是找到基本情况. 把具备的互斥特征的
 基本情况找到, 并应用辅助数据结构解决问题.
-
 ## 动态规划问题
 DP通常是以递归化简问题形式出现.
-
-
-

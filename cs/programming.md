@@ -9,69 +9,40 @@ category: cs
 [Utility software](https://en.wikipedia.org/wiki/Utility_software)
 programming principles
 High cohesion low coupling
-
-
-#Programming style
-
-#coding for testing
-
-# [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
-## defensive programming
-Low tolerance against "potential" bugs
-Assertion, panic in user space
-
-#Skills 
-How to use assertion
-
-#clean code
-*all codes related to loop must in one block
-__find_meaningful_task_parent_by_task()
-old version: *p *pp
-clean version: *tmp, *p
-
-#Coding standards
-* GNU coding standards
-* Linux kernel coding style
-= Shell coding standard
-#Review
-#Best coding practices
-=Commenting
-* Copyleft/right,
-* Author and maintainer
-* Update log
-* Name of the module
-* Usage
-# Layers of computer
-Applications
-Operating system
-ISA
-Micro-architecture
-Logical gate
-Digital circuits
-Analog circuits
-Electronic component
-Physics
-
 # Computer programming
 Programming language theory
 Compiler construction
 Algorithms and data structures
-1.Algorithms: Design Techniques and Analysis
-2.kernel/algorithm.md
 Debuging
 Mathmatic
-1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
 Testing
-1.Black-box testing test software function.
-2.White-box testing test software internal logic.
 Automata
 Design pattern
+# Source code editor
+vim
+easymotion
+# Coding standards
+GNU coding standards
+Linux kernel coding style
+Shell coding standard
+Commenting
+Copyleft/right,
+Author and maintainer
+Update log
+Name of the module
+Usage
+# Mathmatic
+1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
+# [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
+## defensive programming
+Low tolerance against "potential" bugs
+Assertion, panic in user space
+How to use assertion
+# Algorithms and data structures
+Plz, reference algorithm.md
+# Design pattern
 1.Publish-Subscribe Mechanism 
 2.Observation
-# Source code editor
-* vim
-easymotion
-
 # Code navigation tools
 * ctags
 ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
@@ -87,6 +58,7 @@ pppoe_chan_ops pppoe_xmit
 or grep -nr 'ppp_channel_ops' /path/to/{l2tp, pptp, pppoe}
 * locate codes in complex program source files .
 Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
+# Review
 # Build automation
 * Make
 make cynthia
@@ -167,8 +139,10 @@ git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=fi
 git -c core.whitespace=tab-in-indent diff --check
 # Debugging
 see debugging.md
-# Test
-* kvm  & supermin
+# Testing
+1.Black-box testing test software function.
+2.White-box testing test software internal logic.
+kvm  & supermin
 # Mail
 mutt
 fetchmail
@@ -176,4 +150,3 @@ fetchmail -d0 -vk pop.gmail.com
 msmtp
 /home/firo/.msmtprc
 procmail
-
