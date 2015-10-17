@@ -14,6 +14,8 @@ Bug made by me
 Anti-debuging
 General debugging steps 
 Get observations
+Specific observations
+Debugging experience
 Debug Kernel bug 
 
 # Bug types
@@ -83,12 +85,14 @@ T + O => E; //Theory + observations => explanation
 E is the sub-set of T, O is the result of E under the T.
 The process of debugging is use O to minimize T to E instance.
 0. Reproduce?
+kernel version
+ask reporter for the .config
 1. Find the bug type and definations what the bug belong to.
 The bug type is the broad outline of the Expaination of the specific bug's Observation.
 2. 结合实际环境get more observations and deuce the explanation/cause.
 3. Fix it.
 # Get observations
-## Get observations from excute binary
+## Get observations from excute binary(maybe source file)
 DWARF
 ELF header, readelf -h
 Program header table, readelf -l
@@ -96,6 +100,17 @@ Segments, readelf --segments
 Sections, readelf --sections
 Section header table, readelf -S 
 objdump -S
+make kernel/sched.s V=1
+c++filt 
+addr2line -f -C -a xxx -e ooo
+/home/build/x/ab/mips-openwrt-linux-addr2line -C -f -e /data/logs/hwf-health-chk/debug-root/HC6361/0.9005.5384s/debugfs/tmp/data/usr/bin/aria2c  0x00607188
+aria2::ZeroBtMessage::~ZeroBtMessage()
+### Tips for binary observations
+[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
+* code reordering
+* inlining
+* Optimized-away variables
+* Tailcall optimization
 ## Get Observations from program
 > #define debugme(fmt, args...) do{FILE *fdebug=fopen("/tmp/d.log", "a+"); \
 > fprintf(fdebug,"%s,%s,%d:"fmt, __TIME__, __FUNCTION__, __LINE__, ##args);fclose(fdebug);} while(0)
@@ -119,17 +134,23 @@ add-symbol-file /home/nkhare/char-read-write.ko $text_addr
 * how to get the offset of member in struct
 gdb ./vmlinux 
 print &((struct kmem_cache *)0)->offset
-## Kprobes
-* kgdb
-gdb
-file vmlinux
-set remotebaud 115200
-target remote /dev/ttyS0
+
 ## Get observations from application
 lsof
 strace
 bash  -x for shell
 coredump
+# Get obervations from make
+* Just print echo 
+make -s 
+* Print shell command
+make -n
+* Print all variables. not really execute. Wired-name variable is useful to debug
+make -p
+* Pirnt a message
+$(warning ...)
+* Etc
+--warn-undefined-variables
 ## Get observations from library
 ltrace
 library dependencies of a ELF/bin
@@ -153,6 +174,11 @@ print signal This is just a hiwifi wonderful kernel patch #931
 kgtp?
 lockdep
 kdump
+./scripts/decodecode < Oops.txt
+* kgdboc
+file vmlinux
+set remotebaud 115200
+target remote /dev/ttyS0
 * how to get module text address
 firo@firo module$ cat /sys/module/wmi/sections/.text 
 0xffffffffa023b000
@@ -166,67 +192,29 @@ printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
 printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
 ……}
 Module_init(hello_init);
-
+## Tips for kernel observations
+General track down case 
+* If an page oops close to zero, for example 0xfffffff4
+It maybe ERR_PTR(-12);
+* smartqos custom qdisc - self inferrence
+要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
+* 追BUG实际上就是, 找关联度最高的, 最好不要从头开始推理, 太耗时.
 ## Observations of network
 tcpdump netstat iptables wireshark
-## Kernel specific
-kernel version
-ask reporter for the .config
-decoding "code"
-
-
-##General case
-###how to find or generate a backtrace
+# Specific observations
+## Backtrace's observations 
 * gdb bt(Strongly, recommand), break continue bt
-* backtrace() / dumpstack
-* read soucecode
+* backtrace / dumpstack
+* read source code
 * print log 
 * Timer backtrace, Just for funny, the foolish of me. 
-
-# Examine program states
-* Variable values
-* Function calls
-* Packet
-* Backtrace
-* Registers
-* Stack
-
-## Examine oops.txt
-* use System.map to resolve the function name of IP
-kallsyms replace ksymoops tools.
-
-* examinecodes in oops
-./scripts/decodecode < Oops.txt
-
-echo "Code: 23 25 dc 47 6f 00 41 f6 c4 10 75 66 9c 5d fa 65 48 8b 14 25 a8 d1 00 00 48 8b 03 48 8d 04 02 4c 8b 28 4d 85 ed 74 55 48 63 53 18 <49> 8b 54 15 00 48 89 10 55 9d 4d 85 ed 74 06 66 45 85 e4 78 22" | ./kernel/scripts/decodecode 
-
-## demangle c++ symbols 
-c++filt command
-addr2line -f -C -a xxx -e ooo
-/home/build/x/ab/mips-openwrt-linux-addr2line -C -f -e /data/logs/hwf-health-chk/debug-root/HC6361/0.9005.5384s/debugfs/tmp/data/usr/bin/aria2c  0x00607188
-aria2::ZeroBtMessage::~ZeroBtMessage()
-
-# Tracking down the origin of the problems
-##  Different Origins
-### Assemblly level
-* Generat vmlinux Assemblly codes
-objdump -S vmlinux
-objdump -S char-read-write.ko
-
-* Generat single sources file assemblly  codes
-为了使汇编代码和C代码更好的对应起来， Linux内核的Kbuild子系统提供了这样一个功能： 任何一个C文件都可以单独编译成汇编文件，例如：
-make kernel/sched.s V=1
-
-## Track down
-### "Wolf fence" algorithm 
-二分调试大法
-
+* examine codes in oops
+# Debug kernel oops
 ##From oops to ASM
 * Fast way maybe???
 1. make kernel/xx.s
 2. grep "code in oops.txt" kernel/xx.s
-
-### From ASM to c language
+## From ASM to c language
 [lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
 * expand inline function
 * locate __asm__() 内嵌汇编, 能快速定位代码! 但很少! slhc_uncompress()
@@ -235,7 +223,6 @@ make kernel/sched.s V=1
 * 通过.config or CONFIG_判断具体是那个相同函数.
 * 字符的数字敏感
 0000000034333545 doesnt have a bit 7 set in any byte.
-
 +ef8:   00a01021    move    v0,a1
  efc:   88440003    lwl a0,3(v0)
  f00:   24450004    addiu   a1,v0,4                                                                                                           
@@ -244,45 +231,10 @@ make kernel/sched.s V=1
  f0c:   0064202b    sltu    a0,v1,a0                                                                                                             
 +f10:   14a7fff9    bne a1,a3,ef8 <slhc_uncompress+0x444>                                                                                         
  f14:   00831821    addu    v1,a0,v1
-
-### From ASM to c language x86
+## From ASM to c language x86
 * local_irq_save/disable
    c: 9c                    pushfq		//not sure 
    d: 5d                    pop    %rbp //not sure
    e: fa                    cli
-
 * per-CPU
   f: 65 48 8b 14 25 a8 d1  mov    %gs:0xd1a8,%rdx
-
-###Track skills
-####[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
-* code reordering
-* inlining
-* Optimized-away variables
-* Tailcall optimization
-
-
-### General track down case 
-* If an page oops close to zero, for example 0xfffffff4
-It maybe ERR_PTR(-12);
-
-* smartqos custom qdisc - self inferrence
-要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
-
-* 追BUG实际上就是, 找关联度最高的, 最好不要从头开始推理, 太耗时.
-
-
-### A case of oops
-Register IP: -> System.map /proc/kallsyms -> objdump -S char-read-write.ko
-
-# Debug make bug
-* Just print echo 
-make -s 
-* Print shell command
-make -n
-* Print all variables. not really execute. Wired-name variable is useful to debug
-make -p
-* Pirnt a message
-$(warning ...)
-* Etc
---warn-undefined-variables
