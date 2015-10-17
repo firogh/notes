@@ -1,8 +1,8 @@
 ---
-tags: howto
+tags: philosophy
 title: 日常生活中的偏见与谬误
 date: 2015-04-27 15:46:14
-category: howto
+category: philosophy
 ---
 
 # 现代人的堕落, 毫无建树
