@@ -1,59 +1,70 @@
 ---
 tags: cs
-title: General debugging method
+title: Debugging
 date: 2015-02-27 15:46:14
 category: cs
 ---
 
-#Reference
-DWARF
+# Reference
+Reverse engineering
 
-# [BUG type of JimGray](http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs/)
-##Bohrbug, can be reproduce.
-##Heisenbug 不论你用多少的时间和精力来试图让bug重现，bug就是人间蒸发了
-##Mandelbug 当bug产生的原因过于复杂而难以理解时，bug的出现也变得没有规律
-##Schroedinbug
+# Contents
+Bug types
+Bug made by me
+Anti-debuging
+General debugging steps 
+Get observations
+Debug Kernel bug 
 
-#[Common types of computer bugs](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
-## Arithmetic bugs
-## syntax error
-## Logic error
-Incorrect Bounds-Checking
-off-by-one bug
-Skipping Null-Termination Issues
-## Resource bugs
-uninitialized/nonvalidated/corrupted pointer dereference.
-Segmentation fault in userspace
-Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
-Buffer overflow/踩内存
-
-* [Double kfree errors](http://lwn.net/Articles/174494/)
-The devm_* series functions introduce more double free error in driver code.
-
-## Race condition bug
-Multi-threading programming bugs(parallel problems)
-* deadlock
-## Interfacing bugs
-## Performance bugs
-## Teamworking bugs
-## Vulnerable bugs
-*unbounded memory manipulation functions
-strcpy
-* Non-Null Termination Issues
-non terminaed string
-*Formate string
-[Format Strings attacker](https://www.owasp.org/index.php/Format_string_attack) or [Uncontrolled format string](https://en.wikipedia.org/wiki/Uncontrolled_format_string)
-* integer issues
-integer overflow
-Signed Comparison Vulnerabilities
-
-##Special BUG
+# Bug types
+## Gernel Bug types
+## [CWE - Common Weakness Enumeration](https://nvd.nist.gov/cwe.cfm)
+## [BUG type of JimGray](http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs/)
+Bohrbug, can be reproduce.
+Heisenbug 不论你用多少的时间和精力来试图让bug重现，bug就是人间蒸发了
+Mandelbug 当bug产生的原因过于复杂而难以理解时，bug的出现也变得没有规律
+Schroedinbug
+## [Common types of computer bugs in wikipedia](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
+Arithmetic bugs
+syntax error
+Logic error
+> Incorrect Bounds-Checking
+> off-by-one bug
+> Skipping Null-Termination Issues
+Resource bugs
+> uninitialized/nonvalidated/corrupted pointer dereference.
+> Segmentation fault in userspace
+> Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
+> Buffer overflow/踩内存
+> [Double kfree errors](http://lwn.net/Articles/174494/)
+> The devm_* series functions introduce more double free error in driver code.
+Race condition bug
+> Multi-threading programming bugs(parallel problems)
+> deadlock
+Interfacing bugs
+Performance bugs
+Teamworking bugs
+Vulnerable bugs
+> unbounded memory manipulation functions
+> strcpy
+> Non-Null Termination Issues
+> non terminaed string
+> Formate string
+> [Format Strings attacker](https://www.owasp.org/index.php/Format_string_attack) or [Uncontrolled format string](https://en.wikipedia.org/wiki/Uncontrolled_format_string)
+> integer issues
+> integer overflow
+> Signed Comparison Vulnerabilities
+Special BUG
 [kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
-
-#Taxonomy of Kernel BUG
-* [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
-* [Source of BUG](http://fedoraproject.org/wiki/KernelBugTriage#Kernel_Bug_Classification), driver or subsystem and so on.
-
+## Taxonomy of Kernel BUG
+[oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
+[kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
+狭隘的认为oops等价于内存地址出问题了, oops 本质上是__die("Oops"
+__die 却可以表明很多错误 "Bad pagetable", "Oops - badmode"   
+arm_notify_die("Oops - undefined instruction" 等等..
+oops 是超出programmer 之外的错误,属于不可控风险, 其实更危险比panic.
+panic 则是programmer 感知到的是防御式编程assertion的体现.
+[Source of BUG](http://fedoraproject.org/wiki/KernelBugTriage#Kernel_Bug_Classification), driver or subsystem and so on.
 #BUG made by me
 * print_signal_info wrong pritk parameters position
         printk(KERN_NOTICE "K %d : %d -> %s %d %s %d\n", sig, q->info.si_code,
@@ -61,77 +72,40 @@ Signed Comparison Vulnerabilities
  Watch compile warning info can be avoid of this bug.
 * spin_lock(sighand) invoke down_sem and cond_resched...
 	__send_signal()
-
-# Anti debugging
+# Anti-debugging
 ## Syntax checking
 gcc -Wall
 bash -n
 ## static code analysis
 smatch
-
-# Typical debugging process -- step 1, 2, 3 maybe loop.
-0. 合理性假设可能性, 最高的一系列原因!
-1. Generating program states, 对于内核很多时候, 我们只能有一次机会产生调试的信息, 就是panic or oops那时, 不绝对.
-2. examine program states 
-3. track down the origin of the problem(s)
-4. fix it
-
-# 合理推判
-## 我们的程序 or 系统, 库有问题.
-## 证明, 注重因果性, 而不是相关性Correlation
-充分: 因->果, 基本backtrace可以断定
-必要: 果->因, 这个bug只是这个因造成的.
-
-# Generating program/system states
-## Printing
-* 刘东log法 #define debugme(fmt, args...) do{FILE *fdebug=fopen("/d.log", "a+"); fprintf(fdebug,"%s,%s,%d:", __TIME__, __FUNCTION__, __LINE__);fprintf(fdebug, fmt, ##args);fclose(fdebug);} while(0)
-
-* before kernel decompress
-putstr
-
-* early printk
+# General debugging steps -- [Abductive reasoning](https://en.wikipedia.org/wiki/Abductive_reasoning)
+T + O => E; //Theory + observations => explanation
+E is the sub-set of T, O is the result of E under the T.
+The process of debugging is use O to minimize T to E instance.
+0. Reproduce?
+1. Find the bug type and definations what the bug belong to.
+The bug type is the broad outline of the Expaination of the specific bug's Observation.
+2. 结合实际环境get more observations and deuce the explanation/cause.
+3. Fix it.
+# Get observations
+## Get observations from excute binary
+DWARF
+ELF header, readelf -h
+Program header table, readelf -l
+Segments, readelf --segments 
+Sections, readelf --sections
+Section header table, readelf -S 
+objdump -S
+## Get Observations from program
+> #define debugme(fmt, args...) do{FILE *fdebug=fopen("/tmp/d.log", "a+"); \
+> fprintf(fdebug,"%s,%s,%d:"fmt, __TIME__, __FUNCTION__, __LINE__, ##args);fclose(fdebug);} while(0)
+Before kernel decompress use putstr
 Linux serial-port driver is interrupt driven, if irq-off console will not work!
-
-* printk
-
-## beyond printing
-Use atexit() register a stackdump() function
-dump_stack in kernel
+early_printk vs printk
+dump_stack
 ioctl/netlink
-print signal This is just a hiwifi wonderful kernel patch #931
-
-
-## Log
-dmesg
-syslog
-
- 
-## Debugging support in the kernel
-更为宽泛意义上的printing 方法.
-* kernel tracing
-http://lwn.net/Articles/291091/
-http://lwn.net/Articles/330402/
-http://lwn.net/Articles/379903/
-http://lwn.net/Articles/381064/
-http://lwn.net/Articles/383362/
-http://lwn.net/Articles/346470/
-
-* CONFIG_DYNAMIC_DEBUG
-pr_debug()/dev_debug()
-<debugfs>/dynamic_debug/control
-
-## SysRq
-t, m
-
-## /proc (specially /proc/sys/) and /sys
-
-## Trace
-strace
-ltrace
-ftrace in kernel
-kgtp
-
-## Debuger Gdb kdb kgdb
+Use atexit() register a stackdump or a wrapped print
+### Debuger Gdb kdb kgdb
 gdb /usr/src/linux/vmlinux /proc/kcore
     bt
     x/100a
@@ -142,57 +116,59 @@ core-file /proc/kcore
 p jiffies_64
 text_addr=$(cat /sys/module/char-read-write/sections/.text)
 add-symbol-file /home/nkhare/char-read-write.ko $text_addr
-
-* how to get module text address
-firo@firo module$ cat /sys/module/wmi/sections/.text 
-0xffffffffa023b000
-
-firo@firo module$ cat /proc/modules | grep wmi
-wmi 18820 0 - Live 0xffffffffa023b000
-
-……
-int bss_var;
-static int hello_init(void)
-{
-printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
-static int data_var=0;
-printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
-printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
-……
-}
-Module_init(hello_init);
-###GDB skills
-* offset of member in struct
+* how to get the offset of member in struct
 gdb ./vmlinux 
 print &((struct kmem_cache *)0)->offset
-
-
 ## Kprobes
 * kgdb
 gdb
 file vmlinux
 set remotebaud 115200
 target remote /dev/ttyS0
-
-## lockdep
-
-## tcpdump/wireshark
-
-## lsof
-
-## [kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
-狭隘的认为oops等价于内存地址出问题了, oops 本质上是__die("Oops"
-__die 却可以表明很多错误 "Bad pagetable", "Oops - badmode"   
-arm_notify_die("Oops - undefined instruction" 等等..
-oops 是超出programmer 之外的错误,属于不可控风险, 其实更危险比panic.
-panic 则是programmer 感知到的是防御式编程assertion的体现.
-
-## Coredump and /proc/kcore and kdump
-
-## library dependencies of a ELF/bin
+## Get observations from application
+lsof
+strace
+bash  -x for shell
+coredump
+## Get observations from library
+ltrace
+library dependencies of a ELF/bin
 LD_TRACE_LOADED_OBJECTS=1 git 
 ldd /usr/bin/git
+## Get observations from kernel
+dmesg
+SysRq
+/proc (specially /proc/sys/) and /sys
+ftrace
+http://lwn.net/Articles/291091/
+http://lwn.net/Articles/330402/
+http://lwn.net/Articles/379903/
+http://lwn.net/Articles/381064/
+http://lwn.net/Articles/383362/
+http://lwn.net/Articles/346470/
+CONFIG_DYNAMIC_DEBUG
+pr_debug vs dev_debug
+<debugfs>/dynamic_debug/control
+print signal This is just a hiwifi wonderful kernel patch #931
+kgtp?
+lockdep
+kdump
+* how to get module text address
+firo@firo module$ cat /sys/module/wmi/sections/.text 
+0xffffffffa023b000
+firo@firo module$ cat /proc/modules | grep wmi
+wmi 18820 0 - Live 0xffffffffa023b000
+int bss_var;
+static int hello_init(void)
+{printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
+static int data_var=0;
+printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
+printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
+……}
+Module_init(hello_init);
 
+## Observations of network
+tcpdump netstat iptables wireshark
 ## Kernel specific
 kernel version
 ask reporter for the .config
@@ -299,8 +275,14 @@ It maybe ERR_PTR(-12);
 ### A case of oops
 Register IP: -> System.map /proc/kallsyms -> objdump -S char-read-write.ko
 
-
-
-
-#FIXME/FIXIT
-
+# Debug make bug
+* Just print echo 
+make -s 
+* Print shell command
+make -n
+* Print all variables. not really execute. Wired-name variable is useful to debug
+make -p
+* Pirnt a message
+$(warning ...)
+* Etc
+--warn-undefined-variables

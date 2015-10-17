@@ -30,6 +30,8 @@ category: philosophy
 世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
 
 ## Criteria and benchmark or protype
+实用主义Pragmatism
+准确的定义你的问题 -- Firo
 概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
 Completeness, consistency -- Logic
@@ -38,13 +40,10 @@ Plan and record  -- Firo
 Multitasking  -- CS
 怎么样才算是学到了知识呢?
 1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系. --Firo
-凭什么我们就如此受制于人or 书？他就能搞懂，而我就不行呢？”。
-其实，我们需要的是一种重其意而忘其形的根本之道，
-需要的是一种兵来将挡，火来水淹的通用解决方法。
-而绝不是淹没于牛人们的结论中。
-否则，遇到一个新的问题，就只能埋怨牛人的书还不够厚，以至于没把你需要的东西也包括进去了。
-								 --s3c24xx@gmail.com
+可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
+
 2. 要有醍醐灌顶的感觉.
+Why we can understand something?
 
 ## Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
@@ -100,6 +99,7 @@ Review frequently enough to retain the whole argument at once -- Descartes
 定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 computer first pattern: init onset,  running nuclus,  exit, coda
+溯因推理abduction
 
 # Aaron Swartz
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,

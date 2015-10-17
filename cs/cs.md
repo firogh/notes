@@ -135,27 +135,7 @@ git send-email --smtp-encryption=tls --smtp-server=smtp.gmail.com --smtp-user=fi
 ##git diff
 git -c core.whitespace=tab-in-indent diff --check
 # Debugging
-## Reverse engineering tools for debugging
-* readelf
-ELF header, readelf -h
-Program header table, readelf -l
-Segments, readelf --segments 
-Sections, readelf --sections
-Section header table, readelf -S 
-* objdump
-objdump -S
-* tcpdump
-## debug make
-* Just print echo 
-make -s 
-* Print shell command
-make -n
-* Print all variables. not really execute. Wired-name variable is useful to debug
-make -p
-* Pirnt a message
-$(warning ...)
-* Etc
---warn-undefined-variables
+
 # Test
 * kvm  & supermin
 # Mail
