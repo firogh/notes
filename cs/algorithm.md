@@ -1,8 +1,8 @@
 ---
-tags: kernel
+tags: cs
 title: Algorithms and data structues for kernel hacking
 date: 2015-05-27 12:42:12
-category: kernel
+category: cs
 ---
 
 # Reference

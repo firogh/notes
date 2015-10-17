@@ -14,7 +14,7 @@ Programming language theory
 Compiler construction
 Algorithms and data structures
 Debuging
-Mathmatic
+Mathematics
 Testing
 Automata
 Design pattern
@@ -31,8 +31,13 @@ Author and maintainer
 Update log
 Name of the module
 Usage
-# Mathmatic
+# Mathematics
 1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
+Complement
+radix complement
+diminished radix complement
+Codata
+Collection
 # [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
 ## defensive programming
 Low tolerance against "potential" bugs
