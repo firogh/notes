@@ -58,6 +58,7 @@ Vulnerable bugs
 > Signed Comparison Vulnerabilities
 Special BUG
 [kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
+
 ## Taxonomy of Kernel BUG
 [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
 [kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
