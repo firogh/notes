@@ -1,7 +1,7 @@
 ---
 date: 2015-04-25
-title: Linux kernel hacking 攻略 
-category: howto
+title: Kernel hacking
+category: kernel
 ---
 
 # kernel hacker之路
