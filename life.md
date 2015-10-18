@@ -4,31 +4,54 @@ date: 2015-02-27 15:46:11
 category: firo
 ---
 
-#TODO Tal
+# Life
 Go to a place to live comfortably, grow up. 
 American kernel job & Visa
 Passport 
-
-# Cognition in philosophy
-
+# Daily contents
+Skin care
+Fix philosophy.
+English
+Experience in kernel hacking and cs
+Sleep and physical exercises
+Extend knowledge.
+## Skin care
+* 不熬夜, 早睡, 早起!
+* Fitness
+* Cleansing
+Daily ?
+Lab series multi-action face wash
+* Toning
+Water, more water.
+* Moisturizing
+Kiehl‘s ultra facial cream!
+* Exfoliants
+For face, once a week.
+# Philosophy
+现象学分析方法?
+什么是观念, 概念?
 # Dressing
 # Career
 Working style, modular	
-
-# philosophy
-现象学分析方法?
-什么是观念, 概念?
+# Shopping
+Hangers
+Face masker
+克林莱天然橡胶手套
+白博士泡沫式厨房清洁剂
+擦擦克林
+威猛先生
+长柄刷子 
+淋浴喷头
+抹布
+盘子 盆子
 # CS
+How does a program execute from  c expression to physics?
+## programming
 libev 变量的生存周期
-# kernel
+## kernel
 What is platform driver?
-
 find source code of config
 How to print backtrace by kernel oops, and why it's not exact?
-What is .byte in oops
- 3f:   31                      .byte 0x31 
- Nevermind that .byte 0x31 - it's just a truncated instruction (we have one
- starting with 31 just several lines above). 
 What is abi
 why get_unaligned_be16?
  _THIS_IP_ vs __FUNCTIONS__
@@ -48,18 +71,6 @@ net_poll
 napi
 * What is Head-of-line blocking
 
-# shopping
-Hangers
-Face masker
-克林莱天然橡胶手套
-白博士泡沫式厨房清洁剂
-擦擦克林
-威猛先生
-长柄刷子 
-淋浴喷头
-抹布
-盘子 盆子
- 
 # Linguistic
 西方哲人眼中的文字观
 positive psychology
@@ -91,20 +102,6 @@ Talking with family
 * Writing, before 22:40, 10 minutes
 Lyubishchev
 Keep diary
-## Skin care
-* 不熬夜, 早睡, 早起!
-* Fitness
-* Cleansing
-Daily ?
-Lab series multi-action face wash
-* Toning
-
-Water, more water.
-* Moisturizing
-Kiehl‘s ultra facial cream!
-* Exfoliants
-For face, once a week.
-
 # Physical exercise
 * Belly, Abdomen			
 Crunsh(Not Situps), Leg raise
@@ -130,14 +127,6 @@ Biceps up, Chin up
 
 #Diary 
 plan record analysis feedback
-
-# Daily stuff
-Fix philosophy.
-English
-Experience in kernel hacking and cs
-Sleep and physical exercises
-Extend knowledge.
-
 # 1014
 
 # 1013

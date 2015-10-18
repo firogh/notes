@@ -188,7 +188,7 @@ struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned
 sizeof S1 = 16 in 64-bit
 * In what situation can unaligned accesss make a kernel panic?
 may be arch/mips/kernel/unaligned.c
-#Scheduling
+# Scheduling
 ## Process scheduler
 ## Network scheduler
 ## I/O scheduling
@@ -217,12 +217,12 @@ version ihl
 (ver_ihl & 0xf0)>> 4 = version
 ver_ihl & 0x0f = ihl
 是无关cpu读取顺序的.
-###Endianess in build
+### Endianess in build
 cpu -> toolchain
 ar71xx big
 ralink little
 # Introdution
-我们先看ISA.我们都知道语言有个范式, 汇编语言的范式是什么呢?
+我们先看ISA. 我们都知道语言有个范式, 汇编语言的范式是什么呢?
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
 换个角度理解, [低级语言与硬件结构的关系](http://202.116.24.124/computer/content/theory/web/Chap04/4.1.3.HTM)
