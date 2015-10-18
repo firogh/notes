@@ -5,19 +5,18 @@ date: 2015-10-13 14:40:13
 category: cs
 ---
 ##Reference
-常用寄存器，常见指令
-实模式和保护模式
-分段和分页机制
-TSS和任务管理
-中断机制
-时钟机制
-高速缓存
+Legacy 常用寄存器，常见指令 实模式和保护模式 分段和分页机制 TSS和任务管理 中断机制 时钟机制 高速缓存
+Computer Organization and Design 5th Edition
+Digital Design and Computer Architecture 2nd Edition
+Write Great Code: Volume 1: Understanding the Machine
 See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
+# Contents
+
 #x86 Interrupt
 If interrupt occured in user mode, then cpu will context swith for potential reschedule.
 The Interrupt Descriptor Table (IDT) is a data structure used by the x86 architecture to implement an interrupt vector table. 
-##Hardware interrupts 
+##Hardware interrupts
 are used by devices to communicate that they require attention from the operating system.
 asynchronus
 more details in init_IRQ() or set_irq() in driver.

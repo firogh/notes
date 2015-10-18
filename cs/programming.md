@@ -46,8 +46,8 @@ How to use assertion
 # Algorithms and data structures
 Plz, reference algorithm.md
 # Design pattern
-1.Publish-Subscribe Mechanism 
-2.Observation
+1. Publish-Subscribe Mechanism 
+2. Observation
 # Code navigation tools
 * ctags
 ctags -R --regex-c="/^SYSCALL_DEFINE[0-9]?\(([a-zA-Z0-9_]*).*/sys_\1/"
@@ -73,6 +73,7 @@ make cynthia
 * make localmodconfig will reduce many unused kernel config.
 * make bzImage  #kmods will not build that configured with M! 
 * make modules_install INSTALL_MOD_PATH=/home/firo/kmods
+## yocto
 make ARCH=arm menuconfig
 ##build signle kernel module
 make menuconfig

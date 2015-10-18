@@ -30,7 +30,12 @@ category: philosophy
 世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
 
 ## Criteria and benchmark or protype
-实用主义Pragmatism
+To attain perfect clearness in our thoughts of an object, then, 
+we need only consider what conceivable effects of a practical kind the object 
+may involve—what sensations we are to expect from it, 
+and what reactions we must prepare. (1907: 29)
+		-- James,Pragmatism: A New Name for an Old way of Thinking
+你不需要掌握所有的内容, 你需要的是基础的general,重要的,常用的. Bound to James Pragmatism -- Firo
 准确的定义你的问题 -- Firo
 概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
@@ -41,7 +46,6 @@ Multitasking  -- CS
 怎么样才算是学到了知识呢?
 1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系. --Firo
 可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
-
 2. 要有醍醐灌顶的感觉.
 Why we can understand something?
 
@@ -63,6 +67,7 @@ Falsifiability可证伪性 -- Popper
 使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
 问题的提出基于Pragmatism. -- Firo
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
+Question about what is import, foundation, 4疑问是必须的问题. -- Firo
 问题可以是非常直观,很生活化, 不高大上, 但要是实在的问题.通常提出的问题都是这种, 实用主义问题, 很赞. -- Firo
 当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
 每一次认知都是积累pattern的过程. -- Firo
@@ -95,12 +100,14 @@ Review frequently enough to retain the whole argument at once -- Descartes
 通过对被还原到生活的语言词汇(有些时候我们需要修改那些不适当的词汇名字), 来从新认识他在问题中的语义意义. --Firo
 比如内核时间子系统的, timekeeping, 还原到生活是日晷, 沙漏, 钟表. 再次回到程序中, 虽然只是个struct数据结构却携带这涵义丰富生活语义.--Firo
 这是为什么好的命名, 对于程序理解的重要性.想较于使用不同语言的计算机程序开发者在源码中寻找词汇的original的来说, 社会生活中etymology要复杂多. --Firo
-## 模式 -- 结构 关系 原理
+# 模式 -- 结构 关系 原理
  这里所说的模式是事物某种既定的认知, 而方法是来揭示模式的.
 定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 computer first pattern: init onset,  running nuclus,  exit, coda
 溯因推理abduction
+## Pragmatism sensations
+Theory
 
 # Aaron Swartz
 I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,

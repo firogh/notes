@@ -32,7 +32,7 @@ For face, once a week.
 什么是观念, 概念?
 # Dressing
 # Career
-Working style, modular	
+Working style, modular
 # Shopping
 Hangers
 Face masker
@@ -45,9 +45,7 @@ Face masker
 抹布
 盘子 盆子
 # CS
-How does a program execute from  c expression to physics?
-## programming
-libev 变量的生存周期
+What's results  will be generated for cache when manipulate variable?
 ## kernel
 What is platform driver?
 find source code of config
@@ -66,18 +64,22 @@ and generic concept: hub, switch?
 hub: layer 1, bradcast, exclusive share, 报文可被侦听.
 switch: layer 2,  mac port route, CAM table in linux bridge module!
 switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以是layer层技术.
-*What is the type in ip link?
+* What is the type in ip link?
 net_poll
 napi
 * What is Head-of-line blocking
-
+## computer architecture
+The theroy, 比如我可以更好的理解cpu, 中断上下文,cache,内存,netdevice怎么工作的.
+How does a program execute from c expression to physics?
+Does cache belong to computer architecture not OS?
+## programming
+libev 变量的生存周期
+What are the sensations and reactions of yocto?
 # Linguistic
 西方哲人眼中的文字观
 positive psychology
-
-# ETC
+# Culture
 鲍勃迪伦
-
 # Chronobiology
 身体是硬件, 思想是软件.
 Principle: health, effective
@@ -124,11 +126,9 @@ Biceps up, Chin up
 40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour 
 * Masturbation			
 1 time two week 
-
 #Diary 
 plan record analysis feedback
 # 1014
-
 # 1013
 USB ULPI
 USB stick -> USB OTG PHY/Transceiver->ULPI->SOC usb controller
@@ -136,8 +136,7 @@ Transceivers are called Medium Attachment Units (MAUs) in IEEE 802.3 documents
 [What is a USB transceiver?](http://electronics.stackexchange.com/questions/39381/what-is-a-usb-transceiver)
 transceiver最主要的作用是将数字信号转换为模拟信号。一般的transceiver只需要正确上电就可以了，不用配置。
 http://bbs.csdn.net/topics/360017200
-
-# Components
+## Components
 OTG device init in MACHINE_START->init_machine   = ams_delta_init ->omap1_usb_init -> otg_device_init
 OTG driver init module_platform_driver(fsl_otg_driver);->fsl_otg_probe-> conf & start->request_irq(fsl_otg_isr){ suspend & resume}
 USB dr device init dr_controller_setup drivers/usb/gadget/udc/fsl_udc_core.c
@@ -147,7 +146,6 @@ USB host driver init
 
 USB的协议实现在usb.c,主机控制器在drivers/usb/host/文件夹实现
 整个usb部分由抽象层（usb.c)，规格定义(ehci-hcd.c)和具体实现(ehci-fsl.c)来分工实现
-
 ## NB
 fsl_otg_conf 类似于otg_ulpi_create
 
