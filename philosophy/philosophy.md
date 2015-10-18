@@ -69,6 +69,7 @@ Falsifiability可证伪性 -- Popper
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 Question about what is import, foundation, 4疑问是必须的问题. -- Firo
 问题可以是非常直观,很生活化, 不高大上, 但要是实在的问题.通常提出的问题都是这种, 实用主义问题, 很赞. -- Firo
+top-down, bottom-up 通常问题提出解决方向之一. -- Firo
 当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
 每一次认知都是积累pattern的过程. -- Firo
 一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后,在建立之间的关系. --Firo
