@@ -65,8 +65,8 @@ Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 
 使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
-问题的提出基于Pragmatism. -- Firo
 Question the beginning of mind. -- Firo
+问题的提出基于Pragmatism. -- Firo
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 Question about what is import, foundation, 4疑问是必须的问题. -- Firo
 问题可以是非常直观,很生活化, 不高大上, 但要是实在的问题.通常提出的问题都是这种, 实用主义问题, 很赞. -- Firo
