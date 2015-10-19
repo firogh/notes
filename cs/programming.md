@@ -24,6 +24,7 @@ Mathematics
 Automata
 Logic
 
+Software engineering
 Debuging
 Testing
 # Source code editor
