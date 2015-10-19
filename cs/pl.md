@@ -4,23 +4,19 @@ title: The programming language
 date: 2015-02-27 15:46:14
 category: cs
 ---
-
+## Reference
+Programming Language Pragmatics 3rd
+C11
+C Traps and Pitfalls
+Expert C Programming
+[compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
+# Contents
 # Formal language
-
 # c 
 我们还是从使用的角度来看c 语言; 
 c语言自身重要基础性质, 我们需要了解.
 除此之外, 我们还要了解一些重要的标准库函数.
 知道这些, 我们就能用c语言.
-## Reference
-C11
-C Traps and Pitfalls
-Expert C Programming
-[compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
-## Label
-It is considered to be safer that the label reflect what happens at the
-destination, and not the reason for reaching the label. --Julia
-
 ## Type
 * Object type and function type
 * Object -- void, scalar,aggregate types, composite
@@ -79,8 +75,6 @@ the elements of the array you do not need to know the innermost dimension.
 
 Compiler has to know by how much to increment the pointer when 
 indexing on the first dimension for example. So if an int array is named a,
-
-
 ## Integer Promotion
 [Deep C: Integer Promotion](http://www.idryman.org/blog/2012/11/21/integer-promotion/)
 * [Integral Promotions](https://msdn.microsoft.com/en-us/library/fc9te331.aspx)
@@ -158,27 +152,22 @@ successive addresses at which a given object can be allocated.
 More deatils in cs.md
 ## Declarations
 A declaration specifies the interpretation and attributes of a set of identifiers.
-
 A definition of an identifier is a declaration for that identifier that:
 for an object, causes storage to be reserved for that object;
 for a function, includes the function body;
 for an enumeration constant, is the (only) declaration of the identifier;
 for a typedef name, is the first (or only) declaration of the identifier.
-
 The declaration specifiers consist of a sequence of specifiers that indicate the linkage,
 storage duration, and part of the type of the entities that the declarators denote.
 ## Marco
 [如果#操作符出现在对象宏的替换列表中,则仅作为一个普通字符,不具有下述含义](http://blog.csdn.net/huyansoft/article/details/2484297)
-
 ## Expressions
 * cast
 A cast does not yield an lvalue.
-
 ## Lexical element
 ### Character constants
 An integer character constant has type int.
-
-##lexical pitfall
+## lexical pitfall
 ## Greedy lexical analysis
 * Write tokens with blank!
 x = y/*p;  /* oops, hidden error.*/
@@ -191,7 +180,7 @@ inline的好处与坏处
 没有调用的开销效率很高, 但是调试代码复杂了, 内链函数的实现是拷贝副本消耗内存.
 inline有类型检测, 宏没有.
 ## C standard library
-##FAQ
+## FAQ
 * Logical operation with signed value? x86!
 int c = 0xFFFFFFFF;  int d = c >> 31; => d == f;
 unsigned c = 0xFFFFFFFF;  int d = c >> 31; d!= f;
@@ -212,15 +201,12 @@ memmove: dest
 strcpy: dest, 拷贝\0
 strncpy: dest, if src_len >= n; 0 NULL, if src _len < n; (n - len) NULL;
 strlcpy: src_len, mini(n -1, src_len -1) + \0, src_len 用你返回啊!
-
 * Concatenation functions
 strcat: dest, overwrite dest \0 with src util src \0
 strncat: dest, 末尾一定有\0
-
 * Comparison functions
 memcmp: 差值,
 strcmp: -1, 0, 1, 如果整个s1都比完了NULL or --n ==0 for strncmp, return 0
-
 * Search functions
 memchr, NULL or p;
 strchr,ditto, 到\0返回NUll
@@ -229,9 +215,6 @@ strspn: s1开始有多少在s2中.
 strcspn: s1开始有多少不在s2中.
 strpbrk: s2中第一次出现的位置
 strstr: 找子串, 用memcmp
-
-
-
 # ASM in c code
 c语言嵌入汇编这不是c语言的特性是编译器的feature.
 [How to Use Inline Assembly Language in C Code](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html#Using-Assembly-Language-with-C)
@@ -252,7 +235,6 @@ register 63.....32......0
 big endian: lwl high bits in b + 0
 little endian: lwl high in b + off
 向中心
-
 # x86
 [Intel’s ‘cmpxchg’ instruction](http://heather.cs.ucdavis.edu/~matloff/50/PLN/lock.pdf)
 eax: e stand for 32
@@ -267,7 +249,6 @@ The linux kernel uses GS to access cpu-specific memory.
 GDT
 * tr
 TSS addressing
-
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
 ##Type
@@ -305,10 +286,8 @@ find . -name ‘your_pattern*’ -delete
 -c: count of match
 ##pipe
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
-
 #AWK
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
-
 #Regualar expression
 ##Basic
 ##Extend

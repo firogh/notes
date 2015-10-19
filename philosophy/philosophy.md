@@ -28,6 +28,9 @@ category: philosophy
 世界的普遍不确定性 -- Firo Soros
 认知的unit是概念. -- Firo
 世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
+A theory is a perspective of understanding this world. Get more perspective to understanding the world:-)-- Firo
+For example, mathematics, logic, computer science are all the theory and perspective:-) -- Firo
+In genearl, 认知过程就是一种perspective 转换到另一种perspective.
 
 ## Criteria and benchmark or protype
 To attain perfect clearness in our thoughts of an object, then, 
@@ -44,7 +47,7 @@ Completeness, consistency -- Logic
 Plan and record  -- Firo
 Multitasking  -- CS
 怎么样才算是学到了知识呢?
-1. 所有知识都不是stand alone的, 必须和你了解熟悉的知识建立等价的认知关系. --Firo
+1. 所有知识都不是stand alone的,孤立的知识是死知识,必须和你了解熟悉的知识建立等价的认知关系. --Firo
 可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
 2. 要有醍醐灌顶的感觉.
 Why we can understand something?

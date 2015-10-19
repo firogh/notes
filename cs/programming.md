@@ -11,7 +11,7 @@ programming principles
 High cohesion low coupling
 # Computer programming
 Programming language theory
-Compiler construction
+Compiler construction 
 Algorithms and data structures
 Debuging
 Mathematics
@@ -21,7 +21,7 @@ Design pattern
 # Source code editor
 vim
 easymotion
-# Coding standards
+# Coding style
 GNU coding standards
 Linux kernel coding style
 Shell coding standard
@@ -31,6 +31,9 @@ Author and maintainer
 Update log
 Name of the module
 Usage
+## Label
+It is considered to be safer that the label reflect what happens at the
+destination, and not the reason for reaching the label. --Julia
 # Mathematics
 1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
 Complement
@@ -81,6 +84,10 @@ make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
 # Compile
+
+# Compile construction
+Understand pl deeply 
+how to translate it into machine code for specific CPU
 * gcc
 -E -S -c 
 -I -L -l
