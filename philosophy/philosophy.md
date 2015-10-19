@@ -12,15 +12,12 @@ category: philosophy
  **完整逻辑 = 知道的概念 + 疑问** 
 疑问 = 能指signifier + 疑问化的所指Signified 
  **问题必须被明确的定义, 初始的问题定义了整个思考的方向**
-
 概念的4种疑问:
 1. why 为什么产生的, 解决什么问题, 没了会怎么样.
 2. 什么样子的, 怎么设计
 3. 怎么用的
 4. feedback 用起来感受怎么样. 有什么缺点啊. 正反馈啊负反馈.
-
 那么认知的过程就是不断的划分疑问, 理顺问题的过程了.
-
 # Epistemology
 ## Top conceptions
 因果律
@@ -29,9 +26,9 @@ category: philosophy
 认知的unit是概念. -- Firo
 世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
 A theory is a perspective of understanding this world. Get more perspective to understanding the world:-)-- Firo
-For example, mathematics, logic, computer science are all the theory and perspective:-) -- Firo
-In genearl, 认知过程就是一种perspective 转换到另一种perspective.
-
+In genearl, 认知过程就是一种perspective 转换到另一种perspective. -- Firo
+For example, mathematics, logic, computer science are all the theory and perspective:-) 这三种思维都要养成, 慢慢来. -- Firo
+compile就是这样一种转换. -- Firo
 ## Criteria and benchmark or protype
 To attain perfect clearness in our thoughts of an object, then, 
 we need only consider what conceivable effects of a practical kind the object 

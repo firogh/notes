@@ -11,21 +11,34 @@ programming principles
 High cohesion low coupling
 # Computer programming
 Programming language theory
+Programming language 
 Compiler construction 
-Algorithms and data structures
-Debuging
-Mathematics
-Testing
-Automata
+
+Coding style
+[Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
+Programming paradigms
 Design pattern
+Algorithms and data structures
+
+Mathematics
+Automata
+Logic
+
+Debuging
+Testing
 # Source code editor
-vim
-easymotion
+vim easymotion
 # Coding style
-GNU coding standards
-Linux kernel coding style
-Shell coding standard
-Commenting
+GNU coding standards, Linux kernel coding style, Shell coding standard
+# Mathematics
+数学思维是什么样的? 如何构建呢?
+1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
+Complement
+radix complement
+diminished radix complement
+Codata
+Collection
+## Commenting
 Copyleft/right,
 Author and maintainer
 Update log
@@ -34,14 +47,7 @@ Usage
 ## Label
 It is considered to be safer that the label reflect what happens at the
 destination, and not the reason for reaching the label. --Julia
-# Mathematics
-1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
-Complement
-radix complement
-diminished radix complement
-Codata
-Collection
-# [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
+# Programming paradigms
 ## defensive programming
 Low tolerance against "potential" bugs
 Assertion, panic in user space

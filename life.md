@@ -81,7 +81,7 @@ positive psychology
 # Culture
 鲍勃迪伦
 # Chronobiology
-身体是硬件, 思想是软件.
+身体是硬件,思想是软件.
 Principle: health, effective
 * Physical execise 21:30, 45 minutes
 有氧和无氧隔天锻炼.
@@ -128,6 +128,9 @@ Biceps up, Chin up
 1 time two week 
 #Diary 
 plan record analysis feedback
+# 1019
+Baudrate
+
 # 1014
 # 1013
 USB ULPI

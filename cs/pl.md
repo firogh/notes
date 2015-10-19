@@ -4,15 +4,19 @@ title: The programming language
 date: 2015-02-27 15:46:14
 category: cs
 ---
-## Reference
+# Reference
 Programming Language Pragmatics 3rd
 C11
 C Traps and Pitfalls
 Expert C Programming
 [compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
 # Contents
-# Formal language
-# c 
+Programming language theory
+Programming language
+Compile construction
+# Programming language theory 
+What is formal language and the relationg between fl and pl?
+# C 
 我们还是从使用的角度来看c 语言; 
 c语言自身重要基础性质, 我们需要了解.
 除此之外, 我们还要了解一些重要的标准库函数.
@@ -37,7 +41,6 @@ c11上是ok的!
 * 做signed 和unsigned 貌似both convert to unsigned gcc才给警告, 否则不给即便是signed和unsigned比较. 
 ## lvalue rvalue modfiable rvalue
 [Understanding lvalues and rvalues in C and C++](http://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c)
-
 ## Array decay
 数组退化的初衷, 可能是K&R当年计算资源紧缺, 导致不允许函数传值copy数组内容.
 总之标准委员会介入之前就决定.
@@ -255,10 +258,8 @@ TSS addressing
 ### Standard Wildcards (globbing patterns)
 File and directory patterns
 ?: must stand for a character
-
 * Regular expression
 * SQL
-
 #Shell
 ## test
 ### -n is not equivalent to ! -z
