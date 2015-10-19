@@ -66,6 +66,7 @@ Falsifiability可证伪性 -- Popper
 
 使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
 问题的提出基于Pragmatism. -- Firo
+Question the beginning of mind. -- Firo
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 Question about what is import, foundation, 4疑问是必须的问题. -- Firo
 问题可以是非常直观,很生活化, 不高大上, 但要是实在的问题.通常提出的问题都是这种, 实用主义问题, 很赞. -- Firo
