@@ -32,6 +32,7 @@ vim easymotion
 # Coding style
 GNU coding standards, Linux kernel coding style, Shell coding standard
 # Mathematics
+Introduction to Mathematical Thinking - Devlin, Keith
 数学思维是什么样的? 如何构建呢?
 1.In mathematics, and more specifically in algebra, a domain is a ring such that ab = 0 implies a = 0 or b = 0.
 Complement
@@ -74,60 +75,7 @@ or grep -nr 'ppp_channel_ops' /path/to/{l2tp, pptp, pppoe}
 * locate codes in complex program source files .
 Bubble locate, begin with the fundermental system api for example socket(), bind(), connect()...then raise
 # Review
-# Build automation
-* Make
-make cynthia
-## kbuild
-* if no .config, every config tools make a .config from scrach!
-* oldconfig just for new moduels patch merged in trunk. This no any relations to .config.old and /boot/config.x.y.z
-* make localmodconfig will reduce many unused kernel config.
-* make bzImage  #kmods will not build that configured with M! 
-* make modules_install INSTALL_MOD_PATH=/home/firo/kmods
-## yocto
-make ARCH=arm menuconfig
-##build signle kernel module
-make menuconfig
-make oldconfig && make prepare
-make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
-make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
-# Compile
-
-# Compile construction
-Understand pl deeply 
-how to translate it into machine code for specific CPU
-* gcc
--E -S -c 
--I -L -l
--ansi
--fsyntax-only 
--Werror
--save-temps
--H: show all header used
--v
--Wall
--fPIC: for shared library
--Q: print function and statisc?
--Wextra: 用处不大.
--U: undefine a preprocessor macro.
--pipe: make compilation faster, replace xx.S with |
--Wpadded: we can rearrange the fields of structure to make the structure smaller
--time
--x c: c language
--: stdin
-asmlinkage
-However, for C functions invoked from assembly code, 
-we should explicitly declare the function's calling convention, 
-because the parameter passing code in assembly side has been fixed. 
-##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
-##Symbol table
-* System.map less 
-When you compile the kernel
-nm vmlinux
-readelf -s 
-* /proc/kallsyms
-# Link
-* GNU ld
-* gold
+# Build 
 # Version control
 * [git](http://git-scm.com/docs)
 git ls-files -d |xargs -i git checkout {}

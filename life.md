@@ -70,8 +70,9 @@ napi
 * What is Head-of-line blocking
 ## computer architecture
 The theroy, 比如我可以更好的理解cpu, 中断上下文,cache,内存,netdevice怎么工作的.
-How does a program execute from c expression to physics?
+How does a program execute from asm language expression to physics?
 Does cache belong to computer architecture not OS?
+What make of cache and memory in digital physics?
 ## programming
 libev 变量的生存周期
 What are the sensations and reactions of yocto?
@@ -130,6 +131,7 @@ Biceps up, Chin up
 plan record analysis feedback
 # 1019
 Baudrate
+UART
 
 # 1014
 # 1013

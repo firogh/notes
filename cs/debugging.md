@@ -239,3 +239,7 @@ tcpdump netstat iptables wireshark
    e: fa                    cli
 * per-CPU
   f: 65 48 8b 14 25 a8 d1  mov    %gs:0xd1a8,%rdx
+
+
+# Debug Intel system studio
+

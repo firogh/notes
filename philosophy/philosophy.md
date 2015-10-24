@@ -47,7 +47,7 @@ Multitasking  -- CS
 1. 所有知识都不是stand alone的,孤立的知识是死知识,必须和你了解熟悉的知识建立等价的认知关系. --Firo
 可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
 2. 要有醍醐灌顶的感觉.
-Why we can understand something?
+Quick!
 
 ## Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
@@ -55,10 +55,12 @@ Why we can understand something?
 个人 or Government 积累掩盖篡改历史的真相.
 越是大型的魔术表演，其门道往往就越是简单！人们认定不可能发生这种事的常识，固定观念往往孕育出盲点！-- 唐吉诃德·多弗朗明哥
 正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
+重复信息导致的无效输入. (基于问题思考可以克服这个问题)
 
 ## 方法
 自己思考. -- Firo
 From ground, from zero, from origin. 从零开始建立系统 -- Firo 
+Based on questions.
 
 Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper
@@ -108,6 +110,10 @@ Review frequently enough to retain the whole argument at once -- Descartes
 问题总是复杂的, 解决方法总是简单的  --xiaolai.li
 computer first pattern: init onset,  running nuclus,  exit, coda
 溯因推理abduction
+Theory & application
+In & output
+Ideal & real
+Asynchronous & synchronous
 ## Pragmatism sensations
 Theory
 

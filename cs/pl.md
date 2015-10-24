@@ -16,6 +16,7 @@ Programming language
 Compile construction
 # Programming language theory 
 What is formal language and the relationg between fl and pl?
+## Semantics
 # C 
 我们还是从使用的角度来看c 语言; 
 c语言自身重要基础性质, 我们需要了解.

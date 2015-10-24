@@ -6,12 +6,62 @@ category: cs
 ---
 ##Reference
 Legacy 常用寄存器，常见指令 实模式和保护模式 分段和分页机制 TSS和任务管理 中断机制 时钟机制 高速缓存
-Computer Organization and Design 5th Edition
+《模拟电子技术基础 童诗白 第四版》仅限第一章前半部分
+Structured Computer Organization 6th Edition
 Digital Design and Computer Architecture 2nd Edition
+Computer Organization and Design 5th Edition
 Write Great Code: Volume 1: Understanding the Machine
 See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
+Microelectronics
 # Contents
+Interrupt
+Assembly language
+ISA
+Machine language
+Interpreting Machine Language Code
+Microarchitecture
+Digital Logic circuit(Logic gates)
+ALU
+Computer memory
+Register/Flip-flop
+Cache/SRAM
+DRAM/capacitor
+Analog Circuit(
+BJT FET Didoe
+
+## ISA
+model: 1570s, "likeness made to scale; architect's set of designs," from Middle French modelle 
+Semantics in computer science: In programming language theory, semantics is the field concerned 
+with the rigorous mathematical study of the meaning of programming languages.
+Concurrency semantics, 
+ISA: memory model, registers, data types, instructions, word size(?).
+Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory order semantics(name?).
+The interface between hardware and software.
+Arm v7
+word = instruction
+vocabulary = instruction set
+## Microarchitecture
+datapath: memories, registers, ALUs, multiplexers.
+control unit/decoder
+Microcode
+How to gurante that every control signal arrive the destnations before the data that will also pass through the destination?
+What is the pipeline?
+architectural state (the program counter and registers
+# Logic circuit
+Sequential logic
+Combinational logic
+## Computer memory
+flip-flops & latches, register files(?), memorys
+What is NOR gates?
+What is the implement of gate?
+
+data type
+instructions: 算术, 控制, 数据传送
+register file
+addressing modes(include memory mode)
+interrupt and exception handling, 
+external I/O
 
 #x86 Interrupt
 If interrupt occured in user mode, then cpu will context swith for potential reschedule.
@@ -28,13 +78,6 @@ is caused either by an exceptional condition in the processor itself,
 divide zero painc?
 * special instruction, for example INT 0x80
 or a special instruction in the instruction set which causes an interrupt when it is executed.
-## ISA
-data type
-instructions: 算术, 控制, 数据传送
-register file
-addressing modes(include memory mode)
-interrupt and exception handling, 
-external I/O
 ## Microarchitecture.
 * pipeline, 为什么流水工作效率高?复用? 一整条流水线对应一种指令:运算指令(算术 控制) or 数据传输指令(load sotre)对于RISC
 IF阶段也可以访问存储器,要和load sotre分开. IF是对指令的读取. load store是对数据, 这是icache和dcache产生的原因, FIXME.

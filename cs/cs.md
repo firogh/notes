@@ -8,6 +8,7 @@ category: cs
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
 [Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 For programming reference programming.md
+Graphviz + CodeViz
 
 # Layers of computer
 Applications
@@ -19,6 +20,7 @@ Digital circuits
 Analog circuits
 Electronic component
 Physics
+
 
 # OS
 ## Process management
