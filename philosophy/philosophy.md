@@ -39,6 +39,7 @@ and what reactions we must prepare. (1907: 29)
 准确的定义你的问题 -- Firo
 概念的四种疑问 -- Firo
 一一性  -- Moritz Schlick
+逻辑等价 -- Firo
 Completeness, consistency -- Logic
 繁忙的工作生活会令人身心愉悦 -- Firo
 Plan and record  -- Firo
@@ -67,7 +68,7 @@ Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 
 使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
-Question the beginning of mind. -- Firo
+Question the beginning of mind. Framework(maybe pattern) the incarnation of mind-- Firo
 问题的提出基于Pragmatism. -- Firo
 提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
 Question about what is import, foundation, 4疑问是必须的问题. -- Firo

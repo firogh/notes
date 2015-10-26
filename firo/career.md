@@ -66,13 +66,11 @@ general thought for problem solving
 * 发音
 ## Kernel patch
 10W, 500 commits
-
 ## Health
 Face skin and body skin
 Getting up  6:30
 Sleep	10:30
 Have sex
-
 
 # time
 September 16, 2015, begin this plan will be during 8 months
@@ -92,42 +90,20 @@ Arch
 kernel
 language c python shell
 debug 
-
-
 ## layering of my skills
 arch + 
 kernel + 
-compiler
-linker
-loader
-build system
-version control
-test
-debug
-algorithm +  
-math
-general thought for problem solving
-languages c + function + python
+compiler linker loader build system
 programming: 
-Exception handling + Defensive programming
-Refctoring
-coding style + file layout
-
 communication: english 
 effective working steps
+general thought for problem solving
 ## Career planing
 2015.08 ~ 2016.05, 10 months 300 days
 * 8
 arch + lock + memory + 编码奥秘 本周末前
 arm + x86 下周末前
 * 9
-
-
-
-
-
-
-
 # Interview
 ## 关于薪资问题
 全面回答包括股票期权. 

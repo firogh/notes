@@ -1,9 +1,11 @@
 ---
 tags: cs
-title: Light camera action: compile link load 
+title: Light camera action - compile link load 
 date: 2015-10-25 01:46:28
 category: cs
 ---
+# Reference
+[compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
 # Build automation
 * Make
 make cynthia
@@ -20,8 +22,6 @@ make menuconfig
 make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
-# Compile
-
 # Compile construction
 Understand pl deeply 
 how to translate it into machine code for specific CPU

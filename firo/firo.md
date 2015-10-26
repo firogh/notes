@@ -111,13 +111,10 @@ Mama
 06 25 1963
 09 24 1963 Household register
 Present:
-
 Baba
 02 28 1968
 02 29 1968 Household register
 Present:
-
 Brother
 01 06 1991
 Present:
-

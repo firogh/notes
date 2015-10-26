@@ -9,13 +9,12 @@ Programming Language Pragmatics 3rd
 C11
 C Traps and Pitfalls
 Expert C Programming
-[compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
 # Contents
 Programming language theory
 Programming language
-Compile construction
 # Programming language theory 
 What is formal language and the relationg between fl and pl?
+Language primitive
 ## Semantics
 # C 
 我们还是从使用的角度来看c 语言; 

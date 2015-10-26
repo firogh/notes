@@ -9,7 +9,10 @@ category: cs
 [Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 For programming reference programming.md
 Graphviz + CodeViz
-
+# Contents of computer science
+programming
+compile
+computer
 # Layers of computer
 Applications
 Operating system
@@ -20,7 +23,13 @@ Digital circuits
 Analog circuits
 Electronic component
 Physics
-
+# 计算机科学随想录
+计算机是人与世界的一种关系.
+人<-> computer <-> 世界.
+人意志->思维逻辑->电信号->物理世界
+人类的思维语言->人->计算机语言->编译器->机器语言->Microarchitecture(datapath, control unit)logic 电路->模拟电路电信号->物理世界.
+思维->电信号, 外部世界的改变(for good life)
+人类物理世界->思维世界-> 物理世界
 
 # OS
 ## Process management

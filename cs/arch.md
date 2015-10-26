@@ -34,9 +34,9 @@ BJT FET Didoe
 model: 1570s, "likeness made to scale; architect's set of designs," from Middle French modelle 
 Semantics in computer science: In programming language theory, semantics is the field concerned 
 with the rigorous mathematical study of the meaning of programming languages.
-Concurrency semantics, 
+Language primitive
 ISA: memory model, registers, data types, instructions, word size(?).
-Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory order semantics(name?).
+Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory barrier/memory order primitive's semantics.
 The interface between hardware and software.
 Arm v7
 word = instruction
