@@ -49,7 +49,7 @@ Multitasking  -- CS
 可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
 2. 要有醍醐灌顶的感觉.
 Quick!
-
+如果dd做同样的事情, 他会怎么做了?
 ## Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
 别人(自己存在)认识的谬误性. -- Firo Soros
@@ -61,7 +61,8 @@ Quick!
 ## 方法
 自己思考. -- Firo
 From ground, from zero, from origin. 从零开始建立系统 -- Firo 
-Based on questions.
+Based on questions. -- Firo
+视野! -- Firo
 
 Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper

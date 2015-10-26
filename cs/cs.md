@@ -23,19 +23,27 @@ Digital circuits
 Analog circuits
 Electronic component
 Physics
-# 计算机科学随想录
+# 计算机科学启示录
 计算机是人与世界的一种关系.
 人<-> computer <-> 世界.
 人意志->思维逻辑->电信号->物理世界
 人类的思维语言->人->计算机语言->编译器->机器语言->Microarchitecture(datapath, control unit)logic 电路->模拟电路电信号->物理世界.
 思维->电信号, 外部世界的改变(for good life)
 人类物理世界->思维世界-> 物理世界
-
+人类思维与语言, 计算机语言, 数字电路, 模拟电路, 世界.
+每一个sensation都有自己的内部规则, "语言",pattern, paradigm, theory. 这是他们不同的地方.
+作为程序员要理解认知这每一种paradigm, 似乎需要寻找到一种通用的语言, 来更好的理解他们. 有必要吗?
+当然逻辑思维好的人, 容易看到问题的本质. 数学和逻辑, 严密且语法简单适用其他paradigm的表述.
+语言总归是用来表述的媒介, 重要的还是内容. 统一的语言更容易看到联系, 相似的逻辑.
+也就是说, 有意识的用数学和逻辑表示pattern.
+Two point:
+不同sensation level之间的抽象类比, 方向人->物理世界.
+不同sensation level不同or相同的抽象. 具体的形而下->形而上数学与逻辑
 # OS
 ## Process management
 进程的定义和PCB，进程和线程的区别，进程的三个基本状态及它们之间的转换关系，进程的同步，竞争和死锁，进程间通信
 ###Representation 
-* Programe  memory
+* Program memory
 Stack(User/Kernel)
 Heap
 Data segment(data/bss)
