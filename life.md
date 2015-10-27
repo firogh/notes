@@ -147,12 +147,12 @@ OTG driver init module_platform_driver(fsl_otg_driver);->fsl_otg_probe-> conf & 
 USB dr device init dr_controller_setup drivers/usb/gadget/udc/fsl_udc_core.c
 USB dr driver init module_platform_driver_probe(udc_driver, fsl_udc_probe);
 USB host device init
-USB host driver init
+USB host driver init ehci_hcd_init-> platform_driver_register(&PLATFORM_DRIVER)-> ehci_fsl_driver
 
 USB的协议实现在usb.c,主机控制器在drivers/usb/host/文件夹实现
 整个usb部分由抽象层（usb.c)，规格定义(ehci-hcd.c)和具体实现(ehci-fsl.c)来分工实现
 ## NB
-fsl_otg_conf 类似于otg_ulpi_create
+fsl_otg_conf 类似于 otg_ulpi_create
 
 
 

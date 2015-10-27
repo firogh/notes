@@ -49,6 +49,7 @@ Quick!
 基于问题思考可以客服重复, 用处小的知识信息耽误时间, 也能解决脱离实际, 学了很多无用功. -- Firo
 
 ## Aspect
+准确定义问题.
 自己思考. -- Firo
 From ground, from zero, from origin. -- Firo
 Pragmatism Question the beginning of mind. -- Firo
@@ -66,6 +67,7 @@ Divide every question into manageable parts. -- Descartes
 一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后, 在建立之间的关系. --Firo
 Modularity, -- Computer science
 Begin with the simplest issues and ascend to the more complex. -- Descartes
+
 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
 * 抽象明确概念所属的范畴,从而正确的定义理解问题.
 * 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
@@ -73,10 +75,11 @@ Begin with the simplest issues and ascend to the more complex. -- Descartes
 * Classes of extensional definitions: enumerative definition
 * [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
 Comparison reflection abstraction -- concept in Wikipedia
-问题的答案是常识.每一次认知都是积累pattern的过程. -- Firo
 语言必须被还原到实际的生活场景  -- 维特根斯坦
-君子生非异也，善假于物也。 --荀子 劝学
+
 Autonomous decision -- Firo
+问题的答案是常识.每一次认知都是积累pattern的过程. -- Firo
+君子生非异也，善假于物也。 --荀子 劝学
 Change-of-state calculus --Von Wright’s approach
 
 学以致用 实践 -- Firo 胡适
