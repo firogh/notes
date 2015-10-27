@@ -4,20 +4,6 @@ date: 2015-09-13
 title: Quantitative congnition - The philosophy on what I live
 category: philosophy
 ---
-在我看来, 一个人完成一次认知的过程就是收集碎片概念, 之后通过思维把他们理顺.
-生活中，认知只存在于给新的概念下定义的时候.
-
-必须意识到, 不管你对新概念了解多久, 了解多少, 你都可以把知道的概念和不知道的念
-加到一起, 构成一个完整的逻辑流程. 也就是说, 认识到提出疑问的重要性. 
- **完整逻辑 = 知道的概念 + 疑问** 
-疑问 = 能指signifier + 疑问化的所指Signified 
- **问题必须被明确的定义, 初始的问题定义了整个思考的方向**
-概念的4种疑问:
-1. why 为什么产生的, 解决什么问题, 没了会怎么样.
-2. 什么样子的, 怎么设计
-3. 怎么用的
-4. feedback 用起来感受怎么样. 有什么缺点啊. 正反馈啊负反馈.
-那么认知的过程就是不断的划分疑问, 理顺问题的过程了.
 # Epistemology
 ## Top conceptions
 因果律
@@ -37,7 +23,9 @@ and what reactions we must prepare. (1907: 29)
 		-- James,Pragmatism: A New Name for an Old way of Thinking
 你不需要掌握所有的内容, 你需要的是基础的general,重要的,常用的. Bound to James Pragmatism -- Firo
 准确的定义你的问题 -- Firo
-概念的四种疑问 -- Firo
+Accept as true only what is indubitable. -- Descartes
+Falsifiability可证伪性 -- Popper
+批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 一一性  -- Moritz Schlick
 逻辑等价 -- Firo
 Completeness, consistency -- Logic
@@ -50,36 +38,30 @@ Multitasking  -- CS
 2. 要有醍醐灌顶的感觉.
 Quick!
 如果dd做同样的事情, 他会怎么做了?
+
 ## Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
 别人(自己存在)认识的谬误性. -- Firo Soros
 个人 or Government 积累掩盖篡改历史的真相.
 越是大型的魔术表演，其门道往往就越是简单！人们认定不可能发生这种事的常识，固定观念往往孕育出盲点！-- 唐吉诃德·多弗朗明哥
 正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
-重复信息导致的无效输入. (基于问题思考可以克服这个问题)
+基于问题思考可以客服重复, 用处小的知识信息耽误时间, 也能解决脱离实际, 学了很多无用功. -- Firo
 
-## 方法
+## Aspect
 自己思考. -- Firo
-From ground, from zero, from origin. 从零开始建立系统 -- Firo 
-Based on questions. -- Firo
-视野! -- Firo
+From ground, from zero, from origin. -- Firo
+Pragmatism Question the beginning of mind. -- Firo
 
-Accept as true only what is indubitable. -- Descartes
-Falsifiability可证伪性 -- Popper
-批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
-
-使用已知概念和未知疑问, 构建出认知完整理顺的认知. -- Firo
-Question the beginning of mind. Framework(maybe pattern) the incarnation of mind-- Firo
-问题的提出基于Pragmatism. -- Firo
-提出问题后, 核心便是找到合适的方法来解问题, 常常需要多种方法才能解决问题.也就是cognitive based on question--Firo
-Question about what is import, foundation, 4疑问是必须的问题. -- Firo
-问题可以是非常直观,很生活化, 不高大上, 但要是实在的问题.通常提出的问题都是这种, 实用主义问题, 很赞. -- Firo
-top-down, bottom-up 通常问题提出解决方向之一. -- Firo
-当问题的答案成为常识, 便不需要寻找方法解决了. 这个常识就是某种模式.辨认出问题所属的模式, 就能快速解决问题了. --Firo
-每一次认知都是积累pattern的过程. -- Firo
-一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后,在建立之间的关系. --Firo
+Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
+Known and unknown/question - the complete vision. -- Firo
+Pragmatism questions:
+Why does it appear? What problem does it solve? What happend if it does not exist?
+How does it solve this problem in generalization and different sesanations level?
+Is it good or bad? What is the feedback?
+Question about what is the important, foundation, most useful, minimal cached? -- Firo
 
 Divide every question into manageable parts. -- Descartes
+一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后, 在建立之间的关系. --Firo
 Modularity, -- Computer science
 Begin with the simplest issues and ascend to the more complex. -- Descartes
 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
@@ -89,6 +71,7 @@ Begin with the simplest issues and ascend to the more complex. -- Descartes
 * Classes of extensional definitions: enumerative definition
 * [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
 Comparison reflection abstraction -- concept in Wikipedia
+问题的答案是常识.每一次认知都是积累pattern的过程. -- Firo
 语言必须被还原到实际的生活场景  -- 维特根斯坦
 君子生非异也，善假于物也。 --荀子 劝学
 Autonomous decision -- Firo
@@ -99,7 +82,6 @@ Self-correcting. -- Firo
 Review frequently enough to retain the whole argument at once -- Descartes
 第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
 改造的反射性, 反射原理. -- Soros
-
 ## Instances
 * 对陌生语言问题(技术)的认知  
 依照Wittgenstein, 语言要还原到生活中.会发现这是一个反过程, 实际变成了, 生活映射到语言词汇的过程. -- Firo
