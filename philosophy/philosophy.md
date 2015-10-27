@@ -53,7 +53,7 @@ Quick!
 From ground, from zero, from origin. -- Firo
 Pragmatism Question the beginning of mind. -- Firo
 
-建立非常很究极的理性(Rational)的逻辑框架, 不怕出错.More rationality, less observation! 
+建立非常很究极的理性(Rational)的逻辑系统, 不怕出错.More rationality, less observation! 
 Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
 Known and unknown/question - the complete vision. -- Firo
 Pragmatism questions:
