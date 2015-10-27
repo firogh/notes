@@ -23,6 +23,7 @@ and what reactions we must prepare. (1907: 29)
 		-- James,Pragmatism: A New Name for an Old way of Thinking
 你不需要掌握所有的内容, 你需要的是基础的general,重要的,常用的. Bound to James Pragmatism -- Firo
 准确的定义你的问题 -- Firo
+More rationality, less obseravtions. e.g. delete state_count of cpuidle_device. -- Firo
 Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
@@ -52,6 +53,7 @@ Quick!
 From ground, from zero, from origin. -- Firo
 Pragmatism Question the beginning of mind. -- Firo
 
+建立非常很究极的理性(Rational)的逻辑框架, 不怕出错.More rationality, less observation! 
 Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
 Known and unknown/question - the complete vision. -- Firo
 Pragmatism questions:
