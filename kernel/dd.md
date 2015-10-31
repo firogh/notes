@@ -9,6 +9,16 @@ Driver porting: Device model overview: http://lwn.net/Articles/31185/
 /Documentation/driver-model
 The Linux Kernel Driver Model
 
+# Contents
+
+# Device tree
+* What infomation was included in dtb
+HW platform识别，runtime parameter传递以及硬件设备描述
+for platform device init see arch/powerpc/platforms/52xx/media5200.c ppc_init
+mpc52xx_declare_of_platform_devices
+* How does the device tree subsystem read and parse the dts file?
+
+
 #Why DDM?
 The device model was originally intended to make power management tasks easier 
 

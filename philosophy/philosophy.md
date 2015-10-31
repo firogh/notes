@@ -63,6 +63,18 @@ How does it solve this problem in generalization and different sesanations level
 Is it good or bad? What is the feedback?
 Question about what is the important, foundation, most useful, minimal cached? -- Firo
 
+做好模式类比!至少有两个模式, 一个background, 一个是problem.
+就那debug和英语, 都要有基础的background, 之后的problem就要根据具体场景, 找办法.
+简单说来一个事情->模式->问题 & 方法.
+所谓模式就是一条执行的过程. 多是逻辑上的.
+比如模式background, 在逻辑上就是先架构上的, 之后在具体上的.topdown.
+而模式problem, 在逻辑上就是笛卡尔方法, 复杂细分成小的部分, 之后在从简单开始做, 另外就是不断用真实的实践去做calculus-update. 
+
+解决问题的方法往往是多种多样的.
+General problem solving methods, how many method we can use to get answer:
+1. sovle problem by self, you need to know the most things.(For unsimilar things, Not recomend!)
+2. Does anyone solve the same problem?
+3. Does anyone solve the similar things?(这需要提取一些共有的信息比如fsl, usb3320.
 Divide every question into manageable parts. -- Descartes
 一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后, 在建立之间的关系. --Firo
 Modularity, -- Computer science

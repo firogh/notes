@@ -6,7 +6,7 @@ category: cs
 ---
 ##Reference
 Legacy 常用寄存器，常见指令 实模式和保护模式 分段和分页机制 TSS和任务管理 中断机制 时钟机制 高速缓存
-《模拟电子技术基础 童诗白 第四版》仅限第一章前半部分
+《模拟电子技术基础 童诗白 第四版》第一章前半部分
 Structured Computer Organization 6th Edition
 Digital Design and Computer Architecture 2nd Edition
 Computer Organization and Design 5th Edition
@@ -27,7 +27,7 @@ Computer memory
 Register/Flip-flop
 Cache/SRAM
 DRAM/capacitor
-Analog Circuit(
+Analog Circuit
 BJT FET Didoe
 
 ## ISA

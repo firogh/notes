@@ -68,7 +68,7 @@ switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以�
 net_poll
 napi
 * What is Head-of-line blocking
-## computer architecture
+## Computer architecture
 The theroy, 比如我可以更好的理解cpu, 中断上下文,cache,内存,netdevice怎么工作的.
 How does a program execute from asm language expression to physics?
 Does cache belong to computer architecture not OS?
@@ -127,7 +127,7 @@ Biceps up, Chin up
 40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour 
 * Masturbation			
 1 time two week 
-#Diary 
+# Diary 
 plan record analysis feedback
 # 1019
 Baudrate
@@ -155,5 +155,31 @@ USB的协议实现在usb.c,主机控制器在drivers/usb/host/文件夹实现
 fsl_otg_conf 类似于 otg_ulpi_create
 
 
+# Usb
+vbus
+## DrvVbusExternal in phy in function otg_set_vbus for ehci-mxc
+The external supply is controlled by the DrvVbus and the optional DrvVbusExternal bits in the OTG
+Control register.
 
 
+        /* Initialize the transceiver */
+        if (pdata->otg) {
+                pdata->otg->io_priv = hcd->regs + ULPI_VIEWPORT_OFFSET;
+                ret = usb_phy_init(pdata->otg);
+                if (ret) {
+                        dev_err(dev, "unable to init transceiver, probably missing\n");
+                        ret = -ENODEV;
+                        goto err_add;
+                }
+                ret = otg_set_vbus(pdata->otg->otg, 1); 
+                if (ret) {
+                        dev_err(dev, "unable to enable vbus on transceiver\n");
+                        goto err_add;
+                }
+        }
+
+## PASSTHRU in ulpi_init
+
+##　Device init
+arch/powerpc/platforms/512x/mpc512x_generic.c mpc512x_init?
+dts: fsl,mpc5121-usb2-dr

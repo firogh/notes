@@ -4,6 +4,8 @@ title: The English Language
 category: howto
 ---
 # Contents
+Use english to comunicate with others.
+Speek, listen, read, write.
 
 # Full English grammar
 ## Word classes and phrases
