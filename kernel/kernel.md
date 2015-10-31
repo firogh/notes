@@ -6,6 +6,7 @@ category: kernel
 ---
 
 # Reference
+[Kernel in Wikipedia](https://en.wikipedia.org/wiki/Kernel_(operating_system\))
 * Book
 * Website
 http://lwn.net/

@@ -44,8 +44,14 @@ Face masker
 淋浴喷头
 抹布
 盘子 盆子
+# English
+* Basic garammar
 # CS
+* Memory
+the framework of memroy from logic to malloc.
 What's results  will be generated for cache when manipulate variable?
+* Device driver model
+
 ## kernel
 What is platform driver?
 find source code of config
