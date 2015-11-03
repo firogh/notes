@@ -17,6 +17,8 @@ Get observations
 Specific observations
 Debugging experience
 Debug Kernel bug 
+How to use your customed debug library without cp system original corespon library? Set a path prefix?
+Method 1: cp...
 
 # Bug types
 ## Gernel Bug types

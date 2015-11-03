@@ -1,0 +1,15 @@
+rpmcliInstall 
+rpmgiSetArgs 612
+rpmgiGlobArgv
+rpmgiEscapeSpaces
+
+rpmcliInstallElementPath
+
+rpmgiNext
+rpmgiLoadReadHeader
+rpmgiLoadManifest loop?
+rpmgiReadHeader target
+rpmgiOpen
+rpmExpand
+Fopen
+rpm-5.4.9/lib/rpmgi.c

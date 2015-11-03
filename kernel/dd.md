@@ -10,6 +10,7 @@ Driver porting: Device model overview: http://lwn.net/Articles/31185/
 The Linux Kernel Driver Model
 
 # Contents
+Why abstruction? 
 
 # Device tree
 * What infomation was included in dtb
