@@ -13,6 +13,12 @@ Graphviz + CodeViz
 programming
 compile
 computer
+What's the difference between eprom falsh ssd?
+What is UART USB serial/prallel port
+
+# System boot
+
+
 # Layers of computer
 Applications
 Operating system
@@ -25,7 +31,7 @@ Electronic component
 Physics
 # 计算机科学启示录
 计算机是人与世界的一种关系.
-人<-> computer <-> 世界.
+人<-> Computer <-> 世界.
 人意志->思维逻辑->电信号->物理世界
 人类的思维语言->人->计算机语言->编译器->机器语言->Microarchitecture(datapath, control unit)logic 电路->模拟电路电信号->物理世界.
 思维->电信号, 外部世界的改变(for good life)

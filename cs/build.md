@@ -6,6 +6,10 @@ category: cs
 ---
 # Reference
 [compiler, assembler, linker and loader: a brief story](http://www.tenouk.com/ModuleW.html)
+# Contents
+Why complier can manipulate the address of vriables? 
+What is the address in lds(??) file?
+
 # Build automation
 * Make
 make cynthia

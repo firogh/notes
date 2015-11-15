@@ -14,6 +14,12 @@ Write Great Code: Volume 1: Understanding the Machine
 See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
 Microelectronics
+
+# Computer architecture
+cpu
+memory
+I/O
+
 # Contents
 Interrupt
 Assembly language
@@ -137,3 +143,9 @@ Fromwikipedia:
 https://www.kernel.org/doc/Documentation/networking/phy.txt
 PCS
 PMD
+
+# Computer hardware
+UART
+
+
+

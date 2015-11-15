@@ -21,6 +21,7 @@ we need only consider what conceivable effects of a practical kind the object
 may involve—what sensations we are to expect from it, 
 and what reactions we must prepare. (1907: 29)
 		-- James,Pragmatism: A New Name for an Old way of Thinking
+视野要广能有多广要多广.
 你不需要掌握所有的内容, 你需要的是基础的general,重要的,常用的. Bound to James Pragmatism -- Firo
 准确的定义你的问题 -- Firo
 More rationality, less obseravtions. e.g. delete state_count of cpuidle_device. -- Firo
@@ -28,6 +29,9 @@ Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 一一性  -- Moritz Schlick
+合理性. -- Firo
+简单, 易操作, 可长久做下去. -- Engflunt
+容易理解, 易推导. -- Firo
 逻辑等价 -- Firo
 Completeness, consistency -- Logic
 繁忙的工作生活会令人身心愉悦 -- Firo
@@ -49,13 +53,20 @@ Quick!
 基于问题思考可以客服重复, 用处小的知识信息耽误时间, 也能解决脱离实际, 学了很多无用功. -- Firo
 
 ## Aspect
-准确定义问题.
-自己思考. -- Firo
+自己思考. 不要上来就读, 你要思考这个过程! 相信自己.-- Firo
 From ground, from zero, from origin. -- Firo
 Pragmatism Question the beginning of mind. -- Firo
+掌控好大方向, 安心的一点点做起, 需求不是想出来的. 要做什么事是实际遇到的, 不能规划
+的太详细, 可以有个大方向时间点. 大概是因为彻底可错, 认知的不完美. 记住需求来自实际不是想出来的. -- Firo
+如果有些重要的事, 我一生都无法实现怎么办?我不能一直这样下去, 到头来, 人生都毁了. 
+所以认真过好每一天, 这很重要. 也是认知的缺陷导致的. -- Firo
 
 建立非常很究极的理性(Rational)的逻辑系统, 不怕出错.More rationality, less observation! 
-Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
+准确定义问题. -- Firo
+把事闹大. Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
+学会问题转换这非常重要. -- Firo
+如鱼得水. 如果问题难, 不好下手就划分小的(内核只关注console init, 内存映射, cpu 初始化这些), 减小难度(语速编码).-- Firo
+认知的方法, 海绵式，　淘金式，对抗式, 后面来个都应该用来认知. 因为
 Known and unknown/question - the complete vision. -- Firo
 Pragmatism questions:
 Why does it appear? What problem does it solve? What happend if it does not exist?
