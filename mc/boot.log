@@ -63,6 +63,7 @@ SRIO1: disabled
 SRIO2: disabled
 SIVA: mp.c: spin_table_addr ffffffffffffffff
 SIVA: __bootpg_addr ffffffff00000000 __spin_table_addr 7fe2dd33
+# Firo u-boot:cpu release addr 7fe2d8e8, value 0
 
 SIVA: brrl 0xe70e00e4 mask 0xf
 CPU up timeout. CPU up mask is 1 should be f

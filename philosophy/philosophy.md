@@ -65,6 +65,7 @@ Pragmatism Question the beginning of mind. -- Firo
 准确定义问题. -- Firo
 把事闹大. Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
 学会问题转换这非常重要. -- Firo
+学会多角度看待问题. -- Firo
 如鱼得水. 如果问题难, 不好下手就划分小的(内核只关注console init, 内存映射, cpu 初始化这些), 减小难度(语速编码).-- Firo
 认知的方法, 海绵式，　淘金式，对抗式, 后面来个都应该用来认知. 因为
 Known and unknown/question - the complete vision. -- Firo

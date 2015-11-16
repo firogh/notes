@@ -21,6 +21,11 @@ reset_init & kernel_init
 
 
 # PPC multicore booting
+* There are two possibilites to make secondary cores booting failed.
+1. There is a bug in the code executed by Secondary cores
+2. The spin table address, passed to croe0, is not correct, so we did not really kick the secondary cores.
+
+
 CCSRBAR
 MPC86xx_MCM_OFFSET
 srio_boot_master_release_slave
@@ -33,7 +38,7 @@ core0 set BPTR and kick(BRR) 2nd cores, 2nd cores spintable loop in uboot functi
 core0 -> arch/powerpc/cpu/mpc85xx/start.S->_start_e500
 board_init_r->cpu_init_r-> setup_mp-> {
 __bootpg_addr = (u32)virt_to_phys(&__second_half_boot_page); //Assembly code for put core to spin tablea. Used by __secondary_start_page
-__spin_table_addr = (u32)get_spin_phys_addr();// used by __second_half_boot_page.
+__spin_table_addr = (u32)get_spin_phys_addr();// used by __second_half_boot_page 
 bootpg = BPTR = __secondary_start_page
 plat_mp_up->kick BRR & Boot Space Translation
 }
@@ -111,6 +116,5 @@ smp: failed starting cpu 2 (rc -2)
 Firo:cpu nr3 release addr c3fe3954, spin_table c00000bf, ioremmappable 0
 smp_85xx_kick_cpu: timeout waiting for core 3 to ack
 smp: failed starting cpu 3 (rc -2)
-
 
 
