@@ -52,6 +52,12 @@ Quick!
 正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
 基于问题思考可以客服重复, 用处小的知识信息耽误时间, 也能解决脱离实际, 学了很多无用功. -- Firo
 
+## Object
+认知思考的对象一点不能超出思维的连贯性. --Firo
+首先这个知识是个复杂的具体的内容且是隔离的独立的知识比如x86的lds. 直接看就很不舒服.  --Firo
+应该看的是gnu ld关于script的基础还有地址relocation. --Firo
+这里就是要去看他的origin, foundation. -- Firo
+
 ## Aspect
 自己思考. 不要上来就读, 你要思考这个过程! 相信自己.-- Firo
 From ground, from zero, from origin. -- Firo
@@ -65,6 +71,7 @@ Pragmatism Question the beginning of mind. -- Firo
 准确定义问题. -- Firo
 把事闹大. Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
 学会问题转换这非常重要. -- Firo
+Knowledge degree of target, 必须区别对待知识.
 学会多角度看待问题. -- Firo
 如鱼得水. 如果问题难, 不好下手就划分小的(内核只关注console init, 内存映射, cpu 初始化这些), 减小难度(语速编码).-- Firo
 认知的方法, 海绵式，　淘金式，对抗式, 后面来个都应该用来认知. 因为

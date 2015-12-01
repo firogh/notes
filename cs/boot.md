@@ -18,13 +18,34 @@ before start_kernel
 start_kernel
 reset_init & kernel_init
 
+# p4080 Board
+PBL 
+1. initialize I2C, SPI, eLBC, eSDHC.
+2. Load RCW and boot init commands from above.
+3. write date to conf register and memory
+# config
+CCSRBAR -> CCSR 
+default is 0x0_FE00_0000  
+CCSRBAR is in CCSR memory. odd. stored in 0(CCSRBAR).
+CCSRBAR always points to itself.
+holdoff
+# u-boot
+ft_fixup_cpu -> determine_mp_bootpg(NULL) & fdt_add_mem_rsv
 
+main_loop-> ...->./common/bootm_os.c:410:... do_bootm_states-> 
+{
+bootm_find_other->bootm_find_ramdisk_fdt->bootm_find_fdt->boot_get_fdt&set_working_fdt_addr(0x0200000)->IMAGE_FORMAT_FIT->
+&
+boot_fn = bootm_os_get_boot_func(images->os.os)=[IH_OS_LINUX] = 
+&
+boot_selected_os->boot_fn=do_bootm_linux->boot_body_linux->image_setup_linux->image_setup_libfdt->
+board/freescale/corenet_ds/corenet_ds.c ft_board_setup-> ft_cpu_setup->
+}
 
 # PPC multicore booting
 * There are two possibilites to make secondary cores booting failed.
 1. There is a bug in the code executed by Secondary cores
 2. The spin table address, passed to croe0, is not correct, so we did not really kick the secondary cores.
-
 
 CCSRBAR
 MPC86xx_MCM_OFFSET
@@ -47,22 +68,15 @@ kernel->
 core0 boot kernel, core0 kickoff 2nd cores spintable, triger 2nd core's spin table by writing  the spin table field with the desired address
 2nd cores ePAPR->spintable->addr_l=__early_start->__secondary_start->smp_ops->setup_cpu->cpu_idle
 arch/powerpc/kernel/head_fsl_booke.S
-
 U-boot logs:
 Reserving MP boot page to 7ffff000^M^M - --   -   MP spin table
 address.
-
-
 SPAG : fdt_fixup_fman_firmware, 567^M^M
 ^M^M
 ..r.^M^M
 VDBG : ft_cpu_setup, 737, comment fdt_fixup_memory ^M^M
 VDBG: Secondary cores are not held in reset.^M^M
-
-
-
 Kernel Logs:
-
 smp_85xx_kick_cpu: timeout waiting for core 1 to ack^M^M
 smp: failed starting cpu 1 (rc -2)^M^M
 smp_85xx_kick_cpu: timeout waiting for core 2 to ack^M^M

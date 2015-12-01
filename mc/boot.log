@@ -1,3 +1,77 @@
+CROSS_COMPILE=/buildarea1/firo/4040/bitbake_build/tmp/sysroots/x86_64-linux/usr/bin/ppce500mc-wrs-linux/powerpc-wrs-linux-
+layers/wr-bsps/fsl-e500mc/bootloader/fsl-p4080/README
+make P4080DS_TYPHOON1_config 
+
+# Current uboot log
+Firo: uboot setup_mp pagesize 1000, bootpg 7ffff000, fixup 7ff34000, boot map 7ffff000
+Firo: uboot __bootpg_addr 7ff35000 __spin_table_addr 7ff351c0
+Firo: uboot before brsize b, bootpg 7ffff000, ccm bstrl 0 &e7000024, id 0 bstrar 1f0000b
+Firo: uboot after brsize b, bootpg 7ffff000, ccm bstrl 7ffff000 &e7000024, id 10 bstrar 8100000b
+Firo: uboot before &brrl e70e00e4 , brrl 0 mask f
+Firo: uboot after &brrl e70e00e4 , brrl f mask f
+CPU up timeout. CPU up mask is 1 should be f
+
+# uboot source code
+86 struct fdt_property {
+ 87         fdt32_t tag;
+ 88         fdt32_t len;
+ 89         fdt32_t nameoff;
+ 90         char data[0];
+ 91 };
+
+
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 0x7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value ffffffff
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 0x7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot val 7ff83aae
+Firo: u-boot &val 7fe2d8e0
+Firo: u-boot spin table 7ff351c0
+Firo: u-boot &spin table 7ff351c0
+Firo: u-boot size 64
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+
+# origin uboot
+make CROSS_COMPILE=/buildarea1/firo/4040/bitbake_build/tmp/sysroots/x86_64-linux/usr/bin/ppce500mc-wrs-linux/powerpc-wrs-linux-  ARCH=powerpc V=1 
+
 File is disk0:/u-boot.bin. Will do load and Run
 loadprog: switching to default load for fmagic:      0x0
 loadprog: load location: 0x1100000
@@ -64,7 +138,82 @@ SRIO2: disabled
 SIVA: mp.c: spin_table_addr ffffffffffffffff
 SIVA: __bootpg_addr ffffffff00000000 __spin_table_addr 7fe2dd33
 # Firo u-boot:cpu release addr 7fe2d8e8, value 0
+windriver uboot log 
+=> cpu 1 status
+Running on cpu 0
+table @ 0x7fef4140
+   addr - 0x00000001
+   r3   - 0x00000001
+   pir  - 0x00000001
+=> cpu 2 status
+Running on cpu 0
+table @ 0x7fef4180
+   addr - 0x00000001
+   r3   - 0x00000002
+   pir  - 0x00000002
+windriver p4080 log
+[    0.108923] Firo: cpu rel addr * 7fef4140, c3fe25e8, spin table f101e140, state 0 remap 1
+[    0.123947] Firo: cpu rel addr * 7fef4180, c3fe27fc, spin table f1026180, state 0 remap 1
+[    0.138953] Firo: cpu rel addr * 7fef41c0, c3fe2a10, spin table f10281c0, state 0 remap 1
+[    0.153944] Firo: cpu rel addr * 7fef4200, c3fe2c24, spin table f102a200, state 0 remap 1
+[    0.168928] Firo: cpu rel addr * 7fef4240, c3fe2e38, spin table f102c240, state 0 remap 1
+[    0.183910] Firo: cpu rel addr * 7fef4280, c3fe304c, spin table f102e280, state 0 remap 1
+[    0.198884] Firo: cpu rel addr * 7fef42c0, c3fe3260, spin table f10302c0, state 0 remap 1
 
+Firo:cpu nr1 release addr c3fe352c, spin_table f101403f, ioremmappable 1
+#spin_table is virt addr, cpu release addr is physical
+=> cpu 1 status
+Running on cpu 0
+//table = (u32 *)&__spin_table;
+table @ 0x7fef4140
+   addr - 0x00000001
+   r3   - 0x00000001
+   pir  - 0x00000001
+=> cpu 2 status
+Running on cpu 0
+
+table @ 0x7fef4180
+   addr - 0x00000001
+   r3   - 0x00000002
+   pir  - 0x00000002
+
+# p4040 spin addr rel
+Firo: u-boot ft_fixup_cpu hold_core cpu 0 in reset 0 val = 0 &val ffffffff
+spin 7fe2d8e0, size 3
+Firo u-boot:cpu release addr 7fe2d8e0, value 0
+Firo: u-boot ft_fixup_cpu hold_core cpu 1 in reset 0 val = 1 &val 0000003f
+spin 7fe2d8e0, size 3
+Firo u-boot:cpu release addr 7fe2d8e0, value 1
+Firo: u-boot ft_fixup_cpu hold_core cpu 2 in reset 0 val = 1 &val 0000007f
+spin 7fe2d8e0, size 3
+Firo u-boot:cpu release addr 7fe2d8e0, value 1
+Firo: u-boot ft_fixup_cpu hold_core cpu 3 in reset 0 val = 1 &val 000000bf
+spin 7fe2d8e0, size 3
+Firo u-boot:cpu release addr 7fe2d8e0, value 1
+# p4040 cisco cpu status
+=> cpu 0 status
+table base @ 0x7ff351c0
+=> cpu 1 status
+Running on cpu 0
+
+table @ 0x7ff35200
+   addr - 0x00000000
+   r3   - 0x00000000
+   pir  - 0x00000000
+=> cpu 2 status
+Running on cpu 0
+
+table @ 0x7ff35240
+   addr - 0x00000000
+   r3   - 0x00000000
+   pir  - 0x00000000
+=> cpu 3 status
+Running on cpu 0
+
+table @ 0x7ff35280
+   addr - 0x00000000
+   r3   - 0x00000000
+   pir  - 0x00000000
 SIVA: brrl 0xe70e00e4 mask 0xf
 CPU up timeout. CPU up mask is 1 should be f
 MMC:  FSL_SDHC: 0
@@ -245,6 +394,7 @@ Mount-cache hash table entries: 512
 mpic: requesting IPIs...
 e500 family performance monitor hardware support registered
 Firo:cpu nr1 release addr c3fe352c, spin_table f101403f, ioremmappable 1
+#spin_table is virt addr, cpu release addr is physical
 Firo: kernel origin spin tbale addr_l 5aa5a5a5, pir 5aa5a5a5, resv a55a5a5a, r3 5aa5a5a5, pa 50
 Firo: kernel update spin tbale addr_l 50, pir 1, resv a55a5a5a, r3 5aa5a5a5
 Firo: kernel timeout spin tbale addr_l 50, pir 1, resv a55a5a5a, r3 5aa5a5a5

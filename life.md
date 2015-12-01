@@ -136,6 +136,12 @@ Biceps up, Chin up
 # Diary 
 plan record analysis feedback
 
+# 1117
+Tue Nov 17 10:19:02 CST 2015
+Analysis  u-boot.
+13:45
+Analysis u-boot
+
 # 1116
 Mon Nov 16 10:16:13 CST 2015
 Ok, it's a new life for me.
@@ -145,9 +151,10 @@ Tasks of today.
 * 12:30
 Reading book review try to find good book to increase english vocabulary. -- 2 hours and 40 minutes.
 * 14:11
-Simple plan for english learning
-
-
+Simple plan for english learning. 32 minutes
+* 14:52
+How identify ppc multicore problem
+Analysis u-boot 
 
 # 1019
 Baudrate
