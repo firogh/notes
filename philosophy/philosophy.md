@@ -30,6 +30,7 @@ Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 一一性  -- Moritz Schlick
 合理性. -- Firo
+方法的可行性. -- Firo
 简单, 易操作, 可长久做下去. -- Engflunt
 容易理解, 易推导. -- Firo
 逻辑等价 -- Firo

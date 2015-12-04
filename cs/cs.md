@@ -24,6 +24,8 @@ Interface
 ABI: calling convetion
 # System boot
 
+# terminal
+NS16550_putc
 
 # Layers of computer
 Applications

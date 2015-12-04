@@ -21,8 +21,9 @@ memory
 I/O
 
 # Contents
-Interrupt
+I/O IC
 Assembly language
+Interrupt
 ISA
 Machine language
 Interpreting Machine Language Code
@@ -144,8 +145,7 @@ https://www.kernel.org/doc/Documentation/networking/phy.txt
 PCS
 PMD
 
-# Computer hardware
-UART
-
-
+# I/O IC 
+serial communication: UART(16550) + RS-232 
+parallel communication: SCSI, ISA, ATA, PCI, FSB
 

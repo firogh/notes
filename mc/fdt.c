@@ -28,73 +28,24 @@ extern void ft_srio_setup(void *blob);
 #ifdef CONFIG_MP
 #include "mp.h"
 
-extern u32 __spin_table[];
-extern void flush_dcache();
-
-void dump_spin_table()
-{
-	u32 *table;
-
-	table = (u32 *)&__spin_table;
-	printf("table base @ 0x%p\n", table);
-
-	for (nr = 0; nr < 8; nr++)
-	{
-		table = (u32 *)&__spin_table + nr * NUM_BOOT_ENTRY;
-		printf("table @ 0x%p\n", table);
-		printf("   addr - 0x%08x\n", table[BOOT_ENTRY_ADDR_LOWER]);
-		printf("   r3   - 0x%08x\n", table[BOOT_ENTRY_R3_LOWER]);
-		printf("   pir  - 0x%08x\n", table[BOOT_ENTRY_PIR]);
-	}
-
-	return 0;
-}
-
-
-
 void ft_fixup_cpu(void *blob, u64 memory_limit)
 {
 	int off;
-	volatile phys_addr_t spin_tbl_addr = get_spin_phys_addr();
+	phys_addr_t spin_tbl_addr = get_spin_phys_addr();
 	u32 bootpg = determine_mp_bootpg(NULL);
 	u32 id = get_my_id();
 	const char *enable_method;
-
-	dump_spin_table();
 
 	off = fdt_node_offset_by_prop_value(blob, -1, "device_type", "cpu", 4);
 	while (off != -FDT_ERR_NOTFOUND) {
 		u32 *reg = (u32 *)fdt_getprop(blob, off, "reg", 0);
 
 		if (reg) {
-flush_dcache();
 			u32 phys_cpu_id = thread_to_core(*reg);
-flush_dcache();
-			//volatile u64 val = phys_cpu_id * SIZE_BOOT_ENTRY + spin_tbl_addr;
-			u32 val_foo = phys_cpu_id * SIZE_BOOT_ENTRY + spin_tbl_addr;
-			u64 val_bar = phys_cpu_id * SIZE_BOOT_ENTRY + spin_tbl_addr;
-
-			volatile u64 val = phys_cpu_id * SIZE_BOOT_ENTRY + spin_tbl_addr;
-flush_dcache();
-printf("Firo: u-boot spin tbl addr %lx\n", spin_tbl_addr);
-printf("zzl: u-boot reg : %d\n", reg);
-printf("zzl: u-boot val(before) : %Lx\n", val);
-printf("zzl: u-boot val foo (before) : %Lx\n", val_foo);
-printf("zzl: u-boot val bar(before) : %Lx\n", val_bar);
-
+			u64 val = phys_cpu_id * SIZE_BOOT_ENTRY + spin_tbl_addr;
+            debug ("--- Rupam %s hold_core cpu %d in reset %d val = %#lx -> %#lx %#lx\n", __func__, phys_cpu_id, hold_cores_in_reset(0), val, 
+                    cpu_to_fdt32(val), cpu_to_fdt64(val));
 			val = cpu_to_fdt64(val);
-printf("zzl: u-boot val(after) : %Lx\n", val);
-
-printf("Firo: u-boot val %lx\n", val);
-printf("Firo: u-boot &val %lx\n", &val);
-printf("Firo: u-boot spin table %lx\n",  __spin_table);
-printf("Firo: u-boot &spin table %lx\n",  &__spin_table);
-printf("Firo: u-boot size %d\n", SIZE_BOOT_ENTRY);
-printf("Firo: u-boot spin tbl addr %lx\n", spin_tbl_addr);
-printf("Firo: u-boot &spin tbl addr %lx\n", &spin_tbl_addr);
-printf("Firo: u-boot cpu id %d\n", phys_cpu_id);
-u32 tmp = val;
-printf("Firo: u-boot tmp %d\n", tmp);
 			if (*reg == id) {
 				fdt_setprop_string(blob, off, "status",
 								"okay");
@@ -117,7 +68,6 @@ printf("Firo: u-boot tmp %d\n", tmp);
 
 				fdt_setprop(blob, off, "cpu-release-addr",
 						&val, sizeof(val));
-printf("Firo u-boot:cpu release addr %lx, value %Lx\n", &val, val);
 			}
 
 			fdt_setprop_string(blob, off, "enable-method",
@@ -153,21 +103,13 @@ printf("Firo u-boot:cpu release addr %lx, value %Lx\n", &val, val);
 #endif
 
 	/* Reserve spin table page */
-/*	off = fdt_add_mem_rsv(blob,
-			(10 & ~0xffful), 4096);
-	if (off < 0)
-		printf("Failed to reserve memory for spin table: %s\n", fdt_strerror(off));
- */
 	if (spin_tbl_addr < memory_limit) {
-printf("SIVA: Setting spin table address %llx\n", spin_tbl_addr);
 		off = fdt_add_mem_rsv(blob,
 			(spin_tbl_addr & ~0xffful), 4096);
 		if (off < 0)
 			printf("Failed to reserve memory for spin table: %s\n",
 				fdt_strerror(off));
-	} else {
-           printf("SIVA: spin_tbl_addr %llx > memory_limit %llx", spin_tbl_addr, memory_limit);
-        }
+	}
 }
 #endif
 

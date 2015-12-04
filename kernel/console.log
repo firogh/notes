@@ -3,8 +3,85 @@
 # Reference
 
 # Contents
-[What is the exact difference between a 'terminal', a 'shell', a 'tty' and a 'console'?](http://unix.stackexchange.com/questions/4126/what-is-the-exact-difference-between-a-terminal-a-shell-a-tty-and-a-con#)
+[What is the difference between shell, console, and terminal?](http://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal)
+What does console do in kernel or u-boot?
 Linux console?
 Computer terminal: keyboard + dispaly
 Terminal emulator:
 
+# get a glance on u-boot
+start.S:board_init_r
+init_sequence_f: ->init_baud_rate; serial_init; console_init_f
+serial_init ->&eserial1_device->start=eserial##port##_init->NS16550_init: UART divisor init.
+Firstly, the struct of serial define some input and output funtion.
+It's basic function of serial, put or get!
+console_init_f: just gd->have_console = 1;
+init_sequence_r: stdio_init_tables,initr_serial, stdio_add_devices, console_init_r,
+initr_serial: just register &eserial1_device to serial_devices
+stdio_add_devices: drv_system_init, serial_stdio_init 
+drv_system_init: register default serial dev to devs.list.
+serial_stdio_init: register &eserial1_device to devs.list. Duplicate, but serial dev "eserial0"  and system "serial".
+console_init_r: console_doenv ->console_setfile:stdio_devices[file(0/1/2)] = dev; actually, dev is "serial", but they may be KBD!
+看来console的真正作用就是在serial和kbd中选择一个, 可能多选iomux? 
+main_loop:cli_loop: getc!
+
+# kernel part
+* onset
+start_kernel or setup_arch(arm) ->parse_early_param->do_early_param->p->setup_func()= setup_early_printk->register_console
+nucleus
+* early_printk
+
+drivers/tty/serial/8250/8250_core.c:module_init(serial8250_init);
+console_init-> console_initcall(serial8250_console_init) ->register_console(&serial8250_console) to console_drivers; exclusive_console.
+console [tty0] enabled
+
+# What about tty
+* onset
+console_init->tty_ldisc_begin->tty_register_ldisc(N_TTY, &tty_ldisc_N_TTY);
+N_TTY:[Serial Drivers by Alessandro Rubini](http://www.linux.it/~rubini/docs/serial/serial.html)
+fs_initcall:chr_dev_init->drivers/tty/tty_io.c: tty_init->"/dev/tty","/dev/console"
+device_init:serial8250_init-> 
+{
+	tty_driver set to uart_driver by uart_register_driver ->
+	{
+		drv->state = kzalloc		//uart_state
+		normal->driver_state    = drv; //args struct uart_driver *drv = &serial8250_reg
+		tty_set_operations(normal, &uart_ops); 
+		struct tty_port *port = &state->port
+		tty_port_init(port);
+		port->ops = &uart_port_ops; //tty_port
+	}
+	serial8250_register_ports(&serial8250_reg, &serial8250_isa_devs->dev);
+* nucleus
+start_kernel->rest_init->kernel_init->kernel_init_freeable->sys_open((const char __user *) "/dev/console", O_RDWR, 0)->...->
+tty_open->
+{
+	//This index should be Ctrl + Alt + Fn, Dio!
+	// tty_struct is corresponding virtual console, or just console??
+	tty_lookup_driver->console_device->c->device(c, index)
+	tty_init_dev->
+	{
+		//So tty_struct->ops = tty_driver->ops = & uart_ops
+		alloc_tty_struct->tty->ops = driver->ops;
+		tty_driver_install_tty(driver, tty_struct)-> tty_standard_install->driver->ttys[tty->index] = tty;
+	}
+
+	tty->ops->open(tty, filp)->//ops = &uart_ops
+	{
+		uart_ops->open = uart_open->
+		{
+			uart-> tty struct
+			struct uart_driver *drv = (struct uart_driver *)tty->driver->driver_state;
+			struct uart_state *state = drv->state + line; //uart_state
+			tty->driver_data = state;
+		}
+	}
+}
+tty_write->ld->ops->write=n_tty_write->(tty_struct tty->ops->write)=uart_write->
+{
+	struct uart_state *state = tty->driver_data;
+	port = state->uart_port;
+	circ = &state->xmit;
+	memcpy(circ->buf + circ->head, buf, c);
+	uart_start->__uart_start->(uart_port->ops->start_tx(port)); //&uart_port_ops ?? uart_ops??
+}
