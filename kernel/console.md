@@ -30,20 +30,48 @@ console_init_r: console_doenv ->console_setfile:stdio_devices[file(0/1/2)] = dev
 看来console的真正作用就是在serial和kbd中选择一个, 可能多选iomux? 
 main_loop:cli_loop: getc!
 
-# kernel part
-* onset
-start_kernel or setup_arch(arm)->parse_early_param->do_early_param->p->setup_func()= setup_early_printk->register_console
-nucleus
-* early_printk
-# just print
-console_drivers->vt_console_driver->serial8250_console->NULL
-printk-> ...->__call_console_drivers-> console_drivers->write = vt_console_print 
+# what is platform device or driver?
+# A reallife serial8250
+drivers/tty/serial/8250/8250_boca.c:plat_serial8250_port
+module_init-> 
 {
-	//保存到screen buf, vga_con也什么不做啊.
-	scr_writew((vc->vc_attr << 8) + c, (unsigned short *)vc->vc_pos);
-
+	serial8250_init->serial8250_isa_init_ports->serial8250_ports[i].port.ops = &serial8250_pops; //insidious
+	boca_init->platform_device_register(&boca_device); //register platform device and data.
 }
+* uart_port->tty_port
+
+serial8250_probe(plat_serial8250_port)->serial8250_register_8250_port(uart_8250_port)->
+uart_add_one_port(&serial8250_reg, &uart->port=uart_port)->
+{
+	
+	uart_configure_port->
+	{
+		port->ops->config_port(port, flags)=serial8250_config_port
+		if post is console and not registered; register!
+		we know that uport->cons = drv->cons; what is the relation to registering about up->cons.
+		why we register it? where does drv->cons come from?
+		//这个uart_driver drv就是serial8250_reg, 我们也就知道了
+		// console是设备的一种天生能力. 能否使用, 只关乎你是否想用, 就是配置相关的config SERIAL8250_CONSOLE
+		// con_driver is the backends, vga, dummy/serial?, fb. 
+	}
+	tty_port_register_device_attr->
+	{
+		//tty_driver  tty_port
+		tty_port_link_device
+		tty_register_device_attr
+	}
+}
+# Simple conceptions
+[You must read this -> The TTY demystified](http://www.linusakesson.net/programming/tty/)
+		kernel
+		TTY(pts, dummy/serial, kbd+vga/fb
+		Terminal
+
 # What about console?
+* early_con
+start_kernel or setup_arch(arm)->parse_early_param->do_early_param->p->setup_func()= setup_early_printk->register_console
+
+* vga_con
 start_kerenl-> 
 {
 	// All about vga console
@@ -89,7 +117,19 @@ register_framebuffer-> do_take_over_console ->
 		[    4.720732] Console: switching to colour frame buffer device 170x48
 	}
 }
+## VGA text console printk & write
+* kernel space
+printk-> ...->log_buf
+* userspace for ttyN
+tty_fops->write=tty_write-> tty_ldisc_N_TTY->write=n_tty_write-> tty_driver->ops=con_ops->write=con_write->do_con_write
+* agent
+console_drivers->vt_console_driver->serial8250_console->NULL
+console_unlock->..->__call_console_drivers-> console_drivers->write = vt_console_print 
+{
+	//保存到screen buf, vga_con也什么不做啊.
+	scr_writew((vc->vc_attr << 8) + c, (unsigned short *)vc->vc_pos);
 
+}
 # What about tty
 * onset
 console_init->tty_ldisc_begin->tty_register_ldisc(N_TTY, &tty_ldisc_N_TTY);
@@ -110,6 +150,7 @@ fs_initcall:chr_dev_init->drivers/tty/tty_io.c: tty_init->
 		cdev_init(&vc0_cdev, console_fops);	
 		//"/dev/ttyN"
 		tty_register_driver->tty_register_device(_attr) ->tty_cdev_add-> cdev_init(&driver->cdevs[index], &tty_fops);
+		kbd_init
 	}
 }
 device_init:serial8250_init-> 
@@ -176,8 +217,37 @@ tty_write->ld->ops->write=n_tty_write->(tty_struct tty->ops->write)=uart_write->
 	uart_start->__uart_start->(uart_port->ops->start_tx(port)); //&uart_port_ops ?? uart_ops??
 }
 
+# What about Pseudoterminal
+/dev/ptmx is the "pseudo-terminal master multiplexer". from wikipedia
+static struct tty_driver *ptm_driver;
+static struct tty_driver *pts_driver;
+module_init(pty_init)->unix98_pty_init-> 
+{
+	tty_set_operations(ptm_driver, &ptm_unix98_ops);
+	tty_register_driver(ptm_driver)
+	tty_set_operations(pts_driver, &pty_unix98_ops);
+	tty_register_driver(pts_driver)
+	ptmx_fops = tty_fops;
+	ptmx_fops.open = ptmx_open;
+	cdev_init(&ptmx_cdev, &ptmx_fops);
+}
 
-# device files
+* How to use ptmx?
+
+# tty drivers
+* cat /proc/tty/drivers 
+/dev/tty             /dev/tty        5       0 system:/dev/tty
+/dev/console         /dev/console    5       1 system:console
+/dev/ptmx            /dev/ptmx       5       2 system
+/dev/vc/0            /dev/vc/0       4       0 system:vtmaster
+usbserial            /dev/ttyUSB   188 0-511 serial
+serial               /dev/ttyS       4 64-95 serial
+pty_slave            /dev/pts      136 0-1048575 pty:slave
+pty_master           /dev/ptm      128 0-1048575 pty:master
+unknown              /dev/tty        4 1-63 console
+
+# Question?
+what is /dev/vcs?
 
 # Backup
 ./drivers//tty/vt/vt.c:3042:	    register_chrdev_region(MKDEV(TTY_MAJOR, 0), 1, "/dev/vc/0") < 0)
