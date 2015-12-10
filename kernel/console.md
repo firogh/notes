@@ -4,7 +4,18 @@ title: Console and TTY
 date: 2015-12-05 14:06:29
 category: kernel
 ---
+# cpu hotplug
+* onset
+static struct smp_hotplug_thread softirq_threads {
+.thread_fn              = run_ksoftirqd
+};
+early_initcall(spawn_ksoftirqd)->mpboot_register_percpu_thread(&softirq_threads)
+* nucles onset
+suspend_enter->enable_nonboot_cpus->_cpu_up->smpboot_create_threads->__smpboot_create_thread(&hotplug_threads)->
+kthread_create_on_cpu(smpboot_thread_fn-> ht->thread_fn(td->cpu)= run_ksoftirqd->__do_softirq->h->action(h) = run_timer_softirq->
+__run_timers->call_timer_fn)
 
+vt 就是个tty也有tty_driver 叫console_driver.
 # Reference
 
 # Contents
@@ -63,9 +74,138 @@ uart_add_one_port(&serial8250_reg, &uart->port=uart_port)->
 }
 # Simple conceptions
 [You must read this -> The TTY demystified](http://www.linusakesson.net/programming/tty/)
-		kernel
-		TTY(pts, dummy/serial, kbd+vga/fb
-		Terminal
+System consoles are generalized to computer terminals, which are abstracted respectively by virtual consoles and terminal emulators.
+		UART
+		Line displine + TTY(pts, dummy/serial, kbd+vga/fb)
+* System console
+Virtual termial, Terminal emulator/telnet/ssh -> pts ,Physical terminal 
+You need at least one virtual terminal device in order to make use of your keyboard and monitor.
+VT combine keyboard and display see con_init
+con_init init a virtual terminal like gnome-terminal but in kernel.
+con_init mainly init display.
+vty_init mainly init kbd
+They all can be system console.(Exception pts??), if you enable it.
+Console is the entry of linux system.
+* Console driver -- banckends of  console
+struct console 指定了console的结构.
+* Console config
+If I disable CONFIG_SERIAL8250_CONSOLE(enable vt console), then no booting log and I can not login system.
+If I disable CONFIG_VT_CONSOLE(enable serail console, /dev/console point to ttyS0 see show_cons_active), no booting log but I can lgin system.
+How to explain this phenomena?
+From show_cons_active, we know /dev/console should come from console_drivers.
+/dev/console is really the pointer.
+Now, let's inspect open /dev/console.
+* Open /dev/console
+Fisrt, it's the very last place of booting kernel.
+start_kernel->rest_init->kernel_init->kernel_init_freeable->sys_open((const char __user *) "/dev/console", O_RDWR, 0)->...->
+console_fops->tty_open->
+{
+
+	// Sitiuations: disbale VT CONSOLE byt enable SERIAL8250_CONSOLE.
+	// This function work only for /dev/tty
+	// ls -l /dev/tty
+	// crw-rw-rw- 1 root tty 5, 0 Dec 10 10:24 /dev/tty
+	tty_open_current_tty->
+	{
+		/dev/console is 5:1, just return NULL
+	}
+	//This index should be Ctrl + Alt + Fn??
+	// tty_struct is corresponding virtual console, or just console??
+	// lookup tty_driver. It looks like lookup a inode, right?
+	tty_lookup_driver->
+	{
+		// Find a tty_driver by device() in console_drivers.
+		// So we know, got a console, then got a tty_driver, right?
+		// Where do the components of console_drivers come form?
+		// At present, we should have only serial8250_console because 
+		// console vt_console_driver is disabled by us! But tty_driver console_driver
+		// still do exist!So console and tty is really separated!
+		// When we init vt, we get the tty_driver console_driver with con_ops type of tty_operations.
+		// tty_drivers have the same major with /dev/tty0!
+		// char_dev -> tty_driver int vty_init, not disable.
+		// vt console---^
+		console_device->c->device(c, index)
+		// What about serial8250_console?
+		// Where is the tty_driver of serial8250_console?
+		// console->data = uart_driver->tty_driver.
+		// We got another scene : uart->tty
+		// serial8250 console->data-^
+		// serial's tty_driver alloced in serial8250_init with uart_ops.
+		// vt's tty_driver alloced in vty_init.
+		// We summarize these:
+		// uart_driver serial8250_reg <->  vc dev or /dev/tty*
+		// serial tty driver <-> vt tty driver 
+		// fs:vty_init <-> module:serial8250_init
+		// tty driver ops con_ops <-> uart_ops
+		// vt use major to connect tty and  vc dev
+		// serial use major and -> to connect tty and uart_driver
+		// It seems that uart and tty has a strong relationship, yet vt.
+		// Ok... we got tty driver.
+		// If we disable vt console, then here is the serial8250 tty_driver.
+	}
+	// Lookup for tty_struct
+	tty_driver_lookup_tty ->
+	{
+		//tty_struct is alloced in init function alloc_tty_driver.
+		// ttys, termios, ports, cdevs.
+		// ttys was used by tty_standard_install then tty_driver_install_tty 
+		// then tty_init_dev then ok we return to tty open. So this is the start place.
+
+		So we know tty_driver->ttys[*] must be NULL.
+	}
+	tty_init_dev->
+	{
+		// tty_driver likes a process, ttys like the files, tty_struct like a file!
+		// So we know a tty_struct is a tty file.
+		// tty_driver much like a inode
+		//So tty_struct->ops = tty_driver->ops = & uart_ops
+		alloc_tty_struct->tty->ops = driver->ops;
+		tty_driver_install_tty(driver, tty_struct)-> tty_standard_install->driver->ttys[tty->index] = tty;
+	}
+	// Ok... We got a tty_struct.
+	// Add /dev/console to tty_struct->tty_files
+	tty_add_file
+	// At present, what have we done?
+	// open(/dev/console)->console_drivers->console->tty_driver->tty_struct, right?
+
+	tty->ops->open(tty, filp)->//ops = &uart_ops
+	{
+		uart_ops->open = uart_open->
+		{
+			uart-> tty struct
+			struct uart_driver *drv = (struct uart_driver *)tty->driver->driver_state;
+			struct uart_state *state = drv->state + line; //uart_state
+			tty->driver_data = state;
+		}
+	}
+}
+// At present, we understand the flow of open /dev/console to serial console
+# What about opening /dev/console to vt console
+sys_open(/dev/console)-> ... tty_open ->
+{
+	tty_lookup_driver-> get tty_driver=console_driver,
+	Through the name console_driver, we know, vt tty_driver is the defaut driver of console!
+	// 同时, 我们也应该知道所谓的kernel的system console 是你只要enable了先关的config CONFIG_VT_CONSOLE and CONFIG_SERIAL_8250_CONSOLE.
+	// system console就有了, printk也就有了归处. In other words, you registered, you got printed
+	// In theory, you should be able to input something, like sysrq, I maybe test tomorrow.
+	// 那么在kernel_init中sys_open又是什么鬼呢?
+	// dev/tty 是专门真对进程的, 就是进程之前打开了一个tty就存在singnal里, 这个dev/tty就是取出来的.
+
+}
+
+# 总结下, 打开/dev/console, 会从console_drivers, 最终到达tty_driver.
+# 这和/dev/tty* /dev/ttyS* 从tty_drivers, 差不多.
+// 这么输出为什么不会打窜了?
+// How ctrl alt Fn work?
+// echo xxx /dev/tty in serial tty_lookup_driver
+// 另一个问题, serial 的terminal?
+serial8250_default_handle_irq
+UART console 
+			  |---- Virtual terminal ----------------- VT console
+			  |					| -- VT console
+			  |---- 
+		Terminal--|
+			  |---- 
 
 # What about console?
 * early_con
