@@ -4,6 +4,30 @@ title: Console and TTY
 date: 2015-12-05 14:06:29
 category: kernel
 ---
+# About the design
+Why dose we use /dev/xxx to represent the "tty" device?
+> The whole point with "everything is a file" is not that you have some
+> random filename (indeed, sockets and pipes show that "file" and "filename"
+> have nothing to do with each other), *but the fact that you can use common*
+> *tools to operate on different things*. -- Linus
+So we got the key point!
+In order to use the common tools, file ops and vfs layer, the tty device is "abstructed" to
+files by us. Addnationaly, we must assurance that is the files is *different*. What does
+the word "dirrerent" means is not that you have some random different filename, but the
+fact that you can access the real device through the different.
+> From wikipedia:
+> In mathematics, injections, surjections and bijections are classes of functions distinguished 
+> by the manner in which arguments (input expressions from the domain) and images 
+> (output expressions from the codomain) are related or mapped to each other.
+I got an insight that abstruction is a non-injective, right?
+But non-injective may not be a anstruction.
+An asbstruction should come from manipulating different objects.
+Non-injective, 多对一; Multiplex, 一对多.
+So we can use mathematical language to describe the linux subsystem.
+From real life device to a filesystem file.
+* Abstraction: Non-injective, Multiplex(not partial function).
+* Jection num: injective, or non-jective, or multiplex; Jection level: domain set and codoain set!
+
 # cpu hotplug
 * onset
 static struct smp_hotplug_thread softirq_threads {
@@ -199,6 +223,15 @@ sys_open(/dev/console)-> ... tty_open ->
 // How ctrl alt Fn work?
 // echo xxx /dev/tty in serial tty_lookup_driver
 // 另一个问题, serial 的terminal?
+# The perspective
+/dev/*
+vfs
+chrdev
+tty_fops--------------------------->tty core
+	ld_ops --------------------> tty line discipline(for read, write)
+tty_driver con_ops/uart_ops--------> tty driver and tty_operations
+HW
+There are three different types of tty drivers: console, serial port, and pty.
 serial8250_default_handle_irq
 UART console 
 			  |---- Virtual terminal ----------------- VT console
@@ -289,7 +322,23 @@ fs_initcall:chr_dev_init->drivers/tty/tty_io.c: tty_init->
 		//"dev/tty0"	
 		cdev_init(&vc0_cdev, console_fops);	
 		//"/dev/ttyN"
-		tty_register_driver->tty_register_device(_attr) ->tty_cdev_add-> cdev_init(&driver->cdevs[index], &tty_fops);
+		tty_register_driver->
+		{
+			// What does tty_register_driver do ?
+			// Alloc and register chr dev region.
+			// Add cdev with tty_ops and above region.
+			// Register tty device
+			// Why do we register tty devices?
+			// These devices must be used in some place.
+			// After registering itself, the driver registers the devices it controls through the tty_register_device function. 
+			// 原来是把major 和minor做成dev_t放到driver->cdevs[index].dev里面了.
+			// 也就是说driver->cdevs[index]就是tty driver控制的device啊, 怪不得cdev_init(&driver->cdevs[index], &tty_fops);
+			// 那么看来用到的时候就是open了, 竟然没有不过有个tty_get_device用了tty_class
+			// tty_register_device_attr->device_register->device_add->klist_add_tail(&dev->knode_class,&dev->class->p->klist_devices)
+			// 果然是在open tty->dev = tty_get_device(tty);在alloc_tty_struct
+			// 不知道这个tty->dev在哪里用, 不管他了.
+			tty_register_device(_attr) ->tty_cdev_add-> cdev_init(&driver->cdevs[index], &tty_fops);
+		}
 		kbd_init
 	}
 }
