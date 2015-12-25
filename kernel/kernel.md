@@ -16,9 +16,57 @@ http://kernelnewbies.org/KernelJanitors/Todo
 http://eudyptula-challenge.org/
 [走近Linux内核-- 王聪](http://wangcong.org/2007/03/09/-e8-b5-b0-e8-bf-91linux-e5-86-85-e6-a0-b8/)
 
+# CPU freq
+* onset
+device_initcall: intel_pstate_init->cpufreq_register_driver
+* nuclus
+** onset
+__cpufreq_add_dev -> cpufreq init= intel_pstate_cpu_init->intel_pstate_init_cpu
+** coda
+_cpu_down->
+{
+	cpu_notify_nofail(CPU_DEAD | mod, hcpu)->timer_cpu_notify
+	cpu_notify_nofail(CPU_POST_DEAD | mod, hcpu)->cpufreq_cpu_callback->cpufreq exit = intel_pstate_cpu_exit,
+}
 
+* coda
+
+# kernel panic 3.10.62
+general protection fault and page fault
+1498 errorentry general_protection do_general_protection
+1499 errorentry page_fault do_page_fault
+static const struct stacktrace_ops print_trace_ops = { 
+        .stack                  = print_trace_stack,
+        .address                = print_trace_address,
+        .walk_stack             = print_context_stack,
+};
+no_context->
+{
+	show_fault_oops->
+	__die->
+	{
+		print_modules
+		show_regs
+		{
+			printk(KERN_DEFAULT "Stack:\n");
+			show_stack_log_lvl->
+			{
+				show_trace_log_lvl->
+				{
+					printk("%sCall Trace:\n", log_lvl);
+					// arch/x86/kernel/dumpstack_64.c
+					dump_trace->&print_trace_ops
+				}
+			}
+			printk(KERN_DEFAULT "Code: ");
+		}
+	}
+}
 # Contents
 What's the difference between kernel and OS?
+cpu: syscall, process, ipc, smp
+memory:  mm
+io: buffer cache, fs, io subsys
 
 # Design pattern
 [Linux kernel design patterns](http://lwn.net/Articles/336224/)

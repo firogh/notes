@@ -25,9 +25,43 @@ An asbstruction should come from manipulating different objects.
 Non-injective, 多对一; Multiplex, 一对多.
 So we can use mathematical language to describe the linux subsystem.
 From real life device to a filesystem file.
-* Abstraction: Non-injective, Multiplex(not partial function).
+* Abstruction: Non-injective, Multiplex(not partial function).
 * Jection num: injective, or non-jective, or multiplex; Jection level: domain set and codoain set!
+Abstruction -> Control abstruction and data abstruction -> Abstruction layer
 
+软件设计的两个主要目的.
+1. 简化, 易用,易操作, 如computer architecture, tty subsystem. 抽象.
+2. Separation of concerns, modular(abstruciton in layer), 笛卡尔划分的思想
+# tty_struct->disc_data
+tty_init_dev->
+{
+	initialize_tty_struct->tty_ldisc_init
+	tty_ldisc_setup->tty_ldisc_open->n_tty_open-> tty->disc_data = ldata; 
+}
+sys_vhangup->tty_vhangup_self->__tty_hangup->tty_ldisc_hangup->tty_ldisc_reinit
+vfs_write->redirected_tty_write->tty_write->n_tty_write->process_output
+# early_con
+EARLYCON_DECLARE(uart8250, early_serial8250_setup); EARLYCON_DECLARE(uart, early_serial8250_setup);
+setup_earlycon->
+{
+	parse_options-> 
+	{
+		parse earlycon_device->port->uartclk and 
+		earlycon_device->baud
+	}
+	setup = early_serial8250_setup-> init_port(device);
+	register_console(early_console_dev.con)
+}
+# earlyprintk
+early_param("earlyprintk", setup_early_printk)->
+{
+	early_serial_init->
+	{
+
+
+	}
+	early_console_register(&early_serial_console, keep);
+}
 # cpu hotplug
 * onset
 static struct smp_hotplug_thread softirq_threads {
@@ -373,30 +407,6 @@ device_init:serial8250_init->
 	serial8250_register_ports(&serial8250_reg, &serial8250_isa_devs->dev);
 }
 * nucleus
-start_kernel->rest_init->kernel_init->kernel_init_freeable->sys_open((const char __user *) "/dev/console", O_RDWR, 0)->...->
-tty_open->
-{
-	//This index should be Ctrl + Alt + Fn, Dio!
-	// tty_struct is corresponding virtual console, or just console??
-	tty_lookup_driver->console_device->c->device(c, index)
-	tty_init_dev->
-	{
-		//So tty_struct->ops = tty_driver->ops = & uart_ops
-		alloc_tty_struct->tty->ops = driver->ops;
-		tty_driver_install_tty(driver, tty_struct)-> tty_standard_install->driver->ttys[tty->index] = tty;
-	}
-
-	tty->ops->open(tty, filp)->//ops = &uart_ops
-	{
-		uart_ops->open = uart_open->
-		{
-			uart-> tty struct
-			struct uart_driver *drv = (struct uart_driver *)tty->driver->driver_state;
-			struct uart_state *state = drv->state + line; //uart_state
-			tty->driver_data = state;
-		}
-	}
-}
 tty_write->ld->ops->write=n_tty_write->(tty_struct tty->ops->write)=uart_write->
 {
 	struct uart_state *state = tty->driver_data;
