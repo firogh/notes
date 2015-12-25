@@ -1,7 +1,7 @@
 ---
-tags: cs
+tags: [ cs ] 
 title: Fedora distro 物语
-date: 2015-02-27 15:46:11
+date: 2015-02-27T15:46:11+08:00 
 category: cs
 ---
 
@@ -67,3 +67,6 @@ qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img
 rdesktop -K -g 1366x700 -r clipboard:PRIMARYCLIPBOARD 192.168.10.200 -r sound:local -u firo -p ""
 rdesktop -K -g 1366x700 -r clipboard:CLIPBOAD 192.168.10.200
 nmap  -sP 192.168.10.0/24  | grep 'Nmap scan' | awk '{print$5}' | while read line; do echo "connect to $line";  timeout -s 9 2 rdesktop -K -g 1366x700 -r clipboard:CLIPBOARD $line; done
+
+# sed
+sed  -Ei 's/^date: ([0-9]{4}-[0-9]{2}-[0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2})/date: \1T\2+08:00 /'

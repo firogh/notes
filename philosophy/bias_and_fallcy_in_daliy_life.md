@@ -1,7 +1,7 @@
 ---
-tags: philosophy
+tags: [ philosophy ] 
 title: 日常生活中的偏见与谬误
-date: 2015-04-27 15:46:14
+date: 2015-04-27T15:46:14+08:00 
 category: philosophy
 ---
 

@@ -1,7 +1,7 @@
 ---
-tags: kernel
+tags: [ kernel ] 
 title: Linux process management
-date: 2015-02-27 15:46:12
+date: 2015-02-27T15:46:12+08:00 
 category: kernel
 ---
 

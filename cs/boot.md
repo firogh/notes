@@ -1,7 +1,7 @@
 ---
-tags: cs
+tags: [ cs ] 
 title: System booting
-date: 2015-11-12 10:43:23
+date: 2015-11-12
 category: cs
 ---
 

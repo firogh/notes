@@ -1,7 +1,6 @@
 ---
-tags: kernel
 title: Console and TTY
-date: 2015-12-05 14:06:29
+date: 2015-12-05T14:06:29+08:00 
 category: kernel
 ---
 # About the design

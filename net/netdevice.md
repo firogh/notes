@@ -1,7 +1,7 @@
 ---
-tags: net
+tags: [ net ] 
 title: Linux net device
-date: 2015-02-27 15:46:13
+date: 2015-02-27T15:46:13+08:00 
 category: net
 ---
 

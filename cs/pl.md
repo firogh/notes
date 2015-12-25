@@ -1,7 +1,7 @@
 ---
-tags: cs
+tags: [ cs ] 
 title: The programming language
-date: 2015-02-27 15:46:14
+date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
 # Reference

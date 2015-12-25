@@ -1,9 +1,7 @@
 ---
-tags:  
-- animation
-- comic
+tags: [ animation ] 
 title: 我喜爱的动画与漫画
-date: 2015-05-01 15:46:14
+date: 2015-05-01T15:46:14+08:00 
 category: review
 ---
 

@@ -1,7 +1,7 @@
 ---
-tags: firo
+tags: [ firo ] 
 title: Firo
-date: 2015-08-25 15:46:11
+date: 2015-08-25T15:46:11+08:00 
 category: firo
 ---
 

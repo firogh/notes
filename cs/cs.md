@@ -1,7 +1,7 @@
 ---
-tags: cs
+tags: [ cs ] 
 title: Computer science a kernel programmer's perspective
-date: 2015-02-27 15:46:14
+date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
 # Reference

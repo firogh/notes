@@ -1,8 +1,7 @@
 ---
-tags:  
-- book
+tags: [ book ] 
 title: 我读过的好书
-date: 2015-10-14 14:09:57
+date: 2015-10-14T14:09:57+08:00 
 category: review
 ---
 

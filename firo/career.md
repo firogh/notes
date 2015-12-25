@@ -1,7 +1,7 @@
 ---
-tags: firo
+tags: [ firo ] 
 title: My Career 职业生涯生涯规划
-date: 2015-07-26 15:46:11
+date: 2015-07-26T15:46:11+08:00 
 category: firo
 ---
 

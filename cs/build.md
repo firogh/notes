@@ -1,7 +1,7 @@
 ---
-tags: cs
+tags: [ cs ] 
 title: Light camera action - compile link load 
-date: 2015-10-25 01:46:28
+date: 2015-10-25T01:46:28+08:00 
 category: cs
 ---
 # Reference
