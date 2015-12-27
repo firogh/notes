@@ -5,19 +5,18 @@ category: kernel
 ---
 # About the design
 Why dose we use /dev/xxx to represent the "tty" device?
-> The whole point with "everything is a file" is not that you have some
-> random filename (indeed, sockets and pipes show that "file" and "filename"
-> have nothing to do with each other), *but the fact that you can use common*
-> *tools to operate on different things*. -- Linus
+
+> The whole point with "everything is a file" is not that you have some random filename (indeed, sockets and pipes show that "file" and "filename"> have nothing to do with each other), but the fact that you can use common tools to operate on different things. -- Linus
+
 So we got the key point!
 In order to use the common tools, file ops and vfs layer, the tty device is "abstructed" to
 files by us. Addnationaly, we must assurance that is the files is *different*. What does
 the word "dirrerent" means is not that you have some random different filename, but the
 fact that you can access the real device through the different.
-> From wikipedia:
-> In mathematics, injections, surjections and bijections are classes of functions distinguished 
-> by the manner in which arguments (input expressions from the domain) and images 
-> (output expressions from the codomain) are related or mapped to each other.
+
+> Wikipedia:
+> In mathematics, injections, surjections and bijections are classes of functions distinguished by the manner in which arguments (input expression> s from the domain) and images (output expressions from the codomain) are related or mapped to each other.
+
 I got an insight that abstruction is a non-injective, right?
 But non-injective may not be a anstruction.
 An asbstruction should come from manipulating different objects.

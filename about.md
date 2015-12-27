@@ -21,8 +21,6 @@ echo -e '#define cat(c,d) c##.d \n  #define mb(a,b) a##@b \n  mb(firogm,cat(gmai
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vXr-2hwTk58" frameborder="0" allowfullscreen></iframe>
 # For Chinese user
 <embed src="http://www.tudou.com/v/jefojo_-HjQ/&bid=05&resourceId=0_05_05_99/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
-
- 
 <div class="getfedora">
 	<p class="asidetitle">Get fedora</p>
 	<script id="fedora-banner" type="text/javascript" src="http://getfedora.org/static/js/release-counter-ext.js?lang=en"></script>

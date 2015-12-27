@@ -1,9 +1,14 @@
 ---
-layout: post
 date: 2015-09-13
-title: Quantitative congnition - The philosophy on what I live
+title: Quantitative congnition - The philosophy on which I live
 category: philosophy
 ---
+我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.
+
+# Big map
+首先, 你要量化目标事物, 确定能量化多少, 还是不能量化.  
+之后, 你就可以
+
 # Epistemology
 ## Top conceptions
 因果律
