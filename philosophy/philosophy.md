@@ -7,153 +7,62 @@ category: philosophy
 
 # Big map
 首先, 你要量化目标事物, 确定能量化多少, 还是不能量化.  
-之后, 你就可以
+对于能力之外的事情, 不能量化, 也无法量化. 需要方向和切入点.
+可以量化的事情, 就可以确定具体的方法.
 
-# Epistemology
-## Top conceptions
-因果律
-世界处在不稳定的状态. -- Firo
-世界的普遍不确定性 -- Firo Soros
-认知的unit是概念. -- Firo
-世界是复杂的, 不能仅仅一条道理就讲明白. -- Firo
-A theory is a perspective of understanding this world. Get more perspective to understanding the world:-)-- Firo
-In genearl, 认知过程就是一种perspective 转换到另一种perspective. -- Firo
-For example, mathematics, logic, computer science are all the theory and perspective:-) 这三种思维都要养成, 慢慢来. -- Firo
-compile就是这样一种转换. -- Firo
-## Criteria and benchmark or protype
-To attain perfect clearness in our thoughts of an object, then, 
-we need only consider what conceivable effects of a practical kind the object 
-may involve—what sensations we are to expect from it, 
-and what reactions we must prepare. (1907: 29)
-		-- James,Pragmatism: A New Name for an Old way of Thinking
-视野要广能有多广要多广.
-你不需要掌握所有的内容, 你需要的是基础的general,重要的,常用的. Bound to James Pragmatism -- Firo
-准确的定义你的问题 -- Firo
-More rationality, less obseravtions. e.g. delete state_count of cpuidle_device. -- Firo
+# 量化的过程
+## 量化对象选取**
+定义度, 视野广度, origin, general度, 重要度, 常用度, foundation, protye.
+对于知识类的思维事物遵从以上原则.
+对于行为类的事物, 如debug, 生活, 还没有总结原则.
+
+## 量化方法的选取评估 Criteria and banchmark
+理性程度, 合理度, 可行度(简单, 易操作, 可长久做下去).
+Completeness, consistency, validity, soundness. -- Logic
 Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
-一一性  -- Moritz Schlick
-合理性. -- Firo
-方法的可行性. -- Firo
-简单, 易操作, 可长久做下去. -- Engflunt
-容易理解, 易推导. -- Firo
-逻辑等价 -- Firo
-Completeness, consistency -- Logic
-繁忙的工作生活会令人身心愉悦 -- Firo
-Plan and record  -- Firo
-Multitasking  -- CS
-怎么样才算是学到了知识呢?
-1. 所有知识都不是stand alone的,孤立的知识是死知识,必须和你了解熟悉的知识建立等价的认知关系. --Firo
-可以确认这个潜在可以和众多知识建立联系的知识就是逻辑,数学, 生活. -- Firo
-2. 要有醍醐灌顶的感觉.
-Quick!
-如果dd做同样的事情, 他会怎么做了?
-
-## Adverse factors of congition
+对于学习的知识上, 方法要做到知识之间的联系, 转换关系.
+To attain perfect clearness in our thoughts of an object, then, we need only consider 
+what conceivable effects of a practical kind the object may involve what sensations we 
+are to expect from it, and what reactions we must prepare. (1907: 29) 
+				-- James, Pragmatism: A New Name for an Old way of Thinking
+每一次问题解决后都应积累pattern. -- Firo
+问题的解决方法要能够Self-correcting. 也就是索罗斯的反射原理.
+# Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
 别人(自己存在)认识的谬误性. -- Firo Soros
-个人 or Government 积累掩盖篡改历史的真相.
+个人 or Government 掩盖篡改历史的真相.
 越是大型的魔术表演，其门道往往就越是简单！人们认定不可能发生这种事的常识，固定观念往往孕育出盲点！-- 唐吉诃德·多弗朗明哥
 正义会胜？那是当然的吧，只有胜者，才是正义啊！-- 唐吉诃德·多弗朗明哥
-基于问题思考可以客服重复, 用处小的知识信息耽误时间, 也能解决脱离实际, 学了很多无用功. -- Firo
 
-## Object
-认知思考的对象一点不能超出思维的连贯性. --Firo
-首先这个知识是个复杂的具体的内容且是隔离的独立的知识比如x86的lds. 直接看就很不舒服.  --Firo
-应该看的是gnu ld关于script的基础还有地址relocation. --Firo
-这里就是要去看他的origin, foundation. -- Firo
-
-## Aspect
-自己思考. 不要上来就读, 你要思考这个过程! 相信自己.-- Firo
-From ground, from zero, from origin. -- Firo
-Pragmatism Question the beginning of mind. -- Firo
-掌控好大方向, 安心的一点点做起, 需求不是想出来的. 要做什么事是实际遇到的, 不能规划
-的太详细, 可以有个大方向时间点. 大概是因为彻底可错, 认知的不完美. 记住需求来自实际不是想出来的. -- Firo
-如果有些重要的事, 我一生都无法实现怎么办?我不能一直这样下去, 到头来, 人生都毁了. 
-所以认真过好每一天, 这很重要. 也是认知的缺陷导致的. -- Firo
-
-建立非常很究极的理性(Rational)的逻辑系统, 不怕出错.More rationality, less observation! 
-准确定义问题. -- Firo
-把事闹大. Broaden the horizons. Framework/pattern is the incarnation of mind.-- Firo
-学会问题转换这非常重要. -- Firo
-Knowledge degree of target, 必须区别对待知识.
-学会多角度看待问题. -- Firo
-如鱼得水. 如果问题难, 不好下手就划分小的(内核只关注console init, 内存映射, cpu 初始化这些), 减小难度(语速编码).-- Firo
-认知的方法, 海绵式，　淘金式，对抗式, 后面来个都应该用来认知. 因为
-Known and unknown/question - the complete vision. -- Firo
-Pragmatism questions:
-Why does it appear? What problem does it solve? What happend if it does not exist?
-How does it solve this problem in generalization and different sesanations level?
-Is it good or bad? What is the feedback?
-Question about what is the important, foundation, most useful, minimal cached? -- Firo
-
-做好模式类比!至少有两个模式, 一个background, 一个是problem.
-就那debug和英语, 都要有基础的background, 之后的problem就要根据具体场景, 找办法.
-简单说来一个事情->模式->问题 & 方法.
-所谓模式就是一条执行的过程. 多是逻辑上的.
-比如模式background, 在逻辑上就是先架构上的, 之后在具体上的.topdown.
-而模式problem, 在逻辑上就是笛卡尔方法, 复杂细分成小的部分, 之后在从简单开始做, 另外就是不断用真实的实践去做calculus-update. 
-
-解决问题的方法往往是多种多样的.
-General problem solving methods, how many method we can use to get answer:
-1. sovle problem by self, you need to know the most things.(For unsimilar things, Not recomend!)
-2. Does anyone solve the same problem?
-3. Does anyone solve the similar things?(这需要提取一些共有的信息比如fsl, usb3320.
-Divide every question into manageable parts. -- Descartes
-一种快速构建pattern 或者达成初级认知的方法是, 先到主体, 确定主体后, 在建立之间的关系. --Firo
-Modularity, -- Computer science
-Begin with the simplest issues and ascend to the more complex. -- Descartes
-
+# 量化的方法步骤
+1. 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
+2. 首先要思考的就是找到整个思考认知系统的落脚点, 基石. Cognitive from ground/zero.
+3. 根据具体的定义的问题, 使用具体的现成的方法. 
+比如做生活计划的时候, 很多时候是无力的. 可以从缺点不足之处,开始不断弥补. 生活不在别处, 正是当下此地.
+还有英语的学习, 越真实的实践, 越多的实践, 提高越大. 可以不断的听, 听真是的场景. 找到不足修正.
+4. 一些通用的方法, 可以帮助我们解决很多问题.
+笛卡尔方法
+* Divide every question into manageable parts. -- Descartes
+* Begin with the simplest issues and ascend to the more complex. -- Descartes
+* Review frequently enough to retain the whole argument at once -- Descartes
+* Accept as true only what is indubitable. -- Descartes
 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
 * 抽象明确概念所属的范畴,从而正确的定义理解问题.
 * 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 * 充要定义, Real and nominal definitions
 * Classes of extensional definitions: enumerative definition
 * [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
-Comparison reflection abstraction -- concept in Wikipedia
 语言必须被还原到实际的生活场景  -- 维特根斯坦
-
-Autonomous decision -- Firo
-问题的答案是常识.每一次认知都是积累pattern的过程. -- Firo
-君子生非异也，善假于物也。 --荀子 劝学
-Change-of-state calculus --Von Wright’s approach
-
-学以致用 实践 -- Firo 胡适
-Self-correcting. -- Firo
-Review frequently enough to retain the whole argument at once -- Descartes
-第一是不要害怕冒险，第二是冒险时不要押上全部家当  -- Soros
-改造的反射性, 反射原理. -- Soros
-## Instances
-* 对陌生语言问题(技术)的认知  
-依照Wittgenstein, 语言要还原到生活中.会发现这是一个反过程, 实际变成了, 生活映射到语言词汇的过程. -- Firo
-通过对被还原到生活的语言词汇(有些时候我们需要修改那些不适当的词汇名字), 来从新认识他在问题中的语义意义. --Firo
-比如内核时间子系统的, timekeeping, 还原到生活是日晷, 沙漏, 钟表. 再次回到程序中, 虽然只是个struct数据结构却携带这涵义丰富生活语义.--Firo
-这是为什么好的命名, 对于程序理解的重要性.想较于使用不同语言的计算机程序开发者在源码中寻找词汇的original的来说, 社会生活中etymology要复杂多. --Firo
-# 模式 -- 结构 关系 原理
- 这里所说的模式是事物某种既定的认知, 而方法是来揭示模式的.
-定位问题, 一定要从全局触发. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
-问题总是复杂的, 解决方法总是简单的  --xiaolai.li
-computer first pattern: init onset,  running nuclus,  exit, coda
-溯因推理abduction
-Theory & application
-In & output
-Ideal & real
-Asynchronous & synchronous
-## Pragmatism sensations
-Theory
-
-# Aaron Swartz
-I feel very strongly that it's not enough to just live in the world as it is, it's just kind of take what you are given,
-and you know follow the things that adults told you to do,and that your parents told you to do, and that society tells to do.
-I think you should always be questioning.I take this very scientific attitude that 
-every thing you've learned  is just provisional, you know, it's always open to recantation or refutation or questioning, 
-and I think  the same applies to society. Once I realized that there were real serious problems, fundamental problems 
-that I could do something to address, I didnt see a way to forget that, I didnt see a way not to.
-
-# 胡适日记全集 第三册，1921年7月10一则
-杜威先生不曾给我们一些关于特别问题的特别主张，——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，
-使我们用这个方法去解决我们自己的特别问题。
+Pragmatism questions:
+* Why does it appear? What problem does it solve? What happend if it does not exist?
+* How does it solve this problem in generalization and different sesanations level?
+* Is it good or bad? What is the feedback?
+* Question about what is the important, foundation, most useful, minimal cached? -- Firo
+Autonomous decision and Change-of-state calculus --Firo-Von Wright’s approach
+胡适日记全集 第三册，1921年7月10一则杜威先生不曾给我们一些关于特别问题的特别主张，
+——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，使我们用这个方法去解决我们自己的特别问题。
 * （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
 他从来不把一个制度或学说，看做一个孤立的东西，总被他看做一个中段；一头是他所以发生的原因，一头是他自己发生的效果；上头有他的祖父，下头有他的孙子。捉住了这两头，他再也逃不出去了！这个方法的应用，一方面是很忠厚宽恕的，因为他处处指出一个制度或学说所以发生的原因，指出他历史的背景，故能了解他在历史上的地位和价值，故不致有过分的苛责。一方面，这个方法又是很严厉的，最带有革命性质的。因为他处处拿一个学说或制度发生的结果，来评判他本身的价值，故最公平，又最利害。这种方法，是一切带有评判（Critical）精神的运动的一个武器。
 * （2）实验的方法　　实验的方法，至少注重三件事：
@@ -164,11 +73,28 @@ that I could do something to address, I didnt see a way to forget that, I didnt 
 第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
-#Philosophy
+
+5. 如果没有现成的方法. 可以自己从公理出发构建出一套方法.也可以思考什么书或者人会遇到相似的问题,
+有解决的方法.
+君子生非异也,善假于物也。 --荀子 劝学
+
+# 模式 -- 结构 关系 原理
+逻辑问题定位, 一定要遵从整体到部分, 有前到后. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
+问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
+computer first pattern: init onset, running nuclus, exit coda
+
+# 世界的组成, 属性
+因果律
+转换,不稳定,不确定性,复杂，
+
+# mind
+认知的unit是概念.
+
+# Philosophy
 物自体->感知->经验对象->认知->概念
 我们所做的乃是把词从形而上学的使用带回到日常的使用上来”。
 我们能够陈述的只是语言的“外部事实”，我们对语言的误解来自对词的使用的不清——“我们的语法缺乏这种清晰性”。面对不清晰的语法，“哲学的任务并不是通过数学或逻辑数学的发现去解决矛盾，而是使我们有可能看清楚给我们造成麻烦的数学的现状：在矛盾解决之前的事态”，哲学的身份是“只把一切都摆在我们面前，既不作说明也不作推论”。
-##Foundations
+## Foundations
 + 认识是人脑对外界事物的反映
 + 认识的对象
 * 存在就是不同.
