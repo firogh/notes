@@ -43,29 +43,29 @@ are to expect from it, and what reactions we must prepare. (1907: 29)
 比如做生活计划的时候, 很多时候是无力的. 可以从缺点不足之处,开始不断弥补. 生活不在别处, 正是当下此地.
 还有英语的学习, 越真实的实践, 越多的实践, 提高越大. 可以不断的听, 听真是的场景. 找到不足修正.
 4. 一些通用的方法, 可以帮助我们解决很多问题.
-笛卡尔方法
-* Divide every question into manageable parts. -- Descartes
-* Begin with the simplest issues and ascend to the more complex. -- Descartes
-* Review frequently enough to retain the whole argument at once -- Descartes
-* Accept as true only what is indubitable. -- Descartes
-语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
-* 抽象明确概念所属的范畴,从而正确的定义理解问题.
-* 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
-* 充要定义, Real and nominal definitions
-* Classes of extensional definitions: enumerative definition
-* [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
+  * 笛卡尔方法
+Divide every question into manageable parts. -- Descartes
+Begin with the simplest issues and ascend to the more complex. -- Descartes
+Review frequently enough to retain the whole argument at once -- Descartes
+Accept as true only what is indubitable. -- Descartes
+  * 语言分析, 是我认知的重要工具, 甚至是主要工具. -- Firo, Saussure
+抽象明确概念所属的范畴,从而正确的定义理解问题.
+内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
+充要定义, Real and nominal definitions
+Classes of extensional definitions: enumerative definition
+[Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
 语言必须被还原到实际的生活场景  -- 维特根斯坦
-Pragmatism questions:
-* Why does it appear? What problem does it solve? What happend if it does not exist?
-* How does it solve this problem in generalization and different sesanations level?
-* Is it good or bad? What is the feedback?
-* Question about what is the important, foundation, most useful, minimal cached? -- Firo
-Autonomous decision and Change-of-state calculus --Firo-Von Wright’s approach
+  * Pragmatism questions:
+Why does it appear? What problem does it solve? What happend if it does not exist?
+How does it solve this problem in generalization and different sesanations level?
+Is it good or bad? What is the feedback?
+Question about what is the important, foundation, most useful, minimal cached? -- Firo
+  * Autonomous decision and Change-of-state calculus --Firo-Von Wright’s approach
 胡适日记全集 第三册，1921年7月10一则杜威先生不曾给我们一些关于特别问题的特别主张，
 ——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，使我们用这个方法去解决我们自己的特别问题。
-* （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
+  * （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
 他从来不把一个制度或学说，看做一个孤立的东西，总被他看做一个中段；一头是他所以发生的原因，一头是他自己发生的效果；上头有他的祖父，下头有他的孙子。捉住了这两头，他再也逃不出去了！这个方法的应用，一方面是很忠厚宽恕的，因为他处处指出一个制度或学说所以发生的原因，指出他历史的背景，故能了解他在历史上的地位和价值，故不致有过分的苛责。一方面，这个方法又是很严厉的，最带有革命性质的。因为他处处拿一个学说或制度发生的结果，来评判他本身的价值，故最公平，又最利害。这种方法，是一切带有评判（Critical）精神的运动的一个武器。
-* （2）实验的方法　　实验的方法，至少注重三件事：
+  * （2）实验的方法　　实验的方法，至少注重三件事：
 （一）从具体的事实与境地下手；
 （二）一切学说理想，一切知识，都只是待证的假设，并非天经地义；
 （三）一切学说与理想，都须用实行来试验过。实验是真理的唯一试金石。
@@ -73,13 +73,12 @@ Autonomous decision and Change-of-state calculus --Firo-Von Wright’s approach
 第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
-
 5. 如果没有现成的方法. 可以自己从公理出发构建出一套方法.也可以思考什么书或者人会遇到相似的问题,
 有解决的方法.
 君子生非异也,善假于物也。 --荀子 劝学
 
 # 模式 -- 结构 关系 原理
-逻辑问题定位, 一定要遵从整体到部分, 有前到后. 如果一直wfi问题, 先看下3.2sdk的config, 就done了.
+逻辑问题定位, 一定要遵从整体到部分, 有前到后, 逻辑一定要completeness. 如wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
 computer first pattern: init onset, running nuclus, exit coda
 

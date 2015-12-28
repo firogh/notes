@@ -1,9 +1,42 @@
 ---
 tags: [ cs ] 
-title: Debugging
+title: The philosophy of debugging
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
+
+
+Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
+The explaination type of a Bug is named Bug type, generally.
+坊间, 流传这样一句话:"能复现的Bug, 都不算Bug.", 言外之意就是能复现就能解.
+可见Bug复现,对解Bug的重要性. [BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
+The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及它.
+[CWE Cross Section Mapped into by NVD][3] 涵盖了所有常见的的Bug描述, 而且非常专业.大赞!
+wikipedia的条目就相形见绌了[Common types of computer bugs in wikipedia][4].
+
+解Bug的过程就是不断通过observations先判断出Bug type, 之后在具现化这个Bug的从而
+得出explanation的过程. 所以两点
+1. 收集observations.
+2. 确定Bug type, 具体原因.
+最终得出explanation. Bug type本身具有验证推测的重要能力.
+我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.
+首先, 一下子不能确认是由那种Bug type导致的.可能是Improper Restriction of Operations 
+within the Bounds of a Memory Buffer 也可能是Use after free. 所以此时debug的关键所在
+就是收集observations,也就是function的名字, 而我遇到的这个问题timer 被完全写坏了. 
+可以用ftrace收集所有timer 的地址和function, 再从oops里面得到timer地址,回头找ftrace
+log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓屏幕log.
+这个方法没成功, 时候分析知道是因为panic的瞬间出问题的timer的地址和function没来得及
+记录到ftrace.怎么办? 我直接说了, 我想到一个办法, 把timer的空间增大, 增大的空间用来
+保存function,在oops把这块内存打出来. 此法非常有用, timer的function一下子就找到了, 进而
+确认了问题是use after free. 非常开心:-)这里的解释了如何收集observations的技巧.对待use
+after free的问题是够了, 以后用到这类问题基本可以妙解了.
+
+
+
+[1]: https://en.wikipedia.org/wiki/Abductive_reasoning#Logic-based_abduction
+[2]: http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs
+[3]: https://nvd.nist.gov/cwe.cfm
+[4]: https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs
 
 # Reference
 Reverse engineering
@@ -22,13 +55,7 @@ Method 1: cp...
 
 # Bug types
 ## Gernel Bug types
-## [CWE - Common Weakness Enumeration](https://nvd.nist.gov/cwe.cfm)
-## [BUG type of JimGray](http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs/)
-Bohrbug, can be reproduce.
-Heisenbug 不论你用多少的时间和精力来试图让bug重现，bug就是人间蒸发了
-Mandelbug 当bug产生的原因过于复杂而难以理解时，bug的出现也变得没有规律
-Schroedinbug
-## [Common types of computer bugs in wikipedia](https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs)
+## ## 
 Arithmetic bugs
 syntax error
 Logic error
