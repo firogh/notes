@@ -5,14 +5,30 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Reference
+Reverse engineering
+
+# Contents
+Bug types
+Bug made by me
+Anti-debuging
+General debugging steps 
+Get observations
+Specific observations
+Debugging experience
+Debug Kernel bug 
+How to use your customed debug library without cp system original corespon library? Set a path prefix?
+Method 1: cp...
 
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
 The explaination type of a Bug is named Bug type, generally.
 坊间, 流传这样一句话:"能复现的Bug, 都不算Bug.", 言外之意就是能复现就能解.
 可见Bug复现,对解Bug的重要性. [BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
-The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及它.
-[CWE Cross Section Mapped into by NVD][3] 涵盖了所有常见的的Bug描述, 而且非常专业.大赞!
-wikipedia的条目就相形见绌了[Common types of computer bugs in wikipedia][4].
+The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及.尤其是,
+他的Bug分类方式惊艳无比, 逻辑上非常严密, 就好比数学系统, 由公理系统推导而得.
+NVD的Bug分类也采用类似的构建方式.[CWE Cross Section Mapped into by NVD][3] 
+涵盖了所有常见的的Bug描述, 而且非常专业.大赞!wikipedia的条目就相形见绌了
+[Common types of computer bugs in wikipedia][4].
 
 解Bug的过程就是不断通过observations先判断出Bug type, 之后在具现化这个Bug的从而
 得出explanation的过程. 所以两点
@@ -32,84 +48,12 @@ log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓
 after free的问题是够了, 以后用到这类问题基本可以妙解了.
 
 
-
-[1]: https://en.wikipedia.org/wiki/Abductive_reasoning#Logic-based_abduction
-[2]: http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs
-[3]: https://nvd.nist.gov/cwe.cfm
-[4]: https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs
-
-# Reference
-Reverse engineering
-
-# Contents
-Bug types
-Bug made by me
-Anti-debuging
-General debugging steps 
-Get observations
-Specific observations
-Debugging experience
-Debug Kernel bug 
-How to use your customed debug library without cp system original corespon library? Set a path prefix?
-Method 1: cp...
-
-# Bug types
-## Gernel Bug types
-## ## 
-Arithmetic bugs
-syntax error
-Logic error
-> Incorrect Bounds-Checking
-> off-by-one bug
-> Skipping Null-Termination Issues
-Resource bugs
-> uninitialized/nonvalidated/corrupted pointer dereference.
-> Segmentation fault in userspace
+# Bugs in Linux kernel 
 > Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
-> Buffer overflow/踩内存
-> [Double kfree errors](http://lwn.net/Articles/174494/)
-> The devm_* series functions introduce more double free error in driver code.
-Race condition bug
-> Multi-threading programming bugs(parallel problems)
-> deadlock
-Interfacing bugs
-Performance bugs
-Teamworking bugs
-Vulnerable bugs
-> unbounded memory manipulation functions
-> strcpy
-> Non-Null Termination Issues
-> non terminaed string
-> Formate string
-> [Format Strings attacker](https://www.owasp.org/index.php/Format_string_attack) or [Uncontrolled format string](https://en.wikipedia.org/wiki/Uncontrolled_format_string)
-> integer issues
-> integer overflow
-> Signed Comparison Vulnerabilities
-Special BUG
 [kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
-
-## Taxonomy of Kernel BUG
 [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
 [kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
-狭隘的认为oops等价于内存地址出问题了, oops 本质上是__die("Oops"
-__die 却可以表明很多错误 "Bad pagetable", "Oops - badmode"   
-arm_notify_die("Oops - undefined instruction" 等等..
-oops 是超出programmer 之外的错误,属于不可控风险, 其实更危险比panic.
-panic 则是programmer 感知到的是防御式编程assertion的体现.
-[Source of BUG](http://fedoraproject.org/wiki/KernelBugTriage#Kernel_Bug_Classification), driver or subsystem and so on.
-#BUG made by me
-* print_signal_info wrong pritk parameters position
-        printk(KERN_NOTICE "K %d : %d -> %s %d %s %d\n", sig, q->info.si_code,
-                ss[2], ss[3], task_tgid_vnr(r_t), task_tgid_vnr(r_p));
- Watch compile warning info can be avoid of this bug.
-* spin_lock(sighand) invoke down_sem and cond_resched...
-	__send_signal()
-# Anti-debugging
-## Syntax checking
-gcc -Wall
-bash -n
-## static code analysis
-smatch
+
 # General debugging steps -- [Abductive reasoning](https://en.wikipedia.org/wiki/Abductive_reasoning)
 T + O => E; //Theory + observations => explanation
 E is the sub-set of T, O is the result of E under the T.
@@ -121,6 +65,7 @@ ask reporter for the .config
 The bug type is the broad outline of the Expaination of the specific bug's Observation.
 2. 结合实际环境get more observations and deuce the explanation/cause.
 3. Fix it.
+
 # Get observations
 ## Get observations from excute binary(maybe source file)
 DWARF
@@ -271,4 +216,24 @@ tcpdump netstat iptables wireshark
 
 
 # Debug Intel system studio
+
+[1]: https://en.wikipedia.org/wiki/Abductive_reasoning#Logic-based_abduction
+[2]: http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs
+[3]: https://nvd.nist.gov/cwe.cfm
+[4]: https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs
+
+# BUG made by me
+* print_signal_info wrong pritk parameters position
+        printk(KERN_NOTICE "K %d : %d -> %s %d %s %d\n", sig, q->info.si_code,
+                ss[2], ss[3], task_tgid_vnr(r_t), task_tgid_vnr(r_p));
+ Watch compile warning info can be avoid of this bug.
+* spin_lock(sighand) invoke down_sem and cond_resched...
+	__send_signal()
+
+# Anti-debugging
+## Syntax checking
+gcc -Wall
+bash -n
+## static code analysis
+smatch
 
