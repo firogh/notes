@@ -8,21 +8,10 @@ category: cs
 # Reference
 Reverse engineering
 
-# Contents
-Bug types
-Bug made by me
-Anti-debuging
-General debugging steps 
-Get observations
-Specific observations
-Debugging experience
-Debug Kernel bug 
-How to use your customed debug library without cp system original corespon library? Set a path prefix?
-Method 1: cp...
-
+# Debugging and Bug types
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
 The explaination type of a Bug is named Bug type, generally.
-坊间, 流传这样一句话:"能复现的Bug, 都不算Bug.", 言外之意就是能复现就能解.
+坊间流传这样一句话:"能复现的Bug, 都不算Bug.", 言外之意就是能复现就能解.
 可见Bug复现,对解Bug的重要性. [BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
 The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及.尤其是,
 他的Bug分类方式惊艳无比, 逻辑上非常严密, 就好比数学系统, 由公理系统推导而得.
@@ -30,197 +19,97 @@ NVD的Bug分类也采用类似的构建方式.[CWE Cross Section Mapped into by 
 涵盖了所有常见的的Bug描述, 而且非常专业.大赞!wikipedia的条目就相形见绌了
 [Common types of computer bugs in wikipedia][4].
 
-解Bug的过程就是不断通过observations先判断出Bug type, 之后在具现化这个Bug的从而
-得出explanation的过程. 所以两点
-1. 收集observations.
-2. 确定Bug type, 具体原因.
-最终得出explanation. Bug type本身具有验证推测的重要能力.
-我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.
-首先, 一下子不能确认是由那种Bug type导致的.可能是Improper Restriction of Operations 
-within the Bounds of a Memory Buffer 也可能是Use after free. 所以此时debug的关键所在
-就是收集observations,也就是function的名字, 而我遇到的这个问题timer 被完全写坏了. 
-可以用ftrace收集所有timer 的地址和function, 再从oops里面得到timer地址,回头找ftrace
-log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓屏幕log.
-这个方法没成功, 时候分析知道是因为panic的瞬间出问题的timer的地址和function没来得及
-记录到ftrace.怎么办? 我直接说了, 我想到一个办法, 把timer的空间增大, 增大的空间用来
-保存function,在oops把这块内存打出来. 此法非常有用, timer的function一下子就找到了, 进而
-确认了问题是use after free. 非常开心:-)这里的解释了如何收集observations的技巧.对待use
-after free的问题是够了, 以后用到这类问题基本可以妙解了.
 
+use after free
 
 # Bugs in Linux kernel 
-> Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
+Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
 [kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
 [oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
 [kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
 
-# General debugging steps -- [Abductive reasoning](https://en.wikipedia.org/wiki/Abductive_reasoning)
-T + O => E; //Theory + observations => explanation
-E is the sub-set of T, O is the result of E under the T.
-The process of debugging is use O to minimize T to E instance.
-0. Reproduce?
-kernel version
-ask reporter for the .config
-1. Find the bug type and definations what the bug belong to.
-The bug type is the broad outline of the Expaination of the specific bug's Observation.
-2. 结合实际环境get more observations and deuce the explanation/cause.
-3. Fix it.
+# General debugging steps
+Debugging的逻辑过程是[Abductive reasoning][1]. 我们以此进行推导.
+T: Theory 也就是我们的background, cs的知识技术, 出问题的程序与代码.
+O: Observations 是Bug发生的现场以及相应的log, 现象.
+E: Explanation 是最终定位的结论.
+E ⊆ T; O ⊆ T; E ⊃ (E ∩ O); 
+if E = (E ∩ O); then debugging is done.
+T, E 与 O理论上都是从∅开始,且O => E;
+E: ∅ -> Bug type(可能经过是多种Bug types的过渡状态) -> Explanation 
+很多时候O也会使T扩大.所以O成为debugging的关键.
+下面严格区分T 和 O. 我们得到O就要不断地结合T进行理性分析.
+> Another perespective, 
+> the process of debugging is use O to minimize T to E instance.
+> T is solutions space, E [locates][5] in T. O is the address to find E.
 
-# Get observations
-## Get observations from excute binary(maybe source file)
-DWARF
-ELF header, readelf -h
-Program header table, readelf -l
-Segments, readelf --segments 
-Sections, readelf --sections
-Section header table, readelf -S 
-objdump -S
+对于Software Bug而言, Debugging可以认为是从observations到source code再到人的逻辑的过程.
+observations -> source code -> mind logic
+基于NVD的CWE我们可知, 收集observations 可能是development和deployment的各个节点.
+
+### Get observations
+首先我们要理清中间的各个流程, 以及相关的observations:
+* coding 
+
+* compilation
 make kernel/sched.s V=1
+readelf, objdump
 c++filt 
-addr2line -f -C -a xxx -e ooo
-/home/build/x/ab/mips-openwrt-linux-addr2line -C -f -e /data/logs/hwf-health-chk/debug-root/HC6361/0.9005.5384s/debugfs/tmp/data/usr/bin/aria2c  0x00607188
-aria2::ZeroBtMessage::~ZeroBtMessage()
-### Tips for binary observations
-[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
-* code reordering
-* inlining
-* Optimized-away variables
-* Tailcall optimization
-## Get Observations from program
+addr2line -f -C -a 0xxxx -e ooo.bin
+./scripts/decodecode < Oops.txt
+* load software
+LD_TRACE_LOADED_OBJECTS=1 git 
+ldd /usr/bin/git
+* software running
 > #define debugme(fmt, args...) do{FILE *fdebug=fopen("/tmp/d.log", "a+"); \
 > fprintf(fdebug,"%s,%s,%d:"fmt, __TIME__, __FUNCTION__, __LINE__, ##args);fclose(fdebug);} while(0)
-Before kernel decompress use putstr
+lsof, ltrace, strace, bash -x, coredump
+  * kernel specific
+putstr early_printk vs printk pr_debug vs dev_debug dump_stack
 Linux serial-port driver is interrupt driven, if irq-off console will not work!
-early_printk vs printk
-dump_stack
-ioctl/netlink
+ioctl/netlink, SysRq, ftrace expect,kgtp, lockdep, kdump, kgdboc
+CONFIG_DYNAMIC_DEBUG, <debugfs>/dynamic_debug/control
+print signal This is just a hiwifi wonderful kernel patch #931
+  * network specific
+tcpdump netstat iptables wireshark
+  * u-boot
+print_tlb
+  * make specific
+-s, -n, -p, --warn-undefined-variables
+$(warning ...)
+  * 有的类型的Bug会阻止我们收集observations
+这时候就要增加observations,让我们能收集到. 比如use after free, buffer errors.
+这时要扩大目标struct的大小, 把observations加进去.
+
+* software imediately stop
 Use atexit() register a stackdump or a wrapped print
-### Debuger Gdb kdb kgdb
-gdb /usr/src/linux/vmlinux /proc/kcore
-    bt
-    x/100a
-thread apply all bt full
-* How to use gdb debug loaded kernel module(maybe kernel its self)
+
+# 一些比较通用的调试工具
+* gdb
 gdb vmlinux /proc/kcore
-core-file /proc/kcore
 p jiffies_64
 text_addr=$(cat /sys/module/char-read-write/sections/.text)
 add-symbol-file /home/nkhare/char-read-write.ko $text_addr
-* how to get the offset of member in struct
-gdb ./vmlinux 
 print &((struct kmem_cache *)0)->offset
 
-## Get observations from application
-lsof
-strace
-bash  -x for shell
-coredump
-# Get obervations from make
-* Just print echo 
-make -s 
-* Print shell command
-make -n
-* Print all variables. not really execute. Wired-name variable is useful to debug
-make -p
-* Pirnt a message
-$(warning ...)
-* Etc
---warn-undefined-variables
-## Get observations from library
-ltrace
-library dependencies of a ELF/bin
-LD_TRACE_LOADED_OBJECTS=1 git 
-ldd /usr/bin/git
-## Get observations from kernel
-dmesg
-SysRq
-/proc (specially /proc/sys/) and /sys
-ftrace
-http://lwn.net/Articles/291091/
-http://lwn.net/Articles/330402/
-http://lwn.net/Articles/379903/
-http://lwn.net/Articles/381064/
-http://lwn.net/Articles/383362/
-http://lwn.net/Articles/346470/
-CONFIG_DYNAMIC_DEBUG
-pr_debug vs dev_debug
-<debugfs>/dynamic_debug/control
-print signal This is just a hiwifi wonderful kernel patch #931
-kgtp?
-lockdep
-kdump
-./scripts/decodecode < Oops.txt
-* kgdboc
-file vmlinux
-set remotebaud 115200
-target remote /dev/ttyS0
-* how to get module text address
-firo@firo module$ cat /sys/module/wmi/sections/.text 
-0xffffffffa023b000
-firo@firo module$ cat /proc/modules | grep wmi
-wmi 18820 0 - Live 0xffffffffa023b000
-int bss_var;
-static int hello_init(void)
-{printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
-static int data_var=0;
-printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
-printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);
-……}
-Module_init(hello_init);
-## Tips for kernel observations
-General track down case 
-* If an page oops close to zero, for example 0xfffffff4
+# Inference 
+From observatons to source code/mind 
+追BUG实际上就是, 找关联度最高的.
+* tips
+If an page oops close to zero, for example 0xfffffff4
 It maybe ERR_PTR(-12);
-* smartqos custom qdisc - self inferrence
-要自己推测除几种可能, 之后按着思路去找, 不能汪洋大海, 乱砍.
-* 追BUG实际上就是, 找关联度最高的, 最好不要从头开始推理, 太耗时.
-## Observations of network
-tcpdump netstat iptables wireshark
-# Specific observations
-## Backtrace's observations 
-* gdb bt(Strongly, recommand), break continue bt
-* backtrace / dumpstack
-* read source code
-* print log 
-* Timer backtrace, Just for funny, the foolish of me. 
-* examine codes in oops
-# Debug kernel oops
-##From oops to ASM
-* Fast way maybe???
-1. make kernel/xx.s
-2. grep "code in oops.txt" kernel/xx.s
-## From ASM to c language
+[Tips on debugging optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
+code reordering inlining Optimized-away variables Tailcall optimization
+* oops
+From ASM to c language
 [lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
-* expand inline function
-* locate __asm__() 内嵌汇编, 能快速定位代码! 但很少! slhc_uncompress()
-* 找常量!
-* 找loop codes formate!
-* 通过.config or CONFIG_判断具体是那个相同函数.
-* 字符的数字敏感
-0000000034333545 doesnt have a bit 7 set in any byte.
-+ef8:   00a01021    move    v0,a1
- efc:   88440003    lwl a0,3(v0)
- f00:   24450004    addiu   a1,v0,4                                                                                                           
- f04:   98440000    lwr a0,0(v0)                                                                                                               
- f08:   00641821    addu    v1,v1,a0                                                                                                            
- f0c:   0064202b    sltu    a0,v1,a0                                                                                                             
-+f10:   14a7fff9    bne a1,a3,ef8 <slhc_uncompress+0x444>                                                                                         
- f14:   00831821    addu    v1,a0,v1
-## From ASM to c language x86
-* local_irq_save/disable
-   c: 9c                    pushfq		//not sure 
-   d: 5d                    pop    %rbp //not sure
-   e: fa                    cli
-* per-CPU
-  f: 65 48 8b 14 25 a8 d1  mov    %gs:0xd1a8,%rdx
-
-
-# Debug Intel system studio
+__asm__(), 常量, loop codes format, char *, ip 
 
 [1]: https://en.wikipedia.org/wiki/Abductive_reasoning#Logic-based_abduction
 [2]: http://www.opensourceforu.com/2010/10/joy-of-programming-types-of-bugs
 [3]: https://nvd.nist.gov/cwe.cfm
 [4]: https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs
+[5]: https://nvd.nist.gov/cwe.cfm#cweIdEntry-CWE-1
 
 # BUG made by me
 * print_signal_info wrong pritk parameters position
@@ -236,4 +125,28 @@ gcc -Wall
 bash -n
 ## static code analysis
 smatch
+
+# Examples
+* timer_list->function = NULL
+我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.
+首先, 一下子不能确认是由那种Bug type导致的.可能是Improper Restriction of Operations 
+within the Bounds of a Memory Buffer 也可能是Use after free. 所以此时debug的关键所在
+就是收集observations,也就是function的名字, 而我遇到的这个问题timer 被完全写坏了. 
+可以用ftrace收集所有timer 的地址和function, 再从oops里面得到timer地址,回头找ftrace
+log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓屏幕log.
+这个方法没成功, 时候分析知道是因为panic的瞬间出问题的timer的地址和function没来得及
+记录到ftrace.怎么办? 我直接说了, 我想到一个办法, 把timer的空间增大, 增大的空间用来
+保存function,在oops把这块内存打出来. 此法非常有用, timer的function一下子就找到了, 进而
+确认了问题是use after free. 非常开心:-)这里的解释了如何收集observations的技巧.对待use
+after free的问题是够了, 以后用到这类问题基本可以妙解了.
+
+* module text address 
+firo@firo module$ cat /sys/module/wmi/sections/.text 
+firo@firo module$ cat /proc/modules | grep wmi
+int bss_var;
+static int hello_init(void)
+{printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
+static int data_var=0;
+printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
+printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);}
 
