@@ -49,6 +49,7 @@ observations -> source code -> mind logic
 
 ### Get observations
 首先我们要理清中间的各个流程, 以及相关的observations:
+
 * coding 
 
 * compilation
@@ -67,6 +68,7 @@ lsof, ltrace, strace, bash -x, coredump
   * kernel specific
 putstr early_printk vs printk pr_debug vs dev_debug dump_stack
 Linux serial-port driver is interrupt driven, if irq-off console will not work!
+how to use serial-port addr
 ioctl/netlink, SysRq, ftrace expect,kgtp, lockdep, kdump, kgdboc
 CONFIG_DYNAMIC_DEBUG, <debugfs>/dynamic_debug/control
 print signal This is just a hiwifi wonderful kernel patch #931
@@ -84,17 +86,10 @@ $(warning ...)
 * software imediately stop
 Use atexit() register a stackdump or a wrapped print
 
-# 一些比较通用的调试工具
-* gdb
-gdb vmlinux /proc/kcore
-p jiffies_64
-text_addr=$(cat /sys/module/char-read-write/sections/.text)
-add-symbol-file /home/nkhare/char-read-write.ko $text_addr
-print &((struct kmem_cache *)0)->offset
-
 # Inference 
 From observatons to source code/mind 
 追BUG实际上就是, 找关联度最高的.
+
 * tips
 If an page oops close to zero, for example 0xfffffff4
 It maybe ERR_PTR(-12);
@@ -111,6 +106,21 @@ __asm__(), 常量, loop codes format, char *, ip
 [4]: https://en.wikipedia.org/wiki/Software_bug#Common_types_of_computer_bugs
 [5]: https://nvd.nist.gov/cwe.cfm#cweIdEntry-CWE-1
 
+# 一些比较通用的调试工具
+* gdb
+gdb vmlinux /proc/kcore
+p jiffies_64
+text_addr=/sys/module/char-read-write/sections/.text
+add-symbol-file /home/nkhare/char-read-write.ko $text_addr
+print &((struct kmem_cache *)0)->offset
+
+# Anti-debugging
+* Syntax checking
+gcc -Wall
+bash -n
+* static code analysis
+smatch
+
 # BUG made by me
 * print_signal_info wrong pritk parameters position
         printk(KERN_NOTICE "K %d : %d -> %s %d %s %d\n", sig, q->info.si_code,
@@ -118,14 +128,6 @@ __asm__(), 常量, loop codes format, char *, ip
  Watch compile warning info can be avoid of this bug.
 * spin_lock(sighand) invoke down_sem and cond_resched...
 	__send_signal()
-
-# Anti-debugging
-## Syntax checking
-gcc -Wall
-bash -n
-## static code analysis
-smatch
-
 # Examples
 * timer_list->function = NULL
 我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.
@@ -141,8 +143,8 @@ log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓
 after free的问题是够了, 以后用到这类问题基本可以妙解了.
 
 * module text address 
-firo@firo module$ cat /sys/module/wmi/sections/.text 
-firo@firo module$ cat /proc/modules | grep wmi
+cat /sys/module/wmi/sections/.text 
+cat /proc/modules | grep wmi
 int bss_var;
 static int hello_init(void)
 {printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
