@@ -5,6 +5,10 @@ date: 2015-05-24T09:52:12+08:00
 category: kernel
 ---
 
+# RCU stalls
+update_process_times->rcu_check_callbacks->rcu_pending->__rcu_pending->check_cpu_stall->print_other_cpu_stall
+
+
 # Reference
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=444737&auto=1&height=66"></iframe>
 [官网Read-Copy Update Mutual Exclusion](http://lse.sourceforge.net/locking/rcupdate.html)

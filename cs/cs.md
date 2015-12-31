@@ -4,7 +4,22 @@ title: Computer science a kernel programmer's perspective
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
+
+⊃
+∪
+
+∅ → CPU
+CPU ⊃ Instruction set ∪ Microarchitecture ∪ ?
+Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ TLB ∪ CPU cache ∪ Instruction cycle ∪ Clock rate 
+Data path ⊃ ALU ∪ FPU ∪ Registers ∪ Bus
+ALU ⊃ Adder ∪ multiplexor
+Adder ⊃ Logic gate
+Logic gate ⊃ diodes or transistors
+Transistor ⊃
+MMU ⊃  
+
 # Reference
+
 [Code The Hidden Language of Computer Hardware and Software](http://book.douban.com/subject/1494026/)
 [Google groups](https://groups.google.com/forum/#!topic/comp.arch/XsW0QfVYgg4)
 For programming reference programming.md

@@ -17,11 +17,17 @@ category: philosophy
 而解决问题更多的则是在复杂的整体中趟出一条线来.这种理所当然的界定, 尤其适合应用到computer science.
 这条趟出来的线是100%Pragmatism, 逻辑完整性的.而学习认知对象的时通常思维是没有特定的聚焦点的, 
 很分散的. 所以在认知的时候用Descartes的划分的方法之外, 还要把他问题化同时确保问题的Pragmatism.
-而保持逻辑的完整和pragmatism, 最好的方法就是自我推理和zeroness.
-
+而保持逻辑的完整和pragmatism, 最好的方法就是自我按步骤推理.
+通过整体的功能可以找到相先关的细分对象, 是一种划分方法.
+如果对象连续性无法推理, 说明缺少功能连续性, 但是对象的连续性是一定存在的,忽略后就是潜在的缺陷. 
+尽量不要破坏连续性, 如果推理缺少依据,捉摸不透, 可以换一个点
+继续推理. 同时功能性的推理的连续性,比枚举对象好很多.
+看上去按对象进行划分是最简单的问题化, 直观符合人的思维.
+如何把认知Pragmatism问题化呢?
 
 ## 量化方法的选取评估 Criteria and banchmark
 理性程度, 合理度, 可行度(简单, 易操作, 可长久做下去).
+Zeroness, contunitya.
 Completeness, consistency, validity, soundness. -- Logic
 Accept as true only what is indubitable. -- Descartes
 Falsifiability可证伪性 -- Popper
@@ -33,6 +39,7 @@ are to expect from it, and what reactions we must prepare. (1907: 29)
 				-- James, Pragmatism: A New Name for an Old way of Thinking
 每一次问题解决后都应积累pattern. -- Firo
 问题的解决方法要能够Self-correcting. 也就是索罗斯的反射原理.
+
 # Adverse factors of congition
 认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
 别人(自己存在)认识的谬误性. -- Firo Soros
@@ -42,7 +49,7 @@ are to expect from it, and what reactions we must prepare. (1907: 29)
 
 # 量化的方法步骤
 1. 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
-2. 首先要思考的就是找到整个思考认知系统的落脚点, 基石. Cognitive from ground/zero.
+2. 首先要思考的就是找到整个思考认知系统的落脚点基石.
 3. 根据具体的定义的问题, 使用具体的现成的方法. 
 比如做生活计划的时候, 很多时候是无力的. 可以从缺点不足之处,开始不断弥补. 生活不在别处, 正是当下此地.
 还有英语的学习, 越真实的实践, 越多的实践, 提高越大. 可以不断的听, 听真是的场景. 找到不足修正.
