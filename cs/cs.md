@@ -7,16 +7,18 @@ category: cs
 
 ⊃
 ∪
-
+∅ → computer
 ∅ → CPU
 CPU ⊃ Instruction set ∪ Microarchitecture ∪ ?
-Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ TLB ∪ CPU cache ∪ Instruction cycle ∪ Clock rate 
+Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ CPU cache ∪ Instruction cycle ∪ Clock rate 
 Data path ⊃ ALU ∪ FPU ∪ Registers ∪ Bus
 ALU ⊃ Adder ∪ multiplexor
 Adder ⊃ Logic gate
 Logic gate ⊃ diodes or transistors
 Transistor ⊃
-MMU ⊃  
+MMU ⊃ TLB
+Memory controller ⊃
+CPU cache ⊃ 
 
 # Reference
 

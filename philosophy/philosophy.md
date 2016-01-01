@@ -30,6 +30,7 @@ category: philosophy
 Zeroness, contunitya.
 Completeness, consistency, validity, soundness. -- Logic
 Accept as true only what is indubitable. -- Descartes
+不能用已知知识进行推理的知识, 是认知残缺, 不可靠的, 等于没有认知.
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
 对于学习的知识上, 方法要做到知识之间的联系, 转换关系.
