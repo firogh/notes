@@ -5,20 +5,87 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-⊃
-∪
-∅ → computer
-∅ → CPU
+∅ ⊢ Computer
+Computer ⊃ CPU ∪ Memory ∪ Bus ∪ Peripheral 
+Computer → I/O
+
+∅ ⊢ CPU
 CPU ⊃ Instruction set ∪ Microarchitecture ∪ ?
-Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ CPU cache ∪ Instruction cycle ∪ Clock rate 
+Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ CPU cache ∪ Oscillator crystal ∪ Clock generator
+Microarchitecture → Instruction cycle ∪ Instruction pipeline ∪ Out-of-order
+Instruction pipeline ⊃ Branch prediction ∪ Hazard ∪ Parallel
 Data path ⊃ ALU ∪ FPU ∪ Registers ∪ Bus
-ALU ⊃ Adder ∪ multiplexor
+ALU ⊃ Adder ∪ Multiplexor
 Adder ⊃ Logic gate
 Logic gate ⊃ diodes or transistors
-Transistor ⊃
+Transistor ⊃ 
+
 MMU ⊃ TLB
+
+CPU register ⊃ not same with SRAM
+
+CPU cache ⊃ SRAM
+SRAM ⊃ MOSFET ∪ Computer organization and design page B-59
+CPU cache → Cache coherence ∪ Associativity ∪ Cache miss
+Cache coherence ⊃ MSI
+
+Oscillator crystal → Clock rate
+
+Clock generator 
+⊃ frequency divider ∪ clock multiplier
+→
+
+
+∅ ⊢ Memory
+Memory ⊃ Memory controller ∪ Bank
 Memory controller ⊃
-CPU cache ⊃ 
+
+∅ ⊢ Bus
+
+∅ ⊢ Peripheral
+
+# Conception
+Cache
+# Book list
+[How a CPU Works](https://youtu.be/cNN_tTXABUA)
+A Symbolic Analysis of Relay and Switching Circuits
+The Mathematical Theory of Communication
+##Reference
+Legacy 常用寄存器，常见指令 实模式和保护模式 分段和分页机制 TSS和任务管理 中断机制 时钟机制 高速缓存
+《模拟电子技术基础 童诗白 第四版》第一章前半部分
+Structured Computer Organization 6th Edition
+Digital Design and Computer Architecture 2nd Edition
+Computer Organization and Design 5th Edition
+Write Great Code: Volume 1: Understanding the Machine
+See MIPS run
+Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
+Microelectronics
+
+## ISA
+model: 1570s, "likeness made to scale; architect's set of designs," from Middle French modelle 
+Semantics in computer science: In programming language theory, semantics is the field concerned 
+with the rigorous mathematical study of the meaning of programming languages.
+Language primitive
+ISA: memory model, registers, data types, instructions, word size(?).
+Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory barrier/memory order primitive's semantics.
+#x86 Interrupt
+If interrupt occured in user mode, then cpu will context swith for potential reschedule.
+The Interrupt Descriptor Table (IDT) is a data structure used by the x86 architecture to implement an interrupt vector table. 
+##Hardware interrupts
+are used by devices to communicate that they require attention from the operating system.
+asynchronus
+more details in init_IRQ() or set_irq() in driver.
+##software interrupt 
+synchronus
+more details in trap_init().
+* exception or trap
+is caused either by an exceptional condition in the processor itself, 
+divide zero painc?
+* special instruction, for example INT 0x80
+or a special instruction in the instruction set which causes an interrupt when it is executed.
+# I/O IC 
+serial communication: UART(16550) + RS-232 
+parallel communication: SCSI, ISA, ATA, PCI, FSB
 
 # Reference
 
