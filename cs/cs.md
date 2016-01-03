@@ -10,7 +10,19 @@ Computer ⊃ CPU ∪ Memory ∪ Bus ∪ Peripheral
 Computer → I/O
 
 ∅ ⊢ CPU
-CPU ⊃ Instruction set ∪ Microarchitecture ∪ ?
+CPU ⊃ Instruction set architecture ∪ Microarchitecture ∪ ?
+Instruction set architecture ⊃ Memory model ∪ ISA Registers ∪ Data types ∪ Instructions
+Instruction set architecture(extension)  ⊃ RISC ∪ CISC  
+Memory model ⊃ Byte ∪ Words ∪ Address space ∪ Memory semantics 
+ISA Registers ⊃ Special-purpose registers ∪ General-purpose registers ∪ Control registers
+Data types ⊃ Numeric ∪ Nonnumeric
+Numeric data types ⊃ Integer
+Instructions ⊃ Instruction formats ∪ Instruction length ∪ Addressing mode ∪ Comparisons ∪ Branches ∪ Procedure Call 
+Instruction formats ⊃ opcode
+Instructions(extension) ⊃ Data transfer ∪ Arithmetic ∪ Logic ∪ Control flow
+
+RISC ⊃ Fixed instruct length ∪ Few instruction formats ∪ Load/Store architecture
+
 Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ CPU cache ∪ Oscillator crystal ∪ Clock generator
 Microarchitecture → Instruction cycle ∪ Instruction pipeline ∪ Out-of-order
 Instruction pipeline ⊃ Branch prediction ∪ Hazard ∪ Parallel
@@ -22,27 +34,27 @@ Transistor ⊃
 
 MMU ⊃ TLB
 
-CPU register ⊃ not same with SRAM
+CPU register ⊃ not same with SRAM ∪ Synchronous circuit
 
-CPU cache ⊃ SRAM
+CPU cache ⊃ SRAM ∪ Synchronous circuit 
 SRAM ⊃ MOSFET ∪ Computer organization and design page B-59
 CPU cache → Cache coherence ∪ Associativity ∪ Cache miss
 Cache coherence ⊃ MSI
 
-Oscillator crystal → Clock rate
+Oscillator crystal 
 
-Clock generator 
-⊃ frequency divider ∪ clock multiplier
-→
-
+Clock generator ⊃ frequency divider ∪ clock multiplier
+Clock generator → Clock rate
 
 ∅ ⊢ Memory
-Memory ⊃ Memory controller ∪ Bank
+Memory ⊃ Synchronous circuit ∪ Memory controller ∪ Bank 
 Memory controller ⊃
 
 ∅ ⊢ Bus
 
 ∅ ⊢ Peripheral
+
+# Abstruction layers
 
 # Conception
 Cache
