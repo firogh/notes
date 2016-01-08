@@ -8,13 +8,13 @@ category: review
 ![z](http://www.it.com.cn/f/games/0511/8/1108zeta001.jpg)
 # 推荐一些我看过且觉得值得一看的动画与漫画
 
-剑风传奇.
-
+剑风传奇
 南方公园
 攻壳机动队
 Trigun/枪神
 星际牛仔
 今敏的作品(千年女优)
+魁库洛马迪高校
 大友克洋作品
 机动战士高达UC三部曲 以及 The origin
 机动警察
@@ -35,6 +35,7 @@ EVA
 异邦人：无皇刃谭
 恶童
 One puch man(动画)
+怪化猫
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=28182362&auto=1&height=66"></iframe>
 
 

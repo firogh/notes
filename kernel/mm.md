@@ -18,7 +18,6 @@ How to distribute these memory to processes? Virtual memory.
 How to translate linear address to physical address? Page table.
 Exchange data between primary memory and second memory. Paging.
 
-
 What are the pitfall of manuplate directly physcial memory
 
 # page
@@ -107,8 +106,6 @@ expand_stack()/handle_mm_fault()
 
 * vmalloc fault
 
-* Oops
-kernel access invalid address, in __print_signal_info() task->sighand and  task->nsproxy is null.
 
 #Physical memory
 * NUMA/UMA pg_data_t: My PC is UMA, numatop, numastat, numactl

@@ -1,12 +1,14 @@
 ---
 tags: [ book ] 
-title: 我读过的好书
+title: My reading list of computer science
 date: 2015-10-14T14:09:57+08:00 
 category: review
 ---
 
-我在大连民族学院学的本科计算机专业,主攻哲学,毕业3年工作2年左右.
-推荐一些我觉得好的书.
+I think you should check my The Organization of Knowledgs
+
+**Programming:**
+The science of programming
 
 # Computer science
 Code: The hidden language of computer hardware and software

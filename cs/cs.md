@@ -5,6 +5,28 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Top goal
+Easy to use
+Efficiency
+Protection
+Reliability
+Security
+Energy-efficiency
+
+# Top method
+Abstruction
+Virtualization
+Exchange time and space
+Isolation
+
+# Plan
+logic circut -> ma-> isa -> as -> compile -> pl -> c -> lisp haskell
+as -> c
+logic circurt -> network device -> network protocol -> network stack
+logic circurt -> ma-> system devices controllers(bus, mm, nand, nor, network)->os-> kernel
+		
+
+# Computer architecture
 ∅ ⊢ Computer
 Computer ⊃ CPU ∪ Memory ∪ Bus ∪ Peripheral 
 Computer → I/O
@@ -47,12 +69,24 @@ Clock generator ⊃ frequency divider ∪ clock multiplier
 Clock generator → Clock rate
 
 ∅ ⊢ Memory
-Memory ⊃ Synchronous circuit ∪ Memory controller ∪ Bank 
+// No matter physical or virtual address both are relative continuity.
+// What is memory? Simplely, a large number of identifier and 1 byte infomation.
+// What is address space is the methmatical set of identifiers of memory.
+Memory ⊃ Sequencial logic circuit ∪ Memory controller ∪ Bank 
 Memory controller ⊃
 
 ∅ ⊢ Bus
 
 ∅ ⊢ Peripheral
+
+# OS
+Batch processing -> Time-sharing
+Overlaying 
+* vm
+There are some great historical papers and books we should read before fully understanding virtual memory.
+[Computer Structures: Readings and Examples ](http://research.microsoft.com/en-us/um/people/gbell/CGB%20Files/Computer%20Structures%20Readings%20and%20Examples%201971.pdf)
+[Computer Structures: Readings and Examples html version](http://research.microsoft.com/en-us/um/people/gbell/Computer_Structures_Principles_and_Examples/contents.html)
+Chapter 10 One-level storage system is the first implemention of virtual memory mind.
 
 # Abstruction layers
 

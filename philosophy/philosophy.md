@@ -81,7 +81,7 @@ Why does it appear? What problem does it solve? What happend if it does not exis
 How does it solve this problem in generalization and different sesanations level?
 Is it good or bad? What is the feedback?
 Question about what is the important, foundation, most useful, minimal cached? -- Firo
-  * Autonomous decision and Change-of-state calculus --Firo-Von Wright’s approach
+  * Autonomous decision and Change-of-state calculus 拼图连接法montage link --Firo-Von Wright’s approach
 胡适日记全集 第三册，1921年7月10一则杜威先生不曾给我们一些关于特别问题的特别主张，
 ——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，使我们用这个方法去解决我们自己的特别问题。
   * （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
@@ -94,6 +94,7 @@ Question about what is the important, foundation, most useful, minimal cached? -
 第二件，——一切学理都看做假设——可以解放许多“古人的奴隶”。
 第三件，——实验——可以稍稍限制那上天下地的妄想冥想。实验主义只承认那一点一滴做到的进步，步步有智慧的指导，步步有自动的实验——才是真进化。
 所谓实验的方法应该看成实证主义, 而不是更宽泛的实用主义. 维也纳小组, 即是逻辑实证主义.
+  * 我喜欢用historical的文献, 还原事物本身. I think, it's the crux of origin-cognition of method. 或许, 这就是Foucault 知识考古学吧.
 
 # 模式 -- 结构 关系 原理
 逻辑问题定位, 一定要遵从整体到部分, 有前到后, 逻辑一定要completeness. 如wfi问题, 先看下3.2sdk的config, 就done了.
