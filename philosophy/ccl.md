@@ -5,4 +5,5 @@ title: The common cognition language
 category: philosophy
 ---
 
-To be continue!
+
+What's the orgnaiszations of knowledge?

@@ -8,6 +8,7 @@ category: review
 I think you should check my The Organization of Knowledgs
 
 **Programming:**
+[SICP](http://sarabander.github.io/sicp/)
 The science of programming
 
 # Computer science
@@ -22,4 +23,5 @@ ARM System-on-Chip Architecture (2nd Edition)
 
 # Philosophy
 普通认识论 -- Moritz Schlick
+
 

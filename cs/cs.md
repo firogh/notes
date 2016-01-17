@@ -5,6 +5,22 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Automata
+Finite automata:
+A finite automaton is a mathematical
+machine for determining whether a string
+is contained within some language.
+Turing machine
+Thinkpad X1 or Nexus 5 -> Automata: for simplicity
+* Regular expression
+http://vimregex.com/
+
+
+# The Theory of Computation
+Automa ⊃ Finite automaton ∪ context-free grammar
+Computability ⊃ solvable or not
+Complexity ⊃ easy or hard
+
 # Top goal
 Easy to use
 Efficiency

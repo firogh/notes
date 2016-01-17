@@ -6,9 +6,22 @@ category: philosophy
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.
 
 # Big map
-首先, 你要量化目标事物, 确定能量化多少, 还是不能量化.  
-对于能力之外的事情, 不能量化, 也无法量化. 需要方向和切入点.
-可以量化的事情, 就可以确定具体的方法.
+定义问题
+量化问题(includes draw the map)
+选取方法(可能多个方法)
+验证结果
+反馈update
+回到第一步, 循环
+
+## 量化
+1. Time evolution, 人对事物的的通常思维过程, 在一段时间内不断改进演化.
+学习VM的时候, 通过历史paper了解VM的发明过程.
+2. 划分
+完整的逻辑关系layers (The minimal complete inferences)
+区分layer表现的含义和表现规则(语言, transitor这些都是表现形式), 
+layers之间的转换.
+3. 抽象
+layer(不同layers)的抽象对象, 事物本身的内在规则规则.
 
 ## 量化对象选取与分析
 定义度, Pragmatism, 视野广度, origin, general度, 重要度, 常用度, foundation, protye.
@@ -100,6 +113,9 @@ Question about what is the important, foundation, most useful, minimal cached? -
 逻辑问题定位, 一定要遵从整体到部分, 有前到后, 逻辑一定要completeness. 如wfi问题, 先看下3.2sdk的config, 就done了.
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
 computer first pattern: init onset, running nuclus, exit coda
+**Trans**
+Encodeing
+Substitution
 
 # 世界的组成, 属性
 因果律

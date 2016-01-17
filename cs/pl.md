@@ -4,6 +4,10 @@ title: The programming language
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
+
+
+∅ ⊢ pl
+scope: The set of expressions for which a binding defines a name is called the scope of that name.
 # Reference
 Programming Language Pragmatics 3rd
 C11
@@ -289,9 +293,3 @@ find . -name ‘your_pattern*’ -delete
 find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
 #AWK
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
-#Regualar expression
-##Basic
-##Extend
-##Vim regex
-http://vimregex.com/
-
