@@ -7,7 +7,7 @@ category: philosophy
 
 # Big map
 定义问题
-draw the map(从实际点出发)
+draw the path in the map(从实际点出发)
 选取方法(可能多个方法)
 验证结果
 反馈update
