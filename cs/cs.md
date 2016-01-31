@@ -15,6 +15,15 @@ Thinkpad X1 or Nexus 5 -> Automata: for simplicity
 * Regular expression
 http://vimregex.com/
 
+# Architecutre
+given a symbol level, the architecture is the description of the system in 
+whatever system-description scheme exists next below the symbol level. - Newell, 1990, p. 81
+[Ask HN: How to learn about the history of computing?](https://news.ycombinator.com/item?id=9844090)
+* Control
+Cogwheel control
+electromechanical magnet plugging control
+control sequence points
+
 
 # The Theory of Computation
 Automa ⊃ Finite automaton ∪ context-free grammar

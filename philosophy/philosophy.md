@@ -7,7 +7,7 @@ category: philosophy
 
 # Big map
 定义问题
-量化问题(includes draw the map)
+draw the map(从实际点出发)
 选取方法(可能多个方法)
 验证结果
 反馈update
@@ -39,7 +39,7 @@ layer(不同layers)的抽象对象, 事物本身的内在规则规则.
 如何把认知Pragmatism问题化呢?
 
 ## 量化方法的选取评估 Criteria and banchmark
-理性程度, 合理度, 可行度(简单, 易操作, 可长久做下去).
+必须间大明了, 理性程度, 合理度, 可行度(简单, 易操作, 可长久做下去).
 Zeroness, contunitya.
 Completeness, consistency, validity, soundness. -- Logic
 Accept as true only what is indubitable. -- Descartes
