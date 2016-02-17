@@ -8,13 +8,17 @@ category: firo
 Go to a place to live comfortably, grow up. 
 American kernel job & Visa
 Passport 
-# Daily contents
-Skin care
-Fix philosophy.
+
+# Daily schedule
+Physical exercises 30 ~ 45 minutes.
+Wash face.
+Have a shower.
+Go to bed at 22:30.
+Sleep about 8 hours. Do not watch phone or pad.
+Getting up at 6:30.
+Wash face and Skin care.
 English
-Experience in kernel hacking and cs
-Sleep and physical exercises
-Extend knowledge.
+Experience in kernel hacking and cs.
 ## Skin care
 * 不熬夜, 早睡, 早起!
 * Fitness
