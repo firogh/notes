@@ -24,7 +24,33 @@ Weight				67kg									77kg
 Thigh/大腿围			51cm									54
 +Waistline/腰围			84										79
 Hip line			87cm									94cm ~ 112cm
+# Physical exercise
+有氧和无氧隔天锻炼.
+Aerobic exercise: 跑步
+Anaerobic exercise: 囚徒健身
+一个20天计划, 一天6艺一式, 隔天自增第二式, 以此类推.
 
+* Belly, Abdomen			
+Crunsh(Not Situps), Leg raise
+1、配合有氧运动减脂，这是关键，否则仰卧起坐也不用做了，最好的减脂运动就是有氧运动，这个说来话长，不深入了；
+2、每天都要对腹肌进行刺激，这样才能保证不退化；
+3、放弃大强度疲劳训练；
+4、腹肌训练放在每次训练的最后；
+5、每次训练只要选择一个动作，做3组，每组20-30次即可，当然要达到有效地刺激；
+* Chest,Pectorails		
+Dumbbell fly; Bench press; Pushups 30+1/day	
+* Back					
+Pull-up
+* Shoulder,Deltoid		
+Front raise;Shoulder fly; Handstand push-up
+* Arms, Biceps			
+Biceps up, Chin up
+* Leg											 
+* Eyes
+* Ears				
+40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour 
+* Masturbation			
+1 time two week 
 # Personal finance
 ## Personal budget
 20
@@ -63,6 +89,18 @@ Laptop			Y460						Intel haswell | Chrome pixel
 Razor			Schick quatto titanium and hydro
 Chair			Steelcase think chair
 Mug			1						2
+# Shopping
+Hangers
+Face masker
+克林莱天然橡胶手套
+白博士泡沫式厨房清洁剂
+擦擦克林
+威猛先生
+长柄刷子 
+淋浴喷头
+抹布
+盘子 盆子
+
 ## Kitchen/厨
 Rice cooker		美的, 排名考前
 IRON FRYING WOK		CCK, 制造用料比较放心, 炒菜香.

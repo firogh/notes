@@ -414,3 +414,18 @@ ralink little
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
 换个角度理解, [低级语言与硬件结构的关系](http://202.116.24.124/computer/content/theory/web/Chap04/4.1.3.HTM)
+
+
+# old cs faq
+# CS
+* Memory
+the framework of memroy from logic to malloc.
+What's results  will be generated for cache when manipulate variable?
+* Device driver model
+
+## Computer architecture
+The theroy, 比如我可以更好的理解cpu, 中断上下文,cache,内存,netdevice怎么工作的.
+How does a program execute from asm language expression to physics?
+Does cache belong to computer architecture not OS?
+What make of cache and memory in digital physics?
+

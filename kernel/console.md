@@ -3,6 +3,9 @@ title: Console and TTY
 date: 2015-12-05T14:06:29+08:00 
 category: kernel
 ---
+343 line
+1. /dev/console 指向正在运行的tty 和tty0 一样ttyN not pts, console 佬变.
+2. /dev/tty 一直指向所在的那个不变. 
 # About the design
 Why dose we use /dev/xxx to represent the "tty" device?
 
@@ -283,6 +286,9 @@ start_kerenl->
 	set_arch-> conswitchp = &vga_con; or conswitchp = &dummy_con; 
 	console_init->
 	{
+			tty_ldisc_begin->tty_register_ldisc(N_TTY, &tty_ldisc_N_TTY);
+		console_initcall(con_init);
+	console_initcall(serial8250_console_init)
 		con_init->
 		{
 			// vc->vc_sw->con_putcs is DUMMY
@@ -337,7 +343,13 @@ console_unlock->..->__call_console_drivers-> console_drivers->write = vt_console
 }
 # What about tty
 * onset
-console_init->tty_ldisc_begin->tty_register_ldisc(N_TTY, &tty_ldisc_N_TTY);
+console_init->
+{
+	tty_ldisc_begin->tty_register_ldisc(N_TTY, &tty_ldisc_N_TTY);
+	console_initcall(con_init);
+	console_initcall(serial8250_console_init)
+}
+
 N_TTY:[Serial Drivers by Alessandro Rubini](http://www.linux.it/~rubini/docs/serial/serial.html)
 fs_initcall:chr_dev_init->drivers/tty/tty_io.c: tty_init->
 {

@@ -856,3 +856,21 @@ inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem
 * nic init
 e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
 vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
+
+# OLD log
+## net
+*first_device 用途？
+subsys 在前, device在后.
+* What is bridge?
+linux bridge 
+netdev_rx_handler_register(dev, br_handle_frame, p);
+__netif_receive_skb -> rx_handler=br_handle_frame
+and generic concept: hub, switch?
+hub: layer 1, bradcast, exclusive share, 报文可被侦听.
+switch: layer 2,  mac port route, CAM table in linux bridge module!
+switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以是layer层技术.
+* What is the type in ip link?
+net_poll
+napi
+* What is Head-of-line blocking
+

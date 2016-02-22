@@ -234,4 +234,11 @@ debug initcall_debug
 
 
 ### printk
+# old questions
+What is platform driver?
+find source code of config
+How to print backtrace by kernel oops, and why it's not exact?
+What is abi
+why get_unaligned_be16?
+ _THIS_IP_ vs __FUNCTIONS__
 

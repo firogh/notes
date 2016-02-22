@@ -45,13 +45,20 @@ kernel和openstack的remote工作机会更多.
 现在以外包的形式在windriver的ccm team 工作.
 这就是我职业生涯的7年时光, 过得很坎坷. 
 
-# Plan
-0916, 0515, 8 months
-Go abroad & HB1
+# Work style
+* Plan the day.
+What need to do.
+Prioritization.
+Focus on.
+
+# Yet another plan
+Passport
 English: 3w
-Work achievement: 6w
-Problem solving/Pattern or estemology: 3w
 Kernel patches 500 commits, 10w
+Work achievement: 6w
+Problem solving/pattern ??: 3w
+Offer and HB1
+FIXME in knowledge_map.md
 
 # Interview
 ## 关于薪资问题
