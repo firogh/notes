@@ -242,3 +242,5 @@ What is abi
 why get_unaligned_be16?
  _THIS_IP_ vs __FUNCTIONS__
 
+# kernel modules
+sudo depmod -n -a -F /boot/System.map-4.3.5-300.fc23.x86_64  4.3.5-300.fc23.x86_64 > /tmp/m.log

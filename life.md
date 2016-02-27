@@ -13,6 +13,7 @@ Sleep about 8 hours. Do not watch phone or pad.
 Getting up at 6:30. 晨光熹微!
 Wash face and Skin care.
 Drink a lot of water everyday.
+Remedies for sinus.
 English
 Experience in kernel hacking and cs.
 ## Skin care

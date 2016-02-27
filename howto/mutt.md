@@ -50,3 +50,4 @@ vim/emacs用来编辑邮件.
 
 * 靠gmail 存了两份发送邮件, 把这句注释掉, gmail自己本身会缓存的:
 	`set record = "+[Gmail]/Sent Mail"`
+
