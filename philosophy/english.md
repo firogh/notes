@@ -4,6 +4,10 @@ title: 逻辑实证主义者的英语二语习得
 category: philosophy
 ---
 
+# How to improve english listening skills
+[Improving Listening Skills](http://esl.about.com/od/englishlistening/a/listen_tips.htm)
+0. More and more listening
+1. Relax, ignore the words you didn't understand and try to relax  and get the general idea.
 题目起地有点装X.
 学习这种事说到底, 不外乎方法与花时间.
 我们这几代中国学生在英语上花的功夫都不少, 从小学到大学, 少说也有10年.
@@ -174,26 +178,3 @@ British ɪə -> American ɪ -> strict IPA ɪə ̯
 “Bad” vs. “Bed”
 “Girl” vs. “Go”
 “Hate” vs. “Hit” “Say” vs. “See” “Bee” vs. “Be” 
-## Neutral
-I ɛ ə/ʌ ʊ
-i: ee ea ie ei 
-I: i y
-# Vocabulary
-Merriam-Webster's Vocabulary Builder
-Word power made easy
-
-
-# Cage
-* 5 gerund-participals 
-a gerundial noun, 
-a present participial adjective.
-a gerund-participle form of a verb: Gerund phrase as noun, Participle phrase as adjective, progressive present participle.
-现在进行时和现代分词短语做形容词, 都是形容词, 好像是一回事??
-
-* participle
-adjective
-work with auxiliary. be/have
-adjective pharase
-
-
-

@@ -5,12 +5,14 @@ category: firo
 ---
 
 # Daily schedule
-Physical exercises 30 ~ 45 minutes.
-Wash face.
-Have a shower.
-Go to bed at 22:30.
+12:00 English
+05:00 Cook rice porridge(Use timer function)
+06:45 Getting up. 晨光熹微!
+20:45 English
+21:45 Physical exercises 30 ~ 45 minutes.
+22:30 Wahs face & Have a shower.
+22:45 Sleep.
 Sleep about 8 hours. Do not watch phone or pad.
-Getting up at 6:30. 晨光熹微!
 Wash face and Skin care.
 Drink a lot of water everyday.
 Remedies for sinus.

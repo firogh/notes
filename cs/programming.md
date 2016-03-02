@@ -20,13 +20,12 @@ High cohesion low coupling
 也需要会一点Design pattern
 养成好的Coding style, 
 Valid and verification
-
 Testing
 Debuging
 
 # Coding style
 比如GNU coding standards, Linux kernel coding style, Shell coding standard
-## Label
+* Label
 It is considered to be safer that the label reflect what happens at the
 destination, and not the reason for reaching the label. --Julia
 
@@ -43,16 +42,13 @@ programming is a goal-oriented activity
 Before attempting to solve a problem, make absolutely sure you  what the problem is.
 14.5
 Before developing a program, make precise and refine the pre/postcondition.
-
 program -> 
 {Q} S {R}: predicte, formal notation
 Q: input asseration
 R: output asseration 
-
 predictes -> asseration
 asseration: a predicate placed in a program is called an asseration.
 Proof outline: a program together with an asseration between each pair of statements
-
 Program specification ⊃ excution ∪ speed ∪ size 
 Instances: summation, squre root approximation, sorting
 command-comment ⊃ all input ∪ output
