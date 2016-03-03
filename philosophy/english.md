@@ -1,9 +1,8 @@
 ---
 date: 2015-03-20
-title: 英语学习的经验与方法
+title: How to learn English
 category: philosophy
 ---
-
 # How to improve english listening skills
 [Improving Listening Skills](http://esl.about.com/od/englishlistening/a/listen_tips.htm)
 0. More and more listening
