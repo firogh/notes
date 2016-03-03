@@ -1,6 +1,6 @@
 ---
 date: 2015-03-20
-title: 逻辑实证主义者的英语二语习得
+title: 英语学习的经验与方法
 category: philosophy
 ---
 
