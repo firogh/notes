@@ -51,6 +51,17 @@ Biceps up, Chin up
 40 ~ 60 decibel, wear headset not beyond 3 ~ 4 hour, relax/half hour 
 * Masturbation			
 1 time two week 
+
+## Skin care
+* Cleansing
+Lab series multi-action face wash.One time per two days.
+* Toning
+Water, more water.
+* Moisturizing
+Kiehl‘s ultra facial cream!
+* Exfoliants
+For face, once a week.
+
 # Personal finance
 ## Personal budget
 20
