@@ -52,13 +52,12 @@ Prioritization.
 Focus on.
 
 # Yet another plan
-Passport
-English: 3w
-Kernel patches 500 commits, 10w
-Work achievement: 6w
-Problem solving/pattern ??: 3w
-Offer and HB1
+English
+Kernel patches 500 commits
+Work achievement
+Problem solving/pattern
 FIXME in knowledge_map.md
+Passport H1B Offer
 
 # Interview
 ## 关于薪资问题
