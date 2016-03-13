@@ -79,6 +79,8 @@ are to expect from it, and what reactions we must prepare. (1907: 29)
 # 量化的方法步骤
 0. 从实际问题触发, 实际的topic.
 0.1 方法简单容易, 方便证明是否有效
+0.5 oracle-machine, 万物皆备于我
+0.6 Autonomous Change-of-state calculus --Firo-Von Wright’s approach
 1. 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
 2. 首先要思考的就是找到整个思考认知系统的落脚点基石.
 3. 根据具体的定义的问题, 使用具体的现成的方法. 
@@ -111,7 +113,6 @@ Why does it appear? What problem does it solve? What happend if it does not exis
 How does it solve this problem in generalization and different sesanations level?
 Is it good or bad? What is the feedback?
 Question about what is the important, foundation, most useful, minimal cached? -- Firo
-  * Autonomous decision and Change-of-state calculus 拼图连接法montage link --Firo-Von Wright’s approach
 胡适日记全集 第三册，1921年7月10一则杜威先生不曾给我们一些关于特别问题的特别主张，
 ——如共产主义，无政府主义，自由恋爱之类，——他只给了我们一个哲学方法，使我们用这个方法去解决我们自己的特别问题。
   * （1）历史的方法——“祖孙的方法”   the genetic method, why xxx?
