@@ -5,6 +5,18 @@ category: philosophy
 ---
 
 
+# a & d
+1 sound
+语音和文字等价, 都连接到某种意象.
+语音可以独立. 所以单独分出来一些时间练习语音.
+2 语法
+研究句子和词汇的构成规则.
+3 意象的扩展和区分
+单词, 搭配, 习语.
+4 整体运用实践
+Listening and speaking
+
+
 # Feedback
 1. Watch movie without subtitles
 

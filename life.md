@@ -8,13 +8,13 @@ category: firo
 12:00 English
 05:00 Cook rice porridge(Use timer function)
 06:45 Getting up. 晨光熹微!
-07:00 English writing and speaking
+07:00 Words, collections, idioms.
 09:00 Listen English in subway and during work.
-12:00 Learn English words and learn how to express in some topic.
-18:00 Listen English on subway home
+12:00 English words and learn how to express in some topic.
+18:00 Listen English grammar on subway home
 	Computer science topic with in my architecture
-20:45 English writing and grammar
-21:15 English pronunciation, phonetic
+20:45 English pronunciation, phonetic.
+21:15 English writing and speaking.
 21:45 Physical exercises 30 ~ 45 minutes.
 22:30 Wash face & Have a shower.
 22:45 Sleep about 8 hours. Do not watch phone or pad.
