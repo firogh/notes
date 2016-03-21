@@ -9,10 +9,11 @@ category: philosophy
 1 sound
 语音和文字等价, 都连接到某种意象.
 语音可以独立. 所以单独分出来一些时间练习语音.
-2 语法
+2 grammar
 研究句子和词汇的构成规则.
-3 意象的扩展和区分
+3 vocabulary
 单词, 搭配, 习语.
+
 4 整体运用实践
 Listening and speaking
 
@@ -79,4 +80,6 @@ A Comprehensive Grammar of the English Language -- Randolph Quirk / Sidney Green
 所以实际上要看的很少, 但都是重要的.
 关于这三本书, 夸克(Quick)的书最老85年, Longman的次之99年, 剑桥是02年的.
 建议, 剑桥做主要书目, 夸克和Longman做佐证备查.
+* 1.3.1 Clausal and subclausal coordination. P1294
+We can use coordination as a subclause
 

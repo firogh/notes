@@ -13,8 +13,8 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 定义问题
 选取方法(可能多个方法)
 实践方法
-评估反馈
-goto step1
+认识缺陷
+修正缺陷,解决问题goto step1
 
 # Examples
 如何理解某种事物?
@@ -23,7 +23,8 @@ goto step1
 2 细化
 
 
-## 量化
+## 量化 and analysis method
+0 The phrased objectives
 1. Time evolution, 人对事物的的通常思维过程, 在一段时间内不断改进演化.
 学习VM的时候, 通过历史paper了解VM的发明过程.
 2. 划分
