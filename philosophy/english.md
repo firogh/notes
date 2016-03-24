@@ -6,16 +6,21 @@ category: philosophy
 
 
 # a & d
+time: 4 months
 1 sound
 语音和文字等价, 都连接到某种意象.
 语音可以独立. 所以单独分出来一些时间练习语音.
 2 grammar
 研究句子和词汇的构成规则.
+关系到句子的正确性.
 3 vocabulary
 单词, 搭配, 习语.
+idioms
+collocation
 
 4 整体运用实践
 Listening and speaking
+reading and writing
 
 
 # Feedback

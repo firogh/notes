@@ -52,6 +52,8 @@ asmlinkage
 However, for C functions invoked from assembly code, 
 we should explicitly declare the function's calling convention, 
 because the parameter passing code in assembly side has been fixed. 
+Show all predefined macros for your compiler
+gcc -dM -E -x c /dev/null
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 ##Symbol table
 * System.map less 
