@@ -62,11 +62,14 @@ Review frequently enough to retain the whole argument at once -- Descartes
 Accept as true only what is indubitable. -- Descartes
 
 # 实践
+建立一个全面的wilds环境, 在这个环境下生存!
+活下去!
 
 # 反馈缺陷
 
 # 本体系自身的反馈
 成长来自实践, 以及认识缺陷并加以改正.
+不断的实践和改正缺陷才是提高能力的核心!
 很多时候, 依靠现在的经验学识不能找到完整的方法, 需要不断的调整.
 学会认识自己的无力.
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li

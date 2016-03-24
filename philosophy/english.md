@@ -21,6 +21,9 @@ collocation
 4 整体运用实践
 Listening and speaking
 reading and writing
+全面英语化.
+日常使用, 发现问题, 记录问题, 寻找答案.
+其他科目的学习
 
 
 # Feedback
