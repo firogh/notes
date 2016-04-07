@@ -23,7 +23,7 @@ Listening and speaking
 reading and writing
 全面英语化.
 日常使用, 发现问题, 记录问题, 寻找答案.
-其他科目的学习
+其他科目的学习, 全部英语化.
 
 
 # Feedback
@@ -58,7 +58,7 @@ PRONUNCIATION PAIRS.
 [Sounds of Speech in Iowa](http://www.uiowa.edu/~acadtech/phonetics/english/english.html)
 Youtube videos 
 [Phonics 自然拼读法](http://en.wikipedia.org/wiki/Phonics)
-[Pronunciation workshop](http://www.youku.com/playlist_show/id_5241166.html)
+[Pronunciation workshop](http://v.youku.com/v_show/id_XMjAzNjcyNDM2.html)
 
 # Writing and Speaking
 Express one topic in afternoon

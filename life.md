@@ -13,7 +13,7 @@ category: firo
 12:00 
 18:00 Listen English grammar on subway home
 	Computer science topic with in my architecture
-20:30 English pronunciation, phonetic.
+20:30 English pronunciation: learn AAT in this week 3.28 ~ 4.2;
 21:15 English writing and speaking.
 21:45 Physical exercises 30 ~ 45 minutes.
 22:30 Wash face & Have a shower.

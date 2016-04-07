@@ -18,7 +18,9 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 认识缺陷, 发现反馈不足, 尝试收集资料, 分析, 找寻方法, 实践,修正缺陷, 解决问题.成长.
 
 # 原则
+Reflexivity -- Soros
 从实际问题触发, 实际的topic.
+有机的知识. 
 语言必须被还原到实际的生活场景  -- 维特根斯坦
 Zeroness, 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
 方法简单容易, 方便证明是否有效
@@ -37,6 +39,11 @@ Autonomous Change-of-state calculus --Firo-Von Wright’s approach
 祖孙的方法”   the genetic method -- 胡适,杜威
 Why? How? What? Good and bad?
 
+从结构角度, 往往并不是所有简单元素都可以组合成复杂元素. 这也整个结构的缩影.
+特别是简单元素和由简单元素合成的复杂元素却是平级的, 复合元素也成为了"简单元素", 独立, 完整, 不可或缺的元素.
+对于但从简单元素角度看, 有点哥德尔不完备定理的感觉.
+比如英语的Collocation, 并不是掌握了基础就掌握了一切.
+
 从时间角度
 
 最重要的是什么呢?
@@ -54,7 +61,7 @@ Classes of extensional definitions: enumerative definition
 [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
 
 # 模式过程
-去看看别人怎么做的, 也可以思考人会遇到相似的问题, 有解决的方法.
+去看看别人怎么做的, 什么应该做, 什么不应该做.
 
 Divide every question into manageable parts. -- Descartes
 Begin with the simplest issues and ascend to the more complex. -- Descartes
@@ -73,5 +80,6 @@ Accept as true only what is indubitable. -- Descartes
 很多时候, 依靠现在的经验学识不能找到完整的方法, 需要不断的调整.
 学会认识自己的无力.
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
+反射理论, 反射的对象不是其他, 正是现实!
 
 

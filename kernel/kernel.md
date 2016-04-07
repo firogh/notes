@@ -244,3 +244,9 @@ why get_unaligned_be16?
 
 # kernel modules
 sudo depmod -n -a -F /boot/System.map-4.3.5-300.fc23.x86_64  4.3.5-300.fc23.x86_64 > /tmp/m.log
+
+# kernel patches
+The cxgb3_*_send() functions return NET_XMIT_ values, which are
+positive integers values. So don't treat positive return values
+as an error.
+67f1aee6f45059fd6b0f5b0ecb2c97ad0451f6b3
