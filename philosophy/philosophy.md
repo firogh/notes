@@ -20,8 +20,9 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 # 原则
 Reflexivity -- Soros
 从实际问题触发, 实际的topic.
+直达最可能的地方, 答案, 要事第一.
 有机的知识. 
-语言必须被还原到实际的生活场景  -- 维特根斯坦
+将语言还原为日常生活及其形式.-- 维特根斯坦
 Zeroness, 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
 方法简单容易, 方便证明是否有效
 世界总是转换,不稳定,不确定.
@@ -35,6 +36,8 @@ Falsifiability可证伪性 -- Popper
 
 # 分析
 Autonomous Change-of-state calculus --Firo-Von Wright’s approach
+
+骨架和肉分析法 -- Firo
 
 祖孙的方法”   the genetic method -- 胡适,杜威
 Why? How? What? Good and bad?
@@ -61,6 +64,12 @@ Classes of extensional definitions: enumerative definition
 [Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
 
 # 模式过程
+反射理论作为开始, 有机知识作为结果, feedback update 作为机制.
+工作生活中的决断都现实的真实反馈而做出的.
+费曼技巧可以部分地用来生成有机知识.
+缺陷反馈更新, 可以以假设-验证的方式进行.假设自己全会了, 去想象那种感觉, 之后去实践验证.从而得出缺陷. 修补缺陷.
+Experiential Learning, 两个难点, 实践的范围强度和谕示机.
+
 去看看别人怎么做的, 什么应该做, 什么不应该做.
 
 Divide every question into manageable parts. -- Descartes
