@@ -1,7 +1,7 @@
 ---
 tag: [ english ]
-date: 2015-03-20
-title: 如何运用自如的使用英语
+date: 2016-04-10
+title: The architecture of Enlgish language
 category: philosophy
 ---
 
