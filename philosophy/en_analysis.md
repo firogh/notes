@@ -26,7 +26,7 @@ Adjuncts
 也就是存在多少中的句子组合帮助我们完成一个语义的表述.
 比如完整的句子和缩略的句子都能帮助我门表述含义.
 但他们是不同的句子形式!
-# 句子成分之间排布的可能
+# 句子功能之间排布的可能
 我们要了解句子的基本语序, 也就是正常语序. 还要了解在什么情况下改变这种语序, 你能
 正确的识别出被改的句子, 以及这个句子的含义. 
 So worte a ten-year-old student in a latter to his parents form St Adins.
@@ -34,6 +34,8 @@ So worte a ten-year-old student in a latter to his parents form St Adins.
 陈述句, 疑问句, 感叹句, 祈使句.
 information package
 supplement
+cordinations
+dependent clause
 
 # 语法元素
 sentence
@@ -42,7 +44,26 @@ content clause
 relative clause
 comparative clause
 Non-finite clause
+Phrasal verbs, collocations. idioms.
 verb, noun, prepositions, adj, adv.
+
+# 如何添加肉
+我们把句法功能, 功能之间的组合可能,以及实现功能对的具体语法元素三者, 作为英语的骨架.
+这些都存在与句法层面, 而句法架构本身存在的意义在于完成语义的表述, 也就是肉.
+句法框架用来完成人对客观世界的种种表述需求, 而这些被完成的表述们则是现实世界的语言式的实例化.
+框架被还原, 或者说受肉, 到了真实的现实生活场景上, 完成了. 框架到真实语言的连接.
+完全真实受肉.
+自我模拟营造受肉(多角色模拟营造).
+他人topic模拟受肉.
+等等.
+
+
+
+
+
+
+
+
 
 
 

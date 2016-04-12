@@ -21,7 +21,9 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 Reflexivity -- Soros
 从实际问题触发, 实际的topic.
 直达最可能的地方, 答案, 要事第一.
-有机的知识. 
+Top down: architecture, bottom up: feedback. 算是一种横向上的成果.
+框架通过具体肉, 受肉, 联系到现实,实际.
+有机的知识.  算是一种横向上的成果.
 将语言还原为日常生活及其形式.-- 维特根斯坦
 Zeroness, 自己思考. 不要上来就读or做, 你要思考这个过程.-- Firo
 方法简单容易, 方便证明是否有效
