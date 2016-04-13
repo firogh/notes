@@ -25,9 +25,15 @@ reading and writing
 日常使用, 发现问题, 记录问题, 寻找答案.
 其他科目的学习, 全部英语化.
 
+# Architecture
+交流
+Input decodifying, output codifying.
+
 
 # Feedback
 1. Watch movie without subtitles
+
+
 
 # How to improve english listening skills
 我总结听说主要的问题.
