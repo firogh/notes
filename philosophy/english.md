@@ -257,9 +257,19 @@ http://dictionary.cambridge.org/us/grammar/british-grammar/clause-types
 phrase没有太大问题. 就是word组合的问题.在句子里面承担的clause elements很自然的.
 什么介词短语啊, 名词短语都很容易.
 先把non-finite clause放一边, 因为他的形态也很简单.非谓语从句应该是完整句子的缩写版!
+因为non-finite clause句子总归是在表述一个含义, 一个概念, 那么我们就可以用一个完整的clause表述出来.
+在使用和non-finite clause相同的句法结构structural realization.
 所以我们只要把他还原成真正的句子就好了.
-集中经历研究所谓的content, nomial, relative, adverbial, comparative  clause就行了.
 搞清楚这些是为了1 能察觉到自己错误的表达. 2 能够随意自然的说出话, 不用考虑英语语法规则. 
+还有一类句子就是coordination, 并列句子. 这类由于是两个独立完整句子的构成的. 所以和简单句没什么分别.
+不用太操心. 集中精力研究所谓的content, nomial, relative, adverbial, comparative  clause就行了.
+就好比大楼一样, 本来农村的or古代的房子, 本来都是一样, 后来见了高楼, 房子堆叠起来了,住的人多.
+再如, 以前英国的一个马车, 中国的一个轿子, 人力车夫, 到现在的火车, 地铁. 能运载的人更多了.
+多事量变.那么, 回头看语言层面. 句子和车, 还有房子不一样. 语言的目的是为了表达信息. 但就像车, 房子一样
+句子也有着基本的组成元素.语言可以说是对思维世界和真实世界的一种还原和表述.建立在clause elements的排列组合上得到的,
+我们很容易构建出来一个有phrase构成句子. 但现在, 就像车和房子的核心是人一样, 句子的核心是动词.
+
+The different types of dependent clauses include noun clauses, relative (adjectival) clauses, and adverbial clauses.
 
 
 ### 从句的句法属性
