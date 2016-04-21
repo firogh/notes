@@ -350,18 +350,50 @@ Depending on the context in which they are embedded,
 明天把fused relative 和interrogative content 区分一下应该就差不多了.
 还有non-finite, 就是缩略版的content 和relative.
 最后应该就是comparative了.
-comparative应该是
-
-
-
-
-
-
-
-
-
-
-
+遇到一个问题, interrogative content clause 应该和 非完整的从句在引导词一样的时候,
+就一模一样了:
+I really liked what she wrote. [fused relative]
+I wonder what she wrote. [interrogative content clause]
+What she wrote is unclear. [ambiguous: relative or interrogative]
+第三个句子, 相比来看, 汉语就清晰多了.
+Relative: 她写实内容在太烂. 宾语是FIXED.
+Interrogative: 她写的是什么还不清楚. 宾语是Dynamic.
+果然没有办法区分这种license不清楚的语句啊!
+看来CGEL把第一种情况看成Fused还是可以的. 这波,可以.
+这样一个从句就既可以看成完整的interrogative也可以看成fused relative.
+区分这两种句子, 我们只能从语义角度去考虑了. 而这正是我们所要的结果, 我们需要从语义角度去理解句子.
+而不是依靠语法定位句子类型在去考虑句子的含义, 这太绕了. 这也是写到现在为止最像看到的结果.
+这波可以.
+回到我们的角度, 我们发现残缺的从句/不完整从句字, 不可以是verb其他都可以.
+Put it back(adv) where you found it. 这个句子是残缺的 缺少状语就是where.
+-ever relative, other wh- interrogative. what not sure.
+* what can be relativised
+relative clause叫相对化从句.我现在明白了, 对从句进行分类的最本质方法是
+语义分类, 不是所谓的clause elements那种. 整个过程完全是逻辑化的.
+可以分为独立语义从句(non-finite应该也算, 只不过是种化简), 句义上完整的从句必然是句法上完整的句子.
+互相关联(share)语义的从句. 这种从句起到限定的作用, 加了一个条件, 明确要表达的含义.
+when,where,why既可以是agent, 又可以是 background, circumstances, surrounding.
+where P1064 
+好吧, 现在全都清晰了, 压根就没什么where移动的定语从句. 
+比如这句, I like the place where I were born.
+这个where I were born就是个adverbial从句. 这里是特定的时间空间element做定语.
+根本就不是where引导定语从句. 这里where是conjunction, 不参与到后面的从句的语义当中.
+那么也就说,CGEL上的where after是介词就不对, directly是副词更不对, directly是当conjunction用的.
+所以全部都是conjunction. 他这个在我逻辑分析过后是错误的是在P985/971
+看另外的描述
+Prepositions governing content clauses of this kind include those given in [58]
+把but 看成preposition了.
+I don't doubt but that she mean it.
+其实这里but应该是adverb表示 only; just的意思:
+There is but one God.
+因为上面的句子CGEL自己翻译是conveying that I believe she mean it.
+是个positive的表述.如果but是preposition
+1. except; apart from; other than.翻译出来的就是我怀疑了.
+抛弃他翔一般的non-expandable 和expandable分类content clause的方法.
+但是fused relative是OK的.
+再从新梳理下这个过程, 当你需要两个句子甚至多个句子表达含义.
+1. 从句语义完整, 当然包括句子结构完整. 引导词, 不在句子中做成份.
+2. 从句语义需要引导词才能完整. 分为bounded 和 fused/free relative 两类没了.
 
 
 
