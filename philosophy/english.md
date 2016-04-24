@@ -393,9 +393,30 @@ There is but one God.
 但是fused relative是OK的.
 再从新梳理下这个过程, 当你需要两个句子甚至多个句子表达含义.
 1. 从句语义完整, 当然包括句子结构完整. 引导词, 不在句子中做成份.
-2. 从句语义需要引导词才能完整. 分为bounded 和 fused/free relative 两类没了.
+2. 从句语义需要引导词才能完整. 分为bounded 和 fused/free relative 两类.
+就这么两类.
+再回来细看一下content clause.
+* that content clause, 
+that is obligatory(为了区分, 不至于从句误读成了主句):
+1. as subject.
+2. as object but fronted.
+3. as adjunct
+他区分了两种不同的修饰名词的后置短语，即补语complement和附加语adjunct。例如：
+ a. a student [of physics]  (complement)
+ b. a student [with long hair]  (adjunct)
+貌似adjuct 相对complement来说, 附加的嘛,非核心.adjuct包括状语(其他的不确定). Valency (linguistics)
+迷惑了, 不清楚这个adjunct是什么东西了, 看来只会一个clause解决不了问题. P966
+4. When the content clause is complement to comparative than/as
+* that must be omitted
+unbounded dependency
+* Optional omission of that
+that的宾语从句
 
-
+我们现在基本上把从句clause的结构形式的, 可是上面我们遇到了一个问题就是that-clause做adjunct.
+我们没有adjunct概念.
+也就是说现在我们, 要研究具体的语法功能了. 准确说, 我们知道在不关心具体语义的情况下,
+我们给字母找到合理的排布(顺序) 和呈现的样子(content clause和relative的结构).
+现在关心的是clause element之间的排布和组合的可能性.
 
 你说汉语也有很多错误，只不过没有屈折变化， 没明显表示出来，不容易被发现。
 pseudo-cleft clause,
