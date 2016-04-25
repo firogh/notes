@@ -1,7 +1,7 @@
 ---
 date: 2015-03-20
 title: The architecture of Enlgish language
-category: philosophy
+category: linguistics
 ---
 
 # a & d
