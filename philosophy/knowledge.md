@@ -5,6 +5,30 @@ title: The Architecture of Knowledge
 category: philosophy
 ---
 
+Logic 作为人类知识的最小元素element. 之后, 所有知识都是建立在logic之上.
+logic作为无形的链条约束着所有的人类知识. 这个断言需要证明(FIXME).
+
+Language 作为人类知识的主要表现形式, 这里的language代指符号系统.
+比如数学符号表述的某个数学理论. 那么问题来了, 我们是否可以把一个pad or pc.
+称之为language? 如果是,人不也是一个language了吗?
+
+接下来是各种各样的
+Computer science: learn how to formalize intuition about process, how to do things, 
+starting to develop a way to talk precisely about how-to knowledge, as opposed to 
+geometry talks about what is true.
+Imperative knowledge: How to. guess is the 1st method. That's a process as like a 
+magical spirit that sort of lives in the computer and does something.
+Procedure directs a process is a pattern of rules. spells.
+process is magical spirit.
+
+Mathematics: Declartive knowledge, what is true. doesn't really say anything about how
+you might go out and find one.
+
+
+
+
+
+
 # 根据依赖关系组织, 展示的知识
 知识之间都是相互依赖的.
 Logic
