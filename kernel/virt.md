@@ -132,3 +132,10 @@ qemu可以作为虚拟化的工具和kvm,xen联动, 重点看这个.
 * Struct
   kvm_x86_ops x86.h
   vcpu_svm    kvm_svm.h
+
+
+# qemu-system-ppc
+-mem-path:
+
+
+

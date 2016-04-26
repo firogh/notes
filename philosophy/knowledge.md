@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2016-02-17
-title: The map of Knowledges
+title: The Architecture of Knowledge
 category: philosophy
 ---
 
