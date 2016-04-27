@@ -5,6 +5,20 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+
+# The Architecture of Computer science
+Process: algorithm, TOC, Design Pattern, SICP
+Programming: language, coding style
+Compile, link, and load or interpret:
+OS
+Arch
+process包含algorithms和更为基础的computation and else; 
+programming(design pattern) through language 是把这个process实例化. 
+os, architecture是作为process的辅助.
+
+# Process
+Algorithm:
+
 # Automata
 Finite automata:
 A finite automaton is a mathematical

@@ -21,13 +21,14 @@ magical spirit that sort of lives in the computer and does something.
 Procedure directs a process is a pattern of rules. spells.
 process is magical spirit.
 
+process包含algorithms和更为基础的computation and else; 
+programming(design pattern) through language 是把这个process实例化. 
+os, architecture是作为process的辅助.
+我觉得这里computation就类似语言的顺序和曲折变化这些最基本的elements.
+并不是我们发现了hardware的计算能力, 而是hardware能完成我们的计算需求.
+
 Mathematics: Declartive knowledge, what is true. doesn't really say anything about how
 you might go out and find one.
-
-
-
-
-
 
 # 根据依赖关系组织, 展示的知识
 知识之间都是相互依赖的.
