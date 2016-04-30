@@ -18,20 +18,19 @@ programming(design pattern) through language 是把这个process实例化.
 os, architecture是作为process的辅助.
 
 # Process
+logic
+mathematics:
 Algorithm:
-Computation: TOC Model of computation
+Computation: TOC 
 Finite automata:
+
 A finite automaton is a mathematical machine for determining whether a string
 is contained within some language.
-* Regular expression
+Regular expression
 vimregex.com/
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
 
-* The Theory of Computation
-Automa ⊃ Finite automaton ∪ context-free grammar
-Computability ⊃ solvable or not
-Complexity ⊃ easy or hard
 
 * Top method
 Abstruction
@@ -49,25 +48,12 @@ Security
 Energy-efficiency
 
 # Programming
+Programming langueage: c, python, shell
+Programming tools: vim
+Compile Link: ELF
+Testing
+Debuging
 Interface
-
-##Compile link File formate
-ELF -- ELF executable and linkable format.
-Used for Relocatable file(object file, kernel moudle), Executable file, Dynamic library, Core dump. 
-###Relocatable file(object file, kernel module)
-ELF header.
-Sections.
-Section header table.
-### Executeable file, dynamic library
-ELF header.
-Program header table.
-Segments.
-Section header table.
-.symtab, Symbol table store index of string
-.strtab, String table is a array of all strings split by \0
-.hash, utiliy for quire symbols
-.shstrtab, Section header string table store section name for ELF, like .text, .data...
-
 
 # OS
 Batch processing -> Time-sharing
@@ -118,6 +104,8 @@ It maps memory addresses used by a program, called virtual addresses, into physi
 * Slab allocation/Memory Pool
 ## Device management
 中断的概念，中断处理，I/O控制方式，缓冲区管理，设备驱动，磁盘调度和高速缓存
+## Network stack
+Protocol
 ## I/O
 [Methods for designing a CPU's I/O interface generally fall into one of the following categories:](http://www.cs.uwm.edu/classes/cs458/Lecture/HTML/ch11s02.html)
 Completely separate memory and I/O. buses DMA?
