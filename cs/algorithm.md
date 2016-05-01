@@ -8,7 +8,5 @@ category: cs
 # Reference
 [Core algorithms deployed](http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed#)
 Algorithms: Design Techniques and Analysis
-kernel/algorithm.md
-# Introduction 
-
-## 动态规划问题
+# Process
+The Algorithm Design Manual 2nd Edition
