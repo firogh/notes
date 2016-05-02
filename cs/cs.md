@@ -36,6 +36,7 @@ Combination
 Virtualization
 Exchange time and space
 Isolation
+Modular manner: D
 
 * Top goal
 Easy to use

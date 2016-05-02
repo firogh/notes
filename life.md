@@ -27,8 +27,12 @@ Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
 
 # Future
-English March 6 to April 6
-Kernel commits April 6 to July 6
+* Aroad
+Passport H1B Offer
+English
+Kernel patches 500 commits
+Work achievement
+CS Process
 
 # 0222
 Clean the old contents of life.md.
