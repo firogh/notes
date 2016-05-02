@@ -23,14 +23,12 @@ mathematics:
 Algorithm:
 Computation: TOC 
 Finite automata:
-
 A finite automaton is a mathematical machine for determining whether a string
 is contained within some language.
 Regular expression
 vimregex.com/
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
-
 
 * Top method
 Abstruction
