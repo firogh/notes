@@ -5,6 +5,10 @@ title: The Architecture of Knowledge
 category: philosophy
 ---
 
+# 世界本源, the origin of the world, L'Origine du monde
+
+
+
 Logic 作为人类知识的最小元素element. 之后, 所有知识都是建立在logic之上.
 logic作为无形的链条约束着所有的人类知识. 这个断言需要证明(FIXME).
 
