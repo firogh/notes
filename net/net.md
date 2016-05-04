@@ -9,13 +9,9 @@ category: net
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 
 # Network
-## 为什么Internet产生?
-就好比问, 色情片为什么出现一样. 人类的发明都是对自身需求的回应.
-Internet 解决信息传递的问题.信息传递只是手段, 古已有之, 比如信鸽, 狼烟等.
+When we talk about network, what we talk about?
+Transfer; Truely we are talking about transfer including three component:src, dst, channel.
 
-## Internet 都能做什么?
-看片等...
- 
 ## 什么是Internet
 英文[network](http://keithbriggs.info/network.html), 其中work, 构造之意.
 etymonline 给出结缔成网之意, net-like arrangement of threads, wires, etc.
