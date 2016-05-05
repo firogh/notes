@@ -6,6 +6,15 @@ category: philosophy
 ---
 
 # 世界本源, the origin of the world, L'Origine du monde
+material(1) change, quality, 
+process, tansfer
+
+以数学进制系统为例.貌似越为简约的计数系统, 只能越复杂,反之操作越为简单,原始.
+或者说除一进制职位的计数系统, 其他都需要更为复杂?
+ 一进制对应双射! 其他是一对多.
+本隐藏的识别系统.
+1 An object is abstract (if and) only if it is causally inefficacious.
+
 
 
 

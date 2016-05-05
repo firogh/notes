@@ -11,6 +11,67 @@ category: net
 # Network
 When we talk about network, what we talk about?
 Transfer; Truely we are talking about transfer including three component:src, dst, channel.
+Address has two properties: relation and scope.
+
+# 4.3 IP address
+IPv6 wrl6 
+__ipv6_addr_type
+ip6addrlbl_init_table
+ip6_input or ip6_output
+* 0: 
+1 ok IPV6_ADDR_LOOPBACK ::1/128 
+2 ok IPV6_ADDR_ANY ::/128
+3 ok IPV6_ADDR_MAPPED ::ffff:0:0/96
+4 ? IPV6_ADDR_COMPATv4  0000::/96 ipgre_tunnel_xmit ddr_type & IPV6_ADDR_COMPATv4) == 0 ; goto tx_error_icmp;
+5 G?  
+* 0100::/64, NG, Used by CISCO
+A Discard Prefix for IPv6
+Discard-Only Address Block
+https://tools.ietf.org/html/rfc6666
+ Remote Triggered Black Hole (RTBH)
+https://tools.ietf.org/html/rfc5635
+* 0200::/7,  NG, Deprecated
+OSI NSAPs and IPv6
+http://tools.ietf.org/html/rfc1888
+Internet Code Point (ICP) Assignments for NSAP Addresses
+http://tools.ietf.org/html/rfc4548
+Interfaces between protocol layers
+http://www.erg.abdn.ac.uk/users/gorry/course/intro-pages/sap.html
+Network Service Access Point (NSAP): v4,v6?
+http://searchnetworking.techtarget.com/definition/Network-Service-Access-Point
+* 0400::/6, NG, No information, maybe used as Global address see __ipv6_addr_type
+* 0800::/5, NG, ditto
+* (000, 111)x::/3, OK, unicasts. For more details please reference __ipv6_addr_type
+1000::/4, OK, ditto
+2000::/3, OK, Global Unicast, 
+2002::/16, OK, SIT, 6in4
+http://tools.ietf.org/html/rfc3056
+2001::/32, OK, used in Default policy table for routing
+2001:10::/28, OK, Ditto
+* e000::/4, NG?, No information in google; but used as GU in and kernel by default.
+* fc00::/7, OK,
+IPV6_ADDR_UNICAST
+* fe80::/10, OK, 
+IPV6_ADDR_LINKLOCAL
+* fec0::/10, OK, But deprecated by RFC3879, used in kernel?
+IPV6_ADDR_SITELOCAL
+Deprecating Site Local Addresses
+http://tools.ietf.org/html/rfc3879
+* ff00::/8, OK
+IPV6_ADDR_MULTICAST
+http://tools.ietf.org/html/rfc4291
+* addr not described in __ipv6_addr_type working as global unicast
+
+
+
+
+
+
+
+
+
+
+
 
 ## 什么是Internet
 英文[network](http://keithbriggs.info/network.html), 其中work, 构造之意.
