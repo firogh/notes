@@ -6,16 +6,67 @@ category: philosophy
 ---
 
 # 世界本源, the origin of the world, L'Origine du monde
-material(1) change, quality, 
-process, tansfer
+being(4), abyss(0)
+material(1) change, quality, quantity, relation
+process(2), tansfer, truth, signifier(3), bijection, Causality
 
 以数学进制系统为例.貌似越为简约的计数系统, 只能越复杂,反之操作越为简单,原始.
 或者说除一进制职位的计数系统, 其他都需要更为复杂?
  一进制对应双射! 其他是一对多.
 本隐藏的识别系统.
+我所理解人类思维行事习惯, 是建立在模式识别的基础上的. 很自然想到同理去制作computer.
+这也是Turing machine所依靠的潜在前提.
+而PC是建立在Bool Shannon的电子代数逻辑上的.
+Arithmetic, 基础的 quantity change 规律.
+algebra 求解未知process.
+36 Turing machine.
+我们如何评价computer中arithmetic用boolean algebra实现?
+quantity -> quality, 这都是具体语义层面的概念.
+首先, 要明确对于computer的adder来说,他在做得是elementary algebra不是简单的arithmetic,
+而同时用于实现adder的是boolean algebra.
+是什么是boolean algebra构建adder成为可能?
+一个是qunatity, 一个是quality, 但采用相同的符号表达概念, 二者都是form system, 
+确是不同substance.只有0,1 的quantity和truth quality,在形式上等价,
+我们先放下为什么computer不是从量这个角度构建.
+那么logic的基本运算and, or, not又是什么呢?人为认知的quality的process or relation.
+首先从一进制转换成二进制就已经违反人类的直观了.
+一进制每个signifier(都相同)都有一个signified, bijection, one-to-one correspondence;抽象后lack of material.
+二进制呢?signifier出现差异, 有两种0,1; 一进制可看成全是0,0......;
+{,x, oo, ddd, ffff, ...}
+一进制{, 0, 00, 000, 0000, ...} 
+二进制{0, 1, 10, 11, 100, 101, ...} 
+很显然, 一进制更符合我们对量的理解. 而二进制,就不那么直观了, 但是依然符合量的表述, 不过,
+signifier的数量成2的指数所见. 同理16进制就更慢了.
+检视adder的logic实现, 以1bit二进制数加和为例.
+从量的视角, 一进制{,0,00}只有这三种可能.
+二进制{0,1,10}, 我们人类如何计算二进制1 + 1呢?是一种模式匹配.
+a + b < base , result = a + b; 如何a + b > base, result a + b - base;
+如果我们使用电路但不是基于逻辑上的而是基于本质的运算规则. 我们规定相应的input的值和output值的关系.
+0,0 -> 0
+0,1 -> 1
+1,0 -> 1
+1,1 -> 0, 1carry
+电路怎么画呢?电路结构本身就是一种判断!
+画完图, 我就明白了, 不是我们选择使用boolean algebra作为实现运算的手段, 而是我们别无选择, 或者说这种思维
+过程, 正好被明明为了boolean 代数.
+怎么实现一进制呢? a 有10中连接到reslt同b控制.
+为什么进位制是有效的呢?反证法?
+那这种进制计数法本质又是什么呢?一进制是纯粹的quantity语义, 而其他进制form system加入了顺序, 通过顺序表示quantity.
+这也就是符号系统的表意能力, 又好比英语的word order. 顺序(排列)和元素种类是符号系统的signifier表意的重要关键.
+留心到顺序与元素差异多少, 是唇亡齿寒的关系!
+多进制系统已经不是纯粹量化关系了, 还涉及到了符号系统的表意层面, 也就是说要做判断(匹配).
+二进制是扩大符号系统表意数量的, 而logic电路开关是构成符号系统表达能力的基本元素!
+符号系统是有表达极限的!
+
+
+x代表0 or 1; x + x的数字电路logic实现:
+
+0 不被理解-"冰冷安静"的世界。
 1 An object is abstract (if and) only if it is causally inefficacious.
-
-
+2 过程本身是有记忆的.
+3 f(3)=4, 3是signifier, process or relation是f(x)=x+1 or f(x)=2x-2;
+4 语言符号概念切割知识/being. 造成碎片成为理解的阻碍.人类的独特是能够感受的being.
+人对世界理解是建立在人对世界理解产生的概念之上, 这事把双刃剑.
 
 
 Logic 作为人类知识的最小元素element. 之后, 所有知识都是建立在logic之上.
