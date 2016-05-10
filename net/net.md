@@ -18,6 +18,7 @@ IPv6 wrl6
 __ipv6_addr_type
 ip6addrlbl_init_table
 ip6_input or ip6_output
+ipv6_addr_v4mapped
 * 0: 
 1 ok IPV6_ADDR_LOOPBACK ::1/128 
 2 ok IPV6_ADDR_ANY ::/128

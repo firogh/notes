@@ -8,7 +8,7 @@ category: philosophy
 # 世界本源, the origin of the world, L'Origine du monde
 being(4), abyss(0)
 material(1) change, quality, quantity, relation
-process(2), tansfer, truth, signifier(3), bijection, Causality
+process(2)(5), tansfer, truth, signifier(3), bijection, Causality
 
 以数学进制系统为例.貌似越为简约的计数系统, 只能越复杂,反之操作越为简单,原始.
 或者说除一进制职位的计数系统, 其他都需要更为复杂?
@@ -65,6 +65,7 @@ x代表0 or 1; x + x的数字电路logic实现:
 2 过程本身是有记忆的.
 3 f(3)=4, 3是signifier, process or relation是f(x)=x+1 or f(x)=2x-2;
 4 语言符号概念切割知识/being. 造成碎片成为理解的阻碍.人类的独特是能够感受的being.
+5 由算法分析感知, 搞清变化与原因原因要比记住过程要vital. 过程的结果(不是最终结果,是每步的阶段)是他的因! 很美妙.
 人对世界理解是建立在人对世界理解产生的概念之上, 这事把双刃剑. 被割裂的世界成为认知的
 障碍. 成一种约束, 束缚.这个世界只要是能认知的,都被人类提上了标签. 恰恰因为这些标签,
 割裂了二进制和boolean logic.知识本身成为了,知识自身发展的壁垒!人们建立沟壑, 同时又在
