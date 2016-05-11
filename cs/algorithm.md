@@ -8,9 +8,7 @@ category: cs
 # Reference
 [Core algorithms deployed](http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed#)
 Algorithms: Design Techniques and Analysis
-# Process
 The Algorithm Design Manual 2nd Edition
-
 
 # 世界本源, the origin of the world, L'Origine du monde
 being(4), abyss(0)
@@ -52,6 +50,38 @@ bo: 2+2 to 10
 我们现在已经推出了冒泡, 选择, 快排 三种算法了.
 另外还有merge sort, heap sort, insertion sort, shell sort.
 我只是看了merge sort之后的名字了, 具体的算法, 内容我都忘了(刻意不去想).
+现在看了quick sort确认的是任意一点为为核心的orderness的增多过程. 增加的形式由中间开启.topdown.可以强调中间的含义.
+insertion sort是select的一个generalize的版本, 他不强求strict order的满足. 也是有一边向另一边的orderness增多过程.
+merge sort: 从全部的个体单元开始的开始有序度增多, bottomup过程.不强加中间的含义.
+构成了以raw 元素为开始的, 从东南西北开始的四面埋伏是的有序度增多过程.
+看来我的感觉没错.
+算法的分析就结束了, 意外的收获颇多.本以为行不通的.
+
+# 查找算法的分析 searching algorithm
+查找是在a set of objects, 找到特定的目标. the structure of the set of objects可能是任意的.
+计算机中如线性的linked list, array, tree, graph. structure并不只是量之间的quality, relation.
+还包括了, change, 即operation, access/get也是一种change, 效果是没有change.
+那么What is the form causality of searching?上面分析sorting的时候, 我们没有分析sorting算法的效率.
+因为排序的form是orderness, 不是效率. 当然效率也很重要.
+而查找算法,直观上要比sorting要简单, 他只关心特定的目标, 找到or not found.
+但是有一点, 我们是万分确信的. 那就是类似sorting, searching的目的也是确定的, 也就是目的因的存在.
+我们通过类似蒙太奇的手法, 去从差异中需找这种量. 寻找一些差异来自于我们找到target的最终结果和每步尝试之间.
+每一步, 我们都比上一步离target更近了. 我想这是searching的form之一.
+我定义为reachness(我瞎起的). 我们知道在特定的算法确定的情况下, 在特定的数据结构下(也就是搜寻的具体空间),
+reachness这个quantity用来刻画我们searching的process, 因为算法确定, 数据结构确定, 没有数据的update.
+那么我们前后两次searching到同一个target的reachness是一样的!没有差异, 我们不能仅仅用他来区分不同的searching process.
+那么我们如何用这个reachness刻画不同searching algorithm呢?在说一次,
+ 我们分析过程不关心算法的效率(这种马后炮式的分析,很无聊, 但巨大现实意义), 不属于本次的topic!
+我们的目的是为了理解区分而刻画不同的searching algorithm.实际上在上面分析排序算法的过程中我们隐式的分析对象就是数据结构,
+不过我们忽视了他的存在. 我们分析的内容是确定的:
+数据有序, 能显著减少搜索的空间? 为什么有序order的数据, 就能减少搜索的次数呢?
+a) 查找本身就是做order判断.
+b)  而有序的数据潜在做完了判断.
+也就是还有一个判断读的问题 or orderness. 那么final reachness的最大值就是描述在不同的数据结构中, 得到target经历的quantity.
+if orderness = 0. every structure's final reachness = max space.
+else final reachness < max space; // maybe half of max space
+
+ 
 
 
 

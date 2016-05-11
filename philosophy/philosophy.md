@@ -26,6 +26,7 @@ oracle: book, website, papper.
 认识缺陷, 发现反馈不足, 尝试收集资料, 分析, 找寻方法, 实践,修正缺陷, 解决问题.成长.
 
 # 原则
+form transformation cognition form analysis algorithm by change process to quantity(有些时候1个量不能描述清楚). -- Firo 
 Reflexivity -- Soros
 直达最可能的地方, 答案, 要事第一.
 一切的发源的动机.知识是有生命力的, 一点点生长的.
