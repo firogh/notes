@@ -27,6 +27,8 @@ oracle: book, website, papper.
 
 # 原则
 form transformation cognition form analysis algorithm by change process to quantity(有些时候1个量不能描述清楚). -- Firo 
+我们只能包相似一类的过程量化, 不相似的过程量化需要更高阶, 更抽象的思维,起始没意义. 比如基数排序和霍夫曼编码. --Firo
+即便是结构本身一样不可以描述一定要找到某个点, 之后分析相似衍生才有意义, 如树结构,试问霍夫曼和searching的关联+ linked list. --Firo
 Reflexivity -- Soros
 直达最可能的地方, 答案, 要事第一.
 一切的发源的动机.知识是有生命力的, 一点点生长的.

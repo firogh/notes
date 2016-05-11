@@ -80,6 +80,26 @@ b)  而有序的数据潜在做完了判断.
 也就是还有一个判断读的问题 or orderness. 那么final reachness的最大值就是描述在不同的数据结构中, 得到target经历的quantity.
 if orderness = 0. every structure's final reachness = max space.
 else final reachness < max space; // maybe half of max space
+那么树形结构和linear 结构有什么区别呢? 结构上的已经清楚了.实际上, 我们知道计算机中树就是用linear实现的.
+无序的链表和无序的tree是一样的.可以说无序的树是无意义的. 
+树是链表的超集. 有什么事树可以, 链表不可以.二分查找和二叉树查找是一样的.
+但是二分只能应用到array上. 主要是因为没办法找到中间点.如果我们加个指针指向有序链表中间向他变成了什么?
+没错树, 这应该就是树的重要本质了, accessable "中间"的quantity.除了叶节点职位的quantity都是内部"中间"quantity.
+tree的两个后继则是边缘的一种展示.相比链表, 我们能第一时间知道正set of quantities的中间quantities.
+实际上, 顺着middle pointer我们能够找到所有的interior middle quantities; 意外吧. 但是我们想知道其他的
+中间节点时间耗费就是增多了.比如2049个节点. dfs只要最多8次就能找到任意"interior middle pointer"可是link list
+全是512次啊tree有效的控制了reachness. 当然树是完全平衡的二叉树.
+我现在到底在说什么呢? 我们试图用reachness和orderness描述tree, 我们辨析了tree和链表在reachness上的差异, 前提full order.
+tree毫无疑问有link list来的.也就是说我们现在把searching 等价成了tree的结构.
+那么维持reachness在较低值就是算法优劣关键. 那么如何保持reachness最小, 也就是orderness最大.
+是什么让tree在reachness比link list优势这么大? 是存在于tree中隐式的判断.链式是一点点线性的变化, 而tree中的隐式判断确实二分的.
+orderness小于1的tree没有意义.
+记下来看看:avl tree, redblack tree, treap, splay tree, Size Balanced Tree, B-tree, B+ tree. but Trie or 霍夫曼树.
+也就是说我们现在要考察这些tree structure. 基本考察完, 我的算法就同了. 后面还有DP, 贪婪, 数值, PNP之类都是思想了.
+所以基本上本周5能把algorithm, 完事, 周6 设计模式. 周日开始sicp.
+
+
+
 
  
 
