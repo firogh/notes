@@ -14,6 +14,7 @@ The Algorithm Design Manual 2nd Edition
 being(4), abyss(0)
 material(1) change, quality, quantity, relation, space, time
 process(2), tansfer, truth, signifier(3), bijection, Causality, structure
+connectivity
 
 # 排序算法的分析
 排序的结果全序.
@@ -97,8 +98,23 @@ orderness小于1的tree没有意义.
 记下来看看:avl tree, redblack tree, treap, splay tree, Size Balanced Tree, B-tree, B+ tree. but Trie or 霍夫曼树.
 也就是说我们现在要考察这些tree structure. 基本考察完, 我的算法就同了. 后面还有DP, 贪婪, 数值, PNP之类都是思想了.
 所以基本上本周5能把algorithm, 完事, 周6 设计模式. 周日开始sicp.
-
-
+开始, 树结构的分析, 因为尽管是有形的visible structure, 我们依然无法给霍夫曼树和red black一个合理分析视角, 
+根本原因就是他们的form causality or 目的因不同.由上面可知orderness和reachness是我门刻画binary balance tree的quantities.
+我们前面也分析了如何从link list到链表. 确定小, 中, 大,即 left, root, right这种模式下所有set of quantities的构成tree有多种可能.
+如 1 2 3 4 5; left subtree 可以是 NULL, 1, 2, 还可以是1, 2, NULL.常见的旋转可以打到前者的情况. or不旋转:
+5是root. 之后3是left 也是subtree的root, 1是left, 4是right,  1是root 2是right. 
+有序的link list和二叉树在插入删除是都做order判断调整, 由此一点我们不能判断出书有效的. 那什么是树比link list有效的呢?当然前提是
+整个set 是order的.对1 2 3 4 5, reachness可能是5也可能是3. 对与1024个数据可能是1024, 可能是9.
+树的高度height能有效衡量reachness.现在我们知道了, avl, red black, trap, splay这些tree的目标都是height的最小化.
+但同时, 我们也知道height是一个描述最终结果.并不是process quantity. 我们找到与process动态同步的quantity.
+这个process准确说就是构建balance tree的过程. 那么这个量就是描述balance tree.如 1 2 3 4 5 6 7 8 9, 5做root,
+1 2 3 4 全是left child, 6 7 8 9全是right child. 二叉树的最raw的形态应该是link list那种.也就是说除了leaf node, 每个node至少
+和两个node相连.也就是天然的形态. 那么我们把同时连着两个的node的connectivity作为1. 反之为0.链表起始是right side tree, 
+我的天, 这样链表的connectivity就是0啊.比如1,2,3,4,5,6,7的connectivity在0~3, 这是strict connectivity.那么bold connectivity就是
+只要有连着就行link list对于1 to 7 这种情况是6.和二叉树没差. 比如 1 2 3 4 5. connectivity是1 or 2对search是没有影响的.
+饶了一圈发现还是height最好用.那如何保证height最小. 看来还差树的form是保证height=(logN+1向上取整)
+现在searching问题就转换成了二叉树构造的问题了.成了一个动态的过程了.
+类似蒙太奇手法.
 
 
  
