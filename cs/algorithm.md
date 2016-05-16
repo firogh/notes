@@ -59,6 +59,7 @@ merge sort: 从全部的个体单元开始的开始有序度增多, bottomup过�
 算法的分析就结束了, 意外的收获颇多.本以为行不通的.
 
 # 查找算法的分析 searching algorithm
+搜索的效率完全在于搜索路径的长短.
 查找是在a set of objects, 找到特定的目标. the structure of the set of objects可能是任意的.
 计算机中如线性的linked list, array, tree, graph. structure并不只是量之间的quality, relation.
 还包括了, change, 即operation, access/get也是一种change, 效果是没有change.
@@ -114,7 +115,96 @@ orderness小于1的tree没有意义.
 只要有连着就行link list对于1 to 7 这种情况是6.和二叉树没差. 比如 1 2 3 4 5. connectivity是1 or 2对search是没有影响的.
 饶了一圈发现还是height最好用.那如何保证height最小. 看来还差树的form是保证height=(logN+1向上取整)
 现在searching问题就转换成了二叉树构造的问题了.成了一个动态的过程了.
-类似蒙太奇手法.
+我们现在完全不考虑算法实现. 只是单纯的考虑一个过程前后两个state的差异, 类似蒙太奇手法.
+重点是确认前后的两个state是什么? 前一个状态是raw, 我们不关心具体什么, 因为他可以是二叉树可能存在的各种状态.那么后一个状态呢?
+我们期望的是什么. 我们可以为binary tree的各种形态用数值量化表示. 我们不用complete binary tree来表示理性的便于搜索的二叉树.
+因为在最右在层, leaf node是否连续, 对searching的worst-case time O(log n) 没影响.所以我们叫piled tree.
+
+如果存在3个点向来的情况就认为 connectivity is 1。整个树的connectivity 是每个点的加和结果。
+比如1到7的set那么max connectivity 
+4
+2/5
+13/67
+所以是3这种情况也就是最有利于searching的。
+同样1到7。
+4
+3/5
+1/67
+2
+这种情况connectivity不是max，是2。也对应不是对searching最优的结构。
+how to prove the consistency between connectivity and searching effiency？
+Delay this job to future。
+So oncemore we transfer our hunting target to how to build a  binary tree that with max connectivity.
+In other words, all the popular self banlancing tree inherit this intrsic.
+what we can do to modify the structure of  binary searching tree.
+1 link  or unlink
+2 counterclockwise weight inreasing
+3 right shift(left roation); left shift(right roation)
+4 只有insert和delete会影响.
+尝试这却理解redblack tree.
+逐一分析性质:
+分出red black, 根叶都是黑.
+red node不联通.
+每个路径上黑node个数相同.
+如果对于特定数量的nodes, 我们确认他能构成一定数量对应height在log(N+1), 也就是最优的searching.
+所以说specific number nodes可以组成很多种binary searching tree.按照node的height在log(N+1)的数量.
+avl 要严格rb-tree.这就是bst的form. 我们来总结下.
+numbers of node < log(N +1) 取上.
+那么rb是如何保证logN呢?
+一个潜在的性质是插入是红.红永远小于黑, 
+ 
+http://gregfjohnson.com/cgi-bin/redblackbuilder 生成1 2 3 4 5 6逐一插入的算法.
+                                                                             2  (b)                          
+                                                                               |                             
+                                                                   +-----------+----------+                  
+                                                                   |                      |                  
+                                                                 1  (b)                 4  (r)               
+                                                                                          |                  
+                                                                                  +-------+-------+          
+                                                                                  |               |          
+                                                                                3  (b)          5  (b)       
+                                                                                                  |          
+                                                                                                  +----+     
+                                                                                                       |     
+                                                                                                     6  (r)  
+insert 7:
+ 
+                                                                             2  (b)                                 
+                                                                               |                                    
+                                                                  +------------+------------+                       
+                                                                  |                         |                       
+                                                                1  (b)                    4  (r)                    
+                                                                                            |                       
+                                                                                 +----------+----------+            
+                                                                                 |                     |            
+                                                                               3  (b)                6  (b)         
+                                                                                                       |            
+                                                                                                +------+------+     
+                                                                                                |             |     
+                                                                                              5  (r)        7  (r) 
+
+insert 8: 
+                                                                             4  (b)                              
+                                                                               |                                 
+                                                                 +-------------+--------------+                  
+                                                                 |                            |                  
+                                                               2  (r)                       6  (r)               
+                                                                 |                            |                  
+                                                          +------+------+             +-------+-------+          
+                                                          |             |             |               |          
+                                                        1  (b)        3  (b)        5  (b)          7  (b)       
+                                                                                                      |          
+                                                                                                      +----+     
+                                                                                                           |     
+                                                                                                         8  (r)  
+从6和7我们能看出来rb tree不是严格小于log(N+1) 分别有1和2个node height超过(logN+1), 第一个插入的是4那么就能保证complete了.
+那么rb tree是如何保证每条路径上黑node相同呢?貌似是个副产品.可是非常重要.
+如果父和叔都是r, 都变b, 祖父r. 
+如果叔是黑, 父黑, 祖父r. 父变root.
+删除:
+要复杂很多.
+
+
 
 
  
