@@ -37,3 +37,6 @@ Modular manner: D
 # FAQ
 recursion equations
 
+
+A finite automaton is a mathematical machine for determining whether a string
+is contained within some language.

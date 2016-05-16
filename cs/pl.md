@@ -9,6 +9,8 @@ category: cs
 ∅ ⊢ pl
 scope: The set of expressions for which a binding defines a name is called the scope of that name.
 # Reference
+http://www.zhihu.com/question/21843639
+貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
 Programming Language Pragmatics 3rd
 C11
 C Traps and Pitfalls

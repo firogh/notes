@@ -8,27 +8,18 @@ category: cs
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
 # The Architecture of Computer science
-Process: algorithm, TOC, Design Pattern, SICP
+* Process 
+Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style
 Compile, link, and load or interpret:
 OS
 Arch
-process包含algorithms和更为基础的computation and else; 
-programming(design pattern) through language 是把这个process实例化. 
-os, architecture是作为process的辅助.
 
 # Process
-logic
-mathematics:
-Algorithm:
-Computation: TOC 
-Finite automata:
-A finite automaton is a mathematical machine for determining whether a string
-is contained within some language.
-Regular expression
-vimregex.com/
-http://www.zhihu.com/question/21843639
-貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
+CS研究Process. 通过Computation体现Process.
+TOC研究computation, algorithm研究process的具体过程.
+DP研究process的合理表现,组合形式.
+Logic, Mathematics作为世界之源. 
 
 * Top method
 Abstruction
