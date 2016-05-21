@@ -5,6 +5,7 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+[我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl)
 
 ∅ ⊢ pl
 scope: The set of expressions for which a binding defines a name is called the scope of that name.
@@ -47,6 +48,7 @@ c11上是ok的!
 * 做signed 和unsigned 貌似both convert to unsigned gcc才给警告, 否则不给即便是signed和unsigned比较. 
 ## lvalue rvalue modfiable rvalue
 [Understanding lvalues and rvalues in C and C++](http://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c)
+If a variable/expression  has a address, it's of lvalue.
 ## Array decay
 数组退化的初衷, 可能是K&R当年计算资源紧缺, 导致不允许函数传值copy数组内容.
 总之标准委员会介入之前就决定.

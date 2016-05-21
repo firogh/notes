@@ -8,6 +8,105 @@ category: cs
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
 # The Architecture of Computer science
+SICP states that cs focuses on process.
+What process is is the set of changes and quantaties.而这些changes 和 quantaties live in model of computation.
+我们可以说一个process就是一个从属于model of computation的changes和quantaties的一次排列和集合.
+所以model of computation至少是change的集合 和 quantaty的集合的集合.processess 本身就是暗含着data/quantaties的.
+Why can  processes being? It's model of computation.
+这就是cs的form, process和model of computation. What is the material of cs?
+cs 的material 是symbolic.
+For now, we have noticed that the form of cs is changes and quantities.
+And the material of cs is symbolic(or, symbolic system).
+Both form and material are properties of being/abyss.
+人类的思维使用多种materials(vision, animation, graphics,or, feelings)去express a concept。
+可以说程序设计语言就是标准描述 process的Semiotic system。
+所以， pl对process的elements or origins做了合适的描述。
+sicp研究的符号规则层面的process 和 data。 design pattern研究的是语义层面的。
+PL 给了我们一种视角, 从process的元素的角度去描述process.
+form language(BNF->syntax, regex->lexical)藐视pl的语法. 
+form language可以通过automata鉴别.automata等价于form system lambda calculus.
+自动机被相应的form grammar分类.
+我们的目的是规范化人类思维的表达形式.以此来达到交流, 具现化.
+我们要明白, pl的所有内容都是围绕the set of changes and quantaties建立的, 
+也就是说pl是能指, 而所指便是the set of changes and quantaties.
+syntax句法不是我们关注的, 我们关注的是semantic.从semantic角度去尽可能的描述changes和quantaty.
+quantaties and changes: type system
+我们给quantaties附上特定的类型, 表达特定的含义, 
+primitive expression: 数学量, 符号学字符, function
+combination: compound elements
+abstraction: name an elements
+relation: inference, relaton of changes, Flow Diagrams, Turing Machines And Languages With Only Two Formation Rules; 
+也就是Jhone Locke的binary relation.
+process 可以看成人的意志力展示.origins加入interence不关注changes. logic就是研究过程/changes和过程/changes之间的关系.
+control flow描述设定的就是这种order/relation.核心不在于有没有if else, 而是是否有足够的表达能力.
+表达changes之间的relation/order.可能是一种图的感觉, 就比如if else引起了tree这种order的产生.
+也就是说语言的表达力. changes要类似automata的四通八达的感觉.
+process由 changes, inference/relation, quantaties组成.因为这是由人的意志will 参与的process.
+inference 强调的是order of changes/computation,也就是control flow.
+Why does the order of execution matter?
+Then we need programming:sicp c3(c2/c1)
+then interpreter: sicp c4
+link load
+computation model: sicp c5
+if else: 表示的是relation(changes之间的关系, order, causality, inference)
+也就是说pl包含:
+changes, quantaties, relation. 这几种表述.
+pl和machine/model of computation近乎等价, progrm是machin的超集. program 是process.而pl不是.
+所以pl和machine都对process有表达的能力.pl和machine的form一致, 但material不同. 他们都是process元素的集合.
+programming是排列组合这些process elements的craft.可以说这些元素是data, 可以转变为process.
+这里面我们就定义programmer的skills, crafts, 是一种排力组合的能力, 不严禁的通俗的理解.
+design pattern 更注重宏观process. 他们排布process. 单这些process是处理别的process.high-order process(procedure?)
+而algorithm, 可以认为是关注的是primitive/ process.
+图灵机加入的"感知",正是laking of causal.
+之于表述computational process, 认为(hypothesis?)自然语言和pl是具有相同能力的.
+programming的目的之一是把思维结果转为pl形式表达出来.
+另外, 我们现在能总结出, cs的两大主题就是:the form of process and how to express more better.
+process的内在, 以及如何表达process.cs剩下的问题都是programmer 码农的问题.
+现在我们来研究纯粹的process.继承sicp的定义.
+procedure是process的体现. process >= procedure. 所谓的local evolution, 等价于c,lisp的function.
+procedure 是一changes(quantaties, relation)有限的集合.
+一个process可以包含多个procedure, 也可以只有一个procedure(如, 递归, 迭代).
+还有另外一个就是data.process和data唇亡齿寒.
+process: procedure, computation/changes.
+data->: compound data, quantaty. 
+我们研究的重点似乎时relation吧?
+process和data既像一物两面, 又像唇亡齿寒.
+下面开始, 
+从combination, abstraction, relation这三个方面属性的process.
+从简单到复杂, 先关注process.
+如果process只有一个procedure.  elementary process.
+似乎我们可以得到一个关于process的坐标系: procedure 的种类和数量.
+这里, 我们不关注algorithm.
+这里, 关注design pattern, GoF, elemental design pattern, POSA.
+从坐标系角度只考虑process和process之间的关系:
+1 只有一种quality的procedure, 完成的process.
+那么数量上如果构成大于1, 也就是procedure call procedure.
+可以是iteration or recursion; 我门的坐标系反应不出来.
+需要另外一个属性, procedure 自身是否是运算的参数.
+坐标系改下, procedure的数量换成procedure是否参与运算. 如果参与computation就是递归.
+默认procedure 数量>=2.
+我们再一次发现, procedures之间可能并不是直接调用的.
+所以一个小坐标系, 能表达的太有限, 要废弃掉.从属性角度看.但可以明确procedures出现次数是2个以上.
+当然, 我们是从process角度分析问题的.
+只有一种procedure, 
+* call/order relation
+参与 computaton 是 recursive, otherwise, iteration.
+iter(a,i, n)
+if (i<n)
+ a = a * (a +1)
+ i++;
+ return iter(a, i, n)//tail call
+* share data 间接的relation,影响
+没有: 独立 closure?
+有: relation, 并发
+* 没有直接联系
+
+
+
+
+
+
+
 * Process 
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style

@@ -7,7 +7,7 @@ category: philosophy
 
 # 世界本源, the origin of the world, L'Origine du monde
 being(4), abyss(0)
-material(1) change, quality, quantity, relation
+material(1) change, quality, quantity, relation, inference
 process(2)(5), tansfer, truth, signifier(3), bijection, Causality
 
 以数学进制系统为例.貌似越为简约的计数系统, 只能越复杂,反之操作越为简单,原始.
