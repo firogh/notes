@@ -95,7 +95,19 @@ iter(a,i, n)
 if (i<n)
  a = a * (a +1)
  i++;
- return iter(a, i, n)//tail call
+ return iter(a, i, n)//tail call>
+看来这个问题的实质是process是否作为计算的对象.而recursive和iteration是某个general的特例.
+loose relation: sequence(特例iteration), 是computation之间的关系.
+strict relation: computation是内在的关系. computation被抽象data
+primitive computation可以调function, function可以调primitive computation.
+computation function 经过抽象变成data.data反过来又可构成computation.
+可以说没有data, 全是computation!?那这么说(所谓的"recursive", 就司空见惯了.)
+function反应的是computation 序列集合.自身调用自身, 首先满足这种 order sequence的关系.
+似乎称之为recursive是没问题的. 但一个只能反应sequence, or和sequence等价的"recursive".
+又有多大价值呢?recursive意义又有多大呢? 究竟, process的核心是什么呢? 是computation.
+回答显示世界的recursive, 一个画面不断重复自身的画面[!recursion](https://upload.wikimedia.org/wikipedia/commons/6/62/Droste.jpg)
+
+
 * share data 间接的relation,影响
 没有: 独立 closure?
 有: relation, 并发
