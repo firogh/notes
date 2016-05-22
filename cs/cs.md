@@ -105,19 +105,45 @@ computation function 经过抽象变成data.data反过来又可构成computation
 function反应的是computation 序列集合.自身调用自身, 首先满足这种 order sequence的关系.
 似乎称之为recursive是没问题的. 但一个只能反应sequence, or和sequence等价的"recursive".
 又有多大价值呢?recursive意义又有多大呢? 究竟, process的核心是什么呢? 是computation.
-回答显示世界的recursive, 一个画面不断重复自身的画面![recursion](https://upload.wikimedia.org/wikipedia/commons/6/62/Droste.jpg)
-
-
-* share data 间接的relation,影响
-没有: 独立 closure?
-有: relation, 并发
-* 没有直接联系
-
-
-
-
-
-
+回答显示世界的recursive, 一个画面不断重复自身的画面!
+![recursion](https://upload.wikimedia.org/wikipedia/commons/6/62/Droste.jpg)
+我们发现, 他们总是在表达一个完整的个体.
+画面的recursion, 依然在一个画面下.
+function的recursion, 确实表现在一个function内.
+但是从computation角度, recursive的function表述的是computation的连续sequence.
+也就是说recursion是有对象的,对于process是computation是对象.
+对于recursion process, 只有一个computation, 而iteration的process是多个computation的order/sequence集合.
+所以要区分computation和procedure/function. function是computation和sequence集合.他反应的是computation之间的关系.
+并不能反应computation自身内在关系.这也是我们混淆了recursion procedure的原因.
+想想, 集合的复合还是computation sequence. 而computation自身的复合却是一个computation,自身的演变.
+让我们体悟到了function和computation的区别.不同对象的交互operation差异.
+对函数的讨论研究等价与, 讨论computation之间的关系.也就是把function全部替换成了computation.
+所以recursive function就成了不断内嵌sequence computation了, 递归全无.
+computation 内在的组合, 我们讨论了, 相似对象/function的情况.
+如果一个computation内部,是由不同computation组成的.就是非递归的情况,edp叫Conglomeration.合理
+computation内在讨论先停下.
+我们关注computations之间的关系.
+无论是computation的内部还是,computation之间data都成了纽带.
+我们只讨论具有relation的process/computation.
+如果通过共同的操作的data,
+这就是并发的问题, 也就是changes.
+如果共同的data, 不是作为操作的对象知识表达一个relation.
+这是能想到的通过data的processes/computations之间的交互.
+似乎量changes/computation/process 之间的relation, 只能是
+causality and synchronization?(FIXME).
+Causality: Observer(发起者主动, 结果者被动), polling(结果者主动)
+state pattern(发起者的状态), Strategy Pattern(根据对象的选择行为)
+Command Pattern(?decoupling, 貌似就是个Observer不过把状态给了接收者处理),
+Mediator Pattern(decoupling), 
+design pattern 关注的是form, syntax.
+研究process/procedure/function/computation 到 data
+ Simple Factory Pattern类似strategy pattern, 根据(接收者类型产生对象)
+Factory Method Pattern类似(Mediator pattern, 将对象生成放给子类)
+没有relation(or relationless)的process联系到一起.
+adapter pattern
+还有一种两个procedure concurrent, 要分开 order sequence化.
+concurrent是design pattern等价的.
+这样design pattern也融合进来了.
 
 * Process 
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
