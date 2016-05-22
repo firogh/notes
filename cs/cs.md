@@ -144,19 +144,16 @@ adapter pattern
 还有一种两个procedure concurrent, 要分开 order sequence化.
 concurrent是design pattern等价的.
 这样design pattern也融合进来了.
+下面应该是SICP的chapter 3. chapter 3依然是对process的form的阐释和补全, 结合pl的语义进行挖掘.
+另一方面结合具体的实现开始kernel相关的(可能涉及到hard ware), 分布式系统理解.
+还有一个link load interpreter这方面的工作.
 
-* Process 
+# Process
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style
 Compile, link, and load or interpret:
 OS
 Arch
-
-# Process
-CS研究Process. 通过Computation体现Process.
-TOC研究computation, algorithm研究process的具体过程.
-DP研究process的合理表现,组合形式.
-Logic, Mathematics作为世界之源. 
 
 * Top method
 Abstruction

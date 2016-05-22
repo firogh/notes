@@ -16,8 +16,6 @@ High cohesion low coupling
 我认为最重要的就是Abstraction and design.
 [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/)还有[SICP](http://sarabander.github.io/sicp/)以及Elements of programming.
 其次我们要掌握几门Programming language.
-另外,还有Algorithms and data structures
-也需要会一点Design pattern
 养成好的Coding style, 
 Valid and verification
 Testing
@@ -29,12 +27,6 @@ Debuging
 It is considered to be safer that the label reflect what happens at the
 destination, and not the reason for reaching the label. --Julia
 
-# Algorithms and data structures
-Plz, reference algorithm.md
-
-# Design pattern
-1. Publish-Subscribe Mechanism 
-2. Observation
 # Verification and validation
 抽象的知识来自生活经验的总结, 所以学习抽象知识的重要方向是从实践不断总结抽象.
 programming is a goal-oriented activity
