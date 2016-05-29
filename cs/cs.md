@@ -148,7 +148,179 @@ concurrent是design pattern等价的.
 另一方面结合具体的实现开始kernel相关的(可能涉及到hard ware), 分布式系统理解.
 还有一个link load interpreter这方面的工作.
 
-# Process
+# programming 
+Abstraction is vital in helping us to cope with the complexity of
+large systems.
+Effective program synthesis also requires organizational principles that
+can guide us in formulating the overall design of a program.
+orgnizational principles应该是architecture pattern.
+我理解的programming的核心应该是modeling, modeling最直接的体现就是architecture pattern.
+相较于design pattern, ap更注重整体?
+不对, 这块不能把ap直接加进来, 逻辑不严密, 不完整.就先叫op吧.
+why modular,we are not creating something.
+It's just about the being.
+abstraction is vital in helping us to cope with the complexity of
+large systems. 通过抽象构造的material层级, 逐级清晰.
+世界以我们所认为的那样方式运行着.
+modular , that is, so that they can be divided “naturally” into co-
+herent parts that can be separately developed and maintained.
+I think it's because of the form.
+model as modeled, action in local.
+object-based approach and the stream-processing approach
+objec is the form of this world. what about stream?
+
+The difficulties of dealing with objects, change, and identity are a fundamental 
+consequence of the need to grapple with time in our computational models.
+Concurrent 增加了更多的难度, 但只是double的关系不是quality上的.
+
+The stream approach can be most
+fully exploited when we decouple simulated time in our model from the
+order of the events that take place in the computer during evaluation.
+We will accomplish this using a technique known as delayed evaluation .
+stream 解耦了我模拟的时间和event的order.event有orderbut no time.
+We don't care time. 隐约中我们引入了另一个origin of world, time.
+我想还是需要关心时间的只是在stream的form里面不存在时间了.
+leak of causal is abstraction.
+second origin, state, An object is said to “have
+state” if its behavior is influenced by its history.
+We can characterize an object’s state by one or more state vari-
+ables. 
+有很多objects, 一些objects可能影响others's state, couple the state variables.
+modular 需要decomposed into computational objects modeling actual objects.
+model指整体如substitution 和environment.
+Each computational object must have its own lo-
+cal state variables describing the actual object’s state.
+我们用computational object model actual, 每个 computational object must have its own local state variales.
+local state variables 描述actual object's state. why local?
+
+If we choose to model the flow of time in the system by the elapsed time
+in the computer, then we must have a way to construct computational
+objects whose behaviors change as our programs run. In particular, if
+we wish to model state variables by ordinary symbolic names in the
+programming language, then the language must provide an assignment
+operator to enable us to change the value associated with a name.
+从state variables 扯到 assignment operator.
+因为state variables是记录actual objects的state的, state可能随时间改变.
+我们必须改变state variables, 就需要assignment operator.表述一个关系, change.
+一个对象自己的state variables 被称为 local?
+形参? 
+massage passing 类似strategy pattern 
+
+From the point of view of one part of a complex process, the other
+parts appear to change with time. They have hidden time-varying local
+state. If we wish to write computer programs whose structure reflects
+this decomposition, we make computational objects (such as bank ac-
+counts and random-number generators) whose behavior changes with
+time. We model state with local state variables, and we model the changes
+of state with assignments to those variables.
+整体上, a process, one part 看另外一面是
+A process hide time-varying local state in modular, but with a changes behavior. encapuslation.
+= changes, variable states
+
+In general, programming with assignment forces us to carefully consider the relative orders
+of the assignments to make sure that each statement is using the correct
+version of the variables that have been changed. is issue simply does
+not arise in functional programs.
+
+函数调用对应的是substitution model
+model of evaluation
+environments
+An environment is a sequence of frames . Each frame is a table (pos-
+sibly empty) of bindings , which associate variable names with their cor-
+responding values. (A single frame may contain at most one binding
+for any variable.) Each frame also has a pointer to its enclosing environ-
+ment , unless, for the purposes of discussion, the frame is considered to
+be global . e value of a variable with respect to an environment is the
+value given by the binding of the variable in the first frame in the en-
+vironment that contains a binding for that variable. If no frame in the
+sequence specifies a binding for the variable, then the variable is said to
+be unbound in the environment.
+所以programming实际讨论的是意义的问题.不是某种形式
+3.4
+e central issue lurking beneath the complexity of state, sameness,
+and change is that by introducing assignment we are forced to admit
+time into our computational models. Before we introduced assignment,
+all our programs were timeless, in the sense that any expression that
+has a value always has the same value.
+so time is changing.
+the execution of assignment
+statements delineates
+moments in time when values change. e result of evaluating an ex-
+pression depends not only on the expression itself, but also on whether
+the evaluation occurs before or aer these moments. Building models
+in terms of computational objects with local state forces us to confront
+time as an essential concept in programming.
+we use assignmnet to record state/history.
+We implemented the time variation of the states of the model objects in the computer
+with assignments to the local variables of the model objects.
+必须意识到change被modeled 到assignment.
+model change in terms of sequences
+list sequence is inefficient than the standard iterative style.
+Streams are a clever idea that allows one to use sequence manipu-
+lations without incurring the costs of manipulating sequences as lists.
+With streams we can achieve the best of both worlds: We can formu-
+late programs elegantly as sequence manipulations, while aaining the
+efficiency of incremental computation.
+stream 比list好,elegantly as sequence manipulation, efficiency as incremental computation.
+(delay ⟨ exp ⟩ ) delayed object很有趣, 类似Brandon的enhanced greensight.连接是空, 穿越时空.
+
+# Chapter 4 Metalinguistic abstraction
+It is no exaggeration to regard this as the most fundamental idea in
+programming:
+e evaluator, which determines the meaning of expres-
+sions in a programming language, is just another program.
+
+SICP, 暂时看到这里.
+programming 是modeling. 看了sicp差不多了.
+interpreter: 
+EOPL
+PLAI
+http://papl.cs.brown.edu/2016/
+另外PL也到这里吧. 
+source code写出来如何让run?
+[弱类型、强类型、动态类型、静态类型语言的区别是什么？](https://www.zhihu.com/question/19918532)
+c语言是弱类型语言的意思是：它的类型是给编译器看的，让编译器在初次分配内存的时候好分配一个指定大小的空间。在实际操作中你可以随意更改变量的类型（强制或自动）。
+c语言实际是对内存直接操作的一门语言。也就是说如果给你四个字节的内存，你喜欢把它当成int来操作也行，当成四个char操作也行，随你喜欢。
+[Is C strongly typed?](http://stackoverflow.com/questions/430182/is-c-strongly-typed)
+I spent a few weeks, about a year ago, trying to sort out the terminology of "strongly typed," "statically typed," "safe," etc., and found it amazingly difficult. As your message points out, the usage of these terms is so various as to render them almost useless. --Benjamin C. Pierce
+# program execution
+run的目的是source code 对应到ISA.
+最容易想到的就是compilation.
+我们把compilation和interpreter当成从source code 到runnable program之间的某种form的变化.
+先略过compilation, 也就是我们现在编译出了最简单形式的一个程序foo 输出hello world用到了一个新lib.
+[How programs get run: ELF binaries](https://lwn.net/Articles/631631/)
+我们知道了个大概, 那么我们最关心的事, 现在lib和foo都进入内存了, 那么foo是如何调用到lib的函数.
+原来是直接利用address_space 最memory map private就共享了.
+不需要显示维护library的list列表的.
+这样程序就运行起来了.
+硬件可以理解为programs的的interpreter. 理解为model of computations, 由set of changs and state/quantaties and relations 组成.
+所以硬件也可以看成是抽象的! 只不过不能自动.
+研究memory的是时候我们会区分到RAM和SRAM到电容和logic gates.也就是最终的实现.
+这个时候, 我们发现material成了我们理解问题的所必须考虑的方面了.
+也就是说理解到了电路这个层次, 我们就完成了standalone, Completeness的.
+也就是hardware的material完成了我们的认知, 就是认知闭环了.
+所以已经关注很多cpu的和process运行相关的指令, 对于理解lock锁(包括所谓的lockfree无锁)理解到硬件的material也是应该的.
+为什么这么说? 如果不用关心到logic完整的material, 实际上我们不需要理解什么语言啊, computation model. 设计模式啊, 操作系统啊.
+只要脑子想就够了.可是material也是being存在.也是有form的存在.
+所以另外的, 很重要的就是, 我们不是理解hardware本身, 我们理解的是hardware背后的form!
+form的内容就很少了.所以说学习要特别注意两点, form和completeness.
+记住我们关心的不是hardware的material而是hardware的form.
+所以说我们是为了完整complete form而不是material.
+而实际上, 当我意识到所谓的form的存在的时候, hardware本身就成一种自然的延伸了.自然的被包括进学习的范围目标里面了(FIXME).
+
+# os
+所以下面的os, 从一个整体的角度去看待computer, 实质善顺道把os相关, 有助于os理解的hardware的知识
+也包含进来.
+下面的思考包含常见的GNU Linux/Unix/Windows这些系统, 和distribute system.
+在更general 的form下思考他们的form.
+
+
+
+
+
+
+
+# architecture of cs
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style
 Compile, link, and load or interpret:
@@ -160,8 +332,7 @@ Abstruction
 Combination
 Virtualization
 Exchange time and space
-Isolation
-Modular manner: D
+Isolation/Modular
 
 * Top goal
 Easy to use
@@ -279,69 +450,6 @@ ioremap: physical address->logical address, simlar to vmalloc except we need not
 IO不是由我们的进程完成而是别的进程完成, 是谁呢,是内核线程.
 那么我们就知道只有linux上的aio是符合异步IO的标准, 而多路复用, 如epoll返回是我们和IO是在
 一起, 我们要调用read之类的完成他.
-下面用一个生活化的例子, 说明下linux下的IO.
-比如你要买<百年孤独> 还要买件衬衫, 你会怎么买
-你要先去书店, 如果店家没有货, 如果一个小时后货补齐了你可以等,
-长点你就不愿意等了. 也就是阻塞和不阻塞.之后你要去衣服点.也是同样.
-假如都没货, 你有等不下去, 怎么办? 你又不能一会儿去这家问下书怎么样? 一会儿去衣服店询问.
-这太累人了. 最好的方式, 你告诉店家我要什么, 到货了给我打个电话, 我在过来.
-这就是io多路复用. 可是还有更高明的方法, 没错就是京东了, 我网上下订单, 第二天直接送到家了.
-京东, 为什么成功? 你知道了吧.用户省心啊.对应异步io
-
-# Computer Architecutre
-∅ ⊢ Computer
-Computer ⊃ CPU ∪ Memory ∪ Bus ∪ Peripheral 
-Computer → I/O
-
-∅ ⊢ CPU
-CPU ⊃ Instruction set architecture ∪ Microarchitecture ∪ ?
-Instruction set architecture ⊃ Memory model ∪ ISA Registers ∪ Data types ∪ Instructions
-Instruction set architecture(extension)  ⊃ RISC ∪ CISC  
-Memory model ⊃ Byte ∪ Words ∪ Address space ∪ Memory semantics 
-ISA Registers ⊃ Special-purpose registers ∪ General-purpose registers ∪ Control registers
-Data types ⊃ Numeric ∪ Nonnumeric
-Numeric data types ⊃ Integer
-Instructions ⊃ Instruction formats ∪ Instruction length ∪ Addressing mode ∪ Comparisons ∪ Branches ∪ Procedure Call 
-Instruction formats ⊃ opcode
-Instructions(extension) ⊃ Data transfer ∪ Arithmetic ∪ Logic ∪ Control flow
-
-RISC ⊃ Fixed instruct length ∪ Few instruction formats ∪ Load/Store architecture
-
-Microarchitecture ⊃ Data path ∪ Control path ∪ MMU ∪ CPU cache ∪ Oscillator crystal ∪ Clock generator
-Microarchitecture → Instruction cycle ∪ Instruction pipeline ∪ Out-of-order
-Instruction pipeline ⊃ Branch prediction ∪ Hazard ∪ Parallel
-Data path ⊃ ALU ∪ FPU ∪ Registers ∪ Bus
-ALU ⊃ Adder ∪ Multiplexor
-Adder ⊃ Logic gate
-Logic gate ⊃ diodes or transistors
-Transistor ⊃ 
-
-MMU ⊃ TLB
-
-CPU register ⊃ not same with SRAM ∪ Synchronous circuit
-
-CPU cache ⊃ SRAM ∪ Synchronous circuit 
-SRAM ⊃ MOSFET ∪ Computer organization and design page B-59
-CPU cache → Cache coherence ∪ Associativity ∪ Cache miss
-Cache coherence ⊃ MSI
-
-Oscillator crystal 
-
-Clock generator ⊃ frequency divider ∪ clock multiplier
-Clock generator → Clock rate
-
-∅ ⊢ Memory
-// No matter physical or virtual address both are relative continuity.
-// What is memory? Simplely, a large number of identifier and 1 byte infomation.
-// What is address space is the methmatical set of identifiers of memory.
-Memory ⊃ Sequencial logic circuit ∪ Memory controller ∪ Bank 
-Memory controller ⊃
-∅ ⊢ Bus
-∅ ⊢ Peripheral
-
-Digital circuits
-Analog circuits
-
 # Physical computation phenomenon
 A Symbolic Analysis of Relay and Switching Circuits
 The Mathematical Theory of Communication
@@ -361,5 +469,4 @@ sizeof S1 = 16 in 64-bit
 * In what situation can unaligned accesss make a kernel panic?
 may be arch/mips/kernel/unaligned.c
 * Is the address generated by compiler physical or virtual?
-
 Graphviz + CodeViz

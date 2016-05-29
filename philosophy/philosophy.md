@@ -27,6 +27,7 @@ oracle: book, website, papper.
 
 # 原则
 世界之源, 费曼技巧, semantic tree hung point --Firo, 费曼, Musk
+注意到quantaties很重要, 一个复杂的东西. 要看出来他是有简单的form通过量化后形成的.
 form transformation cognition form analysis algorithm by change process to quantity(有些时候1个量不能描述清楚). -- Firo 
 我们只能包相似一类的过程量化, 不相似的过程量化需要更高阶, 更抽象的思维,起始没意义. 比如基数排序和霍夫曼编码. --Firo
 即便是结构本身一样不可以描述一定要找到某个点, 之后分析相似衍生才有意义, 如树结构,试问霍夫曼和searching的关联+ linked list. --Firo
