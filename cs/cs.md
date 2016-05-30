@@ -310,16 +310,52 @@ form的内容就很少了.所以说学习要特别注意两点, form和completen
 
 # os
 所以下面的os, 从一个整体的角度去看待computer, 实质善顺道把os相关, 有助于os理解的hardware的知识
-也包含进来.
-下面的思考包含常见的GNU Linux/Unix/Windows这些系统, 和distribute system.
+也包含进来. 下面的思考包含常见的GNU Linux/Unix/Windows这些系统, 和distribute system.
 在更general 的form下思考他们的form.
+我们似乎根本就不在乎是否有hardware参与进来, 我们关注的只是form. 如果form本身是完整的. hardware是不需要的.
+为什么hardware对我们是不需要的, 因为我们所构建的cs的真正基础是纯粹逻辑的(FIXME), 可能有部分内容依赖物理如晶振, 电路的delta时间.
+所以说, 我几乎不需要hardware.
+开始分析os, os包括userspace, application. 睡觉. 
+from this [ppt Last Class: OS and Computer Architecture](https://www.bowdoin.edu/~sbarker/teaching/courses/spring14/slides/lec03.pdf)
+we know 
 
-
-
-
-
-
-
+OS Service | Hardware Support 
+------------|------------------------------------- 
+Protection  | Kernel/user mode, protected instructions, base/limit registers 
+Interrupts  | Interrupt vectors  
+System calls  | Trap instructions and trap vectors  
+I/O  | Interrupts and memory mapping  
+Scheduling, error recovery,accounting  | Timer  
+Synchronization  | Atomic instructions  
+Virtual memory  | Translation look-aside buffers 
+特别是synchronization和atomic instructions这条, 貌似冥冥中, 体现出了我们想要的感觉.
+就我所知道的[几本OS的书](https://book.douban.com/people/firodb/all?sort=rating&start=0&tag=os&mode=grid&tags_sort=count), 基本都不符合我的思路. Operating Systems : Three Easy Pieces 这本还算可以吧.
+有点心意, 但是达不到sicp的高度.
+终于可以坐下来安心思考os了.上面的os书都是告诉你os有什么process, thread, memory management,
+interrupt, IO等等, 而且讲的非常详细, 就好像他们真的是主角似得.
+是的没错! os书里只关注这process, thread, scheduling, memory management, interrupt, IO之类的能干什么.
+对, 尽量讲得很详细, 以为这样就好了. 可实际上呢? 学习者的思维, 全被那些符号填满, 同时思考的机会也
+被剥夺了! 合理的os理解过程是什么样的呢? 我觉得还是从origins of world 往过来推导.
+我们上来根本就不关心process 啊scheduling, memory management.IO, interrupt等等
+我们最初有什么? 或者说, 我们正在做什么? 从origins 经过sicip.
+只考虑最原始的情况, 为了完成computational process, 我们需要一个真实的model of computation.
+我们有了他是relation(算术数学运算, order体现着结构上),  change(transfer, assignment), quantaties(state, memory)的集合.
+我们为了, 完成一件事情编写了program开始运行. 似乎不太好想遇上了什么问题.
+我们很容易想到让computer同时做量件事, 比如说两个人同时记日记.想当然, 我们也可以让一所学校的学生,
+同时记日记.此时我们就意识到了, 要抽象下Process出来了, scheduling也来了. 同时我们也要统一管理set of states, memory了.
+也有了IO, 我们要让内容输入进来, 显示出来.这都很好想. 
+我们要保证系统有序的运行动起来.我设计了datapath和control unit.
+现在我们往回解释,也就是从interrupt之类到origins, 讨论the form.
+interrupt对应的是什么?是relation, 准确说是建立order.
+interrupt为什么不能运行长时间, 当然可以运行长时间.
+我们把interrupt, 看成和Process是一类东西, 都是process, change的实例.
+memory和fs对state set的管理.所以至少process要和memory 和fs关联
+貌似就没了?这只是框架.
+form | os
+-----|----
+change, process | Process, interrupt, IO
+relation, order | synchronization, scheduling, interrupt
+quantaties, state | fs, memory
 # architecture of cs
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style
