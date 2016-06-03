@@ -351,11 +351,38 @@ interrupt为什么不能运行长时间, 当然可以运行长时间.
 我们把interrupt, 看成和Process是一类东西, 都是process, change的实例.
 memory和fs对state set的管理.所以至少process要和memory 和fs关联
 貌似就没了?这只是框架.
+
 form | os
 -----|----
-change, process | Process, interrupt, IO
-relation, order | synchronization, scheduling, interrupt
-quantaties, state | fs, memory
+change, computation, transfer |  instructions(memory,IO), Process, interrupt
+relation, order | synchronization/atomic, scheduling, interrupt
+quantaties, state | fs, memory, device, driver
+
+
+[test-and-set](http://web.cecs.pdx.edu/~walpole/class/cse513/slides/3.pdf)
+test the lock, if false(nobody take it), then set the lock.
+Test and test-and-set对TAS优化.
+TAS bus lock, cache invalidation
+TAS and TTAS is two different algorithms .
+还需要面对contention, backoff and queue lock.
+造成contention原因是什么, 就是cache.
+因为lokc prefix的总线仲裁, 可以简单的按顺序来.
+这样的话, concurrent, parallel涉及到的order就算是大概过了.
+下面我们还是回到relation/order, change, quantaties上来.
+这样我们用locality of reference and transfer/channel special/temporal.来解读了cache.
+另外还有cache coherence.
+我们把process, interrupt都看成computation.
+而timeshareing 世界之源是作为process的基本属性, 解读了调度
+memory subsystem 作为quantaties和state的管理比较直观.
+fs和mm本质是一回事.
+剩下一个IO, 就是transfer的实例化, 包括char, block, network device的驱动.
+我们把peripheral device看成跟memory一样的东西也就是quantaties同时也涉及到了transfer
+我们基本上把 整个os computer都包含进来了.
+但还需要细节推理.
+比如, fs:
+我们要先有个文件file, 各种类型
+
+
 # architecture of cs
 Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
 Programming: language, coding style
