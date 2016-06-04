@@ -354,7 +354,7 @@ memory和fs对state set的管理.所以至少process要和memory 和fs关联
 
 form | os
 -----|----
-change, computation, transfer |  instructions(memory,IO), Process, interrupt
+change, computation, transfer . | instructions(memory,IO), Process, interrupt
 relation, order | synchronization/atomic, scheduling, interrupt
 quantaties, state | fs, memory, device, driver
 
@@ -381,6 +381,63 @@ fs和mm本质是一回事.
 但还需要细节推理.
 比如, fs:
 我们要先有个文件file, 各种类型
+mm 和fs都是quantaties的描述, 但根本却别在于fs是有人的参与的, 也就是说操作是要满足人的需求的.
+这里fs包含了各种设备.mm是process和quantaties的关系. 而fs是人与quantaties的关系.
+我们不考虑各种图形界面GUI, 只考虑最基础的linux console那种情况. 当然shell和linux console也要忽略掉.
+从纯粹的使用场景出发, 我们是不关心什么具体的fs实现, 我们只关心具体的用户user如何操作几个or很多的文件.
+最为真实的,实惠的, 基本的用户场景. 同样作为quantaties的mm是用数字标示quantaties的. 而且signifier根植
+于电路版.而fs面对的对象是人, 而有自己的语言符号系统, 而且不能通过全部number记忆东西.
+所以file要有个name, 文件多了, folder就有了, folder和folder之间就类似function之间调用.
+也是体现的order.
+我们发现folder和file这两个就能很好的描述用户使用了. 另外还有一个就是order, 不太被在意的.
+现在fs就成了name的集合了并且那么之间都是线性的关系, 我们不考虑soft link.
+我们来考虑下ln: a: hard link not allowed for directory. Why?
+反证法如果我们允许hard link dir, 在不recursive情况下hard link ok. But 如果recursive怎么办?
+soft link 也可能递归!所以recursive不是问题. 那么什么是
+mkdir -p /tmp/a /tmp/a/b
+如果
+ln /tmp/a /tmp/la
+怎么办, 就是递归.
+ln /tmp/a/ /tmp/a/b/la1
+toch /tmp/a/b/la1
+貌似没理解到点子上.
+现在用户哪里看到的就是多树.
+开始fs.
+有理由把dir和file看成一个东西.
+下面file代表抽象了. file代表open, 就是用户面对的那个. 指向inode对应一个文件 inode连接address space backend.
+那么问题来了, 就上面这个搓比的设计我们如何管理这些inode, file可以process弄个链表(大误, 数组)什么的好办.
+如, struct file __rcu * fd-array[NR_OPEN_DEFAULT]; 这个可以理解. struct fdtable fdtab; 这个就不理解了.
+不去管他. 我们如何组织inode, 比如我们打开是5本电子书, 7个文件, chrome, vim, 总之很多个文件, 那么这些inode怎么办?
+最简单, 列个linked list就行.
+in fs, namei stands for name interpreting,  the pathname lookup mechanisms (namei) by Feb-1997 T. Schoebel-Theuer
+现在关于fs就make sense了.
+关于open /dev, 参考dev_mount()._. ramfs_mknod vfs_mknode 
+ drivers/base/devtmpfs.c <<handle_create>>
+1. 从用户这个层面我们提供了dir 和 file, dir可以包含dir这三个concept涵盖住用户需求.
+
+内核一个file 对应一次open, 先walk link path 之后do_last(walk和last交互着来 in wile()) 先去dcache 找dentry, 
+(/dev 的dentry被pin住了, inode也建好了), 其他不在dcache找个empty dentry, 用父inode的iget之类操作
+建个inode同时根据硬盘数据确定operation 类型.
+我们发现:
+2. file/ inode/ dentry是严格从属于fs的.
+3. file -> dentry -> inode 这个顺序
+4. inode决定了你的 fs之内的最高级别operations(如char ops). 进一步的(如tty 靠major minor)
+5. special的inode不同于disk reglar 这种. 他们事先就created and pin dentry in core.
+反观fs, sb和dentry是做骨架同inode是骨架的支撑, 不可缺少.
+file是花拳绣腿. 有什么深刻的? 用户态松散的order和 transfer, quantaties 关系. dentry就是这种反应.
+深刻1, 就是order 包含!
+深刻2, 是什么, abstraction and function of everything(data, process)不同事物的抽象关系, 映射关系.
+明天就是mm, 想对比fs关注与不同事物的组合, mm更纯粹, 也会涉及大quantaties的管理, 和disk之类应该有较大的相似性.
+更能体现出quantaties.
+
+
+
+can we open a file in interrupt?
+
+
+
+
+
 
 
 # architecture of cs
