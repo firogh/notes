@@ -70,10 +70,10 @@ set inode to dentry
 /proc/sys/kernel
 
 
-#Sysfs
+# Sysfs
 sysfs is strongly depend on driver module, just rmmod tg3 then /sys/class/net/enp9s0 went away!
 
-#Ramfs
+# Ramfs
 fs/ramfs
 
 ##reference
@@ -122,7 +122,6 @@ kernel_init_freeable-> if /init in initramfs 可以访问 根文件系统挂在�
 hard link to directory, recursive
 hard link to file accross partitions, may led confilict with inode number.
 
-
 ## stick bit
 chmod +t
 1777
@@ -141,4 +140,3 @@ meta data
 
 ### modification time
 content of file
-

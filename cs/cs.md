@@ -453,9 +453,8 @@ process要用到这些quantaties 如何分给他们, 分多少?
 2. physical signifiers的管理, mem map buddy system.
 3. 关于internal signifiers的管理, mem layout, vma之类的.
 基本上os就差不多了. 另外, 还有碎角料, kernel mode切换, interface abi,api.
-
-
-
+所以我们能从os遇到个种种问题中, 归纳出共性, 集中精力研究这些共性的, 重要的(性能角度)的问题, 得到他们的
+本源origins of the world._.
 
 can we open a file in interrupt?
 
