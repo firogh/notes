@@ -458,6 +458,10 @@ process要用到这些quantaties 如何分给他们, 分多少?
 
 can we open a file in interrupt?
 
+# the advert of new world origin - performance
+cache: in order to improve performace, cache tries to reduce the access time of transfer of future.
+buffer: What does buffer do? temporary(Not future) place for data,reducing access time of transfer and 
+maybe effiency of quantaties/times of transfer. 是确定的行为, 不同与cache的统计学原理.
 
 
 
