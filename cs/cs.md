@@ -435,7 +435,7 @@ cs 的fs的inode见 iput_final iput inode_add_lru list_lru_add(&inode->i_sb->s_i
 现在来看最后的mm.
 # 底层的transer
 io, polling, interrupting, network device的multi queue, 的性能提升.
-# mm
+# mm 
 首先, physical  memory 就是quantaties/states的集合, 没有什么好说的, DRAM的实现需要看下.
 process要用到这些quantaties 如何分给他们, 分多少?
 首先, 我们要统计下, 我们有多少内存, mem map, 内存 看page分块. 分配物理地址signifier. buddy system.
@@ -473,6 +473,7 @@ Security/Protection/isolation
 Reliability
 Energy-efficiency
 
+# Memory VM
 我们回头再看mm， vm的提出是为了解决。easy to use。
 1. decoupling physical memory 符号集合。programmer 不需要关注底层细节。 任务转给操作系统。
 2. VM相对物理内存增加了表达能力， 有了更多表达符号。着减少了swap or 不必要的页表抖动。
@@ -510,17 +511,17 @@ PM自身符号集合管理.
 
  pg_data_t zone page
 关于pte.pte尾端bit被复用, phys_pud_init prot.
-# onset:  
+# Memory initialization onset:  
 先从bios 拿信息 main -> detect_memory save in boot_params.e820_map
 之后real -> protected -> long mode
 启动 protected? mode. [What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
 setup_arch
 setup_memory_map -> default_machine_specific_memory_setup // Save into struct e820map e820; from boot_params.e820_map. That's all.
-max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: [mem 0x0000000100000000-0x00000003227fffff] usable and   last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
+max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
 mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
 trim_low_memory_range // reserve 64k
 max_low_pfn = e820_end_of_low_ram_pfn(); //4GB以下的end of block
-memblock_x86_fill// e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
+memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
 early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
 init_mem_mapping //set page table and cr3.
 initmem_init ; NUMA init
@@ -530,12 +531,56 @@ memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm
 bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
 a little history e820_register_active_region replaced by lmb [replaced by](https://lkml.org/lkml/2010/7/13/68) memblock
 reserve_initrd ; // RAMDISK
-为VM提供memory.
-1. Zone watermarks core_initcall(init_per_zone_wmark_min)
+总结下, 内存初始化需要的基础.
+1. e820 get memory region.
+2. set PF trap do_page_fault.
+3. set page table and cr3.
+这就完了. 之后开始开始加工.
+arch 相关的x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
+sparse_init
+{
+	memblock_virt_alloc // sizeof(struct page *) * NR_MEM_SECTIONS;NR_MEM_SECTIONS = 1 << 19, Is it big?
+	// alloc memory region will be marked in memory_reserved.
+}
+zone_sizes_init.
+{
+	calculate_node_totalpages // 每个zone的page数.
+	free_area_init_node-> alloc_node_mem_map // alloc mem_map for FLAT
+	free_area_init_core
+	{
+		calc_memmap_size // 1/4k of spanned or present used for memmap. heuristic?
+		zone_pcp_init // init percpu pageset with boot_pageset
+		set_pageblock_migratetype(page, MIGRATE_MOVABLE);// 512 per zone
+		memmap_init_zone-> __init_single_page // init every page in a zone.
+	}
+}
+arch independent, 
+build_all_zonelists
+page_alloc_init // drain percpu pageset when cpu dead or dead frozen for CPU hotplug
+mm_init
+Zone watermarks core_initcall(init_per_zone_wmark_min)
+基本上内存初始化,就到这里了.
 
+# Memory pagge cache and buffer cache.
+page cache for memory, buffer cache for fs(block size is dependent on filesystem).
+address_pace->page_tree: why radix tree, read ahead, 
+do_page_fault->read_page
 
-PM和VM的联系
-1. Page table
+For buffer cache: buffer cache is only a wrapper of page for fs operations. 
+buffer_head is temporary data released in a deeper function than the function allocing the buffer_head.
+__block_write_full_page
+block_read_full_page
+
+I can not cover every corner of kernel, so If need, I will learn it.
+[The coherency problem, fs-writeback](https://lwn.net/Kernel/Index/#Memory_management-Writeback)
+[Flushing out pdflush](https://lwn.net/Articles/326552/)
+
+[Swapping](https://lwn.net/Kernel/Index/#Memory_management-Swapping)
+User space process: anonymous mapping(stack,heap,mmap), IPC-share memory(anonymous?), private mapping
+
+[Shrink cache](https://lwn.net/Kernel/Index/#Memory_management-Shrinkers)
+LRU cache
+
 
 
 # Boot and init
