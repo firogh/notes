@@ -462,50 +462,88 @@ can we open a file in interrupt?
 cache: in order to improve performace, cache tries to reduce the access time of transfer of future.
 buffer: What does buffer do? temporary(Not future) place for data,reducing access time of transfer and 
 maybe effiency of quantaties/times of transfer. 是确定的行为, 不同与cache的统计学原理.
+time-sharing: multi-task from batch processing
+prallel process: increas quantanties of process.
 
-
-
-
-
-
-# architecture of cs
-Algorithm, TOC, Design Pattern, SICP, Logic, Mathematics
-Programming: language, coding style
-Compile, link, and load or interpret:
-OS
-Arch
-
-* Top method
-Abstruction
-Combination
-Virtualization
-Exchange time and space
-Isolation/Modular
-
-* Top goal
+现在我们以新的视角看待os演化过程， 即以process/change， quantaties/state， relation/order这些natural origin为wilds，
+辅以will意志的origin: 
+performance/efficiency
 Easy to use
-Efficiency
-Protection
+Security/Protection/isolation
 Reliability
-Security
 Energy-efficiency
 
-# Programming
-Programming langueage: c, python, shell
-Programming tools: vim
-Compile Link: ELF
-Testing
-Debuging
-Interface
-
-# OS
-Batch processing -> Time-sharing
-Overlaying 
-* vm
-There are some great historical papers and books we should read before fully understanding virtual memory.
+我们回头再看mm， vm的提出是为了解决。easy to use。
+1. decoupling physical memory 符号集合。programmer 不需要关注底层细节。 任务转给操作系统。
+2. VM相对物理内存增加了表达能力， 有了更多表达符号。着减少了swap or 不必要的页表抖动。
+Not useful links, you may not read them:
+[BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
 [Computer Structures: Readings and Examples ](http://research.microsoft.com/en-us/um/people/gbell/CGB%20Files/Computer%20Structures%20Readings%20and%20Examples%201971.pdf)
 [Computer Structures: Readings and Examples html version](http://research.microsoft.com/en-us/um/people/gbell/Computer_Structures_Principles_and_Examples/contents.html)
 Chapter 10 One-level storage system is the first implemention of virtual memory mind.
+VM address space 和physical memory address space， 本质上都是符号集合。 形象点说， 就是数字的集合。
+32bit系统为例， 现在书上都是长条矩形标上0， 4GB， 容易让人产生狭隘的理解。 实际上， 所谓的0~4GB，只要你有这么多个标示，他们能被
+computation这个符号系统理解。就可以， 比如0用香蕉图片， 1用汽车图片， 等等。显然数字最简洁了。
+现在我们有了4GB的空间怎么用， 作为处理公共事务的kernel要占quantative states集合的一部分， ok。另外一部分给process。
+1. kernel 和 user之间分。Linux TASK_SIZE. VM split, 同时copy between kernel and userspace.
+2. 有了user VM space，开始布局memory layout。在load application时候。load_elf_binary
+layout内每块区域都是个VMA。VMA a memory region如何组织
+rb寻找可用的未分配的userspace VM地址空间.
+list, for what? proc/self/maps show_tid_map->show_map_vma  and core dump fill_files_note.
+vm_pgoff, 文件内偏移不是VMA/Page内偏移, 0代表从文件开始处开始映射.
+VMA in PAGE_SIZE unit
+3. 现在vm space 已经划分出去了. 还没有和physical memory 还有disk 关联上。Demand paging,见page fault, filemap_fault.
+4. 通过Demand paging 和page建立联系了. VM spaces/VMA, page, disk的关系, 何去何从?
+我们得沿着自己的思路去思考. physial-pages-of-file/page-cache-entity/address_space.
+首先一个file的pages的集合.address_space.page_tree + pagevec_lru 也就是 Page cache add_to_page_cache_lru.
+page cache这个结构非常有意思. 众多的address_spaces 构成了分布式page_tree, 同时zone lruvec控制这个分布式page_trees里
+那些page该evict.
+我们先在总结下, load application到kernel, 建立各种VMA. access VMA出发demand paging.加入page cache可以正常用了.
+根本不需要reverse mapping.
+5. 如果page得到更新, pte也需要更新.比如page被evicted. pte必须invalid. 
+rerverse mapping建立都在__do_fault
+For anon, check do_anonymous_page
+
+现在放眼在Physical memory.
+performance: [NUMA](https://lwn.net/Articles/254445/)
+PM自身符号集合管理.
+
+ pg_data_t zone page
+关于pte.pte尾端bit被复用, phys_pud_init prot.
+# onset:  
+先从bios 拿信息 main -> detect_memory save in boot_params.e820_map
+之后real -> protected -> long mode
+启动 protected? mode. [What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
+setup_arch
+setup_memory_map -> default_machine_specific_memory_setup // Save into struct e820map e820; from boot_params.e820_map. That's all.
+max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: [mem 0x0000000100000000-0x00000003227fffff] usable and   last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
+mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
+trim_low_memory_range // reserve 64k
+max_low_pfn = e820_end_of_low_ram_pfn(); //4GB以下的end of block
+memblock_x86_fill// e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
+early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
+init_mem_mapping //set page table and cr3.
+initmem_init ; NUMA init
+x86_init.paging.pagetable_init();= paging_init //x86_64 ->zone_sizes_init->...free_area_init_core
+mm_init
+memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
+bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
+a little history e820_register_active_region replaced by lmb [replaced by](https://lkml.org/lkml/2010/7/13/68) memblock
+reserve_initrd ; // RAMDISK
+为VM提供memory.
+1. Zone watermarks core_initcall(init_per_zone_wmark_min)
+
+
+PM和VM的联系
+1. Page table
+
+
+# Boot and init
+Power button -> cpu reset -> BIOS -> hard drive -> Grub boot.S/MBR aa5a -> Grub diskboot.S -> ... -> The kernel real-mode setup code. _start of arch/x86/boot/header.S
+Aligh register, Stack and BSS for C function to run. -> main->startup_32->startup_64-> __START_KERNEL_map->... start_kernel
+[Kernel legacy boot sector](https://github.com/torvalds/linux/blob/master/Documentation/x86/boot.txt#L130) start form 4d5a of arch/x86/boot/header.S 
+is only used by something link 'qemu-system-x86_64 vmlinuz-3.18-generic'. It's obsoleted that is what legacy means.
+
 ## Process management
 进程的定义和PCB，进程和线程的区别，进程的三个基本状态及它们之间的转换关系，进程的同步，竞争和死锁，进程间通信
 ###Representation 
@@ -611,6 +649,7 @@ control sequence points
 
 
 # Faq
+* early_reserve_initrd
 * How does gcc attribute((aligned)) work?
 struct S1 { short f; short f1; short f2;char a; char c;} __attribute__ ((aligned ));
 sizeof S1 = 16 in 64-bit
@@ -618,3 +657,12 @@ sizeof S1 = 16 in 64-bit
 may be arch/mips/kernel/unaligned.c
 * Is the address generated by compiler physical or virtual?
 Graphviz + CodeViz
+# architecture of cs
+* Top method
+Abstruction
+Combination
+Virtualization
+Exchange time and space
+Isolation/Modular
+
+

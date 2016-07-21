@@ -5,6 +5,86 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Signal 
+
+# fault handler
+
+arch/powerpc/mm/fault.c
+deatils of trap is in bad_page_fault
+
+sigbus 
+__handle_mm_fault
+{
+	hugetlb_fault CONFIG_HUGETLB_PAGE
+	handle_pte_fault-> 
+	{
+		do_linear_fault -> __do_fault
+		{
+			vma->vm_ops->fault(vma, &vmf);
+		}
+		do_anonymous_page
+		{
+			check_stack_guard_page
+		}
+		do_nonlinear_fault
+		do_swap_page
+		do_wp_page
+		{
+			vma->vm_ops->page_mkwrite(vma, &vmf); //??
+		}
+}
+
+# Process and thread
+# Kernel mapping
+tgid_base_stuff show_map_vma
+
+# GDB mapping
+t->to_info_proc=procfs_info_proc
+linux_info_proc not used in core dump
+linux_core_info_proc_mappings this is correct
+
+in kernel 
+fill_files_note
+
+_IO_new_fopen
+_IO_new_file_init
+libio/fileops.c _IO_file_open
+& _IO_file_jumps_maybe_mmap -> _IO_default_uflow -> _IO_file_underflow_maybe_mmap
+
+libio/fileops.c: decide_maybe_mmap
+We use the file in read-only mode.  This could mean we can
+     mmap the file and use it without any copying.  But not all
+     file descriptors are for mmap-able objects and on 32-bit
+     machines we don't want to map files which are too large since
+     this would require too much virtual memory.  */
+ __mmap64 (NULL, st.st_size, PROT_READ, MAP_SHARED, fp->_fileno, 0);
+
+_IO_file_jumps_maybe_mmap 
+  JUMP_INIT_DUMMY,
+  JUMP_INIT(finish, _IO_file_finish),
+  JUMP_INIT(overflow, _IO_file_overflow),
+  JUMP_INIT(underflow, _IO_file_underflow_maybe_mmap),
+  JUMP_INIT(uflow, _IO_default_uflow),
+  JUMP_INIT(pbackfail, _IO_default_pbackfail),
+  JUMP_INIT(xsputn, _IO_new_file_xsputn),
+  JUMP_INIT(xsgetn, _IO_file_xsgetn_maybe_mmap),
+  JUMP_INIT(seekoff, _IO_file_seekoff_maybe_mmap),
+  JUMP_INIT(seekpos, _IO_default_seekpos),
+  JUMP_INIT(setbuf, (_IO_setbuf_t) _IO_file_setbuf_mmap),
+  JUMP_INIT(sync, _IO_new_file_sync), 
+  JUMP_INIT(doallocate, _IO_file_doallocate),
+  JUMP_INIT(read, _IO_file_read), 
+  JUMP_INIT(write, _IO_new_file_write),
+  JUMP_INIT(seek, _IO_file_seek),
+  JUMP_INIT(close, _IO_file_close),
+  JUMP_INIT(stat, _IO_file_stat),
+  JUMP_INIT(showmanyc, _IO_default_showmanyc),
+  JUMP_INIT(imbue, _IO_default_imbue)
+
+_IO_file_jumps_mmap
+
+_IO_file_jumps
+
 
 [我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl)
 
