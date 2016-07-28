@@ -581,7 +581,44 @@ User space process: anonymous mapping(stack,heap,mmap), IPC-share memory(anonymo
 [Shrink cache](https://lwn.net/Kernel/Index/#Memory_management-Shrinkers)
 LRU cache
 
+# processes of os
+[Exceptions](http://wiki.osdev.org/Exceptions)
 
+if you do lidt in userspace program, you will receive SIGSEGV with si_code 128(somewhere of kernel).
+But with the dmesg traps: int0x80[15066] general protection ip:4000c7 sp:7ffc8706cdf0 error:0 in int0x80[400000+1000] form do_general_protection.
+Privilege instructions in V3a chapter 5 Protection
+.data
+    .quad msg 
+
+msg:
+    .ascii "Hello, world!\n"
+    len = . - msg 
+saved_idt:
+        .long 0,0 
+
+.text
+    .global _start
+
+_start:
+    movl  $4, %eax
+    movl  $1, %ebx  
+    movl  $msg, %ecx 
+    sidt  saved_idt
+    lidt  saved_idt  ;===============> crashed at here
+    movl  $len, %edx 
+    int   $0x80
+    
+    movl  $1, %eax
+    xorl  %ebx, %ebx 
+    int   $0x80
+So, we need to know the basic elements of process.
+Privilege level. ring 0 ~ 3.
+v1 6.4 and v3a 6 for interrupt and exceptions.
+priority
+status
+PCB
+Process create.
+schedule
 
 # Boot and init
 Power button -> cpu reset -> BIOS -> hard drive -> Grub boot.S/MBR aa5a -> Grub diskboot.S -> ... -> The kernel real-mode setup code. _start of arch/x86/boot/header.S
