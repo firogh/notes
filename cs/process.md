@@ -1,8 +1,49 @@
 ---
-tags: [ kernel ] 
-title: Linux process management
+tags: [ cs ] 
+title: The computational process
 date: 2015-02-27T15:46:12+08:00 category: kernel
 ---
+
+# The computational process
+order -> synchronization: order temporal spatial
+security -> privilege level: spatial, user space process and kernel process, trap, interrupt.
+real time -> execution time:long-live
+performance(real time) -> priority: order time, interrupt, trap, high priority process
+efficiency -> schedule out io-waiting
+fairness
+
+schedule and interrupt is the same thing.
+
+# kernel preempt
+arch/x86/kernel/entry_64.S
+preempt_schedule_irq
+retint_kernel
+
+entity_key
+
+# priority and nice
+In according to  do_task_stat, we know priority = task_prio(task); nice = task_nice(task);
+p->prio - MAX_RT_PRIO; = -2,  MAX_RT_PRIO = 100;so p->prio = 98;
+PRIO_TO_NICE(prio)
+(p)->static_prio - MAX_RT_PRIO - 20 = 0; So p->static_prio = 120;
+NICE_TO_PRIO(nice)      (MAX_RT_PRIO + (nice) + 20)
+Convert user-nice values [ -20 ... 0 ... 19 ] to static priority [ MAX_RT_PRIO..MAX_PRIO-1 ] 100..139, and back.
+MAX_PRIO                (MAX_RT_PRIO + 40) // 140
+DEFAULT_PRIO            (MAX_RT_PRIO + 20) // 120
+
+
+
+#define LOCAL_TIMER_VECTOR      0xef
+/arch/x86/kernel/irqinit_64.c:215:	alloc_intr_gate(LOCAL_TIMER_VECTOR, apic_timer_interrupt);
+apic_timer_interrupt
+smp_apic_timer_interrupt
+local_apic_timer_interrupt
+tick_handle_periodic
+tick_periodic->
+scheduler_tick ->
+.task_tick              = task_tick_fair,
+tick_periodic ->.task_tick              = task_tick_fair,
+
 
 # Protection ring
 ## Kernel mode:
