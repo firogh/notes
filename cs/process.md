@@ -1,7 +1,8 @@
 ---
 tags: [ cs ] 
 title: The computational process
-date: 2015-02-27T15:46:12+08:00 category: kernel
+date: 2015-02-27T15:46:12+08:00 
+category: cs
 ---
 
 # The computational process
@@ -30,6 +31,9 @@ NICE_TO_PRIO(nice)      (MAX_RT_PRIO + (nice) + 20)
 Convert user-nice values [ -20 ... 0 ... 19 ] to static priority [ MAX_RT_PRIO..MAX_PRIO-1 ] 100..139, and back.
 MAX_PRIO                (MAX_RT_PRIO + 40) // 140
 DEFAULT_PRIO            (MAX_RT_PRIO + 20) // 120
+if (task_has_rt_policy(p)) {
+ p->se.load.weight = prio_to_weight[0] * 2;  /*   0 */      1024,
+p->se.load.inv_weight = prio_to_wmult[0] >> 1; /*   0 */   4194304,
 
 
 

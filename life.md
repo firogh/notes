@@ -27,12 +27,13 @@ Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
 
 # Future
-* Aroad
-Passport H1B Offer
+08 ~ 04: 9 months 270 days			
 English
-Kernel patches 500 commits
+Health
+CS
+Kernel commits
 Work achievement
-CS Process
+Aroad: Offer, H1B 
 
 # 0222
 Clean the old contents of life.md.
