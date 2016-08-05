@@ -27,7 +27,7 @@ Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
 
 # Future
-08 ~ 04: 9 months 270 days			
+08 ~ 12: 5 months 150 days			
 English
 Health
 CS

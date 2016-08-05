@@ -62,29 +62,9 @@ no_context->
 		}
 	}
 }
-# Contents
-What's the difference between kernel and OS?
-cpu: syscall, process, ipc, smp
-memory:  mm
-io: buffer cache, fs, io subsys
-
 # Design pattern
 [Linux kernel design patterns](http://lwn.net/Articles/336224/)
 [Linux Kernel Programming Patterns](http://www.cs.fsu.edu/~baker/devices/notes/patterns.html#)
-
-# Interface
-Latin inter (prep., adv.) "among, between, betwixt, in the midst of," from PIE *enter "between, among"
-[Interface](http://www.webopedia.com/TERM/I/interface.html):A boundary across which two independent systems meet and act on or communicate with each other.
-In computing, an [interface](https://en.wikipedia.org/wiki/Interface_(computing\) ) is a shared boundary across which two separate components of a computer system exchange information.
-##API 
-system call
-+ procfs are ultimately accessed via system calls
-##ABI
-elf, cpu specific
-### x32 ABI
-ILP32
-LP64
-## System call
 
 # Find bug
 * Considered fault types
@@ -178,9 +158,6 @@ deatils in ldd3e chapter 10
 #Panic
 kernel/kernel/panic.c
 
-#init
-##initcall
-
 ##disk 
 subsys_initcall 4 genhd_device_init with base_probe{ request_module()}
 module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
@@ -189,14 +166,6 @@ module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
 root= name_to_dev_t, mount_root in prepare_namespace
 如果/init不能 sys_access, 则prepare_namespace,切换到真正的root=指定的设备上设备在sd_probe上初始化了.
 systemd负责挂在文件系统, 切换.
-
-#src-tree
-include/linux: share with userspace
-include/net: kernel stuff
-
-# Assembly in kernel
-为了简单! 内核修改特权寄存器和指令, 用汇编实现简单.
-尽可能加速. c到汇编, 编译器相对保守, 
 
 # The principle of kernel & driver backport
 将高本版kernel的feature移植到低版本的kernel的过程就是backport.
