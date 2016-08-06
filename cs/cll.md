@@ -35,16 +35,12 @@ make cynthia
 * make localmodconfig will reduce many unused kernel config.
 * make bzImage  #kmods will not build that configured with M! 
 * make modules_install INSTALL_MOD_PATH=/home/firo/kmods
-## yocto
-make ARCH=arm menuconfig
 ##build signle kernel module
 make menuconfig
 make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
 # Compile construction
-Understand pl deeply 
-how to translate it into machine code for specific CPU
 * gcc
 -E -S -c 
 -I -L -l
@@ -77,7 +73,3 @@ When you compile the kernel
 nm vmlinux
 readelf -s 
 * /proc/kallsyms
-# Link
-* GNU ld
-* gold
-
