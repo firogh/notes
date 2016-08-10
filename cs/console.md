@@ -1,7 +1,7 @@
 ---
 title: Console and TTY
 date: 2015-12-05T14:06:29+08:00 
-category: kernel
+category: cs
 ---
 343 line
 1. /dev/console 指向正在运行的tty 和tty0 一样ttyN not pts, console 佬变.

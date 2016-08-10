@@ -1,8 +1,9 @@
 ---
+tags: [ kernel ] 
 layout: post
 date: 2014-12-28
 title: Linux memory management
-category: kernel
+category: cs
 ---
 
 # Reference

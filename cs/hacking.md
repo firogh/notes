@@ -1,7 +1,8 @@
 ---
+tags: [ kernel ] 
 date: 2015-04-25
 title: Kernel hacking
-category: kernel
+category: cs
 ---
 
 # kernel hacker之路

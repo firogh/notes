@@ -2,7 +2,7 @@
 layout: post
 date: 2015-06-17
 title: Linux virtualization
-category: kernel
+category: cs
 ---
 
 本文着重探讨下kvm的实现, 11年在snia的实习的时候, 接触过一点.
