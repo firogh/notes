@@ -10,8 +10,8 @@ category: cs
 # arch of cs
 design(pattern) and algorithm, programming(debugging, hacking)
 pl, compile(gcc), link, load(cll)
-process, quantaties, order
-turing, arch, os(boot, console, fedora, fs, process, mm, pm)
+process, quantaties, order(synchronization)
+turing, arch, os(boot, console, fedora, fs, process, mm, pm, time, virt, synchronization)
 math, logic, electronics
 
 # The Architecture of Computer science

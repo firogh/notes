@@ -33,7 +33,7 @@ arch-specific: entry.S -> do_siganl()
 }
 
 
-# fault handler
+# mm fault handler
 
 arch/powerpc/mm/fault.c
 deatils of trap is in bad_page_fault
@@ -59,7 +59,37 @@ __handle_mm_fault
 			vma->vm_ops->page_mkwrite(vma, &vmf); //??
 		}
 }
-
+# kernel panic 3.10.62
+general protection fault and page fault
+1498 errorentry general_protection do_general_protection
+1499 errorentry page_fault do_page_fault
+static const struct stacktrace_ops print_trace_ops = { 
+        .stack                  = print_trace_stack,
+        .address                = print_trace_address,
+        .walk_stack             = print_context_stack,
+};
+no_context->
+{
+	show_fault_oops->
+	__die->
+	{
+		print_modules
+		show_regs
+		{
+			printk(KERN_DEFAULT "Stack:\n");
+			show_stack_log_lvl->
+			{
+				show_trace_log_lvl->
+				{
+					printk("%sCall Trace:\n", log_lvl);
+					// arch/x86/kernel/dumpstack_64.c
+					dump_trace->&print_trace_ops
+				}
+			}
+			printk(KERN_DEFAULT "Code: ");
+		}
+	}
+}
 # Process and thread
 # Kernel mapping
 tgid_base_stuff show_map_vma
