@@ -1,6 +1,6 @@
 ---
 tags: [ kernel ] 
-title: kernel
+title: Kernel
 date: 2015-02-27T15:46:12+08:00 
 category: cs
 ---
