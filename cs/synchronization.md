@@ -9,12 +9,10 @@ category: cs
 Perfbook
 
 # Why we need synchronization
-
 a critical section is a piece of code that accesses a shared resource 
 (data structure or device) that must not be concurrently accessed by more than one thread of execution.
 
 This overlap, where the result depends on the relative timing of multiple tasks, is called a race condition. 
-
 # How to use synchronization mechanism
 A must read book[Unreliable Guide To Locking -- Rusty Russell](https://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/index.html)
 ## Common usage
@@ -26,8 +24,6 @@ Protection from other CPUs:
         spin_lock(spinlock_t *) & spin_unlock(spinlock_t *)
 Preemption by other user contexts:
         preempt_disable(void) & preempt_enable(void) 
-
-
 # What is synchronization in computer science 
 [Synchronize](http://www.etymonline.com/index.php?term=synchronize)
 synchronization means be of the same time.

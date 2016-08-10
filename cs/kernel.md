@@ -14,7 +14,6 @@ http://elinux.org/Kernel_Debugging_Tips
 https://www.kernel.org/doc/
 http://kernelnewbies.org/KernelJanitors/Todo
 http://eudyptula-challenge.org/
-[走近Linux内核-- 王聪](http://wangcong.org/2007/03/09/-e8-b5-b0-e8-bf-91linux-e5-86-85-e6-a0-b8/)
 
 # CPU freq
 * onset
@@ -65,75 +64,7 @@ no_context->
 # Design pattern
 [Linux kernel design patterns](http://lwn.net/Articles/336224/)
 [Linux Kernel Programming Patterns](http://www.cs.fsu.edu/~baker/devices/notes/patterns.html#)
-
-# Find bug
-* Considered fault types
-Block “To avoid deadlock, do not call blocking functions with interrupts disabled or a spinlock held.”
-Null “Check potentially NULL pointers returned from routines”
-Var “Do not allocate large stack variables (>1K) on the fixed-size kernel stack.”
-INull “Do not make inconsistent assumptions about whether a pointer is NULL.”
-Range “Always check bounds of array indices and loop bounds derived from user data.”
-Lock “Release acquired locks; do not double-acquire locks.”
-Intr “Restore disabled interrupts.”
-Free “Do not use freed memory.”
-Float “Do not use floating point in the kernel.”
-Size “Allocate enough memory to hold the type for which you are allocating.”
-
-##KSM
-
-#Signal
-* struct signal_sturct: 
-The "struct signal_struct" is the random *leftovers* from all the other stuff.
-http://thread.gmane.org/gmane.linux.kernel/512831/focus=513990
-* sigpending
-Store blocked signal info
-* Non-mask signal
-SIGKILL, SIGSTOP
-##Generate signal
-__send_signal();
-##Process siganl
-* SIGKILL (may be some other)
-process in _send_signal()-> complete_signal() tsk->state |= TASK_WAKEKILL 
-http://lwn.net/Articles/288056/
-http://www.ibm.com/developerworks/library/l-task-killable/
-* others
-each time a switch is made from kernel mode to user mode, 
-arch-specific: entry.S -> do_siganl()
-{ 
-	get_signal_deliver()
-	{
-		if fatal -> do_greoup_exit()->...__cleanup_sighand()
-	}
-
-	handle_signal() -> k->u(hanle)-sigreturn->k
-}
-
-#Netlink
-* Group
-enum rtnetlink_groups
-##What is netlink
-Networking related kernel configuration and monitoring interfaces.
-* IPC between kernel and user spacess process.
-ioctl
-* prarts
-	libnl
-	libnl-route
-	libnl-genl
-	libnl-nf
-
-* How many parts does libnl-route has?
-Address,  links, neighboring, routing, TC
-
-## Need patch
-skbedit action
-cgroup classifier
-tun/tap dev 
-gre tunnel dev 
-tc classifier/action
-
-#Namespace
-
-#Module
+# Module
 ##pre-require
 modules.alias
 http://doc.opensuse.org/documentation/html/openSUSE_113/opensuse-reference/cha.udev.html
@@ -146,16 +77,16 @@ https://unix.stackexchange.com/questions/90027/what-is-the-sequence-loading-linu
 
 3 rc 里面smartqos之类的.
 
-##Load module into kernel
+## Load module into kernel
 vmlinux.lds.h linker scipts include helper macros.
 
-#Data structures
+# Data structures
 * u32 __u32
 __u32 is used for user-space. declare a variabe used by icotl. qosmark.
 u32 is used for kernel.
 deatils in ldd3e chapter 10
 
-#Panic
+# Panic
 kernel/kernel/panic.c
 
 ##disk 
@@ -181,27 +112,8 @@ MACHINE_START(_type,_name)
 __section__(".arch.info.init")
 arch/arm/tools/mach-types
 armada_xp_db            MACH_ARMADA_XP_DB       ARMADA_XP_DB            3036
-
-## smp
-An Implementation Of Multiprocessor Linux Alan Cox
-
-### cpumask
-
-## Interrupt
-SPI and PPI or IPI, difference?
-
-
-# Faq
-MACHINE_START
-
-## Kernel/system boot hang/freeze
-### Sysrq
-Whe sysrq work?
-
 ### bootargs
 debug initcall_debug
-
-
 ### printk
 # old questions
 What is platform driver?

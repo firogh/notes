@@ -24,7 +24,6 @@ UTC/GMT
 Based on caesium microwave atomic clock
 Leap second
 
-
 ## Genus-differentia definition
 interrupt, clock event,  clock source, tick, timer, timekeeping, gettimeofday.
 
@@ -77,8 +76,6 @@ onset: open_softirq(HRTIMER_SOFTIRQ, run_hrtimer_softirq);
 nucleus: common_timer_set
 hrtimer_interrupt | (tick_handle_periodic-> tick_periodic-> update_process_times->run_local_timers->hrtimer_run_queues)->__run_hrtimer->timer.function = posix_timer_fn;(set in common_timer_set)
 
-
-
 计算机概念
 system clock CLOCK_REALTIME CLOCK_MONOTONIC
 time.h time_t=tm=timeval=timespec calendar time  clock_t
@@ -92,5 +89,3 @@ clock source: 用一些整型抽象一个过程, 对于时间来说, 简直是�
 * kernel requirement
 linux的时间子系统要求硬件timer提供下面两种能力：
 一是free running的counter，此外需要能够在指定的counter值上产生中断的能力。
-
-
