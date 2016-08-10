@@ -16,3 +16,5 @@ https://unix.stackexchange.com/questions/90027/what-is-the-sequence-loading-linu
 vmlinux.lds.h linker scipts include helper macros.
 
 
+# kernel modules
+sudo depmod -n -a -F /boot/System.map-4.3.5-300.fc23.x86_64  4.3.5-300.fc23.x86_64 > /tmp/m.log
