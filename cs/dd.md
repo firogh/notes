@@ -2,7 +2,7 @@
 tags: [ kernel ] 
 title: Linux device driver
 date: 2015-02-27T15:46:12+08:00 
-category: kernel
+category: cs
 ---
 #Bibilography
 Driver porting: Device model overview: http://lwn.net/Articles/31185/

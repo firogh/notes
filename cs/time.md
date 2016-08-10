@@ -1,8 +1,9 @@
 ---
+tags: [ kernel ] 
 layout: post
 date: 2015-09-22
 title: Linux time subsystem
-category: kernel
+category: cs
 ---
 我写作的主要目的是理清基本概念与原理, 而非实现,细节这一类.
 

@@ -2,7 +2,7 @@
 tags: [ kernel ] 
 title: Interrupt
 date: 2015-02-27T15:46:12+08:00 
-category: kernel
+category: cs
 ---
 
 # The player

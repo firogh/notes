@@ -2,7 +2,7 @@
 tags: [ kernel ] 
 title: The Journey to RCU
 date: 2015-05-24T09:52:12+08:00 
-category: kernel
+category: cs
 ---
 
 # RCU stalls

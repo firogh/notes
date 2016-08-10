@@ -4,6 +4,8 @@ title: The architecture of Enlgish language
 category: linguistics
 ---
 
+No Chainese language
+
 # a & d
 time: 4 months
 1 sound

@@ -9,8 +9,10 @@ category: cs
 
 # arch of cs
 design and programming
-compile, link, load
+pl, compile, link, load
 process, quantaties, order
+turing, arch, os
+math, logic, electric
 
 # The Architecture of Computer science
 SICP states that cs focuses on process.
@@ -51,7 +53,7 @@ inference 强调的是order of changes/computation,也就是control flow.
 Why does the order of execution matter?
 Then we need programming:sicp c3(c2/c1)
 then interpreter: sicp c4
-link load
+compile link load
 computation model: sicp c5
 if else: 表示的是relation(changes之间的关系, order, causality, inference)
 也就是说pl包含:
