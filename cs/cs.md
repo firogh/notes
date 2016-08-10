@@ -8,10 +8,10 @@ category: cs
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
 # arch of cs
-design and programming
-pl, compile, link, load
+design and algorithm, programming(debugging,
+pl, compile(gcc), link, load
 process, quantaties, order
-turing, arch, os
+turing, arch, os(boot, console, fedora, fs, process)
 math, logic, electric
 
 # The Architecture of Computer science
