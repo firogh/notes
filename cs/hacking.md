@@ -5,6 +5,30 @@ title: Kernel hacking
 category: cs
 ---
 
+# kernel hacking
+The cxgb3_*_send() functions return NET_XMIT_ values, which are
+positive integers values. So don't treat positive return values
+as an error.
+67f1aee6f45059fd6b0f5b0ecb2c97ad0451f6b3
+# old questions
+What is platform driver?
+find source code of config
+How to print backtrace by kernel oops, and why it's not exact?
+What is abi 
+why get_unaligned_be16?
+ _THIS_IP_ vs __FUNCTIONS__
+
+# kernel data type
+[__u32](http://yarchive.net/comp/linux/kernel_headers.html) and [this](http://www.linuxjournal.com/article/5783) and dd3e chapter 10.
+
+# The principle of kernel & driver backport
+将高本版kernel的feature移植到低版本的kernel的过程就是backport.
+1. 尽量保持与mainline的代码一致
+2. 做好取舍不要引入太多patch. 
+## 开发流程
+理清所引入feature的代码. 主要数据结构以及功能流程.
+
+
 [走近Linux内核-- 王聪](http://wangcong.org/2007/03/09/-e8-b5-b0-e8-bf-91linux-e5-86-85-e6-a0-b8/)
 # kernel hacker之路
 我实在太想聊这个话题 -- 内核hacker的成长之路!

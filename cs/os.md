@@ -60,6 +60,7 @@ __handle_mm_fault
 		}
 }
 # kernel panic 3.10.62
+kernel/panic.c
 general protection fault and page fault
 1498 errorentry general_protection do_general_protection
 1499 errorentry page_fault do_page_fault
