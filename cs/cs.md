@@ -365,7 +365,6 @@ change, computation, transfer . | instructions(memory,IO), Process, interrupt
 relation, order | synchronization/atomic, scheduling, interrupt
 quantaties, state | fs, memory, device, driver
 
-
 [test-and-set](http://web.cecs.pdx.edu/~walpole/class/cse513/slides/3.pdf)
 test the lock, if false(nobody take it), then set the lock.
 Test and test-and-set对TAS优化.
