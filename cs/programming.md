@@ -49,4 +49,4 @@ see debugging.md
 # Testing
 1.Black-box testing test software function.
 2.White-box testing test software internal logic.
-kvm  & supermin
+kvm & supermin

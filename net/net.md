@@ -932,3 +932,25 @@ net_poll
 napi
 * What is Head-of-line blocking
 
+#Netlink
+* Group
+enum rtnetlink_groups
+##What is netlink
+Networking related kernel configuration and monitoring interfaces.
+* IPC between kernel and user spacess process.
+ioctl
+* prarts
+	libnl
+	libnl-route
+	libnl-genl
+	libnl-nf
+
+* How many parts does libnl-route has?
+Address,  links, neighboring, routing, TC
+
+## Need patch
+skbedit action
+cgroup classifier
+tun/tap dev 
+gre tunnel dev 
+tc classifier/action

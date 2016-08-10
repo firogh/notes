@@ -26,9 +26,6 @@ PIC
 Why complier can manipulate the address of vriables? 
 What is the address in lds(??) file?
 
-# Build automation
-* Make
-make cynthia
 ## kbuild
 * if no .config, every config tools make a .config from scrach!
 * oldconfig just for new moduels patch merged in trunk. This no any relations to .config.old and /boot/config.x.y.z
@@ -41,31 +38,6 @@ make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
 # Compile construction
-* gcc
--E -S -c 
--I -L -l
--ansi
--fsyntax-only 
--Werror
--save-temps
--H: show all header used
--v
--Wall
--fPIC: for shared library
--Q: print function and statisc?
--Wextra: 用处不大.
--U: undefine a preprocessor macro.
--pipe: make compilation faster, replace xx.S with |
--Wpadded: we can rearrange the fields of structure to make the structure smaller
--time
--x c: c language
--: stdin
-asmlinkage
-However, for C functions invoked from assembly code, 
-we should explicitly declare the function's calling convention, 
-because the parameter passing code in assembly side has been fixed. 
-Show all predefined macros for your compiler
-gcc -dM -E -x c /dev/null
 ##[Generating optimized code](http://www.stlinux.com/devel/debug/jtag/build?q=node/82)
 ##Symbol table
 * System.map less 

@@ -6,6 +6,32 @@ category: cs
 ---
 
 # Signal 
+* struct signal_sturct: 
+The "struct signal_struct" is the random *leftovers* from all the other stuff.
+http://thread.gmane.org/gmane.linux.kernel/512831/focus=513990
+* sigpending
+Store blocked signal info
+* Non-mask signal
+SIGKILL, SIGSTOP
+##Generate signal
+__send_signal();
+##Process siganl
+* SIGKILL (may be some other)
+process in _send_signal()-> complete_signal() tsk->state |= TASK_WAKEKILL 
+http://lwn.net/Articles/288056/
+http://www.ibm.com/developerworks/library/l-task-killable/
+* others
+each time a switch is made from kernel mode to user mode, 
+arch-specific: entry.S -> do_siganl()
+{ 
+	get_signal_deliver()
+	{
+		if fatal -> do_greoup_exit()->...__cleanup_sighand()
+	}
+
+	handle_signal() -> k->u(hanle)-sigreturn->k
+}
+
 
 # fault handler
 
@@ -165,13 +191,7 @@ _IO_file_jumps
 [Speeding up kernel development with QEMU](https://lwn.net/Articles/660404/)
 [UBC: An Efficient Unified I/O and Memory Caching Subsystem for NetBSD](https://www.usenix.org/legacy/event/usenix2000/freenix/full_papers/silvers/silvers_html/)
 [VFS notes](http://www.fieldses.org/~bfields/kernel/vfs.txt)
-
 # KVM
 [KVM源代码分析3:CPU虚拟化](http://www.oenhan.com/kvm-src-3-cpu)
-
-
 # Human, too human
 [Iyo Yoshimi 吉見衣世](https://www.flickr.com/photos/deathhell/8702618520/in/photostream/)
-
-
-

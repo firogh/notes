@@ -5,6 +5,7 @@ title: Kernel hacking
 category: cs
 ---
 
+[走近Linux内核-- 王聪](http://wangcong.org/2007/03/09/-e8-b5-b0-e8-bf-91linux-e5-86-85-e6-a0-b8/)
 # kernel hacker之路
 我实在太想聊这个话题 -- 内核hacker的成长之路!
 不是教你写第一个kernel module, 就灭火了. 而是持续的一步步成长为
