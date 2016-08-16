@@ -469,3 +469,30 @@ what is /dev/vcs?
 ./drivers//tty/tty_io.c:3613:	    register_chrdev_region(MKDEV(TTYAUX_MAJOR, 1), 1, "/dev/console") < 0)
 ./drivers//tty/pty.c:841:	    register_chrdev_region(MKDEV(TTYAUX_MAJOR, 2), 1, "/dev/ptmx") < 0)
 
+# hugh in n_tty_write
+uart_flush_buffer-> tty_wakeup
+serial8250_handle_port-> transmit_chars
+n_tty_read/poll->input_available_p->flush_to_ldisc->n_tty_receive_buf->uart_flush_chars
+n_tty_write->uart_flush_chars->uart_start
+n_tty_write->uart_write-> uart_start->start_tx -> serial8250_start_tx -> transmit_chars->uart_write_wakeup ->uart_tasklet_action->tty_wakeup
+
+# Echo char
+===serial chipset
+serial8250_interrupt
+seirial8250_handle_port
+receive_chars
+
+===serial abstruction
+uart_insert_char
+
+===terminal device
+tty_insert_flip_char
+
+receive_chars->tty_flip_buffer_push ->flush_to_ldisc->
+=== Line discipline
+disc->receive_buf=n_tty_receive_buf->n_tty_receive_char->echo_char
+
+# uart_port
+serial8250_register_ports
+struct uart_8250_port *up = &serial8250_ports[i];
+uart_add_one_port(drv, &up->port);
