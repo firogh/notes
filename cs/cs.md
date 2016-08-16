@@ -9,7 +9,7 @@ category: cs
 
 # arch of cs
 design(pattern) and algorithm, programming(debugging, hacking)
-pl, compile(gcc), link, load(cll)
+pl,assembly, compile(gcc), link, load(cll)
 process, quantaties, order(synchronization)
 turing, arch, os(boot, console, fedora, fs, process, mm, pm, time, virt, synchronization)
 math, logic, electronics
