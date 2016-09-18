@@ -157,3 +157,10 @@ Seasonings
 洋葱 onion
 
 
+# Diet
+Vegetarin/Vegen
+protein, iron, zinc, B12
+Low sugar, CH
+100 grams/per week
+No processed meat`
+纤维vegetables

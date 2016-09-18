@@ -27,6 +27,11 @@ Leap second
 ## Genus-differentia definition
 interrupt, clock event,  clock source, tick, timer, timekeeping, gettimeofday.
 
+## unites
+cputime = jiffies under HZ (FIXME)
+sum_exec_runtime nanoseconds
+clockt = jiffies but under USER_HZ
+
 ## 功用定义
 获取时间
 timer

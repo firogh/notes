@@ -6,6 +6,9 @@ category: linguistics
 
 No Chainese language
 
+# Vocabulary
+Current 6000 words. Target 20000.
+
 # a & d
 time: 4 months
 1 sound

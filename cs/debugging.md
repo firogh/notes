@@ -10,23 +10,52 @@ Reverse engineering
 
 # Debugging and Bug types
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
-The explaination type of a Bug is named Bug type, generally.
-坊间流传这样一句话:"能复现的Bug, 都不算Bug.", 言外之意就是能复现就能解.
-可见Bug复现,对解Bug的重要性. [BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
+Theory + Observations => Explanation
+
+# Bug classifications
+[BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
 The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及.尤其是,
 他的Bug分类方式惊艳无比, 逻辑上非常严密, 就好比数学系统, 由公理系统推导而得.
 NVD的Bug分类也采用类似的构建方式.[CWE Cross Section Mapped into by NVD][3] 
 涵盖了所有常见的的Bug描述, 而且非常专业.大赞!wikipedia的条目就相形见绌了
 [Common types of computer bugs in wikipedia][4].
 
+# use after free
+record the owner, who free.
 
-use after free
+# oops
+Kernel oops relates to invalid memory access, including sigev and sigbus.
+[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
 
-# Bugs in Linux kernel 
-Kernel oops,[When the kernel de-references an invalid pointer, it’s not called a segfault – it’s called an ”oops”.](http://neependra.net/kernel/Debugging_Kernel_OOPs_FUDCon2011.pdf)
-[kenrel lockup](http://www.av8n.com/computer/htm/kernel-lockup.htm)
-[oops, WARN_ON, or kernel panic](http://fedoraproject.org/wiki/KernelBugClassification)
-[kernel oops](https://www.kernel.org/doc/Documentation/oops-tracing.txt)/warn/panic
+# lockup
+phenomenon: LOCKUP_DETECTOR
+[kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
+[Debugging Linux Kernel Lockup / Panic / Oops](http://www.av8n.com/computer/htm/kernel-lockup.htm)
+Causes: deadlock, hardware, irqoff and loop
+
+# hung task
+phenomenon: DETECT_HUNG_TASK
+Includes the interruptable task.
+Causes: deadlock, race condition
+
+# deadlock
+Lockdep
+[The kernel lock validator](https://lwn.net/Articles/185666/)
+[Runtime locking correctness validator](https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt)
+https://lkml.org/lkml/2013/2/4/4
+http://bbs.chinaunix.net/thread-4183696-1-1.html
+
+# kasan
+setup_arch->kasan_init
+[KernelAddressSanitizer a fast memory error detector for the Linux kernel](http://events.linuxfoundation.org/sites/events/files/slides/LinuxCon%20North%20America%202015%20KernelAddressSanitizer.pdf)
+[kasan found stack out of bounds](https://github.com/zfsonlinux/zfs/pull/4708/commits/01709937be3c28a89eff83e0e657a72826947506)
+[lwn The kernel address sanitizer](https://lwn.net/Articles/612153/)
+[out of bounds](https://lkml.org/lkml/2014/12/3/128)
+
+# CONFIG_DEBUG_PAGEALLOC
+check_poison_mem in alloc_pages
+free_pages_prepare posion
+
 
 # General debugging steps
 Debugging的逻辑过程是[Abductive reasoning][1]. 我们以此进行推导.
@@ -43,8 +72,6 @@ E: ∅ -> Bug type(可能经过是多种Bug types的过渡状态) -> Explanation
 > the process of debugging is use O to minimize T to E instance.
 > T is solutions space, E [locates][5] in T. O is the address to find E.
 
-对于Software Bug而言, Debugging可以认为是从observations到source code再到人的逻辑的过程.
-observations -> source code -> mind logic
 基于NVD的CWE我们可知, 收集observations 可能是development和deployment的各个节点.
 
 ### Get observations
