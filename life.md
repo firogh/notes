@@ -4,6 +4,8 @@ date: 2015-02-27T15:46:11+08:00
 category: firo
 ---
 
+
+There is only one success - to be able to spend your life in your own way. --Christopher Morely
 # Daily schedule
 12:00 English
 05:00 Cook rice porridge(Use timer function)
@@ -34,6 +36,9 @@ CS
 Kernel commits
 Work achievement
 Aroad: Offer, H1B 
+
+# English 
+200 words/day 
 
 # 0222
 Clean the old contents of life.md.
