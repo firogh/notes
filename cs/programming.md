@@ -21,6 +21,10 @@ Valid and verification
 Testing
 Debuging
 
+# Files sytle
+[kernel asm/asm-generic](https://lists.kernelnewbies.org/pipermail/kernelnewbies/2012-March/004986.html)
+asm stands for arch specific macros(FIXME).
+
 # Coding style
 比如GNU coding standards, Linux kernel coding style, Shell coding standard
 * Label
