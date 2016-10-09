@@ -4,6 +4,20 @@ title: The architecture of Enlgish language
 category: linguistics
 ---
 
+Vocabulary, Phonetics, Grammar
+Liasion
+Reading, Listening, Writing, Speaking.
+
+Listening is simpler then Speaking.
+Reading is over for me.
+
+Then listening: Listen langeasy
+Speaking: Narration
+Writing: BEC and key words for flunce.
+
+[怎样解决英语的连读吞音等问题？](https://www.zhihu.com/question/35857073)
+
+# Below is obselete
 No Chainese language
 
 # Vocabulary
