@@ -18,7 +18,6 @@ Youtube Rachel's English, and so on.
 Langeasy
 Speaking: Narration
 
-
 # Expressing, writing
 Recite words, colloactons, phrasal verbs.
 The Elements of Style -- William Strunk / E. B. White 

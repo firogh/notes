@@ -10,9 +10,9 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 多种不同的角度, 往往是理解事物最合宜的方法.
 
 # Oracle-machine
-Things themselves: Husserl, Wittgenstein 
+Things themselves: Husserl, Wittgenstein, 每天去用不就会了嘛.
 
-Weakness, fixup, growing up -- Firo 人在缺点被弥补之后获得成长.
+Weakness, fixup, growing up -- Firo 人在缺点被弥补之后获得成长. 另外逆每天用, 面对就会了的基础就是wfg.
 Zeroness -- 学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是要是, 如果是你的话会是什么样的! -- Firo
 The origin of the world -- Firo
 Multitask: 不能等一件事完了, 才去干另一件事, 很多事都是在摸索中进行的,很多事之间是相互联系的. 更多的时候,
@@ -21,7 +21,7 @@ Reflexivity -- Soros  很多事情是混沌的, 不能一开始就全部计划�
 Transformation cognition -- Firo
 The Feynman Technique
 奥卡姆的剃刀. 简单有效可持续.
-它山之石可以攻玉. -- Firo 初期的宏观认识, 但只能是有深度的, 专业的.如美语发音.
+它山之石可以攻玉. -- Firo 初期的宏观认识, 但只能是有深度的, 专业的.如美语发音. cooperate.
 Descartes's methods
 
 The background, architecture, tide of times. -- Firo topdown?
