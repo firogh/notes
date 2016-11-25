@@ -3,42 +3,38 @@ title: The life of Firo
 date: 2015-02-27T15:46:11+08:00 
 category: firo
 ---
-
-
 There is only one success - to be able to spend your life in your own way. --Christopher Morely
-# Daily schedule
+# Daily time schedule
 12:00 English
 05:00 Cook rice porridge(Use timer function)
-06:45 Getting up. 晨光熹微!
-07:00 Words, collections, idioms.
-09:00 Listen English in subway and during work.
-12:00 
-18:00 Listen English grammar on subway home
-	Computer science topic with in my architecture
-20:30 English pronunciation: learn AAT in this week 3.28 ~ 4.2;
-21:15 English writing and speaking.
+06:30 Getting up. 晨光熹微!
 21:45 Physical exercises 30 ~ 45 minutes.
-22:30 Wash face & Have a shower.
-22:45 Sleep about 8 hours. Do not watch phone or pad.
+22:15 Wash face & Have a shower.
+22:30 Sleep about 8 hours. Do not watch phone or pad.
 
-# Daily habits
-Kill the waste of time things. 
-Remedies for sinus.
+
+# Daily principles
+Kill the waste of time things.
+Remedies sinus.
 Drink a lot of water.
 Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
 
+# English
+24/11 ~ 04/12: Correct my pronunciation
+05/12 ~ 11/12: Transitional words, daily conversation, Business.
+
 # Future
-08 ~ 12: 5 months 150 days			
+08 ~ 12: 5 months 150 days
 English
 Health
 CS
 Kernel commits
 Work achievement
-Aroad: Offer, H1B 
+Abroad: Offer, H1B
 
-# English 
-200 words/day 
+# English
+200 words/day
 
 # 0222
 Clean the old contents of life.md.

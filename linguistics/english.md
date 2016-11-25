@@ -3,6 +3,26 @@ date: 2015-03-20
 title: The architecture of Enlgish language
 category: linguistics
 ---
+
+# Reference
+[暴力英语学习法 + 严格的目标管理 = 成功快速靠谱的学好英语](http://www.cnblogs.com/jesse2013/p/how-to-learn-english.html)
+51talk
+
+# Error
+create
+purpose
+acquire
+contract
+statistics
+cache
+archive
+suite
+plumber
+executive
+receipt
+aisle
+half AmE
+
 ## Vocabulary
 [Online Etymology Dictionary](http://www.etymonline.com/)
 
@@ -17,14 +37,24 @@ Pronuciation workshop
 Youtube Rachel's English, and so on.
 Langeasy
 Speaking: Narration
+Youtube.
 
 # Expressing, writing
+Dicts
 Recite words, colloactons, phrasal verbs.
 The Elements of Style -- William Strunk / E. B. White 
 On Writing : A Memoir of the Craft --STEPHEN KING
 Bird by Bird : Some Instructions on Writing and Life --Anne Lamott
 On Writing Well : The Classic Guide To Writing Nonfiction -- William Zinsser 
 BEC and key words for flunce.
+
+
+# What should I do?
+Listening Langesay on the commute: listening.
+Before going to bed ATT and etc. Speaking and listening.
+Youtube, comprehensive.
+Expressing.
+Shadowing.
 
 
 # 不爽感觉的由来
