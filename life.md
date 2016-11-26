@@ -24,7 +24,10 @@ Experience in kernel hacking and cs.
 24/11 ~ 04/12: Correct my pronunciation
 05/12 ~ 11/12: Transitional words, daily conversation, Business.
 
+<<<<<<< HEAD
 GOGO
+=======
+>>>>>>> 7b02dec1e7725b76a080c504f57125dbcd8aa81d
 # Future
 08 ~ 12: 5 months 150 days
 English
