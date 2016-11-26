@@ -24,6 +24,7 @@ Experience in kernel hacking and cs.
 24/11 ~ 04/12: Correct my pronunciation
 05/12 ~ 11/12: Transitional words, daily conversation, Business.
 
+GOGO
 # Future
 08 ~ 12: 5 months 150 days
 English
