@@ -29,6 +29,12 @@ Interval with good sleep for Ebbinghaus and Neuroplasticity.
 Acquire only by conscious mind, but using unconsciously by Neuroplasticity.
 单词的passive是知识的缺失.
 
+# Human learning architecture
+tide
+learn/correct the right knowledge, then practice/internalize
+细粒度,高强度.
+80/20
+
 # Oracle-machine
 Life is long.
 Neuroplasticity, 斗转星移.
