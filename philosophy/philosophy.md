@@ -29,6 +29,10 @@ Interval with good sleep for Ebbinghaus and Neuroplasticity.
 Acquire only by conscious mind, but using unconsciously by Neuroplasticity.
 单词的passive是知识的缺失.
 
+# The feeling of learning
+1. 十分生疏， 很多东西都要学习
+2. 找到某种感觉，方法。 开始享受新知。 如：数独， 踩地雷， 意识到音标是听的根本，开始听出单个音标, 想知道每个单词的发音。
+
 # Human learning architecture
 tide
 learn/correct the right knowledge, then practice/internalize
