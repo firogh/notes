@@ -35,6 +35,7 @@ Acquire only by conscious mind, but using unconsciously by Neuroplasticity.
 
 # Human learning architecture
 tide
+sleep
 learn/correct the right knowledge, then practice/internalize
 细粒度,高强度.
 80/20
