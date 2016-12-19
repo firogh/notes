@@ -60,6 +60,7 @@ Transformation cognition -- Firo
 Descartes's methods
 
 Feedback 认识缺陷, 发现不足, 
+整体不等于个体的集合。 -- Firo
 Completeness, consistency, validity, soundness. -- Logic
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20

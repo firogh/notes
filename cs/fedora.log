@@ -5,7 +5,9 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
-# Privoxy
+# Android
+sudo adb shell "settings put global captive_portal_server www.google.cn"
+Privoxy
 
 # Chrome
 IDC_SELECT_PREVIOUS_TAB: 前一个tab
@@ -45,6 +47,7 @@ http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 #Raspberry pi
 * Remote viewer
 vinagre
+
 
 
 
