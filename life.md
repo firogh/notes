@@ -6,11 +6,13 @@ category: firo
 There is only one success - to be able to spend your life in your own way. --Christopher Morely
 
 # Sustain health
-05:00 Cook rice porridge(Use timer function)
 06:30 Getting up.
 21:45 Physical exercises 30 ~ 45 minutes.
 22:15 Wash face & Have a shower.
 22:30 Sleep about 9 hours. Do not watch phone or pad.
+
+## Tobe
+05:00 Cook rice porridge(Use timer function)
 
 Happy
 ## Daily principles
@@ -19,8 +21,6 @@ Remedies sinus.
 Drink a lot of water.
 Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
-
-
 
 # English
 1. 纠正之前记忆的错误读音.
@@ -33,11 +33,10 @@ Extra:
 3. 英语表达记忆
 Transitional words
 
-
 # CS
 # Kernel commits
 # Work achievement
-# Abroad
+# Go abroad
 Offer, H1B, Passport
 
 # Future
