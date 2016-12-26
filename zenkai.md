@@ -6,7 +6,6 @@ category: firo
 There is only one success - to be able to spend your life in your own way. --Christopher Morely
 活的时间长了, 本来对生活的美好期望慢慢地都消散了, 甚至忘记了自己本来期望的生活. -- Firo
 
-<<<<<<< HEAD:zenkai.md
 # Zenkai
 English
 Health
@@ -16,6 +15,11 @@ Work achievement
 Abroad: Offer, H1B
 Passport
 Happy
+# CS
+# Kernel commits
+# Work achievement
+# Go abroad
+Offer, H1B, Passport
 
 # Future
 ## October 2016
@@ -33,15 +37,8 @@ Job hunting
 ## April 2017
 Job hunting
 
-
-# Daily time schedule
-12:00 English
-05:00 Cook rice porridge(Use timer function)
-06:30 Getting up. 晨光熹微!
-=======
 # Sustain health
 06:30 Getting up.
->>>>>>> f8f2c746b8e4c11bbc8989bcc951a04688f757bf:life.md
 21:45 Physical exercises 30 ~ 45 minutes.
 22:15 Wash face & Have a shower.
 22:30 Sleep about 9 hours. Do not watch phone or pad.
@@ -68,24 +65,4 @@ Extra:
 3. 英语表达记忆
 Transitional words
 
-# CS
-# Kernel commits
-# Work achievement
-# Go abroad
-Offer, H1B, Passport
 
-# Future
-## October 2016
-English
-
-## January 2017
-CS
-
-## February 2017
-CS
-
-## March 2017
-Job hunting
-
-## April 2017
-Job hunting
