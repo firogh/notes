@@ -6,6 +6,7 @@ category: cs
 ---
 
 # Reference
+[Article: Introducing initramfs, a new model for initial RAM disks](http://linuxdevices.linuxgizmos.com/introducing-initramfs-a-new-model-for-initial-ram-disks-a/)
 
 # Contents
 What basic initializations should be perfomed when power on?

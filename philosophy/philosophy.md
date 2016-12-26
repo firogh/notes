@@ -22,6 +22,10 @@ When you can not think any further of somthing, you must be awarenees of lack of
 init onset, running nuclus, exit coda
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
 
+# Reflection
+基于统计学: 前期投入时间做统计.
+允许误差: 不求绝对准确
+
 # Life time schedule policy
 15 minutes. for different topic every time.
 3 7-minutes for same topic but log term.
