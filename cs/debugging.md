@@ -179,3 +179,6 @@ static int data_var=0;
 printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
 printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);}
 
+# Debug glibc
+directory ~/ws/glibc-2.23/libio
+set solib-search-path /usr/lib/debug/lib/x86_64-linux-gnu/
