@@ -20,25 +20,26 @@ Happy
 # Work achievement
 # Go abroad
 Offer, H1B, Passport
+# English
+1. Speak
+stress, weak forms, phonics.
+Langbo, 51 Talk
+2. Express
+Transitional words, Bec 100, TTC
+
+
 
 # Future
-## October 2016
-### English
-Vocabulary: 30 minutes one episode 
-30 new 30 old 30 NPR
-commutys new
-Practise 30
-Deadline 09 Jan
-2. 英语Usage
-主要是PEU为主, 深入的grammar.
-3. 英语表达记忆
+## January 27 - February 03
+Letter(s) -> phonetic symbol(s)
+Weak forms
+Stress
 Transitional words
+## January 27 - February 12
+Bec 100
+TTC
 
-
-## January 2017
-CS
-
-## February 2017
+## February 04
 CS
 
 ## March 2017
