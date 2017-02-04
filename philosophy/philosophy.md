@@ -9,6 +9,9 @@ Epistemology专门研究这个问题. 而我继续前人的工作.
 在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.
 多种不同的角度, 往往是理解事物最合宜的方法.
 
+# Firo
+世界之源也是标准重复.
+
 # World
 Things themselves: Husserl, Wittgenstein, Connected real life.
 它山之石可以攻玉. -- Firo 初期的宏观认识, 但只能是有深度的, 专业的.如美语发音. cooperate.
