@@ -3,14 +3,10 @@ date: 2015-09-13
 title: Quantitative congnition - The philosophy on which I live
 category: philosophy
 ---
-我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 
-更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, 
-Epistemology专门研究这个问题. 而我继续前人的工作.
-在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.
-多种不同的角度, 往往是理解事物最合宜的方法.
+我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
 # Firo
-世界之源也是标准重复.
+世界之源, 重复, irregularity and complexity, unpredictable untamed 20%.
 
 # World
 Things themselves: Husserl, Wittgenstein, Connected real life.
@@ -71,7 +67,7 @@ Feedback 认识缺陷, 发现不足,
 Completeness, consistency, validity, soundness. -- Logic
 Falsifiability可证伪性 -- Popper
 批判性, 你所学的一切都是暂时性的,任何所学都有改口 驳斥 质疑的余地 --Aaron Swartz,25:20
-认知的缺陷, imperfect-understand, 彻底可错性. --Firo Soros Popper
+认知的缺陷, imperfect-understand, 彻底可错性. 即便经过努力你掌握了80%， 但始终有20% 你搞不定。unpredictable untamed 20%. --Firo Soros Popper
 
 # 问题定义
 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
