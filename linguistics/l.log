@@ -1,4 +1,15 @@
 
+# main stress rule
+## verb, adj: 
+-v(c) unstress
+v:c/vvc/vcc stress
+
+## noun, derive
+strip last sylable.
+-v(c) unstress
+v:(c)/vv(c)/vcc stress
+
+
 ## Letter	"Short"	"Long"	Example
 A a	/æ/	/eɪ/	mat / mate
 E e	/ɛ/	/iː/	pet / Pete
