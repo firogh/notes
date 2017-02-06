@@ -10,42 +10,26 @@ category: philosophy
 Origins, repeat, irregularity and complexity, 
 
 ## The origins of the world
-there is nothing permanent except change. ――Heraclitus
+There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
 
 # Methods
 Things themselves - Husserl, Wittgenstein, Connected real life.
+
+Quantitative irregularity and complexity analyzing. -- Firo
+Structural analyzing, find the architecture. --Firo
+
 善假于物也. -- 荀子, Firo.
 Experiment and experience. -- Bacon, John Locke
-The hot and important, else later. -- Firo 如直达最可能的地方, 答案, 要事第一. bottom up
-The background, architecture, tide of times. -- Firo topdown?
+Statistics-based method model training
+The hot and important, else later. -- Firo
+Cramming:我听, 我忘记; 我看, 有印象; 除了我做,我记住。
 
-# Firo/subject
-unpredictable untamed, intuition
-学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你的话会是什么样的! -- Firo
-
-# Reflection
-When you can not think any further of somthing, you must be awarenees of lack of causilities.
-基于统计学: 前期投入时间做统计.
-
-# Life time schedule policy
-15 minutes. for different topic every time.
-3 7-minutes for same topic but log term.
-Interval with good sleep for Ebbinghaus and Neuroplasticity.
-Acquire only by conscious mind, but using unconsciously by Neuroplasticity.
-单词的passive是知识的缺失.
-
-# Human learning architecture
-tide
-sleep
+## Oracle-machine/Human learning architecture
+Repeat, Neuroplasticity
+Sleep
 learn/correct the right knowledge, then practice/internalize
-细粒度,高强度.
-80/20
-
-# Oracle-machine
-Life is long.
-Neuroplasticity, 斗转星移.
 
 Unconscious: 也能部分解决弱点零碎, 但是属于无意识被动.
 Block conscious practise: block 从而减小弱点零碎的问题. 主动.
@@ -80,3 +64,9 @@ Divide every question into manageable parts. -- Descartes
 Begin with the simplest issues and ascend to the more complex. -- Descartes
 Review frequently enough to retain the whole argument at once -- Descartes
 Accept as true only what is indubitable. -- Descartes
+## Reflection
+When you can not think any further of somthing, you must be awarenees of lack of causilities.
+
+# Firo/subject
+unpredictable untamed, intuition
+学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你会是什么样的! -- Firo
