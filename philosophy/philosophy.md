@@ -5,25 +5,29 @@ category: philosophy
 ---
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
-# Firo
-世界之源, 重复, irregularity and complexity, unpredictable untamed 20%.
 
-# World
-Things themselves: Husserl, Wittgenstein, Connected real life.
-它山之石可以攻玉. -- Firo 初期的宏观认识, 但只能是有深度的, 专业的.如美语发音. cooperate.
-Zeroness -- 学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是要是, 如果是你的话会是什么样的! -- Firo
+# World/object
+Origins, repeat, irregularity and complexity, 
+
+## The origins of the world
+there is nothing permanent except change. ――Heraclitus
+onset, nuclus, coda
+问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
+
+# Methods
+Things themselves - Husserl, Wittgenstein, Connected real life.
+善假于物也. -- 荀子, Firo.
+Experiment and experience. -- Bacon, John Locke
 The hot and important, else later. -- Firo 如直达最可能的地方, 答案, 要事第一. bottom up
 The background, architecture, tide of times. -- Firo topdown?
 
-## The origin of the world
-世界总是转换,不稳定,不确定.
-When you can not think any further of somthing, you must be awarenees of lack of causilities.
-init onset, running nuclus, exit coda
-问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
+# Firo/subject
+unpredictable untamed, intuition
+学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你的话会是什么样的! -- Firo
 
 # Reflection
+When you can not think any further of somthing, you must be awarenees of lack of causilities.
 基于统计学: 前期投入时间做统计.
-允许误差: 不求绝对准确
 
 # Life time schedule policy
 15 minutes. for different topic every time.
@@ -31,10 +35,6 @@ init onset, running nuclus, exit coda
 Interval with good sleep for Ebbinghaus and Neuroplasticity.
 Acquire only by conscious mind, but using unconsciously by Neuroplasticity.
 单词的passive是知识的缺失.
-
-# The feeling of learning
-1. 十分生疏， 很多东西都要学习
-2. 找到某种感觉，方法。 开始享受新知。 如：数独， 踩地雷， 意识到音标是听的根本，开始听出单个音标, 想知道每个单词的发音。
 
 # Human learning architecture
 tide
