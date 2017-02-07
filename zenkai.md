@@ -31,8 +31,11 @@ Offer, H1B, Passport
 1. Speak
 stress, phonics are forceless to improve speaking and listening.
 weak forms, contraction, Langbo, 51 Talk
+<<<<<<< HEAD
+=======
 Stress, weak forms, phonics.
 Langbo, 51 Talk
+>>>>>>> f9460a5fd414421fc2c0b0fa3df6957be8ba3f29
 2. Express
 Transitional words, Bec 100, TTC
 
