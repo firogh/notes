@@ -21,7 +21,7 @@ Things themselves - Husserl, Wittgenstein, Connected real life.
 Quantitative irregularity and complexity analyzing. -- Firo
 Structural analyzing, find the architecture. --Firo
 Statistics-based method model training
-Reflexivity -- Soros  很多事情是混沌的, 不能一开始就全部计划好, 而是在不断探索中完成的.
+Reflexivity -- Soros  
 The whole is other than the sum of the parts. --Gestalt psychology
 Falsifiability -- Popper
 Transformation cognition -- Firo
