@@ -18,30 +18,42 @@ Falsifiability -- Popper
 
 # Oracle-machine/methods
 1. Analyzing the object/goal/target
-Things themselves - Husserl, Wittgenstein, Connected real life.
+Things themselves - Husserl, Wittgenstein
 Ideal goal directed thought. -- Firo
-Quantitative irregularity and complexity analyzing. -- Firo
-Structural analyzing, find the architecture. -- Firo
+Quantitative irregularity, Structural, and complexity analyzing. -- Firo
 The Feynman Technique
 
 2. Use the following method to select the appropriate methods
-Statistics and analyizing-based method selecting. -- Firo
 Reflexivity -- Soros
 Transformation cognition -- Firo
-Occam's razor 
 Simple is long -- Firo
 The hot and important, else later. -- Firo
 Experiment and experience. -- Bacon, John Locke
+2.1 Tips, implicity massive
+Quantitative -> Statistics-based-> alloc time, excessive exposure
+irregularity -> intuitional trial and err
+regularity -> rational
+Structural, -> rational, context, architecture
+complexity -> rational. scientific method, Occam's razor
 
 3. methods/
-If massive and irregularity but simple 
+If massive and irregularity but simplicity
 	use firsthand massive exposed Trial and error or intuition
 If massive not irregularity but complexity 
 	use escartes's and rational generative method
 If massive simple regularity
 	use rational programish 
+Statistics-based method training. -- Firo
+Occam's razor 
+Scientific method
+## Descartes's methods
+Divide every question into manageable parts. -- Descartes
+Begin with the simplest issues and ascend to the more complex. -- Descartes
+Review frequently enough to retain the whole argument at once -- Descartes
+Accept as true only what is indubitable. -- Descartes
 
-# Human learning architecture
+
+## Human learning architecture
 Intuiation
 Repeat, Neuroplasticity, Manas-vijnana
 Sleep
@@ -52,11 +64,6 @@ Trial and error: callback learning
 Critical learning  -- Popper, Aaron Swartz 25:20
 善假于物也. -- 荀子
 
-## Descartes's methods
-Divide every question into manageable parts. -- Descartes
-Begin with the simplest issues and ascend to the more complex. -- Descartes
-Review frequently enough to retain the whole argument at once -- Descartes
-Accept as true only what is indubitable. -- Descartes
 ## Definition
 内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
 充要定义, Real and nominal definitions
