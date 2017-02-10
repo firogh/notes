@@ -35,13 +35,14 @@ Experiment and experience. -- Bacon, John Locke
 
 3. methods/
 If massive and irregularity but simple 
-	use firsthand massive exposed Trial and error
+	use firsthand massive exposed Trial and error or intuition
 If massive not irregularity but complexity 
 	use escartes's and rational generative method
 If massive simple regularity
 	use rational programish 
 
 # Human learning architecture
+Intuiation
 Repeat, Neuroplasticity, Manas-vijnana
 Sleep
 Multitask: 互相启发, 幸亏没有等着背完GRE高频词,再练听力.
