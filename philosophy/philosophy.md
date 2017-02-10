@@ -5,8 +5,7 @@ category: philosophy
 ---
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
-# World/object
-## The origins of the world
+# World/object/The origins of the world
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
