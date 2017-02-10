@@ -5,7 +5,6 @@ category: philosophy
 ---
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
-
 # World/object
 Origins, repeat, irregularity and complexity, 
 
@@ -14,33 +13,43 @@ There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
 Completeness, consistency, validity, soundness. -- Logic
-
-# Methods
-Things themselves - Husserl, Wittgenstein, Connected real life.
-
-Quantitative irregularity and complexity analyzing. -- Firo
-Structural analyzing, find the architecture. --Firo
-Statistics-based method model training
-Reflexivity -- Soros  
 The whole is other than the sum of the parts. --Gestalt psychology
 Falsifiability -- Popper
+
+# Oracle-machine/methods
+1. Analyzing the object/goal/target
+Things themselves - Husserl, Wittgenstein, Connected real life.
+Ideal goal directed thought. -- Firo
+Quantitative irregularity and complexity analyzing. -- Firo
+Structural analyzing, find the architecture. -- Firo
+The Feynman Technique
+
+2. Use the following method to select the appropriate methods
+Statistics and analyizing-based method selecting. -- Firo
+Reflexivity -- Soros
 Transformation cognition -- Firo
 Occam's razor 
 Simple is long -- Firo
-Critical learning  -- Popper, Aaron Swartz 25:20
-
-善假于物也. -- 荀子, Firo.
-Experiment and experience. -- Bacon, John Locke
 The hot and important, else later. -- Firo
-The Feynman Technique
+Experiment and experience. -- Bacon, John Locke
 
-## Oracle-machine/Human learning architecture
+3. methods/
+If massive and irregularity but simple 
+	use firsthand massive exposed Trial and error
+If massive not irregularity but complexity 
+	use escartes's and rational generative method
+If massive simple regularity
+	use rational programish 
+
+# Human learning architecture
 Repeat, Neuroplasticity, Manas-vijnana
 Sleep
 Multitask: 互相启发, 幸亏没有等着背完GRE高频词,再练听力.
 Active learning and Meaningful learning: Learning by DOing, Participating
 Passive learning and Rote learning(cramming):我听, 我忘记; 我看, 有印象; 除了我做,我记住。
 Trial and error: callback learning
+Critical learning  -- Popper, Aaron Swartz 25:20
+善假于物也. -- 荀子
 
 ## Descartes's methods
 Divide every question into manageable parts. -- Descartes
