@@ -4,6 +4,13 @@ title: Fedora distro 物语
 date: 2015-02-27T15:46:11+08:00 
 category: cs
 ---
+# IMA
+KEYS: Separate the kernel signature checking keyring from module signing
+v3.13-rc1~18^2~61;-)
+b56e5a17
+
+7d2ce2320e8efdc4a6dcbae7b329ed3f0d1cd778
+ima: define '.ima' as a builtin 'trusted' keyring
 
 # Android
 sudo adb shell "settings put global captive_portal_server www.google.cn"
