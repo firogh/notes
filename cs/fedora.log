@@ -35,6 +35,8 @@ CommitDate: Thu Jul 17 09:35:15 2014 -0400
     a certificate's signature.
     
     This is derived from David Howells pkcs7_request_asymmetric_key() patch.
+### Tree 
+64724cf Merge remote-tracking branch 'integrity/next-with-keys' into keys-next
 
 # Android
 sudo adb shell "settings put global captive_portal_server www.google.cn"
