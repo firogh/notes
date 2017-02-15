@@ -73,3 +73,4 @@ When you can not think any further of somthing, you must be awarenees of lack of
 unpredictable untamed 20%, imperfect-understand, radical fallibility -- Firo, Soros, Popper
 intuition
 学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你会是什么样的! -- Firo
+Attention slavery.

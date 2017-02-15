@@ -8,6 +8,8 @@ category: cs
 # Android
 sudo adb shell "settings put global captive_portal_server www.google.cn"
 Privoxy
+# Git
+git log --oneline   --reverse --ancestry-path 3be4beaf7c91ec9c6fefa5f11173af37113d10ae~10..master
 
 # Chrome
 IDC_SELECT_PREVIOUS_TAB: 前一个tab
