@@ -15,6 +15,9 @@ The whole is other than the sum of the parts. --Gestalt psychology
 Falsifiability -- Popper
 
 # Oracle-machine/methods
+0. Exposure and perception/feeling;
+Exposure 解决的是人和世界/object隔离的问题, 也是任何object之间的联系多少的问题.
+perception/feeling注重的是人和object对人所产生的感受的不同,导致不同的归宿.
 1. Analyzing the object/goal/target
 Things themselves - Husserl, Wittgenstein
 Ideal goal directed thought. -- Firo
@@ -70,6 +73,7 @@ Classes of extensional definitions: enumerative definition
 ## Reflection
 When you can not think any further of somthing, you must be awarenees of lack of causilities.
 # Firo/subject
+理性本身有界限, 意识到那些无法掌控的事, respect 生命本身.
 unpredictable untamed 20%, imperfect-understand, radical fallibility -- Firo, Soros, Popper
 intuition
 学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你会是什么样的! -- Firo
