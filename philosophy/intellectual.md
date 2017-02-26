@@ -65,6 +65,29 @@ Direct realism, the claim that we experience objects independent of the independ
 Representationalism, the claim that we experience mental objects, but that these mental objects represent objects independent of the mind, is also false.
 
 # Neo Aristotelians - Spinoza and Leibnizg
+# Spinoza
+The whole of everything: the only substance can be independent; the whole of existence is numerically one substance.
+Immanent notions of God: somehow identify God in the world.
+Transcendent notitons of God: see God as separate from the world.
+Pantheist: an extreme form of immanentist.Infinite mentality and materialityand phisicality.
+Panentheist: Nature is in God, but God is more than Nature. Spinoza.
+Psychophysical parallelism: dimensions of the one. Mental events and physical events are co-ordinated in respectively minds and bodies.
+Stoicism: apathy, apathos: the control of pathos, the control of emotion;
+Ethics: magnum opus; the goal of human life and the highest state the mind can aspire to is a dispassionate intellectual love of God and a recognition of necessity and consequently as in Stoicism an internal state of calm acceptance rather than disturbed attachment to the faded events of this world. Spinoza is stauch critic of anthropomorphization of God. God can love this world but God has no free will and can not be conceived of as anything like a person.
+
+# Leibnizg 
+Polymath, jack of all intellectual traists. Inaugurated the modern German philosophical tradition.
+Monads: cannot causally interact; contain entelechy; phylogenetic thing.
+Entelechy: an inner principle that unfolds all the changes it goes through with respect to other substances.
+Bare monads: minimal appetition and perception.
+souls: animal monads; cue ball is inanimate, but rabbit has soul.
+Spirits: Monads with the property of apperception/统觉. essentially whtat that means is consciousness the ability to reflect on it's own perceptions.SO here we have minds in our sense of the word(world?) that is human minds which capable of rational thought and they have a self now.
+Space and time: continual and mere appearance; do not exist without the presence of monads.posthumous revenge on Newton.
+
+
+
+
+
 
 
 
