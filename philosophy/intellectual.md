@@ -67,7 +67,7 @@ Representationalism, the claim that we experience mental objects, but that these
 # Neo Aristotelians - Spinoza and Leibnizg
 # Spinoza
 The whole of everything: the only substance can be independent; the whole of existence is numerically one substance.
-Immanent notions of God: somehow identify God in the world.
+Immanent notions of God: somehow identify God with the world.
 Transcendent notitons of God: see God as separate from the world.
 Pantheist: an extreme form of immanentist.Infinite mentality and materialityand phisicality.
 Panentheist: Nature is in God, but God is more than Nature. Spinoza.
