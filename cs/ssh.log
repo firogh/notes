@@ -12,7 +12,11 @@
 
 # windows: 
 ssh -vvv -fNR 2222:127.0.0.1:22 root@138.128.195.217 -p 29781
+autossh -M 20000 -fNR 2222:localhost:22 root@138.128.195.217 -p 29781
 # VPS
 ssh -fN -g -L 138.128.195.217:2223:localhost:2222 root@localhost -p 29781
 # Linux
 ssh  -v yongmiya@138.128.195.217 -p 2223
+
+
+autossh -M 20000 -fNR 2222:localhost:22 username@114.115.116.117
