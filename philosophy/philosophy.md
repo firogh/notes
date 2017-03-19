@@ -5,7 +5,24 @@ category: philosophy
 ---
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
+# Simple model
+认知的对象是simple的, 基于there is nothing new under the sun.
+应为对于任何comprehensible的object, 他必然是commonplace, 应为nothing new.
+这样的话, 一个人可以学会任何知识.如何量化他所学based on simple model.
+既然所有知识, 都是简单的, 那么达到一定数量, 就显而易见的成为了衡量的标准.
+那么是否, 我们'见的多了', 就足够了呢? 以我个人学习kernel为例, 我看过很多的内核
+source code, 我不觉得能很好理解我所看过的这些内容.
+那么读代码本身是否必要呢? 就从理解这样的木来说,读代码不是必要的.我们的
+目的是理解, 而不是读代码, 也就是说我迷失在代码中了.所以, quality, 更多的世界之源是
+衡量我们知识的方面.也就是说, 很多人会接触到相同的东西, 但是理解的深刻, 多少是不一样
+的.那么基于以上两点就够了吗?基于imperfect understanding, 我们知道不够.那么多次
+多角度的理解, 就成为必要的了. 还有一点, 目标作为某种活动的副产品, 才是他本来的意义.
+就好比, 要学英语, 如果用英语去学TTC的哲学课程, 和用英语与印度技术人员沟通.
+这样才是真正寻找到目标的真正意义, we are not lacking of causality.
+ 
+
 # World/object/The origins of the world
+simple 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
