@@ -84,6 +84,11 @@ souls: animal monads; cue ball is inanimate, but rabbit has soul.
 Spirits: Monads with the property of apperception/统觉. essentially whtat that means is consciousness the ability to reflect on it's own perceptions.SO here we have minds in our sense of the word(world?) that is human minds which capable of rational thought and they have a self now.
 Space and time: continual and mere appearance; do not exist without the presence of monads.posthumous revenge on Newton.
 
+# The Enlightenment
+God said, "Let Newton be,' and there was light. - Alexander Pope
+Encycolpedists
+Spontaneous order: beneficial order that could be the product of undesigned activity: no one controls; only background rules govern independent action; no coordination among actions; beneficent order emerges.
+
 
 
 
