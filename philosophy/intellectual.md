@@ -88,8 +88,13 @@ Space and time: continual and mere appearance; do not exist without the presence
 God said, "Let Newton be,' and there was light. - Alexander Pope
 Encycolpedists
 Spontaneous order: beneficial order that could be the product of undesigned activity: no one controls; only background rules govern independent action; no coordination among actions; beneficent order emerges.
+Amour propre:the love of self as it is seen by others.
 
-
+# Dvaid Hume
+Knowledge of relations of ideas: the relations one idea bears to another in my mind.
+Knowledge of matters of fact
+Constant cojunction:Whenever A has occurred, B has occurred."Whenever I've seen smoke, I've seen fire."
+Necessary connection:If I say A and B are necesarily connected then I say not merely whenever A hsa occurred, B has occured. But I say Whenever A occurs B must occur: 1 whenever A occurs, A has the power to make B occur; 2 whenever A occurs in the future, B will occur.
 
 
 
