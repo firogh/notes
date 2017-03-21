@@ -1,5 +1,5 @@
 ---
-title: Zenkai Firo
+title: My life
 date: 2015-02-27T15:46:11+08:00 
 category: firo
 ---
