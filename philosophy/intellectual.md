@@ -97,6 +97,44 @@ Constant cojunction:Whenever A has occurred, B has occurred."Whenever I've seen 
 Necessary connection:If I say A and B are necesarily connected then I say not merely whenever A hsa occurred, B has occured. But I say Whenever A occurs B must occur: 1 whenever A occurs, A has the power to make B occur; 2 whenever A occurs in the future, B will occur.
 
 
+# Kant
+Critique of pure reason:the theory of knowledge.
+Critique of pratical reason: ethics.
+Critique of judgment: aesthetics(theory of art), teleology(purpose in nature).
+A priori: independent of experience.
+Hume's category of relations of ideas are both a priori and analytic.
+Hume's matters of fact are aposteriori and synthetic, or not true by definition.
+Analytic: predicate conatained in subject
+Synthetic: predicate not in subject
+Synthetic a posteriori: Hume's matters of fact; Belgium contains bachelors'
+Analytic a priori: Hume's relations of ideas; All bachelors are unmarried.
+Synthetic apriori:non-trivial knowledge valid independent of experience.
+Transcendental: the pre-structuring of experience by the mind.
+Kant's cognitive faculty:intuition, or sensibility, understanding, and reason.o
+Intuition's a priori forms: space, time
+Understanding's a priori categories: e.g., substances and their properties; necessary connection.
+synthetic a priori knowledge: space,time;necessary connection; substance ( subject and predicate);
+
+
+# Karl Poper
+Experience or observations do not confirm scientific or inductive hypotheses. The function of induction is not to confirme; it is to disconfirm hpotheses.
+Falsificationism: evidence really can't confront any theory it can only falsify theory and this would mean that scientific claims are highly fallible
+Fallibilism: All our judgments are fallible.
+Physicalist reductionism: the view that all scientific knowledge should in principle be reducible to physics as the most basic science.
+British Emergentists: the whole has properties that are more thatn so to speak to some of the parts and in effect what the emergence said was for example the properties of chemistry can't be deduced from the properties of physical systems the properties of biology.
+Positivism: quantum mechanics,
+Supervenience: While any chage in mental events or properties must presuppose a change in nerual events or properties, the mental events or properties could still not be reduced to or explained by, neural events alone
+Teleological causality: when a creature with a mind has an idea, and that idea has a causal relationship to what it does.
+The structure of scientific revolutions: Whig interpertation of the history science 
+Prardigm: the fundamental concepts and practices of a science in a period of time.
+Kuhn held that the meanings of the terms used in observation and theory in any period of normal science are dependent on that holistic paradigm
+incommensurable: mutually untranslatable
+
+# Pragmatism
+
+
+
+
 
 
 
