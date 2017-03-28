@@ -132,6 +132,15 @@ incommensurable: mutually untranslatable
 
 # Pragmatism
 
+# Phenomenology
+To the things themselves.
+bracketing: suspension of judgment.
+eidetic reduction
+transendental ego
+
+# Derrida
+semiosis: sign-using; the study of signs.
+signs we use are arbitrary; signs are exterior or material -not solely mental.
 
 
 
