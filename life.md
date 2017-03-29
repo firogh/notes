@@ -31,4 +31,11 @@ Transitional words, Bec 100, TTC
 # Working in America
 English, Offer, H1B, passport
 # Philosophy
+MIT
+# Kernel
+## KVM
+## Network stack
+## General kernel subsystem
+Schedule, memory, 
+
 
