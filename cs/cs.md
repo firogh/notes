@@ -4,6 +4,7 @@ title: Computer science a kernel programmer's perspective
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
+
 # Reference
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
