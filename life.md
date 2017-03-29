@@ -16,6 +16,10 @@ Remedies sinus.
 Drink a lot of water.
 Avoid eating junk food as much as possible.
 Experience in kernel hacking and cs.
+# Kernel
+General subsystem: schedule, memory, fork, lock, vfs. April 4, 8 days
+Network + redhat requirements. 8 days
+KVM. source code level and hands-on lkml
 # English
 1. Speak
 stress, phonics are forceless to improve speaking and listening.

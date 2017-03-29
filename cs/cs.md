@@ -5,6 +5,7 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+<<<<<<< HEAD
 OK, 突然发现之前写的文章不太友好, 到现在为止只有两个国外友人留言了.所以我决心,以绝大多数人习惯的方式,写新的内容or改写现有文章. 第一篇文章就是此文, 分享我个人对computer science的理解. 这会是一个系列的文章.
 
 TL;DR
@@ -24,6 +25,8 @@ The main force of concurrency in OS is process scheduling.
 
 
 
+=======
+>>>>>>> 1feae443378e68df25450b547544d4d510df0ad8
 # Reference
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
