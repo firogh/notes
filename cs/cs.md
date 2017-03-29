@@ -4,6 +4,26 @@ title: Computer science a kernel programmer's perspective
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
+
+OK, 突然发现之前写的文章不太友好, 到现在为止只有两个国外友人留言了.所以我决心,以绝大多数人习惯的方式,写新的内容or改写现有文章. 第一篇文章就是此文, 分享我个人对computer science的理解. 这会是一个系列的文章.
+
+TL;DR
+本文的目的, 不是主要目的帮助大家理解各种CS的知识, 而是揭示其中的联系.
+
+如何刻画计算机? 我们使用Turing machine开始本文. 绝大多数人, 认为现代计算机已经不是一个简单Turing 
+machine能描述清楚的, 所以很少有人去学习Automata theory. 相关定义参考Wikipedia.
+我们从图灵机开始往现代计算机推理.
+
+Multitasking: we need computer to do multiple things at the same time.
+We use concurrent to measure the multitasking.
+We will inspect conccurency in multiple levels of computer science.
+The main force of concurrency in OS is process scheduling.
+
+
+
+
+
+
 # Reference
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
