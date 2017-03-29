@@ -19,6 +19,11 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 多角度的理解, 就成为必要的了. 还有一点, 目标作为某种活动的副产品, 才是他本来的意义.
 就好比, 要学英语, 如果用英语去学TTC的哲学课程, 和用英语与印度技术人员沟通.
 这样才是真正寻找到目标的真正意义, we are not lacking of causality.
+
+1. Quantity
+2. Quality
+It's like structuralism.
+Stratal Slicing
  
 
 # World/object/The origins of the world
