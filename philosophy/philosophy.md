@@ -23,7 +23,12 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 1. Quantity
 2. Quality
 It's like structuralism.
-Stratal Slicing
+Stratal transverse Slicing
+Origins of the world: teleological causality
+Concurrency/prallel
+3. Practial connection
+Make a new one from scratch.
+Impove the current one
  
 
 # World/object/The origins of the world
@@ -44,7 +49,7 @@ perception/feeling注重的是人和object对人所产生的感受的不同,导�
 Things themselves - Husserl, Wittgenstein
 Ideal goal directed thought. -- Firo
 Quantitative irregularity, Structural, and complexity analyzing. -- Firo
-The Feynman Technique
+The question-based Feynman Technique
 
 2. Use the following method to select the appropriate methods
 Reflexivity -- Soros
