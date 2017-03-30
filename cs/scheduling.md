@@ -31,6 +31,8 @@ retint_kernel
 
 entity_key
 
+# Group
+set_task_rq
 # priority and nice
 In according to  do_task_stat, we know priority = task_prio(task); nice = task_nice(task);
 p->prio - MAX_RT_PRIO; = -2,  MAX_RT_PRIO = 100;so p->prio = 98;
