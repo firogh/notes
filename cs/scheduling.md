@@ -17,8 +17,13 @@ Questions we need to solve:
 2.2 where to keep/find the processes?
 	All the ruunale process are put in cpu_rq, but they are in different places rt_rq, dl_rq, cfs_rq, stop, idle.
 	Why different palces? Simple.
-2.3 If we use cfs algoritm, how does it work?
-	fair_sched_class
+2.3 If we use CFS algoritm, how does it work?
+	The core source code of CFS is the members of fair_sched_class
+	The main idea of CFS is compensating the process which is deficient of running CPU time.
+	CFS use vruntime to reflect the CPU time a process used.
+	But what makes CFS complex? Two points:
+	1. CFS is compatiable with the traditional priority(the nice value).
+	2. make the vruntime suitable. For example, what's the vrumtime of a new process?
 
 3. when to perform shcheduling?
 4. how to deal with load balancing of multiple CPU?
