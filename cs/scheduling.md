@@ -30,6 +30,73 @@ preempt_schedule_irq
 retint_kernel
 
 entity_key
+# Git log
+88ec22d3edb72b261f8628226cd543589a6d5e1b
+In order to remove the cfs_rq dependency from set_task_cpu() we
+    need to ensure the task is cfs_rq invariant for all callsites.
+    
+    The simple approach is to substract cfs_rq->min_vruntime from
+    se->vruntime on dequeue, and add cfs_rq->min_vruntime on
+    enqueue.
+    
+    However, this has the downside of breaking FAIR_SLEEPERS since
+    we loose the old vruntime as we only maintain the relative
+    position.
+    
+    To solve this, we observe that we only migrate runnable tasks,
+    we do this using deactivate_task(.sleep=0) and
+    activate_task(.wakeup=0), therefore we can restrain the
+    min_vruntime invariance to that state.
+    
+    The only other case is wakeup balancing, since we want to
+    maintain the old vruntime we cannot make it relative on dequeue,
+    but since we don't migrate inactive tasks, we can do so right
+    before we activate it again.
+    
+    This is where we need the new pre-wakeup hook, we need to call
+    this while still holding the old rq->lock. We could fold it into
+    ->select_task_rq(), but since that has multiple callsites and
+    would obfuscate the locking requirements, that seems like a
+    fudge.
+    
+    This leaves the fork() case, simply make sure that ->task_fork()
+    leaves the ->vruntime in a relative state.
+    
+    This covers all cases where set_task_cpu() gets called, and
+    ensures it sees a relative vruntime.
+
+2f950354e6d535b892f133d20bd6a8b09430424c
+ sched/fair: Fix fairness issue on migration
+    
+    Pavan reported that in the presence of very light tasks (or cgroups)
+    the placement of migrated tasks can cause severe fairness issues.
+    
+    The problem is that enqueue_entity() places the task before it updates
+    time, thereby it can place the task far in the past (remember that
+    light tasks will shoot virtual time forward at a high speed, so in
+    relation to the pre-existing light task, we can land far in the past).
+    
+    This is done because update_curr() needs the current task, and we
+    might be placing the current task.
+    
+    The obvious solution is to differentiate between the current and any
+    other task; placing the current before we update time, and placing any
+    other task after, such that !curr tasks end up at the current moment
+    in time, and not in the past.
+    
+    This commit re-introduces the previously reverted commit:
+    
+      3a47d5124a95 ("sched/fair: Fix fairness issue on migration")
+    
+    ... which is now safe to do, after we've also fixed another
+    underlying bug first, in:
+    
+      sched/fair: Prepare to fix fairness problems on migration
+    
+    and cleaned up other details in the migration code:
+    
+      sched/core: Kill sched_class::task_wakin
+[Migrated CFS task getting an unfair advantage](http://linux.kernel.narkive.com/p15Wmn0i/migrated-cfs-task-getting-an-unfair-advantage)
 
 # Group
 set_task_rq
