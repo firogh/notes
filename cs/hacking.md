@@ -1,9 +1,17 @@
 ---
 tags: [ kernel ] 
 date: 2015-04-25
-title: Kernel hacking
+title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
+
+# Reference
+[Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+[BrokenThorn Entertainment Operating System Development Series](http://www.brokenthorn.com/Resources/OSDevIndex.html)
+[Speeding up kernel development with QEMU](https://lwn.net/Articles/660404/)
+[Linux Kernel Reading Guide](http://www.linux.org/threads/linux-kernel-reading-guide.5384/)
+[Phrack](http://phrack.org/index.html)
+[Pre-defined Compiler Macros](https://sourceforge.net/p/predef/wiki/Architectures/)
 
 # kernel hacking
 The cxgb3_*_send() functions return NET_XMIT_ values, which are

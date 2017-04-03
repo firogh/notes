@@ -84,3 +84,6 @@ schedule + blcoked
 When an interrupt handler exits, before returning to kernel-space.
 When kernel code becomes preemptible again.
 
+
+# FAQ
+[为什么Linux内核不允许在中断中休眠](http://wangcong.org/2012/06/01/-e4-b8-ba-e4-bb-80-e4-b9-88linux-e5-86-85-e6-a0-b8-e4-b8-8d-e5-85-81-e8-ae-b8-e5-9c-a8-e4-b8-ad-e6-96-ad-e4-b8-ad-e4-bc-91-e7-9c-a0-ef-bc-9f/)

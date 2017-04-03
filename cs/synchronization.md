@@ -7,6 +7,8 @@ category: cs
 
 #Reference
 Perfbook
+[Unreliable Guide To Locking](https://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/index.html)
+[Scalability Techniques for Practical Synchronization Primitives](http://queue.acm.org/detail.cfm?id=2698990)
 
 # Why we need synchronization
 a critical section is a piece of code that accesses a shared resource 
@@ -89,10 +91,9 @@ levels:
   (*) MMIO write barrier.
 ## ACCESS_ONCE
 * Does it work cast a variable to volatile?
-No, there is no efects on cast a variable to volatile. 
+No, there is no efects on cast a variable to volatile.
 Because, access variable is before volatile cast! That means you
-still get a register value. What you do is just conversion a temporary 
-variable
+still get a register value. What you do is just conversion a temporary variable
 Rationale for International Standard--Programming Languages--C
 6.7.3 
 ## For volatile

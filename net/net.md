@@ -7,6 +7,10 @@ category: net
 
 #Reference
 [TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
+[RAW PACKET FORMATS](http://www.securitywizardry.com/index.php/tools/packet-headers.html)
+[从 IPv4 到 IPv6](http://wangcong.org/2012/10/15/-e4-bb-8e-ipv4-e5-88-b0-ipv6/)
+[What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
+[Improving Linux networking performance](https://lwn.net/Articles/629155/)
 
 # Network
 When we talk about network, what we talk about?

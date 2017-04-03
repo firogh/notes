@@ -6,6 +6,8 @@ category: cs
 ---
 
 [我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl)
+[Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
+[Learn Type Theory](http://jozefg.bitbucket.org/posts/2015-08-14-learn-tt.html)
 
 ∅ ⊢ pl
 scope: The set of expressions for which a binding defines a name is called the scope of that name.

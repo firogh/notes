@@ -1,10 +1,12 @@
 ---
 tags: [ kernel ] 
-title: Filesystem
+title: An introduction to VFS layer in Linux Kernel
 date: 2015-02-27T15:46:12+08:00 
 category: cs
 ---
 
+# Reference
+[VFS notes](http://www.fieldses.org/~bfields/kernel/vfs.txt)
 
 # open()
 最烦, 看什么系统调用参数了. 
@@ -141,6 +143,4 @@ systemd负责挂在文件系统, 切换.
 
 subsys_initcall 4 genhd_device_init with base_probe{ request_module()}
 module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
-
-
 

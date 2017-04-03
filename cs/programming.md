@@ -26,6 +26,7 @@ Debuging
 asm stands for arch specific macros(FIXME).
 
 # Coding style
+[GNU Coding Standards](http://www.gnu.org/prep/standards/standards.html)
 比如GNU coding standards, Linux kernel coding style, Shell coding standard
 * Label
 It is considered to be safer that the label reflect what happens at the
@@ -51,6 +52,7 @@ command-comment ⊃ all input ∪ output
 # Debugging
 see debugging.md
 # Testing
+[Google testing blog](http://googletesting.blogspot.com/)
 1.Black-box testing test software function.
 2.White-box testing test software internal logic.
 kvm & supermin

@@ -9,6 +9,8 @@ category: cs
 [Linkers 20 parts by Gold author Ian Lance Taylor](http://a3f.at/lists/linkers)
 [通过 GDB 调试理解 GOT/PLT](http://rickgray.me/2015/08/07/use-gdb-to-study-got-and-plt.html)
 [PLT and GOT - the key to code sharing and dynamic libraries](https://www.technovelty.org/linux/plt-and-got-the-key-to-code-sharing-and-dynamic-libraries.html)
+[Gnu binutils docs](https://sourceware.org/binutils/docs/)
+[Welcome to GCC Wiki](https://gcc.gnu.org/wiki/HomePage)
 
 # ELF
 [System V Application Binary Interface ELF](http://www.sco.com/developers/gabi/latest/contents.html)

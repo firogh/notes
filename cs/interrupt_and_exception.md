@@ -5,6 +5,9 @@ date: 2017-04-03T13:02:12+08:00
 category: cs
 ---
 
+# Reference
+[Obtain sys_call_table on amd64 ](https://www.exploit-db.com/papers/13146/)
+
 #Interrupt
 ## init
 native_init_IRQ()->  set_intr_gate(i, irq_entries_start...

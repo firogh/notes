@@ -7,6 +7,7 @@ category: cs
 ---
 
 # Reference
+[Recycling techniques](http://www.memorymanagement.org/mmref/recycle.html)
 Computer memory#Management_of_memory
 Memory management (operating systems)
 
