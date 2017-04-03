@@ -9,6 +9,7 @@ category: cs
 Perfbook
 [Unreliable Guide To Locking](https://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/index.html)
 [Scalability Techniques for Practical Synchronization Primitives](http://queue.acm.org/detail.cfm?id=2698990)
+[test-and-set](http://web.cecs.pdx.edu/~walpole/class/cse513/slides/3.pdf)
 
 # Why we need synchronization
 a critical section is a piece of code that accesses a shared resource 

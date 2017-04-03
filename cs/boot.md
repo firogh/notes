@@ -19,6 +19,13 @@ before start_kernel
 start_kernel
 reset_init & kernel_init
 
+# Boot and init
+Power button -> cpu reset -> BIOS -> hard drive -> Grub boot.S/MBR aa5a -> Grub diskboot.S -> ... -> The kernel real-mode setup code. _start of arch/x86/boot/header.S
+Aligh register, Stack and BSS for C function to run. -> main->startup_32->startup_64-> __START_KERNEL_map->... start_kernel
+[Kernel legacy boot sector](https://github.com/torvalds/linux/blob/master/Documentation/x86/boot.txt#L130) start form 4d5a of arch/x86/boot/header.S 
+is only used by something link 'qemu-system-x86_64 vmlinuz-3.18-generic'. It's obsoleted that is what legacy means.
+
+
 # p4080 Board
 PBL 
 1. initialize I2C, SPI, eLBC, eSDHC.

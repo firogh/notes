@@ -8,7 +8,11 @@ category: cs
 ##Reference
 [Latency Numbers Every Programmer Should Know](http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
 [How a CPU Works](https://youtu.be/cNN_tTXABUA)
-Legacy 常用寄存器，常见指令 实模式和保护模式 分段和分页机制 TSS和任务管理 中断机制 时钟机制 高速缓存
+A Symbolic Analysis of Relay and Switching Circuits
+The Mathematical Theory of Communication
+Given a symbol level, the architecture is the description of the system in 
+whatever system-description scheme exists next below the symbol level. - Newell, 1990, p. 81
+[Ask HN: How to learn about the history of computing?](https://news.ycombinator.com/item?id=9844090)
 《模拟电子技术基础 童诗白 第四版》第一章前半部分
 Structured Computer Organization 6th Edition
 Digital Design and Computer Architecture 2nd Edition

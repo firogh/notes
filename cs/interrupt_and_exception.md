@@ -41,3 +41,32 @@ local_irq_save(flags) used in the code path that already disabled interrupts.
 ##what about irq nested?
 http://lwn.net/Articles/380937/
 
+# Triggering a #GP exception
+[Exceptions](http://wiki.osdev.org/Exceptions)
+if you do lidt in userspace program, you will receive SIGSEGV with si_code 128(somewhere of kernel).
+But with the dmesg traps: int0x80[15066] general protection ip:4000c7 sp:7ffc8706cdf0 error:0 in int0x80[400000+1000] form do_general_protection.
+Privilege instructions in V3a chapter 5 Protection
+.data
+    .quad msg 
+
+msg:
+    .ascii "Hello, world!\n"
+    len = . - msg 
+saved_idt:
+        .long 0,0 
+
+.text
+    .global _start
+
+_start:
+    movl  $4, %eax
+    movl  $1, %ebx  
+    movl  $msg, %ecx 
+    sidt  saved_idt
+    lidt  saved_idt  ;===============> crashed at here
+    movl  $len, %edx 
+    int   $0x80
+    
+    movl  $1, %eax
+    xorl  %ebx, %ebx 
+    int   $0x80
