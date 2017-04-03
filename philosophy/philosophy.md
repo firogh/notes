@@ -20,6 +20,11 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 就好比, 要学英语, 如果用英语去学TTC的哲学课程, 和用英语与印度技术人员沟通.
 这样才是真正寻找到目标的真正意义, we are not lacking of causality.
 
+0. Phenomenon
+	[我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl) we cannot fully trust the person who worte books.
+	The person who know the real causes is reluctant to write books.
+	The explaination(book, post) always superfaial, even more the author didn't fully understand what they worte.
+	Who is the real master?
 1. Quantity
 2. Quality
 It's like structuralism.

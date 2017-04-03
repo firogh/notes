@@ -107,6 +107,31 @@ expand_stack()/handle_mm_fault()
 
 * vmalloc fault
 
+## mm fault handler
+arch/powerpc/mm/fault.c
+deatils of trap is in bad_page_fault
+
+sigbus 
+__handle_mm_fault
+{
+        hugetlb_fault CONFIG_HUGETLB_PAGE
+        handle_pte_fault-> 
+        {
+                do_linear_fault -> __do_fault
+                {
+                        vma->vm_ops->fault(vma, &vmf);
+                }
+                do_anonymous_page
+                {
+                        check_stack_guard_page
+                }
+                do_nonlinear_fault
+                do_swap_page
+                do_wp_page
+                {
+                        vma->vm_ops->page_mkwrite(vma, &vmf); //??
+                }
+}
 
 #Physical memory
 * NUMA/UMA pg_data_t: My PC is UMA, numatop, numastat, numactl
@@ -148,7 +173,7 @@ Mips cpu can be aware of this address!
 
 * How to deal with useless page? : > /home/firo/bigdata
 
-*pfmemalloc -- skb 表示申请了紧急内存!
+* pfmemalloc -- skb 表示申请了紧急内存!
 page free
 
 * compound pages
