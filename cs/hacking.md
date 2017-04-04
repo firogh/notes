@@ -179,7 +179,7 @@ http://vger.kernel.org/~davem/net_todo.html
 体系出来:-) 确实随着现代信息科学给社会带来的巨大变化, 哲学也必须要更新.
 才能更好的服务于人.
 这几天就在, 找内核哪里还不完善, 自己能补上, 今天6号了.
-#patch formate advices
+# patch formate advices
 * Julia Lawall Sorry to be picky, 
 but normally people put a space after the colon.  Also,
 the subject line could be shorter: Remove unneeded cast.  

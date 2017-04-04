@@ -28,6 +28,7 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 	Self doubt. What about ngx_accept_disabled? Is it really disable accept()! No it's just a load balancing.
 1. Quantity
 2. Quality
+Understand the fundermental causality, Never the flow of source code.
 It's like structuralism.
 Stratal transverse Slicing
 Origins of the world: teleological causality
@@ -48,6 +49,7 @@ The whole is other than the sum of the parts. --Gestalt psychology
 Falsifiability -- Popper
 
 # Oracle-machine/methods
+The question-based Feynman Technique
 0. Exposure and perception/feeling;
 Exposure 解决的是人和世界/object隔离的问题, 也是任何object之间的联系多少的问题.
 perception/feeling注重的是人和object对人所产生的感受的不同,导致不同的归宿.
@@ -55,7 +57,6 @@ perception/feeling注重的是人和object对人所产生的感受的不同,导�
 Things themselves - Husserl, Wittgenstein
 Ideal goal directed thought. -- Firo
 Quantitative irregularity, Structural, and complexity analyzing. -- Firo
-The question-based Feynman Technique
 
 2. Use the following method to select the appropriate methods
 Reflexivity -- Soros

@@ -71,8 +71,6 @@ if you can not get a semaphore, your task will put itself on the wait queue, and
 up the semaphore is released.
 sleepable
 preemptable
-## TCP handshake
-
 # Memory barrier
 ## Refernce
 http://en.wikipedia.org/wiki/Memory_barrier
@@ -96,6 +94,4 @@ No, there is no efects on cast a variable to volatile.
 Because, access variable is before volatile cast! That means you
 still get a register value. What you do is just conversion a temporary variable
 Rationale for International Standard--Programming Languages--C
-6.7.3 
-## For volatile
-http://www.geeksforgeeks.org/understanding-volatile-qualifier-in-c/
+[Understanding “volatile” qualifier in C](http://www.geeksforgeeks.org/understanding-volatile-qualifier-in-c/)

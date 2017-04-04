@@ -1,7 +1,7 @@
 ---
 tags: [ cs ] 
 title: IO and events
-date: 2015-02-27T15:46:14+08:00 
+date: 2017-04-04T20:08:35+08:00 
 category: cs
 ---
 
@@ -22,4 +22,7 @@ epoll is based on Reactor pattern.
 signal is based on Observer pattern.
 For the ease of use, the select loop is implemented as an *event loop* with callbacks.
 libevent and libev is a well-designed *event loop*.Check shadowsocks for using of libev.
+
+# FAQ
+memory-map IO
 
