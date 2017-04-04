@@ -44,10 +44,3 @@ Easy to use
 Security/Protection/isolation
 Reliability
 Energy-efficiency
-
-#Asynchronous I/O NEED CLEAN
-* synchronous I/O multiplexing and I/O event notification facility
-select/poll/epoll
-For the ease of use, the select loop is implemented as an *event loop* with callbacks.
-libevent and libev is a well-designed *event loop*.Check shadowsocks for using of libev.
-

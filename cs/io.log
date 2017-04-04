@@ -1,3 +1,0 @@
-### Memory-mapped I/O
-ioremap: physical address->logical address, simlar to vmalloc except we need not page.
-

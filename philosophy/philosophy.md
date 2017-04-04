@@ -25,6 +25,7 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 	The person who know the real causes is reluctant to write books.
 	The explaination(book, post) always superfaial, even more the author didn't fully understand what they worte.
 	Who is the real master?
+	Self doubt. What about ngx_accept_disabled? Is it really disable accept()! No it's just a load balancing.
 1. Quantity
 2. Quality
 It's like structuralism.
