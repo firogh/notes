@@ -11,8 +11,15 @@ How to use it during kernel booting?
 Use boot option:
 dyndbg="file drivers/usb/host/ehci-hcd.c +p; file 
 drivers/usb/host/ehci-ppc-of.c +p" loglevel=8
+loglevel=8 dyndbg="module ehci_pci +p; 
+module ehci_hcd +p; module usbcore +p"
 After booting:
 /sys/kernel/debug/dynamic_debug/control
+
+# Dev print functions
+drivers/base/core.c
+define_dev_printk_level 
+THese functions are like pr_func
 
 # oops
 Kernel oops relates to invalid memory access, including sigev and sigbus.
