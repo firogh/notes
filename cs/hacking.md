@@ -214,3 +214,6 @@ list there already.
 +       struct key_vector *l;
 Dave Miller usually prefers it if variables are ordered from longest to shortest.  
 So you should probably have l defined first, and then kv.
+
+# FAQ
+kernel module name: scripts/Makefile.lib $(subst -,_,$1)
