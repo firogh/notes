@@ -26,6 +26,7 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 	The explaination(book, post) always superfaial, even more the author didn't fully understand what they worte.
 	Who is the real master?
 	Self doubt. What about ngx_accept_disabled? Is it really disable accept()! No it's just a load balancing.
+0.1 velocity
 1. Quantity
 2. Quality
 Understand the fundermental causality, Never the flow of source code.
