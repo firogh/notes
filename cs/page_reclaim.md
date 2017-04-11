@@ -25,3 +25,13 @@ How to reclaim in deatils.
 	How to distinguish kernel page from user space page?
 How to modify the process's pte to let it know the page has been reclaimed.
 	Reverse mapping.
+
+
+# Anonymous reverse mappinng
+Where do reverse mappings come from?
+	syscall: mmap(ANONYMOUS | PRIVATE)
+	Proceass address space: Heap, stack.
+mm: change anon_vma linking to fix multi-process server scalability issue
+5beb49305251e5669852ed541e8e2f2f7696c53e
+When we fork a child process, it will associate multiple anon_vmas with a VMA.
+	
