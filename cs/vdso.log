@@ -1,2 +1,43 @@
+# Reference
 [Creating a vDSO: the Colonel's Other Chicken](http://www.linuxjournal.com/content/creating-vdso-colonels-other-chicken?page=0,0)
 [What is linux-gate.so.1](http://www.trilithium.com/johan/2005/08/linux-gate/)
+
+# difference
+int 0x80, syscall, sysenter
+
+# log
+[yyang4@pek-lpd-ccm2 c]$ ./vgtod
+00400000-00401000 r-xp 00000000 fd:01 226843673                          /buildarea1/firo/ima/c/vgtod
+00600000-00601000 r--p 00000000 fd:01 226843673                          /buildarea1/firo/ima/c/vgtod
+00601000-00602000 rw-p 00001000 fd:01 226843673                          /buildarea1/firo/ima/c/vgtod
+7f2a814a6000-7f2a8165d000 r-xp 00000000 08:43 4983198                    /usr/lib64/libc-2.17.so
+7f2a8165d000-7f2a8185d000 ---p 001b7000 08:43 4983198                    /usr/lib64/libc-2.17.so
+7f2a8185d000-7f2a81861000 r--p 001b7000 08:43 4983198                    /usr/lib64/libc-2.17.so
+7f2a81861000-7f2a81863000 rw-p 001bb000 08:43 4983198                    /usr/lib64/libc-2.17.so
+7f2a81863000-7f2a81868000 rw-p 00000000 00:00 0 
+7f2a81868000-7f2a8186b000 r-xp 00000000 08:43 5004829                    /usr/lib64/libdl-2.17.so
+7f2a8186b000-7f2a81a6a000 ---p 00003000 08:43 5004829                    /usr/lib64/libdl-2.17.so
+7f2a81a6a000-7f2a81a6b000 r--p 00002000 08:43 5004829                    /usr/lib64/libdl-2.17.so
+7f2a81a6b000-7f2a81a6c000 rw-p 00003000 08:43 5004829                    /usr/lib64/libdl-2.17.so
+7f2a81a6c000-7f2a81a8d000 r-xp 00000000 08:43 5012578                    /usr/lib64/ld-2.17.so
+7f2a81c71000-7f2a81c74000 rw-p 00000000 00:00 0 
+7f2a81c8c000-7f2a81c8d000 rw-p 00000000 00:00 0 
+7f2a81c8d000-7f2a81c8e000 r--p 00021000 08:43 5012578                    /usr/lib64/ld-2.17.so
+7f2a81c8e000-7f2a81c8f000 rw-p 00022000 08:43 5012578                    /usr/lib64/ld-2.17.so
+7f2a81c8f000-7f2a81c90000 rw-p 00000000 00:00 0 
+7ffdfe990000-7ffdfe9b1000 rw-p 00000000 00:00 0                          [stack]
+7ffdfe9d6000-7ffdfe9d8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+./vgtod	linux-vdso.so.1 =>  (0x00007ffe7f5a1000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fa4715d0000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fa47120e000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fa4717ed000)
+
+77458 400630 400600 0x7ffdfe9d6ca0 0x7f2a81564d60
+
+77458 0x400630 (nil)
+0
+[yyang4@pek-lpd-ccm2 c]$ file ./vgtod
+./vgtod: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, BuildID[sha1]=09f68c8cd6fc18503441c66910e77f0abdf05499, not stripped
+
+
