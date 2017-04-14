@@ -9,12 +9,22 @@
 #define __USE_GNU
 #include <dlfcn.h>
 
+
+int kill (pid_t pid, int signum) __attribute__((weak, alias("__vdso_func")));
+int __vdso_func(pid_t pid, int signum)
+{
+
+	printf("Firo %s %d %d\n", __func__, __LINE__, signum);
+
+	return 0;
+}
+
 int main(int argc, char **argv)
 {
 	struct timeval start, end;
 	pid_t pid;
 	char buf[256];
-
+	int i = kill(1,1);
 	gettimeofday(&start, NULL);
 	gettimeofday(&end, NULL);
 	pid = getpid();
