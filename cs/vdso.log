@@ -2,6 +2,90 @@
 [Creating a vDSO: the Colonel's Other Chicken](http://www.linuxjournal.com/content/creating-vdso-colonels-other-chicken?page=0,0)
 [What is linux-gate.so.1](http://www.trilithium.com/johan/2005/08/linux-gate/)
 
+# Trace gettimeofday
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x08048320 <gettimeofday@plt>
+        breakpoint already hit 1 time
+2       breakpoint     keep y   <PENDING>  dl_runtime_resolve
+3       breakpoint     keep y   0xf7fe6f60 in _dl_fixup at dl-runtime.c:66
+        breakpoint already hit 1 time
+4       breakpoint     keep y   0xf7fee4c0 ../sysdeps/i386/dl-trampoline.S:35
+5       breakpoint     keep y   0xf7fe1790 in _dl_lookup_symbol_x at dl-lookup.c:810
+        breakpoint already hit 1 time
+6       breakpoint     keep y   0xf7fe0d00 in do_lookup_x at dl-lookup.c:355
+
+in dl_fixup
+  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at dl-runtime.c:141
+_builtin_expect (ELFW(ST_TYPE) (sym->st_info) == STT_GNU_IFUNC, 0))
+{st_name = 19208,	st_value = 711088, st_size = 209, st_info = 42 '*', st_other = 0 '\000', st_shndx = 13}
+#define STT_GNU_IFUNC   10              /* Symbol is indirect code object */
+elf_ifunc_invoke 
+__gettimeofday () at ../sysdeps/unix/sysv/linux/x86/gettimeofday.c:36
+#0  __gettimeofday () at ../sysdeps/unix/sysv/linux/x86/gettimeofday.c:36
+#1  0xf7fe70ea in elf_ifunc_invoke (addr=<optimized out>) at ../sysdeps/i386/dl-irel.h:32
+#2  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at dl-runtime.c:142
+#3  0xf7fee4d0 in _dl_runtime_resolve () at ../sysdeps/i386/dl-trampoline.S:43
+#4  0x0804846a in main (argc=1, argv=0xffffd094) at vgtod.c:16
+In sysdeps/unix/sysv/linux/x86/gettimeofday.c, we found:
+void *gettimeofday_ifunc (void) __asm__ ("__gettimeofday"); In assembly code, we replace gettimeofday_ifunc with __gettimeofday.
+For above __asm__ usage, please check [6.45.4 Controlling Names Used in Assembler Code](https://gcc.gnu.org/onlinedocs/gcc/Asm-Labels.html#Asm-Labels)
+asm (".type __gettimeofday, %gnu_indirect_function"); For this usage, please check [Assembler Directives .type](https://sourceware.org/binutils/docs/as/Type.html#Type)
+For indirect function call, please check [ifunc "resolver"](https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html#index-indirect-functions)
+weak_alias (__gettimeofday, gettimeofday). For this kind of things, look at include/libc-symbols.h and find the following:
+ extern __typeof (name) aliasname __attribute__ ((weak, alias (#name)));
+So gettimeofday is a weak alias of __gettimeofday. It means __gettimeofday is a STB_GLOBAL and gettimeofday is STB_WEAK.
+#0  _dl_vdso_vsym (name=name@entry=0xf7f5ba77 "__vdso_gettimeofday", vers=vers@entry=0xffffcf48) at ../sysdeps/unix/sysv/linux/dl-vdso.c:26
+#1  0xf7e8aa54 in __gettimeofday () at ../sysdeps/unix/sysv/linux/x86/gettimeofday.c:40
+#2  0xf7fe70ea in elf_ifunc_invoke (addr=<optimized out>) at ../sysdeps/i386/dl-irel.h:32
+#3  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at dl-runtime.c:142
+#4  0xf7fee4d0 in _dl_runtime_resolve () at ../sysdeps/i386/dl-trampoline.S:43
+#5  0x0804846a in main (argc=1, argv=0xffffd094) at vgtod.c:16
+So we know, struct link_map *map = GLRO (dl_sysinfo_map); 
+(gdb) print *map
+$28 = {l_addr = 4160573440, l_name = 0xf7ffde58 "linux-gate.so.1",
+Finally,
+#0  elf_machine_fixup_plt (map=<optimized out>, t=<optimized out>, reloc=<optimized out>, value=4160576208, reloc_addr=0x804a010) at ../sysdeps/i386/dl-machine.h:252
+#1  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at dl-runtime.c:148
+#2  0xf7fee4d0 in _dl_runtime_resolve () at ../sysdeps/i386/dl-trampoline.S:43
+#3  0x0804846a in main (argc=1, argv=0xffffd094) at vgtod.c:16
+You see:
+   0x0804845f <+20>:    push   $0x0
+   0x08048461 <+22>:    lea    -0x10(%ebp),%eax
+   0x08048464 <+25>:    push   %eax
+   0x08048465 <+26>:    call   0x8048320 <gettimeofday@plt>
+   0x0804846a <+31>:    add    $0x10,%esp
+   0x0804846d <+34>:    mov    -0x18(%ebp),%eax
+   0x08048470 <+37>:    imul   $0xf4240,%eax,%edx
+   0x08048476 <+43>:    mov    -0x14(%ebp),%eax
+---Type <return> to continue, or q <return> to quit---Quit
+(gdb) disas gettimeofday@plt
+No symbol "plt" in current context.
+(gdb) disas 0x8048320
+Dump of assembler code for function gettimeofday@plt:
+   0x08048320 <+0>:     jmp    *0x804a010 #============================================> reloc_addr points to the entry of GOT. this entry is used by plt.
+   0x08048326 <+6>:     push   $0x8
+   0x0804832b <+11>:    jmp    0x8048300
+End of assembler dump.
+
+(gdb) finish 
+Run till exit from #0  elf_machine_fixup_plt (map=<optimized out>, t=<optimized out>, reloc=<optimized out>, value=4160576208, reloc_addr=0x804a010) at ../sysdeps/i386/dl-machine.h:252
+_dl_fixup (l=<optimized out>, reloc_arg=<optimized out>) at dl-runtime.c:149
+(gdb) disas 0x8048320
+Dump of assembler code for function gettimeofday@plt:
+   0x08048320 <+0>:     jmp    *0x804a010
+   0x08048326 <+6>:     push   $0x8
+   0x0804832b <+11>:    jmp    0x8048300
+End of assembler dump.
+(gdb) x 0x804a010
+   0x804a010:   rcrb   -0x3(%edx)
+(gdb) x/x 0x804a010
+0x804a010:	0xf7fd5ad0 #============================> so 0x804a010 is pointing to __vdso_gettimeoday, yeak!
+(gdb) p/x 4160576208
+$33 = 0xf7fd5ad0
+
+
+
+
 # difference
 int 0x80, syscall, sysenter
 

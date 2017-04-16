@@ -22,6 +22,10 @@ Check this commit of glibc:
 Set up GLRO(dl_sysinfo_dso) under [NEED_DL_SYSINFO_DSO] as well
 AT_SYSINFO_EHDR
 
+Gcc 32bit support
+ca677d3c3cd0eba7d1f03092517aea553a0e8569
+Add x86 32 bit vDSO time function support
+
 
 # start the program
 sysdeps/x86_64/dl-machine.h: -> _start ->_dl_start->/elf/dl-sysdep.c:83:_dl_sysdep_start->dl_main
