@@ -25,7 +25,7 @@ int parse_vdso()
 		return 3;
 	s_names_hdr = s[e->e_shstrndx];
 	s_names = vdso + s_names_hdr.sh_offset;
-	printf("section names index %d, sections start %p\n", e->e_shstrndx, s);
+	printf("section names index %d, sections start %p vdso %p\n", e->e_shstrndx, s, vdso);
 
 	for (i = 0; i < e->e_shnum; i++)
 	{

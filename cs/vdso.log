@@ -125,3 +125,62 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 ./vgtod: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.32, BuildID[sha1]=09f68c8cd6fc18503441c66910e77f0abdf05499, not stripped
 
 
+# WRL7 log
+
+#0  check_match (undef_name=undef_name@entry=0x4bf32202 "__vdso_gettimeofday", 
+    ref=ref@entry=0xffffdc58, version=0xffffdc78, flags=0, type_class=0, 
+    sym=0xf7ffd198, symidx=7, strtab=0xf7ffd1a8 "", map=0x4be13c18, 
+    versioned_sym=0xffffdb44, num_versions=0xffffdb40) at dl-lookup.c:92
+#1  0x4bdfcece in do_lookup_x (
+    undef_name=undef_name@entry=0x4bf32202 "__vdso_gettimeofday", 
+    new_hash=new_hash@entry=2954611200, old_hash=0xffffdc04, ref=0xffffdc58, 
+    result=0xffffdbfc, scope=0x4be13d74, i=<optimized out>, 
+    version=0xffffdc78, flags=0, skip=0x0, type_class=0, undef_map=0x4be13c18)
+    at dl-lookup.c:445
+#2  0x4bdfd3cc in _dl_lookup_symbol_x (
+    undef_name=0x4bf32202 "__vdso_gettimeofday", undef_map=0x4be13c18, 
+    ref=0xffffdc54, symbol_scope=0x4be13de8, version=0xffffdc78, type_class=0, 
+    flags=0, skip_map=0x0) at dl-lookup.c:772
+#3  0x4bf1397a in _dl_vdso_vsym (
+    name=name@entry=0x4bf32202 "__vdso_gettimeofday", 
+    vers=vers@entry=0xffffdc78) at ../sysdeps/unix/sysv/linux/dl-vdso.c:40
+#4  0x4bea1450 in __gettimeofday ()
+    at ../sysdeps/unix/sysv/linux/x86/gettimeofday.c:33
+#5  0x4be01bdd in elf_ifunc_invoke (addr=<optimized out>)
+    at ../sysdeps/i386/dl-irel.h:32
+#6  _dl_fixup (l=<optimized out>, reloc_arg=<optimized out>)
+    at dl-runtime.c:142
+---Type <return> to continue, or q <return> to quit---
+#7  0x4be07b00 in _dl_runtime_resolve () at ../sysdeps/i386/dl-trampoline.S:36
+#8  0x0804846d in main ()
+
+
+          ElfW(Half) ndx = verstab[symidx] & 0x7fff;
+          if ((map->l_versions[ndx].hash != version->hash
+               || strcmp (map->l_versions[ndx].name, version->name))
+              && (version->hidden || map->l_versions[ndx].hash
+                  || (verstab[symidx] & 0x8000)))
+
+(gdb) p/x map->l_versions[ndx].hash
+$73 = 0x3ae75f5
+(gdb) p/x version->hash
+$74 = 0x3ae75f6
+(gdb) p map->l_versions[ndx].name
+$75 = 0xf7ffd229 "LINUX_2.5"
+(gdb) p version->name
+$76 = 0x4bf30738 "LINUX_2.6"
+(gdb) p version->hidden
+$77 = 1
+(gdb) p map->l_versions[ndx].hash
+$78 = 61765109
+(gdb) p/x map->l_versions[ndx].hash
+$79 = 0x3ae75f5
+(gdb) p verstab[symidx]
+$80 = 2
+(gdb) info locals 
+ndx = 2
+stt = <optimized out>
+__PRETTY_FUNCTION__ = "check_match"
+verstab = 0xf7ffd234
+(gdb) p symidx
+$81 = 2
