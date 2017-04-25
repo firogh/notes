@@ -25,6 +25,8 @@ AT_SYSINFO_EHDR
 Gcc 32bit support
 ca677d3c3cd0eba7d1f03092517aea553a0e8569
 Add x86 32 bit vDSO time function support
+kernel
+37c975545ec63320789962bf307f000f08fabd48
 
 
 # start the program
