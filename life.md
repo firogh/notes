@@ -37,5 +37,3 @@ MIT
 ## Network stack
 ## General kernel subsystem
 Schedule, memory, 
-
-
