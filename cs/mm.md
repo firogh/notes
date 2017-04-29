@@ -56,26 +56,6 @@ more details in lwn, lkd
 vm的提出是为了解决。easy to use。
 1. decoupling physical memory 符号集合。programmer 不需要关注底层细节。 任务转给操作系统。
 2. VM相对物理内存增加了表达能力， 有了更多表达符号。着减少了swap or 不必要的页表抖动。
-##Page table
-mk_pte(page, pgprot)    pfn_pte(page_to_pfn(page), (pgprot))
-原来低12位里面存了flag啊!
-__pte(((phys_addr_t)page_nr << PAGE_SHIFT) | massage_pgprot(pgprot));
-For vmalloc(), chechk here vmap_page_range_noflush()
-For kmap(), check kmap_init()
-[How to emulate the process of translate va to pa?](http://edsionte.com/techblog/archives/1966)
-
-## copy_to_user
-not in kernel?
-read only?
-
-## flush tlb after page table modification.
-
-## Direct mapping area
-high_memory (-128UL << 20)
-__get_free_pages()
-kmalloc()
-kmem_cache_alloc()/slab
-
 ## Vmalloc
 may sleep.
 ### Hwo Vmalloc works? 
@@ -85,19 +65,6 @@ struct vm_struct likes struct address_space, functionlly;
 struct vmap_area likes struct vm_area_struct.
 map_vm_area 页表映射
 the page in ZONE_NORMAL will not use directly mapping pfn address! It use VMALLOC address! 
-
-### Vmalloc coherence with vfree() after vmalloc_sync_one
-在进程的内核页目录中补上的是只是页目录项，而页表对所有进程来说是共用的，不管vfree()多大的内存块，在vmalloc()时新分配的页表不会被释放，当重新vmalloc()时，仍旧使用原来的页表。 page_fault使得进程的内核页目录项与swapper_pg_dir保持同步，swapper_pg_dir的内核页目录项一旦建立就不再被改变，需要改变的只是共享的页表而已。
-deatils in vmalloc_sync_one() and vunmap_pte_range()
-只释放pte
-
-## Persistent Kernel Mappings
-kmap(struct page *)
-How kmap works? 
-	Check kmap_init(), later!
-
-## Temporay Mappings(Fixmaps)
-kmap_atomic()
 
 ##Process virtual memory
 * struct vm_area_struct: The intervals of legal address are called *memory areas* is permitted to access.
