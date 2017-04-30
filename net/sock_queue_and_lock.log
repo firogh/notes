@@ -1,0 +1,12 @@
+
+# Queue
+tcp_add_backlog
+tcp_prequeue:ucopy.prequeue
+tcp_copy_to_iovec:ucopy.msg,
+tcp_queue_rcv:sk->sk_receive_queue
+tcp_data_queue: ooo?
+
+
+# Lock
+lock_sock_fast
+lock_sock_nested
