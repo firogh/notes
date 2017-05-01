@@ -12,7 +12,7 @@ category: net
 [What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
 [Improving Linux networking performance](https://lwn.net/Articles/629155/)
 
-# Network
+The Feynman map of network, check [Thomas Graf's DevConf 2014 Kernel Networking Walkthrough](https://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
 When we talk about network, what we talk about?
 Transfer; Truely we are talking about transfer including three component:src, dst, channel.
 Address has two properties: relation and scope.
@@ -66,17 +66,6 @@ http://tools.ietf.org/html/rfc3879
 IPV6_ADDR_MULTICAST
 http://tools.ietf.org/html/rfc4291
 * addr not described in __ipv6_addr_type working as global unicast
-
-
-
-
-
-
-
-
-
-
-
 
 ## 什么是Internet
 英文[network](http://keithbriggs.info/network.html), 其中work, 构造之意.
@@ -597,8 +586,6 @@ icsk->icsk_af_ops
 是iphdr中protocol成员的延伸, 所以有了tcp_protocol/udp_protocol all in inet_protos
 * packet_type -- l3 rcv in ptype_all and ptype_base
 pt_prev->func
-
-
 
 # BSD socket layer
 Details and skills in Stevens Unix network programming.

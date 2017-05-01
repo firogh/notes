@@ -29,6 +29,7 @@ source code, 我不觉得能很好理解我所看过的这些内容.
 0.1 velocity
 1. Quantity
 2. Quality
+Feynman map
 Understand the fundermental causality, Never the flow of source code.
 It's like structuralism.
 Stratal transverse Slicing
