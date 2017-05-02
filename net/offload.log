@@ -1,0 +1,12 @@
+---
+tags: [ net ] 
+title: Network offload
+date: 
+category: net
+---
+## TSO
+搞这么复杂就是为了, 在validate_xmit_skb如果硬件支持tso, 协议栈就偷懒了, 不分片tcp报文, 
+当然skb->len得大于mss_now才有意义.
+tcp_set_skb_tso_segs
+
+
