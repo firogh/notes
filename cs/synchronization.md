@@ -72,27 +72,3 @@ if you can not get a semaphore, your task will put itself on the wait queue, and
 up the semaphore is released.
 sleepable
 preemptable
-# Memory barrier
-## Refernce
-http://en.wikipedia.org/wiki/Memory_barrier
-Documentation/memory-barriers.txt
-## Common
-* When a program runs on a single-CPU machine, the hardware performs the necessary bookkeeping 
-to ensure that the program executes as if all memory operations were performed in the order 
-specified by the programmer (program order), so memory barriers are not necessary. 
-However, when the memory is shared with multiple devices, such as other CPUs in a multiprocessor 
-system, or memory mapped peripherals, out-of-order access may affect program behavior. 
-For example, a second CPU may see memory changes made by the first CPU in a sequence which differs from program order.
-* Compiler and cpu do the same optimization: reorder of instructions
-## The Linux kernel has a variety of different barriers that act at different
-levels:
-  (*) Compiler barrier.
-  (*) CPU memory barriers.
-  (*) MMIO write barrier.
-## ACCESS_ONCE
-* Does it work cast a variable to volatile?
-No, there is no efects on cast a variable to volatile.
-Because, access variable is before volatile cast! That means you
-still get a register value. What you do is just conversion a temporary variable
-Rationale for International Standard--Programming Languages--C
-[Understanding “volatile” qualifier in C](http://www.geeksforgeeks.org/understanding-volatile-qualifier-in-c/)
