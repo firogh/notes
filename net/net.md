@@ -17,56 +17,6 @@ When we talk about network, what we talk about?
 Transfer; Truely we are talking about transfer including three component:src, dst, channel.
 Address has two properties: relation and scope.
 
-# 4.3 IP address
-IPv6 wrl6 
-__ipv6_addr_type
-ip6addrlbl_init_table
-ip6_input or ip6_output
-ipv6_addr_v4mapped
-* 0: 
-1 ok IPV6_ADDR_LOOPBACK ::1/128 
-2 ok IPV6_ADDR_ANY ::/128
-3 ok IPV6_ADDR_MAPPED ::ffff:0:0/96
-4 ? IPV6_ADDR_COMPATv4  0000::/96 ipgre_tunnel_xmit ddr_type & IPV6_ADDR_COMPATv4) == 0 ; goto tx_error_icmp;
-5 G?  
-* 0100::/64, NG, Used by CISCO
-A Discard Prefix for IPv6
-Discard-Only Address Block
-https://tools.ietf.org/html/rfc6666
- Remote Triggered Black Hole (RTBH)
-https://tools.ietf.org/html/rfc5635
-* 0200::/7,  NG, Deprecated
-OSI NSAPs and IPv6
-http://tools.ietf.org/html/rfc1888
-Internet Code Point (ICP) Assignments for NSAP Addresses
-http://tools.ietf.org/html/rfc4548
-Interfaces between protocol layers
-http://www.erg.abdn.ac.uk/users/gorry/course/intro-pages/sap.html
-Network Service Access Point (NSAP): v4,v6?
-http://searchnetworking.techtarget.com/definition/Network-Service-Access-Point
-* 0400::/6, NG, No information, maybe used as Global address see __ipv6_addr_type
-* 0800::/5, NG, ditto
-* (000, 111)x::/3, OK, unicasts. For more details please reference __ipv6_addr_type
-1000::/4, OK, ditto
-2000::/3, OK, Global Unicast, 
-2002::/16, OK, SIT, 6in4
-http://tools.ietf.org/html/rfc3056
-2001::/32, OK, used in Default policy table for routing
-2001:10::/28, OK, Ditto
-* e000::/4, NG?, No information in google; but used as GU in and kernel by default.
-* fc00::/7, OK,
-IPV6_ADDR_UNICAST
-* fe80::/10, OK, 
-IPV6_ADDR_LINKLOCAL
-* fec0::/10, OK, But deprecated by RFC3879, used in kernel?
-IPV6_ADDR_SITELOCAL
-Deprecating Site Local Addresses
-http://tools.ietf.org/html/rfc3879
-* ff00::/8, OK
-IPV6_ADDR_MULTICAST
-http://tools.ietf.org/html/rfc4291
-* addr not described in __ipv6_addr_type working as global unicast
-
 ## 什么是Internet
 英文[network](http://keithbriggs.info/network.html), 其中work, 构造之意.
 etymonline 给出结缔成网之意, net-like arrangement of threads, wires, etc.
@@ -532,19 +482,6 @@ ip fragment 不是为了fraglist而是把skb变小. 所以这里可能有问题l
 如果经过ip_fragment应该,不会出现, 自己倒腾的就可能.
 compound page
 
-
-## offload
-* TSO in tcp_v4_connect
-[TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
-One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
-* GSO
-[GSO: Generic Segmentation Offload](http://thread.gmane.org/gmane.linux.network/37287)
-TSO = GSO_TCPV4
-frags = sg I/O
-frag_list
-*GRO
-napi -> dev ->inet->skb
-
 # INET 
 现在我们来看具体的network stack的实现.
 linux kernel的tcp/ip实现是有自己的名字的就叫INET!
@@ -854,9 +791,6 @@ tcp的核心发包函数tcp_write_xmit and tcp_transmit_skb
 上面主要是和cork和nagle有关
 完了
 在tcp协议的5点基础属性, 后世对tcp做了很多优化!
-
-
-Details in l4.md
 #Network layer
 ip_append_data 和ip_push_pending_frames弄frag_list
 ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
@@ -871,40 +805,6 @@ Details in l2.md
 * Physical Coding Sublayer
 * Physical Medium Attachment Sublayer
 * Physical Medium Dependent Sublayer
-
-#Net initialization
-start_kernel-> parse_early_param irq timers softirq -> rest_init(): kthread
-{
-	do_basic_setup()  
-	{
-		driver_init
-		sock_init
-		do_initcalls()
-		{
-			net_dev_init: Initializing the Device Handling Layer
-			{
-				per-CPU 
-				proc
-				sysfs
-				ptype_base
-				dst_init
-				softirq: net_rx/tx_action
-				dev_cpu_callback: CPU hotplug.
-			}
-		}
-	}
-	free_init_mem()
-	run_init_process()
-}
-
-## network init
-inet_init()->ip_init()->ip_rt_init()->ip_fib_init()->fib_hash_init():create kmem_cache
-
-## net device init
-* net_dev_init
-* nic init
-e100_init_module	pci_register_driver:构建结构	driver_regiser:注册到内核	really_probe()drv->probe:初始化。
-vconfig add		regiser_vlan_device：构建结构	register_netdevice:注册到内核	dev->init():初始化
 
 # OLD log
 ## net
@@ -922,22 +822,6 @@ switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以�
 net_poll
 napi
 * What is Head-of-line blocking
-
-#Netlink
-* Group
-enum rtnetlink_groups
-##What is netlink
-Networking related kernel configuration and monitoring interfaces.
-* IPC between kernel and user spacess process.
-ioctl
-* prarts
-	libnl
-	libnl-route
-	libnl-genl
-	libnl-nf
-
-* How many parts does libnl-route has?
-Address,  links, neighboring, routing, TC
 
 ## Need patch
 skbedit action
