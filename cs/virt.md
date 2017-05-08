@@ -44,6 +44,34 @@ effective with respect to inherent natural qualities
 终于进入正文了. 现在我们自己来设计一套虚拟化基础架构, 让一个简单的kernel运行在当前的fedora
 之上.
 
+# Intel VT-x
+VMCS manages transitons into and out of VMX non-root operation(VM entries and VM exits) as well as processor behavior
+in VMX non-root operation.
+ORGANIZATION OF VMCS DATA
+The VMCS data are organized into six logical groups:
+Guest-state area. Processor state is saved into the guest-state area on VM exits and loaded from there on VM entries.
+Host-state area. Processor state is loaded from the host-state area on VM exits.
+VM-exit control fields. These fields control VM exits.
+VM-execution control fields. These fields control processor behavior in VMX non-root operation. They determine in part the causes of VM exits.
+VM-entry control fields. These fields control VM entries.
+VM-exit information fields. These fields receive information on VM exits and describe the cause and the nature of VM exits. On some processors, these fields are read-only. 3
+
+VMX NON-ROOT OPERATION
+INSTRUCTIONS THAT CAUSE VM EXITS
+Relative Priority of Faults and VM Exits
+Instructions That Cause VM Exits Unconditionally
+Instructions That Cause VM Exits Conditionally
+OTHER CAUSES OF VM EXITS
+
+CHANGES TO INSTRUCTION BEHAVIOR IN VMX NON-ROOT OPERATION
+
+VM ENTRIES
+
+VM EXITS
+
+VMX SUPPORT FOR ADDRESS TRANSLATION
+
+APIC VIRTUALIZATION AND VIRTUAL INTERRUPTS
 # 代码实现
 * KVM architecture
 * Kernel running flow

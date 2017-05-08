@@ -22,6 +22,7 @@ Network + redhat requirements. 8 days
 KVM. source code level and hands-on lkml
 # English
 1. Speak
+Audible 120 hours. 
 stress, phonics are forceless to improve speaking and listening.
 weak forms, contraction, Langbo, 51 Talk
 Stress, weak forms, phonics.
