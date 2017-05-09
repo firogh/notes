@@ -62,7 +62,6 @@ Error --  checksum, the transport protocol may check that the data is not corrup
 # Connection-oriented communications
 到底什么是面向连接的网上只有wikipedia给的解释最合理, 其他的扯到了别的性质.
 两点: session and in order.
-
 * Session
 In computer science, in particular networking, a session is a semi-permanent 
 interactive information interchange. 

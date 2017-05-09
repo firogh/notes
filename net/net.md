@@ -207,7 +207,6 @@ driver tx, stack xmit
 Yes, I only wanted to drop the packet if we were under pressure
 when skb was allocated. If we hit pressure between when skb was
 allocated and when __netdev_alloc_page is called,
-+in sk_filter
 [netvm: Allow skb allocation to use PFMEMALLOC reserves](https://groups.google.com/forum/#!msg/linux_net/-YtWB66adxY/Qqm_y4U09IAJ)
 [netvm: Allow skb allocation to use PFMEMALLOC reserves - gmane 08/14](http://thread.gmane.org/gmane.linux.kernel/1152658)
 socket是跟协议族绑定的概念, 所以要用inet_create, netlink_create

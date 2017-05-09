@@ -5,8 +5,6 @@ date: 2015-02-27T15:46:13+08:00
 category: net
 ---
 
-
-
 #Network layer
 * Error detection, unreliable
 Best effort service,IP has a simple error handling algorithm: 
@@ -115,4 +113,3 @@ ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
 第一个skb->frag_list的成员. 用的不太多啊.
 ip_append_data中间出了以为如果可以ufo 那么就到frags的碗里去!
 否则就生成一串skb挂到&sk->sk_write_queue上, 
-
