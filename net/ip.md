@@ -107,4 +107,12 @@ fib_config:
 iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
 * Multi-time line
 fib_create_info(): create a fib_info
-## Netfilter
+
+# send
+ip_append_data 和ip_push_pending_frames弄frag_list
+ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
+把&sk->sk_write_queue上的数据最后编程skb链表变成了, 还skb pull掉了潜在的ip 头部
+第一个skb->frag_list的成员. 用的不太多啊.
+ip_append_data中间出了以为如果可以ufo 那么就到frags的碗里去!
+否则就生成一串skb挂到&sk->sk_write_queue上, 
+

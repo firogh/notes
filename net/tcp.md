@@ -44,7 +44,6 @@ tcp flags涉及到了多个性质,主要是握手和拥塞
 Ports can provide multiple endpoints on a single node. 
 inet_hash_connect()
 
-
 # Flow control
 ## receive windowsize
 暗含tcp的最大64KB.
@@ -61,6 +60,21 @@ For every ack packet received, the window slides by one packet (logically) to tr
 Error --  checksum, the transport protocol may check that the data is not corrupted
 
 # Connection-oriented communications
+到底什么是面向连接的网上只有wikipedia给的解释最合理, 其他的扯到了别的性质.
+两点: session and in order.
+
+* Session
+In computer science, in particular networking, a session is a semi-permanent 
+interactive information interchange. 
+[Instance of tcp session in BSD socket](http://www.scottklement.com/rpg/socktut/overview.html)
+[TCP Session - Handshaking in protocol](http://www.dummies.com/how-to/content/network-basics-tcp-session-establishment-handshaki.html)
+这个对应tcp的三次握手, 4次挥手, 
+* in order
+涉及到的另外一个概念Virtul circuit
+A virtual circuit (VC) is a means of transporting data over a packet switched
+ computer network in such a way that it appears as though there is a dedicated 
+physical layer link between the source and destination end systems of this data. 
+对应tcp 的接收队列, seq number
 ## Handshak
 * kproxy reorder
 chome ->syn(kproxy reocrd syn) -> firoyang.org
@@ -202,3 +216,4 @@ tcp_retransmiter_timer()...->tcp_transmit_skb()
 tcp_data_snd_check()->tcp_write_xmit()
 * tcp_v4_rcv
 [skb->dev = NULL;](http://thread.gmane.org/gmane.linux.network/85613/focus=85614)
+* tcp的核心发包函数tcp_write_xmit and tcp_transmit_skb
