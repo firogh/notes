@@ -226,3 +226,5 @@ hub: layer 1, bradcast, exclusive share, 报文可被侦听.
 switch: layer 2,  mac port route, CAM table in linux bridge module!
 switch with vlan: layer 3, 因为vlan之间的报文转发需要路由, 所以是layer层技术.
 * What is Head-of-line blocking
+* Why can I receive ethernet frames bigger than my current MTU size?
+http://serverfault.com/questions/749110/why-can-i-receive-ethernet-frames-bigger-than-my-current-mtu-size
