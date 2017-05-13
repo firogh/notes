@@ -4,6 +4,10 @@ title: Fedora distro 物语
 date: 2015-02-27T15:46:11+08:00 
 category: cs
 ---
+
+# Shell
+PS1='\e[1;32m\u@\h\e[m:\e[1;34m\w\e[m$ '
+
 <<<<<<< HEAD
 # IMA
 KEYS: Separate the kernel signature checking keyring from module signing

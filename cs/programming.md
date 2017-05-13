@@ -55,4 +55,3 @@ see debugging.md
 [Google testing blog](http://googletesting.blogspot.com/)
 1.Black-box testing test software function.
 2.White-box testing test software internal logic.
-kvm & supermin

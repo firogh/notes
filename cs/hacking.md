@@ -5,6 +5,34 @@ title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
 
+# Subscribe linux kenrel maillist
+
+# linux next source code
+[Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)
+要add git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git不是https.
+我之前改了好多bug基于linus的分支, 提交后被告知别人已改. 后来Julia告诉我要基于linux-next开发.
+我的linux next remote 就叫next, 基于其创建开发分支.
+
+# Applying patches
+[100 Linux Tutorials: How to Apply a Patch to the Linux Kernel Stable Tree][0]
+
+# Hacker
+[Peter Zijlstra: From DOS to kernel hacking][4]
+
+
+# What to fix?
+[KernelProjects][3]
+[linux-wanking@vger.kernel.org][1]
+[2.7 GETTING STARTED WITH KERNEL DEVELOPMENT][2]
+
+[0]: https://www.youtube.com/watch?v=6zUVS4kJtrA
+[1]: https://lwn.net/Articles/283982/
+[2]: https://www.linux.com/publications/how-participate-linux-community
+[3]: https://kernelnewbies.org/KernelProjects
+[4]: https://lwn.net/Articles/286244/
+
+
+
 # Reference
 [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
 [BrokenThorn Entertainment Operating System Development Series](http://www.brokenthorn.com/Resources/OSDevIndex.html)
@@ -71,15 +99,6 @@ Linus 之前说过, 搞得内核你得用起来. uml 是个不错的开端.
 
 #git
 [gittutorial - A tutorial introduction to Git](http://git-scm.com/docs/gittutorial)
-# linux source code
-[Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)
-要add git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git不是https.
-我之前改了好多bug基于linus的分支, 提交后被告知别人已改. 后来Julia告诉我要基于linux-next开发.
-我的linux next remote 就叫next, 基于其创建开发分支.
-
-	git branch now next/master
-	git pull next master:now
-
 # 你提patch, 社区的困惑是什么?
 每个kernel newbie 都应该完整看完这个mail list
 http://thread.gmane.org/gmane.linux.kernel/683798/focus=684297
