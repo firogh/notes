@@ -43,20 +43,10 @@
 [   46.184777]  ? sg_remove_scat+0x236/0x410
 [   46.185355]  sg_finish_rem_req+0x32c/0x3f0
 
-        */
         i = 0; 
         list_for_each_entry(p, &sfp->rq_list, entry) {
                 i++;
         }    
-/*
-#define list_for_each_entry(pos, head, member)                          \
-        for (pos = list_first_entry(head, typeof(*pos), member);        \
-             &pos->member != (head);                                    \
-             pos = list_next_entry(pos, member))
-
-#define list_first_entry(ptr, type, member) \
-        list_entry((ptr)->next, type, member)
-*/
 
         printk("Firox reuse %d i %d, %d, id %d, %d, %d, %p, orgin %p %p orgin %p, %p, %p, %p\n", resp->res_used, 
                         i, resp->header.interface_id, pack_id, record_done, record_id, resp, ret_resp,list_empty(&sfp->rq_list), list_first_entry(&sfp->rq_list, typeof(*resp), entry),

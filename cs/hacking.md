@@ -16,6 +16,52 @@ category: cs
 # Applying patches
 [100 Linux Tutorials: How to Apply a Patch to the Linux Kernel Stable Tree][0]
 
+
+# How to build a minimal kernel for testing?
+[tiny config @ kernel.org][5]
+[3 attempts to reduce the configurations][6]
+Then enable following config option
+CONFIG_CHR_DEV_SG
+Some ftrace stuff
+CONFIG_SLUB
+CONFIG_KASAN
+
+## For sda
+./kernel/configs/kvm_guest.config
+VFS: Cannot open root device "sda" or unknown-block(0,0): error -6
+Please append a correct "root=" boot option; here are the available partitions:
+Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+Kernel Offset: disabled
+CONFIG_BLK_DEV_SD
+CONFIG_SATA_AHCI XX
+CONFIG_ATA XX
+CONFIG_ATA_PIIX ok
+process 1 (init) attempted a POSIX timer syscall while CONFIG_POSIX_TIMERS is not set
+
+CONFIG_POSIX_TIMERS
+
+CONFIG_PACKET
+CONFIG_FILTER???
+CONFIG_UNIX
+CONFIG_NETFILTER
+smp
+ext4
+CONFIG_SERIAL_NONSTANDARD=y
+
+udev requires hotplug support, not started ... failed!
+not cpu hotplug
+CONFIG_HOTPLUG=y
+CONFIG_UEVENT_HELPER_PATH=‚Äù"
+CONFIG_NET=y
+CONFIG_UNIX=y
+CONFIG_SYSFS=y
+CONFIG_SYSFS_DEPRECATED*=n
+CONFIG_PROC_FS=y
+CONFIG_TMPFS=y
+CONFIG_TMPFS_POSIX_ACL=y¬†
+CONFIG_INOTIFY=y
+CONFIG_SIGNALFD=y
+
 # Hacker
 [Peter Zijlstra: From DOS to kernel hacking][4]
 
@@ -30,6 +76,8 @@ category: cs
 [2]: https://www.linux.com/publications/how-participate-linux-community
 [3]: https://kernelnewbies.org/KernelProjects
 [4]: https://lwn.net/Articles/286244/
+[5]: https://tiny.wiki.kernel.org/
+[6]: http://mgalgs.github.io/2015/05/16/how-to-build-a-custom-linux-kernel-for-qemu-2015-edition.html
 
 
 
