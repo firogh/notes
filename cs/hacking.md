@@ -34,11 +34,20 @@ category: cs
 # How to build a minimal kernel for testing?
 [tiny config @ kernel.org][5]
 [3 attempts to reduce the configurations][6]
+[Fedora equivalent of debootstrap](7)
 Then enable following config option
 CONFIG_CHR_DEV_SG
 Some ftrace stuff
 CONFIG_SLUB
 CONFIG_KASAN
+
+# For nfs
+exports0 
+ cat var/exports0 
+/buildarea1/firo/x564 (rw,no_root_squash,no_all_squash,insecure)
+
+/buildarea1/firo/x564/host-cross/usr/bin/pseudo /buildarea1/firo/x564/host-cross/usr/sbin/unfsd -p -N -i /buildarea1/firo/x564/var/nfs0.pid -e /buildarea1/firo/x564/var/exports0 -x 11111 -n 3049 -y 21111 -m 3048 
+ /buildarea1/firo/x564/host-cross/usr/bin/qemu-system-x86_64 -nographic -k en-us -kernel /buildarea1/firo/x564/bitbake_build/tmp/deploy/images/bzImage-qemux86-64.bin -redir udp:20485::17185 -redir tcp:7747::1534 -redir udp:7747::1534 -redir tcp:7748::80 -redir udp:7745::6443 -redir tcp:7741::23 -redir tcp:7740::22 -redir tcp:8998::5698 -redir tcp:8978::5678 -redir tcp:6633::3333 -net user,hostname=qemu33 -net nic,macaddr=52:54:0:12:34:77,model=i82557b -show-cursor -usb -usbdevice wacom-tablet -vga vmware -gdb tcp::4534 -append console=ttyS0,115200 ip=dhcp root=/dev/nfs nfsroot=10.0.2.2:/buildarea1/firo/x564/export/dist,nfsvers=3,port=6349,mountprog=24411,nfsprog=14411,udp,mountport=6348 rw clocksource=pit oprofile.timer=1 UMA=1 -pidfile /buildarea1/firo/x564/host-cross/var/qemu33.pid
 
 ## For sda
 ./kernel/configs/kvm_guest.config
@@ -53,10 +62,15 @@ CONFIG_ATA_PIIX ok
 process 1 (init) attempted a POSIX timer syscall while CONFIG_POSIX_TIMERS is not set
 
 CONFIG_POSIX_TIMERS
+FILE_LOCK if udev
+PACKET if udev
+UNIX if udev
+DEVTMPFS if udev
+CONFIG_INOTIFY_USER if udev
+CONFIG_TMPFS if udev
+CONFIG_DEBUG_INFO_REDUCED if CONFIG_DEBUG_INFO
 
-CONFIG_PACKET
-CONFIG_FILTER???
-CONFIG_UNIX
+
 CONFIG_NETFILTER
 smp
 ext4
@@ -92,6 +106,7 @@ CONFIG_SIGNALFD=y
 [4]: https://lwn.net/Articles/286244/
 [5]: https://tiny.wiki.kernel.org/
 [6]: http://mgalgs.github.io/2015/05/16/how-to-build-a-custom-linux-kernel-for-qemu-2015-edition.html
+[7]: https://rwmj.wordpress.com/2009/03/05/fedora-equivalent-of-debootstrap/
 
 
 
