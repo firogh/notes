@@ -5,6 +5,9 @@ date: 2015-02-27T15:46:13+08:00
 category: net
 ---
 
+[1]: https://greenhost.nl/2013/04/10/multi-queue-network-interfaces-with-smp-on-linux/
+# Multi-queue
+[Multi-queue network interfaces with SMP on Linux][1]
 ##Common concepts
 * The link layer 
 is the group of methods and communications protocols that only operate on the link that a host is physically connected to. 

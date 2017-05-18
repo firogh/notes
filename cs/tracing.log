@@ -10,3 +10,8 @@ echo 1 > /sys/kernel/debug/tracing/tracing_on && ./v ; echo 0 > /sys/kernel/debu
 
 Explaination of output format of /sys/../trace
 https://www.kernel.org/doc/Documentation/trace/ftrace.txt
+
+[How does strace work?][1]
+
+
+[1]: https://blog.packagecloud.io/eng/2016/02/29/how-does-strace-work/

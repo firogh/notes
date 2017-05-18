@@ -10,6 +10,19 @@ category: net
 [TRANSMISSION CONTROL PROTOCOL 1981](http://tools.ietf.org/html/rfc793)
 [RFC Errata 一切都有改口的余地](http://www.rfc-editor.org/errata_search.php?rfc=1122&rec_status=15&presentation=records)
 793的errata建议阅读1122.
+[1]: https://blog.cloudflare.com/the-story-of-one-latency-spike/
+[2]: https://blogs.technet.microsoft.com/networking/2009/08/12/where-do-resets-come-from-no-the-stork-does-not-bring-them/
+[3]: http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html
+
+# Latency
+[The story of one latency spike][1]
+
+# Reset
+[Where do resets come from? (No, the stork does not bring them.)][2]
+# Backlog 
+[How TCP backlog works in Linux][3]
+
+
 
 # Introduction
 本文主要关注tcp这一类的可靠的传输层协议.

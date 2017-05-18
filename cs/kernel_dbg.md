@@ -36,6 +36,8 @@ phenomenon: DETECT_HUNG_TASK
 Includes the interruptable task.
 Causes: deadlock, race condition
 
+# kprobes
+
 # deadlock
 Lockdep
 [The kernel lock validator](https://lwn.net/Articles/185666/)
