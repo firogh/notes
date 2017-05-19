@@ -4,8 +4,15 @@ date: 2015-04-25
 title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
+[1]: https://www.gnu.org/software/global/links.html
+[2]: http://os.phil-opp.com/
+[3]: https://blacks3pt3mb3r.wordpress.com/linux-stuffz/264-2/
+
+# Resources
+[Writing an OS in Rust][1]
 
 # Subscribe linux kenrel maillist
+
 
 # linux next source code
 [Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)
@@ -13,8 +20,15 @@ category: cs
 我之前改了好多bug基于linus的分支, 提交后被告知别人已改. 后来Julia告诉我要基于linux-next开发.
 我的linux next remote 就叫next, 基于其创建开发分支.
 
+# Source code navigation
+['Source code reading' related sites][1]
+
+
 # Applying patches
 [100 Linux Tutorials: How to Apply a Patch to the Linux Kernel Stable Tree][0]
+
+# Setup kvm test machine
+[Building a KVM host machine.][3]
 
 
 # How to build a minimal kernel for testing?

@@ -5,8 +5,11 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+[1]: http://eli.thegreenplace.net/2011/01/23/how-debuggers-work-part-1
 # Reference
 Reverse engineering
+[How debuggers work][1]
+
 
 # Debugging and Bug types
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
