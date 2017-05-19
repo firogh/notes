@@ -16,7 +16,7 @@ set spoolfile = /var/spool/mail/firo
 # %O: sender mail name: e.g. support, firogm, noreply
 # %2.2M: hidden mails in thread
 # %.3m: total mail.
-set index_format="%4C %Z %[%b %d %T] %2.2e/%-2.2E|%P: %-15.15L %s"
+set index_format="%Z %2.2e/%-2.2E %[%b%d %R] %4C |%P: %-15.15L %s"
 
 set strict_threads=yes
 
