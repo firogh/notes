@@ -53,3 +53,15 @@ vim/emacs用来编辑邮件.
 * 靠gmail 存了两份发送邮件, 把这句注释掉, gmail自己本身会缓存的:
 	`set record = "+[Gmail]/Sent Mail"`
 
+
+# FAQ
+Error sending message, child exited 78 ().
+chmod 600 .msmtprc
+echo "test" |mutt -s " first_test" firogm@gmail.com
+
+Error sending message, child exited 66 (Cannot open input.).
+change tls_trust_file /etc/ssl/certs/ca-bundle.crt
+to tls_trust_file /etc/ssl/certs/ca-certificates.crt 
+
+Error sending message, child exited 68 (Host unknown.).
+echo "test" |proxychains mutt -s " first_test" firogm@gmail.com
