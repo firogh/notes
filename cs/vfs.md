@@ -144,3 +144,4 @@ systemd负责挂在文件系统, 切换.
 subsys_initcall 4 genhd_device_init with base_probe{ request_module()}
 module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
 
+

@@ -44,3 +44,7 @@ Easy to use
 Security/Protection/isolation
 Reliability
 Energy-efficiency
+
+# FAQ
+[All about pseudo][1]
+[1]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf
