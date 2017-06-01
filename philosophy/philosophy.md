@@ -5,6 +5,13 @@ category: philosophy
 ---
 我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
+# True?
+[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][1]
+[What is science by Feyman][2], do you know brown-throated thrush?
+
+[1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
+[2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
+
 # Simple model
 认知的对象是simple的, 基于there is nothing new under the sun.
 应为对于任何comprehensible的object, 他必然是commonplace, 应为nothing new.
