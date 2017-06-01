@@ -5,6 +5,10 @@ date: 2017-04-06
 title: Linux page reclaim
 category: cs
 ---
+# Reference
+[The case of the overly anonymous anon_vma][1]
+[1]: https://lwn.net/Articles/383162/
+
 When or why do we wnant to reclaim pages?
 	Periodically Keep a halthy avaliable free pages.
 	No enough memory for a large memory alloc.

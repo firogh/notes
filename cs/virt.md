@@ -7,6 +7,8 @@ category: cs
 
 # Reference
 [KVM源代码分析3:CPU虚拟化](http://www.oenhan.com/kvm-src-3-cpu)
+[VIRTUALIZATION TUNING AND OPTIMIZATION GUIDE][1]
+[1]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html-single/Virtualization_Tuning_and_Optimization_Guide/
 
 本文着重探讨下kvm的实现, 11年在snia的实习的时候, 接触过一点.
 已经过去将近4年了,  当初看到qemu的代码, 被吓到了, 我靠, 这代码量赶上内核了!

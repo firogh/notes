@@ -8,6 +8,9 @@ category: cs
 
 # Reference
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
+[Memory part 3: Virtual Memory][1]
+
+[1]: https://lwn.net/Articles/253361/
 
 # Contents
 Logic gates: SRAM, DRAM

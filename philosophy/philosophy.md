@@ -41,6 +41,7 @@ Impove the current one
  
 
 # World/object/The origins of the world
+unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 simple 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus

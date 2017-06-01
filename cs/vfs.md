@@ -7,6 +7,9 @@ category: cs
 
 # Reference
 [VFS notes](http://www.fieldses.org/~bfields/kernel/vfs.txt)
+[Linux: Replacing atime With relatime][1]
+
+[1]: http://web.archive.org/web/20110427023154/http:/kerneltrap.org/node/14148
 
 # open()
 最烦, 看什么系统调用参数了. 

@@ -109,6 +109,10 @@ Detection of transmission errors:如信被人篡改了
 # Linux network stack workthrough
 [DevConf 2014 Kernel Networking Walkthrough](http://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
 [introduction to linux kernel tcp/ip ptocotol stack](http://www.slideshare.net/minibobo/linux-tcp-ip?related=1)
+[kernel flow][1]
+[
+
+[1]: https://wiki.linuxfoundation.org/networking/kernel_flow	
 taobao的第5也说明了问题.
 这是通常的skb的流向. 就是在socket里面按着协议走, 包括tcp的重传.
 还有一种, 就是想kproxy那种, 人为的干扰skb的走向, netif_receive_skb就是一个点.
