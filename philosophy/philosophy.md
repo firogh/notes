@@ -12,6 +12,12 @@ category: philosophy
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
 
+# Subjective mind
+Deceptive objectivity. Learning by doing
+Deceptive understanding, wrong and absent(not excessive abstraction). 
+Frequently changing.
+Fading away along the time.
+
 # Simple model
 认知的对象是simple的, 基于there is nothing new under the sun.
 应为对于任何comprehensible的object, 他必然是commonplace, 应为nothing new.
