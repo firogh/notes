@@ -10,6 +10,8 @@ category: cs
 Reverse engineering
 [How debuggers work][1]
 
+# Core pattern
+echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
 
 # Debugging and Bug types
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
