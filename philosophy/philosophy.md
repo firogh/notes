@@ -1,130 +1,64 @@
 ---
 date: 2015-09-13
-title: Quantitative congnition - The philosophy on which I live
+title: Quantitative congnition - The philosophy on which I am living
 category: philosophy
 ---
-我正在常识建立一套量化认知体系. 为什么要做这件事? 无论是之于生命个体还是整个人类社会的演化总是依凭着对世界更深入, 更全面的认知. ? 正如Schlick 在General Theory of Knowledge 所言... 而这种认知本身是什么呢? 在哲学上, Epistemology专门研究这个问题. 而我继续前人的工作.在过往的不断尝试中, 我体验与感悟到了, 这个世界很复杂, 不能有一些简单的规则来理解透.多种不同的角度, 往往是理解事物最合宜的方法.
 
-# True?
+I am aware of that we need some principles and methods to understand this world.
+The following thoughts try to help people to make a good life. They are out of my past life.
+
+# Recognize subjectivity
+First of all, you should know what is subjectivity and objectivity in philosophy.
+In my opinion, subjectivity is the most important thing you should know then anything else.
+Try to find when morden philosophy rose and why. Hint: read some works of Rene Descartes.
+I found some bad effects of sujective mind:
+* Deceptive objectivity. The worst case is it make you deem that unstanding is equivalent to doing. 
+* False target or procedure.(For English, 英语去学TTC的哲学课程, 和用英语与印度技术人员沟通, 这才是真正的目标, 而不是背单词,考试)(K2:以为看懂kernel, 就能做了)
+* Deceptive understanding, wrong and absent(not excessive abstraction). 
+* shirk hardship, seek comfort and enjoyment.
+* Frequently changing.
+* Fading away along the time.
+* Neglect objectivity.
+* radical fallibility. -- Soros
+* Overconfident subjective understanding. -- on larning kernel
+
+# Thank you, Mr Feynman
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][1]
 [What is science by Feyman][2], do you know brown-throated thrush?
 
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
 
-# Subjective mind
-Deceptive objectivity. Learning by doing
-Deceptive understanding, wrong and absent(not excessive abstraction). 
-Frequently changing.
-Fading away along the time.
+# Objective understanding
+The origin of the world./structuralism?
+Feynman's method.
+Learning by doing.
+Intuition
+Trial and error/Scientific method
+Critical learning  -- Popper, Aaron Swartz 25:20
+Descartes's methods
+Occam's razor 
+Reflexivity -- Soros/Statistics-based method training. -- Firo
+Things themselves - Husserl, Wittgenstein
+Transformation cognition -- Firo
+Falsifiability -- Popper
 
-# Simple model
-认知的对象是simple的, 基于there is nothing new under the sun.
-应为对于任何comprehensible的object, 他必然是commonplace, 应为nothing new.
-这样的话, 一个人可以学会任何知识.如何量化他所学based on simple model.
-既然所有知识, 都是简单的, 那么达到一定数量, 就显而易见的成为了衡量的标准.
-那么是否, 我们'见的多了', 就足够了呢? 以我个人学习kernel为例, 我看过很多的内核
-source code, 我不觉得能很好理解我所看过的这些内容.
-那么读代码本身是否必要呢? 就从理解这样的木来说,读代码不是必要的.我们的
-目的是理解, 而不是读代码, 也就是说我迷失在代码中了.所以, quality, 更多的世界之源是
-衡量我们知识的方面.也就是说, 很多人会接触到相同的东西, 但是理解的深刻, 多少是不一样
-的.那么基于以上两点就够了吗?基于imperfect understanding, 我们知道不够.那么多次
-多角度的理解, 就成为必要的了. 还有一点, 目标作为某种活动的副产品, 才是他本来的意义.
-就好比, 要学英语, 如果用英语去学TTC的哲学课程, 和用英语与印度技术人员沟通.
-这样才是真正寻找到目标的真正意义, we are not lacking of causality.
-
-0. Phenomenon
-	[我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl) we cannot fully trust the person who worte books.
-	The person who know the real causes is reluctant to write books.
-	The explaination(book, post) always superfaial, even more the author didn't fully understand what they worte.
-	Who is the real master?
-	Self doubt. What about ngx_accept_disabled? Is it really disable accept()! No it's just a load balancing.
-0.1 velocity
-1. Quantity
-2. Quality
-Feynman map
-Understand the fundermental causality, Never the flow of source code.
-It's like structuralism.
-Stratal transverse Slicing
-Origins of the world: teleological causality
-Concurrency/prallel
-3. Practial connection
-Make a new one from scratch.
-Impove the current one
- 
+The bad effects of Objectivity
+* captivated by the objectivity, didn't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
 
 # World/object/The origins of the world
+Nothing new under the sun.
 unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
-simple 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
+君子生非异也 善假于物也. -- 荀子
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
-Falsifiability -- Popper
 
-# Oracle-machine/methods
-The question-based Feynman Technique
-0. Exposure and perception/feeling;
-Exposure 解决的是人和世界/object隔离的问题, 也是任何object之间的联系多少的问题.
-perception/feeling注重的是人和object对人所产生的感受的不同,导致不同的归宿.
-1. Analyzing the object/goal/target
-Things themselves - Husserl, Wittgenstein
-Ideal goal directed thought. -- Firo
-Quantitative irregularity, Structural, and complexity analyzing. -- Firo
-
-2. Use the following method to select the appropriate methods
-Reflexivity -- Soros
-Transformation cognition -- Firo
-Simple is long -- Firo
-The hot and important, else later. -- Firo
-Experiment and experience. -- Bacon, John Locke
-2.1 Tips, implicity massive
-Quantitative -> Statistics-based-> alloc time, excessive exposure
-irregularity -> intuitional trial and err
-regularity -> rational
-Structural, -> rational, context, architecture
-complexity -> rational. scientific method, Occam's razor
-
-3. methods/
-If massive and irregularity but simplicity
-	use firsthand massive exposed Trial and error or intuition
-If massive not irregularity but complexity 
-	use escartes's and rational generative method
-If massive simple regularity
-	use rational programish 
-Statistics-based method training. -- Firo
-Occam's razor 
-Scientific method
-## Descartes's methods
-Divide every question into manageable parts. -- Descartes
-Begin with the simplest issues and ascend to the more complex. -- Descartes
-Review frequently enough to retain the whole argument at once -- Descartes
-Accept as true only what is indubitable. -- Descartes
-
-
-## Human learning architecture
-Intuiation
-Repeat, Neuroplasticity, Manas-vijnana
-Sleep
-Multitask: 互相启发, 幸亏没有等着背完GRE高频词,再练听力.
-Active learning and Meaningful learning: Learning by DOing, Participating
-Passive learning and Rote learning(cramming):我听, 我忘记; 我看, 有印象; 除了我做,我记住。
-Trial and error: callback learning
-Critical learning  -- Popper, Aaron Swartz 25:20
-善假于物也. -- 荀子
-
-## Definition
-内涵定义: Genus-differentia definition 属加种差定义: 发生定义(设计), 关系定义, 功用定义, 摹状定义
-充要定义, Real and nominal definitions
-Classes of extensional definitions: enumerative definition
-[Definitions Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/definitions/)
-## Reflection
-When you can not think any further of somthing, you must be awarenees of lack of causilities.
-# Firo/subject
-理性本身有界限, 意识到那些无法掌控的事, respect 生命本身.
-Intuition
-unpredictable untamed 20%, imperfect-understand, radical fallibility -- Firo, Soros, Popper
-学习知识的重点, 不是知识现在是什么样, 也不是知识为什么这么样, 而是如果是你会是什么样的! -- Firo
-Attention slavery.
+# Descartes's methods
+Divide every question into manageable parts. 
+Begin with the simplest issues and ascend to the more complex.
+Review frequently enough to retain the whole argument at once.
+Accept as true only what is indubitable. 
