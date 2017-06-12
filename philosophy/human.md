@@ -1,6 +1,6 @@
 ---
 tags: [ firo ] 
-title: Firo
+title: 人类世界
 date: 2015-08-25T15:46:11+08:00 
 category: firo
 ---
