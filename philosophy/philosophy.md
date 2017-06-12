@@ -28,6 +28,7 @@ I found some bad effects of sujective mind:
 
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
+[3]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
 
 # Objective understanding
 The origin of the world./structuralism?
@@ -36,7 +37,7 @@ Learning by doing.
 Intuition
 Trial and error/Scientific method
 Critical learning  -- Popper, Aaron Swartz 25:20
-Descartes's methods
+[Descartes's methods][3]
 Occam's razor 
 Reflexivity -- Soros/Statistics-based method training. -- Firo
 Things themselves - Husserl, Wittgenstein
@@ -56,9 +57,3 @@ onset, nuclus, coda
 君子生非异也 善假于物也. -- 荀子
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
-
-# Descartes's methods
-Divide every question into manageable parts. 
-Begin with the simplest issues and ascend to the more complex.
-Review frequently enough to retain the whole argument at once.
-Accept as true only what is indubitable. 
