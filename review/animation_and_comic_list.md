@@ -8,6 +8,8 @@ category: review
 ![z](http://www.it.com.cn/f/games/0511/8/1108zeta001.jpg)
 # 推荐一些我看过且觉得值得一看的动画与漫画
 
+火の鳥
+
 Berserk/剑风传奇
 Griffith的台词:
 是的 就连一个国王也不能真正的随心所欲地生活 我们都只是随着命运的波浪漂流而已 
