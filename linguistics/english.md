@@ -8,6 +8,15 @@ category: linguistics
 [暴力英语学习法 + 严格的目标管理 = 成功快速靠谱的学好英语](http://www.cnblogs.com/jesse2013/p/how-to-learn-english.html)
 51talk
 
+# English
+1. Speak
+Audible 120 hours. 
+stress, phonics are forceless to improve speaking and listening.
+weak forms, contraction, Langbo, 51 Talk
+Stress, weak forms, phonics.
+Langbo, 51 Talk
+2. Express
+Transitional words, Bec 100, TTC
 # Method
 that the most effective way to build your word power rapidly and permanently is to learn words in their order of difficulty. -- Verbal advantage 
 

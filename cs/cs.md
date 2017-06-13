@@ -45,6 +45,11 @@ Security/Protection/isolation
 Reliability
 Energy-efficiency
 
+# kerenl
+General subsystem: schedule, memory, fork, lock, vfs. April 4, 8 days
+Network + redhat requirements. 8 days
+KVM. source code level and hands-on lkml
+
 # FAQ
 [All about pseudo][1]
 [1]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf

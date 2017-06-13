@@ -3,6 +3,17 @@ date: 2014-12-28
 title: Physical life
 category: firo
 ---
+
+# Life schedule
+21:45 Physical exercises 30 ~ 45 minutes.
+22:00 Wash face & Have a shower.
+22:30 Sleep about 7.5 hours. Do not watch phone or pad.
+07:00 Getting up. 
+# Daily principles
+Remedies sinus.
+Drink a lot of water.
+Avoid eating junk food as much as possible.
+Experience in kernel hacking and cs.
 #Body
 ##Soma				Now									Future	
 Face
