@@ -1,5 +1,5 @@
 ---
-date: 2015-09-13
+date: 2008-09-13
 title: Quantitative congnition - The philosophy on which I am living
 category: philosophy
 ---
