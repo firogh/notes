@@ -1,5 +1,4 @@
 
-
 **Current working, if you are doing the same things, feel free to get touch with me.**
 Learning theory of computation.
 Trying to prove or get the relationship between TOC and programming abilties.
@@ -11,8 +10,6 @@ Reading 控制论与科学方法论
 The Common Cognition Language(under construction)
 The orgnizations of knowledge(under construction)
 
-**My email address:**
-echo gm |while read line; do echo firo$line$(echo -n 40 |xxd -r -p)${line}ail;done
 **Persons who inspire me:**
 [Leonardo da Vinci][0], [Elon Musk][2], [Aaron Swartz][3] and [The Internet's Own Boy: The Story of Aaron Swartz][1]
 **Recent posts**

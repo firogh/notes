@@ -21,8 +21,11 @@ I found some bad effects of sujective mind:
 * Neglect objectivity.
 * radical fallibility. -- Soros
 * Overconfident subjective understanding. -- on larning kernel
+* Subjective paralysis;Easy to perform and achieve in subjectivity makes objectivity lose interest.
+
 
 # Thank you, Mr Feynman
+![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][1]
 [What is science by Feyman][2], do you know brown-throated thrush?
 
@@ -48,12 +51,14 @@ The bad effects of Objectivity
 * captivated by the objectivity, didn't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
 
 # World/object/The origins of the world
+Know how to solve every problem that has been solved. -- Feynman
+* Before you start to deal a problem, inspect and examine the problem and the known method, especially for a complex problem e.g. Learning a new language.
+* From inspecting and examining the known method, you get some hints to make a method which is suitable for you to solve the problem. Why US people is able to use english, more general reason, they spent much time on variant fields of life, but we do these rarely. These are the hints I can get. And I can quantize the 'time' and 'fields' to compare it with what a native English person did.
+* From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
 Nothing new under the sun.
-unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
+Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
-问题总是复杂的, 解决方法总是简单的.  --xiaolai.li
-君子生非异也 善假于物也. -- 荀子
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
