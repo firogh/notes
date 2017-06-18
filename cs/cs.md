@@ -5,11 +5,16 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+[0]: https://www.youtube.com/watch?v=lL4wg6ZAFIM
+
+What's the computer science? Have ever asked yourself? It's not a science! 
+[Richard Feynman on Computer Science — Talk at Bell Labs (1985)][0]
+
 # Reference
 [Mort Yao 程序与证明](http://www.tuicool.com/articles/YRZvem)
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
-# COmponents of cs
+# Components of cs
 design(pattern) and algorithm, programming(debugging, hacking)
 pl,assembly, compile(gcc), link, load(cll)
 process, quantaties, order(synchronization)
