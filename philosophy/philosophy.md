@@ -58,6 +58,7 @@ Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 subjective 知识的根, 如果根被拔掉了, 那知识就没有意义了.'static知'识, 自然的生长.而作为问题的根尤为重要. 知识形式往往很复杂,浪费大量精力. 知识的生成, 胡适的历史方法, 知识不在是某种固定的思维结构, 而是动态的, 这种动态体现在, 知识依附于问题.
 objective doing 层面的根. 怎么用.解决问题的能力与体现, 才是重中之重, 而不是对于'所谓的'static的知识的falsh across. 这两种都是隐形的知识, 你不思考,不能抓住他们的形.
 The hidden darkness. 是什么组织了我们认识, 完善自我. 知识被人有意识的隐藏了起来(如中共高层领导与钱的关系), 另外就是人们不具备合理的能力理解知识.
+高度抽象的式不加冗余的理解. 之前很多时间浪费在了, kernel很多琐碎的细节知识没有在融汇贯通(尤其是, 没有得到抽象的精简的知识), 很片面. 浪费了很多时间.
 Know how to solve every problem that has been solved. -- Feynman
 * Before you start to deal a problem, inspect and examine the problem and the known method, especially for a complex problem e.g. Learning a new language or kernel
 * From inspecting and examining the known method, you get some hints to make a method which is suitable for you to solve the problem. Why US people is able to use english, more general reason, they spent much time on variant fields of life, but we do these rarely. These are the hints I can get. And I can quantize the 'time' and 'fields' to compare it with what a native English person did.
