@@ -12,6 +12,7 @@ The orgnizations of knowledge(under construction)
 
 **Persons who inspire me:**
 [Leonardo da Vinci][0], [Elon Musk][2], [Aaron Swartz][3] and [The Internet's Own Boy: The Story of Aaron Swartz][1]
+
 **Recent posts**
 [0]: https://en.wikipedia.org/wiki/Leonardo_da_Vinci
 [1]: https://www.youtube.com/embed/vXr-2hwTk58

@@ -51,8 +51,12 @@ The bad effects of Objectivity
 
 # World/object/The origins of the world
 Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
-* 应该不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
-* For learning linux kernel, when I chose reading book as the main method to learn kernel hacking. But I failed because my poor understanding and reading abilities. But what matters more, I didn't ask myself why reading book? Why do I deem and use reading  kernel book to understanding the internal knowledge of kernel as my way to kernel hacking? I think, at that time, learn to know how something work is knowledge, right? This is my fatal mistake. What I want to know is a solution. But the process to know the solution is too bad. The result is I cannot fully understand the solution like Feynman's methods do .
+有生命的知识; 问题是种子, 知识是花.
+
+* 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
+* 我失败的地方, 
+
+ Why do I deem and use reading  kernel book to understanding the internal knowledge of kernel as my way to kernel hacking? I think, at that time, learn to know how something work is knowledge, right? This is my fatal mistake. What I want to know is a solution. But the process to know the solution is too bad. The result is I cannot fully understand the solution like Feynman's methods do .
 * In short, 1. I didn't fully understand how others solved problem. 2. I didn't solve a problem.
 * 更为核心的问题是, 我以为knowledge是static, 而且只知道理解这个点. 实际上知识作为在engineering field, knowledge 是依附于工程的实际问题. 也就是knowledge 在问题不在的时候是削弱的. 也就是说, 解决的能力才是最重要的. 能力是一种知识pattern. 这种能力也是一种'知识', 绝不能被其他知识取代. 另外就是, 知识本身的生长过程.
 subjective 知识的根, 如果根被拔掉了, 那知识就没有意义了.'static知'识, 自然的生长.而作为问题的根尤为重要. 知识形式往往很复杂,浪费大量精力. 知识的生成, 胡适的历史方法, 知识不在是某种固定的思维结构, 而是动态的, 这种动态体现在, 知识依附于问题.
@@ -64,6 +68,7 @@ Know how to solve every problem that has been solved. -- Feynman
 * From inspecting and examining the known method, you get some hints to make a method which is suitable for you to solve the problem. Why US people is able to use english, more general reason, they spent much time on variant fields of life, but we do these rarely. These are the hints I can get. And I can quantize the 'time' and 'fields' to compare it with what a native English person did.
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
 Nothing new under the sun.
+小美好
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
