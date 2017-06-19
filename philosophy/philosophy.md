@@ -32,6 +32,7 @@ I found some bad effects of sujective mind:
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
 [3]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
+[4]: http://www.kohala.com/start/unpv12e.html
 
 # Objective understanding
 The origin of the world./structuralism?
@@ -58,7 +59,7 @@ Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it w
 * Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
 Know how to solve every problem that has been solved. -- Feynman
 Nothing new under the sun.
-小美好, take the programs, modify them and enhance them.  -- Stevens
+小美好, [take the programs, modify them and enhance them.][4]  -- Stevens
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus
