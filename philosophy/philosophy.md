@@ -50,6 +50,7 @@ Based on abstract thinking, 不浪费时间在不重要的细节上. -- Firo
 
 The bad effects of Objectivity
 * captivated by the objectivity, didn't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
+* indirect false knowledge. fixed by genuine.
 
 # World/object/The origins of the world
 Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
@@ -57,6 +58,7 @@ Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
 Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it work.[The hidden knowledge/darkness 阻止了我们]
 * Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
+Macroscopic directed mind.
 Know how to solve every problem that has been solved. -- Feynman
 Nothing new under the sun.
 小美好, [take the programs, modify them and enhance them.][4]  -- Stevens
