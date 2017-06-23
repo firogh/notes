@@ -28,6 +28,12 @@ I found some bad effects of sujective mind:
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][1]
 [What is science by Feyman][2], do you know brown-throated thrush?
+The Feynman Technique
+* Record every obstacle
+* Record every ability/knowledge in cs/pattern.log
+* Thrive knowledge
+* Proof by contradiction
+
 
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
@@ -36,7 +42,6 @@ I found some bad effects of sujective mind:
 
 # Objective understanding
 The origin of the world./structuralism?
-Feynman's method.
 Learning by doing.
 Intuition
 Trial and error/Scientific method
@@ -56,8 +61,10 @@ The bad effects of Objectivity
 Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 * 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
+
 Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it work.[The hidden knowledge/darkness 阻止了我们]
 * Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
+
 Macroscopic directed mind.
 Know how to solve every problem that has been solved. -- Feynman
 Nothing new under the sun.
