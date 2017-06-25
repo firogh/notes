@@ -48,7 +48,7 @@ Trial and error/Scientific method
 Critical learning  -- Popper, Aaron Swartz 25:20
 [Descartes's methods][3]
 Occam's razor 
-Reflexivity -- Soros/Statistics-based method training. -- Firo
+Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 Falsifiability -- Popper
 
@@ -62,6 +62,8 @@ Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 * 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
 
+真实, 实在. -- Firo
+什么束缚. -- Firo
 Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it work.[The hidden knowledge/darkness 阻止了我们]
 * Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
 
