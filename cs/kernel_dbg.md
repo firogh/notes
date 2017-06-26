@@ -5,6 +5,8 @@ date: 2017-04-05T14:45:21+08:00
 category: cs
 ---
 
+[1]: http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1
+
 # Dynamic debug 
 Precondition: CONFIG_DYNAMIC_DEBUG
 How to use it during kernel booting?
@@ -24,6 +26,9 @@ THese functions are like pr_func
 # oops
 Kernel oops relates to invalid memory access, including sigev and sigbus.
 [kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
+[Debugging a kernel crash found by syzkaller][1]
+
+
 
 # lockup
 phenomenon: LOCKUP_DETECTOR

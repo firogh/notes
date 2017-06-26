@@ -13,6 +13,8 @@ category: net
 [1]: https://blog.cloudflare.com/the-story-of-one-latency-spike/
 [2]: https://blogs.technet.microsoft.com/networking/2009/08/12/where-do-resets-come-from-no-the-stork-does-not-bring-them/
 [3]: http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html
+[4]: https://githubengineering.com/syn-flood-mitigation-with-synsanity/
+
 
 # Latency
 [The story of one latency spike][1]
@@ -105,6 +107,7 @@ tcp_v4_do_rcv{
 nginx->GET ->firoyang.org
 firoyang.org->nginx->chrome
 ## syn flood
+[SYN Flood Mitigation with synsanity][4]
 首先syn 也有超时5次指数1 2 4 8 16 32(第五次超时), 如果client发了一个syn就没了,
 会被黑客利用. 解决办法是tcp_syncookies, 在syn队列满了的时候, 构造一个特别isn, 
 丢掉syn entry, 等待ack,校验合法直接accpet.好像incomplete队列无限大一般.

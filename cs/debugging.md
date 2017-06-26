@@ -13,6 +13,13 @@ Reverse engineering
 # Core pattern
 echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
 
+# From assembly to C
+addr2line -f -C -a 0xxxx -e ooo.bin
+addr2line -e vmlinux -i ffffffff81f04b7a ffffffff81508daa
+
+# From ELF to C
+pahole -C 'block_device' vmlinux
+
 # Debugging and Bug types
 Does anyone can tell me what is debugging? Debugging is [Abductive reasoning][1].
 Theory + Observations => Explanation
@@ -27,7 +34,6 @@ NVD的Bug分类也采用类似的构建方式.[CWE Cross Section Mapped into by 
 
 # use after free
 record the owner, who free.
-
 
 # General debugging steps
 Debugging的逻辑过程是[Abductive reasoning][1]. 我们以此进行推导.
@@ -55,8 +61,8 @@ E: ∅ -> Bug type(可能经过是多种Bug types的过渡状态) -> Explanation
 make kernel/sched.s V=1
 readelf, objdump
 c++filt 
-addr2line -f -C -a 0xxxx -e ooo.bin
 ./scripts/decodecode < Oops.txt
+echo 
 * load software
 LD_TRACE_LOADED_OBJECTS=1 git 
 ldd /usr/bin/git
