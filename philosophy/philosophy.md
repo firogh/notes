@@ -61,6 +61,7 @@ The bad effects of Objectivity
 Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 * 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
+* 世界如何变化取决于我们如何看她
 
 真实, 实在. -- Firo
 什么束缚. -- Firo
