@@ -96,16 +96,6 @@ iphdr->id, iphdr->frag_off
 skb_shared_info->frag_list 
 ip_fragment/ip_defrag
 [Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
-
-## Route
-* state structure
-fib_info:route info
-fib_config:
-* add new rule
-iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
-* Multi-time line
-fib_create_info(): create a fib_info
-
 # send
 ip_append_data 和ip_push_pending_frames弄frag_list
 ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
