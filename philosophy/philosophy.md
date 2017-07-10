@@ -63,6 +63,7 @@ Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 * From inspecting and examining the problem, if will help you to get the right method, not defrauded by the subjectivity. For english learning, not learning english but using english.
 * 世界如何变化取决于我们如何看她
 
+每个伟大都来自渺小. -- Alien
 真实, 实在. -- Firo
 什么束缚. -- Firo
 Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it work.[The hidden knowledge/darkness 阻止了我们]

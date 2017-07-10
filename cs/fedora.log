@@ -5,6 +5,14 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
+# systemd
+ sudo systemd-analyze  blame 
+      2min 732ms systemd-udev-settle.service
+           732ms dracut-initqueue.service
+           541ms abrtd.service
+systemctl mask systemd-udev-settle
+Created symlink /etc/systemd/system/systemd-udev-settle.service → /dev/null.
+
 # Shell
 PS1='\e[1;32m\u@\h\e[m:\e[1;34m\w\e[m$ '
 stty columns 3000
