@@ -10,6 +10,14 @@ category: cs
 Reverse engineering
 [How debuggers work][1]
 
+# info
+Host OS name and version number.
+I40e driver version number.
+Host OS Linux Kernel log. 
+VF driver version number.
+NIC hardware model and PBA number. 
+NIC Firmware NVM version number.
+
 # Core pattern
 echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
 
