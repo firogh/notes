@@ -51,8 +51,12 @@ Occam's razor
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 Falsifiability -- Popper
+<<<<<<< HEAD
 Based on small facts. -- Firo
 devoting -- Firo
+=======
+Doing the right thing is beyond do thing correctly.
+>>>>>>> 70e8e79dca04aa7752447e706e7c8e3895f138ee
 
 
 The bad effects of Objectivity
