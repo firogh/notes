@@ -35,7 +35,7 @@ rsz() {
 		[[ -n ${commands[repo-elephant]} ]] && repo-elephant || print 'Usage: rsz'  ## Easter egg here :)
 	fi
 }
-<<<<<<< HEAD
+
 # IMA
 KEYS: Separate the kernel signature checking keyring from module signing
 v3.13-rc1~18^2~61;-)
