@@ -8,6 +8,14 @@ category: linguistics
 [暴力英语学习法 + 严格的目标管理 = 成功快速靠谱的学好英语](http://www.cnblogs.com/jesse2013/p/how-to-learn-english.html)
 51talk
 
+# Language acquisition
+1. If a world were not have any language, the meaning does exist!
+2. Cognition/thought breeds language, every language has its own express way.
+Chinese: 那个位子空着吗?
+Enlish: Is that seat vacant? (Not use 'empty').
+3. Learning language is a process of 'copy', not creating something new.
+4. The essence of language is using words to expres words.
+
 # English
 1. Speak
 Audible 120 hours. 

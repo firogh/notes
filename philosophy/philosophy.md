@@ -44,6 +44,7 @@ The Feynman Technique
 The origin of the world./structuralism?
 Learning by doing.
 Intuition
+How much we understand the world isn't better than how well.
 Trial and error/Scientific method
 Critical learning  -- Popper, Aaron Swartz 25:20
 [Descartes's methods][3]

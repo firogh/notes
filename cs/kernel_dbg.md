@@ -7,6 +7,10 @@ category: cs
 
 [1]: http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1
 
+# Debug boot problem
+debug ignore_loglevel earlyprintk=ttyS0,115200,keep keep_bootcon initcall_debug dyndbg=+plmf
+
+
 # Dynamic debug 
 Precondition: CONFIG_DYNAMIC_DEBUG
 How to use it during kernel booting?
