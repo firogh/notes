@@ -40,6 +40,10 @@ The Feynman Technique
 [3]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
 [4]: http://www.kohala.com/start/unpv12e.html
 
+# Objective register machine
+copy or create
+basic forms from zero.
+
 # Objective understanding
 The origin of the world./structuralism?
 Learning by doing.
@@ -54,6 +58,7 @@ Transformation cognition -- Firo
 Falsifiability -- Popper
 <<<<<<< HEAD
 Based on small facts. -- Firo
+Practise based defects collects.
 devoting -- Firo
 =======
 Doing the right thing is beyond do thing correctly.

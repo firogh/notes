@@ -7,6 +7,11 @@ category: linguistics
 # Reference
 [暴力英语学习法 + 严格的目标管理 = 成功快速靠谱的学好英语](http://www.cnblogs.com/jesse2013/p/how-to-learn-english.html)
 51talk
+[1]: https://site.douban.com/195274/widget/notes/14547979/note/401586875/
+[2]: https://site.douban.com/195274/widget/notes/14547979/note/401594731/
+[3]: https://zhihu.com/question/29593355/answer/70435647
+[4]: https://zhihu.com/question/29593355/answer/88599805
+[5]
 
 # Language acquisition
 1. If a world were not have any language, the meaning does exist!
@@ -16,14 +21,48 @@ Enlish: Is that seat vacant? (Not use 'empty').
 3. Learning language is a process of 'copy', not creating something new.
 4. The essence of language is using words to expres words.
 
-# English
-1. Speak
+# Listen
+[一个单词，如果写在你面前你都没有很大的把握把它念对的话，你凭什么认为在一个长句中你能毫无问题地把它听出来、而且能结合上下文完全理解正确呢？][3]
+[从听清到听懂，兼谈辨音能力对外语听力的影响][5]我现在应该是听不清, 不是听不懂.
+## Why I cannot understand some words in conversation.
+1. new words
+Verabl advantage
+2. know the word but with wrong pronounciation. parameter, ride, rid, raid, read.
+3. know the word and pronounciation, but cannot distguish it form other sounds in sentence, e.g. 'bed, bad, bide'
+[听力障碍一览1：个别易混淆音][1]
+[ɪ]和[i], 
+ʊ u,
+[e]和[æ]
+[ɑ]和[ə/ʌ]
+[v]和[w]
+[h]音节的省略
+4. know the word and pronounciation, but sometimes hardly recognize while listening, e.g. point, [小词的组合拳打击][4]
+Read and listen
+5. 连读, 弱读, contraction.
+[听力障碍一览2：自然语流规律][2]
+Lisa's accurate English
+ATT
+Pronuciation workshop
+Youtube Rachel's English, and so on.
+Langeasy
+Speaking: Narration
+Youtube.
+6. 句子长, 反应不过来.
+
+# counteract
+听: 走心
+读: 出声, 模仿美音
+背: no chinese
+dictation: 
+
+# Speak
 Audible 120 hours. 
 stress, phonics are forceless to improve speaking and listening.
 weak forms, contraction, Langbo, 51 Talk
 Stress, weak forms, phonics.
 Langbo, 51 Talk
-2. Express
+
+# Express
 Transitional words, Bec 100, TTC
 # Method
 that the most effective way to build your word power rapidly and permanently is to learn words in their order of difficulty. -- Verbal advantage 
@@ -51,13 +90,7 @@ half AmE
 CGEL, Longman
 
 ## Listening and speaking
-Lisa's accurate English
-ATT
-Pronuciation workshop
-Youtube Rachel's English, and so on.
-Langeasy
-Speaking: Narration
-Youtube.
+
 
 # Expressing, writing
 Dicts
