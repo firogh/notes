@@ -10,10 +10,10 @@ Reading 控制论与科学方法论
 The Common Cognition Language(under construction)
 The orgnizations of knowledge(under construction)
 
-**Persons who inspire me:**
-[Leonardo da Vinci][0], [Elon Musk][2], [Aaron Swartz][3] and [The Internet's Own Boy: The Story of Aaron Swartz][1]
+** Persons who inspire me:**
+[Leonardo da Vinci][0], Richard Feynman, [Elon Musk][2], [Aaron Swartz][3] and [The Internet's Own Boy: The Story of Aaron Swartz][1]
 
-**Recent posts**
+** Recent posts**
 [0]: https://en.wikipedia.org/wiki/Leonardo_da_Vinci
 [1]: https://www.youtube.com/embed/vXr-2hwTk58
 [2]: https://en.wikipedia.org/wiki/Elon_Musk
