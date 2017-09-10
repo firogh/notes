@@ -22,7 +22,7 @@ What should we do?
 2. What: Focus on the relavent real life thing.
 1. How: 0, Cramming(remeber through text), Graphic meaning, Real life meaning(feeling/doing).
 3. Iterating on over quantity contents.
-people cannot see something wihout being denominated
+* people cannot see something wihout being denominated
 
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
