@@ -1,11 +1,28 @@
 ---
 date: 2008-09-13
-title: Quantitative congnition - The philosophy on which I am living
+title: Quantitative cognition - The philosophy on which I am living
 category: philosophy
 ---
 
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They are out of my past life.
+
+An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
+
+# Over quantity cognition
+If we cannot learn something in a short time, even years. It means we are fighting the over quantiy knowledge. We need a plan to conquer this situation.
+What will we meet during the over quantity cognition?
+* Constant unacquainted knowledge.
+* Large amount of contents to learn.
+* No habitat to practice such things.
+* We cannot prepare every thing we need.
+* Some knowledges are compeletely useless.
+
+What should we do?
+2. What: Focus on the relavent real life thing.
+1. How: 0, Cramming(remeber through text), Graphic meaning, Real life meaning(feeling/doing).
+3. Iterating on over quantity contents.
+people cannot see something wihout being denominated
 
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
@@ -23,6 +40,7 @@ I found some bad effects of sujective mind:
 * Overconfident subjective understanding. -- on larning kernel
 * Subjective paralysis;Easy to perform and achieve in subjectivity makes objectivity lose interest.
 * Flash across
+* Quantify problem.
 
 # Thank you, Mr Feynman
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
