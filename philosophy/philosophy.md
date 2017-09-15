@@ -9,20 +9,37 @@ The following thoughts try to help people to make a good life. They are out of m
 
 An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
 
+* people cannot see something wihout being denominated
+
 # Over quantity cognition
-If we cannot learn something in a short time, even years. It means we are fighting the over quantiy knowledge. We need a plan to conquer this situation.
+If we cannot learn something in a short time, even years. It means we are fighting the over quantiy knowledge. We must come up with a way to make us ingenuity. Dealing with problem without knowing vertebra.
 What will we meet during the over quantity cognition?
 * Constant unacquainted knowledge.
 * Large amount of contents to learn.
-* No habitat to practice such things.
+* Few feedback. No habitat to practice such things.
 * We cannot prepare every thing we need.
 * Some knowledges are compeletely useless.
 
 What should we do?
-2. What: Focus on the relavent real life thing.
-1. How: 0, Cramming(remeber through text), Graphic meaning, Real life meaning(feeling/doing).
-3. Iterating on over quantity contents.
-* people cannot see something wihout being denominated
+1. Focus on desire, things relavent to life.
+* do the efficiency task not the laborious task/job
+
+overarcher
+nature roamer
+kzenowalker
+If one thing is a must, do it now.
+Doing right things:effectiveness
+Doing things right:efficiency
+Effectiveness:
+Interestings stem from doing right things.
+等价交换, relevant
+kazewalker:1. priority. 2. relevent. 3. feeling/desire
+* Doing the right thing is beyond do thing correctly.
+* Goku
+I use goku to refer/define the reason/fact/ablity that human is able to get stronger/skilled/professional on something.
+Words reflect the real wrold. Not just some verbal thing. And we must establish the connection between words and real life meaning.
+It's not a verbal game.
+
 
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
@@ -63,6 +80,7 @@ copy or create
 basic forms from zero.
 
 # Objective understanding
+0, Cramming(remeber through text), Graphic meaning, Real life meaning(feeling/doing).
 The origin of the world./structuralism?
 Learning by doing.
 Intuition
@@ -74,14 +92,8 @@ Occam's razor
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 Falsifiability -- Popper
-<<<<<<< HEAD
 Based on small facts. -- Firo
 Practise based defects collects.
-devoting -- Firo
-=======
-Doing the right thing is beyond do thing correctly.
->>>>>>> 70e8e79dca04aa7752447e706e7c8e3895f138ee
-
 
 The bad effects of Objectivity
 * captivated by the objectivity, didn't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
