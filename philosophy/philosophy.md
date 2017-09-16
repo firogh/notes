@@ -32,9 +32,9 @@ Doing right things:effectiveness
 Doing things right:efficiency
 Effectiveness:
 Interestings stem from doing right things.
-等价交换, relevant
-kazewalker:1. priority. 2. relevent. 3. feeling/desire
-* Doing the right thing is beyond do thing correctly.
+causility: 
+failsibility: feedback
+feeling/desire
 * Goku
 I use goku to refer/define the reason/fact/ablity that human is able to get stronger/skilled/professional on something.
 Words reflect the real wrold. Not just some verbal thing. And we must establish the connection between words and real life meaning.
