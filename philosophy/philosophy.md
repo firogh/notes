@@ -7,39 +7,19 @@ category: philosophy
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They are out of my past life.
 
+# The architect
 An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
-
-* people cannot see something wihout being denominated
-
-# Over quantity cognition
-If we cannot learn something in a short time, even years. It means we are fighting the over quantiy knowledge. We must come up with a way to make us ingenuity. Dealing with problem without knowing vertebra.
-What will we meet during the over quantity cognition?
-* Constant unacquainted knowledge.
-* Large amount of contents to learn.
-* Few feedback. No habitat to practice such things.
-* We cannot prepare every thing we need.
-* Some knowledges are compeletely useless.
-
-What should we do?
-1. Focus on desire, things relavent to life.
-* do the efficiency task not the laborious task/job
-
 overarcher
 nature roamer
-kzenowalker
+kzenowalker: feeling/desire
 If one thing is a must, do it now.
 Doing right things:effectiveness
-Doing things right:efficiency
-Effectiveness:
-Interestings stem from doing right things.
-等价交换, relevant
-kazewalker:1. priority. 2. relevent. 3. feeling/desire
-* Doing the right thing is beyond do thing correctly.
-* Goku
-I use goku to refer/define the reason/fact/ablity that human is able to get stronger/skilled/professional on something.
-Words reflect the real wrold. Not just some verbal thing. And we must establish the connection between words and real life meaning.
-It's not a verbal game.
-
+Strictly Prioritize desires from the most to the least, use D's methods.
+Learning by doing.
+Causility 
+Interesting stems from doing right things.
+Specific objective
+Failsibility: feedback
 
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
@@ -58,6 +38,12 @@ I found some bad effects of sujective mind:
 * Subjective paralysis;Easy to perform and achieve in subjectivity makes objectivity lose interest.
 * Flash across
 * Quantify problem.
+* People cannot see something wihout being denominated
+Good points:
+* Goku
+I use goku to refer/define the reason/fact/ablity that human is able to get stronger/skilled/professional on something.
+Words reflect the real wrold. Not just some verbal thing. And we must establish the connection between words and real life meaning.
+It's not a verbal game.
 
 # Thank you, Mr Feynman
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
@@ -68,8 +54,6 @@ The Feynman Technique
 * Record every ability/knowledge in cs/pattern.log
 * Thrive knowledge
 * Proof by contradiction
-
-
 [1]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
 [2]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
 [3]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
@@ -110,6 +94,16 @@ Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
 什么束缚. -- Firo
 Thrving knowledge. And roots, e.g. problem/ and how to use it, not how does it work.[The hidden knowledge/darkness 阻止了我们]
 * Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
+
+
+# Over quantity cognition
+If we cannot learn something in a short time, even years. It means we are fighting the over quantiy knowledge. We must come up with a way to make us ingenuity. Dealing with problem without knowing vertebra.
+What will we meet during the over quantity cognition?
+* Constant unacquainted knowledge.
+* Large amount of contents to learn.
+* Few feedback. No habitat to practice such things.
+* We cannot prepare every thing we need.
+* Some knowledges are compeletely useless.
 
 Macroscopic directed mind; Keep subjectivity and objectivity consistency;Whit of improving day by day. -- Firo
 
