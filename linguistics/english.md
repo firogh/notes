@@ -11,7 +11,7 @@ category: linguistics
 [2]: https://site.douban.com/195274/widget/notes/14547979/note/401594731/
 [3]: https://zhihu.com/question/29593355/answer/70435647
 [4]: https://zhihu.com/question/29593355/answer/88599805
-[5]
+[6]: https://www.fluentin3months.com/phrasal-verbs/
 
 # Language acquisition
 1. If a world were not have any language, the meaning does exist!
@@ -48,6 +48,8 @@ Langeasy
 Speaking: Narration
 Youtube.
 6. 句子长, 反应不过来.
+# Phrasal verbs
+[6 Tips to Learn Phrasal Verbs in English][6]
 
 # counteract
 听: 走心
