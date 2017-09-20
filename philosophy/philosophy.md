@@ -14,8 +14,9 @@ nature roamer
 kzenowalker: feeling/desire
 If one thing is a must, do it now.
 Doing right things:effectiveness
-Strictly Prioritize desires from the most to the least, use D's methods. NO a-z!
-Learning by doing/outputing.
+Strictly Prioritize desires from the most to the least, use D's methods. 
+NO a-z!
+Learning by doing/outputing. 动脑思考，实践行动，分析总结，不断改进，
 Causility 
 Interesting stems from doing right things.
 Specific objective
