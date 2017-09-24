@@ -21,6 +21,10 @@ Causility
 Interesting stems from doing right things.
 Specific objective
 Failsibility: feedback
+## For learning large 
+Learning by doing/Real life releavent; Learn what we can practice.
+Narrow input
+Eliciting synonym, collect, pick up, use
 
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
