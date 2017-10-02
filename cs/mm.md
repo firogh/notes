@@ -145,9 +145,6 @@ early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
 init_mem_mapping //set page table and cr3.
 initmem_init ; NUMA init
 x86_init.paging.pagetable_init();= paging_init //x86_64 ->zone_sizes_init->...free_area_init_core
-mm_init
-memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
-bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
 a little history e820_register_active_region replaced by lmb [replaced by](https://lkml.org/lkml/2010/7/13/68) memblock
 reserve_initrd ; // RAMDISK
 总结下, 内存初始化需要的基础.
@@ -155,27 +152,66 @@ reserve_initrd ; // RAMDISK
 2. set PF trap do_page_fault.
 3. set page table and cr3.
 这就完了. 之后开始开始加工.
-arch 相关的x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
-sparse_init
+# Setting up arch specific and creating memblock
+## Arch specific x86_64
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
+## Memblock
+memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
+bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
+
+# Using memblock to prepare for buddy system
+## Zones and free_area.free_list
+paging_init->zone_sizes_init.
 {
-	memblock_virt_alloc // sizeof(struct page *) * NR_MEM_SECTIONS;NR_MEM_SECTIONS = 1 << 19, Is it big?
-	// alloc memory region will be marked in memory_reserved.
+	free_area_init_node-> 
+## prsent_pages
+		calculate_node_totalpages
+### mem_map/page array:
+		// mem_map for FLAT, but not for us because we use sparsemem
+		alloc_node_mem_map
+		free_area_init_core
+		{
+### managed_pages
+			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
+			// init percpu pageset with boot_pageset
+			zone_pcp_init 
+			// free_area.free_list
+			init_currently_empty_zone(zone, zone_start_pfn, size);
+			// Set all page to reserved. MIGRATE_MOVABLE?
+			// Set node, zone to page->flags; set_page_links
+			memmap_init_zone 
+
+		}
 }
-zone_sizes_init.
-{
-	calculate_node_totalpages // 每个zone的page数.
-	free_area_init_node-> alloc_node_mem_map // alloc mem_map for FLAT
-	free_area_init_core
-	{
-		calc_memmap_size // 1/4k of spanned or present used for memmap. heuristic?
-		zone_pcp_init // init percpu pageset with boot_pageset
-		set_pageblock_migratetype(page, MIGRATE_MOVABLE);// 512 per zone
-		memmap_init_zone-> __init_single_page // init every page in a zone.
-	}
-}
-arch independent, 
-build_all_zonelists
+## Set fallback for every zone and init PCP
+build_all_zonelists // dmesg
+### Precondition
+
+## Sparse 
+paging_init->sparse_init
+
+
+# Mirgate memory from memblock to buddy system
+## Preconditions
+mem_map/page array
+## memblock (constantly Y for x86)
+memblock_free_late->__memblock_free_late->__free_pages_bootmem
+## bootmem (discarded by x86)
+memblock_free_late->free_bootmem_late->__free_pages_bootmem
+free_all_bootmem->free_all_bootmem_core->__free_pages_bootmem
+## nobootmem
+free_bootmem_late->__free_pages_bootmem
+free_all_bootmem->free_low_memory_core_early->__free_memory_core->*__free_pages_memory*->__free_pages_bootmem->__free_pages_boot_core
+## free bootmem core/earyly
+mm_init->mem_init->free_all_bootmem
+## free bootmem late
+start_kernel->efi_free_boot_services->free_bootmem_late->__free_pages_bootmem
+
+# Zone watermarks 
+core_initcall(init_per_zone_wmark_min)
+
+
+
+build_all_zonelists: Just init zones, nothing else. But we have vm_total_pages/zone->managed_pages initialized in free_all_bootmem();.
 page_alloc_init // drain percpu pageset when cpu dead or dead frozen for CPU hotplug
-mm_init
-Zone watermarks core_initcall(init_per_zone_wmark_min)
 
