@@ -1,12 +1,49 @@
----
-tags: [ kernel ] 
-layout: post
-date: 2014-12-28
-title: Linux memory management
-category: cs
----
+# Links
+[1]: http://larmbr.com/2014/01/19/the-evolution-of-4-level-page-talbe-in-linux/
+[2]: http://ytliu.info/blog/2016/03/14/linuxnei-cun-chu-shi-hua-assembly/
+# x86 64
+[Linux内核4级页表的演进][1]
+[Linux内存初始化][2]
+PAE is 3-level page tables: pgd, pmd, pte.
+So early_level4_pgt(level4, level3, level2) in startup_64() with 
+ENTRY(secondary_startup_64)
+  /* Enable PAE mode and PGE */
+  movl  $(X86_CR4_PAE | X86_CR4_PGE), %ecx
+  movq  %rcx, %cr4
+
+  /* Setup early boot stage 4 level pagetables. */
+  addq  phys_base(%rip), %rax
+  movq  %rax, %cr3
+
+should be OK.
+
+X86_CR0_PG: enable paging.
+x86_64_start_kernel
 
 All processes's page table(task_strcut pgd) was derived form init_mm's swapper_pg_dir which inited in native_pagetable_init(). #FIXME.
+
+# vmemmap page tables
+vmemmap_populate
+## hotplug
+add_memory
+|-add_memory_resource
+ |-add_memory_resource
+  |-arch_add_memory
+   |-__add_pages
+    |-__add_section
+     |-sparse_add_one_section
+      |-kmalloc_section_memmap
+       |-sparse_mem_map_populate
+        |-vmemmap_populate
+# sparse_init
+|-sparse_early_mem_map_alloc if !CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
+|-sparse_early_mem_maps_alloc_node if CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
+
+
+# page table
+pgd_ctor
+
+remap_pfn_range
 
 ##Page table
 mk_pte(page, pgprot)    pfn_pte(page_to_pfn(page), (pgprot))
@@ -41,4 +78,3 @@ How kmap works?
 
 ## Temporay Mappings(Fixmaps)
 kmap_atomic()
-
