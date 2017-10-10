@@ -5,7 +5,9 @@ category: philosophy
 ---
 
 I am aware of that we need some principles and methods to understand this world.
-The following thoughts try to help people to make a good life. They are out of my past life.
+The following thoughts try to help people to make a good life. They all come from my past life.
+Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
+But we have feelings, sensations, desires. Minds's target is not real compared to feeling. We are living in feelings. Some of them are the cornerstone. Not the target in minds! Achive target feelings by exchanging curretn feelings through Feynman's method.
 
 # The architect
 An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
