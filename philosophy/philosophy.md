@@ -14,6 +14,8 @@ An idea is likes a seed; once planted in a person's mind, it's growth is determi
 overarcher
 nature roamer
 kzenowalker: feeling/desire
+Respect and fulfill my feelings.
+Use todo list to manage things.
 If one thing is a must, do it now.
 Doing right things:effectiveness
 Strictly Prioritize desires from the most to the least, use D's methods. 
