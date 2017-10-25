@@ -17,6 +17,10 @@ kzenowalker: feeling/desire
 * Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.But we have feelings, sensations, desires. Minds's target is not real compared to feeling. We are living in feelings. Some of them are the cornerstone. Not the target in minds! Achive target feelings by exchanging curretn feelings through Feynman's method.
 * Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 * If one thing is a must, do it now.
+* 内在脉络
+* 大部分的学习无效是因为没有强制性输出结果的压力.
+* 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --Einstein
+* A calm and modest life brings more happiness than the pursuit of success combined with constant restlessness
 Doing right things:effectiveness
 Strictly Prioritize desires from the most to the least, use D's methods. 
 NO a-z!
