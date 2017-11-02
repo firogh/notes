@@ -6,6 +6,7 @@ category: cs
 ---
 
 [0]: https://www.youtube.com/watch?v=lL4wg6ZAFIM
+[1]: https://github.com/shadowsocks/shadowsocks/tree/master
 
 What's the computer science? Have ever asked yourself? It's not a science! 
 [Richard Feynman on Computer Science — Talk at Bell Labs (1985)][0]
