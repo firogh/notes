@@ -3,5 +3,6 @@
 # Translate virtual address to physical address.
 
 # Relocatable kernel
+gcc pie pic
 
 
