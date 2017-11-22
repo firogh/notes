@@ -211,3 +211,11 @@ cat skt.log
         Oracle
         Queries
         Procedures
+
+sed ':a;N;$!ba;s/\n/ /g' s.log
+cat s.log 
+aaa quiet bbb quiet
+
+aaa
+quiet \naaa
+

@@ -5,8 +5,81 @@ date: 2015-11-12
 category: cs
 ---
 
+
 # Reference
-[Article: Introducing initramfs, a new model for initial RAM disks](http://linuxdevices.linuxgizmos.com/introducing-initramfs-a-new-model-for-initial-ram-disks-a/)
+The must reading - Documentation/x86/boot.txt
+[Introducing initramfs, a new model for initial RAM disks](http://linuxdevices.linuxgizmos.com/introducing-initramfs-a-new-model-for-initial-ram-disks-a/)
+[0]: http://duartes.org/gustavo/blog/post/kernel-boot-process/
+
+[The Kernel Boot Process][0]
+
+# kernel boot process
+arch/x86/boot/header.S::start_of_setup
+arch/x86/boot/main.c::main()
+	arch/x86/boot/memory.c::detect_memory()
+	arch/x86/boot/memory.c::detect_memory_e820() = boot_params.e820_entries
+	...
+	arch/x86/boot/pm.c::go_to_protected_mode()
+arch/x86/boot/pmjump.S::protected_mode_jump
+arch/x86/kernel/compressed/head_64.S::startup_32
+arch/x86/kernel/compressed/head_64.S::startup_64
+arch/x86/kernel/head_64.S::startup_64
+kernel/main.c::start_kernel()
+	...
+	arch/x86/kernel/setup_64.c::setup_arch()
+		...
+		arch/x86/kernel/setup_64.c::memory_setup()
+		arch/x86/kernel/e820_64.c::machine_specific_memory_setup()
+		arch/x86/kernel/e820_64.c::sanitize_e820_map(boot_params.e820_map, &boot_params.e820_entries)
+		...
+		arch/x86/kernel/e820_64.c::finish_e820_parsing()
+		...
+		arch/x86/kernel/e820_64.c::e820_register_active_regions()
+		...
+		arch/x86/kernel/acpi/boot.c::acpi_boot_table_init()
+		arch/x86/kernel/pci-dma.c::dma32_reserve_bootmem()
+		arch/x86/kernel/acpi/sleep.c::acpi_reserve_bootmem()
+		arch/x86/kernel/efi_64.c::efi_reserve_bootmem()
+		...
+		arch/x86/kernel/acpi/boot.c::acpi_boot_init()
+		...
+		arch/x86/kernel/e820_64.c::e820_reserve_resources()
+		arch/x86/kernel/e820_64.c::e820_mark_nosave_regions()
+		arch/x86/kernel/e820_64.c::e820_setup_gap()
+		...
+	}
+	drivers/acpi/bus.c::acpi_early_init()
+	kernel/main.c::rest_init()
+		arch/x86/kernel/process_32.c::kernel_thread(kernel_init, NULL, CLONE_FS | CLONE_SIGHAND);
+} 
+kernel/main.c::kernel_init()
+ ...
+ do_basic_setup()
+  ...
+  drivers/base/init.c::driver_init()
+  ...
+  init/main.c::do_initcalls()
+ }
+ ...
+ init/main.c::init_post()
+}
+
+# Realmode
+The first 640KB RAM 
+cat /proc/iomem 
+00000000-00000fff : reserved
+00001000-000913ff : System RAM
+00091400-0009ffff : reserved
+000a0000-000bffff : PCI Bus 0000:00
+000c0000-000cfdff : Video ROM
+000d0000-000d99ff : Adapter ROM
+000da000-000dafff : Adapter ROM
+000e0000-000fffff : reserved
+  000f0000-000fffff : System ROM
+00100000-bcb01fff : System RAM   # 1MB; Bootloader uses real_to_prot and prot_to_real to load the kernel image to this place.
+  01000000-0183d36c : Kernel code # That's why the kernel was called big kernel.
+  0183d36d-01f42d3f : Kernel data
+  020c1000-02209fff : Kernel bss
 
 # Contents
 What basic initializations should be perfomed when power on?

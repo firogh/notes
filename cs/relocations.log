@@ -18,8 +18,54 @@ Before kernel supported the relocatable, [the kdump users had to compile the cap
 [2]: http://www.mindfruit.co.uk/2012/06/relocations-relocations.html
 [3]: https://gcc.gnu.org/ml/gcc-help/2009-07/msg00351.html
 [4]: https://stackoverflow.com/questions/28119365/what-are-the-differences-comparing-pie-pic-code-and-executable-on-64-bit-x86-pl
+[5]: https://kernelnewbies.org/Linux_2_6_20#head-3c215483506a27123005168c491eea0f2e5549dd
 
 [fpie vs -fpic][3]
 They are also different in whether calls to locally defined functions go through the PLT.
 I did a few experiments on this but got nothing on it.
 [What are the differences comparing PIE, PIC code and executable on 64-bit x86 platfomr][4]
+
+# Relocated libc
+(gdb) break main 
+Breakpoint 1 at 0x40065a
+(gdb) r
+Starting program: /home/firo/ws/teste 
+
+Breakpoint 1, 0x000000000040065a in main ()
+(gdb) info sharedlibrary 
+From                To                  Syms Read   Shared Object Library
+0x00007ffff7dd7ac0  0x00007ffff7df5640  Yes         /lib64/ld-linux-x86-64.so.2
+0x00007ffff7a2d8b0  0x00007ffff7b7ff14  Yes         /lib/x86_64-linux-gnu/libc.so.6
+(gdb) info proc mappings 
+process 6947
+Mapped address spaces:
+
+          Start Addr           End Addr       Size     Offset objfile
+            0x400000           0x401000     0x1000        0x0 /home/firo/ws/teste
+            0x600000           0x601000     0x1000        0x0 /home/firo/ws/teste
+            0x601000           0x602000     0x1000     0x1000 /home/firo/ws/teste
+      0x7ffff7a0e000     0x7ffff7bcd000   0x1bf000        0x0 /lib/x86_64-linux-gnu/libc-2.23.so
+      0x7ffff7bcd000     0x7ffff7dcd000   0x200000   0x1bf000 /lib/x86_64-linux-gnu/libc-2.23.so
+      0x7ffff7dcd000     0x7ffff7dd1000     0x4000   0x1bf000 /lib/x86_64-linux-gnu/libc-2.23.so
+      0x7ffff7dd1000     0x7ffff7dd3000     0x2000   0x1c3000 /lib/x86_64-linux-gnu/libc-2.23.so
+      0x7ffff7dd3000     0x7ffff7dd7000     0x4000        0x0 
+      0x7ffff7dd7000     0x7ffff7dfd000    0x26000        0x0 /lib/x86_64-linux-gnu/ld-2.23.so
+      0x7ffff7fd7000     0x7ffff7fda000     0x3000        0x0 
+      0x7ffff7ff6000     0x7ffff7ff8000     0x2000        0x0 
+      0x7ffff7ff8000     0x7ffff7ffa000     0x2000        0x0 [vvar]
+      0x7ffff7ffa000     0x7ffff7ffc000     0x2000        0x0 [vdso]
+      0x7ffff7ffc000     0x7ffff7ffd000     0x1000    0x25000 /lib/x86_64-linux-gnu/ld-2.23.so
+      0x7ffff7ffd000     0x7ffff7ffe000     0x1000    0x26000 /lib/x86_64-linux-gnu/ld-2.23.so
+      0x7ffff7ffe000     0x7ffff7fff000     0x1000        0x0 
+      0x7ffffffde000     0x7ffffffff000    0x21000        0x0 [stack]
+  0xffffffffff600000 0xffffffffff601000     0x1000        0x0 [vsyscall]
+
+# Relocatable kernel
+x86-64: Relocatable Kernel Support
+1ab60e0f72f71ec54831e525a3e1154f1c092408
+[Relocatable kernel support for x86][5]
+ x86, relocs: Move ELF relocation handling to C
+handle_relocations()
+
+
+
