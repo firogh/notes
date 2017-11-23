@@ -19,6 +19,13 @@ Before kernel supported the relocatable, [the kdump users had to compile the cap
 [3]: https://gcc.gnu.org/ml/gcc-help/2009-07/msg00351.html
 [4]: https://stackoverflow.com/questions/28119365/what-are-the-differences-comparing-pie-pic-code-and-executable-on-64-bit-x86-pl
 [5]: https://kernelnewbies.org/Linux_2_6_20#head-3c215483506a27123005168c491eea0f2e5549dd
+[6]: https://www.ibm.com/developerworks/cn/linux/l-cn-sdlstatic/index.htm
+ 
+ [fpie vs -fpic][3]
+ They are also different in whether calls to locally defined functions go through the PLT.
+ I did a few experiments on this but got nothing on it.
+ [What are the differences comparing PIE, PIC code and executable on 64-bit x86 platfomr][4]
+[技巧：多共享动态库中同名对象重复析构问题的解决方法][6]
 
 [fpie vs -fpic][3]
 They are also different in whether calls to locally defined functions go through the PLT.

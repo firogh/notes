@@ -1,0 +1,5 @@
+
+[1]:http://x86.renejeschke.de/html/file_module_x86_id_147.html
+
+[JMP:Here, the EIP register contains the address of the instruction following the JMP instruction][1]
+
