@@ -180,6 +180,10 @@ i386: Relocatable kernel support/968de4f02621db35b8ae5239c8cfc6664fb872d8
 States that ' Resulting in a kernel that is relocatable
     with no runtime overhead and no need to modify the source code.'
 Quite smart.
+## kernel organize
+o/arch/x86/boot/compressed/.vmlinux.cmd
+o/arch/x86/boot/.setup.bin.cmd 
+o/arch/x86/boot/.bzImage.cmd 
 ## emit-relocations
 ld/lexsup.c
 link_info.emitrelocations = TRUE;
@@ -190,7 +194,6 @@ elf_link_input_bfd
 bfd_elf_final_link
   emit_relocs = (bfd_link_relocatable (info)      
                  || info->emitrelocations);
-
 elf_link_sort_relocs
 ## arch/x86/tools/relocs
 16276                                           R_X86_64_PC32
@@ -198,9 +201,4 @@ elf_link_sort_relocs
 4563                                            R_X86_64_64
 1180                                            R_X86_64_32S
 1                                               R_X86_64_NONE
-
-
-
-
-
 
