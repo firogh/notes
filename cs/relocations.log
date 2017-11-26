@@ -202,3 +202,6 @@ elf_link_sort_relocs
 1180                                            R_X86_64_32S
 1                                               R_X86_64_NONE
 
+## kernel PIE
+CONFIG_X86_PIE
+x86/modules: Adapt module loading for PIE support

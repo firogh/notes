@@ -81,6 +81,22 @@ cat /proc/iomem
   0183d36d-01f42d3f : Kernel data
   020c1000-02209fff : Kernel bss
 
+# Normalize %cs
+程序的起始地址在链接脚本中被设置为 0，如果 setup 被加载到其他地方(起始地
+址不为 0 的地方)，那么指令里面访问的全局符号都会有重定位的问题。由于 Boot Loader
+跳转到上面这段代码的时候，把 DS 设置为 setup 加载的基地址，而第 17 行访问_end 默认
+是用数据段寄存器 DS 的，所以不会有重定位的问题。但是在 38 行转移指令用的 CS 寄存器，
+而符号 main 的地址是在链接期决定的，现在加载的基地址改变了，那肯定会出问题了。所
+以事先在第 24 行把 CS 设置为和 DS 一样，这样就解决了重定位的问题了。代码的最后跳转
+到了 arch/x86/boot/main.c 中的 main 函数中继续执行。
+
+# print with int $0x10
+https://stackoverflow.com/questions/38041478/int-10h-not-working-in-qemu
+
+# A20
+[Why enable A20 line in Protected Mode?][https://stackoverflow.com/questions/33827474/why-enable-a20-line-in-protected-mode]
+This gate, (the A20 gate), is controlled by a GPIO pin on the keyboard controller IC. Thus, you need to enable it before going into protected mode. If you didn't, (and say you flat-mapped all 4GB of physical memory), then as Micheal Petch indicated, "every odd numbered megabyte region will be inaccessible. So 1mb-2mb will actually reference 0-1mb, 3mb-4mb will reference 2mb-3mb etc." See also:
+
 # Contents
 What basic initializations should be perfomed when power on?
 How do we load the kernel to memory?
