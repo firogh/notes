@@ -63,6 +63,9 @@ kernel/main.c::kernel_init()
  ...
  init/main.c::init_post()
 }
+# Reloctaion for decompress
+974f221c84b05b1dc2f5ea50dc16d2a9d1e95eda
+x86/boot: Move compressed kernel to the end of the decompression buffer
 
 # Realmode
 The first 640KB RAM 
