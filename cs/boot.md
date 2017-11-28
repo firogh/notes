@@ -83,6 +83,13 @@ cat /proc/iomem
   01000000-0183d36c : Kernel code # That's why the kernel was called big kernel.
   0183d36d-01f42d3f : Kernel data
   020c1000-02209fff : Kernel bss
+# Horrable commit description on phys_base
+commit 1ab60e0f72f71ec54831e525a3e1154f1c092408
+Author: Vivek Goyal <vgoyal@in.ibm.com>
+Date:   Wed May 2 19:27:07 2007 +0200
+
+    [PATCH] x86-64: Relocatable Kernel Support
+
 
 # Normalize %cs
 程序的起始地址在链接脚本中被设置为 0，如果 setup 被加载到其他地方(起始地

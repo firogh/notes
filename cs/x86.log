@@ -2,9 +2,14 @@
 [1]:http://x86.renejeschke.de/html/file_module_x86_id_147.html
 [2]:https://en.wikipedia.org/wiki/X86-64#History_2
 [3]: http://yarchive.net/comp/linux/x86-64.html
+[4]: https://www.lri.fr/~filliatr/ens/compil/x86-64.pdf
+[5]: https://software.intel.com/en-us/articles/introduction-to-x64-assembly
 
 [JMP:Here, the EIP register contains the address of the instruction following the JMP instruction][1]
 
+
+# x86-64
+[Introduction to x64 Assembly by Chris Lomont][5]
+[Notes on x86-64 programming][4]
 [IA-32e: Intel's name for this instruction set has changed several times.][2]
 [Linus on Intel vs AMD x86-64][3]
-
