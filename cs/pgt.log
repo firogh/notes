@@ -22,6 +22,10 @@ x86_64_start_kernel
 
 All processes's page table(task_strcut pgd) was derived form init_mm's swapper_pg_dir which inited in native_pagetable_init(). #FIXME.
 
+# Sparse page tables
+8170e6bed465b4b0c7687f93e9948aca4358a33b
+x86, 64bit: Use a #PF handler to materialize early mappings on demand
+
 # vmemmap page tables
 vmemmap_populate
 ## hotplug
