@@ -14,6 +14,7 @@ If you did it, you finnally got the following word.
 Retrocausality.
 It's amazing that we know them before we got them. It's not the nutural progressing way in some degrees.
 * Zland: Physiological needs: food, water, air, sex
+* Living: 
 * emotional, conscious, desire:
 Avoid the boring brought by being conscious on doing same things.
 stimulation and thrill
