@@ -7,6 +7,20 @@ category: philosophy
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all come from my past life.
 
+# Gratification
+All we are doing is gratification, even through boring things or nothing.
+Did you ask yourself on why you do some specifical things without special intention?
+If you did it, you finnally got the following word.
+Retrocausality.
+It's amazing that we know them before we got them. It's not the nutural progressing way in some degrees.
+* Zland: Physiological needs: food, water, air, sex
+* Living: 
+* emotional, conscious, desire:
+Avoid the boring brought by being conscious on doing same things.
+stimulation and thrill
+Joy:laugher
+Sympathy:vicarious, virtualization.
+
 # The architect
 * An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
 overarcher
