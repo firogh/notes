@@ -13,3 +13,8 @@
 [Notes on x86-64 programming][4]
 [IA-32e: Intel's name for this instruction set has changed several times.][2]
 [Linus on Intel vs AMD x86-64][3]
+
+# Go to x86-64
+9.8.5 3A
+
+# movabs
