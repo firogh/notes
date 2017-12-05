@@ -4,6 +4,8 @@ title: Quantitative cognition - The philosophy on which I am living
 category: philosophy
 ---
 
+[1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
+[2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all come from my past life.
 
@@ -20,6 +22,11 @@ Avoid the boring brought by being conscious on doing same things.
 stimulation and thrill
 Joy:laugher
 Sympathy:vicarious, virtualization.
+
+# The drawbacks of recognization
+Vicarious
+[知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
+[知之为知之，不知为不知，是知也。][2] 区分无用的知识.
 
 # The architect
 * An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
