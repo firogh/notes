@@ -55,6 +55,16 @@ Learning by doing/Real life releavent; Learn what we can practice.
 Narrow input
 Eliciting synonym, collect, pick up, use
 
+# Life
+Vicariousnees is harm for learning knowledge. I have a inclination on using vicarious method.
+It brings: quick understanding, no complex brain labors, it's easy.But it also brings fake. 
+Unknown and unawear are another big barrier for me to achive what I want.
+Learning by doing will make you learn lots practical knowledge.
+Reward: some reward must be paid in a healthy way. Physiological needs: relax, food, water, sex, etc.
+In my colleague life, I learned very hard with a strong specific motivation. But now, I have a motivation. But not do it as my colleague.
+No passion? No reward! Why? masturbation.
+I have a inclination on wasting time. So must enforce what I do.
+
 # Recognize subjectivity
 First of all, you should know what is subjectivity and objectivity in philosophy.
 In my opinion, subjectivity is the most important thing you should know then anything else.
