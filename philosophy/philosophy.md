@@ -4,13 +4,6 @@ title: Quantitative cognition - The philosophy on which I am living
 category: philosophy
 ---
 
-[1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
-[2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
-[3]: http://www.norvig.com/21-days.html
-[4]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
-[5]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
-[6]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
-[7]: http://www.kohala.com/start/unpv12e.html
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all come from my past life.
 # Life & Gratification
@@ -34,7 +27,7 @@ It brings: quick understanding, no complex brain labors, it's easy.But it also b
 Learning by doing will make you learn lots practical knowledge.
 I found some bad effects of sujective vicarious mind:
 Deceptive objectivity. The worst case is it make you deem that unstanding is equivalent to doing. 以为看懂kernel, 就能做了
-Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are	Tabula rasa.
+Reading kernel book is looking the output of others's minds. It's something like 'flash across'. So it's fake of objectivity. That's why I read kernel book. Reading is ok because of we are Tabula rasa.
 Overconfident subjective understanding. -- on larning kernel
 Deceptive understanding, wrong and absent(not excessive abstraction). 
 shirk hardship, seek comfort and enjoyment.
@@ -44,11 +37,6 @@ Subjective paralysis;Easy to perform and achieve in subjectivity makes objectivi
 Know how to solve every problem that has been solved. -- Feynman
 People cannot see something wihout being denominated
 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
-* I have never thought about questions that are not real ones—I have not squandered myself. -- N
-How much we understand the world isn't better than how well.
-[知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
-[知之为知之，不知为不知，是知也。][2] 区分无用的知识.
-Doing right things:effectiveness
 * emotional, conscious, desire:
 Avoid the boring brought by being conscious on doing same things.
 stimulation and thrill
@@ -60,6 +48,17 @@ I don't want to be a natural roamer.
 If one thing is a must, do it now.
 * Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
 # The architect
+* Watch out vicariousnees!!
+We don't have to remember/understand the things contrived by people. What we need to remember is the fact which leads this contriving!
+* I have never thought about questions that are not real ones—I have not squandered myself. -- N
+What shouldn't we learn? 我不是要了解一个语言or设计的实现细节. 这毫无必要, 仅仅在记忆而已.
+通过事物的本质属性去理解他, 如fluent python Figure 2-1. page 20. 而核心是"用"这个真正意图, 正如正本fluent python.
+python的语言的存在是一种临时的纽带关系. 一旦确定用的场景, 语言本身迅速消失, 留下用的样子.
+所以什么改学呢? 用本质理解事物, 以及事物的用处. 并不关心事物本身, 隐去它.
+How much we understand the world isn't better than how well.
+[知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
+[知之为知之，不知为不知，是知也。][2] 区分无用的知识.
+Doing right things:effectiveness
 * Learning by doing
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
 Never control by descriptions which are completely divorced from reality.
@@ -82,7 +81,7 @@ Trial and error/Scientific method
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 # World/object/The origins of the world
-* Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
+Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 Nothing new under the sun.
 世界如何变化取决于我们如何看她
 每个伟大都来自渺小. -- Alien
@@ -92,3 +91,11 @@ There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
+[1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
+[2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
+[3]: http://www.norvig.com/21-days.html
+[4]: https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand
+[5]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
+[6]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
+[7]: http://www.kohala.com/start/unpv12e.html
+
