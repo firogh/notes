@@ -1,0 +1,8 @@
+
+#Cache replacement policies
+LRU-k
+2 queues
+
+# Cache Consistency
+
+# Write behavoir

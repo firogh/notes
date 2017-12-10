@@ -47,6 +47,7 @@ I don't want to be a natural roamer.
 大部分的学习无效是因为没有强制性输出结果的压力.
 If one thing is a must, do it now.
 * Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
+* Auto extend
 # The architect
 * Watch out vicariousnees!!
 We don't have to remember/understand the things contrived by people. What we need to remember is the fact which leads this contriving!
