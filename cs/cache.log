@@ -3,6 +3,8 @@
 LRU-k
 2 queues
 
-# Cache Consistency
+Cache Consistency
 
-# Write behavoir
+Write behavoir
+
+Associativity: Hash function
