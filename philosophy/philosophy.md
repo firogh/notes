@@ -21,6 +21,7 @@ A calm and modest life brings more happiness than the pursuit of success combine
 * Showing-off: in front of interviewer
 kzenowalker: feeling/desire; 
 I have a inclination on wasting time. So must enforce what I do.
+谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * Vicariousness 
 It is harm for learning knowledge. I have a inclination on using vicarious method.
 It brings: quick understanding, no complex brain labors, it's easy.But it also brings fake. 
