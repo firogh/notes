@@ -61,8 +61,6 @@ Monitor lock before sleep.
 
 ## RCU -- lockless
 Check The Journey to RCU for more details
-## Per-cpu
-
 # Cooperative
 ## semaphore 
 it was implement based on spinlock.
