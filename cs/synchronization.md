@@ -5,6 +5,21 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
+# HP
+A program is synchro-
+nized if all accesses to shared data are ordered by synchronization operations.
+A
+data reference is ordered by a synchronization operation if, in every possible
+execution, a write of a variable by one processor and an access (either a read or a
+write) of that variable by another processor are separated by a pair of synchroni-
+zation operations, one executed after the write by the writing processor and one
+executed before the access by the second processor???. Cases where variables may
+be updated without ordering by synchronization are called data races because the
+execution outcome depends on the relative speed of the processors, and, like
+races in hardware design, the outcome is unpredictable, which leads to another
+name for synchronized programs: data-race-free.
+
+
 #Reference
 Perfbook
 [Unreliable Guide To Locking](https://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/index.html)
