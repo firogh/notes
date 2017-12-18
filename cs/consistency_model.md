@@ -17,11 +17,15 @@ When we are talking on memory model, we are refering memory consistency model or
 [9]: http://preshing.com/20120625/memory-ordering-at-compile-time/
 [10]: https://blog.regehr.org/archives/232
 
+[11]: http://www.cl.cam.ac.uk/~pes20/weakmemory/
 [12]: https://lwn.net/Articles/718628/
 [13]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4374.html
 [14]: http://events.linuxfoundation.org/sites/events/files/slides/LinuxMM.2016.09.19a.LCE_.pdf
 [15]: https://www.youtube.com/watch?v=ULFytshTvIY
 [16]: https://lwn.net/Articles/720550/
+[17]: https://www.cl.cam.ac.uk/~pes20/cpp/model.pdf
+[18]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4375.html
+[19]: https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/42967.pdf
 
 # Practices
 [Memory Reordering Caught in the Act][5]
@@ -33,10 +37,14 @@ When we are talking on memory model, we are refering memory consistency model or
 # x86 memory model
 [Memory Barriers: a Hardware View for Software Hackers - must read][8]
 [x86 is TSO why it borthers fence?][4]
-[●●When are x86 LFENCE, SFENCE and MFENCE instructions required?][7]
+[When are x86 LFENCE, SFENCE and MFENCE instructions required?][7]
 
 # C11 memory model
 [C memory order][6]
+[Outlawing Ghosts: Avoiding Out-of-Thin-Air Results][19]
+[Out-of-Thin-Air Execution is Vacuous][18]
+[Relaxed-Memory Concurrency][11]
+[Mathematizing C++ Concurrency: The Isabelle/HOL model][17]
 
 # Compiler memory model
 [Memory Ordering at Compile Time][9]
