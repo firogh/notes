@@ -52,6 +52,7 @@ If one thing is a must, do it now.
 # The architect
 * Watch out vicariousnees!!
 We don't have to remember/understand the things contrived by people. What we need to remember is the fact which leads this contriving!
+精通围棋规则和精通围棋.
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
 What shouldn't we learn? 我不是要了解一个语言or设计的实现细节. 这毫无必要, 仅仅在记忆而已.
 通过事物的本质属性去理解他, 如fluent python Figure 2-1. page 20. 而核心是"用"这个真正意图, 正如正本fluent python.
