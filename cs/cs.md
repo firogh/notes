@@ -1,6 +1,6 @@
 ---
 tags: [ cs ] 
-title: Computer science a kernel programmer's perspective
+title: Computing Sorcery: a sorcerer's perspective on computer science
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---
@@ -22,15 +22,15 @@ process, quantaties, order(synchronization)
 turing, arch, os(boot, console, fedora, fs, process, mm, pm, time, virt, synchronization)
 math, logic, electronics
 
-OS Service | Hardware Support 
-------------|------------------------------------- 
-Protection  | Kernel/user mode, protected instructions, base/limit registers 
-Interrupts  | Interrupt vectors  
-System calls  | Trap instructions and trap vectors  
-I/O  | Interrupts and memory mapping  
-Scheduling, error recovery,accounting  | Timer  
-Synchronization  | Atomic instructions  
-Virtual memory  | Translation look-aside buffers 
+OS Service | Hardware Support
+------------|-------------------------------------
+Protection  | Kernel/user mode, protected instructions, base/limit registers
+Interrupts  | Interrupt vectors
+System calls  | Trap instructions and trap vectors
+I/O  | Interrupts and memory mapping
+Scheduling, error recovery,accounting  | Timer
+Synchronization  | Atomic instructions
+Virtual memory  | Translation look-aside buffers
 form | os
 -----|----
 change, computation, transfer . | instructions(memory,IO), Process, interrupt
@@ -43,7 +43,7 @@ maybe effiency of quantaties/times of transfer. 是确定的行为, 不同与cac
 time-sharing: multi-task from batch processing
 prallel process: increas quantanties of process.
 
-现在我们以新的视角看待os演化过程， 即以process/change， quantaties/state， relation/order这些natural origin为wilds，
+现在我们以新的视角看待os演化过程, 即以process/change, quantaties/state, relation/order这些natural origin为wilds,
 辅以will意志的origin: 
 performance/efficiency
 Easy to use

@@ -83,7 +83,7 @@ inspecting and examining the problem will help us to get the right method, not d
 Trial and error/Scientific method
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
-# World/object/The origins of the world
+# The origins of the world
 Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 Nothing new under the sun.
 世界如何变化取决于我们如何看她
