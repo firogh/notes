@@ -5,9 +5,8 @@ date: 2015-11-12
 category: cs
 ---
 
-
 # Reference
-The must reading - Documentation/x86/boot.txt
+Documentation/x86/boot.txt
 [Introducing initramfs, a new model for initial RAM disks](http://linuxdevices.linuxgizmos.com/introducing-initramfs-a-new-model-for-initial-ram-disks-a/)
 [0]: http://duartes.org/gustavo/blog/post/kernel-boot-process/
 
