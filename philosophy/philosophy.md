@@ -53,6 +53,11 @@ If one thing is a must, do it now.
 * Watch out vicariousnees!!
 We don't have to remember/understand the things contrived by people. What we need to remember is the fact which leads this contriving!
 精通围棋规则和精通围棋.
+从实际应用场景出发, 而不是代码片段.
+在计算机领域，很多人喜欢抱着大部头的专业书籍看，其实那是事倍功半的努力。学而不思则殆，就是这个道理。书籍让你记住了现成的“事实”，却不能让你拥有产生出这些知识的能力。 -- Wangyin
+它们只是把你“训练”（train）成了循规蹈矩的流水线工人，而不能让你受到真正的“教育”（education）。真正的好书都是很薄的，“把厚书读薄”这句话其实是误导的。厚书本来就不应该拿来读，最多可以拿来当字典查。所以我的建议是：如果你想成为天才，就避免去读厚书。去寻找简短的书来入门，然后就可以自己思考了。这就是我从 Nash 的故事得到的启发。 Wangyin
+"除了浸沉于书籍之海不做别的事情的学者……最后则是完全丧失了为自己而思考的才能。除非有一本书在手里，他就不能思考。当他思考，他只是反应一种刺激即他所看到的别人的思想，结果他所做的一切都是反应。 -- N Why I Am So Clever 8
+
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
 What shouldn't we learn? 我不是要了解一个语言or设计的实现细节. 这毫无必要, 仅仅在记忆而已.
 通过事物的本质属性去理解他, 如fluent python Figure 2-1. page 20. 而核心是"用"这个真正意图, 正如正本fluent python.
@@ -63,6 +68,10 @@ How much we understand the world isn't better than how well.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
 Doing right things:effectiveness
 * Learning by doing
+来自日常工作中
+socerer, 用起来, 释放魔法 lean.
+从动手中学习（learn by doing）by Wang Yin;如果你看过 John Nash 的传记《A Beautiful Mind》，就会发现他与其他人的不同。Nash 看书只看封面和开头，把这书要讲的问题了解清楚之后，就自己动手解决。最后，他完全依靠自己的“头脑暴力”创造出整本书的内容。Nash 头脑里的数学知识，绝大部分是他自己造出来的，而不是看书看会的。也就是说，他把整个的研究领域作为一道道的练习题，用这种方式独立创造出了大部分的现代数学！Learn by doing, 这就是天才最重要的特征。
+Draw you mind
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
 Never control by descriptions which are completely divorced from reality.
 We will be captivated by the objectivities/doings, can't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
@@ -71,6 +80,8 @@ Doing concrete useful staff. Understanding with neat concise abstract maps. Neve
 小美好, [take the programs, modify them and enhance them.][7]  -- Stevens
 basic forms from zero.
 * Use Feynman and [Descartes's methods][6]
+No book, only questions!
+叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔 
 inspecting and examining the problem will help us to get the right method, not defrauded by the subjectivity. 
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
