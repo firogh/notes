@@ -71,7 +71,9 @@ periods of greatest illness and pain: you need only take a look at
 Daybreak or The Wanderer and His Shadow to understand what
 this ‘return to myself ’ was: the highest kind of recuperation!... The
 other kind simply followed on from this.
-
+* Sorcerer
+避免陷入大量细节,不要求大求全.
+不要被知识迷惑,  declarative knowledge 和 Procedural knowledge不能互相取代. 每种知识的关注点是不同的, 也就是逻辑链不同, 虽然看似学得是同样的内容, 实质上, 本后的逻辑完全不同.
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
 What shouldn't we learn? 我不是要了解一个语言or设计的实现细节. 这毫无必要, 仅仅在记忆而已.
 通过事物的本质属性去理解他, 如fluent python Figure 2-1. page 20. 而核心是"用"这个真正意图, 正如正本fluent python.
@@ -88,7 +90,6 @@ Lean
 socerer, 用起来, 释放魔法 lean.
 从动手中学习（learn by doing）by Wang Yin;如果你看过 John Nash 的传记《A Beautiful Mind》，就会发现他与其他人的不同。Nash 看书只看封面和开头，把这书要讲的问题了解清楚之后，就自己动手解决。最后，他完全依靠自己的“头脑暴力”创造出整本书的内容。Nash 头脑里的数学知识，绝大部分是他自己造出来的，而不是看书看会的。也就是说，他把整个的研究领域作为一道道的练习题，用这种方式独立创造出了大部分的现代数学！Learn by doing, 这就是天才最重要的特征。
 Draw you mind
-
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
 Never control by descriptions which are completely divorced from reality.
 We will be captivated by the objectivities/doings, can't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
@@ -116,6 +117,7 @@ Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disa
 Nothing new under the sun.
 世界如何变化取决于我们如何看她
 每个伟大都来自渺小. -- Alien
+Scalable
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 Repeat, irregularity, complexity
 There is nothing permanent except change. ――Heraclitus

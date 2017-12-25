@@ -8,10 +8,12 @@ category: cs
 [0]: https://www.youtube.com/watch?v=lL4wg6ZAFIM
 [1]: https://github.com/shadowsocks/shadowsocks/tree/master
 [2]: http://www.gigamonkeys.com/code-reading/
+[3]: https://plato.stanford.edu/entries/computer-science/
 
 What's the computer science? Have ever asked yourself? It's not a science! 
 [Richard Feynman on Computer Science — Talk at Bell Labs (1985)][0]
 [Reading code? CODE IS NOT LITERATURE][2]
+[The Philosophy of Computer Science][3]
 
 # Reference
 [Mort Yao 程序与证明](http://www.tuicool.com/articles/YRZvem)
