@@ -1,6 +1,6 @@
 ---
 tags: [ cs ] 
-title: Computing Sorcery: a sorcerer's perspective on computer science
+title: Computing Sorcery a sorcerer's perspective on computer science
 date: 2015-02-27T15:46:14+08:00 
 category: cs
 ---

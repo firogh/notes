@@ -74,6 +74,7 @@ other kind simply followed on from this.
 * Sorcerer
 避免陷入大量细节,不要求大求全.
 不要被知识迷惑,  declarative knowledge 和 Procedural knowledge不能互相取代. 每种知识的关注点是不同的, 也就是逻辑链不同, 虽然看似学得是同样的内容, 实质上, 本后的逻辑完全不同.
+熟练读, 初级与大魔导使.
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
 What shouldn't we learn? 我不是要了解一个语言or设计的实现细节. 这毫无必要, 仅仅在记忆而已.
 通过事物的本质属性去理解他, 如fluent python Figure 2-1. page 20. 而核心是"用"这个真正意图, 正如正本fluent python.
@@ -84,7 +85,6 @@ How much we understand the world isn't better than how well.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
 Doing right things:effectiveness
 * Learning by doing
-imperative knowledge
 Lean
 来自日常工作中
 socerer, 用起来, 释放魔法 lean.
