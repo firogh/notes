@@ -5,7 +5,7 @@ category: philosophy
 ---
 
 I am aware of that we need some principles and methods to understand this world.
-The following thoughts try to help people to make a good life. They all come from my past life.
+The following thoughts try to help people to make a good life. They all came from my past life.
 # Life & Gratification
 All we are doing is gratification, even through boring things or nothing.
 Did you ask yourself on why you do some specifical things without special intention?
@@ -56,7 +56,6 @@ We don't have to remember/understand the things contrived by people. What we nee
 从实际应用场景出发, 而不是代码片段.
 在计算机领域，很多人喜欢抱着大部头的专业书籍看，其实那是事倍功半的努力。学而不思则殆，就是这个道理。书籍让你记住了现成的“事实”，却不能让你拥有产生出这些知识的能力。 -- Wangyin
 它们只是把你“训练”（train）成了循规蹈矩的流水线工人，而不能让你受到真正的“教育”（education）。真正的好书都是很薄的，“把厚书读薄”这句话其实是误导的。厚书本来就不应该拿来读，最多可以拿来当字典查。所以我的建议是：如果你想成为天才，就避免去读厚书。去寻找简短的书来入门，然后就可以自己思考了。这就是我从 Nash 的故事得到的启发。 Wangyin
-
 "除了浸沉于书籍之海不做别的事情的学者……最后则是完全丧失了为自己而思考的才能。除非有一本书在手里，他就不能思考。当他思考，他只是反应一种刺激即他所看到的别人的思想，结果他所做的一切都是反应。 -- N Why I Am So Clever  Section8
 叔本华思想随笔: 论思考
 Human, All Too Human With Two Continuations
@@ -85,6 +84,7 @@ How much we understand the world isn't better than how well.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
 Doing right things:effectiveness
 * Learning by doing
+Do what you want.
 Lean
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 来自日常工作中
@@ -114,6 +114,7 @@ Trial and error/Scientific method
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 # The origins of the world
+* Causality is abyss. Watch out origins.
 Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 Nothing new under the sun.
 世界如何变化取决于我们如何看她
@@ -125,6 +126,7 @@ There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
+
 [1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
 [2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
 [3]: http://www.norvig.com/21-days.html
