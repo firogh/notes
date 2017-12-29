@@ -107,22 +107,21 @@ inspecting and examining the problem will help us to get the right method, not d
 [What is science by Feyman][5], do you know brown-throated thrush?
 * The origin of the world./structuralism?
 * Critical learning  -- Popper, Aaron Swartz 25:20
-* Occam's razor 
+* Homogeneity, Occam's razor 
 * Intuition
 * Failsibility: feedback
 Trial and error/Scientific method
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 Transformation cognition -- Firo
 # The origins of the world
-* Causality is abyss. Watch out origins.
-Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
-Nothing new under the sun.
-世界如何变化取决于我们如何看她
-每个伟大都来自渺小. -- Alien
+* Causality is abyss. Watch out origins.[Causal reasoning][8]
+* Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
+* Nothing new under the sun.
+Causality order  quantities change relation
+dependency, direction
 Scalable
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
 Repeat, irregularity, complexity
-There is nothing permanent except change. ――Heraclitus
 onset, nuclus, coda
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
@@ -134,4 +133,5 @@ The whole is other than the sum of the parts. --Gestalt psychology
 [5]: http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf
 [6]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
 [7]: http://www.kohala.com/start/unpv12e.html
+[8]: https://en.wikipedia.org/wiki/Causal_reasoning
 
