@@ -26,11 +26,13 @@ When we are talking on memory model, we are refering memory consistency model or
 [17]: https://www.cl.cam.ac.uk/~pes20/cpp/model.pdf
 [18]: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4375.html
 [19]: https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/42967.pdf
+[20]: https://homes.cs.washington.edu/~bornholt/post/memory-models.html#fn:lamport
 
 # Practices
 [Memory Reordering Caught in the Act][5]
 
 # Memory model
+[Memory Consistency Models: A Primer][20]
 [Shared Memory Consistency Models: A Tutorial][0]
 [Weak vs. Strong Memory Models][1]
 
