@@ -59,6 +59,8 @@ Laptop			Y460						Intel haswell | Chrome pixel
 Razor			Schick quatto titanium and hydro
 Chair			Steelcase think chair
 Mug			1						2
+cotton-padded mattress/mattress pad
+
 
 # ETC
 plastic containers
