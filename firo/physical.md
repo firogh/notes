@@ -60,6 +60,12 @@ Razor			Schick quatto titanium and hydro
 Chair			Steelcase think chair
 Mug			1						2
 
+# ETC
+plastic containers
+Phthalate, bisphenol
+ceramic
+stainless
+glass
 # Kitchen/厨
 Rice cooker		美的, 排名考前
 IRON FRYING WOK		CCK, 制造用料比较放心, 炒菜香.
