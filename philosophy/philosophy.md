@@ -71,6 +71,7 @@ Daybreak or The Wanderer and His Shadow to understand what
 this ‘return to myself ’ was: the highest kind of recuperation!... The
 other kind simply followed on from this.
 * Sorcerer
+[装逼](https://www.zhihu.com/question/30178891/answer/205055193)
 避免陷入大量细节,不要求大求全.
 不要被知识迷惑,  declarative knowledge 和 Procedural knowledge不能互相取代. 每种知识的关注点是不同的, 也就是逻辑链不同, 虽然看似学得是同样的内容, 实质上, 本后的逻辑完全不同.
 熟练读, 初级与大魔导使.
@@ -117,6 +118,7 @@ Transformation cognition -- Firo
 * Causality is abyss. Watch out origins.[Causal reasoning][8]
 * Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 * Nothing new under the sun.
+* 知识是分逻辑依赖的 dependent ,轻重 缓急.
 Causality order  quantities change relation
 dependency, direction
 Scalable

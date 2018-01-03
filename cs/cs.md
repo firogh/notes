@@ -11,11 +11,19 @@ category: cs
 [3]: https://plato.stanford.edu/entries/computer-science/
 
 What's the computer science? Have ever asked yourself? It's not a science! 
+Underlying our approach to this subject is our conviction that “com-
+puter science” is not a science and that its significance has lile to do
+with computers. The computer revolution is a revolution in the way we
+think and in the way we express what we think. The essence of this
+change is the emergence of what might best be called procedural epis-
+temology —the study of the structure of knowledge from an imperative
+point of view, as opposed to the more declarative point of view taken
+by classical mathematical subjects. Mathematics provides a framework
+for dealing precisely with notions of “what is.” Computation provides a
+framework for dealing precisely with notions of “how to.”  -- The omnipotent SICP
 [Richard Feynman on Computer Science — Talk at Bell Labs (1985)][0]
 [Reading code? CODE IS NOT LITERATURE][2]
 [The Philosophy of Computer Science][3]
-
-# Reference
 [Mort Yao 程序与证明](http://www.tuicool.com/articles/YRZvem)
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
@@ -61,5 +69,5 @@ Network + redhat requirements. 8 days
 KVM. source code level and hands-on lkml
 
 # FAQ
-[All about pseudo][1]
-[1]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf
+[All about pseudo][10]
+[10]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf
