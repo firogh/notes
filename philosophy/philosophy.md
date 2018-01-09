@@ -6,7 +6,15 @@ category: philosophy
 
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all came from my past life.
-# Life & Gratification
+# Ego life world
+society will is much stronger(large) than individual's and will chip away individual's will.finally, we will be 无聊 庸俗 被社会吃掉, 自我的消逝.
+个人应该做自己想做的事, 个人的意志体现个人的意愿也可能是意义, 甚至得到某种新的意志 意识, 神性的降临, 超越创造神.
+个体成为自己, 成为自己的存在, 即便前路黑暗! 而不是被动的, 成为别的什么.
+ 谁要游戏人生，他就一事无成；谁不能主宰自己，永远是一个奴隶。---歌德
+黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
+
+
+# Gratification
 All we are doing is gratification, even through boring things or nothing.
 Did you ask yourself on why you do some specifical things without special intention?
 Reward: some reward must be paid in a healthy way. Physiological needs: relax, food, water, sex, etc.
@@ -119,6 +127,7 @@ Transformation cognition -- Firo
 * Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
 * Nothing new under the sun.
 * 知识是分逻辑依赖的 dependent ,轻重 缓急.
+* 个人存在于因果律中, 同时也创建因果.
 Causality order  quantities change relation
 dependency, direction
 Scalable
