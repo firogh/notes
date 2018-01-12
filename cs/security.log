@@ -27,6 +27,9 @@ Doc =>hasing()=>Message digest=>Encrypt with Private Key()=>Signature=>Decrypt w
 ## Hook point
 include/linux/ima.h
 
+## IMA behaviors
+1. if no kernel cmdline parameters + apply policy + default enabled appraise, wont work dmesg shows miss-hash. Need ima_tcb and ima_appraise_tcb
+
 # Capabilities
 
 
