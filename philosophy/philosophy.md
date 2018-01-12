@@ -10,6 +10,7 @@ The following thoughts try to help people to make a good life. They all came fro
 society will is much stronger(large) than individual's and will chip away individual's will.finally, we will be 无聊 庸俗 被社会吃掉, 自我的消逝.
 个人应该做自己想做的事, 个人的意志体现个人的意愿也可能是意义, 甚至得到某种新的意志 意识, 神性的降临, 超越创造神.
 个体成为自己, 成为自己的存在, 即便前路黑暗! 而不是被动的, 成为别的什么.
+别人也只是在创造描绘这个世界(tangqianzhengming), 我也可以!
  谁要游戏人生，他就一事无成；谁不能主宰自己，永远是一个奴隶。---歌德
 黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
 
