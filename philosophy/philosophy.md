@@ -115,6 +115,7 @@ inspecting and examining the problem will help us to get the right method, not d
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
 [What is science by Feyman][5], do you know brown-throated thrush?
+* Using affirmative and negative perspects to understand things.
 * The origin of the world./structuralism?
 * Critical learning  -- Popper, Aaron Swartz 25:20
 * Homogeneity, Occam's razor 

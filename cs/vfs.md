@@ -89,12 +89,20 @@ mm/shmem.c
 [关于 tmpfs](http://wangcong.org/2012/02/17/-e5-85-b3-e4-ba-8e-tmpfs/)
 
 #rootfs
-init/do_mounts.c
-init_rootfs()
+## onset rootfs
+mnt_init->init_rootfs
+## mount rootfs
+rootfs_mount
+mount_fs
+vfs_kern_mount
 init_mount_tree
-rootfs = IS_ENABLED(CONFIG_TMPFS) ? tmpfs : ramfs
-但是在do_basic_setup才初始化.
-rootfs_initcall(populate_rootfs);
+mnt_init
+vfs_caches_init
+start_kernel
+x86_64_start_reservations
+x86_64_start_kernel
+## populate rootfs
+do_basic_setup->rootfs_initcall(populate_rootfs);
 
 #initramfs
 init/initramfs.c
