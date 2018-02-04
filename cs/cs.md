@@ -10,7 +10,7 @@ category: cs
 [2]: http://www.gigamonkeys.com/code-reading/
 [3]: https://plato.stanford.edu/entries/computer-science/
 
-What's the computer science? Have ever asked yourself? It's not a science! 
+What's the computer science? Have you ever asked yourself? It's not a science! 
 Underlying our approach to this subject is our conviction that “com-
 puter science” is not a science and that its significance has lile to do
 with computers. The computer revolution is a revolution in the way we
@@ -55,19 +55,14 @@ maybe effiency of quantaties/times of transfer. 是确定的行为, 不同与cac
 time-sharing: multi-task from batch processing
 prallel process: increas quantanties of process.
 
-现在我们以新的视角看待os演化过程, 即以process/change, quantaties/state, relation/order这些natural origin为wilds,
-辅以will意志的origin: 
 performance/efficiency
 Easy to use
 Security/Protection/isolation
 Reliability
 Energy-efficiency
-
-# kerenl
-General subsystem: schedule, memory, fork, lock, vfs. April 4, 8 days
-Network + redhat requirements. 8 days
-KVM. source code level and hands-on lkml
-
 # FAQ
 [All about pseudo][10]
 [10]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf
+
+# kernel
+

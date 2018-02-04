@@ -58,7 +58,7 @@ I don't want to be a natural roamer.
 If one thing is a must, do it now.
 * Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
 * Auto extend
-# The architect
+# The architect and understructure
 * Watch out vicariousnees!!
 We don't have to remember/understand the things contrived by people. What we need to remember is the fact which leads this contriving!
 精通围棋规则和精通围棋.
@@ -95,8 +95,7 @@ How much we understand the world isn't better than how well.
 Doing right things:effectiveness
 * Learning by doing
 New Pragmatism: 实践不应是被动的, 在做过才能验证. 而应该是主动的在, 在行动之前, 就以pragmatism为基础. 从美国回来的感受, 之前学英语, 很多内容不切实际.应该学一些能用到的.pragmatism不应只是一种验证, 更应该是一种指导.experience首要, 原则推理次之.强调,做事的应以, 实践为指导和决定, 而不是主观的意愿.
-从日常的经历中和自然的理性中得到指导, daily experince
-from all points, 森罗万象
+从日常的经历中和自然的理性中得到指导, daily experince, 收集日常的问题.
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 Reflexicity -- Soros/Statistics-based method training. -- Firo
 从动手中学习（learn by doing）by Wang Yin;如果你看过 John Nash 的传记《A Beautiful Mind》，就会发现他与其他人的不同。Nash 看书只看封面和开头，把这书要讲的问题了解清楚之后，就自己动手解决。最后，他完全依靠自己的“头脑暴力”创造出整本书的内容。Nash 头脑里的数学知识，绝大部分是他自己造出来的，而不是看书看会的。也就是说，他把整个的研究领域作为一道道的练习题，用这种方式独立创造出了大部分的现代数学！Learn by doing, 这就是天才最重要的特征。
@@ -104,9 +103,13 @@ Reflexicity -- Soros/Statistics-based method training. -- Firo
 Never control by descriptions which are completely divorced from reality.
 We will be captivated by the objectivities/doings, can't find the orign of world. (K2: 以为看过kernel绝大多数实现,样子就理解了kernel, 那只是更长的Feynman所说的名字, 是cramming)
 Zur Sach selbst! ... to the things themselves!-- Husserl, Wittgenstein
-Doing concrete useful staff. Understanding with neat concise abstract maps. Never leave the ground!
-小美好, [take the programs, modify them and enhance them.][7]  -- Stevens
-basic forms from zero.
+[take the programs, modify them and enhance them.][7]  -- Stevens
+Instant spectrum learning in doing.
+The sadness of who is not an expriencer.
+From all points, 森罗万象. 
+Get the problem from relation/action
+Pure full objects then scalability relations and problems. Firstly, understanding the objects. Then, you get different understandings from different perspective of objects.
+这根不是计划!计划制定原则SMART, 不要盲目盲目相信理性, 纯粹理性批判, 不能主观, 审视理性的缺陷, 通过exprience, 实验, 验证来制定计划.
 * Use Feynman and [Descartes's methods][6]
 No book, only questions!
 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔 
@@ -122,6 +125,14 @@ inspecting and examining the problem will help us to get the right method, not d
 * Failsibility: feedback
 Trial and error/Scientific method
 Transformation cognition -- Firo
+# Steps based on unreal  experience
+1. From all points, 森罗万象. 正反. 实用主义. 确定最小问题/cause,hands-on, 经验,经历, 集 and 最小必备知识集. 应该以experience为主, 至于理性层面是, 过程中思考得出. 所以前期, 我们可以不管, 理性上的结构. 从经验, 实验开始. 确保我们的知识,经验,现实是保持一致的, 同时不会陷入理性思维的深渊.
+2. Find the root problems. It's the cause. Then Feynman and Descartes's methods. 实质上, 找到root cause, 我们已经完成了绝大多数事情, 剩下的就是使用方法, 来完成认知就ok.这点很重要!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+3. SMART a plan 
+ 
+# Steps in doing
+1. Instant spectrum learning in doing.
+
 # The origins of the world
 * Causality is abyss. Watch out origins.[Causal reasoning][8]
 * Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
@@ -136,6 +147,13 @@ Repeat, irregularity, complexity
 onset, nuclus, coda
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
+Schedule: Distributing the workloads across resources.
+# Problems
+Loadbalancing: Scheduling in parallel resources.
+## PORPF
+Understanding objects: compound, type, parallel
+Understanding releations: scalar
+
 
 [1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
 [2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
