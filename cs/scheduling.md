@@ -5,6 +5,32 @@ date: 2017-03-29T10:49:04+08:00
 category: cs
 ---
 
+# Context switch
+
+inactive_task_frame __switch_to_asm
+
+sp0 load_sp0 userspace stack pointer? sdm v3a 7.2.1 Task-State Segment (TSS)
+No, it isn't. sp0 is kernel stack spointer. 
+Comparing to __switch_to_asm()'s movq TASK_threadsp(%rsi), %rsp and popq, to examine copy_thread_tls
+context_switch - switch to the new MM and the new thread's register state.
+and ret_from_fork.
+
+What about start_thread_common()?
+next's ret address of switch_to() is the new ip after changing stack. 
+switch_to() is the core.
+
+See the following; it exposures lots of information sp vs sp0.
+
+        p->thread.sp0 = (unsigned long)task_stack_page(p) + THREAD_SIZE;
+        childregs = task_pt_regs(p);
+        fork_frame = container_of(childregs, struct fork_frame, regs);
+        frame = &fork_frame->frame;
+        frame->bp = 0;
+        frame->ret_addr = (unsigned long) ret_from_fork;
+        p->thread.sp = (unsigned long) fork_frame;
+        p->thread.io_bitmap_ptr = NULL;
+
+# etc
 Customer demand -> multitasking/concurrent
 Some other issues arise from multitasking/concurrent.
 Scheduling is used to implement the multitasking/concurrent and solve the arose issues.
