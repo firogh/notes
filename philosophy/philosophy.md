@@ -128,6 +128,12 @@ Transformation cognition -- Firo
 # Steps based on unreal  experience
 1. From all points, 森罗万象. 正反. 实用主义. 确定最小问题/cause,hands-on, 经验,经历, 集 and 最小必备知识集. 应该以experience为主, 至于理性层面是, 过程中思考得出. 所以前期, 我们可以不管, 理性上的结构. 从经验, 实验开始. 确保我们的知识,经验,现实是保持一致的, 同时不会陷入理性思维的深渊.
 2. Find the root problems. It's the cause. Then Feynman and Descartes's methods. 实质上, 找到root cause, 我们已经完成了绝大多数事情, 剩下的就是使用方法, 来完成认知就ok.这点很重要!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2.1 如何找到root cause.
+2.1.1 如何做到从问题到知识。依据现实实验经验自己设计思考 + 逻辑连贯. + 逻辑验证. 那些隐藏在巨大复杂度之下的知识了解他们有什么意义？  只有从理性生长出来才有意义.
+2.1.1.1 我们应该从别人哪里得到是 术语名字, 而不是知识.
+2.1.2 理性的使用, 理性更适合线性分析. 只允许理性在涉及阶段, 一个理性对待多个root cause.
+2.1.3 实验6.5/10; 坚决反对在复杂的事物中不断搜索root cause, 反对用复杂实现去反推root cause，a. 时间长，无用，无法联系既有的知识，知识孤岛，这就是填鸭！b. 无法成长，从问题出发是解决问题，依前所述只是掩盖在复杂度之下的填鸭.
+
 3. SMART a plan 
  
 # Steps in doing
