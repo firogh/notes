@@ -14,27 +14,21 @@ society will is much stronger(large) than individual's and will chip away indivi
 谁要游戏人生，他就一事无成；谁不能主宰自己，永远是一个奴隶。---歌德
 黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
 # Gratification
-安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --Einstein
-A calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
+安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
 # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
 谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
-python的语言的存在是一种临时的纽带关系. 一旦确定用的场景, 语言本身迅速消失, 留下用的样子.
-所以什么改学呢? 用本质理解事物, 以及事物的用处. 并不关心事物本身, 隐去它.
+确定target:procedure or descriptive knowledge. 围棋规则 or 围棋高手.python一旦确定用的场景, 语言本身迅速消失, 留下用的样子.
 How much we understand the world isn't better than how well.
 [知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
-* Doing right things:effectiveness
-* Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
-* Learning by doing: 
+* Learning by doing: 从动手中学习, 创造知识. 
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 从别人那里得到是术语名字, 而不是知识.
 Pragmatism不仅仅是做过验证, 而是动行动前的指导. 从美国回来的感受, 之前学英语, 很多内容不切实际.应该学一些能用到的.experience是第一位的.
-自己动手解决问题, 创造知识. 别人解决的问题, 我们也要解一遍. 我们要得到知识.
 Know how to solve every problem that has been solved. --Feynman
-从动手中学习（learn by doing）by Wang Yin;如果你看过John Nash 的传记《A Beautiful Mind》，就会发现他与其他人的不同。Nash 看书只看封面和开头，把这书要讲的问题了解清楚之后，就自己动手解决。最后，他完全依靠自己的“头脑暴力”创造出整本书的内容。Nash 头脑里的数学知识，绝大部分是他自己造出来的，而不是看书看会的。也就是说，他把整个的研究领域作为一道道的练习题，用这种方式独立创造出了大部分的现代数学！Learn by doing, 这就是天才最重要的特征。
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
 [Take the programs, modify them and enhance them.][7]  --Stevens
 * Reflexicity -- Soros/Statistics-based method training. --Firo
@@ -47,11 +41,12 @@ Know how to solve every problem that has been solved. --Feynman
 * 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
 * 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔 
 * 理性1.线性分析;2.在抽象中,多前驱/cause,多后继/effect.3. 坚决反对在复杂的事物中使用理性不断搜索, 反推root cause,a.这是填鸭,cramming!b时间长
+* AN: Affirmative and negative description, Critical rationalism, Failsibility,Trial and error.
 
 # Life steps
 From all points, 森罗万象.
-实用主义确定最小问题/cause, hands-on, 经验,经历, 集 and 最小必备知识集. 找到问题, 6.5/10完成.
-Affirmative and negative description, Critical rationalism, Failsibility,Trial and error.
+实用主义 and AN 确定最小问题/cause, hands-on, 经验,经历, 集 and 最小必备知识集. 找到问题, 6.5/10完成.
+Estimate one of them then scalar by Reflexicity and Statistics-based method and SMART
 ## 如何设计问题解决方法 or 理解现有知识解决方案.
 * From question, not zero 
 * 实验6.5/10
@@ -62,11 +57,6 @@ Affirmative and negative description, Critical rationalism, Failsibility,Trial a
 * onset的反面不是coda,而是nucleus.
 * 基础语言,Transformation cognition.
 * 半圆等价 or 近似
-## 如何处理复杂事物
-find all objects
-estimate one of them then scalar
-SMART a plan 
-## gameize methods.
 
 # The origins of the world
 * Causality is abyss. Watch out origins.[Causal reasoning][8]
@@ -77,6 +67,7 @@ SMART a plan
 * The sadness of who is not an expriencer.
 * If one thing is a must, do it now.
 * 大部分的学习无效是因为没有强制性输出结果的压力.
+* Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
 Causality order  quantities change relation
 dependency, direction
 Scalable
@@ -104,7 +95,6 @@ Loadbalancing: Scheduling in parallel resources.
 Understanding objects: compound, type, parallel
 Understanding releations: scalar
 
-
 [1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
 [2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
 [3]: http://www.norvig.com/21-days.html
@@ -113,4 +103,3 @@ Understanding releations: scalar
 [6]: https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered
 [7]: http://www.kohala.com/start/unpv12e.html
 [8]: https://en.wikipedia.org/wiki/Causal_reasoning
-
