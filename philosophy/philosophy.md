@@ -7,11 +7,11 @@ category: philosophy
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all came from my past life.
 # Ego life world
-society will is much stronger(large) than individual's and will chip away individual's will.finally, we will be 无聊 庸俗 被社会吃掉, 自我的消逝.
+society will is much stronger(large) than individual's and will chip away individual's will. Finally, we will be 无聊 庸俗 被社会吃掉, 自我的消逝.
 个人应该做自己想做的事, 个人的意志体现个人的意愿也可能是意义, 甚至得到某种新的意志 意识, 神性的降临, 超越创造神.
 个体成为自己, 成为自己的存在, 即便前路黑暗! 而不是被动的, 成为别的什么.
 别人也只是在创造描绘这个世界(tangqianzhengming), 我也可以!
-谁要游戏人生，他就一事无成；谁不能主宰自己，永远是一个奴隶。---歌德
+谁要游戏人生，他就一事无成；谁不能主宰自己，永远是一个奴隶. --歌德
 黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
@@ -24,7 +24,7 @@ Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30
 How much we understand the world isn't better than how well.
 [知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
-* Learning by doing: 从动手中学习, 创造知识. 
+* Learning by doing: 从动手中学习, 创造知识.
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 从别人那里得到是术语名字, 而不是知识.
 Pragmatism不仅仅是做过验证, 而是动行动前的指导. 从美国回来的感受, 之前学英语, 很多内容不切实际.应该学一些能用到的.experience是第一位的.
@@ -37,38 +37,40 @@ Know how to solve every problem that has been solved. --Feynman
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
 [What is science by Feyman][5], do you know brown-throated thrush?
-* Homogeneity, Occam's razor 
+* Homogeneity, Occam's razor
 * 不带有色眼光的, 看待事情知识本身. 别说什么你不感兴趣, 有些内容与计算机无关. 这都容易, 造成认知对象的消失, 从而偏见与盲目.
-* 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔 
-* 理性1.线性分析;2.在抽象中,多前驱/cause,多后继/effect.3. 坚决反对在复杂的事物中使用理性不断搜索, 反推root cause,a.这是填鸭,cramming!b时间长
+* 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔.
+* 理性1.线性分析;2.在抽象中,多前驱/cause,多后继/effect.3. 坚决反对在复杂的事物中使用理性不断搜索, 反推root cause,a.这是填鸭,cramming!b.时间长.
 * AN: Affirmative and negative description, Critical rationalism, Failsibility,Trial and error.
+* limit of functions.
 
 # Life steps
-From all points, 森罗万象.
-实用主义 and AN 确定最小问题/cause, hands-on, 经验,经历, 集 and 最小必备知识集. 找到问题, 6.5/10完成.
+From all points, prime model,  spectrum, 森罗万象.
+实用主义 and AN 确定最小问题/cause, use scenarios, hands-on, 经验, 经历, 集合and最小必备知识集. 找到问题, 6.5/10完成.
 Estimate one of them then scalar by Reflexicity and Statistics-based method and SMART
-## 如何设计问题解决方法 or 理解现有知识解决方案.
-* From question, not zero 
+## 如何设计问题解决方法 or 理解现有知识解决方案
+* From question, not zero
 * 实验6.5/10
 * Follow consective sequent logic
-* Architecture: Long modulized Instant spectrum learning mode in doing.
+* Architecture: Long modulized instant spectrum learning mode in doing.
 * Automatic Thinking, 人脑自动关联, 演绎, 可以被忽略的不分.
 * the transpoints, 不可以被忽略的不分.
-* onset的反面不是coda,而是nucleus.
-* 基础语言,Transformation cognition.
-* 半圆等价 or 近似
-
+* onset的反面不是coda, 而是nucleus.
+* 基础语言, Transformation cognition.
+* 半圆等价or近似
 # The origins of the world
 * Causality is abyss. Watch out origins.[Causal reasoning][8]
-* Don't Expect Too Much.There is no perfect.Troubles come one by one. It will disapoint you finally.
+* Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
 * Nothing new under the sun.
-* 知识是分逻辑依赖的 dependent ,轻重 缓急.
+* 知识是分逻辑依赖的 dependent , 轻重 缓急.
 * 个人存在于因果律中, 同时也创建因果.
 * The sadness of who is not an expriencer.
 * If one thing is a must, do it now.
 * 大部分的学习无效是因为没有强制性输出结果的压力.
-* Our minds is always fickle, unstable, vacillating. Sometimes the important side  is that our minds is partial, biased, unreliable. We cannot rely on it.
-Causality order  quantities change relation
+* Our minds is always fickle, unstable, vacillating. Sometimes the important side is that our minds is partial, biased, unreliable. We cannot rely on it.
+* Just-in-time and Just-in-case
+Causality order  quantities change relation.
+Storage space
 dependency, direction
 Scalable
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
@@ -77,6 +79,17 @@ onset, nuclus, coda
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
 Schedule: Distributing the workloads across resources.
+## Using scenarios
+X:Spectrum and hot
+Y:Scaling
+## resource
+Track, using alloc, return
+overhead,
+## Problems
+Loadbalancing: Scheduling in parallel resources.
+## PORPF
+Understanding objects: compound, type, parallel
+Understanding releations: scalar
 ## the properties of knowledge
 * Watch out vicariousnees!!quick understanding, no complex brain labors, it's easy.But it also brings fake. 
 * 不要被知识迷惑, declarative knowledge和Procedural knowledge不能互相取代. 每种知识的关注点是不同的, 也就是逻辑链不同, 虽然看似学得是同样的内容, 实质上, 本后的逻辑完全不同. 精通围棋规则和精通围棋. 如王垠所言, 在计算机领域，很多人喜欢抱着大部头的专业书籍看，其实那是事倍功半的努力。学而不思则殆,就是这个道理。书籍让你记住了现成的“事实”，却不能让你拥有产生出这些知识的能力.
@@ -89,12 +102,7 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 * Overconfident subjective understanding. -- on larning kernel
 * Willpower: An idea is likes a seed; once planted in a person's mind, it's growth is determined by how well it is nourished. Without lasting relevance it might wither and die or become ousted by other ideas that occupy a larger space in the mindspace of the host. Some ideas though, once planted, strike roots and grow from a captivating notion into a fundamental ideology that overshadows and influences every thought that blossoms in it's wake." -- Homo Ludens or: Kojima's Evolution of Mankind (Death Stranding), RagnarRox
 * People cannot see something wihout being denominated
-## Problems
-Loadbalancing: Scheduling in parallel resources.
-## PORPF
-Understanding objects: compound, type, parallel
-Understanding releations: scalar
-
+*  复杂的解决方案背后，往往是由简单的问题引出。问题总是简单的，如果不能简单的描述符问题，说明还没弄明白。
 [1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
 [2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
 [3]: http://www.norvig.com/21-days.html

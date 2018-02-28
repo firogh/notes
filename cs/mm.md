@@ -12,6 +12,10 @@ category: cs
 
 [1]: https://lwn.net/Articles/253361/
 
+# SLAB 
+[The slab allocator has three principle aims:](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
+[Re: When to use kmem_cache_alloc](https://lkml.org/lkml/2000/8/7/65)
+
 # Contents
 Logic gates: SRAM, DRAM
 What is data/contrl/addr bus?
@@ -22,8 +26,6 @@ How to translate linear address to physical address? Page table.
 Exchange data between primary memory and second memory. Paging.
 
 What are the pitfall of manuplate directly physcial memory
-
-
 # Memory pagge cache and buffer cache.
 page cache for memory, buffer cache for fs(block size is dependent on filesystem).
 address_pace->page_tree: why radix tree, read ahead, 
@@ -47,8 +49,6 @@ LRU cache
 
 # page
 [An introduction to compound pages](https://lwn.net/Articles/619514/)
-
-
 # Memroy mangement
 ## GFP flags
 __GFP_IO: allow disk IO
