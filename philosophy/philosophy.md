@@ -70,7 +70,8 @@ Estimate one of them then scalar by Reflexicity and Statistics-based method and 
 * Our minds is always fickle, unstable, vacillating. Sometimes the important side is that our minds is partial, biased, unreliable. We cannot rely on it.
 * Just-in-time and Just-in-case
 Causality order  quantities change relation.
-Storage space
+Storage: access diffent
+Computing: diffent object
 dependency, direction
 Scalable
 Cthulhu, unkonw world, hard to measure, unfalsifiable, unreality, unfathomable, Indeterminacy, unmeasurable, imponderable,indefinite, 
