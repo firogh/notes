@@ -6,13 +6,11 @@ title: Linux page reclaim
 category: cs
 ---
 # Reference
-[The case of the overly anonymous anon_vma][1]
-[1]: https://lwn.net/Articles/383162/
 
 When or why do we wnant to reclaim pages?
 	Periodically Keep a halthy avaliable free pages.
 	No enough memory for a large memory alloc.
-	Manually initate
+	Manually initiate
 What pages do we want to reclaim?
 	All user space pages, except some pages.
 	Do not reclaim kernel page in order to make things simple.
@@ -31,11 +29,4 @@ How to modify the process's pte to let it know the page has been reclaimed.
 	Reverse mapping.
 
 
-# Anonymous reverse mappinng
-Where do reverse mappings come from?
-	syscall: mmap(ANONYMOUS | PRIVATE)
-	Proceass address space: Heap, stack.
-mm: change anon_vma linking to fix multi-process server scalability issue
-5beb49305251e5669852ed541e8e2f2f7696c53e
-When we fork a child process, it will associate multiple anon_vmas with a VMA.
-	
+

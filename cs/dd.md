@@ -12,6 +12,9 @@ The Linux Kernel Driver Model
 # Contents
 Why abstruction? 
 
+# sysfs
+kernfs_drain
+
 # Device tree
 * What infomation was included in dtb
 HW platform识别，runtime parameter传递以及硬件设备描述
