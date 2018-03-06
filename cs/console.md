@@ -10,7 +10,9 @@ category: cs
 # About the design
 Why dose we use /dev/xxx to represent the "tty" device?
 
-> The whole point with "everything is a file" is not that you have some random filename (indeed, sockets and pipes show that "file" and "filename"> have nothing to do with each other), but the fact that you can use common tools to operate on different things. -- Linus
+
+> The whole point with "everything is a file" is not that you have some random filename (indeed, sockets and pipes show that "file" and "filename"
+> have nothing to do with each other), but the fact that you can use common tools to operate on different things. -- Linus
 
 So we got the key point!
 In order to use the common tools, file ops and vfs layer, the tty device is "abstructed" to

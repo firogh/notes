@@ -1,6 +1,6 @@
 ---
 tags: [ kernel ] 
-title: An introduction to VFS layer in Linux Kernel
+title: An introduction to File system in Linux operating system
 date: 2015-02-27T15:46:12+08:00 
 category: cs
 ---
@@ -8,13 +8,27 @@ category: cs
 # Reference
 [VFS notes](http://www.fieldses.org/~bfields/kernel/vfs.txt)
 [Linux: Replacing atime With relatime][1]
+[Why is Linux's filesystem designed as a single directory tree?][2]
+[Design a file system](https://stackoverflow.com/questions/5376116/design-a-file-system)
 
+[0]: http://yarchive.net/comp/linux/everything_is_file.html
 [1]: http://web.archive.org/web/20110427023154/http:/kerneltrap.org/node/14148
+[2]: https://unix.stackexchange.com/questions/93960/why-is-linuxs-filesystem-designed-as-a-single-directory-tree/
+[3]: https://unix.stackexchange.com/questions/265620/on-unix-systems-why-do-we-have-to-explicitly-open-and-close-files-to-be/265621
+
+# Everything is a file
+The whole point with "everything is a file" is not that you have some
+random filename (indeed, sockets and pipes show that "file" and "filename"
+have nothing to do with each other), but the fact that you can use common
+tools to operate on different things. - [Linus][0]
+
+# File operations
+[On Unix systems, why do we have to explicitly `open()` and `close()` files to be able to `read()` or `write()` them?][3]
 
 # open()
-最烦, 看什么系统调用参数了. 
+最烦, 看什么系统调用参数了.
 那一大堆很少用到的组合还有undefined, 太扯淡了.
-也说不上碎碎的问题, 要理解着来, 看man 手册, 贴子显然不是
+也说不上碎碎的问题, 要理解着来, 看man手册, 贴子显然不是
 最后的注意还是看实现吧.
 build_open_flags()还是看不出
 man里面有一句
@@ -154,5 +168,3 @@ systemd负责挂在文件系统, 切换.
 
 subsys_initcall 4 genhd_device_init with base_probe{ request_module()}
 module_init 6 ->init_sd->sync_schedule_domain(sd_probe_async
-
-
