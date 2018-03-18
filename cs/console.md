@@ -4,6 +4,9 @@ date: 2015-12-05T14:06:29+08:00
 category: cs
 ---
 
+[1]: https://www.linux.it/~rubini/docs/serial/serial.html
+[2]: https://bootlin.com/doc/legacy/serial-drivers/linux-serial-drivers.pdf
+
 343 line
 1. /dev/console 指向正在运行的tty 和tty0 一样ttyN not pts, console 佬变.
 2. /dev/tty 一直指向所在的那个不变. 

@@ -8,6 +8,19 @@ category: cs
 [2]: http://os.phil-opp.com/
 [3]: https://blacks3pt3mb3r.wordpress.com/linux-stuffz/264-2/
 
+
+# Build minimal bootable rootfs
+./etc/yum.repos.d/
+./etc/yum.repos.d/fedora-updates-testing.repo
+./etc/yum.repos.d/fedora.repo
+./etc/yum.repos.d/fedora-updates.repo
+./etc/yum.repos.d/fedora-cisco-openh264.repo
+can be gotten by supermin --prepare bash -o /tmp/supermin.d
+or just copy from you host to some place like /home/firo/kernel/k/testfs/
+sudo dnf --releasever=27 --installroot=/home/firo/kernel/k/testfs/ --setopt=reposdir=/home/firo/kernel/k/testfs/etc/yum.repos.d install dnf udev passwd
+
+# Boot the kernel using this directroy as rootfs through qemu
+
 # Resources
 [Writing an OS in Rust][1]
 
@@ -42,6 +55,60 @@ CONFIG_SLUB
 CONFIG_KASAN
 
 # For nfs
+dnf install nfs-utils
+cat /etc/exports # For more details, man exports
+/home/firo/kernel/k/testfs 127.0.0.1(rw,sync,fsid=0,no_root_squash)
+systemctl start nfs-server.service
+systemctl status nfs-server.service 
+● nfs-server.service - NFS server and services
+   Loaded: loaded (/usr/lib/systemd/system/nfs-server.service; disabled; vendor preset: disabled)
+   Active: active (exited) since Sat 2018-03-17 17:52:29 CST; 4s ago
+
+## Test the nfs
+sudo mount -t nfs localhost://home/firo/kernel/k/testfs /mnt
+ls /mnt/
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+if touch prermission denied
+add no_all_squash to/etc/exports
+
+## NFS vers
+rpcinfo -t localhost nfs 
+program 100003 version 3 ready and waiting
+program 100003 version 4 ready and waiting
+
+rpcinfo -p | grep nfs
+    100003    3   tcp   2049  nfs
+    100003    4   tcp   2049  nfs
+    100227    3   tcp   2049  nfs_acl
+
+# Qemu boot systemd
+qemu-system-x86_64 -nographic -enable-kvm  -kernel ./bzImag  -append ' console=ttyS0 ip=dhcp root=/dev/nfs nfsroot=192.168.0.104:/home/firo/kernel/k/testfs,nfsvers=3,tcp rw nfsrootdebug debug  raid=noautodetect selinux=0 enforcing=0 '
+
+nfsvers=3,tcp and 192.168.0.104 or 10.0.2.2 are mandatory!
+
+## dev-ttyS0.device
+[**    ] A start job is running for dev-ttyS0.device (7s / 1min 30s)
+[ TIME ] Timed out waiting for device dev-ttyS0.device.
+[DEPEND] Dependency failed for Serial Getty on ttyS0.
+
+CONFIG_FHANDLE=y
+https://github.com/systemd/systemd/issues/3446
+And install systemd-udev
+
+# input comand overwrite itself?
+http://shallowsky.com/blog/tags/embedded/
+resize
+xterm-resize-330-3.fc27.x86_64
+/etc/profile
+PS1='[\[\033[0;32m\]\u@\h:\[\033[36m\]\W\[\033[0m\]]\$ '
+
+# qemu
+access denied by acl file
+qemu-system-x86_64: -netdev bridge,id=inet: bridge helper failed
+https://blog.christophersmart.com/2016/08/31/configuring-qemu-bridge-helper-after-access-denied-by-acl-file-error/
+
+sudo ip link set enp0s31f6 master br0
+## Unuseful unfsd obselete
 exports0 
  cat var/exports0 
 /buildarea1/firo/x564 (rw,no_root_squash,no_all_squash,insecure)

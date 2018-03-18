@@ -5,7 +5,9 @@ date: 2017-04-06
 title: Linux page reclaim
 category: cs
 ---
-# Reference
+# Page reclaim
+[1]: https://linux-mm.org/PageReplacementDesign
+[2]: https://www.kernel.org/doc/gorman/html/understand/understand013.html
 
 When or why do we wnant to reclaim pages?
 	Periodically Keep a halthy avaliable free pages.
@@ -28,5 +30,21 @@ How to reclaim in deatils.
 How to modify the process's pte to let it know the page has been reclaimed.
 	Reverse mapping.
 
+# Readahead
+FMODE_RANDOM:
+0141450f66c3c12a3aaa869748caa64241885cdf
+[Improving readahead](https://lwn.net/Articles/372384/)
 
+# Page truncate
+mm: consistent truncate and invalidate loops
+b85e0effd3dcbf9118b896232f59526ab1a39a74
 
+mm/truncate.c - code for taking down pages from address_spaces
+
+generic_file_buffered_read:
+                /* Did it get truncated before we got the lock? */ 
+                if (!page->mapping) {
+                        unlock_page(page);
+                        put_page(page);
+                        continue;
+                }
