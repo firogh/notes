@@ -108,6 +108,13 @@ qemu-system-x86_64: -netdev bridge,id=inet: bridge helper failed
 https://blog.christophersmart.com/2016/08/31/configuring-qemu-bridge-helper-after-access-denied-by-acl-file-error/
 
 sudo ip link set enp0s31f6 master br0
+# systemd
+autologin
+Change /usr/lib/systemd/system/serial-getty@.service to
+# ExecStart=-/sbin/agetty -o '-p -- \\u' --keep-baud 115200,38400,9600 %I $TERM
+ExecStart=-/sbin/agetty -a root --keep-baud 115200,38400,9600 %I $TERM
+
+
 ## Unuseful unfsd obselete
 exports0 
  cat var/exports0 

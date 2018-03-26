@@ -16,6 +16,8 @@ PEM
 # LSM
 include/linux/lsm_hooks.h
 [Linux Security Module Framework][1]
+# x509 
+Unique Identifiers should be the fingerprint
 
 # SELinux
 [SELinux Explained with Examples in Easy Language]
