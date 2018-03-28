@@ -59,6 +59,9 @@ In unix, fs are mounted at a specific mount point in global hierarchy known as a
 VFS treats directory as non-exist *normal* file. directory and dentry is not the same at all, different congitive level!
 In VFS, file, dentry, and inode all represents dir and file and others, in others words struct file can stand for a dir!
 * file: an open normal file as associated with a process.
+## Init Rootfs 
+init_mount_tree
+and sys_chroot
 
 ##Step of how to use ext2 fs
 * Register a fs type in kernel.

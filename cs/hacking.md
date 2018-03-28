@@ -80,6 +80,11 @@ rpcinfo -p | grep nfs
     100003    3   tcp   2049  nfs
     100003    4   tcp   2049  nfs
     100227    3   tcp   2049  nfs_acl
+## NFS errors
+[   54.600121] NFS: sending MNT request for 10.0.2.2:/buildarea1/firo/ima/export/dist
+[   54.600121] NFS: failed to create MNT RPC client, status=-101
+[   54.600121] NFS: unable to mount server 10.0.2.2, error -101
+CONFIG_E100 CONFIG_E1000 ...and IP_PNP and DHCP BOOTP RARP
 
 # Qemu boot systemd
 qemu-system-x86_64 -nographic -enable-kvm  -kernel ./bzImag  -append ' console=ttyS0 ip=dhcp root=/dev/nfs nfsroot=192.168.0.104:/home/firo/kernel/k/testfs,nfsvers=3,tcp rw nfsrootdebug debug  raid=noautodetect selinux=0 enforcing=0 '
