@@ -15,6 +15,10 @@ society will is much stronger(large) than individual's and will chip away indivi
 黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
+# Increasing of wisdom
+There are two basic forms of growing in wisdom
+1. understanding through causality, abstraction, expriment 
+2. +1, but all must be understood.
 # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
