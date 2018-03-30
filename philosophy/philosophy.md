@@ -18,7 +18,10 @@ society will is much stronger(large) than individual's and will chip away indivi
 # Increasing of wisdom
 There are two basic forms of growing in wisdom
 1. understanding through causality, abstraction, expriment 
-2. +1, but all must be understood.
+2. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
+## the english problem
+I rest my case
+imperial
 # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
