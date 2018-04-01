@@ -16,13 +16,38 @@ society will is much stronger(large) than individual's and will chip away indivi
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
 # Increasing of wisdom
-There are two basic forms of growing in wisdom
-1. understanding through causality, abstraction, expriment 
-2. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
-## the english problem
-I rest my case
-imperial
-# Tenet
+There are 4 basic forms of growing in wisdom
+0. nonego, out of knowledges, never experinced
+1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
+Life-relevant: life knowledge has a internal structure;  We are facing the world; Vigor is limited.I cannot do everything.
+Not doing something
+Output is better than input
+JIT: e.g. kindle narrtion, soramimi
+Practiced professional
+2. understanding through causality, abstraction, expriment 
+3. Feedback
+risk management:
+## the enlish forms
+### the english problems
+I rest my case;
+Unfamiliar words: imperial
+Unknown words
+### the units for Enlish
+speech sounds
+written language
+various real life world most of them cannot described
+### the way
+input and output: output >> input
+Input: watch game show, anime, movie, talk show, youtube
+Input sounds: kindle narration, Soramimi, pure audible
+Output-input: narrative listening, listen by heart, dictation, talking
+Output: talking, writing
+### life-relevant contents.
+i+1: to practiced professional
+No Chinese
+limited non-life-relevant contents 10%:"audible, kindle, news, youtube."
+
+## # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
 谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
