@@ -3,7 +3,6 @@ date: 2008-09-13
 title: Quantitative cognition - The philosophy on which I am living
 category: philosophy
 ---
-
 I am aware of that we need some principles and methods to understand this world.
 The following thoughts try to help people to make a good life. They all came from my past life.
 # Ego life world
@@ -19,14 +18,19 @@ society will is much stronger(large) than individual's and will chip away indivi
 There are 4 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
 1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
-Life-relevant: life knowledge has a internal structure;  We are facing the world; Vigor is limited.I cannot do everything.
+Active learning: is the first criterian for measuring learning effect
+Life-relevant: life knowledge has a internal structure; We are facing the world; Vigor is limited.I cannot do everything.
 Not doing something
+Infinitive dissipation
 Output is better than input
 JIT: e.g. kindle narrtion, soramimi
+content state
 Practiced professional
+risk management:
 2. understanding through causality, abstraction, expriment 
 3. Feedback
-risk management:
+tactical error. strategic error.
+If stracegic is too large, it will lead tactical error.
 ## the enlish forms
 ### the english problems
 I rest my case;
@@ -37,22 +41,25 @@ speech sounds
 written language
 various real life world most of them cannot described
 ### the way
-input and output: output >> input
+input and output: output >> input:7/3
 Input: watch game show, anime, movie, talk show, youtube
 Input sounds: kindle narration, Soramimi, pure audible
+Input written: website news, daily mail
 Output-input: narrative listening, listen by heart, dictation, talking
-Output: talking, writing
+Output: talking, writing, real-life -> English
+Output sounds: none
+Output writen: writting, real-life -> English
 ### life-relevant contents.
-i+1: to practiced professional
 No Chinese
 limited non-life-relevant contents 10%:"audible, kindle, news, youtube."
-
+Real-life -> meaning space -> English
+JIT
 ## # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
 谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * I have never thought about questions that are not real ones—I have not squandered myself. -- N
-确定target:procedure or descriptive knowledge. 围棋规则 or 围棋高手.python一旦确定用的场景, 语言本身迅速消失, 留下用的样子.
+确定target:procedure or descriptive knowledge. 围棋规则 or 围棋高手. python一旦确定用的场景, 语言本身迅速消失, 留下用的样子.
 How much we understand the world isn't better than how well.
 [知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
@@ -75,7 +82,6 @@ Know how to solve every problem that has been solved. --Feynman
 * 理性1.线性分析;2.在抽象中,多前驱/cause,多后继/effect.3. 坚决反对在复杂的事物中使用理性不断搜索, 反推root cause,a.这是填鸭,cramming!b.时间长.
 * AN: Affirmative and negative description, Critical rationalism, Failsibility,Trial and error.
 * limit of functions.
-
 # Life steps
 From all points, prime model,  spectrum, 森罗万象.
 实用主义 and AN 确定最小问题/cause, use scenarios, hands-on, 经验, 经历, 集合and最小必备知识集. 找到问题, 6.5/10完成.
