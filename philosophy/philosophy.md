@@ -25,6 +25,7 @@ Infinitive dissipation
 Output is better than input
 JIT: e.g. kindle narrtion, soramimi
 content state
+From the simplest
 Practiced professional
 risk management:
 2. understanding through causality, abstraction, expriment 
@@ -32,6 +33,7 @@ risk management:
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
 ## the enlish forms
+多而分散, 不复杂, 
 ### the english problems
 I rest my case;
 Unfamiliar words: imperial
@@ -54,6 +56,8 @@ No Chinese
 limited non-life-relevant contents 10%:"audible, kindle, news, youtube."
 Real-life -> meaning space -> English
 JIT
+Semantic net should be made up of real-life using, not search and synonym/thesaurus. 
+It shouldn't be a game of play with words.
 ## # Tenet
 * Sorcerer
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)
