@@ -15,7 +15,7 @@ society will is much stronger(large) than individual's and will chip away indivi
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
 # Increasing of wisdom
-There are 4 basic forms of growing in wisdom
+There are 5 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
 1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
 Active learning: is the first criterian for measuring learning effect
@@ -30,6 +30,7 @@ Practiced professional
 risk management:
 2. understanding through causality, abstraction, expriment 
 3. Feedback
+4. 活的知识
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
 ## the enlish forms
