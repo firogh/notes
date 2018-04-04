@@ -19,7 +19,7 @@ Hammers
 
 
 # Increasing of wisdom
-There are 4 basic forms of growing in wisdom
+There are 5 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
 1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
 Active learning: is the first criterian for measuring learning effect
@@ -40,8 +40,12 @@ Practiced professional
 * 摄入方法, 就是我所谓的 forms of learning.
 2. understanding through causality, abstraction, expriment 
 3. Feedback
+<<<<<<< HEAD
 
 risk management:
+=======
+4. 活的知识
+>>>>>>> 4edf7546b6ba2f1310cd089f6be332c0c1dc90cd
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
 ## the enlish forms
