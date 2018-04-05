@@ -2,7 +2,7 @@
 
 if [[ $# -ne 1 ]]
 then
-	echo "cshortcuts /path/to/chrome"
+	echo "vimchrome /path/to/chrome"
 	exit 1
 fi
 
