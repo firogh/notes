@@ -14,6 +14,10 @@ society will is much stronger(large) than individual's and will chip away indivi
 黑暗的死寂, 赞美生命. Respect and Reverence for life and Natural World. 摆脱自己对性与神性的虚伪.
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
+# The forms of learning
+Hammers
+
+
 # Increasing of wisdom
 There are 5 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
@@ -27,10 +31,21 @@ JIT: e.g. kindle narrtion, soramimi
 content state
 From the simplest
 Practiced professional
-risk management:
+* Step by step:循序渐进
+* Live knowledge not dead knowledge
+* 对无知的无知
+* 对人类理解, 记忆, 学习能力的无知
+* 对知识形式的无知
+* 没有主动意识去分析, 人与知识. 无知地使用相同方法处理所有知识, 且使用方法通常都是最低级的, 及机械的摄入, 是自己成为智障. 
+* 摄入方法, 就是我所谓的 forms of learning.
 2. understanding through causality, abstraction, expriment 
 3. Feedback
+<<<<<<< HEAD
+
+risk management:
+=======
 4. 活的知识
+>>>>>>> 4edf7546b6ba2f1310cd089f6be332c0c1dc90cd
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
 ## the enlish forms
