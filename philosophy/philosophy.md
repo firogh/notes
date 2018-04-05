@@ -15,21 +15,33 @@ society will is much stronger(large) than individual's and will chip away indivi
 # Gratification
 安静而有节制的生活能比始终在不安困扰下追求成功带来更多的喜悦 --EinsteinA calm and modest life brings more happiness than the pursuit of success combined with constant restlessness.
 # The forms of learning
-Hammers
+## stereotype prototype 
+Plunge into things
+literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 知识学死了. 
+缸中之脑, 将生活维持在大脑刺激当中, 而不是真正的生活.
+所有时间都投入到学习中
+## Enlightened suffer
+分析知识, 分析自身->life-relevant->有生命的知识(让人满意的, 感到满足畅快的）->循序渐进-> Practiced professional
 
+# knowledge forms
+Knowledge >> life: Infinitive dissipation
+Life: 
+1. 循序渐进的
+2. store knowledge
+3. life-relevant using
 
 # Increasing of wisdom
 There are 5 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
+Not doing something, 
+死知识
+低品质勤奋的人．
 1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
 Active learning: is the first criterian for measuring learning effect
 Life-relevant: life knowledge has a internal structure; We are facing the world; Vigor is limited.I cannot do everything.
-Not doing something
-Infinitive dissipation
 Output is better than input
 JIT: e.g. kindle narrtion, soramimi
 content state
-From the simplest
 Practiced professional
 * Step by step:循序渐进
 * Live knowledge not dead knowledge
@@ -40,14 +52,10 @@ Practiced professional
 * 摄入方法, 就是我所谓的 forms of learning.
 2. understanding through causality, abstraction, expriment 
 3. Feedback
-<<<<<<< HEAD
-
 risk management:
-=======
-4. 活的知识
->>>>>>> 4edf7546b6ba2f1310cd089f6be332c0c1dc90cd
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
+4. 活的知识
 ## the enlish forms
 多而分散, 不复杂, 
 ### the english problems
@@ -67,7 +75,7 @@ Output-input: narrative listening, listen by heart, dictation, talking
 Output: talking, writing, real-life -> English
 Output sounds: none
 Output writen: writting, real-life -> English
-### life-relevant contents.
+### Life-relevant contents.
 No Chinese
 limited non-life-relevant contents 10%:"audible, kindle, news, youtube."
 Real-life -> meaning space -> English
