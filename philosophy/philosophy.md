@@ -17,25 +17,26 @@ society will is much stronger(large) than individual's and will chip away indivi
 # The forms of learning
 ## stereotype prototype 
 Plunge into things
-literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 知识学死了. 
-缸中之脑, 将生活维持在大脑刺激当中, 而不是真正的生活.
+literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 死知识. 
+缸中之脑, 将生活维持在大脑刺激当中, 而不是真正的生活, fake life.
 所有时间都投入到学习中
 ## Enlightened suffer
-分析知识, 分析自身->life-relevant->有生命的知识(让人满意的, 感到满足畅快的）->循序渐进-> Practiced professional
+分析知识, 分析自身-> life-relevant->有生命的知识(让人满意的, 感到满足畅快的）->循序渐进-> Practiced professional
 
-# knowledge forms
+# knowledge and life forms
 Knowledge >> life: Infinitive dissipation
-Life: 
+Knowledge: base the analysis on life(using)
+Life:
 1. 循序渐进的
 2. store knowledge
 3. life-relevant using
-
 # Increasing of wisdom
 There are 5 basic forms of growing in wisdom
 0. nonego, out of knowledges, never experinced
 Not doing something, 
 死知识
 低品质勤奋的人．
+所有时间都花在学习上了．
 1. analyzing the basic forms, e.g. english is way of connection between meanings and expressions
 Active learning: is the first criterian for measuring learning effect
 Life-relevant: life knowledge has a internal structure; We are facing the world; Vigor is limited.I cannot do everything.
@@ -56,8 +57,25 @@ risk management:
 tactical error. strategic error.
 If stracegic is too large, it will lead tactical error.
 4. 活的知识
+# Way to master knowledge
+practice/experiment, abstruction, causlity
+mode: JIT, waterpull
+learn target: work set
+# the life
+Sound is stornger than memory to remember things
+## the kernel forms
+Qunataty: great large number => work set, JIT
+Complexicty/Granularity: centric high/large => abstaction, causality
+Causality or practice:causality
+Material: writen
+Work-set: yes
 ## the enlish forms
-多而分散, 不复杂, 
+Quantaty: great large number => work set, JIT
+Complexicty granularity: well-distributed, low/small => practice
+Causality or practice:  practice
+Material: sound, writen
+Work-set: yes
+Growing way: sound->written
 ### the english problems
 I rest my case;
 Unfamiliar words: imperial
