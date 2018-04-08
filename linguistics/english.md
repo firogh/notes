@@ -12,7 +12,38 @@ category: linguistics
 [3]: https://zhihu.com/question/29593355/answer/70435647
 [4]: https://zhihu.com/question/29593355/answer/88599805
 [6]: https://www.fluentin3months.com/phrasal-verbs/
-
+## the enlish forms
+Abstructios: english is way of connection between meanings and expressions
+Quantaty: great large number => work set, JIT
+Complexicty granularity: well-distributed, low/small => practice
+Causality or practice:  practice
+Material: sound, writen
+Work-set: yes
+Growing way: sound->written
+### the english problems
+I rest my case;
+Unfamiliar words: imperial
+Unknown words
+### the units for Enlish
+speech sounds
+written language
+various real life world most of them cannot described
+### the way
+input and output: output >> input:7/3
+Input: watch game show, anime, movie, talk show, youtube
+Input sounds: kindle narration, Soramimi, pure audible
+Input written: website news, daily mail
+Output-input: narrative listening, listen by heart, dictation, talking
+Output: talking, writing, real-life -> English
+Output sounds: none
+Output writen: writting, real-life -> English
+### Life-relevant contents.
+No Chinese
+limited non-life-relevant contents 10%:"audible, kindle, news, youtube."
+Real-life -> meaning space -> English
+JIT
+Semantic net should be made up of real-life using, not search and synonym/thesaurus. 
+It shouldn't be a game of play with words.
 # Language acquisition
 1. If a world were not have any language, the meaning does exist!
 2. Cognition/thought breeds language, every language has its own express way.
