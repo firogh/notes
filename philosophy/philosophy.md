@@ -1,6 +1,6 @@
 ---
 date: 2008-09-13
-title: Quantitative cognition - The philosophy on which I am living
+title: The philosophy on which I am living
 category: philosophy
 ---
 I am aware of that we need some principles and methods to live in this world.
@@ -13,7 +13,6 @@ Complexicty/granularity: well-distributed, low/small => practice
 Causality or practice
 Material: Character, sound
 Working set: 
-From question, not zero
 onset-nucleus pair: yes for kernel 
 procedure or descriptive knowledge bias: English and kernel are both procedure knowledge
 复杂的解决方案背后,往往是由简单的问题引出.问题总是简单的，如果不能简单的描述符问题，说明还没弄明白。
@@ -36,6 +35,7 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 nonego->分析知识, 分析自身-> life-relevant 有生命的活知识->循序渐进-> Practiced professional
 ## life-relevant using
 working set, 有时可能需要简短的书来入门,然后就可以自己思考了。
+From question, not zero
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 I have never thought about questions that are not real ones—I have not squandered myself. -- N
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
