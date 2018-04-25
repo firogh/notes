@@ -5,7 +5,15 @@ date: 2017-04-03T13:02:12+08:00
 category: cs
 ---
 
-# Reference
+
+# Link to process stack from irq stack
+commit a2bbe75089d5eb9a3a46d50dd5c215e213790288
+x86: Don't use frame pointer to save old stack on irq entry
+       /* Save previous stack value */
+       movq %rsp, %rsi
+...
+2:     /* Store previous stack value */
+       pushq %rsi
 [Obtain sys_call_table on amd64 ](https://www.exploit-db.com/papers/13146/)
 
 #Interrupt

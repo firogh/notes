@@ -4,6 +4,7 @@ title: The philosophy on which I am living
 category: philosophy
 ---
 I am aware of that we need some principles and methods to live in this world.
+情
 # knowledge forms
 Abstruction:
 Knowledge: base the analysis on life(using)
@@ -44,6 +45,8 @@ Willpower: An idea is like a seed; once planted in a person's mind, it's growth 
 ## 循序渐进, gradual improvement, working set, gradient, content feeling
 Occam's razor and the transpoints
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
+进一寸有一寸的欢喜 -- Hu Shi
+事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 ## life prefer way
 * Active learning: is the first criterian for measuring learning effect,拒绝填鸭,cramming!
 How much we understand the world isn't better than how well.
