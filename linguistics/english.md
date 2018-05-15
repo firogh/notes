@@ -12,6 +12,15 @@ category: linguistics
 [3]: https://zhihu.com/question/29593355/answer/70435647
 [4]: https://zhihu.com/question/29593355/answer/88599805
 [6]: https://www.fluentin3months.com/phrasal-verbs/
+
+
+# Fused relative constructions and interrogative content clauses 
+What he did was clearly impossible.
+I do not know what he did
+
+# PC predicative complement
+CGEL 251
+
 ## the enlish forms
 Abstructios: english is way of connection between meanings and expressions
 Quantaty: great large number => work set, JIT
