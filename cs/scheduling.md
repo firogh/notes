@@ -5,6 +5,49 @@ date: 2017-03-29T10:49:04+08:00
 category: cs
 ---
 
+
+# SD
+set sd
+build_sched_domains: /* Build the groups for the domains */
+detach_destroy_domains
+cpu_attach_domain
+
+CONFIG_SCHED_MC=y
+static noinline struct sched_domain *                                   \
+sd_init_##type(struct sched_domain_topology_level *tl, int cpu)         \
+{                                                                       \
+        struct sched_domain *sd = *per_cpu_ptr(tl->data.sd, cpu);       \
+        *sd = SD_##type##_INIT;                                         \
+        SD_INIT_NAME(sd, type);                                         \
+        sd->private = &tl->data;                                        \
+        return sd;                                                      \
+}
+tl->mask(cpu)
+static struct sched_domain_topology_level default_topology[] = {
+#ifdef CONFIG_SCHED_SMT
+        { sd_init_SIBLING, cpu_smt_mask, },
+#endif
+#ifdef CONFIG_SCHED_MC
+        { sd_init_MC, cpu_coregroup_mask, },
+#endif
+#ifdef CONFIG_SCHED_BOOK
+        { sd_init_BOOK, cpu_book_mask, },
+#endif
+        { sd_init_CPU, cpu_cpu_mask, },
+        { NULL, },
+};
+
+ CONFIG_CPUSETS=y
+
+
+get sd
+idle_balance
+for_each_domain
+
+panic
+find_busiest_group
+find_next_bit
+__next_cpu
 # Context switch
 
 inactive_task_frame __switch_to_asm

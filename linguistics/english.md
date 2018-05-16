@@ -21,6 +21,10 @@ I do not know what he did
 # PC predicative complement
 CGEL 251
 
+# Can we use a singular countable noun without an article, when it refers to general idea of something? 
+https://www.usingenglish.com/forum/threads/109820-Countable-singular-noun-without-an-article/page2
+https://www.ntid.rit.edu/sea/processes/articles/grammatical/types/specificgeneral
+
 ## the enlish forms
 Abstructios: english is way of connection between meanings and expressions
 Quantaty: great large number => work set, JIT
