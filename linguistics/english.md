@@ -18,6 +18,10 @@ category: linguistics
 What he did was clearly impossible.
 I do not know what he did
 
+# be to do
+http://www.grammaring.com/be-to-infinitive
+http://www.learnersdictionary.com/qa/be-to-verb-are-to-get
+
 # PC predicative complement
 CGEL 251
 

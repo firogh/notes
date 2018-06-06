@@ -48,6 +48,7 @@ Occam's razor and the transpoints
 进一寸有一寸的欢喜 -- Hu Shi
 事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 ## life prefer way
+* 放下执念.
 * Active learning: is the first criterian for measuring learning effect,拒绝填鸭,cramming!
 How much we understand the world isn't better than how well.
 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
