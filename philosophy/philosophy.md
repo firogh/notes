@@ -35,6 +35,8 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 # Enlightened suffer's increasing of wisdom
 nonego->分析知识, 分析自身-> life-relevant 有生命的活知识->循序渐进-> Practiced professional
 ## life-relevant using
+现学的不用，现用的不学 -- 金伟榕 https://www.zhihu.com/question/38206533
+语言可以区分人.
 working set, 有时可能需要简短的书来入门,然后就可以自己思考了。
 From question, not zero
 Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
