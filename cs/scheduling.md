@@ -8,7 +8,12 @@ category: cs
 
 # SD
 set sd
-build_sched_domains: /* Build the groups for the domains */
+kernel_init_freeable->
+sched_init_smp->
+init_sched_domains->build_sched_domains:->
+__visit_domain_allocation_hell()->__sdt_alloc() alloc the sdd->sg which is used by build groups
+and sg = kzalloc_node(sizeof(struct sched_group) + cpumask_size(); it covered the size of cpumask
+/* Build the groups for the domains */
 detach_destroy_domains
 cpu_attach_domain
 
