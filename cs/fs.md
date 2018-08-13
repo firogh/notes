@@ -16,6 +16,9 @@ category: cs
 [2]: https://unix.stackexchange.com/questions/93960/why-is-linuxs-filesystem-designed-as-a-single-directory-tree/
 [3]: https://unix.stackexchange.com/questions/265620/on-unix-systems-why-do-we-have-to-explicitly-open-and-close-files-to-be/265621
 
+# Naming flaw
+https://www.win.tue.nl/~aeb/linux/lk/lk-8.html
+
 
 # fs hacks
 To get the full path call dentry_path_raw(filp->f_path.dentry,buf,buflen).

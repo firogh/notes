@@ -6,8 +6,18 @@ title: Page fault
 category: cs
 ---
 
+# three cases where page fault might happen
+the first is if the VA is simply not mapped at all into VAS of the process that's requesting it.
+Another case is if a process has in sufficient permissions for this address. so you're trying to write into something that's read-only for example.
+the third is if the VA is valid but it's swapped out.
+## Use case
+not mapped
+lazy allocation
+swapping
+
 #Page faults
 Page fault: If a process accesses a part of virtual address space not yet associated with a page in memory
+
 
 * Segemnt fault
 Segment fault: address is not in VMA, namely invalid address! Check bad_area() in x86.

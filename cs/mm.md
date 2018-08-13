@@ -12,6 +12,14 @@ category: cs
 
 [1]: https://lwn.net/Articles/253361/
 
+# Addresses
+the VA is at fixed offset from the PA. They're shifted by exactly the page offset. so if your page offset is 3 GBs that means 3 GBs in VM corresponds to 0 in PM
+kernel Virutal addresses are used for two different things 
+this first is noncontiguous memory mappings; this is often used for large buffer on small memory system.
+the other thing they're used for  is memory mapped i/o.
+
+VM area struct represents a mapping 
+
 # SLAB 
 [The slab allocator has three principle aims:](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
 [Re: When to use kmem_cache_alloc](https://lkml.org/lkml/2000/8/7/65)

@@ -10,6 +10,11 @@ category: cs
 Reverse engineering
 [How debuggers work][1]
 
+# debuging
+signle step instruction
+Core-dump
+printf debugging; this is very effective.
+
 # info
 Host OS name and version number.
 I40e driver version number.
