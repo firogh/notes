@@ -13,6 +13,8 @@ category: linguistics
 [4]: https://zhihu.com/question/29593355/answer/88599805
 [6]: https://www.fluentin3months.com/phrasal-verbs/
 
+# Law of English
+No Chinese at all and English neural network
 # 不爽感觉的由来
 
 # How to speak fluently

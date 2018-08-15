@@ -8,9 +8,13 @@ The essence of this world is being.
 As the world changing, it become more complicated and diffcult to live within it.
 I am aware of that we need some principles and methods to live in this world.
 We use rational and sensous abilities to live within it.
-
-# Imperfect being:
-0. the default way we interact with other beings is passive since we are not other beings. We are lack of other beings.
+# Neutral being
+* Being apppears in interaction. Learn in doing.
+# Imperfect being
+0. I am not other beings.
+* we are inclinded not to being other beings. 
+That's why I was reading kernel book not writing some codes during learning kernel. Same to english. It's the lowest change of myself. It's easy.
+* we don't have their environment that is why we are not other beings partially.
 1. didn't find the precious of self-thinking and doing.(maybe first principle)
 2. unconfident because of lack of controling of other beings.
 3. Lazy and be clined to simple things
@@ -34,23 +38,20 @@ Broke the Law because of overconfident subjective understanding and memory abili
 除了浸沉于书籍之海不做别的事情的学者……最后则是完全丧失了为自己而思考的才能。除非有一本书在手里，他就不能思考。当他思考，他只是反应一种刺激即他所看到的别人的思想，结果他所做的一切都是反应.--Why I Am So Clever  Section8
 imperfect being: 1 & 2
 * English
-Subjective assume and Lack of quantatifications
-## Cases
-* English event 
-Lack of quantatifications on goal and methods; subjective assume
-目标不清楚, 目标模糊没有量化;
-方法也没有量化. 
-subjective assume of the effect of listening metod which can cover speaking.
+目标不清楚, 目标模糊没有量化; 方法也没有量化. Subjective assume and Lack of quantatifications
+Unconfident.
 # Law of Human learning
 ## Basic forms
 Procedural Memory and [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
-* Understanding.
+* Understanding(prepare for doing).
 * Doing: action, Output, rearrang, ...
 事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 Learning by doing: 从动手中学习, 创造知识.
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 [Take the programs, modify them and enhance them.][7]  --Stevens
-* Long-term and gradual improvement
+* Gradual improvement and longterm
+procedual/declerative ability
+iterative and incremental learning.
 ## Sensous factors for learning
 * Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * the sense of achievement
@@ -78,17 +79,51 @@ Causality [Causal reasoning][8]
 critical thinking
 Reflexicity -- Soros
 Feynman method
+World of origins
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 Experiment[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
-## World of origins
 # Imperfect methods
-
-## the generating method of quantified Goals and Learning methods
+## environments
+environment: questions/goal, feedbacks, gradual improvement, 
+authentic and artificial
+### the drawbacks of artificial environment
+* questions/goal: discounted
+out: no clear way
+* feedback:
+input feedback: b) no realtime input; c) input content was limited to specifc small range. z)midium feedback, 
+output feedback:  b) don't know what to do/speak; in fact, we know some inner struct of knowledge but not accuracy. c) the output results are barely verified. z) low feedback
+io feedback: unknown
+* gradual improvement : not sustainable
+* sense of achievement
+## methods
+### the generating method of quantified Goals and Learning methods
+question: Clear way
 From Humility to Perfect 
-## the generating method of not subjective assume method
+### the generating method of not subjective assume method
 Reflexcity and feedback
+feedback: find more ways of feedback
+### the genearating method of quick and effectiveness. 
+Time and effectiveness.
+Learn in authentic environment
+### gradual improvement: make it easy and take less time.
+iterative and incremental learning.
+procedual ability and declare ability
+
+# understanding/doing and artficial/authentic environment and procedual/declerative ability
+## Case study
+[不能速成，说明你的学习方法错了！](http://www.xinli001.com/info/100367315)
+* 练琴 
+有明确目标, not complicated, high feedback and high sense of achivement.
+* 哑巴英语
+书本情景太少, 情景不是理论. 语法才是理论.
+情景本身就是明确的问题, 具有feedback, 但无趣. 去美国就完美了.
+* 营销
+目标明确, 自己直接feedback, 金钱兴趣.
+* 游戏理论
+有前提.就是要速成, 很好.
 # knowledge forms
 JIT e.g. kindle narrtion, soramimi
+whole is not a pile of parts; ab != a + b
 Abstruction:
 Knowledge: base the analysis on life(using)
 Qunataty: great large number => Working set, JIT, Knowledge >> life: Infinitive dissipation
@@ -99,7 +134,6 @@ Material: Character, sound
 Working set: 
 onset-nucleus pair: yes for kernel 
 procedure or descriptive knowledge bias: English and kernel are both procedure knowledge
-复杂的解决方案背后,往往是由简单的问题引出.问题总是简单的，如果不能简单的描述符问题，说明还没弄明白。
 * 死知识, Life-relevant: learn in real-life, no dead knowledge
 [What is science by Feyman][5], do you know brown-throated thrush?
 [知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
