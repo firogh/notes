@@ -41,7 +41,36 @@ imperfect being: 1 & 2
 目标不清楚, 目标模糊没有量化; 方法也没有量化. Subjective assume and Lack of quantatifications
 Unconfident.
 # Law of Human learning
-## Basic forms
+## Thinking and creating(and 分析综合) before every thing and First principles
+拒绝填鸭,cramming, rote
+不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
+[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
+All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!—That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
+## Imperfect methods
+### the generating method of quantified Goals and evnironment
+Goals: Clear goals from humility to perfect
+#### What content do we need to learn first? Especially for a large amount of complicated information
+* working set, 有时可能需要简单的书来入门,然后就可以自己思考了.
+* Life-relevant: 现学的不用，现用的不学 -- 金伟榕 https://www.zhihu.com/question/38206533
+* 有生命的活知识
+I have never thought about questions that are not real ones - I have not squandered myself. -- N
+How much we understand the world isn't better than how well.
+[知之为知之，不知为不知，是知也。][2] 区分无用的知识.
+#### environments analysis
+environment: questions/goal, feedbacks, gradual improvement, 
+authentic and artificial
+##### the drawbacks of artificial environment
+* questions/goal: discounted
+out: no clear way
+* feedback:
+input feedback: b) no realtime input; c) input content was limited to specifc small range. z)midium feedback, 
+output feedback:  b) don't know what to do/speak; in fact, we know some inner struct of knowledge but not accuracy. c) the output results are barely verified. z) low feedback
+io feedback: unknown
+* gradual improvement : not sustainable
+* sense of achievement
+### the generating method of quantified learning methods
+From Humility to Perfect
+### Basic forms
 Procedural Memory and [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 * Understanding(prepare for doing).
 * Doing: action, Output, rearrang, ...
@@ -52,23 +81,14 @@ Learning by doing: 从动手中学习, 创造知识.
 * Gradual improvement and longterm
 procedual/declerative ability
 iterative and incremental learning.
-## Sensous factors for learning
-* Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
-* the sense of achievement
-进一寸有一寸的欢喜 -- Hu Shi
-## What content do we need to learn first? Especially for a large amount of complicated information
-* working set, 有时可能需要简单的书来入门,然后就可以自己思考了.
-* Life-relevant: 现学的不用，现用的不学 -- 金伟榕 https://www.zhihu.com/question/38206533
-* 有生命的活知识
-I have never thought about questions that are not real ones - I have not squandered myself. -- N
-How much we understand the world isn't better than how well.
-[知之为知之，不知为不知，是知也。][2] 区分无用的知识.
-## Thinking and creating(分析综合?) before every thing and First principles
-拒绝填鸭,cramming, rote
-不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
-[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
-All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!—That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
-## Common Simplicity Methods for mastering complex world
+#### the generating method of not subjective assume method
+Reflexcity and feedback
+feedback: find more ways of feedback
+### gradual improvement: make it easy and take less time.
+Time and effectiveness.
+iterative and incremental learning.
+procedual ability and declare ability
+# Common Simplicity Methods for mastering complex world
 Occam's razor 
 Positive and negtive
 Leave a question open 
@@ -82,32 +102,10 @@ Feynman method
 World of origins
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 Experiment[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
-# Imperfect methods
-## environments
-environment: questions/goal, feedbacks, gradual improvement, 
-authentic and artificial
-### the drawbacks of artificial environment
-* questions/goal: discounted
-out: no clear way
-* feedback:
-input feedback: b) no realtime input; c) input content was limited to specifc small range. z)midium feedback, 
-output feedback:  b) don't know what to do/speak; in fact, we know some inner struct of knowledge but not accuracy. c) the output results are barely verified. z) low feedback
-io feedback: unknown
-* gradual improvement : not sustainable
-* sense of achievement
-## methods
-### the generating method of quantified Goals and Learning methods
-question: Clear way
-From Humility to Perfect 
-### the generating method of not subjective assume method
-Reflexcity and feedback
-feedback: find more ways of feedback
-### the genearating method of quick and effectiveness. 
-Time and effectiveness.
-Learn in authentic environment
-### gradual improvement: make it easy and take less time.
-iterative and incremental learning.
-procedual ability and declare ability
+# Sensous factors for learning
+* Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
+* the sense of achievement
+进一寸有一寸的欢喜 -- Hu Shi
 
 # understanding/doing and artficial/authentic environment and procedual/declerative ability
 ## Case study
