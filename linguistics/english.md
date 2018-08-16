@@ -3,20 +3,22 @@ date: 2015-03-20
 title: The architecture of Enlgish language
 category: linguistics
 ---
-# Goals
+# Goals and self appraisal
 ## Speak 
+* Life-relevant
+Interview and Technical Presentation, english related to CS, english at work, 
+Talk with interviewer, colleague, people 
 
 ## Listen
 All CS contents
-## Read
 ## Write
-
+* Life-relevant
+## Read
 # Speak fluently
 echoing
 shadowing
 大声朗读
 熟读背诵
-
 # Listen
 no chinese; 意群;English neural network
 ## Why I cannot understand some words in conversation.

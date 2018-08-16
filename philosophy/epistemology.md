@@ -17,7 +17,7 @@ That's why I was reading kernel book not writing some codes during learning kern
 * we don't have their environment that is why we are not other beings partially.
 1. didn't find the precious of self-thinking and doing.(maybe first principle)
 2. unconfident because of lack of controling of other beings.
-3. Lazy and be clined to simple things
+3. 厌恶痛苦、向往轻松快乐; Lazy and be clined to simple things
 ## The drawbacks of human's reasoning;  Imperfect Understanding and radical fallibity are the natue of human.
 1. collect and process information. 灯下寻针. 盲人摸象.
 2. 分析 推理. 路径依赖, 类比. first principle 有些时候应该用.
@@ -42,35 +42,50 @@ imperfect being: 1 & 2
 Unconfident.
 # Law of Human learning
 ## Thinking and creating(and 分析综合) before every thing and First principles
+## Imperfect methods
+
+# Thinking and creating(and 分析综合) before every thing and First principles
 拒绝填鸭,cramming, rote
 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?][4]
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!—That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
-## Imperfect methods
-### the generating method of quantified Goals and evnironment
-Goals: Clear goals from humility to perfect
-#### What content do we need to learn first? Especially for a large amount of complicated information
-* working set, 有时可能需要简单的书来入门,然后就可以自己思考了.
+
+# Imperfect methods
+S3G
+## Sensous factors for learning
+## the generating method of quantified clear goals, self appraisal and evnironment
+## the generating method of quantified gradual feedback doing
+
+# the generating method of quantified clear goals, self appraisal and evnironment
+## Clear Goals
+List goals
+### What content do we need to learn first for these goals? Especially for a large amount of complicated information
 * Life-relevant: 现学的不用，现用的不学 -- 金伟榕 https://www.zhihu.com/question/38206533
-* 有生命的活知识
+* common tools: neo Descartes' method(onc...), Causality, Occam's razor 
+* working set, 有时可能需要简单的书来入门,然后就可以自己思考了.
+* 有生命的活知识; fun and sense of achivement
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
 How much we understand the world isn't better than how well.
 [知之为知之，不知为不知，是知也。][2] 区分无用的知识.
-#### environments analysis
+###  goals and contents level
+* Humble beginner to intermediate and advanced
+## self appraisal
+through doing and feedback
+## environments analysis
+authentic, uninvolved fact, and artificial
 environment: questions/goal, feedbacks, gradual improvement, 
-authentic and artificial
-##### the drawbacks of artificial environment
+### the drawbacks of artificial environment
 * questions/goal: discounted
-out: no clear way
-* feedback:
-input feedback: b) no realtime input; c) input content was limited to specifc small range. z)midium feedback, 
-output feedback:  b) don't know what to do/speak; in fact, we know some inner struct of knowledge but not accuracy. c) the output results are barely verified. z) low feedback
-io feedback: unknown
 * gradual improvement : not sustainable
-* sense of achievement
-### the generating method of quantified learning methods
-From Humility to Perfect
-### Basic forms
+* feedback
+input feedback: a) limited realtime inputs; b) input content was limited to specifc small range. z)medium  feedback, 
+output feedback:  a) don't know what to do; in fact, a little. b) the output results are barely verified. z) low feedback
+io feedback: unknown
+* sense of achievement: not sure
+
+# the generating method of quantified gradual feedback doing
+## gradual doing
+procedual/declerative ability: innate learned things.
 Procedural Memory and [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 * Understanding(prepare for doing).
 * Doing: action, Output, rearrang, ...
@@ -78,34 +93,40 @@ Procedural Memory and [Learning How to Learn](https://www.coursera.org/learn/ruh
 Learning by doing: 从动手中学习, 创造知识.
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 [Take the programs, modify them and enhance them.][7]  --Stevens
-* Gradual improvement and longterm
-procedual/declerative ability
-iterative and incremental learning.
-#### the generating method of not subjective assume method
-Reflexcity and feedback
-feedback: find more ways of feedback
-### gradual improvement: make it easy and take less time.
-Time and effectiveness.
-iterative and incremental learning.
-procedual ability and declare ability
-# Common Simplicity Methods for mastering complex world
-Occam's razor 
-Positive and negtive
-Leave a question open 
-[Descartes's methods][6]
-MECE (Mutually Exclusive and Collectively Exhaustive).
-Abstraction
-Causality [Causal reasoning][8]
-critical thinking
-Reflexicity -- Soros
-Feynman method
-World of origins
-![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
-Experiment[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
+* Gradual improvement and longterm; iterative and incremental learning.
+Time per unit;
+Whole time 
+doing size:
+make it easay: From Humility to Perfect
+Concurrent
+## Feedback and Reflexcity 
+Good examples feedback.
+comparing my articles with others feedback.
+google or books realtime feedback.
+
 # Sensous factors for learning
-* Showing-off: in front of interviewer. [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
+Cue, routine, and reward is mandatory
+* Showing-off: 
+[装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * the sense of achievement
 进一寸有一寸的欢喜 -- Hu Shi
+
+# Common Simplicity Methods for mastering complex world
+* Occam's razor 
+* Neo [Descartes's methods][6]
+Onset, nucleus, coda
+Positive and negtive
+MECE (Mutually Exclusive and Collectively Exhaustive).
+* Leave a question open 
+* Abstraction
+* Causality [Causal reasoning][8]
+* critical thinking
+* Reflexicity -- Soros
+* Feynman method
+![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
+* World of origins
+* Experiment
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability][3]
 
 # understanding/doing and artficial/authentic environment and procedual/declerative ability
 ## Case study
@@ -119,6 +140,7 @@ Experiment[The key is deliberative practice: not just doing it again and again, 
 目标明确, 自己直接feedback, 金钱兴趣.
 * 游戏理论
 有前提.就是要速成, 很好.
+
 # knowledge forms
 JIT e.g. kindle narrtion, soramimi
 whole is not a pile of parts; ab != a + b
@@ -135,6 +157,7 @@ procedure or descriptive knowledge bias: English and kernel are both procedure k
 * 死知识, Life-relevant: learn in real-life, no dead knowledge
 [What is science by Feyman][5], do you know brown-throated thrush?
 [知识的“局限性”][1] 碎片化的知识无用, 碎片化知识切割人生.
+
 [1]: http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html
 [2]: http://blog.sina.com.cn/s/blog_679ef4210102vsud.html
 [3]: http://www.norvig.com/21-days.html
