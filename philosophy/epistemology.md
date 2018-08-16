@@ -12,6 +12,7 @@ We use rational and sensous abilities to live within it.
 * Being apppears in interaction. Learn in doing.
 # Imperfect being
 0. I am not other beings.
+贪多求全; craving for many and perfection; 主观上以自己刻苦努力来还取进步.
 * we are inclinded not to being other beings. 
 That's why I was reading kernel book not writing some codes during learning kernel. Same to english. It's the lowest change of myself. It's easy.
 * we don't have their environment that is why we are not other beings partially.
@@ -85,8 +86,10 @@ io feedback: unknown
 
 # the generating method of quantified gradual feedback doing
 ## gradual doing
-procedual/declerative ability: innate learned things.
-Procedural Memory and [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
+Procedural Memory/ability and [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
+* short, quick steps; small but usable.
+small: 1
+usable: not dead knowledge
 * Understanding(prepare for doing).
 * Doing: action, Output, rearrang, ...
 事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
@@ -94,7 +97,7 @@ Learning by doing: 从动手中学习, 创造知识.
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 [Take the programs, modify them and enhance them.][7]  --Stevens
 * Gradual improvement and longterm; iterative and incremental learning.
-Time per unit;
+Time per unit:
 Whole time 
 doing size:
 make it easay: From Humility to Perfect
@@ -104,12 +107,13 @@ Good examples feedback.
 comparing my articles with others feedback.
 google or books realtime feedback.
 
-# Sensous factors for learning
+# Sensous and physiological factors for learning
 Cue, routine, and reward is mandatory
 * Showing-off: 
 [装逼](https://www.zhihu.com/question/30178891/answer/205055193)谷歌表示，该中心将在北京拥有一个专家团队，谷歌已在北京有数百名从事研发和其他工作的员工。谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
 * the sense of achievement
 进一寸有一寸的欢喜 -- Hu Shi
+* Relax
 
 # Common Simplicity Methods for mastering complex world
 * Occam's razor 
