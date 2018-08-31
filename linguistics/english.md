@@ -4,7 +4,28 @@ title: The architecture of Enlgish language
 category: linguistics
 ---
 # Goals and self appraisal
+## Active lexical chunk
+[active theory 如何提升口语主动词汇量(一)](https://zhuanlan.zhihu.com/p/25722395)
+[Big Words Vs Small Words: Learning English](https://www.youtube.com/watch?v=jl_eedjDYJQ)
+https://mp.weixin.qq.com/s/b7or35fR4keCE91ctqn37w
+* 效果
+阅读<朗读, 听<跟读<翻译, 复述<真实输出
+提升口语主动词汇量=一次互动获得的推进效果x互动次数x互动的词汇数-遗忘
+### small words
+#### Phrasal verbs
+[100 Most Common English Verbs List](https://www.linguasorb.com/english/verbs/most-common-verbs/)
+[PHRASAL VERBS WITH 'BE'](https://www.linguahouse.com/en-GB/learning-english/general-english/phrasal-verbs-with-be)
+#### 看中文说英语 translation
+[Some thoughts on Zhihu](https://www.zhihu.com/question/20322566)
+
+#### Read PV
+
 ## Speak 
+* speak fluently 
+[Benny Lewis: TEDx talk on Rapid Language Hacking](https://www.youtube.com/watch?v=HZqUeWshwMs)
+[以前是单词不认识去查字典, 打这以后是单词理解得不透彻就去查字典. 当你对一个东西透彻理解的时候, 记住它是一件很容易的事.](https://zhuanlan.zhihu.com/p/26160050)
+[dictionary websites](https://zhuanlan.zhihu.com/p/26168028)
+
 * Life-relevant
 Interview and Technical Presentation, english related to CS, english at work, 
 Talk with interviewer, colleague, people 
