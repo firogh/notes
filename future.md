@@ -1,4 +1,11 @@
 
+**Be a useful and necessary man to this world**
+
+Laptop: ThinkPad T460s
+Distro: latest Fedora release, since Fedora 14
+Vim or Emacs: Vim
+Tabs or spaces: spaces
+
 **Current working, if you are doing the same things, feel free to get touch with me.**
 Learning theory of computation.
 Trying to prove or get the relationship between TOC and programming abilties.

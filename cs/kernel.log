@@ -1,4 +1,7 @@
 
+# kernel refactoring
+https://linuxtv.org/wiki/index.php/Development:_Hints_for_Refactoring_Existing_Drivers
+[Kernel Recipes 2017 - Refactoring the Linux Kernel - Thomas Gleixner](https://www.youtube.com/watch?v=mxxicJZ8cis)
 
 Q:[Why do we need mb for SLEEP AND WAKE-UP FUNCTIONS?](https://www.kernel.org/doc/Documentation/memory-barriers.txt)
 help me.

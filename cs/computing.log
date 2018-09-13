@@ -1,0 +1,103 @@
+# Resource 
+space
+## Alloc
+occasions
+## State of alloced reource
+in-use.
+available for use.
+## Reclaim
+* occasions
+Periodical
+* methods: 
+a)change structure; or 
+b) mark the state of resource; for example, array in lc 146.
+# Change
+type: resource
+property: [subject, form, lack](https://faculty.washington.edu/smcohen/320/archange.htm)
+energy is invisiable
+structured matter for controling energy
+data or state
+kinetic and protenial energy
+## wakeup
+* occassions
+Periodical: 
+Demand: seems overlap 
+## sleep
+
+# Processor
+a set of strcutured matter for controling energy. 
+
+# Process
+type: resource, change
+energized structured instructions 
+machine states: states implies resource space 
+
+# Turning machine
+M=Q,Gamma ,b,Sigma ,delta ,q_{0},F
+## Program Symbols
+Gamma is a finite, non-empty set of tape alphabet symbols;
+b in Gamma is the blank symbol (the only symbol allowed to occur on the tape infinitely often at any step during the computation);
+Sigma subseteq Gamma setminus {b}: is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents;
+## Machine States
+Q: is a finite, non-empty set of states;
+q_{0} in Q is the initial state;
+F subseteq Q is the set of final or accepting states.The initial tape contents is said to be accepted by M if it eventually halts in a state from F.
+## Transition function/computing
+type: structure causality
+delta :(Q setminus F) * Gamma -> Q * Gamma * {L,R}:  is a partial function called the transition function, where L is left shift, R is right shift. (A relatively uncommon variant allows "no shift", say N, as a third element of the latter set.) If delta is not defined on the current state and the current tape symbol, then the machine halts;
+
+# Search
+algorithm.md
+
+# Data (implying resource space)
+search and structure
+resource space
+state
+
+# Cache
+type: data
+## Problems: slowness of storage medium
+page cache: speed up the access to data on the secondary storage
+dcache: speed up the access to data on the secondary storage
+cpu cache: speed up the access to data on main memory
+memory latency is the time (the latency) between initiating a request for a byte or word in memory until it is retrieved by a processor.
+Bandwidth is the number of access per unit time.
+[Cache motivation](https://www.coursera.org/learn/comparch/lecture/5girw/motivation-for-caches)
+[Bandwidth vs. Throughput](https://www.youtube.com/watch?v=VWxGtl5J7WM)
+## methods
+a) locality: resouce space, medium: put data in a fast medium: Disk -> RAM; RAM -> cache; usually, the fast medium is small
+b) locality: put hot data in a small place
+### physics 
+### search structure
+### replacement polices
+algorithm.md
+### Write behavior
+[Write policy](https://www.youtube.com/watch?v=Aqxb-uO2Z-Q)
+* write miss
+write-allocate
+write-around/no-write-allocate: non-temporal write operations
+* write hit
+write-through cache implementation;
+write-back cache implementation.
+write-combining; and
+uncacheable.
+### cache coherency
+* [MESI Cache Coherence Protocol](https://www.youtube.com/watch?v=-p9tfMMu1PE)
+[Module 2.4 - Cache Coherence - 740: Computer Architecture 2013 - Carnegie Mellon - Onur Mutlu](https://www.youtube.com/watch?v=flbg-MKkwmk)
+[MIT 6.004 L21: Cache Coherence](https://www.youtube.com/watch?v=OLGEtXV4U3I)
+* Write propagation: Changes to the data in any cache must be propagated to other copies(of that cache line) in the peer caches.
+write-invalidate
+write-update
+* Write serialization
+Snooping
+Directory-based
+two cores require write acess to the same memory address at the same exact moment? one proceeds and one stalls
+
+
+
+# Numbers of Computing
+https://www.akkadia.org/drepper/cpumemory.pdf
+https://manybutfinite.com/post/what-your-computer-does-while-you-wait/
+
+# Terms in Computing
+

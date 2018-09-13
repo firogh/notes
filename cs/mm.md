@@ -6,6 +6,84 @@ title: Linux memory management
 category: cs
 ---
 
+#Page swap
+PG_swapcace means page is swapped.
+PG_swapbacked means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
+
+
+# Hot and cold pages
+[Hot and cold pages](https://lwn.net/Articles/14768/)
+
+# Format of Page-Table entry 
+v3a: P121: 
+5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
+6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
+Check this _PAGE_BIT_ACCESSED
+
+# Page flags
+PG_active: 表示此页当前是否活跃，当放到或者准备放到活动lru链表时，被置位
+PG_referenced: 表示此页最近是否被访问，每次页面访问都会被置位
+PG_lru: 表示此页是处于lru链表中的
+PG_mlocked: 表示此页被mlock()锁在内存中，禁止换出和释放
+PG_swapbacked: 表示此页依靠swap，可能是进程的匿名页(堆、栈、数据段)，匿名mmap共享内存映射，shmem共享内存映射
+
+# struct page
+* page.lru
+1. lruvec
+2. buddy system
+3. slab
+4. isolate list
+* page.index
+1. file memory mapped page: index is offset in a file
+2. Anonymous page: linear_page_index in __page_set_anon_rmap()__
+
+# TLB
+spurious_fault:a stale TLB entry
+
+# Kprobes
+kprobes_fault
+
+# hugetlb
+hugetlb_fault
+
+# hugepage
+
+# Leave questions open
+kmmio probe in do_page_fault
+* pte
+1216         if (error_code & PF_WRITE) {
+1217                 /* write, present and write, not present: */
+1218                 if (unlikely(!(vma->vm_flags & VM_WRITE)))
+* madvise
+* pte_present ?
+* bug?
+mm/memory.c:do_anonymous_page: page_add_new_anon_rmap(page, vma, vmf->address, false);
+* userfd
+https://www.youtube.com/watch?v=xhOBc5L_Hkk
+* Special sections in Linux binaries
+https://lwn.net/Articles/531148/
+* COW: for malloc page 
+are the ptes set during fork for child process?
+check copy_one_pte is_cow_mapping in copy_page_range in dup_mmap
+VM_WIPEONFORK
+MADV_WIPEONFORK
+* 按页表的操作次数划分，COW的操作有三种时态：
+https://zhuanlan.zhihu.com/p/38598444
+【1】COW的过去式：见do_swap_page()
+此时的PAGE其实已经被换到SWAP分区了，这是至少是页表的第三次被改了。但还是要进行COW。
+这种情况是tmpfs情况？ 
+【2】COW的现在式：do_wp_page()
+最常见的形式了。页表已经有东西了，只是权限不对，需要从只读修改成可写。
+【3】COW的将来式：do_cow_fault()
+连页表都是空的，就要未雨绸缪进行COW。
+* DAX
+* __shmem_file_setup dev/zero
+* http://pzemtsov.github.io/2016/11/06/bug-story-alignment-on-x86.html
+
+# Hardware bit
+
+# Data synchronization
+
 # Reference
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
 [Memory part 3: Virtual Memory][1]
@@ -21,8 +99,13 @@ the other thing they're used for  is memory mapped i/o.
 VM area struct represents a mapping 
 
 # SLAB 
+type: resource
 [The slab allocator has three principle aims:](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
 [Re: When to use kmem_cache_alloc](https://lkml.org/lkml/2000/8/7/65)
+
+## Reclaim
+* occassions
+Periodical: kswapd
 
 # Contents
 Logic gates: SRAM, DRAM
@@ -106,9 +189,6 @@ alloc_pages()
 struct address_space->page_tree
 ##Page writeback
 data synchronization, the flush threads, pdflush
-##Page swap
-The available RAM memory in a computer is never enough to meet user needs or to always satisfy memory-intensive applications.
-
 
 #FAQ
 * Where is Per-CPU variable?
@@ -198,7 +278,6 @@ build_all_zonelists // dmesg
 ## Sparse 
 paging_init->sparse_init
 
-
 # Mirgate memory from memblock to buddy system
 ## Preconditions
 mem_map/page array
@@ -218,8 +297,5 @@ start_kernel->efi_free_boot_services->free_bootmem_late->__free_pages_bootmem
 # Zone watermarks 
 core_initcall(init_per_zone_wmark_min)
 
-
-
 build_all_zonelists: Just init zones, nothing else. But we have vm_total_pages/zone->managed_pages initialized in free_all_bootmem();.
 page_alloc_init // drain percpu pageset when cpu dead or dead frozen for CPU hotplug
-

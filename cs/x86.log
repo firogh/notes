@@ -24,3 +24,7 @@
 jump/call are always pc-relative except register
 Other adresses are always Absolute except register
 >>>>>>> 10fcfd75b6eabf05737e63023e9790d0f2abc2c6
+
+
+# x86 architecture exceptions
+http://www.sandpile.org/x86/except.htm

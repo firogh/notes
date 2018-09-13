@@ -1,0 +1,11 @@
+
+
+## kernel
+Join kernel community:
+### kerenl fundermental knowledge
+FS, memory, process, interrupt, synchronization, hacking.
+process schedule: loadbalancing.
+Process scheduling in Linux -- Volker Seeker from University of Edinburgh 
+[Scheduling domains](https://lwn.net/Articles/80911/)
+
+

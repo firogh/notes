@@ -16,6 +16,32 @@ category: cs
 [2]: https://unix.stackexchange.com/questions/93960/why-is-linuxs-filesystem-designed-as-a-single-directory-tree/
 [3]: https://unix.stackexchange.com/questions/265620/on-unix-systems-why-do-we-have-to-explicitly-open-and-close-files-to-be/265621
 
+# Overview
+Human, data, hardware mediea, software organisition/FS
+Human + Data -> Directory and file/set theory-> FS -> Hardware
+FS and data
+common data: file name, size, date, user -> inode
+block
+FS and hardware
+Track resources: partition, size -> superblock, alloc method and structure.
+Format disk: e2fsprog
+boil down to
+Human -> object and resource space
+* FS and FS
+mount 
+Filesystem magic
+walk from one FS to another FS.
+how to create a directory/file
+get_sb -> superblock
+create dentry: mnt_list; mnt-> root. realloc a larger size dentry
+alloc inode -> ops -> dentry
+alias: 
+if one inode was shared by muliple dentries, denteries is linked in i_dentry
+
+# kernel data sturct
+struct path: get the meaning of this struct by looking d_path().It includes the two endpoints of a path which are mnt and dentry.
+[Upcoming API change: struct path](https://lwn.net/Articles/206758/)
+
 # Naming flaw
 https://www.win.tue.nl/~aeb/linux/lk/lk-8.html
 

@@ -1,22 +1,175 @@
+# Buffer cache?
 
-# [Motivations][2]
-Latency is time for a single access.
-Bandwidth is the number of access per unit time.
-[2]: https://www.coursera.org/learn/comparch/lecture/5girw/motivation-for-caches
-[Bandwidth vs. Throughput][3]
-[3]: https://www.youtube.com/watch?v=VWxGtl5J7WM
+# SLAB
 
-# Fixes
-Locality
+## Reclaim occasions
+* Peoridically
+cache_reap()
 
-# Feynman
-Associativity: Hash function
-replacement policies: LRU-k
+# Dentry cache - dcache
+* dentry state
+in use/bound
+in use/unbound
+not use/ boud - LRU
+not use/unbound - new one
 
-Cache coherence
+## Search structure 
+Hashtable
 
-Write behavoir
+## Replacement polices
+LRU
+## Write behavior
+## Cache coherence
 
+## Example of using dentry
+__shmem_file_setup
+d_alloc_pseudo
+shmem_get_inode-> inode_init_always
+d_instantiate
+alloc_file
 
-[background on ioremap, cacheing, cache coherency on x86][1]
-[1]: https://lkml.org/lkml/2008/4/29/480
+# Page cache
+## Search structure
+### anon page: 
+* Reverse mapping
+rbtree-based Interval tree
+[逆向映射的演进](http://www.wowotech.net/memory_management/reverse_mapping.html)
+onset:
+exec workflow: 
+exec -> do_execveat_common-> bprm_mm_init setup_arg_pages
+do_anonymous_page -> anon_vma_prepare & page_add_new_anon_rmap
+fork workflow:
+anon_vma_fork() -> anon_vma_chain_link: node: avc, key: avmc.vma->start/last_pgoff page.mapping=anon_vma.rb_root
+rmap: add exclusively owned pages to the newest anon_vma - e8a03feb54ca7f1768bbdc2b491f9ef654e6d01d
+nuclus:
+rmap_walk_anon()
+
+* swap cache - a fake cache
+radix tree same as page cache
+add_to_swap 
+
+### file page:
+* Reverse mapping 
+onset:
+rbtree-based interval tree - INTERVAL_TREE_DEFINE in mm/interval_tree.c
+__vma_adjust -> __vma_link_file: node: vma.shared.rb, key: vma.start_pgoff and vma.last_pgoff  address_space->i_mmap
+address_space is premise
+nuclus:
+rmap_walk_file(page.mapping=address_space.i_mmap
+* page cache
+Radix tree
+page_cache_tree_insert, add_to_page_cache_lru
+
+## Replacement polices
+replacement policies: 
+https://www.kernel.org/doc/gorman/html/understand/understand013.html
+https://linux-mm.org/PageReplacementDesign
+https://www.kernel.org/doc/gorman/html/understand/understand013.html
+[PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
+https://www.cnblogs.com/tolimit/p/5447448.html
+### Leave questions open
+I saw we always shrink active list from the head, what about the tail entries, if the nr_to_scan isn't enough to reach the end of active list?
+Seems this problem is apporached by isolate_lru_pages with for-loop and list_add insert and move_active_pages_to_lru ( lru - LRU_ACTIVE).
+### onset
+rotate_reclaimable_page()?
+### Nuclus
+shrink_page_list()
+pagevec_lru_move_fn - routines for move pages between inactive list and active list
+
+### Second chance
+[Second Chance Page Replacement Algorithm](https://www.youtube.com/watch?v=eHK749r5RGs)
+[Second Chance Page Replacement Algorithms and Clock Page Replacement Algorithms](https://www.youtube.com/watch?v=DFmsm0J8joY)
+page_check_references() oi shrink_page_list().
+shrink_active_list for VM_EXEC page.
+page_referenced in shrink_active_list
+### active list and inactive list
+active list: working set; Am of LRU 2Q; how often
+[Better active/inactive list balancing](https://lwn.net/Articles/495543/)
+mark_page_accessed and called sub-functions.
+active -> inactive head - list_add(&page->lru, &l_inactive); in shrink_active_list
+inactive -> active head - __activate_page
+inactive -> inactive tail - rotate_reclaimable_page
+
+### Working set
+mm: thrash detection-based file cache sizing - a528910e12ec7ee203095eb1711468a66b9b60b0
+[Not merged - mm: refault distance-based file cache sizing](https://lkml.org/lkml/2012/5/1/51)
+workingset_eviction() and workingset_refault()
+* WSS
+https://github.com/brendangregg/wss
+http://www.10tiao.com/html/606/201807/2664605543/1.html
+
+### Clock ??
+[ClockProApproximation](https://linux-mm.org/ClockProApproximation)
+[A CLOCK-Pro page replacement implementation](https://lwn.net/Articles/147879/)
+[CLOCK-Pro: An Effective Improvement of the CLOCK Replacement](https://www.usenix.org/legacy/publications/library/proceedings/usenix05/tech/general/full_papers/jiang/jiang_html/html.html)
+
+## Reclaim Occasions
+* Periodically Keep a halthy avaliable free pages.
+kswapd_shrink_node
+* No enough memory for a large memory alloc.
+get_page_from_freelist->node_claim
+try_to_free_mem_cgroup_pages
+try_to_free_pages
+* Manually initiate
+hibernate_preallocate_memory->shrink_all_memory
+drop_caches
+
+### Target pages
+All user space pages, except some pages.
+Do not reclaim kernel page in order to make things simple.
+Where to store the pages?
+        There may be many processes which use the same pages.
+        We put list of pages in a global site.
+How to organize the pages.
+        LRU
+        When to add the page to LRU
+How to reclaim in deatils.
+        For memory-mapped file page, write back.
+        For private and anonymous, swap.
+        For memroy-mapped file page without modification.
+        How to distinguish kernel page from user space page?
+How to modify the process's pte to let it know the page has been reclaimed.
+        Reverse mapping.
+
+## Write behavior
+
+## Cache coherence
+
+# CPU cache
+## search structure - associative arrys
+[Where exactly L1, L2 and L3 Caches located in computer?](https://superuser.com/questions/196143/where-exactly-l1-l2-and-l3-caches-located-in-computer)
+![cpu cache locations](https://i.stack.imgur.com/4Z1nU.png)
+### Associativity
+* trade-off
+a) Checking more places takes more power and chip area,
+b) and potentially more time. On the other hand, caches with more associativity suffer fewer misses
+fully associative - the best miss rates, but practical only for a small number of entries
+N-way set associative cache: 8 is a common choice for later implementations
+direct-mapped cache - if two locations map to the same entry, they may continually knock each other out. anti-fragmantion worsens this case.
+### N-way set associative cache
+* Why isn't set index in the MSB
+[The vast majority of accesses are close together...](http://danluu.com/3c-conflict/#fn:L)
+* set vs page-align
+[comment 6](http://danluu.com/3c-conflict/#fn:4)
+Why is transposing a matrix of 512x512 much slower than transposing a matrix of 513x513?
+* etc
+http://igoro.com/archive/gallery-of-processor-cache-effects/
+## Replacement polices
+Pseudo-LRU
+## Write behavior
+[background on ioremap, cacheing, cache coherency on x86](https://lkml.org/lkml/2008/4/29/480)
+• write-through cache implementation;
+• write-back cache implementation.
+• write-combining; and
+• uncacheable.
+## Cache coherence
+## Example 
+dmidecode -t cache
+cat /sys/devices/system/cpu/cpu0/cache/index0/number_of_sets 
+64
+cat /sys/devices/system/cpu/cpu0/cache/index0/ways_of_associativity 
+8
+cat /sys/devices/system/cpu/cpu0/cache/index0/size 
+32K
+cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size 
+64

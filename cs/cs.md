@@ -64,5 +64,3 @@ Energy-efficiency
 [All about pseudo][10]
 [10]: https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf
 
-# kernel
-

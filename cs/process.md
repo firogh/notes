@@ -5,6 +5,16 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
+# kthread
+## resource 
+
+## Change
+Periodical: schedule_timeout
+Demand: 
+
+## inter-process info
+
+
 # Fork a new process 
 What does the child process need from parent?
 	sched_fork: setup schduling stuff
