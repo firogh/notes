@@ -10,6 +10,7 @@ category: cs
 * page-fault exceptions error code
 v3a: 4.7 - Figure 4-12. Page-Fault Error Code
 P, W/R, U/S, I/D, RSVD
+user/kernel mode, kerne space/userspace addr, good/bad area
 ## kernel mode
 ### Userspace address
 Ondemanding page
@@ -61,6 +62,34 @@ set_pte_at
 ### do_swap_page
 ### do_wp_page
 true cow
+## DBG: Kernel oops
+[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
+[Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
+
+## LQO
+* why down_read in page_fault
+http://wangcong.org/2012/06/01/-e4-b8-ba-e4-bb-80-e4-b9-88linux-e5-86-85-e6-a0-b8-e4-b8-8d-e5-85-81-e8-ae-b8-e5-9c-a8-e4-b8-ad-e6-96-ad-e4-b8-ad-e4-bc-91-e7-9c-a0-ef-bc-9f/
+* enable IRQ in page fault
+for user mode
+commit 891cffbd6bcba26409869c19c07ecd4bfc0c2460
+Author: Linus Torvalds <torvalds@linux-foundation.org>
+Date:   Sun Oct 12 13:16:12 2008 -0700
+
+    x86/mm: do not trigger a kernel warning if user-space disables interrupts and generates a page fault
+for kernel mode
+简直精髓
+* What about down_read(&mm->mmap_sem)?
+linux-tglx
+commit b50661029222940e24d2fba7c982ac0774a38c78
+Author: Andi Kleen <ak@muc.de>
+Date:   Thu Sep 16 22:00:12 2004 -0700
+
+    [PATCH] x86-64: avoid deadlock in page fault handler
+    
+    Avoid deadlock when kernel fault happens inside mmap sem.
+Check ULKv3 Page 380.
+https://lkml.org/lkml/2004/5/19/108
+https://lkml.org/lkml/2013/5/13/418
 
 # memory mappings
 TLPI:chapter 49
@@ -74,14 +103,15 @@ malloc exploit it to alloc memory
 * nuclus
 do_anonymous_page
 ## File private mappings -text and iniliazed data. 
-anonymous page
+双空, anonymous page
 * onset - mmap
 do_mmap -> mmap_region -> call_mmap->generic_file_mmap->vma->vm_ops = & generic_file_vm_ops
 * nuclus -> page fault -> do_cow_page
 1. get page and cow:  __do_fault-> vma->vm_ops->fault = filemap_fault -> page cache ? page_cache_read add to lru
-2. add page to anon lru list: finish_fault-> alloc_set_pte-> page_add_new_anon_rmap -> __SetPageSwapBacked
+2. add page to anon lru list: finish_fault->alloc_set_pte-> page_add_new_anon_rmap -> __SetPageSwapBacked
 ### Example text and initalized data
 [??---p PROT_NOME mapping](http://www.greenend.org.uk/rjk/tech/dataseg.html#summary)
+show_vma_header_prefix
 cat /proc/self/maps 
 7ffff7a17000-7ffff7bcc000 r-xp 00000000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> text
 7ffff7bcc000-7ffff7dcc000 ---p 001b5000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> PROT_NONE
@@ -95,10 +125,64 @@ mmap(0x7ffff7dcc000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENY
 mmap(0x7ffff7dd2000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ffff7dd2000
 mprotect(0x7ffff7dcc000, 16384, PROT_READ) = 0                                          ========> read only data
 ## Anonymouse shared mappings - Parent and child share memory
+[vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
+[ashmem](https://lwn.net/Articles/452035/)
 file page: i_mmap
 * onset - mmap
 do_mmap -> mmap_region -> vma_link -> (__shmem_file_setup) && __vma_link_file: into i_mmap interval_tree.
 * nuclus - share fault
 do_shared_fault
+shmem_getpage_gfp
+mapping = inode->i_mapping
+shmem_add_to_page_cache
+* dirty a shared page since it's write fault
+do_shared_fault->fault_dirty_shared_page
+* what about read fault?
+seems read won't dirty the shared page.
+* Swaping out a anonymouse shared page
+pageout->shmem_writepage - Move the page from the page cache to the swap cache; and swp_to_radix_entry
+[map_pages](https://lwn.net/Articles/588802/)
+### Write protect for shared page
+do_wp_page-> wp_page_reuse
+[PATCH] mm: tracking shared dirty pages - d08b3851da41d0ee60851f2c75b118e1f7a5fc89
 ## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
 file page: i_mmap
+
+# Summary
+mapping:  anon & private, anon 
+from: anonymous page, file-backing 
+to: swap area, file on the disk
+rmap:
+lru:
+cache: swap cache, page cache
+read:
+write:
+backend: swap area, disk 
+PageAnon:		f&p, a&p 
+!page_is_file_cache:	f&p, a&p, a&s
+
+## swap
+systemd->swapon->sys_swapon
+&def_blk_fops
+
+do_shared_fault
+shmem_fault
+shmem_alloc_and_acct_page
+
+swap in
+swapin_readahead
+swap_readpage
+swap_page_sector
+
+## process of swap
+### Swapping out pages
+lru -> swap cache -> updating pte with try to unmap -> write page into swap area -> delete_from_swap_cache()
+shrink_page_list
+key commit:
+mm: cma: discard clean pages during contiguous allocation instead of migration - 02c6de8d757cb32c0829a45d81c3dfcbcafd998b
+mm: reclaim MADV_FREE pages - 802a3a92ad7ac0b9be9df229dee530a1f0a8039b check mark_page_lazyfree
+[mm: support madvise(MADV_FREE)](https://lwn.net/Articles/590693/)
+### Swapping in pages
+
+## fork
+

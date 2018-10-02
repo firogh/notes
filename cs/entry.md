@@ -5,6 +5,11 @@ date: 2017-04-26T21:39:41+08:00
 category: cs
 ---
 
+Definitive? Actually, it's not and going to die.
+
+# ref
+https://groups.google.com/forum/#!topic/comp.arch/CjDs4MJCBow%5B1-25%5D
+
 Documentation/x86/entry_64.txt
 [对Linux x86-64架构上硬中断的重新认识](http://www.lenky.info/archives/2013/03/2245)
 [The Definitive Guide to Linux System Calls](https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/)

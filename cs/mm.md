@@ -67,15 +67,6 @@ are the ptes set during fork for child process?
 check copy_one_pte is_cow_mapping in copy_page_range in dup_mmap
 VM_WIPEONFORK
 MADV_WIPEONFORK
-* 按页表的操作次数划分，COW的操作有三种时态：
-https://zhuanlan.zhihu.com/p/38598444
-【1】COW的过去式：见do_swap_page()
-此时的PAGE其实已经被换到SWAP分区了，这是至少是页表的第三次被改了。但还是要进行COW。
-这种情况是tmpfs情况？ 
-【2】COW的现在式：do_wp_page()
-最常见的形式了。页表已经有东西了，只是权限不对，需要从只读修改成可写。
-【3】COW的将来式：do_cow_fault()
-连页表都是空的，就要未雨绸缪进行COW。
 * DAX
 * __shmem_file_setup dev/zero
 * http://pzemtsov.github.io/2016/11/06/bug-story-alignment-on-x86.html
@@ -83,6 +74,15 @@ https://zhuanlan.zhihu.com/p/38598444
 # Hardware bit
 
 # Data synchronization
+
+# process address space
+[flexible-mmap-2.6.7-D5][0] 
+[Reorganizing the address space][1] 
+[Anatomy of a Program in Memory][2] 
+ 
+[0]: https://lwn.net/Articles/90311/ 
+[1]: https://lwn.net/Articles/91829/ 
+[2]: http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory/
 
 # Reference
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
@@ -106,6 +106,7 @@ type: resource
 ## Reclaim
 * occassions
 Periodical: kswapd
+
 
 # Contents
 Logic gates: SRAM, DRAM

@@ -1,8 +1,51 @@
+
+# Summary
+pte -> page flags -> page
+
+# PTE and PDE and page flags
+v3a chapter 4.5 4-level paging, p132, Figure 4-11. Formats of CR3 and Paging-Structure Entries with 4-Level Paging
+| G | PAT | D | A | PCD | PWT | U/S | R/W | Present
+## PTE pte_none
+x86/mm: Ignore A/D bits in pte/pmd/pud_none() -  97e3c602ccbdd7db54e92fe05675c664c052a466
+## PTE Encode and de-code a swap entry
+
+|     ...            | 11| 10|  9|8|7|6|5| 4| 3|2| 1|0| <- bit number
+|     ...            |SW3|SW2|SW1|G|L|D|A|CD|WT|U| W|P| <- bit names
+| OFFSET (14->63) | TYPE (9-13)  |0|0|X|X| X| X|X|SD|0| <- swp entry
+Check SWP_TYPE_FIRST_BIT
+Swap work on only userspace pages.
+## _PAGE_SWP_SOFT_DIRTY
+Documentation/vm/soft-dirty.txt
+## _PAGE _PROTNONE
+https://www.spinics.net/lists/newbies/msg08579.html
+man mprotect, PROT_NONE
+userspace addr is associated with non-GLOBAL pte, so the 8th G is reused by PROT_NONE.
+
+# struct page
+## SWAP
+* private
+store swap type and offset/slot in private
+Check page_swapcount
+__add_to_swap_cache -> set_page_private
+why?
+* mapping
+NULL
+* flags
+PG_swapcache
+* _refcount
+### 
+### LQO
+* page in swap cache vs swap area?
+* counters vs _mapcount vs _refcount
+_mapcount: numbers of ptes; check page_mapped
+# Ref
+v3a Chapter 4
+https://wiki.osdev.org/Paging
+https://en.wikipedia.org/wiki/Paging
+
 # Links
 [1]: http://larmbr.com/2014/01/19/the-evolution-of-4-level-page-talbe-in-linux/
 [2]: http://ytliu.info/blog/2016/03/14/linuxnei-cun-chu-shi-hua-assembly/
-[3]: https://lwn.net/Articles/253361/
-[4]: http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf
 # x86 64
 [Linux内核4级页表的演进][1]
 [Linux内存初始化][2]
@@ -67,23 +110,6 @@ __pte(((phys_addr_t)page_nr << PAGE_SHIFT) | massage_pgprot(pgprot));
 For vmalloc(), chechk here vmap_page_range_noflush()
 For kmap(), check kmap_init()
 [How to emulate the process of translate va to pa?](http://edsionte.com/techblog/archives/1966)
-
-
-# TLB
-[Memory part 3: Virtual Memory][3]
-Because the processor does not ensure that the data that it caches are always consistent with the structures in memory, it is important for software developers to understand how and when the processor may cache such data. They should also understand what actions software can take to remove cached
-data that may be inconsistent and when it should do so.-- SDM 4.10 CACHING TRANSLATION INFORMATION
-4.10.4 Invalidation of TLBs and Paging-Structure Caches
-https://www.kernel.org/doc/Documentation/x86/tlb.txt
-[Paging: Faster Translations TLBs][4]
-
-## PCID
-1.10. Longer-lived TLB Entries with PCID in kernel newbies: 
-The relatted commit: x86/mm: Give each mm TLB flush generation a unique ID
-f39681ed0f48498b80455095376f11535feea332
-x86/mm: Implement PCID based optimization: try to preserve old TLB entries using PCID
-10af6235e0d327d42e1bad974385197817923dc1
-
 
 ## Direct mapping area
 high_memory (-128UL << 20)

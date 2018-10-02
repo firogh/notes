@@ -27,34 +27,6 @@ framework for dealing precisely with notions of “how to.”  -- The omnipotent
 [Mort Yao 程序与证明](http://www.tuicool.com/articles/YRZvem)
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
 
-# Components of cs
-design(pattern) and algorithm, programming(debugging, hacking)
-pl,assembly, compile(gcc), link, load(cll)
-process, quantaties, order(synchronization)
-turing, arch, os(boot, console, fedora, fs, process, mm, pm, time, virt, synchronization)
-math, logic, electronics
-
-OS Service | Hardware Support
-------------|-------------------------------------
-Protection  | Kernel/user mode, protected instructions, base/limit registers
-Interrupts  | Interrupt vectors
-System calls  | Trap instructions and trap vectors
-I/O  | Interrupts and memory mapping
-Scheduling, error recovery,accounting  | Timer
-Synchronization  | Atomic instructions
-Virtual memory  | Translation look-aside buffers
-form | os
------|----
-change, computation, transfer . | instructions(memory,IO), Process, interrupt
-relation, order | synchronization/atomic, scheduling, interrupt
-quantaties, state | fs, memory, device, driver
-# the advert of new world origin - performance
-cache: in order to improve performace, cache tries to reduce the access time of transfer of future.
-buffer: What does buffer do? temporary(Not future) place for data,reducing access time of transfer and 
-maybe effiency of quantaties/times of transfer. 是确定的行为, 不同与cache的统计学原理.
-time-sharing: multi-task from batch processing
-prallel process: increas quantanties of process.
-
 performance/efficiency
 Easy to use
 Security/Protection/isolation

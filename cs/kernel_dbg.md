@@ -5,7 +5,6 @@ date: 2017-04-05T14:45:21+08:00
 category: cs
 ---
 
-[1]: http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1
 
 # Debug boot problem
 debug ignore_loglevel earlyprintk=ttyS0,115200,keep keep_bootcon initcall_debug dyndbg=+plmf
@@ -27,23 +26,8 @@ drivers/base/core.c
 define_dev_printk_level 
 THese functions are like pr_func
 
-# oops
-Kernel oops relates to invalid memory access, including sigev and sigbus.
-[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
-[Debugging a kernel crash found by syzkaller][1]
-
-
-
 # lockup
-phenomenon: LOCKUP_DETECTOR
 [kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
-[Debugging Linux Kernel Lockup / Panic / Oops](http://www.av8n.com/computer/htm/kernel-lockup.htm)
-Causes: deadlock, hardware, irqoff and loop
-
-# hung task
-phenomenon: DETECT_HUNG_TASK
-Includes the interruptable task.
-Causes: deadlock, race condition
 
 # kprobes
 
@@ -64,5 +48,3 @@ setup_arch->kasan_init
 # CONFIG_DEBUG_PAGEALLOC
 check_poison_mem in alloc_pages
 free_pages_prepare posion
-
-

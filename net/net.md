@@ -102,7 +102,7 @@ they are commonly imagined as layers in a stack of protocols.
 [Reviews of Michael S. Liu Yale](http://zoo.cs.yale.edu/classes/cs633/Reviews/Cla88.msl38.html)
 Address formate: 有了地址我们就要有地址的具体格式如哪个街道，哪个小区几号楼几室。
 Route: 找到收信人, 计算机网络包括linker, network 和transportlayer
-Data formate: 接下来就是信封格式，对应头部。
+Data format: 接下来就是信封格式，对应头部。
 Reliability:发的信可能丢了，要在写一封吗？
 Detection of transmission errors:如信被人篡改了
 

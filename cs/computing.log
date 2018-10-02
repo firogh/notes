@@ -1,3 +1,7 @@
+
+# Ref
+https://people.cs.clemson.edu/~mark/hist.html
+
 # Resource 
 space
 ## Alloc
@@ -12,7 +16,9 @@ Periodical
 a)change structure; or 
 b) mark the state of resource; for example, array in lc 146.
 # Change
-type: resource
+energized change structured 
+type: resource, instant
+implying: space 
 property: [subject, form, lack](https://faculty.washington.edu/smcohen/320/archange.htm)
 energy is invisiable
 structured matter for controling energy
@@ -24,35 +30,94 @@ Periodical:
 Demand: seems overlap 
 ## sleep
 
+# poll
+__blk_mq_poll
+
+# model 1
+human demands
+energy
+origins
+
+# Scheduling of processes
+Fairness: dynamic compensation
+Unit: 
+States of process: Runnable, unrunnable
+Latency
+Priority
+Energy
+
 # Processor
 a set of strcutured matter for controling energy. 
 
+# Change of processes - linkage
+context: pc,registers, stack, address space
+save -> entry -> return
+x86 registers: check ABI, parameter passing and search r10
+
 # Process
 type: resource, change
-energized structured instructions 
-machine states: states implies resource space 
+unit: instruction, subroutine, change of processes
+change structure 
+space & machine states
+## atomic operation
+Definition: [An atomic operation is an operation that will always be executed without any other process being able to read or change state that is read orchanged during the operation](https://wiki.osdev.org/Atomic_operation)
 
-# Turning machine
-M=Q,Gamma ,b,Sigma ,delta ,q_{0},F
-## Program Symbols
-Gamma is a finite, non-empty set of tape alphabet symbols;
-b in Gamma is the blank symbol (the only symbol allowed to occur on the tape infinitely often at any step during the computation);
-Sigma subseteq Gamma setminus {b}: is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents;
-## Machine States
-Q: is a finite, non-empty set of states;
-q_{0} in Q is the initial state;
-F subseteq Q is the set of final or accepting states.The initial tape contents is said to be accepted by M if it eventually halts in a state from F.
-## Transition function/computing
-type: structure causality
-delta :(Q setminus F) * Gamma -> Q * Gamma * {L,R}:  is a partial function called the transition function, where L is left shift, R is right shift. (A relatively uncommon variant allows "no shift", say N, as a third element of the latter set.) If delta is not defined on the current state and the current tape symbol, then the machine halts;
+# Boundary
+* page_fault idtentry
+movq    $-1, ORIG_RAX(%rsp)
 
 # Search
 algorithm.md
+
+# Divide
 
 # Data (implying resource space)
 search and structure
 resource space
 state
+
+# Queue
+Link list: needs spin lock
+
+# Synchronization
+Exclusion: Exclusive use of shared resources
+Wait: Wait for resources/process
+## exclusion basic form
+atomic opertion and unlocked value and locked value, multiple-reader
+processes
+wait: 
+### case 1
+no one holds the lock
+rax: old
+cmpxchg new mem
+### case 2
+lock held by other process
+wait 
+## Wait
+* Basic form
+Busy waiting/polling
+Event driven
+* Component
+Optimistic
+Sleepable
+* [Criteria](https://en.wikipedia.org/wiki/Ticket_lock#Comparison_of_Locks)
+Fairness guarantee
+Storage
+Wait traffic
+1 Release max traffic
+Uncontended latency
+Cache-line bouncing
+### Wait queue
+condition: unavailabe and wakeup
+wait structure
+wait process
+wake up process
+### completion
+wait for process
+based on wait queue
+
+# I/O
+Interrupts and memory mapping
 
 # Cache
 type: data
@@ -92,12 +157,67 @@ write-update
 Snooping
 Directory-based
 two cores require write acess to the same memory address at the same exact moment? one proceeds and one stalls
-
-
-
 # Numbers of Computing
 https://www.akkadia.org/drepper/cpumemory.pdf
 https://manybutfinite.com/post/what-your-computer-does-while-you-wait/
 
 # Terms in Computing
+
+# ToC
+[2. Models of Computation, Document Distance](https://www.youtube.com/watch?v=Zc54gFhdpLA)
+
+# Turning machine
+M=Q,Gamma ,b,Sigma ,delta ,q_{0},F
+## Program Symbols
+Gamma is a finite, non-empty set of tape alphabet symbols;
+b in Gamma is the blank symbol (the only symbol allowed to occur on the tape infinitely often at any step during the computation);
+Sigma subseteq Gamma setminus {b}: is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents;
+## Machine States
+Q: is a finite, non-empty set of states;
+q_{0} in Q is the initial state;
+F subseteq Q is the set of final or accepting states.The initial tape contents is said to be accepted by M if it eventually halts in a state from F.
+## Transition function/computing
+type: structure causality
+delta :(Q setminus F) * Gamma -> Q * Gamma * {L,R}:  is a partial function called the transition function, where L is left shift, R is right shift. (A relatively uncommon variant allows "no shift", say N, as a third element of the latter set.) If delta is not defined on the current state and the current tape symbol, then the machine halts;
+
+# Channel & routing
+Circuit switching - physical link
+Packet switching - connection-oriented or connectionless
+
+# Control
+End to end protocol
+
+# Transfer
+Data
+Channel & routing
+Control
+
+# Fairness
+## Class-based fairness
+## Same class fairness
+### Fairness of order - FIFO
+#### numeric order: atomic inc
+* [Ticket spinlocks](https://lwn.net/Articles/267968/) and [Remove Ticket spinlocks](https://patchwork.kernel.org/patch/9121811/)
+#### structural order
+[MCS spinlocks](http://www.cs.rochester.edu/~scott/papers/1991_TOCS_synch.pdf)
+Queue spink locks is based on MCS spinlocks, but it has some differences.
+queued_spin_lock_slowpath
+[MCS locks and qspinlocks](MCS locks and qspinlocks)
+?? RW LOCK fariness
+### Fairness of quantaty
+#### Dynamic compensation
+New: compensation
+Running: compensator records used resources.
+Next:  next one to compensate.
+Unrunnable: compenser updates statistics
+Resuming: compensation, compenser updates
+* compensation
+compenser
+avg of all runnable 
+compensation: avg or lowest + 1 unit
+
+# Priority
+[nice](https://en.wikipedia.org/wiki/Nice_(Unix)#Etymology)
+
+# Latency
 

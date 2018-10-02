@@ -228,40 +228,7 @@ strspn: s1开始有多少在s2中.
 strcspn: s1开始有多少不在s2中.
 strpbrk: s2中第一次出现的位置
 strstr: 找子串, 用memcmp
-# ASM in c code
-c语言嵌入汇编这不是c语言的特性是编译器的feature.
-[How to Use Inline Assembly Language in C Code](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html#Using-Assembly-Language-with-C)
-#MIPS
-bdi 4, 8 delay solt
-mips instruction size is fixed, 32bit, 4byte.
-instruction address:  instrction in hex formate	   instruction in string formate, 260
-8002c28c:   8c440104    lw  a0,260(v0)
-##ASM codes Fixme
-move <-
-j long jump
-b short jump
-a0, a1...99% is parameters.
-##lwr & lwl
-load a word
-different with endianess
-register 63.....32......0
-big endian: lwl high bits in b + 0
-little endian: lwl high in b + off
-向中心
-# x86
-[Intel’s ‘cmpxchg’ instruction](http://heather.cs.ucdavis.edu/~matloff/50/PLN/lock.pdf)
-eax: e stand for 32
-rax: r stand for 64
-[lock prefix in x86](http://x86.renejeschke.de/html/file_module_x86_id_159.html)
-the lock prefix make instruction atomic!
-## registers' purpose
-## Register
-* gs
-The linux kernel uses GS to access cpu-specific memory.
-* gdtr
-GDT
-* tr
-TSS addressing
+
 #Wildcards
 [A wildcard character is a type of meta character](http://whatis.techtarget.com/definition/wildcard-character)
 ##Type

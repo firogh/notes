@@ -4,6 +4,14 @@ title: Computer architecture
 date: 2015-10-13
 category: cs
 ---
+# ref
+https://people.cs.clemson.edu/~mark/architects.html
+
+# ASM
+Reference asm global label in C
+char _text[];           x86_64_64;
+unsigned long _text;    x86_64_PC32
+They are different in amrithmatic operstion.
 
 ##Reference
 [Latency Numbers Every Programmer Should Know](http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
@@ -90,7 +98,7 @@ which increases the system's performance due to the way the CPU handles memory.
 应该说bit endianess 实际存储只有MSB ... LSB这一种二进制表达形式! 在上面的文章的representtion, 辅证这一点. 
 这篇文章[再谈C语言位域](http://tonybai.com/2013/05/21/talk-about-bitfield-in-c-again/), 
 之所以输出逆序, 是因为错误里理解了, bit 序. bit 序是cpu 读取的方式, 不是存储的方式! 
-* [bit endianness](https://en.wikipedia.org/wiki/Bit_numbering)
+## [bit endianness](https://en.wikipedia.org/wiki/Bit_numbering)
 这样就可以更好的理解iphdr:
 \#if defined(__LITTLE_ENDIAN_BITFIELD)
     __u8    ihl:4,

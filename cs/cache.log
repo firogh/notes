@@ -6,7 +6,18 @@
 * Peoridically
 cache_reap()
 
+# TLB
+http://www.infradead.org/~mchehab/kernel_docs/unsorted/cachetlb.html
+https://stackoverflow.com/questions/6803762/dump-the-contents-of-tlb-buffer-of-x86-cpu
+https://elixir.bootlin.com/linux/latest/source/Documentation/x86/tlb.txt
+
+# mnt cache
+type: hash table
+mount_hashtable
+
+
 # Dentry cache - dcache
+type: hash table
 * dentry state
 in use/bound
 in use/unbound
@@ -79,16 +90,23 @@ pagevec_lru_move_fn - routines for move pages between inactive list and active l
 ### Second chance
 [Second Chance Page Replacement Algorithm](https://www.youtube.com/watch?v=eHK749r5RGs)
 [Second Chance Page Replacement Algorithms and Clock Page Replacement Algorithms](https://www.youtube.com/watch?v=DFmsm0J8joY)
-page_check_references() oi shrink_page_list().
+core: page_check_references() in shrink_page_list().
 shrink_active_list for VM_EXEC page.
-page_referenced in shrink_active_list
+core: page_referenced in shrink_active_list
 ### active list and inactive list
 active list: working set; Am of LRU 2Q; how often
 [Better active/inactive list balancing](https://lwn.net/Articles/495543/)
 mark_page_accessed and called sub-functions.
 active -> inactive head - list_add(&page->lru, &l_inactive); in shrink_active_list
-inactive -> active head - __activate_page
+inactive -> active head - __activate_page <- mark_page_accessed <- pagecache_get_page or generic_file_buffered_read
 inactive -> inactive tail - rotate_reclaimable_page
+cat /proc/meminfo  | grep ctive
+Active:          3721100 kB
+Inactive:        1005148 kB
+Active(anon):    3047008 kB
+Inactive(anon):   365148 kB
+Active(file):     674092 kB
+Inactive(file):   640000 kB
 
 ### Working set
 mm: thrash detection-based file cache sizing - a528910e12ec7ee203095eb1711468a66b9b60b0
@@ -163,6 +181,14 @@ Pseudo-LRU
 • write-combining; and
 • uncacheable.
 ## Cache coherence
+## Cache over context switch
+[What happens to the cache contents on a context switch](https://cs.stackexchange.com/questions/1088/what-happens-to-the-cache-contents-on-a-context-switch)
+https://mechanical-sympathy.blogspot.com/2013/02/cpu-cache-flushing-fallacy.html
+[MMU: context switching needs Cache flushing?](https://community.arm.com/dev-platforms/f/discussions/8925/aarch32-1-1-mmu-context-switching-needs-cache-flushing)
+[intel should be virtually indexed and physically tagged](https://www.realworldtech.com/sandy-bridge/7/)
+Unix systems for modern architectures
+## Cache aliasing
+[VIPT Cache Aliasing - Georgia Tech - HPCA: Part 4](https://www.youtube.com/watch?v=mMHkIa6Lkek)
 ## Example 
 dmidecode -t cache
 cat /sys/devices/system/cpu/cpu0/cache/index0/number_of_sets 
@@ -173,3 +199,4 @@ cat /sys/devices/system/cpu/cpu0/cache/index0/size
 32K
 cat /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size 
 64
+https://github.com/sysprog21/phonebook

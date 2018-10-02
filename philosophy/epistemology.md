@@ -19,6 +19,53 @@ We use rational and sensous abilities to live within it.
 1. recoginzeing the abilites
 analyzing, Problem & ability, appriasing
 2. Practice
+## Implementions
+### 1. Think for oneslef - Parerga and Paralipomena Vol.2 Chapter XXII
+Don't start from the pure conceptions, from the real basic problems.
+Problems before conceptions.
+Thoery often is after the practices.
+Commonly, problems often hide in the history.
+#### Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, 
+so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth
+much less than a far smaller volume that has been abundantly and repeatedly thought over.
+#### The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**;
+1. and thus it is for ever **increasing the original disparity
+between minds**, by virtue whereof we are driven to the one or to
+the other.
+2. Thus reading forces on the mind ideas that are as
+foreign and heterogeneous to the tendency and mood it has at
+the moment, as is the seal to the wax whereon it impresses its
+stamp. Thus the mind is totally compelled from without to
+think first of one thing and **then of another, for which it has
+absolutely no inclination or disposition.**
+...
+Therefore the **mind is deprived of all its elasticity by much reading** as is a
+spring when a weight is continually applied to it;
+This practice is the reason why **erudition makes most men more stupid and simple
+than they are by nature and also deprives their literary careers
+of every success.**
+3. “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛”
+##### monitor the status of inclination and disposition of every knowledge I am learning.
+#### Repeat
+“复习是学习之母。”每一本重要的书籍都必须一气呵成连续读上两
+遍。原因之一是在阅读第二遍的时候,我们会更好地理解书中内容的整体
+关联,而只有知道了书的结尾才会明白书的开头;原因之二就是在第二次
+阅读的时候,我们的心境、情绪与在第一次阅读时已经有所不同。这样,
+我们获得的印象也会不一样。情形就好比在不同光线之下审视同一样的物
+体 --论阅读与书籍
+### 2. No implementions
+
+### 3. Practices
+
+# the problems
+1. the first problem might be 'what's the point of it?'
+对于一个概念, 自己结合用法, 分析下因果.
+之后再看历史, 很多时候历史不完整, 只能看个大概.
+如tcp mss.
+2. origin covers
+3. Energy power
+4. the second problem
+What could I learn?
 
 # Analyzing
 Break things down to first principles
@@ -164,7 +211,7 @@ From a real problem and leave a few questions open
 
 # Common Simplicity Methods for mastering complex world
 * Occam's razor 
-* Model of thinking
+* Model of thinking / 能指与general所指
 [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
 Math: numberic, concepts
 * [Descartes's methods][6]
@@ -194,8 +241,40 @@ imperfect being: 1 & 2
 * English
 目标不清楚, 目标模糊没有量化; 方法也没有量化. Subjective assume and Lack of quantatifications
 Unconfident.
-# knowledge forms
+# knowledge manifestion and [acquisition](http://people.loyno.edu/~folse/arisepis.html)
+knowledge manifests in many ways. For example, we can understand linux kernel by reading source code or reading kernel books.
+Either way will help us achieve our goal. But which one is better?
+we should know what the goal of learning is. The goal of learning is to find the origins by thinking for oneself.
+So reading source code and reading don't matter. But reading source code usually consumes lots time. reading book will loses the reality of knowledge.
+Anyway, origins is first. The implemention of kernel has to depend on lots of facts which isn't necessary for understanding a knowledge.
+The implemention-specific things do belong to the understanding. it belongs to doing.
+0. Fake knowledge - hypocritical symbols
+ 94 ##IP fragmention/defragmention
+ 95 iphdr->id, iphdr->frag_off
+ 96 skb_shared_info->frag_list 
+ 97 ip_fragment/ip_defrag
+ 98 [Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
+ 99 # send
+100 ip_append_data 和ip_push_pending_frames弄frag_list
+101 ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out
+102 把&sk->sk_write_queue上的数据最后编程skb链表变成了, 还skb pull掉了潜在的ip 头部
+103 第一个skb->frag_list的成员. 用的不太多啊.
+104 ip_append_data中间出了以为如果可以ufo 那么就到frags的碗里去!
+105 否则就生成一串skb挂到&sk->sk_write_queue上,
+1. origins and thinking for my self.
+2. knowledge in programming language
+3. knowledge in human language
+4. implemetion-specific which are unnecessary for understanding. Should be avoided.
+From init.log
+ 29 ## net device init
+ 30 * net_dev_init
+ 31 * nic init
+ 32 e100_init_module        pci_register_driver:构建结构    driver_regiser:注册到内核       really_probe()drv->probe:初始化。
+ 33 vconfig add             regiser_vlan_device：构建结构   register_netdevice:注册到内核   dev->init():初始化
+SO I prefer origins and thinking for myself.
+origins should be problems +(optional solving method) adn there are some pure origins which don't have explicity problem with them.
 [布卢姆认知目标分类修订的二维框架](http://old.pep.com.cn/rjqk/kcjcjf/200409/201101/t20110106_1010047.htm)
+Kalama Sutta
 存在即合理，无视甚至鄙视这些存在于人性、系统之中的“潜规则”，才是大大的不合理。
 * 实际上, 世界本身是没有规则的, 世界是多种多样的.
 JIT e.g. kindle narrtion, soramimi
