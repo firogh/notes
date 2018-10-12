@@ -1,6 +1,7 @@
 
 # Ref
 https://people.cs.clemson.edu/~mark/hist.html
+[GEB](https://ocw.mit.edu/high-school/humanities-and-social-sciences/godel-escher-bach/lecture-notes/)
 
 # Resource 
 space
@@ -30,6 +31,10 @@ Periodical:
 Demand: seems overlap 
 ## sleep
 
+# Repeat
+Iteration
+Recursion
+
 # poll
 __blk_mq_poll
 
@@ -37,6 +42,27 @@ __blk_mq_poll
 human demands
 energy
 origins
+
+# Alloc
+imply: free
+space
+object
+construct/desctruct
+SMP
+NUMA
+DEBUG
+## object-caching
+[However](https://www.usenix.org/legacy/publications/library/proceedings/bos94/full_papers/bonwick.a),in many cases the cost of initializing and destroying the object exceeds the cost of allocating and freeing memory for it.
+Firo: From my understanding, the initializing/construct and destroying is another 'alloc and free' and it can be avoided. For example, in linux kernel, we 'construct' the task_struct object by first allocing memory from buddy-system to SLAB then from SLAB to users. It's a common techniques.
+??slab: cache friendly
+slub:
+## problems
+bestfit
+fast
+[fragmentation](https://en.wikipedia.org/wiki/Fragmentation_(computing)#Internal_fragmentation)
+
+
+
 
 # Scheduling of processes
 Fairness: dynamic compensation
@@ -116,11 +142,12 @@ wake up process
 wait for process
 based on wait queue
 
-# I/O
-Interrupts and memory mapping
+# Operation cache
+slab
+open for read/write
 
 # Cache
-type: data
+type: data, motion
 ## Problems: slowness of storage medium
 page cache: speed up the access to data on the secondary storage
 dcache: speed up the access to data on the secondary storage
@@ -129,6 +156,8 @@ memory latency is the time (the latency) between initiating a request for a byte
 Bandwidth is the number of access per unit time.
 [Cache motivation](https://www.coursera.org/learn/comparch/lecture/5girw/motivation-for-caches)
 [Bandwidth vs. Throughput](https://www.youtube.com/watch?v=VWxGtl5J7WM)
+## problems
+cache pollution
 ## methods
 a) locality: resouce space, medium: put data in a fast medium: Disk -> RAM; RAM -> cache; usually, the fast medium is small
 b) locality: put hot data in a small place
@@ -136,6 +165,11 @@ b) locality: put hot data in a small place
 ### search structure
 ### replacement polices
 algorithm.md
+### reclaim method
+No explicit size limit
+### Replacement vs Reclaim
+Replacement: usually operating/sort on access
+Reclaim: usually operating/scanning on reclaim
 ### Write behavior
 [Write policy](https://www.youtube.com/watch?v=Aqxb-uO2Z-Q)
 * write miss
@@ -157,6 +191,11 @@ write-update
 Snooping
 Directory-based
 two cores require write acess to the same memory address at the same exact moment? one proceeds and one stalls
+## Examples
+### Kenrel
+Kernel uses reclaim to implicitly limit the size of cache
+shrinker and shrink_list
+
 # Numbers of Computing
 https://www.akkadia.org/drepper/cpumemory.pdf
 https://manybutfinite.com/post/what-your-computer-does-while-you-wait/
@@ -180,17 +219,43 @@ F subseteq Q is the set of final or accepting states.The initial tape contents i
 type: structure causality
 delta :(Q setminus F) * Gamma -> Q * Gamma * {L,R}:  is a partial function called the transition function, where L is left shift, R is right shift. (A relatively uncommon variant allows "no shift", say N, as a third element of the latter set.) If delta is not defined on the current state and the current tape symbol, then the machine halts;
 
+# IO
+type: motion
+Interrupts and memory mapping
+
 # Channel & routing
 Circuit switching - physical link
 Packet switching - connection-oriented or connectionless
 
 # Control
 End to end protocol
+Swith
 
 # Transfer
+type: motion
 Data
 Channel & routing
 Control
+
+# Lifetime
+no ref
+refcount
+
+# Forces
+direction
+fundamental forces
+
+# Motion
+data
+directions
+distance
+force controls
+forces
+## Motion concurrent
+### Synchronization of same direction forces control - same direction concurrent
+
+### Synchronization of different direction forces - different concurrent
+
 
 # Fairness
 ## Class-based fairness
@@ -221,3 +286,9 @@ compensation: avg or lowest + 1 unit
 
 # Latency
 
+
+# Ops
+type: process
+object
+provider
+providing time

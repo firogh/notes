@@ -4,6 +4,11 @@ title: Transport layer
 date: 2015-02-27T15:46:13+08:00 
 category: net
 ---
+
+# Key commits
+tcp: remove prequeue support - e7942d0633c47c791ece6afa038be9cf977226de
+tcp: remove tcp_tw_recycle - 4396e46187ca5070219b81773c4e65088dac50cc
+
 # RFC
 [A Roadmap for Transmission Control Protocol (TCP) Specification Documents](http://tools.ietf.org/html/rfc7414)
 [Requirements for Internet Hosts -- Communication Layers](https://tools.ietf.org/html/rfc1122)
@@ -12,7 +17,6 @@ category: net
 793的errata建议阅读1122.
 [1]: https://blog.cloudflare.com/the-story-of-one-latency-spike/
 [2]: https://blogs.technet.microsoft.com/networking/2009/08/12/where-do-resets-come-from-no-the-stork-does-not-bring-them/
-[3]: http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html
 [4]: https://githubengineering.com/syn-flood-mitigation-with-synsanity/
 
 
@@ -21,8 +25,10 @@ category: net
 
 # Reset
 [Where do resets come from? (No, the stork does not bring them.)][2]
-# Backlog 
+
+# Syn queue and listen queue
 [How TCP backlog works in Linux][3]
+[3]: http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html
 
 
 
@@ -91,11 +97,11 @@ physical layer link between the source and destination end systems of this data.
 对应tcp 的接收队列, seq number
 ## Handshak
 * kproxy reorder
-chome ->syn(kproxy reocrd syn) -> firoyang.org
-firoyang.org ->sync ack -> chrome
+chome -> syn(kproxy reocrd syn) -> firoyang.org
+firoyang.org -> sync ack -> chrome
 chrome -> ack -> firoyang.org
-chrome -> GET(firoyang.org) kproxy match then send record syn then setup natinfo ->nginx
-nginx -> tcp send fake syn ack->chrome
+chrome -> GET(firoyang.org) kproxy match then send record syn then setup natinfo -> nginx
+nginx -> tcp send fake syn ack-> chrome
 chrome -> ack -> nginx(then -> firoyang.org)
 tcp_v4_do_rcv{
 	sk->sk_state == TCP_ESTABLISHED
@@ -104,8 +110,8 @@ tcp_v4_do_rcv{
 	tcp_ack -> tcp_fastretrans_alert{retrans ack and GET(firoyang) -> nginx
 	}
 }
-nginx->GET ->firoyang.org
-firoyang.org->nginx->chrome
+nginx-> GET -> firoyang.org
+firoyang.org-> nginx-> chrome
 ## syn flood
 [SYN Flood Mitigation with synsanity][4]
 首先syn 也有超时5次指数1 2 4 8 16 32(第五次超时), 如果client发了一个syn就没了,

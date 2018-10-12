@@ -107,9 +107,11 @@ taken on an instruction boundary.
 
 # Disabling and Enabling Deferrable Functions
 
-# spinlock - unsleepable mutex
+# Spinlock - unsleepable mutex
 [MCS locks and qspinlocks](https://lwn.net/Articles/590243/)
 [MCS locks on quora](https://www.quora.com/How-does-an-MCS-lock-work)
+## Bit spinlock
+include/linux/bit_spinlock.h
 
 # Optimistic spin queue
 [Cancellable MCS spinlock rework](https://lwn.net/Articles/604130/)

@@ -19,6 +19,15 @@ http://bigocheatsheet.com/
 ADT is a data type defined by its behavior. 
 [Any type that does not specify an implementation is an abstract data type.](https://en.wikipedia.org/wiki/Data_type#Abstract_data_types)
 
+# Linked list
+## Static linked list
+Reprented in an array.
+## Internal vs external liked
+Sometimes, SLUB put freelist in object
+
+# BL list
+kernel: add bl_list - 4e35e6070b1ceed89c3bba2af4216c286fb1dafd
+
 # Double linked list
 
 # Associative array
@@ -91,11 +100,15 @@ Hashtable
 Pseudo-LRU
 
 # LRU
-Used in dcache
 [Leetcode 146 LRU cache](https://leetcode.com/problems/lru-cache/description/)
-
+Order items by access times
+## Pseudo LRU/2 - Second chance and queue
+type: Reclaim
+Order items by enqueueing sequence
+dcache
+## Second chance and [2Q](https://pdfs.semanticscholar.org/d62d/e5f995164fff50f5ce61c0113f6bc9f04225.pdf)
+Page reclaim algorithm
+type: Reclaim
 
 # Lock
 MCS lock
-
-		

@@ -91,11 +91,19 @@ decrease the memroy and the time of search route table.
 ## Private network
 In the Internet addressing architecture, a private network is a network that uses private IP address space.
 
-##IP fragmention/defragmention
+## Fragmention/defragmention
 iphdr->id, iphdr->frag_off
 skb_shared_info->frag_list 
 ip_fragment/ip_defrag
 [Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
+## SG IO
+如果device support NETIF_F_SG 直接copy_form user msghdr to frgs[] zero copy!
+p_append_data
+[NETIF_F_FRAGLIST and NETIF_F_SG difference](http://thread.gmane.org/gmane.linux.network/153666)
+validate_xmit_skb()->__skb_linearize()
+ip fragment 不是为了fraglist而是把skb变小. 所以这里可能有问题linearize后skb过大.
+如果经过ip_fragment应该,不会出现, 自己倒腾的就可能.
+
 # send
 ip_append_data 和ip_push_pending_frames弄frag_list
 ip_push_pending_frames -> __ip_make_skb & ip_send_skb ->ip_local_out

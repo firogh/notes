@@ -330,6 +330,10 @@ alloc_intr_gate(LOCAL_TIMER_VECTOR, apic_timer_interrupt);
 apic_timer_interrupt->smp_apic_timer_interrupt->local_apic_timer_interrupt->event_handler=tick_handle_periodic->tick_periodic
 {
         do_timer
+	{
+		jiffies_64		- vs irq disable
+		calc_global_load	- load average
+	}
         update_wall_time
         update_process_times
 	{

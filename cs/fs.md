@@ -8,6 +8,7 @@ category: cs
 # ref
 [Linux Filesystems in 21 days 45 minutes](https://www.samba.org/samba/samba/ftp/cifs-cvs/ols2006-fs-tutorial-smf.pdf)
 Documentation/filesystems/vfs.txt
+[Why does open before read/write?](https://unix.stackexchange.com/a/265680/16335)
 
 # Init rootfs 
 init_mount_tree
@@ -16,8 +17,84 @@ and sys_chroot
 # ?? mkfs.ext2
 e2fsprog
 
-# inode
-## inode_hashtable
+# VFS and Ops
+## Principles
+Layering
+Abstraction
+Object-oriented programming 
+Performance: translation cache: decache
+Onset/nuclus/coda: KISS
+## tasks
+mount
+content operations: i_fop
+dirent operations: i_op lookup, create, remove
+## app
+file descriptor
+1. cache the translation from full path to inode
+2. onset-operation cache; 
+## vfs
+* lookup interpreatation
+decach layer dentry name interpretation cache 
+inode-> lookup
+* create
+func: lookup_open
+lookup -> inode-> create
+* remove
+unlink
+* content operations - read/write
+file: operation cache
+## fs
+inode layer
+
+# FS and Ops
+## Tasks
+Alloc an inode
+Remove an inode
+Read the content of an inode
+Write contents of an inode
+
+## Principles
+Layering
+Performance: page cache
+## Thinking over
+Backdev info
+FS format
+inode content space index
+## FS
+Read the first block
+buffer head:hard drive locations and sizes; memory addr
+alloc an inode: linked to parent and mark parent dirty in memory, then write to disk
+alloc spare space: record the locations of the spare space in inode
+write the dirty space: user the buffer head record the locations 
+* page cache 
+address_space a_ops
+page size vs block size
+VMA: process map a whole page and use vma to descirbe it.
+but if write overflow? the adjacent  buffer head will corrupt.
+* block io
+buffer head: unite 512
+
+### FS block size
+blockdev --getbsz /dev/sda1 
+4096
+sudo tune2fs -l /dev/sda1 | grep size
+
+## Hard drive driver
+Parameters: locations and size
+Read content from disk
+Write content form disk
+
+# buffer head
+__getblk_slow
+grow_buffers
+grow_dev_page
+alloc_page_buffers
+
+# FS format
+fs-sb; fs-inode space; Spare space
+The hierarchy of inode is mantained linked lists.
+
+# inode_hashtable
 ext2_iget
 {
 	inode = iget_locked(sb, ino);
@@ -30,7 +107,7 @@ ext2_iget
 	}
 
 }
-## no hashtable
+# no hashtable
 ramfs_get_inode
 {
 	new_inode->new_inode_pseudo-> alloc_inode

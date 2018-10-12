@@ -268,4 +268,10 @@ n->poll = gfar_poll
 Qdisc -- NET_XMIT_SUCCESS
 dev -- NETDEV_TX_OK
 
+# from pci id to device
+/sys/bus/pci/devices/0000\:00\:19.0/net/eno1/
+
+# Admin queue
+Intel® Ethernet Controller 710 Series Datasheet Chapter 7.10
+
 

@@ -5,15 +5,102 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-[1]: http://eli.thegreenplace.net/2011/01/23/how-debuggers-work-part-1
+# ref
+https://www.youtube.com/watch?v=g7Qm0NpPAz4
+
+# Boot issues
+debug ignore_loglevel earlyprintk=ttyS0,115200,keep keep_bootcon initcall_debug dyndbg=+plmf
+
+# Lockup
+[kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
+
+# OOB
+## SLUB Redzone
+
+
+# Use after free
+Record the owner, who free.
+
+# Deadlock
+Lockdep
+[The kernel lock validator](https://lwn.net/Articles/185666/)
+[Runtime locking correctness validator](https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt)
+https://lkml.org/lkml/2013/2/4/4
+http://bbs.chinaunix.net/thread-4183696-1-1.html
+
+# Print
+## User mode print
+define witcher(fmt, args...) do{FILE * fdebug=fopen("/tmp/d.log", "a+"); \
+fprintf(fdebug,"%s,%s,%d:"fmt, __TIME__, __FUNCTION__, __LINE__, ##args);fclose(fdebug);} while(0)
+* make specific
+-s, -n, -p, --warn-undefined-variables
+$(warning ...)
+
+## Early print
+putstr
+early_printk 
+Linux serial-port driver is interrupt driven, if irq-off console will not work!
+
+## Dynamic print
+Precondition: CONFIG_DYNAMIC_DEBUG
+How to use it during kernel booting?
+Use boot option:
+dyndbg="file drivers/usb/host/ehci-hcd.c +p; file
+drivers/usb/host/ehci-ppc-of.c +p" loglevel=8
+loglevel=8 dyndbg="module ehci_pci +p; 
+module ehci_hcd +p; module usbcore +p"
+After booting:
+/sys/kernel/debug/dynamic_debug/control
+## Dev print
+drivers/base/core.c
+define_dev_printk_level 
+THese functions are like pr_func
+dev_debug 
+# Tracing
+[Linux Tracing Technologies](https://www.kernel.org/doc/html/v4.18/trace/index.html)
+
+## User mode tracing
+ltrace, strace, bash -x
+
+[How does strace work?][1]
+[1]: https://blog.packagecloud.io/eng/2016/02/29/how-does-strace-work/
+PTRACE_PEEKDATA for showing pointer parameter(e.g. 2nd arg of read)
+
+# Kprobes 
+
+# Stap
+
+# CONFIG_DEBUG_PAGEALLOC
+check_poison_mem in alloc_pages
+free_pages_prepare posion
+
+# FS
+lsof
+
+
+
+# Kasan
+setup_arch->kasan_init
+[KernelAddressSanitizer a fast memory error detector for the Linux kernel](http://events.linuxfoundation.org/sites/events/files/slides/LinuxCon%20North%20America%202015%20KernelAddressSanitizer.pdf)
+[kasan found stack out of bounds](https://github.com/zfsonlinux/zfs/pull/4708/commits/01709937be3c28a89eff83e0e657a72826947506)
+[lwn The kernel address sanitizer](https://lwn.net/Articles/612153/)
+[out of bounds](https://lkml.org/lkml/2014/12/3/128)
 # Reference
 Reverse engineering
 [How debuggers work][1]
+[1]: http://eli.thegreenplace.net/2011/01/23/how-debuggers-work-part-1
 
-# debuging
+# Core dump
+echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
+
+# eBPF
+https://lwn.net/Articles/740157/
+
+# Gdb
 signle step instruction
-Core-dump
-printf debugging; this is very effective.
+## Debug glibc
+directory ~/ws/glibc-2.23/libio
+set solib-search-path /usr/lib/debug/lib/x86_64-linux-gnu/
 
 # info
 Host OS name and version number.
@@ -22,9 +109,6 @@ Host OS Linux Kernel log.
 VF driver version number.
 NIC hardware model and PBA number. 
 NIC Firmware NVM version number.
-
-# Core pattern
-echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
 
 # From assembly to C
 addr2line -f -C -a 0xxxx -e ooo.bin
@@ -45,9 +129,6 @@ NVD的Bug分类也采用类似的构建方式.[CWE Cross Section Mapped into by 
 涵盖了所有常见的的Bug描述, 而且非常专业.大赞!wikipedia的条目就相形见绌了
 [Common types of computer bugs in wikipedia][4].
 
-# use after free
-record the owner, who free.
-
 # General debugging steps
 Debugging的逻辑过程是[Abductive reasoning][1]. 我们以此进行推导.
 T: Theory 也就是我们的background, cs的知识技术, 出问题的程序与代码.
@@ -66,9 +147,6 @@ E: ∅ -> Bug type(可能经过是多种Bug types的过渡状态) -> Explanation
 基于NVD的CWE我们可知, 收集observations 可能是development和deployment的各个节点.
 
 ### Get observations
-首先我们要理清中间的各个流程, 以及相关的observations:
-
-* coding 
 
 * compilation
 make kernel/sched.s V=1
@@ -79,33 +157,8 @@ echo
 * load software
 LD_TRACE_LOADED_OBJECTS=1 git 
 ldd /usr/bin/git
-* software running
-> #define debugme(fmt, args...) do{FILE *fdebug=fopen("/tmp/d.log", "a+"); \
-> fprintf(fdebug,"%s,%s,%d:"fmt, __TIME__, __FUNCTION__, __LINE__, ##args);fclose(fdebug);} while(0)
-lsof, ltrace, strace, bash -x, coredump
-  * kernel specific
-putstr early_printk vs printk pr_debug vs dev_debug dump_stack
-Linux serial-port driver is interrupt driven, if irq-off console will not work!
-how to use serial-port addr
-ioctl/netlink, SysRq, ftrace expect,kgtp, lockdep, kdump, kgdboc
-print signal This is just a hiwifi wonderful kernel patch #931
-  * network specific
-tcpdump netstat iptables wireshark
-  * u-boot
-print_tlb
-  * make specific
--s, -n, -p, --warn-undefined-variables
-$(warning ...)
-  * 有的类型的Bug会阻止我们收集observations
-这时候就要增加observations,让我们能收集到. 比如use after free, buffer errors.
-这时要扩大目标struct的大小, 把observations加进去.
-
 * software imediately stop
 Use atexit() register a stackdump or a wrapped print
-
-# Inference 
-From observatons to source code/mind 
-追BUG实际上就是, 找关联度最高的.
 
 * tips
 If an page oops close to zero, for example 0xfffffff4
@@ -169,6 +222,4 @@ static int data_var=0;
 printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
 printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);}
 
-# Debug glibc
-directory ~/ws/glibc-2.23/libio
-set solib-search-path /usr/lib/debug/lib/x86_64-linux-gnu/
+

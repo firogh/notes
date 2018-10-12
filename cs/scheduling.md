@@ -95,10 +95,31 @@ check_preempt_tick				# new preempts curr
 check_preempt_wakeup				# the wakeuped preempts curr
 {
 	curr - wakeuped	> sysctl_sched_wakeup_granularity;	# pass the wakeup-preempt-delay
-	
 }
+# io wait
+https://lwn.net/Articles/342378/
+# Load avg
+update_load_avg
+https://en.wikipedia.org/wiki/Load_(computing)
+Check External links
+calc_load_fold_active
+## Etymology - avenrun
+average nr. of running processes during 
+https://casper.berkeley.edu/svn/trunk/roach/sw/linux/arch/s390/appldata/appldata_os.c
 # LQO
+* h_nr_running and throttled
+sched: Implement hierarchical task accounting for SCHED_OTHER - 953bfcd10e6f3697233e8e5128c611d275da39c1
+https://groups.google.com/forum/#!topic/linux.kernel/gRzxHclMy50
+ 'root' 
+   \ 
+   'A' 
+   / \ 
+  t1 t2 
+root.nr_running := 2
+root.h_nr_running := 2
+Check enqueue_task_fair()
 * group schedule
+https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
 * idle 
 https://www.kernel.org/doc/Documentation/scheduler/sched-arch.txt
 [improve SMP reschedule and idle routines](https://lwn.net/Articles/136065/)
@@ -115,8 +136,7 @@ Introduce cpu_active_map and redo sched domain managment
 rq->clock is nano seconds?
 * clock_task and wraps
 fe44d62122829959e960bc699318d58966922a69 
-* Load avg
-update_load_avg
+
 * START_DEBIT
 no standalone commit
 bf0f6f24a1ece8988b243aefe84ee613099a9245

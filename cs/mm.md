@@ -7,8 +7,12 @@ category: cs
 ---
 
 #Page swap
-PG_swapcace means page is swapped.
+PG_swapcace means page is in the swap cache.
 PG_swapbacked means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
+
+# Compact
+https://www.zhihu.com/question/59053036
+
 
 
 # Hot and cold pages
@@ -42,11 +46,6 @@ spurious_fault:a stale TLB entry
 
 # Kprobes
 kprobes_fault
-
-# hugetlb
-hugetlb_fault
-
-# hugepage
 
 # Leave questions open
 kmmio probe in do_page_fault
@@ -99,9 +98,27 @@ the other thing they're used for  is memory mapped i/o.
 VM area struct represents a mapping 
 
 # SLAB 
+[The Slab Allocator: An Object-Caching Kernel Memory Allocator](https://people.eecs.berkeley.edu/~kubitron/cs194-24/hand-outs/bonwick_slab.pdf)
+[Text version](https://www.usenix.org/legacy/publications/library/proceedings/bos94/full_papers/bonwick.a)
+https://mp.weixin.qq.com/s/ragFsK_AJivOGjR47tAhHw
+https://events.static.linuxfound.org/images/stories/pdf/klf2012_kim.pdf
 type: resource
 [The slab allocator has three principle aims:](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
 [Re: When to use kmem_cache_alloc](https://lkml.org/lkml/2000/8/7/65)
+shrink attr
+/sys/kernel/slab/iint_cache/shrink
+SLAB_ATTR(shrink);
+## slub
+Documentation/vm/slub.txt
+[The SLUB allocator](https://lwn.net/Articles/229984/)
+SLUB core - 81819f0fc8285a2a5a921c019e3e3d7b6169d225
+https://events.static.linuxfound.org/sites/events/files/slides/slaballocators.pdf
+[SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
+[linux内存源码分析 - SLUB分配器概述](https://www.cnblogs.com/tolimit/p/4654109.html)
+http://www.wowotech.net/memory_management/247.html
+## SLUB debug
+[SLUB DEBUG原理](http://www.wowotech.net/memory_management/427.html)
+?? Human index
 
 ## Reclaim
 * occassions
@@ -217,8 +234,10 @@ Mips cpu can be aware of this address!
 * pfmemalloc -- skb 表示申请了紧急内存!
 page free
 
-* compound pages
+* Compound pages
 18fa11efc279c20af5eefff2bbe814ca067
+https://www.spinics.net/lists/newbies/msg41159.html
+https://lwn.net/Articles/619514/
 # Memory initialization onset:  
 先从bios 拿信息 main -> detect_memory save in boot_params.e820_map
 之后real -> protected -> long mode
@@ -300,3 +319,7 @@ core_initcall(init_per_zone_wmark_min)
 
 build_all_zonelists: Just init zones, nothing else. But we have vm_total_pages/zone->managed_pages initialized in free_all_bootmem();.
 page_alloc_init // drain percpu pageset when cpu dead or dead frozen for CPU hotplug
+
+# Madv
+## MADV_SEQUENTIAL and reclaim
+mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c
