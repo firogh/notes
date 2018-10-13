@@ -1,12 +1,11 @@
 ---
 tags: [ net ] 
-title: Linux Network Stack
+title: Linux Network Stack - an obselete article for warning myself that never think or learn in this way
 date: 2015-02-27T15:46:13+08:00 
 category: net
 ---
 
 #Reference
-[TCP/IP Reference Page](http://www.protocols.com/pbook/tcpip1.htm)
 [RAW PACKET FORMATS](http://www.securitywizardry.com/index.php/tools/packet-headers.html)
 [从 IPv4 到 IPv6](http://wangcong.org/2012/10/15/-e4-bb-8e-ipv4-e5-88-b0-ipv6/)
 [What’s wrong with IPv4 and Why we are moving to IPv6](http://www.tecmint.com/ipv4-and-ipv6-comparison/)
@@ -110,8 +109,6 @@ Detection of transmission errors:如信被人篡改了
 [DevConf 2014 Kernel Networking Walkthrough](http://www.slideshare.net/ThomasGraf5/devconf-2014-kernel-networking-walkthrough)
 [introduction to linux kernel tcp/ip ptocotol stack](http://www.slideshare.net/minibobo/linux-tcp-ip?related=1)
 [kernel flow][1]
-[
-
 [1]: https://wiki.linuxfoundation.org/networking/kernel_flow	
 taobao的第5也说明了问题.
 这是通常的skb的流向. 就是在socket里面按着协议走, 包括tcp的重传.
@@ -196,10 +193,6 @@ dst_input()->
 1 NAPI has not netif_rx():input_pkt_queue.
 2 NAPI and Non-NAPI used different napi->poll 决定本质上的区别。
 3 vortex_rx() 多，e100_rx_clean()多！这点可以看出不同优势来。
-
-## package name in different layer
-An individual package of transmitted data is commonly called a frame on the link layer, L2; 
-a packet on the network layer; a segment on the transport layer; and a message on the application layer.
 
 ## FAQ
 * Need clean

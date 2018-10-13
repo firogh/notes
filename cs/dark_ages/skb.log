@@ -33,8 +33,6 @@ skbuff_head_cache alloc的skb对应n->fclone = SKB_FCLONE_UNAVAILABLE;
 * data_len -- len of frags + frag_list
 * len -- head_len + frgas + frag_list
 
-
-
 * skb_pull
 和skb_push, 相对, 应该是拆包的时候用的.
 * __skb_trim: 重新设置了 len.不是坚守也可能变大.非线性什么不做, 给个警告.
@@ -99,5 +97,3 @@ tcp_transmit_skb我们要对skb 和skb data 都要修改, 这是目标.
 tcpdump收到的是一个修改一般的报文, 更糟.
 什么也不管直接pskb copy, consume掉就的skb, 是可以的.所以这里还是换汤不换药,为了
 节省一次pskb copy!
-
-

@@ -5,6 +5,21 @@ date: 2015-02-27T15:46:13+08:00
 category: net
 ---
 
+
+# Route
+[1]: https://vincent.bernat.im/en/blog/2017-ipv4-route-lookup-linux
+## Route
+
+[IPv4 route lookup on Linux][1]
+
+* state structure
+fib_info:route info
+fib_config:
+* add new rule
+iproute2 ...->inet_rtm_newroute()->fib_new_table()->fib_hash_table()
+* Multi-time line
+fib_create_info(): create a fib_info
+
 #Network layer
 * Error detection, unreliable
 Best effort service,IP has a simple error handling algorithm: 
