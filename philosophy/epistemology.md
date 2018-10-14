@@ -3,6 +3,7 @@ date: 2008-09-13
 title: The epistemology on which I am living
 category: philosophy
 ---
+
 # The being
 The essence of this world is being. As the world changing, it become more complicated and diffcult to live within it. I am aware of that we need some principles and methods to live in this world. We use rational and sensous abilities to live within it.
 ## Psychology and Biology
@@ -110,7 +111,6 @@ Construction game like Cities: Skylines, Jigsaw Puzzles, Creating memory
 4. Energy flow
 5. 成手思维
 6. Definitions
-7. Completeness, consistency, validity, soundness. -- Logic
 * Imitate - Successful cases analysis
 Background, what she/he did, environment, chance
 * Hill climbing method
@@ -121,7 +121,6 @@ knowledge your must master - working set; knowledge which is dangerous
 Math: numberic, concepts
 GEB: mechanical thinking
 [Model thinking](https://www.coursera.org/learn/model-thinking/home/welcome)
-The whole is other than the sum of the parts. --Gestalt psychology
 * Leave a question open 
 there are always some knowledge which is very complicated to understand and we should leave them alone.
 * Occam's razor 
@@ -137,6 +136,8 @@ How much we understand the world isn't better than how well.
 * Goal coverage
 * Response Time/effciency?
 Realtime, delay, no
+* Completeness, consistency, validity, soundness. -- Logic
+* The whole is other than the sum of the parts. --Gestalt psychology
 
 # Origins
 * Causality
