@@ -4,6 +4,7 @@ https://people.cs.clemson.edu/~mark/hist.html
 [GEB](https://ocw.mit.edu/high-school/humanities-and-social-sciences/godel-escher-bach/lecture-notes/)
 
 # Resource 
+Resource: Track, Using alloc, Return
 space
 ## Alloc
 occasions
@@ -63,6 +64,7 @@ fast
 
 
 
+# Schedule: Distributing the workloads across resources.
 
 # Scheduling of processes
 Fairness: dynamic compensation
