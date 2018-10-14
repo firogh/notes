@@ -11,6 +11,7 @@ The essence of this world is being. As the world changing, it become more compli
 要合理调配好学习与休息，避免过度透支精力和兴趣，要细水长流; Relax.让自己处在最佳状态.
 Habit & Gradual doing
 25 minutes
+* 绝不考验自制力
 * Inclination and disposition
 Monitor the status of inclination and disposition
 The sense of achievement
@@ -106,11 +107,12 @@ Construction game like Cities: Skylines, Jigsaw Puzzles, Creating memory
 * Rehearsal
 精细进行复述是存储信息最有效的方法,它是指把要记住的内容和已有的知识经验联系起来。存储是信息编码和提取的中间环节,它在记忆过程中有着重要的作用。 - 普通心理学 Chapter 6 section 1
 1. Think over
-2. Teaching is best rehearsal
+2. Teaching is best rehearsal.
 3. What could I learn?
 4. Energy flow
 5. 成手思维
 6. Definitions
+7. Writing
 * Imitate - Successful cases analysis
 Background, what she/he did, environment, chance
 * Hill climbing method
