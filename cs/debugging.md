@@ -68,7 +68,9 @@ PTRACE_PEEKDATA for showing pointer parameter(e.g. 2nd arg of read)
 
 # Kprobes 
 
-# Stap
+# Systemtap
+[systemtap脚本分析系统中dentry SLAB占用过高问题](https://yq.aliyun.com/articles/131870)
+
 
 # CONFIG_DEBUG_PAGEALLOC
 check_poison_mem in alloc_pages
@@ -95,6 +97,7 @@ echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
 
 # eBPF
 https://lwn.net/Articles/740157/
+[How to turn any syscall into an event: Introducing eBPF Kernel probes](https://blog.yadutaf.fr/2016/03/30/turn-any-syscall-into-event-introducing-ebpf-kernel-probes/)
 
 # Gdb
 signle step instruction

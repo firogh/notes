@@ -25,6 +25,11 @@ Subjective assume
 * If one thing is a must, do it now.
 
 # Fallacies
+看懂内核代码, 非常耗时, 困难(实现对应的signifiers 非常难找, 有些时候还有歧义, 如packet_rcv的PACKET_LOOPBACK), 费时费力不等于学到的多, 往往意味相反.
+禁止通过看代码, 学习知识.
+看别人的实现, 不仅不能学到知识, 更为糟糕的是破坏了自己的创造力.
+不要以为看懂内核代码, 有多了不起. 只要肯投入时间, 谁都能看懂kernel代码, 但是这样值吗?
+看内核代码实际是个查找搜索的过程, 及其耗费时间. 收获的只是一个点. 非常不值. 必须要衡量投入产出比. 要看内核实现, 必须要先, 评估能学到什么.
 * Trying harder doesn't mean effectness. 不要感动自己, 方法不对,越努力差距越大. 
 Vicariousness!!quick understanding, no complex brain labors, it's easy.But it also brings fake. 
 Law of the hammer. 
@@ -32,6 +37,8 @@ People cannot see something wihout being denominated
 填鸭,cramming, rote
 Literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 死知识; 
 ## Cases
+* On reading kernel source code
+很多内容是不可避免的被忘记,  终究还是被忘记了, 记了就是浪费时间. 而什么能留下来呢, 我从2012年2月开始看Linux Kernel source codes 源代码, 几乎所有核心的内核代码都看了, 看了忘, 忘了看. 方法不对, 浪费了很多时间, 直到2018年9月, 历时6年7个月. 人生最美好的时间段, 仅仅换了隔教训, 唉.
 a) What I learned from learning English and Kernel
 做事情, 方法不对, 越努力越悲惨. 只有努力绝对不会成功, 相反会很悲惨.努力人人可以, 世界也不缺少努力的人.
 * Fan shuangshuang network stack, kernel, and English
@@ -54,8 +61,11 @@ purpose practice
 Think for oneself 
 Few is more
 The Archaeology of Knowledge
+Hyposis and test
 0. Casuality: the first problem might be 'what's the point of it?'
 1. origin covers 
+1.0 Abstracted map
+1.1 Use cases 
 ## Storage
 Chapter 6 section 1: 记忆还依赖于人的已有的知识结构,只有当输入的信息以不同形式汇入人脑中已有的知识系统时,新的信息才能在头脑中更好地巩固下来。
 Think for oneself 
@@ -83,14 +93,21 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 2. The implemention-specific things do belong to the understanding. it belongs to doing.
 3. 理性思维做理性思维的事情, 不要浪费宝贵的理性思维去常识记忆细节.
 * Few is more
+[你有什么值得分享的高效学习方法？ - 高冷冷的回答 - 知乎](https://www.zhihu.com/question/50343728/answer/407127160)
+[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 记少不记多，反而记更多
 时间是否充裕，都先记少
 西蒙关键法: 点线面
+Logic link
 No implementions; 天下无码.
+时间花在别人的实现上, 就没有自己的实现了.
+只有一种情况, 可以接触实现, 那就是没有理论说明, 自己hypnosis想不出, 而且评估的价值很大.
 * Learning by doing
 事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
 [Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
+* Hyposis and test
+* Trail and error
 * Purpose practice
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
 * Break down - [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
@@ -125,6 +142,7 @@ GEB: mechanical thinking
 [Model thinking](https://www.coursera.org/learn/model-thinking/home/welcome)
 * Leave a question open 
 there are always some knowledge which is very complicated to understand and we should leave them alone.
+* Transforming
 * Occam's razor 
 * Abstraction
 * Critical thinking
@@ -160,7 +178,6 @@ Life-relevant: learn in real-life, no dead knowledge
 fun and sense of achivement
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
 ## Knowledge ravine and swamp
-识别无用的知识, [知之为知之，不知为不知，是知也。](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 ## Dead knowledge
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
 ## Knowledge representations

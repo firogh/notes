@@ -39,6 +39,7 @@ When we are talking on memory model, we are refering memory consistency model or
 # x86 memory model
 [Memory Barriers: a Hardware View for Software Hackers - must read][8]
 [x86 is TSO why it borthers fence?][4]
+[共同进入与饥饿](https://www.cnblogs.com/caidi/p/6708789.html)
 [When are x86 LFENCE, SFENCE and MFENCE instructions required?][7]
 
 # C11 memory model

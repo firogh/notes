@@ -13,7 +13,13 @@ PG_swapbacked means page is backed by RAM or Swap. It means this page is no real
 # Compact
 https://www.zhihu.com/question/59053036
 
+# Buffer cache
+"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
+1. Open block device directly open("/dev/sdb"...) -> blkdev_open
+2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
+meminfo_proc_show
 
+[Memory – Part 2: Understanding Process memory](https://techtalk.intersec.com/2013/07/memory-part-2-understanding-process-memory/)
 
 # Hot and cold pages
 [Hot and cold pages](https://lwn.net/Articles/14768/)
@@ -108,23 +114,106 @@ type: resource
 shrink attr
 /sys/kernel/slab/iint_cache/shrink
 SLAB_ATTR(shrink);
+array_cache.entry: cache hotness.
 ## slub
+[SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
+[SLUB fastpath improvements and potential booster shots through bulk alloc and free](https://www.youtube.com/watch?v=s0lZzP1jOzI)
 Documentation/vm/slub.txt
+[SLUB: The unqueued slab allocator V6](https://lwn.net/Articles/229096/)
 [The SLUB allocator](https://lwn.net/Articles/229984/)
 SLUB core - 81819f0fc8285a2a5a921c019e3e3d7b6169d225
 https://events.static.linuxfound.org/sites/events/files/slides/slaballocators.pdf
-[SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
 [linux内存源码分析 - SLUB分配器概述](https://www.cnblogs.com/tolimit/p/4654109.html)
 http://www.wowotech.net/memory_management/247.html
+Freeing a full slab will make it present in per cpu partial of node partial.
+[Per cpu free list](https://lwn.net/Articles/454474/)
+[slub: reap free slabs periodically](https://lore.kernel.org/patchwork/patch/687700/)
+### Freelist vs Freelist
+26:00
+[关于page同时被多CPU使用](http://kouucocu.lofter.com/post/1cdb8c4b_50f6319)
 ## SLUB debug
 [SLUB DEBUG原理](http://www.wowotech.net/memory_management/427.html)
 ?? Human index
 
-## Reclaim
-* occassions
+# Page frame reclaiming
+Free memory is low.
+Occassions
 Periodical: kswapd
+Ondemand: not enough memory for alloc pages
+Mannual trigger: drop_caches
+## What pages are unreclaimable
+All kernel pages are unreclaimable.
+Free pages: incldued in buddy systme lists.
+Reserved pages: PG_reserved
+Lokced userspace pages: 
+1. Temporarily locked pages: PG_locked, 
+2. Memory locked pages: VM_LOCKED, [Misunderstanding mlock](https://eklitzke.org/mlock-and-mlockall)
+## Recalimable pages
+all pages of a User Mode process are reclaimable except locked.
+Swapbacked pages
+1. Private
+1.1 malloc memory map
+1.2 Dirty file private mapping - data, bbs segments
+2. Shared - tmpfs: 
+2.1 Anonymous shared mapping memory between P&C; 
+2.2 System v IPC shared memory.
+Filebacked pages
+1. Private
+1.1 Clean file private mapping - text segment
+2. Shared
+2.1 Shared file mapping memory.
+### Rules adopted by the PFRA
+1. Free the “harmless” pages first
+2. LRU 2Q
+3. OOM
+# Page cache and i_mmap key
+index
+vm_pgoff
 
+## Reclaim
+### WriteBack
+1. if page is alreday marked reclaim, skip it this time.
+2. if not makred reclaim, normal writeback, and IO isn't permitted, then mark it as reclaim and will be pended at tail of LRU after writeback complete.
+3. Cgroup cases. Just wait for the complte of writeback.
+### Add to swap cache
+### Unmap pte.
+### Dirty page
+Leave kswapd to deal with IO, mark it reclaim and skip it.
+### pageout
+including shared memory
+### Reverse mapping
+unmapping at once all page table entries of a shared pages
+#### Anonymous Pages
+Page + VMA => ptes
+##### Stack/heap/private anonymous mapping
+page.index is VFN. 
+do_anonymous_page -> page_add_new_anon_rmap
+add vma to anon_vma: 1. fork or 2. do_anonymous_page(2.1 forked but parent don't use vma. 2.2 exec)
+in do_mmap, for anonymous mapping, MAP_PRIVATE: pgoff = addr >> PAGE_SHIFT; addr will be vm_start in mmap_region
+vm_pgoff is pgoff, vm_start >> PAGE_SHIFT, in mmap_region 
+#### Mapped pages
+##### File mapped pages
+Page and file are fixed. VMA is dynamic.
+Page + VMA = Page + VMA.vm_start = Page's offset in VMA + VMA.vm_start = Virtual Address => ptes 
+Page's offset in VMA = Page's offset in file - VMA's offset in file = page.index - vma.vm_pgoff
+##### Mapped pages of tmpfs - anonymous shared mapping.
+shmem_add_to_page_cache
+pgoff is 0; ignored; in do_mmap MAP_SHARED;
+page.index is vmf->pgoff in shmem_fault; vmf->pgoff is linear_page_index(vma, address)in handle_mm_fault; pgoff is offset in vma; 
+#### vm_pgoff vs index
+anonymous private mapping: vm_start >> PAGE_SHIFT vs VFN 
+anonymous shared mapping: 0,ignored vs page's offset in vma
+file mapping: vma's offset in file vs page's offset of file
+不知道理解的是否相同:
+对于anonymous mapping page:
+Private: page.index 是page 在所属进程地址空间的虚拟地址>> PAGE_SHIT.
+Shared: page.index 是page 在所属的VMA内的offset: (page's addr - vm_start)>>PAGE_SHIT.
 
+# Writeback 
+bdi_wq = alloc_workqueue("writeback", WQ_MEM_RECLAIM | WQ_FREEZABLE 
+root        40  0.0  0.0      0     0 ?        I<   10:08   0:00 [writeback]
+bdi_list
+bdi_register_owner(bdi, disk_to_dev(disk));
 # Contents
 Logic gates: SRAM, DRAM
 What is data/contrl/addr bus?

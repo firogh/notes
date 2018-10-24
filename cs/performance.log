@@ -1,4 +1,13 @@
 
+# Concepts
+Disk I/O latency: = response time = Service time + Wait time
+Network latency: can refer to the time it takes for a message to make a round trip between endpoints.
+I/O wait: account_idle_time
+
+
+
+
+# Backlog
 http://oliveryang.net/2017/12/linux-high-loadavg-analysis-1/
 
 Something like this:

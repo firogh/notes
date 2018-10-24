@@ -143,7 +143,7 @@ seems read won't dirty the shared page.
 pageout->shmem_writepage - Move the page from the page cache to the swap cache; and swp_to_radix_entry
 [map_pages](https://lwn.net/Articles/588802/)
 ### Write protect for shared page
-do_wp_page-> wp_page_reuse
+do_wp_page -> wp_page_reuse
 [PATCH] mm: tracking shared dirty pages - d08b3851da41d0ee60851f2c75b118e1f7a5fc89
 ## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
 file page: i_mmap
