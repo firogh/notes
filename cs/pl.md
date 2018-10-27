@@ -5,12 +5,21 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+
+# Data types
+[Closures, Objects, and the Fauna of the Heap](https://manybutfinite.com/post/closures-objects-heap/)
+value types and reference types. A value of value type is the actual value. A value of reference type is a reference to another value.
+value types: stack
+reference types: heap
+
+# Scope
+https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scope_vs._dynamic_scope
+Lexical scope vs. dynamic scope
+
 [我为什么不再做PL人](http://www.yinwang.org/blog-cn/2016/03/31/no-longer-pl)
 [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 [Learn Type Theory](http://jozefg.bitbucket.org/posts/2015-08-14-learn-tt.html)
 
-∅ ⊢ pl
-scope: The set of expressions for which a binding defines a name is called the scope of that name.
 # Reference
 http://www.zhihu.com/question/21843639
 貌似正则是type 3, c是type2, 范式角度我现在不好理解, 缺乏语言学的知识.
@@ -94,25 +103,8 @@ indexing on the first dimension for example. So if an int array is named a,
 0xF int
 0xFFFFFFFF unsigned int
 ## Scopes of identifiers
-For each different entity that an identifier designates, the identifier is visible (i.e., can be
-used) only within a region of program text called its scope.
+For each different entity that an identifier designates, the identifier is visible (i.e., can be used) only within a region of program text called its scope.
 * four kinds of scopes: function, file, block, and function prototype
-If the declarator or type specifier that declares the identifier
-appears outside of any block or list of parameters, the identifier has file scope, which
-terminates at the end of the translation unit.
-
-If the declarator or type specifier that
-declares the identifier appears inside a block or within the list of parameter declarations in
-a function definition, the identifier has block scope, which terminates at the end of the
-associated block.
-
-If the declarator or type specifier that declares the identifier appears
-within the list of parameter declarations in a function prototype (not part of a function
-definition), the identifier has function prototype scope, which terminates at the end of the
-function declarator.
-
-If an identifier designates two different entities in the same name
-space, the scopes might overlap.
 ## linkages of identifiers
 An identifier declared in different scopes or in the same scope more than once can be
 made to refer to the same object or function by a process called linkage.
@@ -237,32 +229,3 @@ File and directory patterns
 ?: must stand for a character
 * Regular expression
 * SQL
-#Shell
-## test
-### -n is not equivalent to ! -z
-Be caution! just juse -z and !-z
-## ls 
--l: show hardlinks of file/dir in 2nd column
-drwsrwsr-T: T stand for sticky bit no other execution bit
-##eval
-* create variable name
-	__var="name"
-	eval "export -- \"$__var=firo\""
-	set | grep firo
-	__var='name'
-	bbb='firo'
-##expr
-expr "$name" : '\(.*\)\.conf'
-##find
-* find symbols in object 
-	find . -name 'a.out' -exec nm -D {} \; -print
-	find . -name '*.o' -print0 | xargs -0 nm -A | egrep ' (i|y)$'
-* rm
-find . -name ‘your_pattern*’ -exec rm -f {} \;
-find . -name ‘your_pattern*’ -delete
-## grep
--c: count of match
-##pipe
-find . -type d | while read d; do cnt=$(ls $d | grep tgz | wc -l); echo "$cnt $d"; done | sort -n >stat 
-#AWK
-netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'

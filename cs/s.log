@@ -1,0 +1,2 @@
+What are some problems that may arise from kernel live  patching support?
+Changing a function's prototype may change the way this function is called, in terms of argument passing, at least. Thus, related callers must also be patched.
