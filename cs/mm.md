@@ -295,7 +295,7 @@ alloc_pages()
 ##Page/buffer cache
 struct address_space->page_tree
 ##Page writeback
-data synchronization, the flush threads, pdflush
+data_synchronization.log
 
 #FAQ
 * Where is Per-CPU variable?

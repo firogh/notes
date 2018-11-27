@@ -8,7 +8,7 @@ category: philosophy
 The essence of this world is being. As the world changing, it become more complicated and diffcult to live within it. I am aware of that we need some principles and methods to live in this world. We use rational and sensous abilities to live within it.
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
-要合理调配好学习与休息，避免过度透支精力和兴趣，要细水长流; Relax.让自己处在最佳状态.
+要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.
 Habit & Gradual doing
 25 minutes
 * 绝不考验自制力
@@ -89,10 +89,18 @@ Just as the largest library, badly arranged, is not so useful as a very moderate
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
+No learning by reading.
+0. No source code. Just question the questions 
 1. Don't start from the pure conceptions, from the real basic problems. Problems before conceptions.
+做学问要在不疑处有疑 -- 胡适
 2. The implemention-specific things do belong to the understanding. it belongs to doing.
 3. 理性思维做理性思维的事情, 不要浪费宝贵的理性思维去常识记忆细节.
+* Learning by doing
+事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
+我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
+[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
 * Few is more
+要把它想的很简单, 达到豁然开朗.
 [你有什么值得分享的高效学习方法？ - 高冷冷的回答 - 知乎](https://www.zhihu.com/question/50343728/answer/407127160)
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 记少不记多，反而记更多
@@ -102,10 +110,6 @@ Logic link
 No implementions; 天下无码.
 时间花在别人的实现上, 就没有自己的实现了.
 只有一种情况, 可以接触实现, 那就是没有理论说明, 自己hypnosis想不出, 而且评估的价值很大.
-* Learning by doing
-事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
-我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
-[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
 * Hyposis and test
 * Trail and error
 * Purpose practice

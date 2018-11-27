@@ -17,6 +17,9 @@ Processes are blocked
 ## Fairness
 Unit: /proc/sys/kernel/sched_min_granularity_ns
 
+# Conceptions
+[Cpu capacity](https://android.googlesource.com/kernel/msm/+/android-msm-bullhead-3.10-marshmallow-dr/Documentation/scheduler/sched-hmp.txt)
+
 # Running Compensator records the running process
 scheduler_tick  
 {
