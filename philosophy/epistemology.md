@@ -5,7 +5,14 @@ category: philosophy
 ---
 
 # The being
-The essence of this world is being. As the world changing, it become more complicated and diffcult to live within it. I am aware of that we need some principles and methods to live in this world. We use rational and sensous abilities to live within it.
+The essence of this world is being. The nature of being is change. 
+I know I will be lost and confused in my whole life. 世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
+脚踏实地， 不虚妄， 从简单的事做起 and purpose practice。
+# Remaster
+Psychology
+Biology
+Reason
+Practice
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.
@@ -38,7 +45,7 @@ People cannot see something wihout being denominated
 Literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 死知识; 
 ## Cases
 * On reading kernel source code
-很多内容是不可避免的被忘记,  终究还是被忘记了, 记了就是浪费时间. 而什么能留下来呢, 我从2012年2月开始看Linux Kernel source codes 源代码, 几乎所有核心的内核代码都看了, 看了忘, 忘了看. 方法不对, 浪费了很多时间, 直到2018年9月, 历时6年7个月. 人生最美好的时间段, 仅仅换了隔教训, 唉.
+很多内容是不可避免的被忘记,  终究还是被忘记了, 记了就是浪费时间. 而什么能留下来呢, 我从2012年2月开始看Linux Kernel source codes 源代码, 几乎所有核心的内核代码都看了, 看了忘, 忘了看. 方法不对, 浪费了很多时间, 直到2018年9月, 历时6年7个月. 人生最美好的时间段, 仅仅换了个教训, 唉.
 a) What I learned from learning English and Kernel
 做事情, 方法不对, 越努力越悲惨. 只有努力绝对不会成功, 相反会很悲惨.努力人人可以, 世界也不缺少努力的人.
 * Fan shuangshuang network stack, kernel, and English
@@ -123,7 +130,7 @@ Onset, nucleus, coda
 很多时候历史不完整, 只能看个大概. 如tcp mss.
 * Elements law 
 thinking from the roots.
-come very naturally;of itself; spontaneously; automatically
+Come very naturally;of itself; spontaneously; automatically
 Construction game like Cities: Skylines, Jigsaw Puzzles, Creating memory
 * Rehearsal
 精细进行复述是存储信息最有效的方法,它是指把要记住的内容和已有的知识经验联系起来。存储是信息编码和提取的中间环节,它在记忆过程中有着重要的作用。 - 普通心理学 Chapter 6 section 1
