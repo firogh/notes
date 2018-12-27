@@ -10,9 +10,23 @@ I know I will be lost and confused in my whole life. 世界总在变， 不能�
 脚踏实地， 不虚妄， 从简单的事做起 and purpose practice。
 # Remaster
 Psychology
-Biology
-Reason
+Biology: focus
+Reason: unifying, simplify
 Practice
+Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
+From the basic, simple. 
+Quick.
+
+# Uncertained things
+Hypothesize bravely/boldly, to prove carefully
+make a bold assumption and then corroborate it carefully.
+
+# Complicated things
+LQO/ignore unreleated contents.
+Think in causality logically.
+THink in the way as the idea happened.
+Think before doing.
+
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.
@@ -22,7 +36,7 @@ Habit & Gradual doing
 * Inclination and disposition
 Monitor the status of inclination and disposition
 The sense of achievement
-Showing-off: [装逼](https://www.zhihu.com/question/30178891/answer/205055193); 谷歌表示，该中心将在北京拥有一个专家团队，... 谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门；李佳是谷歌云业务的人工智能部门研发主管。
+[Showing-off](https://www.zhihu.com/question/30178891/answer/205055193); 谷歌表示，... 谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门...
 * Skill specific,implict memory(intuition?), Muscle Memory, Procedural Memory/ability,
 * Imperfect Understanding and radical fallibity are the natue of human.
 * Imperfect being

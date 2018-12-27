@@ -33,6 +33,10 @@ Security/Protection/isolation
 Reliability
 Energy-efficiency
 
+# The abilities of Computer science programmer
+Debugging
+Memory management
+
 # FAQ
 [All about pseudo](https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf)
 

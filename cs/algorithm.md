@@ -25,6 +25,19 @@ Reprented in an array.
 ## Internal vs external liked
 Sometimes, SLUB put freelist in object
 
+## kernel doubly linked list operations
+### add
+* kernel version
+next->prev = new;
+new->next = next;
+new->prev = prev;
+prev->next = new;
+### delete
+* kernel version
+next->prev = prev;
+WRITE_ONCE(prev->next, next);
+entry->next = LIST_POISON1;
+entry->prev = LIST_POISON2;
 # BL list
 kernel: add bl_list - 4e35e6070b1ceed89c3bba2af4216c286fb1dafd
 

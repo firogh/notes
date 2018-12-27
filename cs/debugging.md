@@ -7,9 +7,10 @@ category: cs
 
 # ref
 https://www.youtube.com/watch?v=g7Qm0NpPAz4
+Debug hacks: a book on how to debug.
 
 # Boot issues
-debug ignore_loglevel earlyprintk=ttyS0,115200,keep keep_bootcon initcall_debug dyndbg=+plmf
+debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
 
 # Lockup
 [kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
