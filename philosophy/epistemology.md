@@ -7,12 +7,14 @@ category: philosophy
 # The being
 The essence of this world is being. The nature of being is change. 
 I know I will be lost and confused in my whole life. 世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
-脚踏实地， 不虚妄， 从简单的事做起 and purpose practice。
+脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
 # Remaster
 Psychology
 Biology
 Reason
 Practice
+Knowledge unifying.
+
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.
