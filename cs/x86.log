@@ -75,6 +75,8 @@ address for the trap handler points to the instruction to be executed after the 
 ## Aborts — An abort is an exception that does not always report the precise location of the instruction causing
 the exception and does not allow a restart of the program or task that caused the exception. Aborts are used to
 report severe errors, such as hardware errors and inconsistent or illegal values in system tables.
+## kernel handler
+do_error_trap
 
 # DS
 [linux最新内核的一些变化以及我的一些想法](https://blog.csdn.net/dog250/article/details/5303223)

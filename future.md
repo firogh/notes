@@ -1,5 +1,5 @@
 
-**Be a useful and necessary man to this world**
+**Be a useful and necessary person to this world**
 
 Laptop: ThinkPad T460s
 Distro: latest Fedora release, since Fedora 14

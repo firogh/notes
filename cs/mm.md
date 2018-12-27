@@ -6,7 +6,39 @@ title: Linux memory management
 category: cs
 ---
 
-#Page swap
+# structure
+Search and tack structure
+
+# Activities
+Memory allocation
+## Memory compaction: 
+if buddy algorithm failed to allocate large memory, it will trigger memory compaction. Check /proc/buddyinfo; /proc/sys/vm/extfrag_threshold  compact 0 < > 1000 swap old page
+[Memory compaction](https://lwn.net/Articles/368869/)
+### Page migration
+Split the free lists for movable and unmovable allocations
+MIGRATE_RECLAIMABLE: 
+commit e12ba74d8ff3e2f73a583500d7095e406df4d093
+Author: Mel Gorman <mel@csn.ul.ie>
+    Group short-lived and reclaimable kernel allocations
+
+
+Page reclaim
+## Optimization Cache
+per_cpu_pageset
+
+# LQO
+Watermark
+MIGRATE_HIGHATOMIC
+Fair-zone allocation: obesete in 4.x+ kernel
+What about other cpu when panic
+
+# Memory leaks
+/proc/meminfo
+Committed_AS and __vm_enough_memory
+
+# BUG
+
+# Page swap
 PG_swapcace means page is in the swap cache.
 PG_swapbacked means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
 
