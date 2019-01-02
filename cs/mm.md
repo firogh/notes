@@ -5,9 +5,8 @@ date: 2014-12-28
 title: Linux memory management
 category: cs
 ---
-# structure
-Search and tack structure
-## memory management
+# MM
+## memory track
 crash> enum zone_type
 enum zone_type {
   ZONE_DMA = 0
@@ -33,10 +32,6 @@ enum zone_type {
         }, {
           zone = 0x0, 
           zone_idx = 0
-        }, {
-
-
-# Activities
 ## Memory allocation
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 ## Memory compaction: 
@@ -111,7 +106,7 @@ kmmio probe in do_page_fault
 * madvise
 * pte_present ?
 * bug?
-mm/memory.c:do_anonymous_page: page_add_new_anon_rmap(page, vma, vmf->address, false);
+mm/memory.c: do_anonymous_page: page_add_new_anon_rmap(page, vma, vmf->address, false);
 * userfd
 https://www.youtube.com/watch?v=xhOBc5L_Hkk
 * Special sections in Linux binaries
@@ -125,7 +120,6 @@ MADV_WIPEONFORK
 * __shmem_file_setup dev/zero
 * http://pzemtsov.github.io/2016/11/06/bug-story-alignment-on-x86.html
 
-# Hardware bit
 
 # Data synchronization
 
