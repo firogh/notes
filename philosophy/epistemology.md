@@ -5,32 +5,55 @@ category: philosophy
 ---
 
 # The being
-The essence of this world is being. The nature of being is change. 
-I know I will be lost and confused in my whole life. 世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
+change
+causality
+
+# Change
+The essence of this world is change. 
+## Emotion
+I know I will be lost and confused in my whole life. 
+## Attitude
+先做后深思. Act before ruminating and pondering.
+世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
+重要的事永远想不好, 重要的事值得我们做，同样也值得我们犯错.
+Doing in time.
+小步快跑.
+Few is more.
+Fast.
+
+# Causality
+The essence of the world is causality
+知识是有内在连贯性, 有调理的.
+## Attitude
+做事有条理。
+Focus.
 脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
-# Remaster
+
+# Complication 
+
+## Attitude
+Unifying, simplify
+世界是拼接的.
+
+不可求多, 求全, 要从自我始, 自己理解, 由小见大.
+LQO/ignore unreleated contents.
+
+# Uncertain
+Discount from thoughts to reality
+Hypothesize bravely/boldly, to prove carefully
+Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
+
+# Mind status
+It's very difficult to uproot deepen trenched evils or shortcomings
+
+# Reality
+
+## Health
+
+# Myself
 Psychology
 Biology: focus
-Reason: unifying, simplify
 Practice
-<<<<<<< HEAD
-Knowledge unifying.
-=======
-Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
-From the basic, simple. 
-Quick.
-
-# Uncertained things
-Hypothesize bravely/boldly, to prove carefully
-make a bold assumption and then corroborate it carefully.
-
-# Complicated things
-LQO/ignore unreleated contents.
-Think in causality logically.
-THink in the way as the idea happened.
-Think before doing.
->>>>>>> 17ba576f12533527879c52ffd04c97a32fd55698
-
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.

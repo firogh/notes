@@ -37,6 +37,7 @@ sudo dnf --releasever=27 --installroot=/home/firo/kernel/k/testfs/ --setopt=repo
 ['Source code reading' related sites][1]
 
 
+
 # Applying patches
 [100 Linux Tutorials: How to Apply a Patch to the Linux Kernel Stable Tree][0]
 

@@ -5,62 +5,79 @@ date: 2014-12-28
 title: Linux memory management
 category: cs
 ---
-
 # structure
 Search and tack structure
+## memory management
+crash> enum zone_type
+enum zone_type {
+  ZONE_DMA = 0
+  ZONE_DMA32 = 1
+  ZONE_NORMAL = 2
+  ZONE_MOVABLE = 3
+  ZONE_DEVICE = 4
+  __MAX_NR_ZONES = 5
+};
+  node_zonelists = {{
+      _zonerefs = {{
+          zone = 0xffff88107ffd5d80, # node 0
+          zone_idx = 2
+        }, {
+          zone = 0xffff88107ffd56c0, # node 0
+          zone_idx = 1
+        }, {
+          zone = 0xffff88107ffd5000, # node 0
+          zone_idx = 0
+        }, {
+          zone = 0xffff88207ffd2d80,  # belongs to Node 1
+          zone_idx = 2
+        }, {
+          zone = 0x0, 
+          zone_idx = 0
+        }, {
+
 
 # Activities
-Memory allocation
+## Memory allocation
+__GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 ## Memory compaction: 
 if buddy algorithm failed to allocate large memory, it will trigger memory compaction. Check /proc/buddyinfo; /proc/sys/vm/extfrag_threshold  compact 0 < > 1000 swap old page
 [Memory compaction](https://lwn.net/Articles/368869/)
-### Page migration
+https://www.zhihu.com/question/59053036
+## Page migration
 Split the free lists for movable and unmovable allocations
 MIGRATE_RECLAIMABLE: 
 commit e12ba74d8ff3e2f73a583500d7095e406df4d093
 Author: Mel Gorman <mel@csn.ul.ie>
     Group short-lived and reclaimable kernel allocations
+## Page reclaim
+### Page swap
+PG_swapcace means page is in the swap cache.
+PG_swapbacked means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
 
+## Memory leaks
+/proc/meminfo
+Committed_AS and __vm_enough_memory
 
-Page reclaim
 ## Optimization Cache
+### Hot and cold pages
+[Hot and cold pages](https://lwn.net/Articles/14768/)
 per_cpu_pageset
+
+### Buffer cache
+"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
+1. Open block device directly open("/dev/sdb"...) -> blkdev_open
+2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
+meminfo_proc_show
 
 # LQO
 Watermark
 MIGRATE_HIGHATOMIC
 Fair-zone allocation: obesete in 4.x+ kernel
 What about other cpu when panic
+## BUG
 
-# Memory leaks
-/proc/meminfo
-Committed_AS and __vm_enough_memory
-
-# BUG
-
-# Page swap
-PG_swapcace means page is in the swap cache.
-PG_swapbacked means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
-
-# Compact
-https://www.zhihu.com/question/59053036
-
-# Buffer cache
-"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
-1. Open block device directly open("/dev/sdb"...) -> blkdev_open
-2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
-meminfo_proc_show
-
+# Reference
 [Memory – Part 2: Understanding Process memory](https://techtalk.intersec.com/2013/07/memory-part-2-understanding-process-memory/)
-
-# Hot and cold pages
-[Hot and cold pages](https://lwn.net/Articles/14768/)
-
-# Format of Page-Table entry 
-v3a: P121: 
-5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
-6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
-Check this _PAGE_BIT_ACCESSED
 
 # Page flags
 PG_active: 表示此页当前是否活跃，当放到或者准备放到活动lru链表时，被置位
