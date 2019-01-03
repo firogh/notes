@@ -10,13 +10,14 @@ causality
 
 # Change
 The essence of this world is change. 
+limit of change
 ## Emotion
 I know I will be lost and confused in my whole life. 
 ## Attitude
 先做后深思. Act before ruminating and pondering.
 世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
 重要的事永远想不好, 重要的事值得我们做，同样也值得我们犯错.
-Doing in time.
+Realtime feedback.
 小步快跑.
 Few is more.
 Fast.
@@ -24,13 +25,15 @@ Fast.
 # Causality
 The essence of the world is causality
 知识是有内在连贯性, 有调理的.
+deconstruction; 
 ## Attitude
+Goal setting
 做事有条理。
 Focus.
 脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
 
 # Complication 
-
+disadvantageous factors; 
 ## Attitude
 Unifying, simplify
 世界是拼接的.
@@ -39,21 +42,27 @@ Unifying, simplify
 LQO/ignore unreleated contents.
 
 # Uncertain
-Discount from thoughts to reality
+Radical fallibility;
+Discount from thoughts to reality;defect; An excellent goal can only produce a decent result,while a common result can only be given by a decent goal.;取法乎上，仅得其中；取法乎中，仅得其下
 Hypothesize bravely/boldly, to prove carefully
 Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
 
-# Mind status
+# Ego and Mind and goal setting
+love yourself
+## Current mind status
 It's very difficult to uproot deepen trenched evils or shortcomings
 
-# Reality
 
-## Health
+# Reality and goal setting
 
-# Myself
-Psychology
-Biology: focus
-Practice
+# perspective define your understanding.
+## Feynman method
+## Rational infering and empirical practice
+## Goal setting
+Current and Goal
+## Realtime feedback
+Do the right things.
+
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.

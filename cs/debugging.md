@@ -225,5 +225,3 @@ static int hello_init(void)
 static int data_var=0;
 printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
 printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);}
-
-

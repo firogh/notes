@@ -29,6 +29,9 @@ v3a: P121:
 Check this _PAGE_BIT_ACCESSED
 
 
+# TLB
+spurious_fault:a stale TLB entry
+
 # struct page
 ## SWAP
 * private
