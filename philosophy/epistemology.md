@@ -76,6 +76,7 @@ love yourself
 ## Abilities
 Creativity
 Mantality: 
+即便失落失意也要以强者姿态活下去。
 不要局限在自己的圈子
 和比你厉害的人在一起，和一流的人工作
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
@@ -122,6 +123,7 @@ MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check p
 Positive and negtive
 Onset, nucleus, coda
 ## Rational infering and empirical practice
+Act before think
 ## Realtime feedback
 Do the right things.
 ## Think for yourself
