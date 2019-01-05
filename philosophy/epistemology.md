@@ -3,41 +3,45 @@ date: 2008-09-13
 title: The epistemology on which I am living
 category: philosophy
 ---
-
-# The being
-change
-causality
-
 # Change
 The essence of this world is change. 
-limit of change
+Limit/border of change
 ## Emotion
 I know I will be lost and confused in my whole life. 
 ## Attitude
 先做后深思. Act before ruminating and pondering.
 世界总在变， 不能一直等到准备好了， 再去做事情, 边做边准备边验证。
 重要的事永远想不好, 重要的事值得我们做，同样也值得我们犯错.
-Realtime feedback.
-小步快跑.
+小步快跑, Fast.
 Few is more.
-Fast.
 
 # Causality
 The essence of the world is causality
 知识是有内在连贯性, 有调理的.
 deconstruction; 
+## Effective and efficient
+精力投入导最基础的事情上, 面试题中考的内容就很基础.
+purpose practice, 大量练习.分开方法和熟练度.
+SMART
+[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
+I have never thought about questions that are not real ones - I have not squandered myself. -- N
+不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」
+参考psychology.
+知识不应是概念游戏, 而应该具有生命力, 是生长出来. “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
+观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清.
+不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
+Think for yourself.
+事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
+How much we understand the world isn't better than how well.
+[What is science by Feyman](http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf), do you know brown-throated thrush?
 ## Attitude
-Goal setting
-做事有条理。
-Focus.
-脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
+Goal setting, 做事有条理。Focus. 脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
 
 # Complication 
 disadvantageous factors; 
 ## Attitude
 Unifying, simplify
 世界是拼接的.
-
 不可求多, 求全, 要从自我始, 自己理解, 由小见大.
 LQO/ignore unreleated contents.
 
@@ -47,215 +51,97 @@ Discount from thoughts to reality;defect; An excellent goal can only produce a d
 Hypothesize bravely/boldly, to prove carefully
 Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
 
-# Ego and Mind and goal setting
-love yourself
+# Mind 
+Subjective assume
+Imperfect Understanding and radical fallibity are the natue of human.
 ## Current mind status
 It's very difficult to uproot deepen trenched evils or shortcomings
-
-
-# Reality and goal setting
-
-# perspective define your understanding.
-## Feynman method
-## Rational infering and empirical practice
-## Goal setting
-Current and Goal
-## Realtime feedback
-Do the right things.
-
-## Psychology and Biology
-[Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
-要合理调配好学习与休息, 避免过度透支精力和兴趣, 要细水长流; Relax.让自己处在最佳状态.
-Habit & Gradual doing
-25 minutes
-* 绝不考验自制力
-* Inclination and disposition
-Monitor the status of inclination and disposition
-The sense of achievement
-[Showing-off](https://www.zhihu.com/question/30178891/answer/205055193); 谷歌表示，... 谷歌AI中国中心将由李飞飞和李佳领导。李飞飞是斯坦福大学人工智能实验室的负责人，领导着谷歌云业务的人工智能部门...
-* Skill specific,implict memory(intuition?), Muscle Memory, Procedural Memory/ability,
-* Imperfect Understanding and radical fallibity are the natue of human.
-* Imperfect being
-Subjective assume
-厌恶痛苦、向往轻松快乐; Lazy and be clined to simple things
-贪婪, 贪多求全; craving for many and perfection; 主观上以自己刻苦努力来还取进步
-* If one thing is a must, do it now.
-
-# Fallacies
-看懂内核代码, 非常耗时, 困难(实现对应的signifiers 非常难找, 有些时候还有歧义, 如packet_rcv的PACKET_LOOPBACK), 费时费力不等于学到的多, 往往意味相反.
-禁止通过看代码, 学习知识.
+## Fallacies
+过份相信主观能力. 看懂内核代码, 非常耗时, 困难(实现对应的signifiers 非常难找, 有些时候还有歧义, 如packet_rcv的PACKET_LOOPBACK), 费时费力不等于学到的多, 往往意味相反.
 看别人的实现, 不仅不能学到知识, 更为糟糕的是破坏了自己的创造力.
 不要以为看懂内核代码, 有多了不起. 只要肯投入时间, 谁都能看懂kernel代码, 但是这样值吗?
 看内核代码实际是个查找搜索的过程, 及其耗费时间. 收获的只是一个点. 非常不值. 必须要衡量投入产出比. 要看内核实现, 必须要先, 评估能学到什么.
 * Trying harder doesn't mean effectness. 不要感动自己, 方法不对,越努力差距越大. 
-Vicariousness!!quick understanding, no complex brain labors, it's easy.But it also brings fake. 
+Vicariousness!!quick understanding, no complex brain labors, it's easy. But it also brings fake. 
 Law of the hammer. 
 People cannot see something wihout being denominated
 填鸭,cramming, rote
 Literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 死知识; 
-## Cases
-* On reading kernel source code
-很多内容是不可避免的被忘记,  终究还是被忘记了, 记了就是浪费时间. 而什么能留下来呢, 我从2012年2月开始看Linux Kernel source codes 源代码, 几乎所有核心的内核代码都看了, 看了忘, 忘了看. 方法不对, 浪费了很多时间, 直到2018年9月, 历时6年7个月. 人生最美好的时间段, 仅仅换了个教训, 唉.
-a) What I learned from learning English and Kernel
-做事情, 方法不对, 越努力越悲惨. 只有努力绝对不会成功, 相反会很悲惨.努力人人可以, 世界也不缺少努力的人.
-* Fan shuangshuang network stack, kernel, and English
-Broke the Law because of overconfident subjective understanding and memory ability.(Subjective assume and Lack of quantatifications)
-* Learn kernel and this country and world
-我之前喜欢抱着大部头的专业书籍看，其实那是事倍功半的努力。学而不思则罔, 书籍让我记住了现成的“事实”，却没有给我产生出这些知识的能力.
-除了浸沉于书籍之海不做别的事情的学者……最后则是完全丧失了为自己而思考的才能。除非有一本书在手里，他就不能思考。当他思考，他只是反应一种刺激即他所看到的别人的思想，结果他所做的一切都是反应.--Why I Am So Clever  Section8
-* English
-目标不清楚, 目标模糊没有量化; 方法也没有量化. Subjective assume and Lack of quantatifications
-Unconfident.
+# Reality
+Loss function
+Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
 
-# The learning model and goals of learning
-Origins(codes) knowledge/reality methods(encoding ) fallacies 'Cognitive Psychology' human
-1. recoginzeing the abilites
-analyzing, Problem & ability, appriasing
-2. Practice
-purpose practice
-# Cognitive Psychology 
-## Encoding
-Think for oneself 
-Few is more
-The Archaeology of Knowledge
-Hyposis and test
-0. Casuality: the first problem might be 'what's the point of it?'
-1. origin covers 
-1.0 Abstracted map
-1.1 Use cases 
-## Storage
-Chapter 6 section 1: 记忆还依赖于人的已有的知识结构,只有当输入的信息以不同形式汇入人脑中已有的知识系统时,新的信息才能在头脑中更好地巩固下来。
-Think for oneself 
-Few is more
-Elements law
-Rehearsal
-## Retrieval
-
-## Repeat 
-复习是学习之母。”每一本重要的书籍都必须一气呵成连续读上两遍。原因之一是在阅读第二遍的时候,我们会更好地理解书中内容的整体关联,而只有知道了书的结尾才会明白书的开头;原因之二就是在第二次阅读的时候,我们的心境、情绪与在第一次阅读时已经有所不同。这样,我们获得的印象也会不一样。情形就好比在不同光线之下审视同一样的物体 --论阅读与书籍
-Vicariousness
-艾宾浩斯
-Second day rehearsal.
-
-# Psychology methods
-* Think for oneself - Parerga and Paralipomena Vol.2 Chapter XXII
-Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer
-“记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
-观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清.
-不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
-All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
-[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
-![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
-No learning by reading.
-0. No source code. Just question the questions 
-1. Don't start from the pure conceptions, from the real basic problems. Problems before conceptions.
-做学问要在不疑处有疑 -- 胡适
-2. The implemention-specific things do belong to the understanding. it belongs to doing.
-3. 理性思维做理性思维的事情, 不要浪费宝贵的理性思维去常识记忆细节.
-* Learning by doing
-事实　我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
-我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
-[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
-* Few is more
-要把它想的很简单, 达到豁然开朗.
+# Ego
+love yourself
+## Abilities
+Creativity
+Mantality: 
+不要局限在自己的圈子
+和比你厉害的人在一起，和一流的人工作
+牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
+Nothing new under the sun.
+成熟的心态, 用生命的长度去感受.
+## Psychology and Biology
+[Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
+Watch out Vicariousness; 考验自制力; 主观上以自己刻苦努力来还取进步; 清华大学学士学位
+Maintain energy, inclination and disposition, 25 minutes
+The sense of achievement, [Showing-off](https://www.zhihu.com/question/30178891/answer/205055193)
+## Cognitive Psychology 
 [你有什么值得分享的高效学习方法？ - 高冷冷的回答 - 知乎](https://www.zhihu.com/question/50343728/answer/407127160)
-[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
+### Encoding
+### Storage
+Chapter 6 section 1: 记忆还依赖于人的已有的知识结构,只有当输入的信息以不同形式汇入人脑中已有的知识系统时,新的信息才能在头脑中更好地巩固下来。
+### Retrieval and Repeat 
+复习是学习之母。”每一本重要的书籍都必须一气呵成连续读上两遍。原因之一是在阅读第二遍的时候,我们会更好地理解书中内容的整体关联,而只有知道了书的结尾才会明白书的开头;原因之二就是在第二次阅读的时候,我们的心境、情绪与在第一次阅读时已经有所不同。这样,我们获得的印象也会不一样。情形就好比在不同光线之下审视同一样的物体 --论阅读与书籍
+精细进行复述是存储信息最有效的方法,它是指把要记住的内容和已有的知识经验联系起来。存储是信息编码和提取的中间环节,它在记忆过程中有着重要的作用。 - 普通心理学 Chapter 6 section 1
+
+# Principle
+Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
+## Critical thinking.
+## Holistic learning; 拼接 splice. 思想和生活应该是有机的整体, 具有生命力, 有条理, 内在逻辑.
+Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
+Completeness, consistency, validity, soundness. -- Logic
+The whole is other than the sum of the parts. --Gestalt psychology
+[知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
+Habit & Gradual doing
+## 强调基础, 基本的事情.
+## 简化, few is more.
+要把它想的很简单, 达到豁然开朗.
 记少不记多，反而记更多
 时间是否充裕，都先记少
-西蒙关键法: 点线面
-Logic link
-No implementions; 天下无码.
-时间花在别人的实现上, 就没有自己的实现了.
-只有一种情况, 可以接触实现, 那就是没有理论说明, 自己hypnosis想不出, 而且评估的价值很大.
-* Hyposis and test
-* Trail and error
-* Purpose practice
-[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
-* Break down - [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
+Occam's razor 
+
+# Method
+## Feynman method
+## Current and Goal; C&G
+Causality, effective, efficiency
+## Perspective and dividing
+[Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Break things down to first principles
 MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references
 Positive and negtive
 Onset, nucleus, coda
-* The Archaeology of Knowledge
-很多时候历史不完整, 只能看个大概. 如tcp mss.
-* Elements law 
-thinking from the roots.
-Come very naturally;of itself; spontaneously; automatically
-Construction game like Cities: Skylines, Jigsaw Puzzles, Creating memory
-* Rehearsal
-精细进行复述是存储信息最有效的方法,它是指把要记住的内容和已有的知识经验联系起来。存储是信息编码和提取的中间环节,它在记忆过程中有着重要的作用。 - 普通心理学 Chapter 6 section 1
-1. Think over
-2. Teaching is best rehearsal.
-3. What could I learn?
-4. Energy flow
-5. 成手思维
-6. Definitions
-7. Writing
-* Imitate - Successful cases analysis
+## Rational infering and empirical practice
+## Realtime feedback
+Do the right things.
+## Think for yourself
+时间花在别人的实现上, 就没有自己的实现了.
+Don't start from the pure conceptions, from the real basic problems. Problems before conceptions.
+All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
+[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
+![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
+## Origins.
+## Hyposis and test; Trail and error
+## Learning by doing
+我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
+[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
+## Purpose practice
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+## The Archaeology of Knowledge
+## Successful cases analysis
 Background, what she/he did, environment, chance
-* Hill climbing method
-beginner to intermediate and advanced
-knowledge your must master - working set; knowledge which is dangerous
-* Model of thinking - origins
-[Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
-Math: numberic, concepts
-GEB: mechanical thinking
-[Model thinking](https://www.coursera.org/learn/model-thinking/home/welcome)
-* Leave a question open 
+## SMART
+## Leave questions open 
 there are always some knowledge which is very complicated to understand and we should leave them alone.
-* Transforming
-* Occam's razor 
-* Abstraction
-* Critical thinking
-* Feynman method
-* Poor Charlie's Almanack
-## Feedback & Reflexcity 
-Reflexicity -- Soros
-* Effecttiveness, 做有效的事而不是比努力做效果小的事
-How much we understand the world isn't better than how well.
-* Accuracy and error/loss function
-* Goal coverage
-* Response Time/effciency?
-Realtime, delay, no
-* Completeness, consistency, validity, soundness. -- Logic
-* The whole is other than the sum of the parts. --Gestalt psychology
-
-# Origins
-* Causality
-* Lifetime
-* concurrent
-* Connections
-abstracted conception, it will be independent to implementions. 
-* Repeat
-* Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
-* Nothing new under the sun.
-* JIT e.g. kindle narrtion, soramimi
-[Mental Models: The Best Way to Make Intelligent Decisions (109 Models Explained)](https://fs.blog/mental-models/)
-
-# Knowledge 
-## Live knowledge
-Life-relevant: learn in real-life, no dead knowledge
-[What is science by Feyman](http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf), do you know brown-throated thrush?
-fun and sense of achivement
-I have never thought about questions that are not real ones - I have not squandered myself. -- N
-## Knowledge ravine and swamp
-## Dead knowledge
-[知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
-## Knowledge representations
-[布卢姆认知目标分类修订的二维框架](http://old.pep.com.cn/rjqk/kcjcjf/200409/201101/t20110106_1010047.htm)
-### Reality knowledge and it's cutting plane
- 94 ##IP fragmention/defragmention
- 95 iphdr->id, iphdr->frag_off
- 96 skb_shared_info->frag_list 
- 97 ip_fragment/ip_defrag
- 98 [Updated Specification of the IPv4 ID Field](http://tools.ietf.org/html/rfc6864)
- 99 # send
-100 ip_append_data 和ip_push_pending_frames弄frag_list
-101 ip_push_pending_frames -> __ ip_make_skb & ip_send_skb ->ip_local_out
-102 把sk->sk_write_queue上的数据最后编程skb链表变成了, 还skb pull掉了潜在的ip 头部
-103 第一个skb->frag_list的成员. 用的不太多啊.
-104 ip_append_data中间出了以为如果可以ufo 那么就到frags的碗里去!
-105 否则就生成一串skb挂到&sk->sk_write_queue上,
-1. Badly encoded
-2. Unable to associate with existed knowledge.
-3. Unable to retrieve
+## Transforming
+## Reflexcity -- Soros
