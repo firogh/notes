@@ -20,9 +20,11 @@ The essence of the world is causality
 知识是有内在连贯性, 有调理的.
 deconstruction; 
 ## Effective and efficient
+参与创造在理解过程。重点是创造，创造能帮助你更好的理解， 只要创造不同才能吸引别人。
 精力投入导最基础的事情上, 面试题中考的内容就很基础.
 purpose practice, 大量练习.分开方法和熟练度.
 SMART
+不要按着逻辑一步一步 做事情 要学会跨越 这样速度才跨 不会受限思维定势。逻辑陷阱。
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
 不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」
@@ -72,7 +74,7 @@ Loss function
 Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
 
 # Ego
-love yourself
+Love yourself
 ## Abilities
 Creativity
 Mantality: 

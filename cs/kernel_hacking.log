@@ -1,0 +1,16 @@
+
+
+# Goal 
+1. find the best to get involed in kernel hacking.
+
+# The difficulties of kernel hacking
+The intricacy of smantic of kernel beyond for human's understanding ablity. So learning kernel by just reading the source code is imposible.
+大量的vriables 变量, 难以理解的函数和变量的名字.
+The curse of knowledge through symbols
+1. 符号系统造成, 大量语义, 被隐藏起来.
+2. 符号所构建的软件系统, 包含着巨量的语义.
+理解kernel 本身, 没有问题, 问题出在:
+1. 完全舍弃自己的理解, 全部取自他人的理解.
+应该你自己为核心.
+2. 仅仅阅读代码. 甚至commit 都很少看.
+应该结合
