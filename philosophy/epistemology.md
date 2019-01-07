@@ -24,6 +24,7 @@ deconstruction;
 精力投入导最基础的事情上, 面试题中考的内容就很基础.
 purpose practice, 大量练习.分开方法和熟练度.
 SMART
+不同的事情, 可能适合的方法也不一样.
 不要按着逻辑一步一步 做事情 要学会跨越 这样速度才跨 不会受限思维定势。逻辑陷阱。
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
@@ -74,7 +75,9 @@ Loss function
 Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
 
 # Ego
-Love yourself
+Love yourself; 
+从多种角度解释自己, 经济社会长顺和我, 哲学.
+Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.时刻想着如何能变强.
 ## Abilities
 Creativity
 Mantality: 
@@ -83,7 +86,6 @@ Mantality:
 和比你厉害的人在一起，和一流的人工作
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 Nothing new under the sun.
-成熟的心态, 用生命的长度去感受.
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 Watch out Vicariousness; 考验自制力; 主观上以自己刻苦努力来还取进步; 清华大学学士学位
@@ -107,6 +109,8 @@ Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
 Habit & Gradual doing
+## 必须动手, learning by doing.
+分清哪些需要动手, 大量实践. 必须动手.
 ## 强调基础, 基本的事情.
 ## 简化, few is more.
 要把它想的很简单, 达到豁然开朗.
@@ -118,7 +122,14 @@ Occam's razor
 ## Feynman method
 ## Current and Goal; C&G
 Causality, effective, efficiency
-## Perspective and dividing
+## Best practice training model
+英语不是理性能得出的, 是大量模仿实践.
+kernel 极度复杂, 理解只能起到表皮作用, 作为技能需要熟练掌握大量基础技能, 这需要.
+## Perspective
+看成被理解的对象 看成just for fun.
+## Dividing
+任何思维分割,割裂都是有害的.
+Understanding and doing; 极其有害.
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Break things down to first principles
 MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references
