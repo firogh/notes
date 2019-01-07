@@ -122,9 +122,21 @@ Occam's razor
 ## Feynman method
 ## Current and Goal; C&G
 Causality, effective, efficiency
+## Rational infering and empirical practice
+Act before think
 ## Best practice training model
 英语不是理性能得出的, 是大量模仿实践.
 kernel 极度复杂, 理解只能起到表皮作用, 作为技能需要熟练掌握大量基础技能, 这需要.
+### kernel
+ just for fun
+能力 
+理论： think for yourself
+实践: 基础API的使用， expose tools
+* 能力 第二种划分
+创造力 对应理论和实践
+* 对原有的 问题的 bug fix 能力
+### 英语 是模仿与实践
+理论很少， 而且尽量减少理论投入
 ## Perspective
 看成被理解的对象 看成just for fun.
 ## Dividing
@@ -135,8 +147,6 @@ Break things down to first principles
 MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references
 Positive and negtive
 Onset, nucleus, coda
-## Rational infering and empirical practice
-Act before think
 ## Realtime feedback
 Do the right things.
 ## Think for yourself
