@@ -2,14 +2,13 @@
 Committed_AS and __vm_enough_memory
 [page owner](https://www.kernel.org/doc/html/v4.18/vm/page_owner.html)
 
-
 # Memory available
 [provide estimated available memory in /proc/meminfo](https://lore.kernel.org/patchwork/patch/417981/)
 equation for calculating all available memory 
 freeram + LRU_ACTIVE_FILE + LRU_INACTIVE_FILE + NR_SLAB_RECLAIMABLE 
 
 
-# Huawei availbae memory 
+# HW availbae memory 
 >>> 6439184 + 36648 + 17089808 + 2511088 - 12524
 26064204
 >>> 4169316 + 31728 + 14645916 + 2200224 - 12520
@@ -45,3 +44,5 @@ mm/shmem.c <<shmem_lock>>
              mapping_set_unevictable(file->f_mapping);
 SHM_LOCK (Linux-specific)
                  Prevent  swapping  of the shared memory segment. 
+=======
+# Memory leak
