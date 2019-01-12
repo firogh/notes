@@ -76,8 +76,12 @@ Don't Expect Too Much.There is no perfect. Troubles come one by one. It will dis
 
 # Ego
 Love yourself; 
+自己强才是最终要的。
 从多种角度解释自己, 经济社会长顺和我, 哲学.
 Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.时刻想着如何能变强.
+我现在的世界观是极其naive， 脆弱的。
+痛苦才会成长。
+You get what you did.
 ## Abilities
 Creativity
 Mantality: 

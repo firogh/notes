@@ -5,6 +5,7 @@ date: 2014-12-28
 title: Linux memory management
 category: cs
 ---
+
 # Memory allocation
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_IO: allow disk IO
@@ -49,10 +50,9 @@ Freeing a full slab will make it present in per cpu partial of node partial.
 ### Freelist vs Freelist
 26:00
 [关于page同时被多CPU使用](http://kouucocu.lofter.com/post/1cdb8c4b_50f6319)
+
 ### SLUB debug
 [SLUB DEBUG原理](http://www.wowotech.net/memory_management/427.html)
-# Memory compaction: 
-if buddy algorithm failed to allocate large memory, it will trigger memory compaction. Check /proc/buddyinfo; /proc/sys/vm/extfrag_threshold  compact 0 < > 1000 swap old page
-[Memory compaction](https://lwn.net/Articles/368869/)
-https://www.zhihu.com/question/59053036
 
+# Hot cold page
+[mm, Remove cold parameter from free_hot_cold_page*](https://patchwork.kernel.org/patch/10013971/)
