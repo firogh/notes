@@ -169,3 +169,9 @@ lruvec, buddy system, slab, isolate list
 ### page.index
 1. file memory mapped page: index is offset in a file
 2. Anonymous page: linear_page_index in __page_set_anon_rmap()__
+
+# Pages can be isolated and migrated
+Pages on LRU lists
+Pages marked with PageMovable “flag”
+Currently just zsmalloc (used by zram and zswap) and virtio balloon pages
+[Making kernel pages movable](https://lwn.net/Articles/650917/)
