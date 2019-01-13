@@ -6,6 +6,7 @@ category: cs
 ---
 
 # ref
+http://d3s.mff.cuni.cz/teaching/crash_dump_analysis/
 https://www.youtube.com/watch?v=g7Qm0NpPAz4
 Debug hacks: a book on how to debug.
 

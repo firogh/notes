@@ -125,6 +125,8 @@ Causality, effective, efficiency
 ## Rational infering and empirical practice
 Act before think
 ## Best practice training model
+feel pain feel uncomfortable feel growing. 
+深刻感受自己不足. 感受灵活熟练使用能力. 二者的差距. 做不到的桎梏.
 英语不是理性能得出的, 是大量模仿实践.
 kernel 极度复杂, 理解只能起到表皮作用, 作为技能需要熟练掌握大量基础技能, 这需要.
 ### kernel
