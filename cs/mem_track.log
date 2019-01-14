@@ -7,6 +7,12 @@ Committed_AS and __vm_enough_memory
 equation for calculating all available memory 
 freeram + LRU_ACTIVE_FILE + LRU_INACTIVE_FILE + NR_SLAB_RECLAIMABLE 
 
+# meminfo 
+meminfo_proc_show
+## Buffer cache of command 'free'
+"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
+1. Open block device directly open("/dev/sdb"...) -> blkdev_open
+2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
 
 # HW availbae memory 
 >>> 6439184 + 36648 + 17089808 + 2511088 - 12524

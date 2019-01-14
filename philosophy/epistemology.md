@@ -5,6 +5,7 @@ category: philosophy
 ---
 # Change
 The essence of this world is change. 
+## attribute
 Limit/border of change
 ## Emotion
 I know I will be lost and confused in my whole life. 
@@ -109,10 +110,16 @@ Just as the largest library, badly arranged, is not so useful as a very moderate
 ## Critical thinking.
 ## Holistic learning; 拼接 splice. 思想和生活应该是有机的整体, 具有生命力, 有条理, 内在逻辑.
 Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
+Feynman method 
 Completeness, consistency, validity, soundness. -- Logic
 The whole is other than the sum of the parts. --Gestalt psychology
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
 Habit & Gradual doing
+### free of the curse of symbols
+Question-based thinking not Solution-based thinking.
+Always think the abstracted from. We are not deal with only the real things, we also deal with the abstracted from.
+### For understanding
+First, ignore other's solution.
 ## 必须动手, learning by doing.
 分清哪些需要动手, 大量实践. 必须动手.
 ## 强调基础, 基本的事情.
@@ -123,7 +130,6 @@ Habit & Gradual doing
 Occam's razor 
 
 # Method
-## Feynman method
 ## Current and Goal; C&G
 Causality, effective, efficiency
 ## Rational infering and empirical practice

@@ -40,3 +40,5 @@ Memory management
 # FAQ
 [All about pseudo](https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf)
 
+# LQO
+IOMMU

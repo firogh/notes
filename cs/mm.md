@@ -5,7 +5,40 @@ date: 2014-12-28
 title: Linux memory management
 category: cs
 ---
+# Ref
+[An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
+
 # memory organization
+## Memory mode
+flat mem -> uma
+discontig -> NUMA
+sparse -> Hotplug + NUMA
+## Memory initialization onset:  
+bios -> detect_memory save in boot_params.e820_map
+real -> protected -> long mode; [What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
+setup_arch
+setup_memory_map -> default_machine_specific_memory_setup // Save into struct e820map e820; from boot_params.e820_map. That's all.
+max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
+mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
+trim_low_memory_range // reserve 64k
+max_low_pfn = e820_end_of_low_ram_pfn(); //4GB以下的end of block
+memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
+early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
+init_mem_mapping //set page table and cr3.
+initmem_init ; NUMA init
+x86_init.paging.pagetable_init();= paging_init //x86_64 ->zone_sizes_init->...free_area_init_core
+a little history e820_register_active_region [replaced by lmb ](https://lkml.org/lkml/2010/7/13/68) memblock
+reserve_initrd ; // RAMDISK
+1. e820 get memory region.
+2. set PF trap do_page_fault.
+3. set page table and cr3.
+### Arch specific x86_64
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
+## Memblock
+memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
+bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
+
+## Zones and free_area.free_list
 crash> enum zone_type
 enum zone_type {
   ZONE_DMA = 0
@@ -32,38 +65,7 @@ enum zone_type {
           zone = 0x0, 
           zone_idx = 0
 
-## Memory mode
-flat mem -> uma
-discontig -> NUMA
-sparse -> Hotplug + NUMA
-## Memory initialization onset:  
-先从bios 拿信息 main -> detect_memory save in boot_params.e820_map
-之后real -> protected -> long mode
-启动 protected? mode. [What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
-setup_arch
-setup_memory_map -> default_machine_specific_memory_setup // Save into struct e820map e820; from boot_params.e820_map. That's all.
-max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
-mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
-trim_low_memory_range // reserve 64k
-max_low_pfn = e820_end_of_low_ram_pfn(); //4GB以下的end of block
-memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
-early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
-init_mem_mapping //set page table and cr3.
-initmem_init ; NUMA init
-x86_init.paging.pagetable_init();= paging_init //x86_64 ->zone_sizes_init->...free_area_init_core
-a little history e820_register_active_region replaced by lmb [replaced by](https://lkml.org/lkml/2010/7/13/68) memblock
-reserve_initrd ; // RAMDISK
-总结下, 内存初始化需要的基础.
-1. e820 get memory region.
-2. set PF trap do_page_fault.
-3. set page table and cr3.
-这就完了. 之后开始开始加工.
-## Arch specific x86_64
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
-## Memblock
-memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
-bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
-## Zones and free_area.free_list
+
 paging_init->zone_sizes_init.
 {
 	free_area_init_node-> 
@@ -99,21 +101,25 @@ free_all_bootmem->free_low_memory_core_early->__free_memory_core->*__free_pages_
 mm_init->mem_init->free_all_bootmem
 ### free bootmem late
 start_kernel->efi_free_boot_services->free_bootmem_late->__free_pages_bootmem
-## Sparse 
-paging_init->sparse_init
-# Page migration
-Split the free lists for movable and unmovable allocations
-MIGRATE_RECLAIMABLE: 
-commit e12ba74d8ff3e2f73a583500d7095e406df4d093
-Author: Mel Gorman <mel@csn.ul.ie>
-    Group short-lived and reclaimable kernel allocations
 
-# ETC
-## Buffer cache of command 'free'
-"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
-1. Open block device directly open("/dev/sdb"...) -> blkdev_open
-2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
-meminfo_proc_show
+# Sparse 
+paging_init->sparse_init
+## hotplug
+add_memory
+|-add_memory_resource
+ |-add_memory_resource
+  |-arch_add_memory
+   |-__add_pages
+    |-__add_section
+     |-sparse_add_one_section
+      |-kmalloc_section_memmap
+       |-sparse_mem_map_populate
+        |-vmemmap_populate
+## vmemmap pages 
+vmemmap_populate
+## sparse_init
+|-sparse_early_mem_map_alloc if !CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
+|-sparse_early_mem_maps_alloc_node if CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
 
 # LQO
 [An introduction to compound pages](https://lwn.net/Articles/619514/)
@@ -156,22 +162,3 @@ What is data/contrl/address bus?
 ## MADV_SEQUENTIAL and reclaim
 mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c
 
-# Linux tips
-## Page flags
-PG_active: active page
-PG_referenced: accessed recently
-PG_lru: page is on the lru linked list
-PG_mlocked: mlock()
-PG_swapbacked: stack, heap, data segment, anoymous mmap, shmem
-## struct page
-### page.lru
-lruvec, buddy system, slab, isolate list
-### page.index
-1. file memory mapped page: index is offset in a file
-2. Anonymous page: linear_page_index in __page_set_anon_rmap()__
-
-# Pages can be isolated and migrated
-Pages on LRU lists
-Pages marked with PageMovable “flag”
-Currently just zsmalloc (used by zram and zswap) and virtio balloon pages
-[Making kernel pages movable](https://lwn.net/Articles/650917/)
