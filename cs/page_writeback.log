@@ -1,3 +1,16 @@
+# History of page writeback 
+[In defense of per-BDI writeback](https://lwn.net/Articles/354851/)
+[Flushing out pdflush](https://lwn.net/Articles/326552/)
+[Per backing device writeback jens axboe](https://blog.linuxplumbersconf.org/2009/slides/Jens-Axboe-lpc2009-slides-axboe.pdf)
+[Explaination from Jens on LPC 2009](https://blog.linuxplumbersconf.org/ocw/proposals/22)
+[kernelnewbies Per-backing-device based writeback](https://kernelnewbies.org/Linux_2_6_32#Per-backing-device_based_writeback)
+[Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
+[writeback: convert writeback to unbound workqueue](https://groups.google.com/forum/#!topic/fa.linux.kernel/OnsAP-Zy-s8)
+
+# Page flags
+PG_writeback, lost in past;
+set_page_writeback
+
 # Why does kernel do page writeback?
 The dirty pages will lose, if a system crash or power issue happens.
 Write back pages for page relcaim.
