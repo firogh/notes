@@ -118,10 +118,15 @@ Habit & Gradual doing
 ### free of the curse of symbols
 Question-based thinking not Solution-based thinking.
 Always think the abstracted from. We are not deal with only the real things, we also deal with the abstracted from.
-### For understanding
-First, ignore other's solution.
-## 必须动手, learning by doing.
-分清哪些需要动手, 大量实践. 必须动手.
+## Learning by doing
+我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
+[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
+### Purpose practice
+Bottom-up
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+### Pain
+Not input; 
+### Focus
 ## 强调基础, 基本的事情.
 ## 简化, few is more.
 要把它想的很简单, 达到豁然开朗.
@@ -153,6 +158,9 @@ kernel 极度复杂, 理解只能起到表皮作用, 作为技能需要熟练掌
 看成被理解的对象 看成just for fun.
 ## Dividing
 任何思维分割,割裂都是有害的.
+Imitate and creativity
+Top-down, bottom-up.
+Beginner, intermediate, advanced
 Understanding and doing; 极其有害.
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Break things down to first principles
@@ -169,11 +177,7 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 ## Origins.
 ## Hyposis and test; Trail and error
-## Learning by doing
-我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
-[Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
-## Purpose practice
-[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+
 ## The Archaeology of Knowledge
 ## Successful cases analysis
 Background, what she/he did, environment, chance
