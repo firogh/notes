@@ -5,7 +5,7 @@
 [ A graphic explanation](https://www.cnblogs.com/yangjiguang/p/8277720.html)jj
 
 # implementation
-1. load_percpu_segment:load gs with 0 and set gs.base to irq_stack_union.gs_base.
+1. load_percpu_segment : load gs with 0 and set gs.base to irq_stack_union.gs_base.
 For x86 64, use gs the segment selector
 2. irq_stack_union is a union and it's the first element is percpu
 3. check SWAPGS in ret_from_fork.
