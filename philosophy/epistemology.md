@@ -3,7 +3,7 @@ date: 2008-09-13
 title: The epistemology on which I am living
 category: philosophy
 ---
-# Change
+# Change/time
 The essence of this world is change. 
 ## attribute
 Limit/border of change
@@ -15,6 +15,11 @@ I know I will be lost and confused in my whole life.
 重要的事永远想不好, 重要的事值得我们做，同样也值得我们犯错.
 小步快跑, Fast.
 Few is more.
+## Uncertain
+Radical fallibility;
+Discount from thoughts to reality;defect; An excellent goal can only produce a decent result,while a common result can only be given by a decent goal.;取法乎上，仅得其中；取法乎中，仅得其下
+Hypothesize bravely/boldly, to prove carefully
+Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
 
 # Causality
 The essence of the world is causality
@@ -41,19 +46,16 @@ How much we understand the world isn't better than how well.
 ## Attitude
 Goal setting, 做事有条理。Focus. 脚踏实地, 不虚妄， 从简单的事做起 and purpose practice。
 
-# Complication 
+# Relativity
+
+# Structure
+## Complication 
 disadvantageous factors; 
-## Attitude
+### Attitude
 Unifying, simplify
 世界是拼接的.
 不可求多, 求全, 要从自我始, 自己理解, 由小见大.
 LQO/ignore unreleated contents.
-
-# Uncertain
-Radical fallibility;
-Discount from thoughts to reality;defect; An excellent goal can only produce a decent result,while a common result can only be given by a decent goal.;取法乎上，仅得其中；取法乎中，仅得其下
-Hypothesize bravely/boldly, to prove carefully
-Don't limit yourself. Walk on air. Espcailly make a plan in terms of time. What is fixed or not.
 
 # Mind 
 Subjective assume
@@ -71,11 +73,9 @@ Law of the hammer.
 People cannot see something wihout being denominated
 填鸭,cramming, rote
 Literal learner, 以为学习是纯粹的文字游戏, 没有把知识同实际生活关联, 死知识; 
-# Reality
-Loss function
-Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
-
-# Ego
+## Structure
+Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
+## Ego
 Love yourself; 
 自己强才是最终要的。
 从多种角度解释自己, 经济社会长顺和我, 哲学.
@@ -83,7 +83,7 @@ Don't limit yourself. Don't be paranoid. Don't get religous about specific progr
 我现在的世界观是极其naive， 脆弱的。
 痛苦才会成长。
 You get what you did.
-## Abilities
+### Abilities
 Creativity
 Mantality: 
 即便失落失意也要以强者姿态活下去。
@@ -91,6 +91,12 @@ Mantality:
 和比你厉害的人在一起，和一流的人工作
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 Nothing new under the sun.
+
+# Reality
+Loss function
+Don't Expect Too Much.There is no perfect. Troubles come one by one. It will disapoint you finally.
+
+# Body
 ## Psychology and Biology
 [Learning How to Learn](https://www.coursera.org/learn/ruhe-xuexi#syllabus)
 Watch out Vicariousness; 考验自制力; 主观上以自己刻苦努力来还取进步; 清华大学学士学位
@@ -105,21 +111,29 @@ Chapter 6 section 1: 记忆还依赖于人的已有的知识结构,只有当输�
 复习是学习之母。”每一本重要的书籍都必须一气呵成连续读上两遍。原因之一是在阅读第二遍的时候,我们会更好地理解书中内容的整体关联,而只有知道了书的结尾才会明白书的开头;原因之二就是在第二次阅读的时候,我们的心境、情绪与在第一次阅读时已经有所不同。这样,我们获得的印象也会不一样。情形就好比在不同光线之下审视同一样的物体 --论阅读与书籍
 精细进行复述是存储信息最有效的方法,它是指把要记住的内容和已有的知识经验联系起来。存储是信息编码和提取的中间环节,它在记忆过程中有着重要的作用。 - 普通心理学 Chapter 6 section 1
 
-# Principle
-Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
-## Critical thinking.
-## Holistic learning; 拼接 splice. 思想和生活应该是有机的整体, 具有生命力, 有条理, 内在逻辑.
-Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
-Feynman method 
-Completeness, consistency, validity, soundness. -- Logic
-The whole is other than the sum of the parts. --Gestalt psychology
+
+# Thoughts and reality
+Incomplete, wrong, fiddled
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
-Habit & Gradual doing
-### free of the curse of symbols
+## Critical thinking
+Completeness, consistency, validity, soundness. -- Logic
+## free of the curse of symbols
+
+# Forming mind structure over change/time
+## Pragmatic
+Learning by doing
 Question-based thinking not Solution-based thinking.
-Always think the abstracted from. We are not deal with only the real things, we also deal with the abstracted from.
-## Learning by doing
+### Comments
 我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
+## Holistic learning; graft/connect. 思想和生活应该是有机的整体, 具有生命力, 有条理, 内在逻辑.
+The whole is other than the sum of the parts. --Gestalt psychology
+## Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
+## Habit & Gradual doing
+## Techniques
+Feynman method 
+
+# Principle
+
 [Take the programs, modify them and enhance them.](http://www.kohala.com/start/unpv12e.html)  --Stevens
 ### Purpose practice
 Bottom-up
