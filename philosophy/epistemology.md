@@ -33,6 +33,7 @@ Creativity
 
 # 4 Mind 
 ## Reason
+## Moderation
 ## Structure
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
 ## Techniques
