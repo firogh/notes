@@ -58,6 +58,9 @@ Proof outline: a program together with an asseration between each pair of statem
 Program specification ⊃ excution ∪ speed ∪ size 
 Instances: summation, squre root approximation, sorting
 command-comment ⊃ all input ∪ output
+# Lock-free programming
+ring buffer, rcu
+
 # Debugging
 see debugging.md
 # Testing

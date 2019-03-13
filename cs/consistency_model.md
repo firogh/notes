@@ -31,6 +31,7 @@ When we are talking on memory model, we are refering memory consistency model or
 # Practices
 [Memory Reordering Caught in the Act][5]
 
+
 # Memory model
 [Memory Consistency Models: A Primer][20]
 [Shared Memory Consistency Models: A Tutorial][0]
@@ -48,6 +49,9 @@ When we are talking on memory model, we are refering memory consistency model or
 [Out-of-Thin-Air Execution is Vacuous][18]
 [Relaxed-Memory Concurrency][11]
 [Mathematizing C++ Concurrency: The Isabelle/HOL model][17]
+
+# C++ memory model
+[The C++ Memory Model - Valentin Ziegler @ Meeting C++ 2014](https://www.youtube.com/watch?v=gpsz8sc6mNU)
 
 # Compiler memory model
 [Memory Ordering at Compile Time][9]
