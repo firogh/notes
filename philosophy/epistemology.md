@@ -6,7 +6,10 @@ category: philosophy
 # Change/time
 # Power
 # Causality
+Connection
+# Pragmatism
 # Relativity
+Perspective
 # Structure
 ## Complication 
 ## Origins
