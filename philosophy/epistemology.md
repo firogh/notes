@@ -6,7 +6,12 @@ category: philosophy
 # Change/time
 # Power
 # Causality
-Connection
+# Quantity
+Major factors and minor factors
+# Adversary
+Loss function
+# Connection
+Chain reaction
 # Pragmatism
 # Relativity
 Perspective
