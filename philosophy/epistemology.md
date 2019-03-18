@@ -6,17 +6,20 @@ category: philosophy
 # Change/time
 # Power
 # Causality
+# Difference
+# Pragmatism
 # Quantity
 Major factors and minor factors
 # Adversary
 Loss function
 # Connection
 Chain reaction
-# Pragmatism
 # Relativity
 Perspective
 # Structure
-## Complication 
+# Ideology
+
+# Complication 
 ## Origins
 Nothing new under the sun.
 
