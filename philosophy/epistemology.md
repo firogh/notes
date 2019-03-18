@@ -7,9 +7,9 @@ category: philosophy
 # Power
 # Causality
 # Difference
-# Pragmatism
 # Quantity
-Major factors and minor factors
+Principal cause and secondary cause
+# Pragmatism
 # Adversary
 Loss function
 # Connection
@@ -18,6 +18,7 @@ Chain reaction
 Perspective
 # Structure
 # Ideology
+# Split
 
 # Complication 
 ## Origins
