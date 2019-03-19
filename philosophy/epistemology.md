@@ -22,6 +22,7 @@ Perspective
 # Structure
 # Ideology
 # Interation
+Opportunity cost
 # Split
 
 # Complication 
