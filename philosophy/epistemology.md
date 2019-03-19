@@ -10,14 +10,18 @@ category: philosophy
 # Quantity
 Principal cause and secondary cause
 # Pragmatism
+Learn by doing;
+Live in the moment
 # Adversary
 Loss function
+Recover and relax
 # Connection
 Chain reaction
 # Relativity
 Perspective
 # Structure
 # Ideology
+# Interation
 # Split
 
 # Complication 
