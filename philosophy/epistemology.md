@@ -15,6 +15,7 @@ Live in the moment
 # Adversary
 Loss function
 Recover and relax
+Abstain
 # Connection
 Chain reaction
 # Relativity
@@ -30,6 +31,7 @@ Opportunity cost
 Nothing new under the sun.
 
 # 3 Thoughts and reality
+Thoughts are usually not capable to control reality
 Incomplete, wrong, fiddled
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
 Law of the hammer. 
