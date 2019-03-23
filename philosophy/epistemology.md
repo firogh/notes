@@ -6,6 +6,7 @@ category: philosophy
 # Change/time
 # Power
 # Causality
+If you don't control youself, you will be definitely controlled by others.
 # Difference
 # Quantity
 Principal cause and secondary cause
@@ -21,11 +22,14 @@ Chain reaction
 # Relativity
 Perspective
 # Structure
+comprehensive derivation
+unseal meaning
 # Ideology
 # Interation
 Opportunity cost
 # Split
-
+1. Power for human is that thoughts create, change reality
+2. Pragmatism: Thoughts are consistent with realities/actions 
 # Complication 
 ## Origins
 Nothing new under the sun.

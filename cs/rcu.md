@@ -5,8 +5,60 @@ date: 2015-05-24T09:52:12+08:00
 category: cs
 ---
 
+# RCU
+## Causality
+Read Copy Update HOWTO介绍了当初RCU开发的动机:
+## Structure
+[What is RCU?](http://www.rdrop.com/users/paulmck/RCU/whatisRCU.html)
+
+# Classic RCU
+commit c17ef45342cc033fdf7bdd5b28615e0090f8d2e7
+Author: Paul E. McKenney <paulmck@linux.vnet.ibm.com>
+Date:   Tue Jun 23 17:12:47 2009 -0700
+    rcu: Remove Classic RCU
+[Brief Overview of Classic RCU Implementation](https://lwn.net/Articles/305782/#Brief%20Overview%20of%20Classic%20RCU%20Implementation)
+[Linux2.6.11版本：classic RCU的实现](http://www.wowotech.net/kernel_synchronization/linux2-6-11-RCU.html)
+
+# Grace period
+Documentation/RCU/rcu.txt
+[URCU: any period of time during which each reader thread resides in at least one quiescent state is called a grace period.](https://lwn.net/Articles/573424/)
+[Start a New Grace Period](https://lwn.net/Articles/305782/#Start%20a%20new%20grace%20period.)
+[... after each CPU has passed through at least one quiescent state, the RCU grace period ends.](https://lwn.net/Articles/305782/#Brief%20Overview%20of%20Classic%20RCU%20Implementation)
+
+# Quiescent state
+[... after all the CPUs in the system have gone through at least one "quiescent" state (such as context switch, idle loop, or user code)](http://lse.sourceforge.net/locking/rcu/HOWTO/descrip.html)
+[URCU: Any line of code not in an RCU read-side critical section is termed a quiescent state](https://lwn.net/Articles/573424/)
+[The rcu and rcu_bh flavors of RCU have different sets of quiescent states.](https://lwn.net/Articles/305782/#Pass%20through%20a%20quiescent%20state.)
+
+# granularity of waiting
+[The great advantage of RCU ... without having to explicitly track each and every one of them](https://lwn.net/Articles/262464/#Wait%20For%20Pre-Existing%20RCU%20Readers%20to%20Complete) 
+In RCU's case, the things waited on are called "RCU read-side critical sections". ditto.
+
+# Preemptiable RCU
+[The design of preemptible read-copy-update](https://lwn.net/Articles/253651/)
+[Realtime RCU](http://www.rdrop.com/users/paulmck/RCU/realtimeRCU.2005.04.23a.pdf)
+
+# SRCU 
+[Sleepable RCU](https://lwn.net/Articles/202847/)
+
+# RCU: The Bloatwatch Edition
+[RCU: The Bloatwatch Edition](https://lwn.net/Articles/323929/)
+
+# Hierarchical RCU / Tree RCU
+[Hierarchical RCU](https://lwn.net/Articles/305782)
+[Tree RCU Grace Period Memory Ordering Components ](https://www.kernel.org/doc/Documentation/RCU/Design/Memory-Ordering/Tree-RCU-Memory-Ordering.html)
+
+
+# RCU API
+[RCU part 3: the RCU API, 2008 edition](https://lwn.net/Articles/264090/)
+[The RCU API, 2010 Edition](https://lwn.net/Articles/418853/)
+[The RCU API, 2014 Edition](https://lwn.net/Articles/609904/)
+[The RCU API, 2019 edition](https://lwn.net/Articles/777036/)
+
 # RCU stalls
+[Decoding Those Inscrutable RCU CPU Stall Warnings](https://www.youtube.com/watch?v=23_GOr8Sz-E)
 update_process_times->rcu_check_callbacks->rcu_pending->__rcu_pending->check_cpu_stall->print_other_cpu_stall
+Documentation/RCU/stallwarn.txt
 
 
 # Reference
@@ -16,30 +68,6 @@ update_process_times->rcu_check_callbacks->rcu_pending->__rcu_pending->check_cpu
 [Read-Copy Update Mutual-Exclusion in Linux](http://lse.sourceforge.net/locking/rcu/rcupdate_doc.html)
 [Thanh Do's notes Read-copy update. In Ottawa Linux Symposium, July 2001](http://pages.cs.wisc.edu/~thanhdo/qual-notes/sync/sync2-rcu.txt)
 
-# Why do need RCU
-For [scalable](http://en.wikipedia.org/wiki/Scalability) mutual exclusion.
-scale有两个词源涵义Proto-Germanic原始日耳曼, 酒杯, 盘子, 称重的盘子, 后来演化成标量的意思.
-scalar在数学上是标量, 在c语言指int float, Scalar processor标量计算机也是来源于此.
-另一个出处是Latin拉丁文scandere, 有攀爬之意, 进而衍生出扩展之意.
-From wikipedia,  A system whose performance improves after adding hardware, 
-proportionally to the capacity added, is said to be a scalable system.
-[因为rwlock, brlock在多核性能下降.需要个高性能的锁](https://www.ibm.com/developerworks/cn/linux/l-rcu/)
-言下之意, 就是其他的mutual exclusion 机制不能很好的扩展, 需要RCU.
-Read Copy Update HOWTO介绍了当初RCU开发的动机:
-* Increase in cost of conventional locks
-第一个原因也是最重要的, 最根本原因.
-传统的锁the contended lock如spinlock实现上不断访问内存轮询锁当前状态, cpu和内存速度的*越来越*巨大差异;
-一种新的锁机制减少访问内存,就成了强烈的需求.
-* Cache benefits of lock-free reads
-传统锁/tried-and-true 如spinlock一类的实现在多核下, 在出现锁竞争时会导致[cache line bouncing](http://www.quora.com/What-is-cache-line-bouncing-How-spinlock-may-trigger-this-frequently). 
-3个cpu, A占有spinlock, 另外两个轮询尝试获取在test and set版本的
-spinlock, 如果Bcpu 修改lock那么C cpu的d cache line 就会强制无效,
-之后c 也修改lock, B的d cache line就无效了.之后B又来了, 就这样.
-在不同cpu之间同步数据, 会耗费很多cpu 指令周期.   
-像[x86的spinlock的实现用lock指令前缀锁住总线](https://www.ibm.com/developerworks/cn/linux/l-cn-spinlock/), 
-其他cpu or dma就不能访问内存, 降低系统的性能, ibm这篇文章说P6之后的处理器减少这种危害.
-* Avoiding complicated races
-No deadlock, 减少了开发维护.
 
 # How to use RCU
 list rcu

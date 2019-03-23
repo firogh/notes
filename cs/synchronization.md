@@ -8,6 +8,7 @@ category: cs
 # ref
 [Linus on recursive lock](https://yarchive.net/comp/linux/recursive_locks.html)
 [Unreliable Guide To Locking](https://www.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/index.html)
+[How to Quantify Scalability](http://www.perfdynamics.com/Manifesto/USLscalability.html)
 
 # HP
 A program is synchronized if all accesses to shared data are ordered by synchronization operations.
