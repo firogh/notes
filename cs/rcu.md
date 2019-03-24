@@ -36,6 +36,7 @@ In RCU's case, the things waited on are called "RCU read-side critical sections"
 
 # Preemptiable RCU
 [The design of preemptible read-copy-update](https://lwn.net/Articles/253651/)
+The RCU implementation for the -rt patchset is unusual in that it permits read-side critical sections to be preempted and to be blocked waiting for locks. However, it does not handle general blocking (for example, via the wait_event() primitive): if you need that, you should instead use SRCU.
 [Realtime RCU](http://www.rdrop.com/users/paulmck/RCU/realtimeRCU.2005.04.23a.pdf)
 
 # SRCU 
