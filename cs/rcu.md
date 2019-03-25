@@ -10,6 +10,7 @@ category: cs
 Read Copy Update HOWTO介绍了当初RCU开发的动机:
 ## Structure
 [What is RCU?](http://www.rdrop.com/users/paulmck/RCU/whatisRCU.html)
+[A Tour Through RCU's Requirements](https://www.kernel.org/doc/Documentation/RCU/Design/Requirements/Requirements.html)
 
 # Classic RCU
 commit c17ef45342cc033fdf7bdd5b28615e0090f8d2e7
@@ -35,6 +36,7 @@ Documentation/RCU/rcu.txt
 In RCU's case, the things waited on are called "RCU read-side critical sections". ditto.
 
 # Preemptiable RCU
+[The 1st: Read-copy-update for realtime](https://lwn.net/Articles/201195/) [Papper](http://www.rdrop.com/users/paulmck/RCU/OLSrtRCU.2006.08.11a.pdf)
 [The design of preemptible read-copy-update](https://lwn.net/Articles/253651/)
 The RCU implementation for the -rt patchset is unusual in that it permits read-side critical sections to be preempted and to be blocked waiting for locks. However, it does not handle general blocking (for example, via the wait_event() primitive): if you need that, you should instead use SRCU.
 [Realtime RCU](http://www.rdrop.com/users/paulmck/RCU/realtimeRCU.2005.04.23a.pdf)
@@ -42,13 +44,20 @@ The RCU implementation for the -rt patchset is unusual in that it permits read-s
 # SRCU 
 [Sleepable RCU](https://lwn.net/Articles/202847/)
 
+# Tasks RCU
+[The RCU-tasks subsystem](https://lwn.net/Articles/607117/)
+
 # RCU: The Bloatwatch Edition
 [RCU: The Bloatwatch Edition](https://lwn.net/Articles/323929/)
 
 # Hierarchical RCU / Tree RCU
 [Hierarchical RCU](https://lwn.net/Articles/305782)
 [Tree RCU Grace Period Memory Ordering Components ](https://www.kernel.org/doc/Documentation/RCU/Design/Memory-Ordering/Tree-RCU-Memory-Ordering.html)
+[A Tour Through TREE_RCU's Data Structures](https://www.kernel.org/doc/Documentation/RCU/Design/Data-Structures/Data-Structures.html)
 
+# Priority-Boosting RCU
+[Priority-Boosting RCU Read-Side Critical Sections](https://lwn.net/Articles/220677/)
+CONFIG_RCU_BOOST
 
 # RCU API
 [RCU part 3: the RCU API, 2008 edition](https://lwn.net/Articles/264090/)
