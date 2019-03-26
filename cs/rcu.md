@@ -14,6 +14,7 @@ Read Copy Update HOWTO
 [A Tour Through RCU's Requirements](https://www.kernel.org/doc/Documentation/RCU/Design/Requirements/Requirements.html)
 ## History
 [As of March 2013: Simplifying RCU](https://lwn.net/Articles/541037/)
+[RCU dissertation.2004.07](http://www2.rdrop.com/users/paulmck/RCU/RCUdissertation.2004.07.14e1.pdf)
 
 
 # Classic RCU
@@ -34,6 +35,7 @@ Documentation/RCU/rcu.txt
 [... after all the CPUs in the system have gone through at least one "quiescent" state (such as context switch, idle loop, or user code)](http://lse.sourceforge.net/locking/rcu/HOWTO/descrip.html)
 [URCU: Any line of code not in an RCU read-side critical section is termed a quiescent state](https://lwn.net/Articles/573424/)
 [The rcu and rcu_bh flavors of RCU have different sets of quiescent states.](https://lwn.net/Articles/305782/#Pass%20through%20a%20quiescent%20state.)
+[Using Quiescent States to Reclaim Memory](https://preshing.com/20160726/using-quiescent-states-to-reclaim-memory/)
 
 # granularity of waiting
 [The great advantage of RCU ... without having to explicitly track each and every one of them](https://lwn.net/Articles/262464/#Wait%20For%20Pre-Existing%20RCU%20Readers%20to%20Complete) 
@@ -45,6 +47,11 @@ In RCU's case, the things waited on are called "RCU read-side critical sections"
 The RCU implementation for the -rt patchset is unusual in that it permits read-side critical sections to be preempted and to be blocked waiting for locks. However, it does not handle general blocking (for example, via the wait_event() primitive): if you need that, you should instead use SRCU.
 [Realtime RCU](http://www.rdrop.com/users/paulmck/RCU/realtimeRCU.2005.04.23a.pdf)
 [RCU-preempt: What happens on a context switch](http://www.joelfernandes.org/linuxinternals/2018/05/10/5-rcu-preempt-context-switch.html)
+## Implementation
++#define RCU_READ_UNLOCK_NEED_QS (1 << 2) /* RCU core needs CPU response. */
+f41d911f8c49a5d65c86504c19e8204bb605c4fd
+need_qs
+1d082fd061884a587c490c4fc8a2056ce1e47624
 
 # SRCU 
 [Sleepable RCU](https://lwn.net/Articles/202847/)
