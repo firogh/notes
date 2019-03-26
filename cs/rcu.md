@@ -11,6 +11,9 @@ Read Copy Update HOWTO介绍了当初RCU开发的动机:
 ## Structure
 [What is RCU?](http://www.rdrop.com/users/paulmck/RCU/whatisRCU.html)
 [A Tour Through RCU's Requirements](https://www.kernel.org/doc/Documentation/RCU/Design/Requirements/Requirements.html)
+## History
+[As of March 2013: Simplifying RCU](https://lwn.net/Articles/541037/)
+
 
 # Classic RCU
 commit c17ef45342cc033fdf7bdd5b28615e0090f8d2e7
@@ -40,6 +43,7 @@ In RCU's case, the things waited on are called "RCU read-side critical sections"
 [The design of preemptible read-copy-update](https://lwn.net/Articles/253651/)
 The RCU implementation for the -rt patchset is unusual in that it permits read-side critical sections to be preempted and to be blocked waiting for locks. However, it does not handle general blocking (for example, via the wait_event() primitive): if you need that, you should instead use SRCU.
 [Realtime RCU](http://www.rdrop.com/users/paulmck/RCU/realtimeRCU.2005.04.23a.pdf)
+[RCU-preempt: What happens on a context switch](http://www.joelfernandes.org/linuxinternals/2018/05/10/5-rcu-preempt-context-switch.html)
 
 # SRCU 
 [Sleepable RCU](https://lwn.net/Articles/202847/)
@@ -47,13 +51,21 @@ The RCU implementation for the -rt patchset is unusual in that it permits read-s
 # Tasks RCU
 [The RCU-tasks subsystem](https://lwn.net/Articles/607117/)
 
-# RCU: The Bloatwatch Edition
+# Tiny RCU / RCU: The Bloatwatch Edition
 [RCU: The Bloatwatch Edition](https://lwn.net/Articles/323929/)
+[rcu: Add a TINY_PREEMPT_RCU](https://lwn.net/Articles/396767/)
+[rcu: Remove TINY_PREEMPT_RCU](https://lore.kernel.org/patchwork/patch/373048/)
 
-# Hierarchical RCU / Tree RCU
+# Tree RCU / Hierarchical RCU
 [Hierarchical RCU](https://lwn.net/Articles/305782)
 [Tree RCU Grace Period Memory Ordering Components ](https://www.kernel.org/doc/Documentation/RCU/Design/Memory-Ordering/Tree-RCU-Memory-Ordering.html)
 [A Tour Through TREE_RCU's Data Structures](https://www.kernel.org/doc/Documentation/RCU/Design/Data-Structures/Data-Structures.html)
+[A Tour Through TREE_RCU's Expedited Grace Periods](https://www.kernel.org/doc/Documentation/RCU/Design/Expedited-Grace-Periods/Expedited-Grace-Periods.html)
+[Tree preempt RCU: 3.0 and RCU: what went wrong](https://lwn.net/Articles/453002/)
+
+# RCU bh
+[Questions on rcu-bh design](https://lwn.net/ml/linux-kernel/CAJWu+oqCun1Ae6GqPxnS+eCDi3jadGPp+MO8TjOWgs+AiAh79A@mail.gmail.com/)
+
 
 # Priority-Boosting RCU
 [Priority-Boosting RCU Read-Side Critical Sections](https://lwn.net/Articles/220677/)
