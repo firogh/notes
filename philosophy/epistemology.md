@@ -39,6 +39,7 @@ Nothing new under the sun.
 control yourself
 Control your desire: https://www.bilibili.com/video/av48250012/
 Use causality
+No poll and no wait
 # 3 Thoughts and reality
 Incomplete, wrong, fiddled
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.
