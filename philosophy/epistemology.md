@@ -11,7 +11,6 @@ If you don't control youself, you will be definitely controlled by others.
 # Quantity
 Principal cause and secondary cause
 # Pragmatism
-Learn by doing;
 Live in the moment
 # Adversary
 Loss function
@@ -24,22 +23,26 @@ Perspective
 # Structure
 comprehensive derivation
 unseal meaning
-# Ideology
 # Interation
 Opportunity cost
 # Split
 1. Power for human is that thoughts create, change reality
 2. Pragmatism: Thoughts are consistent with realities/actions 
 # Complication 
-## Origins
-Nothing new under the sun.
+# Learn by doing;
+accumulate ... over a long period
+to proceed in an orderly way and advance step by step 
+Internalization
 # The evil, kakurenbo,  The world is controling and assimilating us.
 # Thoughts are usually not capable to control reality
 # What could we do
-control yourself
-Control your desire: https://www.bilibili.com/video/av48250012/
+control yourself and your desire: https://www.bilibili.com/video/av48250012/
 Use causality
 No poll and no wait
+Vicariousness: watch game news; read  kernel book on the implementation
+## Origins
+Nothing new under the sun.
+Ideology
 # 3 Thoughts and reality
 Incomplete, wrong, fiddled
 [知识的局限性](http://www.qunzh.com/qkzx/gwqk/dzxt/2015/201502/201505/t20150508_9523.html) 碎片化的知识无用, 碎片化知识切割人生.

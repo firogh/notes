@@ -7,6 +7,10 @@
 # community
 https://www.youtube.com/watch?v=wlqjQe3vDx8&list=PLbzoR-pLrL6rOT6m50HdJFYUHyvA9lurI&index=11&t=0s
 
+# Kernel labs
+https://linux-kernel-labs.github.io/master/labs/deferred_work.html
+block: https://github.com/gurugio/book_linuxkernel_blockdrv
+
 # kernel guide
 https://www.kernel.org/doc/htmldocs/kernel-hacking/index.html
 
@@ -14,6 +18,7 @@ https://lwn.net/Articles/749064/
 
 # kernel commit tree
 https://lwn.net/Articles/572068/
+
 
 # interview question
 https://www.quora.com/Kernel-programming-is-a-big-area-Network-stack-might-have-nothing-in-common-with-block-drivers-etc-To-test-someone%E2%80%99s-overall-knowledge-what-would-be-some-good-interview-questions-on-Linux-kernel-programming
