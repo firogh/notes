@@ -23,11 +23,17 @@ Chain reaction
 Perspective
 # Structure
 comprehensive derivation
-unseal meaning
+Unseal meaning from fragmentated world
+History
+Problem-resolver thinking vs symbol-cacther thinking
+# Reflexcity, symphysis
+# Behavoir defines human
+firo ... zhanglei
 # Ideology
 # Interation
 Opportunity cost
 # Split
+symbols spilt world
 1. Power for human is that thoughts create, change reality
 2. Pragmatism: Thoughts are consistent with realities/actions 
 # Complication 
