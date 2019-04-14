@@ -12,6 +12,8 @@ If you don't control youself, you will be definitely controlled by others.
 Principal cause and secondary cause
 # Pragmatism
 Live in the moment
+# Subjectivity
+All plan should be based on problem and pragmatism.
 # Adversary
 Loss function
 Recover and relax
@@ -47,6 +49,7 @@ control yourself and your desire: https://www.bilibili.com/video/av48250012/
 Use causality
 No poll and no wait
 Vicariousness: watch game news; read  kernel book on the implementation
+对实现失去兴趣, https://lwn.net/Articles/164121/
 ## Origins
 Nothing new under the sun.
 Ideology

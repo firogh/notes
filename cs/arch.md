@@ -30,6 +30,10 @@ See MIPS run
 Intel 64 and IA-32 architectures software developers manual combined volumes 3A, 3B, and 3C: System programming guide	
 Microelectronics
 
+# Definition
+[Architectural state](https://en.wikipedia.org/wiki/Architectural_state)
+microarchitectural state, such as information stored in TLBs and caches
+
 ## ISA
 model: 1570s, "likeness made to scale; architect's set of designs," from Middle French modelle 
 Semantics in computer science: In programming language theory, semantics is the field concerned 
