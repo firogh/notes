@@ -122,7 +122,11 @@ To get the full path call dentry_path_raw(filp->f_path.dentry,buf,buflen).
 get the meaning of this struct by looking d_path().It includes the two endpoints of a path which are mnt and dentry.
 [Upcoming API change: struct path](https://lwn.net/Articles/206758/)
 
-# mount
+# Mount
+[Mount namespaces and shared subtrees](https://lwn.net/Articles/689856/)
+[Mount namespaces, mount propagation, and unbindable mounts](https://lwn.net/Articles/690679/)
+[Shared Subtrees](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt)
+[Shared subtrees lwn.net](https://lwn.net/Articles/159077/)
 do_new_mount
 {
 	vfs_kern_mount
