@@ -10,4 +10,9 @@ The scheduling of life
 
 # CS
 
+# kernel
+* Compound page
+* ALTERNATIVE and RESTRICT_IB_SPEC
+*  the architectural state of the processor and the microarchitectural state
+
 # Work
