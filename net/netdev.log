@@ -1,0 +1,3 @@
+
+# synchronization between net-procfs dev_get_stats and device close or ethtool reconfigurations
+WRONG PATCH [Fix inconsistent rtnl_lock usage on dev_get_stats](http://patchwork.ozlabs.org/patch/711665/)

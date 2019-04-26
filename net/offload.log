@@ -1,0 +1,10 @@
+commit 86911732d3996a9da07914b280621450111bb6da
+Author: Herbert Xu <herbert@gondor.apana.org.au>
+Date:   Thu Jan 29 14:19:50 2009 +0000
+
+    gro: Avoid copying headers of unmerged packets
+
+ struct napi_gro_cb {
++       /* This indicates where we are processing relative to skb->data. */
++       int data_offset;
+

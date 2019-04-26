@@ -14,5 +14,8 @@ The scheduling of life
 * Compound page
 * ALTERNATIVE and RESTRICT_IB_SPEC
 *  the architectural state of the processor and the microarchitectural state
+* smp call smp_call_function_many or single
+*  if (touch_ts == 0) in watchdog_timer_fn
+* PT_LOAD
 
 # Work
