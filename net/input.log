@@ -1,0 +1,5 @@
+
+# /* ieee80211_deliver_skb [mac80211] */
+    2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]
+
+ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb

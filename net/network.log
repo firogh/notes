@@ -29,10 +29,32 @@ use in skb_clone function
 use case 1: tcpdump and network stack
 fclones->fclone_ref 这就是引用, 用处见skb_clone
 skbuff_head_cache alloc的skb对应n->fclone = SKB_FCLONE_UNAVAILABLE;
-* pskb_pull -- p abbrivated from oprivate
+* pskb_pull -- p stands for page
 * truesize -- len of sk_buff + head_len + frags + frag_list
 * data_len -- len of frags + frag_list
 * len -- head_len + frgas + frag_list
+
+# pskb_*
+commit 1a0153507ffae9cf3350e76c12d441788c0191e1
+Author: Linus Torvalds <torvalds@athlon.transmeta.com>
+Date:   Mon Feb 4 18:11:38 2002 -0800
+
+    v2.4.3.2 -> v2.4.3.3
++/**
++ *     pskb_copy       -       create copy of an sk_buff with private head.
++ *     @skb: buffer to copy
++ *     @gfp_mask: allocation priority
++ *
++ *     Make a copy of both an &sk_buff and part of its data, located
++ *     in header. Fragmented data remain shared. This is used when
++ *     the caller wishes to modify only header of &sk_buff and needs
++ *     private copy of the header to alter. Returns %NULL on failure
++ *     or the pointer to the buffer on success.
++ *     The returned buffer has a reference count of 1.
++ */
++
++struct sk_buff *pskb_copy(struct sk_buff *skb, int gfp_mask)
+[How to understand the function of pskb_may_pull](https://lists.kernelnewbies.org/pipermail/kernelnewbies/2015-January/013183.html)
 
 # Socket layer
 [What's Wrong With Sockets Performance And How to Fix It][1]
@@ -114,23 +136,41 @@ ioctl
 Address,  links, neighboring, routing, TC
 
 # Offload
+## GSO
 [GSO: Generic Segmentation Offload](https://lwn.net/Articles/188489/)
+TSO = GSO_TCPV4
+frags = sg I/O
+frag_list
 ## TSO
 搞这么复杂就是为了, 在validate_xmit_skb如果硬件支持tso, 协议栈就偷懒了, 不分片tcp报文,
 当然skb->len得大于mss_now才有意义.
 tcp_set_skb_tso_segs
-
-## offload
 * TSO in tcp_v4_connect
 [TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
 One Liner says: It is a method to reduce cpu workload of packet cutting in 1500byte and asking hardware to perform the same functionality.
-* GSO
-[GSO: Generic Segmentation Offload](http://thread.gmane.org/gmane.linux.network/37287)
-TSO = GSO_TCPV4
-frags = sg I/O
-frag_list
-*GRO
+
+## GRO
 napi -> dev ->inet->skb
+[JLS2009: Generic receive offload](https://lwn.net/Articles/358910/)
+
+### Ethernet GRO
+commit 9b174d88c257150562b0101fcc6cb6c3cb74275c
+Author: Jesse Gross <jesse@nicira.com>
+Date:   Tue Dec 30 19:10:15 2014 -0800
+
+    net: Add Transparent Ethernet Bridging GRO support.
++static struct packet_offload eth_packet_offload __read_mostly = {
++       .type = cpu_to_be16(ETH_P_TEB),
++       .callbacks = {
++               .gro_receive = eth_gro_receive,
++               .gro_complete = eth_gro_complete,
++       },
++};
+commit e1a8000228e16212c93b23cfbed4d622e2ec7a6b
+Author: Herbert Xu <herbert@gondor.apana.org.au>
+Date:   Thu Oct 9 12:00:17 2008 -0700
+
+    gre: Add Transparent Ethernet Bridging
 
 # Time-wait
 [Coping with the TCP TIME-WAIT state on busy Linux servers](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
