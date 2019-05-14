@@ -1,0 +1,46 @@
+# SKB
+## [skb](http://vger.kernel.org/~davem/skb.html)
+[Basic functions for sk_buff](http://www.skbuff.net/skbbasic.html)
+[SKB data area handling](http://vger.kernel.org/~davem/skb_data.html)
+[Things that need to get done in the Linux kernel networking](http://vger.kernel.org/~davem/net_todo.html)
+[Skbuffs - A tutorial](http://people.sissa.it/~inno/pubs/skb.pdf)
+[Network buffers The BSD, Unix SVR4 and Linux approaches](http://people.sissa.it/~inno/pubs/skb-reduced.pdf)
+[skb_shared_info](http://marc.info/?l=linux-netdev&m=115508038817177&w=2)
+This "shared info" (so called because it can be shared among copies of the skb within the networking code)  --LDD3 17.10
+[frags and frag_list](http://stackoverflow.com/questions/10039744/difference-between-skbuff-frags-and-frag-list/)
+dataref标识的仅仅head data共享的次数也就是skb_clone.
+而frags 是get_page, frag_list 是skb_get.
+skb->data_len这个成员就非常不直观!他是paged-data的长度.
+## fclone -- fast clone
+[NET Implement SKB fast cloning.](http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=d179cd12928443f3ec29cfbc3567439644bd0afc)
+[Fast SKB cloning, continued](http://lwn.net/Articles/140552/)
+use in skb_clone function
+use case 1: tcpdump and network stack
+fclones->fclone_ref 这就是引用, 用处见skb_clone
+skbuff_head_cache alloc的skb对应n->fclone = SKB_FCLONE_UNAVAILABLE;
+* pskb_pull -- p stands for page
+* truesize -- alloc_skb
+* data_len -- len of frags + frag_list
+* len -- head_len + frgas + frag_list
+
+# pskb_*
+commit 1a0153507ffae9cf3350e76c12d441788c0191e1
+Author: Linus Torvalds <torvalds@athlon.transmeta.com>
+Date:   Mon Feb 4 18:11:38 2002 -0800
+
+    v2.4.3.2 -> v2.4.3.3
++/**
++ *     pskb_copy       -       create copy of an sk_buff with private head.
++ *     @skb: buffer to copy
++ *     @gfp_mask: allocation priority
++ *
++ *     Make a copy of both an &sk_buff and part of its data, located
++ *     in header. Fragmented data remain shared. This is used when
++ *     the caller wishes to modify only header of &sk_buff and needs
++ *     private copy of the header to alter. Returns %NULL on failure
++ *     or the pointer to the buffer on success.
++ *     The returned buffer has a reference count of 1.
++ */
++
++struct sk_buff *pskb_copy(struct sk_buff *skb, int gfp_mask)
+[How to understand the function of pskb_may_pull](https://lists.kernelnewbies.org/pipermail/kernelnewbies/2015-January/013183.html)

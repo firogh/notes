@@ -5,6 +5,9 @@ date: 2015-02-27T15:46:13+08:00
 category: net
 ---
 
+# Time-wait
+[Coping with the TCP TIME-WAIT state on busy Linux servers](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
+
 # Key commits
 tcp: remove prequeue support - e7942d0633c47c791ece6afa038be9cf977226de
 tcp: remove tcp_tw_recycle - 4396e46187ca5070219b81773c4e65088dac50cc
@@ -237,4 +240,3 @@ tcp_retransmiter_timer()...->tcp_transmit_skb()
 tcp_data_snd_check()->tcp_write_xmit()
 * tcp_v4_rcv
 [skb->dev = NULL;](http://thread.gmane.org/gmane.linux.network/85613/focus=85614)
-* tcp的核心发包函数tcp_write_xmit and tcp_transmit_skb

@@ -8,3 +8,32 @@ Date:   Thu Jan 29 14:19:50 2009 +0000
 +       /* This indicates where we are processing relative to skb->data. */
 +       int data_offset;
 
+[JLS2009: Generic receive offload](https://lwn.net/Articles/358910/)
+[GRO: Surviving 10Gbp/s with Cycles to Spare](https://events.static.linuxfound.org/images/stories/slides/jls09/jls09_xu.pdf)
+[Segmentation Offloads in the Linux Networking Stack](https://www.kernel.org/doc/Documentation/networking/segmentation-offloads.txt)
+[GSO: Generic Segmentation Offload](https://lwn.net/Articles/188489/)
+
+# TSO in tcp_v4_connect
+tcp_set_skb_tso_segs
+[TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
+
+# Ethernet GRO
+commit 9b174d88c257150562b0101fcc6cb6c3cb74275c
+Author: Jesse Gross <jesse@nicira.com>
+Date:   Tue Dec 30 19:10:15 2014 -0800
+
+    net: Add Transparent Ethernet Bridging GRO support.
++static struct packet_offload eth_packet_offload __read_mostly = {
++       .type = cpu_to_be16(ETH_P_TEB),
++       .callbacks = {
++               .gro_receive = eth_gro_receive,
++               .gro_complete = eth_gro_complete,
++       },
++};
+commit e1a8000228e16212c93b23cfbed4d622e2ec7a6b
+Author: Herbert Xu <herbert@gondor.apana.org.au>
+Date:   Thu Oct 9 12:00:17 2008 -0700
+
+    gre: Add Transparent Ethernet Bridging
+
+

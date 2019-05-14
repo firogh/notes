@@ -1,0 +1,15 @@
+
+
+ip_finish_output2 -> dev_queue_xmit -> 
+{
+	# if qdisc enabled 	
+	__dev_xmit_skb
+	{
+		sch_direct_xmit -> dev_hard_start_xmit -> xmit_one
+		or
+		queue to soft_data for net_tx_qction
+	}
+	# else
+		dev_hard_start_xmit
+}
+net_tx_action -> qdisc_* -> sch_direct_xmit

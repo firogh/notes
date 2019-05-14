@@ -6,6 +6,35 @@ category: net
 ---
 
 
+# Fragmentation for frag_list
+
+ip_defrag -> ip_frag_queue -> ip_frag_reasm
+udp_sendmsg -> ... ip_make_skb
+
+ => __ip_make_skb
+ => ip_push_pending_frames
+ => ip_send_unicast_reply
+ => tcp_v4_send_reset
+ => tcp_v4_rcv
+ => ip_local_deliver_finish
+ => ip_local_deliver
+ => ip_rcv
+ => __netif_receive_skb_core
+ => netif_receive_skb_internal
+ => napi_gro_receive
+ => r8152_poll
+ => net_rx_action
+ => __do_softirq
+ => irq_exit
+ => do_IRQ
+ => ret_from_intr
+ => cpuidle_enter_state
+ => do_idle
+ => cpu_startup_entry
+ => start_secondary
+ => secondary_startup_64
+
+
 # Route
 [1]: https://vincent.bernat.im/en/blog/2017-ipv4-route-lookup-linux
 ## Route

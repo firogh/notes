@@ -1,0 +1,94 @@
+
+# References
+[Linux Network Receive Stack Monitoring and Tuning Deep Dive](https://people.redhat.com/pladd/MHVLUG_2017-04_Network_Receive_Stack.pdf)
+[Monitoring and Tuning the Linux Networking Stack: Receiving Data](https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/)
+[Monitoring and Tuning the Linux Networking Stack: Sending Data](https://blog.packagecloud.io/eng/2017/02/06/monitoring-tuning-linux-networking-stack-sending-data/)
+[Illustrated Guide to Monitoring and Tuning the Linux Networking Stack: Receiving Data](https://blog.packagecloud.io/eng/2016/10/11/monitoring-tuning-linux-networking-stack-receiving-data-illustrated/)
+[Understanding TCP/IP Network Stack & Writing Network Apps](https://www.cubrid.org/blog/understanding-tcp-ip-network-stack)
+
+# Socket layer
+[What's Wrong With Sockets Performance And How to Fix It][1]
+[1]: http://natsys-lab.blogspot.com/2013/03/whats-wrong-with-sockets-performance.html
+
+## Topdown swith: socket -> (datagram, raw, stream) proto_ops -> protocol proto and proto specific
+BSD socket api ->proto_ops(sock type base)api ->proto (udp/tcp_prot)
+abstraction <-> specific
+Swith proto family in __sock_create(); net_families[family];
+Swith proto_ops in inet_create() and sock->ops = inet_protosw.ops
+switch table: static struct inet_protosw inetsw_array
+const struct proto_ops inet_stream_ops is very like the following fops in ext4 fs.
+                inode->i_op = &ext4_file_inode_operations;
+                inode->i_fop = &ext4_file_operations;
+struct proto tcp_prot
+and
+init proto specific function in inet_create() too
+sk->sk_prot->init(sk) = tcp_v4_init_sock()
+icsk->icsk_af_ops = &ipv4_specific; this is just a set of fuctions releate to TCP.
+## bind
+sys_bind -> inet_stream_ops ->inet_bind ->sk_prot->bind(likely, is NULL)
+## Write
+write->inet_stream_ops->sendmsg->tcp_sendmsg
+* inet_connection_sock_af_ops
+icsk->icsk_af_ops
+
+# TCP send packet
+message tcp_sendmsg:
+ip_queue_xmit
+tcp_transmit_skb -> icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl); -> ip_queue_xmit -> ip_local_out ->ip_output -> ip_finish_output
+tcp_v4_send_synack:
+ip_build_and_send_pkt
+tcp_v4_send_reset tcp_v4_send_ack:
+ip_send_unicast_reply
+syn
+tcp_v4_connect
+syndata
+tcp_send_syn_data
+
+# TCP receive packet
+## steps of tcp_rcvmsg
+https://www.spinics.net/lists/newbies/msg14465.html
+[Best explnations of set_task_state to running in tcp_rcv_established, see explorer](http://bbs.chinaunix.net/forum.php?mod=viewthread&action=printable&tid=4114007)
+Even through you know above , I think you should also know if a task was scheduled with task state == RUNNING, the schedule will use put_prev_task_fair-> put_prev_entity->__enqueue_entity as prev->on_rq inpick_next_task_fair()
+
+# TCP lock
+[The design of lock_sock() in Linux kernel](https://medium.com/@c0ngwang/the-design-of-lock-sock-in-linux-kernel-69c3406e504b)
+
+# IP
+## /* ieee80211_deliver_skb [mac80211] */
+    2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]
+
+ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb
+## Bottomup switch
+ip_rcv_finish_core
+int protocol = iph->protocol;
+struct net_protocol __rcu *inet_protos[MAX_INET_PROTOS];
+inet_add_protocol(&tcp_protocol, IPPROTO_TCP) 
+
+# L2
+* packet_type -- l3 rcv in ptype_all and ptype_base
+pt_prev->func
+
+# Queues
+tcp_add_backlog
+tcp_prequeue:ucopy.prequeue
+tcp_copy_to_iovec:ucopy.msg,
+tcp_queue_rcv:sk->sk_receive_queue
+tcp_data_queue: ooo?
+
+sk_backlog_rcv=tcp_v4_do_rcv
+
+# What about the skbs in sk_receive_queue?
+sk→receive_queue contains processed TCP segments, which means that all the pro-
+tocol headers are stripped and data are ready to be copied to the user application.
+
+# When was the socket lock owned user?
+grep owned = 1, you will find tcp_ioctl/sendmsg/recvmsg() will call lock_sock().
+In tcp_recvmsg, the prequeue and sk_receive_queue will be processed.
+So we know that the owned is used to protect receive queue and prequeue.
+In other words, if owned = 1, we cannot queue skb in either receive queue and prequeue.
+That means only sk_backlog queue is the home for skb temporarily.
+
+# What does ucopy.task mean?
+ucopy.task was temporarily enabled in tcp_recvmsg in order to read more data after processing receive queue.
+It will be disabled in the same fuction. So go back to tcp_prequeue, we know if user need more data, then we queue new skb in ucopy.preueue otherwise not.
+In tcp_rcv_established(), the tp->ucopy.task == current indicats we are in process context.
