@@ -1,0 +1,17 @@
+[xen dump-core format](https://xenbits.xenproject.org/docs/unstable/misc/dump-core-format.txt)
+[Dom0 and hypervisor coredump](http://xen.1045712.n5.nabble.com/xm-dump-core-and-analyzing-td2498845.html)
+Note that with Magnus Damm's latest hypervisor/xen0 kexec/kdump "combination" 
+vmcore format -- which has the additional XEN_ELFNOTE_CRASH_INFO ELF 
+note containing the dom0 pfn_to_mfn_frame_list_list value-- I can run a crash 
+session on the vmcore from the xen0 kernel perspective, as in: 
+
+ $ crash xen0-vmlinux vmcore 
+
+Additionally, Itsuro Oda from VAlinux has also provided a patch so that a crash 
+session can be run on the xen-syms binary as well, as in: 
+
+ $ crash xen-syms vmcore 
+
+When that occurs, the crash utility veers off and offers up a different 
+set of commands appropriate to the hypervisor, i.e., instead of commands 
+relevant to the vmlinux kernel. 

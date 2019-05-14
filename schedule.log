@@ -17,5 +17,10 @@ The scheduling of life
 * smp call smp_call_function_many or single
 *  if (touch_ts == 0) in watchdog_timer_fn
 * PT_LOAD
+* prefetchw
+* MSIX
+https://lwn.net/Articles/44139/
+* DMA
+* gfpflags_allow_blocking
 
 # Work

@@ -7,3 +7,9 @@ https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt
 boot into a readonly snapshot
 snapper rollback;
 reboot
+
+# VF
+[1]: https://docs.microsoft.com/en-us/windows-hardware/drivers/network/sr-iov-vf-data-path
+[2]: https://blog.scottlowe.org/2009/12/02/what-is-sr-iov/
+[SR-IOV VF Data Path][1]
+[What is SR-IOV][2]
