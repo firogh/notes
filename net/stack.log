@@ -14,7 +14,7 @@
 BSD socket api ->proto_ops(sock type base)api ->proto (udp/tcp_prot)
 abstraction <-> specific
 Swith proto family in __sock_create(); net_families[family];
-Swith proto_ops in inet_create() and sock->ops = inet_protosw.ops
+Swith proto_ops in inet_create() and sock->ops = inet_protosw.ops , inetsw_array
 switch table: static struct inet_protosw inetsw_array
 const struct proto_ops inet_stream_ops is very like the following fops in ext4 fs.
                 inode->i_op = &ext4_file_inode_operations;
@@ -58,15 +58,36 @@ Even through you know above , I think you should also know if a task was schedul
     2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]
 
 ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb
-## Bottomup switch
+
+## L4 Bottomup switch
 ip_rcv_finish_core
 int protocol = iph->protocol;
 struct net_protocol __rcu *inet_protos[MAX_INET_PROTOS];
 inet_add_protocol(&tcp_protocol, IPPROTO_TCP) 
+tcp_v4_protocol
 
-# L2
-* packet_type -- l3 rcv in ptype_all and ptype_base
-pt_prev->func
+# L3 - Network layer going up swith
+Ether type
+ETH_P_LOOP      0x0060          /* Ethernet Loopback packet     */
+ETH_P_IP        0x0800          /* Internet Protocol packet     */
+ETH_P_ARP       0x0806          /* Address Resolution packet    */
+ETH_P_802_3     0x0001          /* Dummy type for 802.3 frames  */
+ETH_P_ALL       0x0003          /* Every packet (be careful!!!) */
+ETH_P_802_2     0x0004          /* 802.2 frames                 */
+ETH_P_SNAP      0x0005          /* Internal only  
+static struct packet_type ip_packet_type __read_mostly = {
+        .type = cpu_to_be16(ETH_P_IP),
+        .func = ip_rcv,
+and arp_rcv and packet_rcv
+ptype_all: it's for nit; check packet_create() and ETH_P_ALL; it's a socket based packet receiver.
+ptype_base: except ETH_P_ALL;
+pt_prev: skb->users, deliver_skb, skb_shared_check, skb_clone, kfree_skb
+It's a optimization for only-one hanlder case.
+it's for the following. it's not the deliver_skb(), so no increasing skb->users, no skb_clone.  
+	if (pt_prev) {
+                ret = pt_prev->func(skb, skb->dev, pt_prev, orig_dev);
+        } 
+
 
 # Queues
 tcp_add_backlog

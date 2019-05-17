@@ -1,3 +1,5 @@
+
+
 #Netlink
 * Group
 enum rtnetlink_groups
@@ -20,3 +22,6 @@ Because network monitors run as user-level processes, packets must be copied acr
 ## Packet filter
 [Packet filter](http://www.tcpdump.org/papers/bpf-usenix93.pdf)
 check cs/ebpf.log
+
+# ETC
+[Things that need to get done in the Linux kernel networking](http://vger.kernel.org/~davem/net_todo.html)

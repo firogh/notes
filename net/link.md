@@ -254,16 +254,6 @@ n->poll = gfar_poll
 	}
 	enable irq
 
-# RPS
-
-# Driver 
-* skb->protocol
-+ assignment in ip_output by = htons(ETH_P_IP)
-+ assignment in driver by = eth_type_trans() 
-
-# MAC
-* Addressing,LAN switching
-
 # relations of concept
 Qdisc -- NET_XMIT_SUCCESS
 dev -- NETDEV_TX_OK
@@ -273,5 +263,3 @@ dev -- NETDEV_TX_OK
 
 # Admin queue
 Intel® Ethernet Controller 710 Series Datasheet Chapter 7.10
-
-

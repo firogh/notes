@@ -22,5 +22,8 @@ The scheduling of life
 https://lwn.net/Articles/44139/
 * DMA
 * gfpflags_allow_blocking
+* sk_forward_alloc
+* pskb_pull for multiple L3 going up handler
+* generic-receive-offload: off
 
 # Work
