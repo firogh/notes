@@ -1,36 +1,25 @@
 # net_device
 /sys/class/net/<dev>/
 man netdevice
-* dev->flags dev_get_flags()
-+rfc2863
-+ [operational state](https://www.kernel.org/doc/Documentation/networking/operstates.txt)
-+ [Monitoring Interface Administrative State and Physical State on Cumulus Linux](https://support.cumulusnetworks.com/hc/en-us/articles/202693826-Monitoring-Interface-Administrative-State-and-Physical-State-on-Cumulus-Linux)
-* dev->operstate
-dev->operstate in rfc2863_policy()
-admin state is if flag
-operate state is link_state
-Administrative state is the result of "ip link set dev
-<dev> up or down" and reflects whether the administrator wants to use
-the device for traffic.
+## flags 
+dev_get_flags(); admin state is if flag;  Administrative state is the result of "ip link set dev <dev> up or down" and reflects whether the administrator wants to use the device for traffic.
+[Monitoring Interface Administrative State and Physical State on Cumulus Linux](https://support.cumulusnetworks.com/hc/en-us/articles/202693826-Monitoring-Interface-Administrative-State-and-Physical-State-on-Cumulus-Linux)
+## operstate
+[operational state](https://www.kernel.org/doc/Documentation/networking/operstates.txt)
+IF_OPER_UNKNOWN; dev->operstate in rfc2863_policy(); operate state is link_state
 enp9s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
-operate is DOWN, amdin is UP>
-Operational state
-shows the ability of an interface to transmit this user data.
-    "UNKNOWN", "NOTPRESENT", "DOWN", "LOWERLAYERDOWN",
-    "TESTING", "DORMANT",    "UP"
-IF_OPER_UNKNOWN,
-see rfc2863
-* dev->link_mode
+operate is DOWN, amdin is UP; Operational state shows the ability of an interface to transmit this user data.
+"UNKNOWN", "NOTPRESENT", "DOWN", "LOWERLAYERDOWN",
+"TESTING", "DORMANT",    "UP"
+## link_mode
 IF_LINK_MODE_DORMANT wifi
 IF_LINK_MODE_DEFAULT wire
-* dev->state
-* netdev_queue->state 
-* dev_watchdog
+## state
+## dev_watchdog
+## netdev_queue->state 
 
-# MTU
-MTU or Ethernet MTU
-This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively.
-This characteristic of the link layer is called the MTU, its maximum transmission unit.
+# MTU or Ethernet MTU
+This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively. This characteristic of the link layer is called the MTU, its maximum transmission unit.
 
 PMTU
 ping -c 1 -M do -s 2000 8.8.8.8
@@ -44,8 +33,6 @@ If you are using Jumbo Frames, we recommend setting tcp_mtu_probing = 1 to help 
 
 icmp_unreach: type 3 ICMP_DEST_UNREACH, code 4 ICMP_FRAG_NEEDED
 icmp_err
-
-
 
 # Netlink
 Networking related kernel configuration and monitoring interfaces.
