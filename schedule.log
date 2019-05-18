@@ -25,5 +25,6 @@ https://lwn.net/Articles/44139/
 * sk_forward_alloc
 * pskb_pull for multiple L3 going up handler
 * generic-receive-offload: off
+* difference between synchronize_net and  synchronize_rcu?
 
 # Work

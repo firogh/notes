@@ -1,19 +1,55 @@
+# net_device
+/sys/class/net/<dev>/
+man netdevice
+* dev->flags dev_get_flags()
++rfc2863
++ [operational state](https://www.kernel.org/doc/Documentation/networking/operstates.txt)
++ [Monitoring Interface Administrative State and Physical State on Cumulus Linux](https://support.cumulusnetworks.com/hc/en-us/articles/202693826-Monitoring-Interface-Administrative-State-and-Physical-State-on-Cumulus-Linux)
+* dev->operstate
+dev->operstate in rfc2863_policy()
+admin state is if flag
+operate state is link_state
+Administrative state is the result of "ip link set dev
+<dev> up or down" and reflects whether the administrator wants to use
+the device for traffic.
+enp9s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
+operate is DOWN, amdin is UP>
+Operational state
+shows the ability of an interface to transmit this user data.
+    "UNKNOWN", "NOTPRESENT", "DOWN", "LOWERLAYERDOWN",
+    "TESTING", "DORMANT",    "UP"
+IF_OPER_UNKNOWN,
+see rfc2863
+* dev->link_mode
+IF_LINK_MODE_DORMANT wifi
+IF_LINK_MODE_DEFAULT wire
+* dev->state
+* netdev_queue->state 
+* dev_watchdog
+
+# MTU
+MTU or Ethernet MTU
+This limits the number of bytes of data to 1500(Ethernet II) and 1492(IEEE 802), respectively.
+This characteristic of the link layer is called the MTU, its maximum transmission unit.
+
+PMTU
+ping -c 1 -M do -s 2000 8.8.8.8
+/proc/sys/net/ipv4/ip_no_pmtu_disc
+
+cat /proc/sys/net/core/warnings
+
+/proc/sys/net/ipv4/tcp_mtu_probing
+tcp_mtu_probing()
+If you are using Jumbo Frames, we recommend setting tcp_mtu_probing = 1 to help avoid the problem of MTU black holes. Setting it to 2 sometimes causes performance problems.
+
+icmp_unreach: type 3 ICMP_DEST_UNREACH, code 4 ICMP_FRAG_NEEDED
+icmp_err
 
 
-#Netlink
-* Group
-enum rtnetlink_groups
-##What is netlink
+
+# Netlink
 Networking related kernel configuration and monitoring interfaces.
-* IPC between kernel and user spacess process.
-ioctl
-* prarts
-        libnl
-        libnl-route
-        libnl-genl
-        libnl-nf
-* How many parts does libnl-route have?
-Address,  links, neighboring, routing, TC
+enum rtnetlink_groups
 
 # Network monitor
 ## User-level packet capture
@@ -23,5 +59,5 @@ Because network monitors run as user-level processes, packets must be copied acr
 [Packet filter](http://www.tcpdump.org/papers/bpf-usenix93.pdf)
 check cs/ebpf.log
 
-# ETC
-[Things that need to get done in the Linux kernel networking](http://vger.kernel.org/~davem/net_todo.html)
+# Netpoll
+
