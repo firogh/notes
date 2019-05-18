@@ -1,3 +1,7 @@
 
 # synchronization between net-procfs dev_get_stats and device close or ethtool reconfigurations
 WRONG PATCH [Fix inconsistent rtnl_lock usage on dev_get_stats](http://patchwork.ozlabs.org/patch/711665/)
+
+
+# ETC
+[Things that need to get done in the Linux kernel networking](http://vger.kernel.org/~davem/net_todo.html)

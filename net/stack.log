@@ -32,41 +32,73 @@ write->inet_stream_ops->sendmsg->tcp_sendmsg
 icsk->icsk_af_ops
 
 # TCP send packet
-message tcp_sendmsg:
-ip_queue_xmit
-tcp_transmit_skb -> icsk->icsk_af_ops->queue_xmit(sk, skb, &inet->cork.fl); -> ip_queue_xmit -> ip_local_out ->ip_output -> ip_finish_output
-tcp_v4_send_synack:
-ip_build_and_send_pkt
-tcp_v4_send_reset tcp_v4_send_ack:
-ip_send_unicast_reply
-syn
-tcp_v4_connect
-syndata
-tcp_send_syn_data
+## message 
+tcp_sendmsg: tcp_transmit_skb -> icsk->icsk_af_ops->queue_xmit = ip_queue_xmit -> ip_local_out ->ip_output -> ip_finish_output
+## synack
+tcp_v4_send_synack:ip_build_and_send_pkt -> ip_local_out
+## ack and reset
+tcp_v4_send_reset or tcp_v4_send_ack: ip_send_unicast_reply -> ip_push_pending_frames
+## syn
+tcp_v4_connect -> tcp_connect ->  tp->fastopen_req ? tcp_send_syn_data(sk, buff) : tcp_transmit_skb(sk, buff, 1, sk->sk_allocation) ...->ip_queue_xmit
+tcp_send_syn_data -> tcp_transmit_skb ...-> ip_queue_xmit
+
+## tcp reset instance and ip_send_unicast_reply
+ => __ip_make_skb
+ => ip_push_pending_frames
+ => ip_send_unicast_reply
+ => tcp_v4_send_reset
+ => tcp_v4_rcv
+ => ip_local_deliver_finish
+ => ip_local_deliver
+ => ip_rcv
+ => __netif_receive_skb_core
+ => netif_receive_skb_internal
+ => napi_gro_receive
+ => r8152_poll
+ => net_rx_action
+ => __do_softirq
+ => irq_exit
+ => do_IRQ
+ => ret_from_intr
+ => cpuidle_enter_state
+ => do_idle
+ => cpu_startup_entry
+ => start_secondary
+ => secondary_startup_64
 
 # TCP receive packet
 ## steps of tcp_rcvmsg
 https://www.spinics.net/lists/newbies/msg14465.html
 [Best explnations of set_task_state to running in tcp_rcv_established, see explorer](http://bbs.chinaunix.net/forum.php?mod=viewthread&action=printable&tid=4114007)
 Even through you know above , I think you should also know if a task was scheduled with task state == RUNNING, the schedule will use put_prev_task_fair-> put_prev_entity->__enqueue_entity as prev->on_rq inpick_next_task_fair()
+## Queues
+tcp_add_backlog and sk_backlog_rcv=tcp_v4_do_rcv
+tcp_prequeue:ucopy.prequeue
+tcp_copy_to_iovec:ucopy.msg,
+tcp_queue_rcv:sk->sk_receive_queue
+tcp_data_queue: ooo?
+### What about the skbs in sk_receive_queue?
+sk→receive_queue contains processed TCP segments, which means that all the pro-
+tocol headers are stripped and data are ready to be copied to the user application.
+### prequeue
+tcp: remove prequeue support - e7942d0633c47c791ece6afa038be9cf977226de
 
-# TCP lock
-[The design of lock_sock() in Linux kernel](https://medium.com/@c0ngwang/the-design-of-lock-sock-in-linux-kernel-69c3406e504b)
+# IP send packet
+ip_local_out
+ip_queue_xmit -> ip_local_out
+ip_append_data and ip_push_pending_frames -> ip_local_out
 
-# IP
-## /* ieee80211_deliver_skb [mac80211] */
-    2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]
-
-ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb
-
-## L4 Bottomup switch
+# IP receive packet
+## L3 -> L4 Bottomup switch
 ip_rcv_finish_core
 int protocol = iph->protocol;
 struct net_protocol __rcu *inet_protos[MAX_INET_PROTOS];
 inet_add_protocol(&tcp_protocol, IPPROTO_TCP) 
 tcp_v4_protocol
+### raw
+ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb
 
-# L3 - Network layer going up swith
+## L3 - Network layer going up swith
 Ether type
 ETH_P_LOOP      0x0060          /* Ethernet Loopback packet     */
 ETH_P_IP        0x0800          /* Internet Protocol packet     */
@@ -87,29 +119,9 @@ it's for the following. it's not the deliver_skb(), so no increasing skb->users,
 	if (pt_prev) {
                 ret = pt_prev->func(skb, skb->dev, pt_prev, orig_dev);
         } 
+## IPv6
+ip6_input or ip6_output
 
-
-# Queues
-tcp_add_backlog
-tcp_prequeue:ucopy.prequeue
-tcp_copy_to_iovec:ucopy.msg,
-tcp_queue_rcv:sk->sk_receive_queue
-tcp_data_queue: ooo?
-
-sk_backlog_rcv=tcp_v4_do_rcv
-
-# What about the skbs in sk_receive_queue?
-sk→receive_queue contains processed TCP segments, which means that all the pro-
-tocol headers are stripped and data are ready to be copied to the user application.
-
-# When was the socket lock owned user?
-grep owned = 1, you will find tcp_ioctl/sendmsg/recvmsg() will call lock_sock().
-In tcp_recvmsg, the prequeue and sk_receive_queue will be processed.
-So we know that the owned is used to protect receive queue and prequeue.
-In other words, if owned = 1, we cannot queue skb in either receive queue and prequeue.
-That means only sk_backlog queue is the home for skb temporarily.
-
-# What does ucopy.task mean?
-ucopy.task was temporarily enabled in tcp_recvmsg in order to read more data after processing receive queue.
-It will be disabled in the same fuction. So go back to tcp_prequeue, we know if user need more data, then we queue new skb in ucopy.preueue otherwise not.
-In tcp_rcv_established(), the tp->ucopy.task == current indicats we are in process context.
+# L2
+## /* ieee80211_deliver_skb [mac80211] */
+    2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]

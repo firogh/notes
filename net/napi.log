@@ -2,7 +2,7 @@
 
 nic -> 
 {
-	tg3_interrupt -> napi_schedule
+	do_IRQ->tg3_interrupt -> napi_schedule
 }
 
 nic or loopback_xmit -> netif_rx
@@ -14,7 +14,11 @@ nic or loopback_xmit -> netif_rx
 net_rx_action -> napi_poll
 {
 	process_backlog -> __netif_receive_skb
-	tg3_poll_msix -> tg3_tx!! then tg3_rx -> napi_gro_receive -> netif_receive_skb_internal -> __netif_receive_skb
+	tg3_poll_msix -> tg3_tx!! then tg3_rx -> 
+	{
+		skb->protocol = eth_type_trans(skb, tp->dev);
+		napi_gro_receive -> netif_receive_skb_internal -> __netif_receive_skb  //In other NIC driver, napi_gro_receive might be replaced by netif_receive_skb.
+	}
 	or
 	enic_poll_msix_wq
 	then 
