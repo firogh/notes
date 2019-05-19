@@ -26,5 +26,6 @@ https://lwn.net/Articles/44139/
 * pskb_pull for multiple L3 going up handler
 * generic-receive-offload: off
 * difference between synchronize_net and  synchronize_rcu?
+* patch - unlikely in ip_rcv
 
 # Work

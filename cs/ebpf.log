@@ -1,11 +1,9 @@
 # eBPF
-[Kernel internals](https://www.kernel.org/doc/Documentation/networking/filter.txt)
-[Series for BPF on LWN.net](https://lwn.net/Articles/740157/)
 [A thorough introduction to eBPF](https://lwn.net/Articles/740157/)
+[Extending extended BPF](https://lwn.net/Articles/603983/)
 [Why is the kernel community replacing iptables with BPF?](https://cilium.io/blog/2018/04/17/why-is-the-kernel-community-replacing-iptables/)
 [eBPF 简史](https://www.ibm.com/developerworks/cn/linux/l-lo-eBPF-history/index.html)
 [BPF - the forgotten bytecode](https://blog.cloudflare.com/bpf-the-forgotten-bytecode/)
-https://www.kernel.org/doc/Documentation/networking/filter.txt
 
 * Causality - Performace
 1. This copying can be minimized by deploying a kernel agent called a packet filter, which discards unwanted packets as early as possible
@@ -44,4 +42,3 @@ Chrome adobe flash player
 # Verifier
 ~/kernel/tools/testing/selftests/bpf/test_verifier.c
 [BPF Verifier Overview](https://www.spinics.net/lists/xdp-newbies/msg00185.html)
-lsf.txt

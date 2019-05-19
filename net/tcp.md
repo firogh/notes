@@ -15,17 +15,11 @@ server:
 nc -l -p 2046
 nc  127.0.0.1 2046
 
-# Receive buffer
-[The story of one latency spike](https://blog.cloudflare.com/the-story-of-one-latency-spike/)
-
 # Syn queue and listen queue
 [How TCP backlog works in Linux](http://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html)
 
 # Syn flood
 [SYN Flood Mitigation with synsanity](https://githubengineering.com/syn-flood-mitigation-with-synsanity/)
-
-# TCP sock lock
-[The design of lock_sock() in Linux kernel](https://medium.com/@c0ngwang/the-design-of-lock-sock-in-linux-kernel-69c3406e504b)
 
 # ucopy
 ucopy.task was temporarily enabled in tcp_recvmsg in order to read more data after processing receive queue.
@@ -114,7 +108,6 @@ tcp_v4_do_rcv{
 }
 nginx-> GET -> firoyang.org
 firoyang.org-> nginx-> chrome
-
 
 # Reliability
 ## RTT

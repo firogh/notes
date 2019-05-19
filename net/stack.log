@@ -83,22 +83,36 @@ tocol headers are stripped and data are ready to be copied to the user applicati
 ### prequeue
 tcp: remove prequeue support - e7942d0633c47c791ece6afa038be9cf977226de
 
+# Raw send packet, ping likewise
+raw_sendmsg -> raw_send_hdrinc 
+raw_sendmsg -> ip_push_pending_frames
+
+# Raw receive packet, ping likewise
+ip_local_deliver_finish -> raw_local_deliver
+
 # IP send packet
 ip_local_out
 ip_queue_xmit -> ip_local_out
 ip_append_data and ip_push_pending_frames -> ip_local_out
 
 # IP receive packet
+## IPv6
+ip6_input or ip6_output
 ## L3 -> L4 Bottomup switch
 ip_rcv_finish_core
 int protocol = iph->protocol;
 struct net_protocol __rcu *inet_protos[MAX_INET_PROTOS];
 inet_add_protocol(&tcp_protocol, IPPROTO_TCP) 
 tcp_v4_protocol
-### raw
+### IP raw socket
 ip_local_deliver_finish -> raw_local_deliver -> raw_rcv -> raw_rcv_skb -> sock_queue_rcv_skb
 
-## L3 - Network layer going up swith
+## L3
+static struct packet_type ip_packet_type __read_mostly = {
+        .type = cpu_to_be16(ETH_P_IP),
+        .func = ip_rcv,
+
+# L2 receiving packet
 Ether type
 ETH_P_LOOP      0x0060          /* Ethernet Loopback packet     */
 ETH_P_IP        0x0800          /* Internet Protocol packet     */
@@ -106,22 +120,29 @@ ETH_P_ARP       0x0806          /* Address Resolution packet    */
 ETH_P_802_3     0x0001          /* Dummy type for 802.3 frames  */
 ETH_P_ALL       0x0003          /* Every packet (be careful!!!) */
 ETH_P_802_2     0x0004          /* 802.2 frames                 */
-ETH_P_SNAP      0x0005          /* Internal only  
-static struct packet_type ip_packet_type __read_mostly = {
-        .type = cpu_to_be16(ETH_P_IP),
-        .func = ip_rcv,
-and arp_rcv and packet_rcv
-ptype_all: it's for nit; check packet_create() and ETH_P_ALL; it's a socket based packet receiver.
+ETH_P_SNAP      0x0005          /* Internal only
+ptype_all or dev->ptye_all: it's for nit - packet capturing; check packet_create() and ETH_P_ALL; it's a socket based packet receiver.
 ptype_base: except ETH_P_ALL;
+netif_receive_skb-> 
+{
+	arp_rcv 
+	packet_rcv # packet capture
+	ip_rcv
+}
+## pt_rev
 pt_prev: skb->users, deliver_skb, skb_shared_check, skb_clone, kfree_skb
 It's a optimization for only-one hanlder case.
 it's for the following. it's not the deliver_skb(), so no increasing skb->users, no skb_clone.  
 	if (pt_prev) {
                 ret = pt_prev->func(skb, skb->dev, pt_prev, orig_dev);
         } 
-## IPv6
-ip6_input or ip6_output
 
-# L2
+# L2 sending packet
+n->output ...-> dev_queue_xmit ...->
+{
+	dev_queue_xmit_nit->packet_rcv # packet capture
+	netdev_start_xmit
+}
+
 ## /* ieee80211_deliver_skb [mac80211] */
     2   619     0     0 ?           -1 S        0   2:06  \_ [irq/127-iwlwifi]

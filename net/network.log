@@ -38,13 +38,5 @@ icmp_err
 Networking related kernel configuration and monitoring interfaces.
 enum rtnetlink_groups
 
-# Network monitor
-## User-level packet capture
-Because network monitors run as user-level processes, packets must be copied acrossthe kernel/user-space protection boundary
-
-## Packet filter
-[Packet filter](http://www.tcpdump.org/papers/bpf-usenix93.pdf)
-check cs/ebpf.log
-
 # Netpoll
 
