@@ -42,3 +42,6 @@ See [Whenever you leave out the alignment factor in an aligned attribute specifi
 # Extend ASM
 __loadsegment_simple()
 [6.45.2.8 x86 Operand Modifiers][1]
+
+# constprop
+

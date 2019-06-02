@@ -8,6 +8,18 @@ category: cs
 # Ref
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
 
+# Kernel memory mapping range
+
+## 0xffff880000000000 ~ "0xffff880000000000 +max_fpn << PAGE_SHIFT" or variable high_memory : direct map memory
+(0x1000000000000 -0x880000000000) /1024.0 /1024.0/1024.0/1024.0
+120.0 TB
+setup_arch -> init_mem_mapping ... -> init_memory_mapping -> kernel_physical_mapping_init
+
+## 0xffffffff80000000 ~ 2G
+call early_make_pgtable??
+x86_64_start_kernel ->
+init_level4_pgt[511] = early_level4_pgt[511];
+
 # memory organization
 ## Memory mode
 flat mem -> uma
@@ -161,4 +173,3 @@ What is data/contrl/address bus?
 # Interface
 ## MADV_SEQUENTIAL and reclaim
 mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c
-

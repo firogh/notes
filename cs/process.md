@@ -5,6 +5,15 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
+
+# The stack / Call stack
+https://en.wikipedia.org/wiki/Call_stack#Functions_of_the_call_stack
+https://dl.acm.org/citation.cfm?id=2716018#.W5zV9yqRi-c.twitter
+task_struct->stack:task_stack_page
+task_struct->thread.sp: top of stack
+
+
+
 # Processes
 ## Instructions
 opcode, 
@@ -213,11 +222,6 @@ Periodical: schedule_timeout
 Demand: 
 
 ## inter-process info
-
-# Call stack
-https://en.wikipedia.org/wiki/Call_stack#Functions_of_the_call_stack
-https://dl.acm.org/citation.cfm?id=2716018#.W5zV9yqRi-c.twitter
-
 
 # Fork a new process 
 What does the child process need from parent?

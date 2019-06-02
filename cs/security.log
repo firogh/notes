@@ -39,24 +39,6 @@ Date:   Wed Apr 6 16:13:34 2016 +0100
     
     Signed-off-by: David Howells <dhowells@redhat.com>
 
-
-
-# SELinux
-[SELinux Explained with Examples in Easy Language]
-[SELinux/Tutorials/What is this unconfined thingie and tell me about attributes](https://wiki.gentoo.org/wiki/SELinux/Tutorials/What_is_this_unconfined_thingie_and_tell_me_about_attributes)
-security/selinux/selinuxfs.c: sysfs_create_mount_point: create /sys/fs/selinux mount point. then mount the selinuxfs on selinux_null???
-upstart will mount selinuxfs at /sys/fs/selinux
-bash-4.3# mount
-/dev/sda2 on / type ext3 (ro,relatime,errors=continue,user_xattr,acl,barrier=1,data=ordered)
-proc on /proc type proc (rw,relatime)
-sysfs on /sys type sysfs (rw,relatime)
-bash-4.3# cat /proc/cmdline 
-BOOT_IMAGE=vmlinuz rootwait max_loop=255 ro clock=pit console=ttyS0,115200 root=LABEL=wr_usb_boot initrd=initrd init=/bin/bash selinux=1 
-bash-4.3# ls /sys/fs/selinux/
-bash-4.3# cat /proc/filesystems  | grep selinux
-nodev	selinuxfs
-bash-4.3# mount -t selinuxfs selinuxfs /sys/fs/selinux/
-
 # IMA
 __fput ->ima_file_free ->ima_check_last_writer
 ## Digital signature

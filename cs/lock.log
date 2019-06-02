@@ -3,3 +3,8 @@
 [Linus on priority inheritance](https://yarchive.net/comp/linux/priority_inheritance.html)
 [Priority inheritance in the kernel](https://lwn.net/Articles/178253/)
 rt_mutex: RT Mutexes: blocking mutual exclusion locks with PI support
+
+# File locking
+[Mandatory File Locking For The Linux Operating System](https://www.kernel.org/doc/Documentation/filesystems/mandatory-locking.txt)
+[Linux 2.6 中的文件锁](https://www.ibm.com/developerworks/cn/linux/l-cn-filelock/index.html)
+[Demo for File locking](http://voyager.deanza.edu/~perry/lock.html)

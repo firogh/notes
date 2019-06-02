@@ -9,6 +9,57 @@ Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 [A complete guide to Linux process scheduling](https://tampub.uta.fi/bitstream/handle/10024/96864/GRADU-1428493916.pdf)
 https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
 
+# Queue
+rq
+cfa_rq
+
+# cfs_rq
+on_list
+
+# sched_entity->on_rq
+check enqueue_entity
+
+# Group scheduling
+[CFS调度器（3）-组调度](http://www.wowotech.net/process_management/449.html)
+[Linux进程组调度机制分析](http://oenhan.com/task-group-sched)
+sched_create_group
+task_group 1 : cpu 'group sched_entity'
+group sched_entity 1 : 1 greoup cfs_rq
+gse_CPUx's load = grq_CPUx's all se's load * task_group->shares / grq_CPU*'s all se's load
+        /* rq on which this entity is (to be) queued: */
+        struct cfs_rq           *cfs_rq;
+        /* rq "owned" by this entity/group: */
+        struct cfs_rq           *my_q;
+
+[CFS group scheduling](https://lwn.net/Articles/240474/)
+commit 29f59db3a74b0bdf78a1f5b53ef773caa82692dc
+Author: Srivatsa Vaddagiri <vatsa@linux.vnet.ibm.com>
+Date:   Mon Oct 15 17:00:07 2007 +0200
+
+    sched: group-scheduler core
+
+## Why double for_each_sched_entity
+commit 2069dd75c7d0f49355939e5586daf5a9ab216db7
+Author: Peter Zijlstra <a.p.zijlstra@chello.nl>
+Date:   Mon Nov 15 15:47:00 2010 -0800
+    sched: Rewrite tg_shares_up)
+
+371fd7e7a56a5 (Peter Zijlstra       2010-03-24 16:38:48 +0100 1129) enqueue_task_fair(struct rq *rq, struct task_struct *p, int flags)
+bf0f6f24a1ece (Ingo Molnar          2007-07-09 18:51:58 +0200 1134)     for_each_sched_entity(se) {
+62fb185130e4d (Peter Zijlstra       2008-02-25 17:34:02 +0100 1135)             if (se->on_rq)
+bf0f6f24a1ece (Ingo Molnar          2007-07-09 18:51:58 +0200 1136)                     break;
+bf0f6f24a1ece (Ingo Molnar          2007-07-09 18:51:58 +0200 1137)             cfs_rq = cfs_rq_of(se);
+88ec22d3edb72 (Peter Zijlstra       2009-12-16 18:04:41 +0100 1138)             enqueue_entity(cfs_rq, se, flags);
+88ec22d3edb72 (Peter Zijlstra       2009-12-16 18:04:41 +0100 1139)             flags = ENQUEUE_WAKEUP;
+bf0f6f24a1ece (Ingo Molnar          2007-07-09 18:51:58 +0200 1140)     }
+8f4d37ec073c1 (Peter Zijlstra       2008-01-25 21:08:29 +0100 1141) 
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1142)     for_each_sched_entity(se) {
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1143)             struct cfs_rq *cfs_rq = cfs_rq_of(se);
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1144) 
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1145)             update_cfs_load(cfs_rq);
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1146)             update_cfs_shares(cfs_rq);
+2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1147)     }
+
 # Problems
 ## Why scheduling?
 Customers demand multitasking/concurrent

@@ -1,4 +1,5 @@
 /proc/meminfo
+/proc/zoneinfo
 Committed_AS and __vm_enough_memory
 [page owner](https://www.kernel.org/doc/html/v4.18/vm/page_owner.html)
 
@@ -22,10 +23,44 @@ meminfo_proc_show
 >>> 5902536 + 49160 + 12616744 + 1400240 - 12524
 19956156
 
+# NR_WRITEBACK
+FIXME: pages accounted for in NR_WRITEBACK are not on the LRU lists  any more, right?
+Right. Check right.
+
+# Node based memory states
+
+commit 599d0c954f91d0689c9bb421b5bc04ea02437a41
+Author: Mel Gorman <mgorman@techsingularity.net>
+Date:   Thu Jul 28 15:45:31 2016 -0700
+    mm, vmscan: move LRU lists to node
+commit 11fb998986a72aa7e997d96d63d52582a01228c5
+Author: Mel Gorman <mgorman@techsingularity.net>
+Date:   Thu Jul 28 15:46:20 2016 -0700
+
+    mm: move most file-based accounting to the node
+v4.7-5957-gbca6759258db
+commit bca6759258dbef378bcf5b872177bcd2259ceb68
+Author: Mel Gorman <mgorman@techsingularity.net>
+Date:   Thu Jul 28 15:47:05 2016 -0700
+    mm, vmstat: remove zone and node double accounting by approximating retries
+## Zone based memory states partially come back
+commit 71c799f4982d340fff86e751898841322f07f235
+Author: Minchan Kim <minchan@kernel.org>
+Date:   Thu Jul 28 15:47:26 2016 -0700
+
+    mm: add per-zone lru list stat
+Check update_lru_size
+
+# Zone based memory states
+commit 2244b95a7bcf8d24196f8a3a44187ba5dfff754c
+Author: Christoph Lameter <clameter@sgi.com>
+Date:   Fri Jun 30 01:55:33 2006 -0700
+    [PATCH] zoned vm counters: basic ZVC (zoned vm counter) implementation
+
+
 # LQO
 ramfs pages first go to (in)active lists, moves to unevictable later, so it's not really true already. ;)
 why mapping_set_unevictable(inode->i_mapping);  in ramfs_get_inode. Check https://serverfault.com/a/590133/143494
-
 
 # Facts
 LRU_IN/ACTIVE_ANON in cached: error = shmem_add_to_page_cache(page, mapping, index, gfp, NULL); lru_cache_add_anon(page);
@@ -40,8 +75,6 @@ AnonPages: NR_ANON_PAGES Mapped anonymous pages do_xx_fault
                   HPAGE_PMD_NR)
 
 # /proc/slabinfo
-
-
 
 ## RAMFS shmem unevictable
 fs/ramfs/inode.c <<ramfs_get_inode>>

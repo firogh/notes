@@ -13,7 +13,6 @@ category: cs
 [mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
 [mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
 
-
 # Recalimable pages
 all pages of a User Mode process are reclaimable except locked.
 Lokced userspace pages: 
@@ -31,6 +30,36 @@ Lokced userspace pages:
 1.1 Clean file private mapping - text segment
 2. Shared
 2.1 Shared file mapping memory.
+
+# PF_MEMALLOC
+[UVM](https://www.kernel.org/doc/gorman/html/understand/understand009.html)
+[Kill PF_MEMALLOC abuse](https://lore.kernel.org/patchwork/cover/178099/)
+[without being forced to write out dirty pages](https://stackoverflow.com/a/40899585/1025001)
+[并不是所有进程都有的。kswapd，direct reclaim的process等在回收的时候会设置这个标志](http://bbs.chinaunix.net/thread-4078724-1-1.html)
+check __perform_reclaim
+## PFMEMALLOC
+Example: get_page_from_freelist and __ac_get_obj
+               /*
+                 * page is set pfmemalloc is when ALLOC_NO_WATERMARKS was
+                 * necessary to allocate the page. The expectation is
+                 * that the caller is taking steps that will free more
+                 * memory. The caller should avoid the page being used
+                 * for !PFMEMALLOC purposes.
+                 */
+                if (alloc_flags & ALLOC_NO_WATERMARKS)
+                        set_page_pfmemalloc(page);
+commit c93bdd0e03e848555d144eb44a1f275b871a8dd5
+Author: Mel Gorman <mgorman@suse.de>
+Date:   Tue Jul 31 16:44:19 2012 -0700
+
+    netvm: allow skb allocation to use PFMEMALLOC reserves
+    
+    Change the skb allocation API to indicate RX usage and use this to fall
+    back to the PFMEMALLOC reserve when needed.  SKBs allocated from the
+    reserve are tagged in skb->pfmemalloc.  If an SKB is allocated from the
+    reserve and the socket is later found to be unrelated to page reclaim, the
+    packet is dropped so that the memory remains available for page reclaim.
+    Network protocols are expected to recover from this packet loss.
 
 # PFRA
 ## Leave questions open
@@ -137,6 +166,10 @@ https://linux-mm.org/PageReplacementDesign
 https://www.kernel.org/doc/gorman/html/understand/understand013.html
 [PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 https://www.cnblogs.com/tolimit/p/5447448.html
+
+# SUSE page cache limit
+Check box/pagecache-limit
+
 # Steps of reclaim
 ## WriteBack
 1. if page is alreday marked reclaim, skip it this time.
@@ -148,53 +181,6 @@ https://www.cnblogs.com/tolimit/p/5447448.html
 Leave kswapd to deal with IO, mark it reclaim and skip it.
 ## pageout
 including shared memory
-
-
-# Reverse mapping
-unmapping at once all page table entries of a shared pages
-## page.index
-1. file memory mapped page: index is offset in a file
-2. Anonymous page: linear_page_index in __page_set_anon_rmap()__
-## Anonymous Pages
-Page + VMA => ptes
-### Stack/heap/private anonymous mapping
-page.index is VFN. 
-do_anonymous_page -> page_add_new_anon_rmap
-add vma to anon_vma: 1. fork or 2. do_anonymous_page(2.1 forked but parent don't use vma. 2.2 exec)
-in do_mmap, for anonymous mapping, MAP_PRIVATE: pgoff = addr >> PAGE_SHIFT; addr will be vm_start in mmap_region
-vm_pgoff is pgoff, vm_start >> PAGE_SHIFT, in mmap_region 
-## Mapped pages 
-### File mapped pages
-Page and file are fixed. VMA is dynamic.
-Page + VMA = Page + VMA.vm_start = Page's offset in VMA + VMA.vm_start = Virtual Address => ptes 
-Page's offset in VMA = Page's offset in file - VMA's offset in file = page.index - vma.vm_pgoff
-### Mapped pages of tmpfs - anonymous shared mapping.
-shmem_add_to_page_cache
-pgoff is 0; ignored; in do_mmap MAP_SHARED;
-page.index is vmf->pgoff in shmem_fault; vmf->pgoff is linear_page_index(vma, address)in handle_mm_fault; pgoff is offset in vma; 
-## vm_pgoff vs index
-anonymous private mapping: vm_start >> PAGE_SHIFT vs VFN 
-anonymous shared mapping: 0,ignored vs page's offset in vma
-file mapping: vma's offset in file vs page's offset of file
-不知道理解的是否相同:
-对于anonymous mapping page:
-Private: page.index 是page 在所属进程地址空间的虚拟地址>> PAGE_SHIT.
-Shared: page.index 是page 在所属的VMA内的offset: (page's addr - vm_start)>>PAGE_SHIT.
-## anon page: 
-rbtree-based Interval tree
-[逆向映射的演进](http://www.wowotech.net/memory_management/reverse_mapping.html)
-exec : exec -> do_execveat_common-> bprm_mm_init setup_arg_pages
-do_anonymous_page -> anon_vma_prepare & page_add_new_anon_rmap
-fork workflow:attach to parent; alloc anon_vma for ownself.
-anon_vma_fork() -> anon_vma_chain_link: node: avc, key: avmc.vma->start/last_pgoff page.mapping=anon_vma.rb_root
-rmap: add exclusively owned pages to the newest anon_vma - e8a03feb54ca7f1768bbdc2b491f9ef654e6d01d
-nuclus:
-rmap_walk_anon()
-## file page:
-rbtree-based interval tree - INTERVAL_TREE_DEFINE in mm/interval_tree.c
-__vma_adjust -> __vma_link_file: node: vma.shared.rb, key: vma.start_pgoff and vma.last_pgoff  address_space->i_mmap
-address_space is premise
-rmap_walk_file(page.mapping=address_space.i_mmap 
 
 # Page flags
 PG_swapcace means page is in the swap cache.

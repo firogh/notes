@@ -29,6 +29,7 @@ In tcp_rcv_established(), the tp->ucopy.task == current indicats we are in proce
 # Multiplexing
 Ports can provide multiple endpoints on a single node. 
 inet_hash_connect()
+inet_sock: dport, sport
 
 # MSS
 MSS tcp_sock->mss_cache in tcp_sync_mss not minus SACK option
@@ -90,6 +91,16 @@ tcp_time_wait
                 }
 如果启用recycle 就是rto, 这个rto是const int rto = (icsk->icsk_rto << 2) - (icsk->icsk_rto >> 1); 3.5倍的icsk_rto
 在FIN_WAIT_2状态下没有接收到FIN包就进入TIME_WAIT的情况下，如果tcp_fin_timeout的值设置的太小，可能会导致TIME_WAIT套接字（子状态为FIN_WAIT_2）过早地被释放，这样对端发送的FIN（短暂地延迟或者本来就是正常的时间到达）到达时就没有办法处理，导致连接不正常关闭，所以tcp_fin_timeout参数的值并不是越小越好，通常设置为30S比较合适。
+
+# TCP receive
+# Established socket receive window
+https://tools.ietf.org/html/rfc793
+https://tools.ietf.org/html/rfc1122
+tcp_transmit_skb
+th->ack_seq		= htonl(tp->rcv_nxt);
+tcp_data_queue
+tp->rcv_nxt = TCP_SKB_CB(skb)->end_seq;
+----------------------------------
 
 # Connection-oriented communications
 ## Handshak of kproxy

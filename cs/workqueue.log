@@ -1,2 +1,24 @@
 # Flags
 This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
+
+# Pending bit
+[Normally, the workqueue subsystem resets a work entry's pending flag prior to calling the work function; that action, among other things, allows the function to resubmit itself if need be.](https://lwn.net/Articles/211279/)
+
+# [workqueue: make all workqueues non-reentrant](https://lkml.org/lkml/2012/8/13/723)
+commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+Author: Tejun Heo <tj@kernel.org>
+Date:   Mon Aug 20 14:51:23 2012 -0700
+
+    workqueue: make all workqueues non-reentrant
+git describe dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+v3.6-rc1-24-gdbf2576e37da
+
+#   WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
+
+        By default, a wq guarantees non-reentrance only on the same
+        CPU.  A work item may not be executed concurrently on the same
+        CPU by multiple workers but is allowed to be executed
+        concurrently on multiple CPUs.  This flag makes sure
+        non-reentrance is enforced across all CPUs.  Work items queued
+        to a non-reentrant wq are guaranteed to be executed by at most
+        one worker system-wide at any given time.

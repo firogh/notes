@@ -7,6 +7,38 @@
 [Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
 [writeback: convert writeback to unbound workqueue](https://groups.google.com/forum/#!topic/fa.linux.kernel/OnsAP-Zy-s8)
 
+# Sysctl of dirty writeback
+Check node_dirty_ok
+and 
+writeback_set_ratelimit
+global_dirty_limits
+/proc/sys/vm/dirty_background_bytes
+/proc/sys/vm/dirty_background_ratio
+/proc/sys/vm/dirty_bytes
+/proc/sys/vm/dirty_expire_centisecs
+/proc/sys/vm/dirty_ratio
+/proc/sys/vm/dirtytime_expire_seconds
+/proc/sys/vm/dirty_writeback_centisecs
+
+
+cat /sys/kernel/debug/bdi/0\:80/stats 
+BdiWriteback:                0 kB
+BdiReclaimable:              0 kB
+BdiDirtyThresh:              0 kB
+DirtyThresh:           5860732 kB
+BackgroundThresh:      2926788 kB
+BdiDirtied:                  0 kB
+BdiWritten:                  0 kB
+BdiWriteBandwidth:      102400 kBps
+b_dirty:                     0
+b_io:                        0
+b_more_io:                   0
+b_dirty_time:                0
+bdi_list:                    1
+state:                       1
+bdi_debug_stats_show
+## ratelimit_pages ?? It's not update realtimely
+
 # Page flags
 PG_writeback, lost in past;
 set_page_writeback
