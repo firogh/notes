@@ -6,8 +6,6 @@
 
 # early init
 
-
-
 # implementation
 <<<<<<< HEAD
 1. load_percpu_segment : load gs with 0 and set gs.base to irq_stack_union.gs_base.
@@ -91,4 +89,9 @@ struct task_struct *, current_task
 818 #define INIT_THREAD  {                                                    \
 819         .sp0                    = TOP_OF_INIT_STACK,                      \
 
-
+# ETC
+per_cpu_pageset
+## Per cpu variable
+Where is Per-CPU variable?
+static Per-CPU in .data(?) below high_memory!
+runtime Per-CPU, it's GFP_KERNEL in pcpu_create_chunk()
