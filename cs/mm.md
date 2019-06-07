@@ -108,11 +108,10 @@ core_initcall(init_per_zone_wmark_min) ->
 	WMARK_LOW = 1.25 * min or min + 1/1000 * zone.managed_pages
 	WMARK_HIGH = 1.5 * min or min + 2/1000 * zone.managed_pages 
 }
+if min_free_kbytes > 1/250*total mamanged_pages, we use 1.25 min or 1.5 min
 
 # LQO
-MIGRATE_HIGHATOMIC
 Fair-zone allocation: obesete in 4.x+ kernel
-What about other cpu when panic
 kmmio probe in do_page_fault
 userfd https://www.youtube.com/watch?v=xhOBc5L_Hkk
 * Special sections in Linux binaries

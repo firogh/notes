@@ -13,6 +13,9 @@ category: cs
 systemctl mask systemd-udev-settle
 Created symlink /etc/systemd/system/systemd-udev-settle.service → /dev/null.
 
+# sudoer doesn't work?
+https://askubuntu.com/questions/504652/adding-nopasswd-in-etc-sudoers-doesnt-work/504666#504666
+
 # Bash
 PS1='\e[1;32m\u@\h\e[m:\e[1;34m\w\e[m$ '
 stty columns 3000
