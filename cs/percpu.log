@@ -6,6 +6,7 @@
 
 # early init
 
+<<<<<<< HEAD
 
 # Kernel %gs
 setup_per_cpu_areas
@@ -13,6 +14,8 @@ delta = (unsigned long)pcpu_base_addr - (unsigned long)__per_cpu_start;
 p __per_cpu_offset
 p this_cpu_off:all
 
+=======
+>>>>>>> 14b9e60789b4d12681aac69f9174ff55e147593e
 # implementation
 <<<<<<< HEAD
 1. load_percpu_segment : load gs with 0 and set gs.base to irq_stack_union.gs_base.
@@ -96,4 +99,9 @@ struct task_struct *, current_task
 818 #define INIT_THREAD  {                                                    \
 819         .sp0                    = TOP_OF_INIT_STACK,                      \
 
-
+# ETC
+per_cpu_pageset
+## Per cpu variable
+Where is Per-CPU variable?
+static Per-CPU in .data(?) below high_memory!
+runtime Per-CPU, it's GFP_KERNEL in pcpu_create_chunk()

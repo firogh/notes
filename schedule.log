@@ -27,8 +27,12 @@ https://lwn.net/Articles/44139/
 * generic-receive-offload: off
 * difference between synchronize_net and  synchronize_rcu?
 * patch - unlikely in ip_rcv
+<<<<<<< HEAD
 * list operations in commit_tree
 * perf ftrace echo 0 > '/proc/sys/vm/nr_hugepages'
 * /proc/zoneinfo
+=======
+* sysctl_lowmem_reserve_ratio for ZONE_DEVICE?
+>>>>>>> 14b9e60789b4d12681aac69f9174ff55e147593e
 
 # Work
