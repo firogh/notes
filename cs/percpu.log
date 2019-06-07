@@ -7,6 +7,11 @@
 # early init
 
 
+# Kernel %gs
+setup_per_cpu_areas
+delta = (unsigned long)pcpu_base_addr - (unsigned long)__per_cpu_start;
+p __per_cpu_offset
+p this_cpu_off:all
 
 # implementation
 <<<<<<< HEAD

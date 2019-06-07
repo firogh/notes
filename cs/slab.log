@@ -38,5 +38,3 @@ Freeing a full slab will make it present in per cpu partial of node partial.
 
 ## SLUB debug
 [SLUB DEBUG原理](http://www.wowotech.net/memory_management/427.html)
-
-

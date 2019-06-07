@@ -1,106 +1,37 @@
 ---
-tags: [ kernel ] 
+tags: [ kernel ]
 layout: post
 date: 2014-12-28
 title: Linux memory management
 category: cs
 ---
+
 # Ref
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
-
-# Kernel memory mapping range
-
-## 0xffff880000000000 ~ "0xffff880000000000 +max_fpn << PAGE_SHIFT" or variable high_memory : direct map memory
-(0x1000000000000 -0x880000000000) /1024.0 /1024.0/1024.0/1024.0
-120.0 TB
-setup_arch -> init_mem_mapping ... -> init_memory_mapping -> kernel_physical_mapping_init
-
-## 0xffffffff80000000 ~ 2G
-call early_make_pgtable??
-x86_64_start_kernel ->
-init_level4_pgt[511] = early_level4_pgt[511];
 
 # memory organization
 ## Memory mode
 flat mem -> uma
 discontig -> NUMA
 sparse -> Hotplug + NUMA
-## Memory initialization onset:  
-bios -> detect_memory save in boot_params.e820_map
-real -> protected -> long mode; [What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
-setup_arch
-setup_memory_map -> default_machine_specific_memory_setup // Save into struct e820map e820; from boot_params.e820_map. That's all.
-max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
-mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
-trim_low_memory_range // reserve 64k
-max_low_pfn = e820_end_of_low_ram_pfn(); //4GB以下的end of block
-memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
-early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
-init_mem_mapping //set page table and cr3.
-initmem_init ; NUMA init
-x86_init.paging.pagetable_init();= paging_init //x86_64 ->zone_sizes_init->...free_area_init_core
-a little history e820_register_active_region [replaced by lmb ](https://lkml.org/lkml/2010/7/13/68) memblock
-reserve_initrd ; // RAMDISK
-1. e820 get memory region.
-2. set PF trap do_page_fault.
-3. set page table and cr3.
-### Arch specific x86_64
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
-## Memblock
+# E820 memory map
+Kerenl setup header?: detect_memory() Load BIOS memory map into boot_params.e820_map
+setup_arch-> 
+{
+	setup_memory_map -> default_machine_specific_memory_setup // Save e820 memory map into struct vriable e820 from boot_params.e820_map.
+	max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
+	mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
+	trim_low_memory_range // reserve 64k
+	max_low_pfn = e820_end_of_low_ram_pfn(); //end of block below 4GB
+}
+
+# Memblock and bootmem
+setup_arch->
+	memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
 memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
 bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
-
-## Zones and free_area.free_list
-crash> enum zone_type
-enum zone_type {
-  ZONE_DMA = 0
-  ZONE_DMA32 = 1
-  ZONE_NORMAL = 2
-  ZONE_MOVABLE = 3
-  ZONE_DEVICE = 4
-  __MAX_NR_ZONES = 5
-};
-  node_zonelists = {{
-      _zonerefs = {{
-          zone = 0xffff88107ffd5d80, # node 0
-          zone_idx = 2
-        }, {
-          zone = 0xffff88107ffd56c0, # node 0
-          zone_idx = 1
-        }, {
-          zone = 0xffff88107ffd5000, # node 0
-          zone_idx = 0
-        }, {
-          zone = 0xffff88207ffd2d80,  # belongs to Node 1
-          zone_idx = 2
-        }, {
-          zone = 0x0, 
-          zone_idx = 0
-
-
-paging_init->zone_sizes_init.
-{
-	free_area_init_node-> 
-## prsent_pages
-		calculate_node_totalpages
-### mem_map/page array:
-		// mem_map for FLAT, but not for us because we use sparsemem
-		alloc_node_mem_map
-		free_area_init_core
-		{
-### managed_pages
-			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
-			// init percpu pageset with boot_pageset
-			zone_pcp_init 
-			// free_area.free_list
-			init_currently_empty_zone(zone, zone_start_pfn, size);
-			// Set all page to reserved. MIGRATE_MOVABLE?
-			// Set node, zone to page->flags; set_page_links
-			memmap_init_zone 
-
-		}
-}
-## Memory initialization from memblock to buddy system
+a little history in e820_register_active_region about memblock [replaced by lmb](https://lkml.org/lkml/2010/7/13/68)
+## What is the meaning of the following notes?
 ### memblock (constantly Y for x86)
 memblock_free_late->__memblock_free_late->__free_pages_bootmem
 ### bootmem (discarded by x86)
@@ -114,32 +45,71 @@ mm_init->mem_init->free_all_bootmem
 ### free bootmem late
 start_kernel->efi_free_boot_services->free_bootmem_late->__free_pages_bootmem
 
-# Sparse 
-paging_init->sparse_init
-## hotplug
-add_memory
-|-add_memory_resource
- |-add_memory_resource
-  |-arch_add_memory
-   |-__add_pages
-    |-__add_section
-     |-sparse_add_one_section
-      |-kmalloc_section_memmap
-       |-sparse_mem_map_populate
-        |-vmemmap_populate
-## vmemmap pages 
-vmemmap_populate
-## sparse_init
-|-sparse_early_mem_map_alloc if !CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
-|-sparse_early_mem_maps_alloc_node if CONFIG_SPARSEMEM_ALLOC_MEM_MAP_TOGETHER
+# Zones and Nodes
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes
+{
+	free_area_init_node-> 
+		calculate_node_totalpages
+		
+		alloc_node_mem_map// mem_map for FLAT, but not for us because we use sparsemem
+		free_area_init_core
+		{
+			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
+			// init percpu pageset with boot_pageset
+			zone_pcp_init 
+			// free_area.free_list
+			init_currently_empty_zone(zone, zone_start_pfn, size);
+			// Set all page to reserved. MIGRATE_MOVABLE?
+			// Set node, zone to page->flags; set_page_links
+			memmap_init_zone 
+		}
+}
+## Zone lists
+zone list is for Node not for zone. NUMA system has two zone lists:
+Check MAX_ZONELISTS
+ * [0]  : Zonelist with fallback
+ * [1]  : No fallback (__GFP_THISNODE)
+start_kernel->
+	build_all_zonelists
+or hotpulg or /proc/sys/vm/numa_zonelist_order: numa_zonelist_order_handler
+  node_zonelists = {{
+      _zonerefs = {{
+          zone = 0xffff88107ffd5d80, # node 0
+          zone_idx = 2
+        }, {
+          zone = 0xffff88107ffd56c0, # node 0
+          zone_idx = 1
+        }, {
+          zone = 0xffff88107ffd5000, # node 0
+          zone_idx = 0
+        }, {
+          zone = 0xffff88207ffd2d80, # Node 1; fallback.
+          zone_idx = 2
+        }, {
+          zone = 0x0, 
+          zone_idx = 0
+# Watermarks
+min_free_kbytes_sysctl_handler or watermark_scale_factor_sysctl_handler or
+core_initcall(init_per_zone_wmark_min) ->
+	setup_per_zone_wmarks-> __setup_per_zone_wmarks
+{
+	firo@linux-6qg8:~> grep managed /proc/zoneinfo 
+		managed  3973
+		managed  464142
+		managed  7726451
+	>>> 3973 + 464142 + 7726451
+	8194566
+	firo@linux-6qg8:~> cat /proc/sys/vm/min_free_kbytes 
+	67584
+	>>> 67584 / 4 * 3973 / 8194566
+	8
+	# Unit of watermark is Page.	
+	WMARK_MIN = page_no(min_free_kbytes) * (zone.managed_pages / \Sum of zone.managed_pages)
+	WMARK_LOW = 1.25 * min or min + 1/1000 * zone.managed_pages
+	WMARK_HIGH = 1.5 * min or min + 2/1000 * zone.managed_pages 
+}
 
 # LQO
-[An introduction to compound pages](https://lwn.net/Articles/619514/)
-Compound pages
-18fa11efc279c20af5eefff2bbe814ca067
-https://www.spinics.net/lists/newbies/msg41159.html
-https://lwn.net/Articles/619514/
-Watermark
 MIGRATE_HIGHATOMIC
 Fair-zone allocation: obesete in 4.x+ kernel
 What about other cpu when panic

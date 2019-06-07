@@ -17,6 +17,9 @@ http://ref.x86asm.net/coder64.html
 [Intel Analysis of Speculative Execution Side Channels](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf)
 [Indirect Branch Predictor Barrier](https://software.intel.com/security-software-guidance/insights/deep-dive-indirect-branch-predictor-barrier)
 
+# Mode
+[What does protected mode mean](http://www.delorie.com/djgpp/doc/ug/basics/protected.html)
+
 # Descriptor
 Segments in GDT or LDT
 Gates: special descriptors in IDT

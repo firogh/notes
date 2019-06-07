@@ -27,3 +27,8 @@ runtime Per-CPU, it's GFP_KERNEL in pcpu_create_chunk()
 
 # Hot cold page
 [mm, Remove cold parameter from free_hot_cold_page*](https://patchwork.kernel.org/patch/10013971/)
+
+# Compound pages
+[An introduction to compound pages](https://lwn.net/Articles/619514/)
+libfc, fcoe: fixes for highmem skb linearize panics:18fa11efc279c20af5eefff2bbe814ca067e51ae
+[what is "compound_page()" all about?](https://www.spinics.net/lists/newbies/msg41159.html)

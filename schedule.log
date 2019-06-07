@@ -27,5 +27,7 @@ https://lwn.net/Articles/44139/
 * generic-receive-offload: off
 * difference between synchronize_net and  synchronize_rcu?
 * patch - unlikely in ip_rcv
+* list operations in commit_tree
+* perf ftrace echo 0 > '/proc/sys/vm/nr_hugepages'
 
 # Work

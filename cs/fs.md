@@ -123,37 +123,8 @@ get the meaning of this struct by looking d_path().It includes the two endpoints
 [Upcoming API change: struct path](https://lwn.net/Articles/206758/)
 
 # Mount
-[Mount namespaces and shared subtrees](https://lwn.net/Articles/689856/)
-[Mount namespaces, mount propagation, and unbindable mounts](https://lwn.net/Articles/690679/)
-[Shared Subtrees](https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt)
-[Shared subtrees lwn.net](https://lwn.net/Articles/159077/)
-do_new_mount
-{
-	vfs_kern_mount
-	{
-		root = mount_fs -> ramfs_mount -> ramfs_fill_super
-		{
-			ramfs_get_inode
-			sb->s_root = d_make_root(inode);
-		}
-		mnt->mnt.mnt_root = root;
-	}
-	do_add_mount
-	{
-		lock_mount
-		{
-			mnt = lookup_mnt(path);
-			retry until !mnt, then create new mp
-		}
-		graft_tree->attach_recursive_mnt
-		{
-			get_mountpoint->d_set_mounted
-			mnt_set_mountpoint
-			commit_tree -> child mnt.mnt_hash -> mount_hashtable
-		}
+Check mount.log
 
-	}
-}
 ## LQO
 Check follow_managed
 * for DCACHE_MOUNTED in get_mountpoint
@@ -166,8 +137,8 @@ get rid of full-hash scan on detaching vfsmounts - 84d17192d2afd52aeba88c71ae495
     taken and mount re-checked without races.
 fs: dcache remove d_mounted - 5f57cbcc02cf18f6b22ef4066bb10afeb8f930ff
 
-# open
-sys_open -> 
+# Open
+sys_open ->
     path_init()
     1. get start point current->fs{root, pwd}
     2. link_path_walk() to the parent dentry of last entry vim in /sbin/vim. deal with diff mounted fs(ext2 and windows ntfs)
