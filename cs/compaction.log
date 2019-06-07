@@ -4,6 +4,8 @@
 https://lwn.net/Articles/591998/
 https://kernelnewbies.org/Linux_2_6_35#Memory_compaction
 
+# ETC
+MIGRATE_HIGHATOMIC
 
 # Anti fragmentation
 [The What, The Why and the Where To of Anti-Fragmentation](https://www.kernel.org/doc/ols/2006/ols2006v1-pages-369-384.pdf)
