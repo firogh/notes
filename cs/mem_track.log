@@ -1,11 +1,17 @@
-
-
 # Memory variables
 extern unsigned long max_low_pfn;
 extern unsigned long min_low_pfn;
 extern unsigned long max_pfn;
 high_memory
 Committed_AS and __vm_enough_memory
+
+# Pages
+[Some are in the "page cache" used to store the contents of files.](https://lwn.net/Articles/446317/) 
+Some are "anonymous pages" holding data used by applications. 
+Some are used as "slabs" and divided into pieces to answer kmalloc() requests. 
+Others are simply part of a multi-page allocation or maybe are on a free list waiting to be used. 
+Each of these different use cases could be seen as a subtype of the general class of "page".  -- Neil Brown.
+
 
 # VM stat
 /proc/meminfo

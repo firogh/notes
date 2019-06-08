@@ -90,67 +90,21 @@ Date:   Thu Sep 16 22:00:12 2004 -0700
 Check ULKv3 Page 380.
 https://lkml.org/lkml/2004/5/19/108
 https://lkml.org/lkml/2013/5/13/418
+# Anonymous pages
+commit e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
+Author: Mel Gorman <mgorman@suse.de>
+Date:   Wed Jul 3 15:01:57 2013 -0700
 
-# memory mappings
-TLPI:chapter 49
-LSP: Chapter 8
-rmap: anonymous page: asyn: page fault
-rmap: file page: syn vma_link_file
-## Anonymouse private mappings
-anonymous page
-* onset
-malloc exploit it to alloc memory 
-* nuclus
-do_anonymous_page
-## File private mappings -text and iniliazed data. 
-双空, anonymous page
-* onset - mmap
-do_mmap -> mmap_region -> call_mmap->generic_file_mmap->vma->vm_ops = & generic_file_vm_ops
-* nuclus -> page fault -> do_cow_page
-1. get page and cow:  __do_fault-> vma->vm_ops->fault = filemap_fault -> page cache ? page_cache_read add to lru
-2. add page to anon lru list: finish_fault->alloc_set_pte-> page_add_new_anon_rmap -> __SetPageSwapBacked
-### Example text and initalized data
-[??---p PROT_NOME mapping](http://www.greenend.org.uk/rjk/tech/dataseg.html#summary)
-show_vma_header_prefix
-cat /proc/self/maps 
-7ffff7a17000-7ffff7bcc000 r-xp 00000000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> text
-7ffff7bcc000-7ffff7dcc000 ---p 001b5000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> PROT_NONE
-7ffff7dcc000-7ffff7dd0000 r--p 001b5000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> read only data
-7ffff7dd0000-7ffff7dd2000 rw-p 001b9000 08:03 1188168                    /usr/lib64/libc-2.27.so ============> initialized
-7ffff7dd2000-7ffff7dd6000 rw-p 00000000 00:00 0 
-strace -e mmap,mprotect cat /dev/null 
-mmap(NULL, 3926752, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7ffff7a17000       ===> text
-mprotect(0x7ffff7bcc000, 2097152, PROT_NONE) = 0                                ======================> PROT_NONE
-mmap(0x7ffff7dcc000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b5000) = 0x7ffff7dcc000
-mmap(0x7ffff7dd2000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ffff7dd2000
-mprotect(0x7ffff7dcc000, 16384, PROT_READ) = 0                                          ========> read only data
-## Anonymouse shared mappings - Parent and child share memory
-[vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
-[ashmem](https://lwn.net/Articles/452035/)
-file page: i_mmap
-* onset - mmap
-do_mmap -> mmap_region -> vma_link -> (__shmem_file_setup) && __vma_link_file: into i_mmap interval_tree.
-* nuclus - share fault
-do_shared_fault
-shmem_getpage_gfp
-mapping = inode->i_mapping
-shmem_add_to_page_cache
-* dirty a shared page since it's write fault
-do_shared_fault->fault_dirty_shared_page
-* what about read fault?
-seems read won't dirty the shared page.
-* Swaping out a anonymouse shared page
-pageout->shmem_writepage - Move the page from the page cache to the swap cache; and swp_to_radix_entry
-[map_pages](https://lwn.net/Articles/588802/)
-### Write protect for shared page
-do_wp_page -> wp_page_reuse
-[PATCH] mm: tracking shared dirty pages - d08b3851da41d0ee60851f2c75b118e1f7a5fc89
-## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
-file page: i_mmap
-
-# COW: for malloc page
-are the ptes set during fork for child process?
-check copy_one_pte is_cow_mapping in copy_page_range in dup_mmap
+    mm: vmscan: stall page reclaim and writeback pages based on dirty/writepage pages encountered
++       /*
++        * Anonymous pages are not handled by flushers and must be written
++        * from reclaim context. Do not stall reclaim based on them
++        */
++       if (!page_is_file_cache(page)) {
++               *dirty = false;
++               *writeback = false;
++               return;
++       }
 
 # Summary
 mapping:  anon & private, anon 

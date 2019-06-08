@@ -1,5 +1,4 @@
 # Kernel memory mapping
-
 ## 0xffff880000000000 ~ "0xffff880000000000 +max_fpn << PAGE_SHIFT" or variable high_memory : direct map memory
 (0x1000000000000 -0x880000000000) /1024.0 /1024.0/1024.0/1024.0
 120.0 TB

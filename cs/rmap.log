@@ -43,3 +43,7 @@ rbtree-based interval tree - INTERVAL_TREE_DEFINE in mm/interval_tree.c
 __vma_adjust -> __vma_link_file: node: vma.shared.rb, key: vma.start_pgoff and vma.last_pgoff  address_space->i_mmap
 address_space is premise
 rmap_walk_file(page.mapping=address_space.i_mmap
+
+# ETC
+rmap: anonymous page: async: page fault
+rmap: file page: syn vma_link_file
