@@ -148,6 +148,10 @@ do_wp_page -> wp_page_reuse
 ## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
 file page: i_mmap
 
+# COW: for malloc page
+are the ptes set during fork for child process?
+check copy_one_pte is_cow_mapping in copy_page_range in dup_mmap
+
 # Summary
 mapping:  anon & private, anon 
 from: anonymous page, file-backing 
@@ -160,29 +164,6 @@ write:
 backend: swap area, disk 
 PageAnon:		f&p, a&p 
 !page_is_file_cache:	f&p, a&p, a&s
-
-## swap
-systemd->swapon->sys_swapon
-&def_blk_fops
-
-do_shared_fault
-shmem_fault
-shmem_alloc_and_acct_page
-
-swap in
-swapin_readahead
-swap_readpage
-swap_page_sector
-
-## process of swap
-### Swapping out pages
-lru -> swap cache -> updating pte with try to unmap -> write page into swap area -> delete_from_swap_cache()
-shrink_page_list
-key commit:
-mm: cma: discard clean pages during contiguous allocation instead of migration - 02c6de8d757cb32c0829a45d81c3dfcbcafd998b
-mm: reclaim MADV_FREE pages - 802a3a92ad7ac0b9be9df229dee530a1f0a8039b check mark_page_lazyfree
-[mm: support madvise(MADV_FREE)](https://lwn.net/Articles/590693/)
-### Swapping in pages
 
 ## fork
 

@@ -1,0 +1,27 @@
+
+# Enable Swap
+systemd->swapon->sys_swapon
+&def_blk_fops
+
+do_shared_fault
+shmem_fault
+shmem_alloc_and_acct_page
+
+swap in
+swapin_readahead
+swap_readpage
+swap_page_sector
+
+# Swapbacked pages
+Private file maps & write page fault 
+
+# Swapping out pages
+lru -> swap cache -> updating pte with try to unmap -> write page into swap area -> delete_from_swap_cache()
+shrink_page_list
+key commit:
+mm: cma: discard clean pages during contiguous allocation instead of migration - 02c6de8d757cb32c0829a45d81c3dfcbcafd998b
+mm: reclaim MADV_FREE pages - 802a3a92ad7ac0b9be9df229dee530a1f0a8039b check mark_page_lazyfree
+[mm: support madvise(MADV_FREE)](https://lwn.net/Articles/590693/)
+
+# Swapping in pages
+do_page_fault->

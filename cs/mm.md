@@ -9,11 +9,15 @@ category: cs
 # Ref
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
 
-# memory organization
-## Memory mode
+# VM
+[BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
+[Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
+
+# Memory model
 flat mem -> uma
 discontig -> NUMA
 sparse -> Hotplug + NUMA
+
 # E820 memory map
 Kerenl setup header?: detect_memory() Load BIOS memory map into boot_params.e820_map
 setup_arch-> 
@@ -88,7 +92,18 @@ or hotpulg or /proc/sys/vm/numa_zonelist_order: numa_zonelist_order_handler
         }, {
           zone = 0x0, 
           zone_idx = 0
+## mm_init
+Most of the reset the memory initialization is done in this function.
+start_kernel->
+	mm_init
+{
+	# ??
+	# /* this will put all low memory onto the freelists */
+	mem_init-> memblock_free_all or free_all_bootmem
+}
+
 # Watermarks
+Check Documentation/sysctl/vm.txt for min_free_kbytes
 min_free_kbytes_sysctl_handler or watermark_scale_factor_sysctl_handler or
 core_initcall(init_per_zone_wmark_min) ->
 	setup_per_zone_wmarks-> __setup_per_zone_wmarks
@@ -110,35 +125,20 @@ core_initcall(init_per_zone_wmark_min) ->
 }
 if min_free_kbytes > 1/250*total mamanged_pages, we use 1.25 min or 1.5 min
 
-# LQO
-Fair-zone allocation: obesete in 4.x+ kernel
-kmmio probe in do_page_fault
-userfd https://www.youtube.com/watch?v=xhOBc5L_Hkk
-* Special sections in Linux binaries
-https://lwn.net/Articles/531148/
-* COW: for malloc page 
-are the ptes set during fork for child process?
-check copy_one_pte is_cow_mapping in copy_page_range in dup_mmap
-VM_WIPEONFORK
-MADV_WIPEONFORK
-* DAX
-* __shmem_file_setup dev/zero
-* http://pzemtsov.github.io/2016/11/06/bug-story-alignment-on-x86.html
-## BUG
+# Low memory reserved
+Check Documentation/sysctl/vm.txt for lowmem_reserve_ratio
+lowmem_reserve_ratio_sysctl_handler or core_initcall(init_per_zone_wmark_min) ->
+	setup_per_zone_lowmem_reserve
+firo@linux-6qg8:~> cat /proc/zoneinfo | grep protection
+        protection: (0, 1813, 31994, 31994, 31994)
+        protection: (0, 0, 30181, 30181, 30181)
+        protection: (0, 0, 0, 0, 0)
+        protection: (0, 0, 0, 0, 0)
+        protection: (0, 0, 0, 0, 0)
+Check __alloc_pages_nodemask(), lowmem_reserve is used for checking if there is enough pages in current zone to which allcation fallbacks from a prefered zone.
+lowmem_reserv is used for fallback allcations from a perfered zone in the zonelist.
+The index of lowmme_reserv is the prefered zoneref.zone_idx
 
-# Reference
-[Memory – Part 2: Understanding Process memory](https://techtalk.intersec.com/2013/07/memory-part-2-understanding-process-memory/)
-# VM
-[flexible-mmap-2.6.7-D5](https://lwn.net/Articles/90311/)
-[Reorganizing the address space](https://lwn.net/Articles/91829/)
-[Anatomy of a Program in Memory](http://duartes.org/gustavo/blog/post/anatomy-of-a-program-in-memory/)
-[BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
-[Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
-
-# Hardware memory
-Logic gates: SRAM, DRAM
-What is data/contrl/address bus?
-
-# Interface
+# madvise
 ## MADV_SEQUENTIAL and reclaim
 mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c

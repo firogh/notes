@@ -62,6 +62,7 @@ parallel communication: SCSI, ISA, ATA, PCI, FSB
 
 
 # Data struct aligment
+[A bug story: data alignment on x86](http://pzemtsov.github.io/2016/11/06/bug-story-alignment-on-x86.html)
 [The Lost Art of C Structure Packing](http://www.catb.org/esr/structure-packing/)
 [Typical alignment of C structs on x86](http://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86)
 ## 为什么需要结构体对齐?

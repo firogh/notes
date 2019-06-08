@@ -1,5 +1,10 @@
-[NUMA (Non-Uniform Memory Access): An Overview](https://queue.acm.org/detail.cfm?id=2513149)
+
+# References
+[Memory part 4: NUMA support](https://lwn.net/Articles/254445/)
 [What is Linux Memory Policy?](https://www.kernel.org/doc/Documentation/vm/numa_memory_policy.txt)
+[NUMA (Non-Uniform Memory Access): An Overview](https://queue.acm.org/detail.cfm?id=2513149)
+[The MySQL “swap insanity” problem and the effects of the NUMA architecture](https://blog.jcole.us/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/)
+[NUMA架构的CPU -- 你真的用好了么？](http://cenalulu.github.io/linux/numa/)
 
 # Init NUMA
 setup_arch->initmem_init

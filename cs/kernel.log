@@ -22,7 +22,7 @@ https://lwn.net/Articles/572068/
 # interview question
 https://www.quora.com/Kernel-programming-is-a-big-area-Network-stack-might-have-nothing-in-common-with-block-drivers-etc-To-test-someone%E2%80%99s-overall-knowledge-what-would-be-some-good-interview-questions-on-Linux-kernel-programming
 * xiao mi
-关于抢占的理解（何时抢占，怎样实现的抢占）
+关于抢占的理解（何时抢占,怎样实现的抢占）
 kmalloc与vmalloc的区别
 kmalloc内核是如何实现存储管理的，比如申请了14B的空间
 A,B两个进程，运行顺序是A—B—A,有多少种可能导致的，比如阻塞，抢占等。

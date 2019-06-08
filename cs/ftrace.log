@@ -43,3 +43,6 @@ gpg-agent-2377  [006] d... 21546.936711: firo1: (__set_task_blocked+0x0/0x70) ar
 
 # [Filter commands](https://www.kernel.org/doc/html/v4.20/trace/ftrace.html#filter-commands)
 
+# MMIO trace
+[Tracing memory-mapped I/O operations](https://lwn.net/Articles/270939/)
+[In-kernel memory-mapped I/O tracing](https://www.kernel.org/doc/Documentation/trace/mmiotrace.txt)

@@ -4,9 +4,6 @@ setup_arch->
 	early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
 	init_mem_mapping //set page table and cr3.
 
-# Summary
-pte -> page flags -> page
-
 # PTE and PDE and page flags
 v3a chapter 4.5 4-level paging, p132, Figure 4-11. Formats of CR3 and Paging-Structure Entries with 4-Level Paging
 | G | PAT | D | A | PCD | PWT | U/S | R/W | Present

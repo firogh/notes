@@ -29,6 +29,16 @@ add_memory
        |-sparse_mem_map_populate
         |-vmemmap_populate
 
+# Modules text address
+cat /sys/module/wmi/sections/.text
+cat /proc/modules | grep wmi
+int bss_var;
+static int hello_init(void)
+{printk(KERN_ALERT "Text location .text(Code Segment):%p\n",hello_init);
+static int data_var=0;
+printk(KERN_ALERT "Data Location .data(Data Segment):%p\n",&data_var);
+printk(KERN_ALERT "BSS Location: .bss(BSS Segment):%p\n",&bss_var);}
+
 # Vmalloc
 map_vm_area 页表映射
 the page in ZONE_NORMAL will not use directly mapping pfn address! It use VMALLOC address!
@@ -38,6 +48,8 @@ deatils in vmalloc_sync_one() and vunmap_pte_range()
 只释放pte
 
 # x86
+https://www.kernel.org/doc/Documentation/vm/highmem.txt
+[Virtual Memory I: the problem](https://lwn.net/Articles/75174/)
 ## Persistent Kernel Mappings
 kmap(struct page *)
 How kmap works? 

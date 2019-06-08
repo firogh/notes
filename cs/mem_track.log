@@ -5,24 +5,30 @@ extern unsigned long max_low_pfn;
 extern unsigned long min_low_pfn;
 extern unsigned long max_pfn;
 high_memory
+Committed_AS and __vm_enough_memory
+
+# VM stat
+/proc/meminfo
+meminfo_proc_show
+/proc/zoneinfo
+## Buffer cache of command 'free'
+"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
+1. Open block device directly open("/dev/sdb"...) -> blkdev_open
+2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
+
+## Threshhold
+Check calculate_normal_threshold
 
 # ETC
-/proc/meminfo
-/proc/zoneinfo
-Committed_AS and __vm_enough_memory
 [page owner](https://www.kernel.org/doc/html/v4.18/vm/page_owner.html)
+
+# Slab
+/proc/slabinfo
 
 # Memory available
 [provide estimated available memory in /proc/meminfo](https://lore.kernel.org/patchwork/patch/417981/)
 equation for calculating all available memory 
 freeram + LRU_ACTIVE_FILE + LRU_INACTIVE_FILE + NR_SLAB_RECLAIMABLE 
-
-# meminfo 
-meminfo_proc_show
-## Buffer cache of command 'free'
-"Buffers" represent how much portion of RAM is dedicated to cache disk blocks
-1. Open block device directly open("/dev/sdb"...) -> blkdev_open
-2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
 
 # HW availbae memory 
 >>> 6439184 + 36648 + 17089808 + 2511088 - 12524
@@ -36,8 +42,13 @@ meminfo_proc_show
 FIXME: pages accounted for in NR_WRITEBACK are not on the LRU lists  any more, right?
 Right. Check right.
 
-# Node based memory states
+# Zone based memory states
+commit 2244b95a7bcf8d24196f8a3a44187ba5dfff754c
+Author: Christoph Lameter <clameter@sgi.com>
+Date:   Fri Jun 30 01:55:33 2006 -0700
+    [PATCH] zoned vm counters: basic ZVC (zoned vm counter) implementation
 
+# Node based memory states
 commit 599d0c954f91d0689c9bb421b5bc04ea02437a41
 Author: Mel Gorman <mgorman@techsingularity.net>
 Date:   Thu Jul 28 15:45:31 2016 -0700
@@ -52,6 +63,7 @@ commit bca6759258dbef378bcf5b872177bcd2259ceb68
 Author: Mel Gorman <mgorman@techsingularity.net>
 Date:   Thu Jul 28 15:47:05 2016 -0700
     mm, vmstat: remove zone and node double accounting by approximating retries
+
 ## Zone based memory states partially come back
 commit 71c799f4982d340fff86e751898841322f07f235
 Author: Minchan Kim <minchan@kernel.org>
@@ -59,13 +71,6 @@ Date:   Thu Jul 28 15:47:26 2016 -0700
 
     mm: add per-zone lru list stat
 Check update_lru_size
-
-# Zone based memory states
-commit 2244b95a7bcf8d24196f8a3a44187ba5dfff754c
-Author: Christoph Lameter <clameter@sgi.com>
-Date:   Fri Jun 30 01:55:33 2006 -0700
-    [PATCH] zoned vm counters: basic ZVC (zoned vm counter) implementation
-
 
 # LQO
 ramfs pages first go to (in)active lists, moves to unevictable later, so it's not really true already. ;)
@@ -82,8 +87,6 @@ AnonPages: NR_ANON_PAGES Mapped anonymous pages do_xx_fault
                 K(global_page_state(NR_ANON_PAGES)
                   + global_page_state(NR_ANON_TRANSPARENT_HUGEPAGES) *
                   HPAGE_PMD_NR)
-
-# /proc/slabinfo
 
 ## RAMFS shmem unevictable
 fs/ramfs/inode.c <<ramfs_get_inode>>
