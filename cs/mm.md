@@ -138,7 +138,3 @@ firo@linux-6qg8:~> cat /proc/zoneinfo | grep protection
 Check __alloc_pages_nodemask(), lowmem_reserve is used for checking if there is enough pages in current zone to which allcation fallbacks from a prefered zone.
 lowmem_reserv is used for fallback allcations from a perfered zone in the zonelist.
 The index of lowmme_reserv is the prefered zoneref.zone_idx
-
-# madvise
-## MADV_SEQUENTIAL and reclaim
-mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c

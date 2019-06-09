@@ -13,6 +13,8 @@ __GFP_IO: allow disk IO
 __GFP_FS: allow fs operations, depend on io.
 [Avoiding memory-allocation deadlocks](https://lwn.net/Articles/594725/)
 [Understanding __GFP_FS](https://lwn.net/Articles/596618/)
+__GFP_HIGHMEM in __alloc_zeroed_user_highpage??
+
 
 # Hot and cold pages
 [Hot and cold pages](https://lwn.net/Articles/14768/)

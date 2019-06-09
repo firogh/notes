@@ -12,6 +12,24 @@ Some are used as "slabs" and divided into pieces to answer kmalloc() requests.
 Others are simply part of a multi-page allocation or maybe are on a free list waiting to be used. 
 Each of these different use cases could be seen as a subtype of the general class of "page".  -- Neil Brown.
 
+## In page fault
+Ondemanding page
+COW - do_wp_page
+Major fault, or minor fault.
+Private, shared, anonymous, file pages
+## Page frame reclaimation
+page_is_file_cache
+Check page_check_dirty_writeback() for anonymous pages's definition.
+        /*
+         * Anonymous pages are not handled by flushers and must be written
+         * from reclaim context. Do not stall reclaim based on them
+         */
+        if (!page_is_file_cache(page) ||
+            (PageAnon(page) && !PageSwapBacked(page))) {
+                *dirty = false;
+                *writeback = false;
+                return;
+        }
 
 # VM stat
 /proc/meminfo

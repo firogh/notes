@@ -17,6 +17,8 @@ debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug
 
 # Kernel oops
 [lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
+[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
+[Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
 
 # Kprobes 
 

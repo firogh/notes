@@ -1,3 +1,4 @@
+
 # Reverse mapping
 unmapping at once all page table entries of a shared pages
 ## page.index
@@ -47,3 +48,4 @@ rmap_walk_file(page.mapping=address_space.i_mmap
 # ETC
 rmap: anonymous page: async: page fault
 rmap: file page: syn vma_link_file
+PageAnon ? anon, file

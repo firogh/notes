@@ -192,3 +192,12 @@ PG_mlocked: mlock()
 # struct page
 ## page.lru
 lruvec, buddy system, slab, isolate list
+
+# ETC
+commit dfc8d636cdb95f7b792d5ba8c9f3b295809c125d
+Author: Johannes Weiner <hannes@cmpxchg.org>
+Date:   Fri Mar 5 13:42:19 2010 -0800
+
+    vmscan: factor out page reference checks
+    
+    The used-once mapped file page detection patchset.

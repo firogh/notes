@@ -34,5 +34,10 @@ https://lwn.net/Articles/44139/
 =======
 * sysctl_lowmem_reserve_ratio for ZONE_DEVICE?
 >>>>>>> 14b9e60789b4d12681aac69f9174ff55e147593e
+* KSM
+*         if (!page_is_file_cache(page) ||
+            (PageAnon(page) && !PageSwapBacked(page))) {
+Could we remove PageSwapBacked
+
 
 # Work
