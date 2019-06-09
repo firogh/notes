@@ -52,29 +52,18 @@ Write - do_cow_page
 Read - do_read_page
 Read & write - do_wp_page
 
-## Shared anonymouse mappings - Parent and child share memory
-[Java related issue. vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
-The above fix want to fence out shared memory pages.
+## Shared anonymouse mappings
+[vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
+If someone may take advange of reclaimation code by mmap(..., VM_EXEC, SHRED|ANON), OOM may occur since the old code protect it from reclaiming by add it back to the active list. Great patch. However, program running in tmpfs will also penalized.
 page_is_file_cache < !PageAnon
 [ashmem](https://lwn.net/Articles/452035/)
 * onset - mmap
 do_mmap -> mmap_region -> vma_link -> (__shmem_file_setup) && __vma_link_file: into i_mmap interval_tree.
 * nuclus - share fault
-do_shared_fault
-shmem_getpage_gfp
-shmem_add_to_page_cache
-* dirty a shared page since it's write fault
-do_shared_fault->fault_dirty_shared_page
-* what about read fault?
-seems read won't dirty the shared page.
-* Swaping out a anonymouse shared page
-pageout->shmem_writepage - Move the page from the page cache to the swap cache; and swp_to_radix_entry
-[map_pages](https://lwn.net/Articles/588802/)
-### Write protect for shared page
-do_wp_page -> wp_page_reuse
-[PATCH] mm: tracking shared dirty pages - d08b3851da41d0ee60851f2c75b118e1f7a5fc89
+Read: do_read_fault
+Write: do_shared_fault -> shmem_getpage_gfp shmem_add_to_page_cache
+WP: do_wp_page -> wp_page_shared or wp_page_reuse
 ## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
-file page: i_mmap
 
 # mmap
 ## MAP_SYNC

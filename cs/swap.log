@@ -1,4 +1,5 @@
-
+# Swap
+[In defence of swap: common misconceptions](https://chrisdown.name/2018/01/02/in-defence-of-swap.html)
 # Enable Swap
 systemd->swapon->sys_swapon
 &def_blk_fops
@@ -22,6 +23,9 @@ key commit:
 mm: cma: discard clean pages during contiguous allocation instead of migration - 02c6de8d757cb32c0829a45d81c3dfcbcafd998b
 mm: reclaim MADV_FREE pages - 802a3a92ad7ac0b9be9df229dee530a1f0a8039b check mark_page_lazyfree
 [mm: support madvise(MADV_FREE)](https://lwn.net/Articles/590693/)
+
+## Swapping out shared anonymous pages
+pageout->shmem_writepage - Move the page from the page cache to the swap cache; and swp_to_radix_entry
 
 # Swapping in pages
 do_page_fault->

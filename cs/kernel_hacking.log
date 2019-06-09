@@ -18,3 +18,8 @@ The intricacy of smantic of kernel beyond for human's understanding ablity. So l
 作茧自缚, 割裂.dissever.
 2. 没有意识到, 靠单一的方法, 理解, 去处理复杂事务的不可能.
 3. 创造本身才是有效的kernel hacking 方法.
+
+# TGLX tree
+origin	git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git (fetch)
+origin	git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git (push)
+

@@ -201,3 +201,11 @@ Date:   Fri Mar 5 13:42:19 2010 -0800
     vmscan: factor out page reference checks
     
     The used-once mapped file page detection patchset.
+
+## double slab pressure
+tglx tree
+commit b65bbded3935b896d55cb6b3e420a085d3089368
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Wed Sep 25 07:20:18 2002 -0700
+
+    [PATCH] slab reclaim balancing
