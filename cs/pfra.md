@@ -189,6 +189,14 @@ PG_active: active page
 PG_referenced: accessed recently
 PG_lru: page is on the lru linked list
 PG_mlocked: mlock()
+PG_locked in generic_file_buffered_read add_to_page_cache_lru and __SetPageLocked
+check mark_buffer_async_read
+tglx tree
+commit d58e41eec6859e9590f8f70ccdc1d58f4f6a1b84
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Sun May 5 01:10:37 2002 -0700
+
+    [PATCH] Fix concurrent writepage and readpage
 # struct page
 ## page.lru
 lruvec, buddy system, slab, isolate list
@@ -201,3 +209,11 @@ Date:   Fri Mar 5 13:42:19 2010 -0800
     vmscan: factor out page reference checks
     
     The used-once mapped file page detection patchset.
+
+## double slab pressure
+tglx tree
+commit b65bbded3935b896d55cb6b3e420a085d3089368
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Wed Sep 25 07:20:18 2002 -0700
+
+    [PATCH] slab reclaim balancing

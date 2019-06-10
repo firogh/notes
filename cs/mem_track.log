@@ -39,6 +39,8 @@ meminfo_proc_show
 "Buffers" represent how much portion of RAM is dedicated to cache disk blocks
 1. Open block device directly open("/dev/sdb"...) -> blkdev_open
 2. Read metadata,including indirect blocks, bitmap,  sb_getblk->... -> grow_dev_page
+## Shared dirty pages
+[PATCH] mm: tracking shared dirty pages - d08b3851da41d0ee60851f2c75b118e1f7a5fc89
 
 ## Threshhold
 Check calculate_normal_threshold

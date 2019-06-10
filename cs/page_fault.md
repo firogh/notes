@@ -43,10 +43,13 @@ Libray Private  read: do_read_page, pte prot is PAGE_COPY check protection_map.
 ## Shared file page
 do_shared_page
 ## Shared anonymous page
-[vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
 do_shared_page
 ## Swap page
 do_swap_page
+
+# Read and write pages - Copy-on-write technique.
+## do_read_page
+[map_pages](https://lwn.net/Articles/588802/)
 
 # Synchronization
 ## down_read(&mm->mmap_sem)?

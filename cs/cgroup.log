@@ -1,5 +1,6 @@
 
 
+# V1
 [Control groups series by Neil Brown](https://lwn.net/Articles/604609/)
 
 
@@ -16,3 +17,6 @@ static struct cgroup_subsys *cgroup_subsys[] = {
 #undef SUBSYS
 
 cgroup_init
+
+# V2
+[cgroupv2: Linux's new unified control group hierarchy](https://chrisdown.name/2017/03/01/cgroupv2-linux-new-cgroup-hierarchy.html)

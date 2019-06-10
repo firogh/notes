@@ -1,0 +1,15 @@
+# Page cache
+## Search structure
+file page cache : key is page.index( offset in file), item is page.
+* swap cache - a fake cache
+radix tree same as page cache
+add_to_swap 
+* page cache
+Radix tree
+page_cache_tree_insert, add_to_page_cache_lru
+
+## Reclaim algorithm
+
+## Write behavior
+
+## Cache coherence
