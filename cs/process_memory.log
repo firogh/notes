@@ -85,6 +85,24 @@ dax_iomap_pte_fault
 ## MADV_SEQUENTIAL and reclaim
 mm: more likely reclaim MADV_SEQUENTIAL mappings - 4917e5d0499b5ae7b26b56fccaefddf9aec9369c
 
+## MADV_FREE
+[Volatile ranges and MADV_FREE](https://lwn.net/Articles/590991/)
+[Use new madvise()'s MADV_FREE on the private heap](https://bugs.python.org/issue26601)
+commit 854e9ed09dedf0c19ac8640e91bcc74bc3f9e5c9
+Author: Minchan Kim <minchan@kernel.org>
+Date:   Fri Jan 15 16:54:53 2016 -0800
+    mm: support madvise(MADV_FREE)
+commit 10853a039208c4afaa322a7d802456c8dca222f4
+Author: Minchan Kim <minchan@kernel.org>
+Date:   Fri Jan 15 16:55:11 2016 -0800
+    mm: move lazily freed pages to inactive list
+
+commit f7ad2a6cb9f7c4040004bedee84a70a9b985583e
+Author: Shaohua Li <shli@fb.com>
+Date:   Wed May 3 14:52:29 2017 -0700
+    mm: move MADV_FREE pages into LRU_INACTIVE_FILE list
+
+
 # mprotect
 ## PROT_NONE
 [---p PROT_NOME mapping](http://www.greenend.org.uk/rjk/tech/dataseg.html#summary)
