@@ -15,6 +15,19 @@ __GFP_FS: allow fs operations, depend on io.
 [Understanding __GFP_FS](https://lwn.net/Articles/596618/)
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
 
+# Do anonymous page, zero page
+tglx tree
+commit 382a7dec462a90ad6ae01227f1e8758ae721f6ed
+Author: Christoph Lameter <clameter@sgi.com>
+Date:   Tue Feb 1 16:34:17 2005 -0800
+    [PATCH] alloc_zeroed_user_highpage() to fix the clear_user_highpage issue
+Lost tracks
+commit 6fbaac38b85e4bd3936b882392e3a9b45e8acb46
+Author: Linus Torvalds <torvalds@athlon.transmeta.com>
+Date:   Mon Feb 4 19:14:54 2002 -0800
+
+    v2.4.7 -> v2.4.7.1
+
 
 # Hot and cold pages
 [Hot and cold pages](https://lwn.net/Articles/14768/)

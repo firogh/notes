@@ -37,6 +37,10 @@ Energy-efficiency
 Debugging
 Memory management
 
+# The fundermental
+Buffer: for bandwidth
+Cache: for speed
+
 # FAQ
 [All about pseudo](https://www.ibm.com/developerworks/library/os-aapseudo1/os-aapseudo1-pdf.pdf)
 
