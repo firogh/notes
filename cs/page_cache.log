@@ -13,8 +13,14 @@ Section Storing Blocks in Page Cache is invaluable;
 buffer_head
 This descriptor contains all the information needed by the kernel to know how to handle the block;
 thus, before operating on each block, the kernel checks its buffer head.
+submit_bh()
 
 # Buffer pages 
+attach_page_buffers
+
+# Block device buffer pages
+grow_buffers-> grow_dev_page
+try_to_release_page
 
 
 ## Search structure
