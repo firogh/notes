@@ -183,6 +183,13 @@ Leave kswapd to deal with IO, mark it reclaim and skip it.
 including shared memory
 
 # Page flags
+PG_reclaim:
+commit 3b0db538ef6782a1e2a549c68f1605ca8d35dd7e
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Mon Dec 2 21:31:09 2002 -0800
+
+    [PATCH] Move reclaimable pages to the tail ofthe inactive list on
+
 PG_swapcace means page is in the swap cache.
 PG_swapbacked: stack, heap, data segment, anoymous mmap, shmem, it means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
 PG_active: active page
