@@ -16,6 +16,9 @@ thus, before operating on each block, the kernel checks its buffer head.
 
 # Buffer pages 
 
+# Buffer cache
+Inode is stored on the buffer cache; check sync_inode_metadata and __ext2_write_inode
+
 
 ## Search structure
 file page cache : key is page.index( offset in file), item is page.
@@ -37,5 +40,3 @@ PG_private: check definition
  * The PG_private bitflag is set on pagecache pages if they contain filesystem
  * specific data (which is normally at page->private). It can be used by
  * private allocations for its own usage.
-
-

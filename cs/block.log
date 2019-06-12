@@ -1,4 +1,5 @@
 
+
 # Block layer
 ## Generic block layer
 FS layer -> submit_bio bio -> generic block layer -> before request_fn/hd_request_fn
@@ -40,7 +41,6 @@ Back merge
 Coalesce merge
 3.4 generic_make_request
 convert sector from partition to gendisk
-
 
 ### Processes
 1. Delay work
@@ -94,6 +94,15 @@ root       467  0.0  0.0      0     0 ?        I<   08:15   0:00 [kworker/3:1H-k
 if schedule:  workqueue
 else synchronize ?? which function?
 
+# Bio
+
+## End bio callback
+__bread_slow: b_end_io = end_buffer_read_sync
+__bread_slow->submit_bh -> submit_bh_wbc: bio->bi_end_io = end_bio_bh_io_sync
+
+
+callback: bio_endio end_bio_bh_io_sync
+
 ## submit_bio
 blk_queue_bio
 Case 1. Try Merge 
@@ -138,7 +147,7 @@ bdi_register_owner(bdi, disk_to_dev(disk));
 
 # LQO
 1. [Partition and gendisk](https://groups.google.com/forum/#!msg/zh-kernel/sg6BvXTJSUk/-fnTfL9_VXYJ)
-gendisk代表磁盘，无论其有没有分区。 struct hd_struct才代表分区。
+gendisk代表磁盘,无论其有没有分区. struct hd_struct才代表分区。
 2. [part0 and disk_part_tbl](https://www.jianshu.com/p/dde0673c0466)
 3. sda vs hda
 4. ext2_mount mount_dev
