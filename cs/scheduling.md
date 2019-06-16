@@ -9,8 +9,13 @@ Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 [A complete guide to Linux process scheduling](https://tampub.uta.fi/bitstream/handle/10024/96864/GRADU-1428493916.pdf)
 https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
 
-# Queue
-rq
+# General runqueue
+static DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
+activate_task - move a task to the runqueue.
+wake_up_new_task
+ttwu_do_activate
+
+# CFS  runqueue
 cfa_rq
 
 # cfs_rq

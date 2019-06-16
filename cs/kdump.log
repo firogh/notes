@@ -1,0 +1,16 @@
+
+# Reference
+[Reboot Linux faster using kexec](http://web.archive.org/web/20130121033946/http://www.ibm.com/developerworks/linux/library/l-kexec/index.html)
+[Kdump on sourcefoge](http://lse.sourceforge.net/kdump/)
+man 5 kdump
+man makedumpfile
+
+# SUSE
+Package: kdump
+/lib/kdump/load.sh
+https://doc.opensuse.org/documentation/leap/tuning/html/book.sle.tuning/cha.tuning.kexec.html
+
+
+# Kexec and tools
+git://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git
+EADDRNOTAVAIL: Cannot assign requested address

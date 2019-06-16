@@ -1,6 +1,7 @@
 
 # Sysfs
 sysfs is strongly depend on driver module, just rmmod tg3 then /sys/class/net/enp9s0 went away!
+[hierarchy of sysfs](https://lwn.net/Articles/604413/)
 ## 4.10 +
 kernfs_drain
 ## 3.14
