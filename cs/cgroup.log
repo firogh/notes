@@ -93,6 +93,7 @@ cgroup_tasks_write -> cgroup_attach_task->
 
 # V2
 [cgroupv2: Linux's new unified control group hierarchy](https://chrisdown.name/2017/03/01/cgroupv2-linux-new-cgroup-hierarchy.html)
+[What's new in control groups (cgroups) version 2](https://www.youtube.com/watch?v=yZpNsDe4Qzg) comparing to v1.
 
 # Unified cgroup
 [The unified control group hierarchy in 3.16](https://lwn.net/Articles/601840/)
