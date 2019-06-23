@@ -1,5 +1,7 @@
 
-# synchronization between net-procfs dev_get_stats and device close or ethtool reconfigurations
+# RTNL lock
+[rtnl mutex, the network stack big kernel lock](https://www.netdevconf.org/2.2/slides/westphal-rtnlmutex-talk.pdf)
+## synchronization between net-procfs dev_get_stats and device close or ethtool reconfigurations
 WRONG PATCH [Fix inconsistent rtnl_lock usage on dev_get_stats](http://patchwork.ozlabs.org/patch/711665/)
 
 

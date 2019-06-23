@@ -1,0 +1,3 @@
+
+# VMA
+vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.

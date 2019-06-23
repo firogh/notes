@@ -270,6 +270,8 @@ https://lwn.net/Articles/353050/
 https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-change-in-linux-kernel-and-print-stack-trace
 
 # TSS
+# sp0
+[x86/entry/64: Remove thread_struct::sp0](https://lore.kernel.org/patchwork/patch/828764/):d375cf1530595e33961a8844192cddab913650e3
 ## Implemention
 GDT -> TSS descriptor -> TSS
 tss_struct cpu_tss, ltr, str

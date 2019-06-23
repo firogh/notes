@@ -19,7 +19,24 @@ The intricacy of smantic of kernel beyond for human's understanding ablity. So l
 2. 没有意识到, 靠单一的方法, 理解, 去处理复杂事务的不可能.
 3. 创造本身才是有效的kernel hacking 方法.
 
-# TGLX tree
+# Tree
+[Git tree maintenance](https://lwn.net/Articles/572068/)
+## TGLX tree
 origin	git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git (fetch)
 origin	git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git (push)
 
+
+# Guide
+[Unreliable Guide To Hacking The Linux Kernel](https://www.kernel.org/doc/htmldocs/kernel-hacking/index.html)
+
+# Training
+[Bootlin linux kernel labs](https://linux-kernel-labs.github.io/master/index.html)
+
+# Hacking
+[Variable-length arrays and the max() mess](https://lwn.net/Articles/749064/)
+
+# Projects
+[Sub-system Update: Kernel Self-Protection Project - Kees Cook, Google](https://www.youtube.com/watch?v=wlqjQe3vDx8&list=PLbzoR-pLrL6rOT6m50HdJFYUHyvA9lurI&index=11&t=0s)
+## Kernel refactoring
+https://linuxtv.org/wiki/index.php/Development:_Hints_for_Refactoring_Existing_Drivers
+[Kernel Recipes 2017 - Refactoring the Linux Kernel - Thomas Gleixner](https://www.youtube.com/watch?v=mxxicJZ8cis)

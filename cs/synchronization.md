@@ -152,7 +152,6 @@ https://stackoverflow.com/questions/34459803/in-gnu-c-inline-asm-whatre-the-modi
 # RW semaphore
 [rwsem: Support optimistic spinning](https://lwn.net/Articles/598577/)
 
-
 # RCU -- lockless
 Check The Journey to RCU for more details
 # examples

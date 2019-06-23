@@ -1,9 +1,11 @@
+
+# Reference
 [Intel IOMMU Pass Through Support](https://lwn.net/Articles/329174/)
 https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt
-
 [userfaultfd](https://www.youtube.com/watch?v=xhOBc5L_Hkk)
-# snapper
 
+[An Introduction to Virtualization](https://www.anandtech.com/show/2653)
+# snapper
 boot into a readonly snapshot
 snapper rollback;
 reboot

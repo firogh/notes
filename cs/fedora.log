@@ -122,6 +122,7 @@ indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs *.c *.h
 
 # ps
 ps -eLo pid,tid,s,eip,esp,stackp,tty4,etime,comm,wchan
+ps -Llefmj or ps -Llef or ps -Lef
 
 #qemu
 qemu -m 512 -kernel bzImage -append “root=/dev/sda” -boot c -hda busybox.img -k en-us

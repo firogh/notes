@@ -4,29 +4,64 @@ title: Scheduling in operating system
 date: 2017-03-29T10:49:04+08:00 
 category: cs
 ---
-# ref
+# Reference
 Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 [A complete guide to Linux process scheduling](https://tampub.uta.fi/bitstream/handle/10024/96864/GRADU-1428493916.pdf)
 https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
+[JINKYU KOO's Linux kernel scheduler](https://helix979.github.io/jkoo/post/os-scheduler/)
 
-# General runqueue
+# General runqueues
 static DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
 activate_task - move a task to the runqueue.
 wake_up_new_task
 ttwu_do_activate
 
-# CFS  runqueue
+# CFS runqueues
 cfa_rq
-
-# cfs_rq
 on_list
+sched_entity->on_rq, check enqueue_entity
+## Leaf CFS runqueues
+/*
+ * leaf cfs_rqs are those that hold tasks (lowest schedulable entity in
+ * a hierarchy). Non-leaf lrqs hold other higher schedulable entities
+ * (like users, containers etc.)
+ *
+ * leaf_cfs_rq_list ties together list of leaf cfs_rq's in a cpu. This
+ * list is used during load balance.
+ */
+int on_list;
+struct list_head leaf_cfs_rq_list;
+Head of list: rq->leaf_cfs_rq_list
 
-# sched_entity->on_rq
-check enqueue_entity
+## CFS runqueue and sched entity
+set_task_rq
+
+## on_rq
+on_rq should be same as task->on_rq. It doesn't mean sched_entity is on cfs_rq, but rq.
+commit fd2f4419b4cbe8fe90796df9617c355762afd6a4
+Author: Peter Zijlstra <a.p.zijlstra@chello.nl>
+Date:   Tue Apr 5 17:23:44 2011 +0200
+    sched: Provide p->on_rq
+p->on_rq on any rq.
+se->on_rq on specific rq.
+
+## CFS runqueue and task group
+sched_create_group -> alloc_fair_sched_group -> init_tg_cfs_entry
+
+# CFS core codes
+git log 20b8a59f2461e
 
 # Group scheduling
+[GROUP SCHEDULER EXTENSIONS TO CFS](https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt)
 [CFS调度器（3）-组调度](http://www.wowotech.net/process_management/449.html)
 [Linux进程组调度机制分析](http://oenhan.com/task-group-sched)
+## Two trees
+task_group->parent; task_group->css.cgroup
+cgroup->parent and cgroup_tg: container_of(cgroup_subsys_state(cgrp, cpu_cgroup_subsys_id), struct task_group, css);
+## Task group and cgroup is 1:1
+## System bootup
+struct task_group root_task_group; and cpu_cgroup_create;
+## Creating task_group
 sched_create_group
 task_group 1 : cpu 'group sched_entity'
 group sched_entity 1 : 1 greoup cfs_rq
@@ -40,7 +75,6 @@ gse_CPUx's load = grq_CPUx's all se's load * task_group->shares / grq_CPU*'s all
 commit 29f59db3a74b0bdf78a1f5b53ef773caa82692dc
 Author: Srivatsa Vaddagiri <vatsa@linux.vnet.ibm.com>
 Date:   Mon Oct 15 17:00:07 2007 +0200
-
     sched: group-scheduler core
 
 ## Why double for_each_sched_entity
@@ -63,7 +97,52 @@ bf0f6f24a1ece (Ingo Molnar          2007-07-09 18:51:58 +0200 1140)     }
 2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1144) 
 2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1145)             update_cfs_load(cfs_rq);
 2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1146)             update_cfs_shares(cfs_rq);
-2069dd75c7d0f (Peter Zijlstra       2010-11-15 15:47:00 -0800 1147)     }
+
+# Wake up
+[sched: lockless wake-queues](https://lkml.org/lkml/2015/4/19/111)
+[Futex Scaling for Multi-core Systems](https://www.youtube.com/watch?v=-8c47dHuGIY)[Slides](https://www.slideshare.net/davidlohr/futex-scaling-for-multicore-systems)
+
+# Program-Order guarantees
+commit 8643cda549ca49a403160892db68504569ac9052
+Author: Peter Zijlstra <peterz@infradead.org>
+Date:   Tue Nov 17 19:01:11 2015 +0100
+    sched/core, locking: Document Program-Order guarantees
+## LKML discussions
+[scheduler ordering bits](https://lkml.org/lkml/2015/11/2/311)
+[scheduler ordering bits -v2](https://lkml.org/lkml/2015/12/3/323)
+## pi_lock
+commit b29739f902ee76a05493fb7d2303490fc75364f4
+Author: Ingo Molnar <mingo@elte.hu>
+Date:   Tue Jun 27 02:54:51 2006 -0700
+    [PATCH] pi-futex: scheduler support for pi
+    Add framework to boost/unboost the priority of RT tasks.
+
+# ETC
+## the wake-up lost problem
+[Kernel Korner - Sleeping in the Kernel](https://www.linuxjournal.com/article/8144)
+## Reordering issue
+CPU0:Process A
+while(!done) {
+        schedule();
+        set_current_state = *interruptable;
+}
+CPU1: Process B
+done = true;
+wake_up_process(A);
+Ordering issue: reorder load of done and store of state;
+A: load of done
+B: done = true
+B: wake up
+A: set state
+A: schedule
+Check bcbd94ff481ec1d7b5c824d90df82d0faafabd35
+dm crypt: fix a possible hang due to race condition on exit
+## PELT
+[Per-entity load tracking](https://lwn.net/Articles/531853/)
+
+# Running time
+proc_sched_show_task
+
 
 # Problems
 ## Why scheduling?
@@ -162,9 +241,7 @@ update_load_avg
 https://en.wikipedia.org/wiki/Load_(computing)
 Check External links
 calc_load_fold_active
-## Etymology - avenrun
-average nr. of running processes during 
-https://casper.berkeley.edu/svn/trunk/roach/sw/linux/arch/s390/appldata/appldata_os.c
+Etymology of avenrun: [average nr. of running processes during](https://elixir.bootlin.com/linux/v4.1/source/arch/s390/appldata/appldata_os.c)
 # LQO
 * h_nr_running and throttled
 sched: Implement hierarchical task accounting for SCHED_OTHER - 953bfcd10e6f3697233e8e5128c611d275da39c1
@@ -177,8 +254,6 @@ https://groups.google.com/forum/#!topic/linux.kernel/gRzxHclMy50
 root.nr_running := 2
 root.h_nr_running := 2
 Check enqueue_task_fair()
-* group schedule
-https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
 * idle 
 https://www.kernel.org/doc/Documentation/scheduler/sched-arch.txt
 [improve SMP reschedule and idle routines](https://lwn.net/Articles/136065/)
@@ -221,7 +296,7 @@ sched/fair: Fix fairness issue on migration
 30cfdcfc5f180fc21a3dad6ae3b7b2a9ee112186
 curr was not kept in rb-tree
 
-# SD
+# Load balancing
 [Scheduling domains](https://lwn.net/Articles/80911/)
 set sd
 kernel_init_freeable->
@@ -257,14 +332,12 @@ static struct sched_domain_topology_level default_topology[] = {
         { sd_init_CPU, cpu_cpu_mask, },
         { NULL, },
 };
-CONFIG_CPUSETS=y
-get sd
-idle_balance
-for_each_domain
 
-panic
-find_busiest_group
-find_next_bit
-__next_cpu
-
-
+# Throttling entities 
+commit 85dac906bec3bb41bfaa7ccaa65c4706de5cfdf8
+Author: Paul Turner <pjt@google.com>
+Date:   Thu Jul 21 09:43:33 2011 -0700
+    sched: Add support for throttling group entities
+    Now that consumption is tracked (via update_curr()) we add support to throttle
+    group entities (and their corresponding cfs_rqs) in the case where this is no
+    run-time remaining.

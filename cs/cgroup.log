@@ -1,8 +1,7 @@
-
-
 # V1
 [Control groups series by Neil Brown](https://lwn.net/Articles/604609/)
 [Documentation/cgroups/cgroups.txt](https://lwn.net/Articles/524935/) or Documentation/cgroup-v1/cgroups.txt
+man 7 cgroups
 
 # Hierarchy
 [Thus it is possible to have 12 different hierarchies, one for each subsystem, or a single hierarchy with all 12 subsystems attached, or any other combination in between.](https://lwn.net/Articles/606699/)
@@ -18,6 +17,7 @@ Check cgroup_mount
 /sys/fs/cgroup> wc -l blkio/tasks perf_event/tasks cpu,cpuacct/tasks  | xargs -n6
 888 blkio/tasks 888 perf_event/tasks 888 cpu,cpuacct/tasks
 ### Top group
+dummytop's parent is null check rootnode definition and cgroup_init_early
         /* cannot set to root cgroup */ in mem_cgroup_oom_control_write 
         if (!cgrp->parent) return -EINVAL;
 and in sched_group_set_shares
@@ -29,10 +29,13 @@ and in sched_group_set_shares
 In rebind_subsystems(), we learned that the top group of active hierarchy are bound to Dummy hierarchy and in above to write handler we learned that all writes are not permitted to the top group.
 
 # Cgroup
-d_fsdata -> cgroup and cgroup -> dentry
+d_fsdata = cgroup and cgroup.dentry
 struct cgroup
 
 # Cgroup subsys 
+crash> p subsys
+ {0xffffffff81a2af20 <cpuset_subsys>, 0xffffffff81a21540 <cpu_cgroup_subsys>, 0xffffffff81a21640 <cpuacct_subsys>, 0xffffffff81bdb4c0 <mem_cgroup_subsys>, 0xffffffff81a4f9e0 <devices_subsys>, 0xffffffff81a2ad60 
+<freezer_subsys>, 0xffffffff81a7ab60 <net_cls_subsys>, 0xffffffff81a5c380 <blkio_subsys>, 0xffffffff81a36a20 <perf_subsys>, 0x0,
 ## Cgroup subsys - ss
 struct cgroup_subsys
 ## Cgroup subsys state - CSS
@@ -40,15 +43,14 @@ struct cgroup_subsys_state
 css_create
 css->flags: CSS_ROOT, CSS_REMOVED,
 
-
 # Linkage: struct cgrp_cset_link
 From task to cgroup in a specic hierarchy: task->css_set->cset_links -> cgrp_cset_link.cgrp; check proc_cgroup_show
 From cgroump to task: cgroup->css_sets-> cgrp_cset_link.cset = css_set.hacks.
 ## Older version check struct cg_cgroup_link
 
 # Task
-## Init CSS set
-Check cgroup_init_early or cgroup_init for init_css_set
+System bootup: Init task's init CSS set, Check cgroup_init_early or cgroup_init for init_css_set
+Running: Move a task to a cgroup: attach_task_by_pid -> cgroup_attach_task -> ...-> find_existing_css_set
 
 # Cgroup fs
 ## cgroup_mount: 
@@ -61,19 +63,20 @@ cgroup on /tmp/b type cgroup (rw,relatime,memory)
 mount | grep cgroup2
 cgroup on /sys/fs/cgroup/unified type cgroup2 (rw,nosuid,nodev,noexec,relatime)
 cgroup on /tmp/a type cgroup2 (rw,relatime)
-
+rebind to top group
 ## cgroup_mkdir
 
 ## cgroup_file_write
-
-## Move task to a cgroup
-attach_task_by_pid
 
 # Procfs cgroup data
 /proc/cgroups: proc_cgroupstats_show
 /proc/self/cgroup: proc_cgroup_show and for_each_active_root
 
 # CPU cgroup
+## System booting up
+crash> p cpu_cgroup_subsys.early_init
+$5 = 0x1
+Check cgroup_init_early; 
 ## Mount
 ## mkdir
 cgroup_mkdir 

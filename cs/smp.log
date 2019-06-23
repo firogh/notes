@@ -1,0 +1,34 @@
+# SMP boot
+Check SDM v3 BSP and AP Processors
+BSP - boot strap processor； AP - application processor
+
+## Core commit
+setup_real_mode-> trampoline_header->start = (u64) secondary_startup_64;
+commit f37240f16bec91f15ce564515f70a6ca9715ce96
+Author: Jarkko Sakkinen <jarkko.sakkinen@intel.com>
+Date:   Tue May 8 21:22:43 2012 +0300
+    x86, realmode: header for trampoline code
+
+# BSP
+## Build time for real_mode_header in arch/x86/realmode/rm/header.S
+In pasyms.h, git gud!
+pa_trampoline_header = trampoline_header;
+pa_trampoline_start = trampoline_start;
+pa_startup_32 = startup_32;
+pa_startup_64 = startup_64;
+
+## Early init
+setup_real_mode-> trampoline_header->start = (u64) secondary_startup_64;  # tr_start
+
+## start_kernel
+kernel_init->smp_init->cpu_up->do_cpu_up->_cpu_up->
+ap hp threadfn -> bringup_cpu -> __cpu_up -> smp_ops.cpu_up(cpu, tidle) is native_cpu_up
+{
+	do_boot_cpu is the core function. It set up the code for APs to run and check cpu_callin_mask.
+	start_eip = real_mode_header->trampoline_start;
+	initial_code = (unsigned long)start_secondary			# initial_code
+}
+
+# AP
+trampoline_start -> ... -> startup_64 -> tr_start(%rip) is secondary_startup_64 -> initial_code(%rip) is start_secondary
+-> cpu_init

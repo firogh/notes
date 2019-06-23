@@ -312,7 +312,6 @@ compensation: avg or lowest + 1 unit
 
 # Latency
 
-
 # Ops
 type: process
 object
