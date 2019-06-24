@@ -6,32 +6,44 @@ title:  Page frame reclaimation
 category: cs
 ---
 
-# Move LRU page reclaim from zones to node
-[1st RFC](https://lkml.org/lkml/2015/6/8/298)
+# GFP flags
+__GFP_IO: allow disk IO
+__GFP_FS: allow fs operations, depend on io.
+[Avoiding memory-allocation deadlocks](https://lwn.net/Articles/594725/)
+## ETC for general idea of page reclaimation from Brown
+[Understanding __GFP_FS](https://lwn.net/Articles/596618/)
 
-# Lumpy reclaim
-[mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
-[mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
+# Page flags
+PG_reclaim:
+commit 3b0db538ef6782a1e2a549c68f1605ca8d35dd7e
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Mon Dec 2 21:31:09 2002 -0800
+    [PATCH] Move reclaimable pages to the tail ofthe inactive list on
+PG_swapcace means page is in the swap cache.
+PG_swapbacked: stack, heap, data segment, anoymous mmap, shmem, it means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
+PG_active: active page
+PG_referenced: accessed recently
+PG_lru: page is on the lru linked list
+PG_mlocked: mlock()
+PG_locked in generic_file_buffered_read add_to_page_cache_lru and __SetPageLocked
+check mark_buffer_async_read
+tglx tree
+commit d58e41eec6859e9590f8f70ccdc1d58f4f6a1b84
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Sun May 5 01:10:37 2002 -0700
+    [PATCH] Fix concurrent writepage and readpage
 
-# Recalimable pages
-all pages of a User Mode process are reclaimable except locked.
-Lokced userspace pages: 
-1. Temporarily locked pages: PG_locked, 
-2. Memory locked pages: VM_LOCKED, [Misunderstanding mlock](https://eklitzke.org/mlock-and-mlockall)
-## Swapbacked pages
-1. Private
-1.1 malloc memory map
-1.2 Dirty file private mapping - data, bbs segments
-2. Shared - tmpfs: 
-2.1 Anonymous shared mapping memory between P&C; 
-2.2 System v IPC shared memory.
-## Filebacked pages
-1. Private
-1.1 Clean file private mapping - text segment
-2. Shared
-2.1 Shared file mapping memory.
+# Page reference results
+enum page_references {
+        PAGEREF_RECLAIM, 	# Try reclaim this page.
+        PAGEREF_RECLAIM_CLEAN,	# Try relcaim this page, if clean.
+[But you were thinking right, it is exactly what it means!  If the state is PAGEREF_RECLAIM_CLEAN, reclaim the page if it is clean:](https://lore.kernel.org/patchwork/patch/189879/)
+        PAGEREF_KEEP,		# Keep this page on inactive list.
+        PAGEREF_ACTIVATE,	# Move this page to active list or inevicatble.
+};
 
-# PF_MEMALLOC
+# Process flags
+## PF_MEMALLOC
 [UVM](https://www.kernel.org/doc/gorman/html/understand/understand009.html)
 [Kill PF_MEMALLOC abuse](https://lore.kernel.org/patchwork/cover/178099/)
 [without being forced to write out dirty pages](https://stackoverflow.com/a/40899585/1025001)
@@ -51,34 +63,9 @@ Example: get_page_from_freelist and __ac_get_obj
 commit c93bdd0e03e848555d144eb44a1f275b871a8dd5
 Author: Mel Gorman <mgorman@suse.de>
 Date:   Tue Jul 31 16:44:19 2012 -0700
-
     netvm: allow skb allocation to use PFMEMALLOC reserves
-    
-    Change the skb allocation API to indicate RX usage and use this to fall
-    back to the PFMEMALLOC reserve when needed.  SKBs allocated from the
-    reserve are tagged in skb->pfmemalloc.  If an SKB is allocated from the
-    reserve and the socket is later found to be unrelated to page reclaim, the
-    packet is dropped so that the memory remains available for page reclaim.
-    Network protocols are expected to recover from this packet loss.
-
-# PFRA
-## Leave questions open
-* I saw we always shrink active list from the head, what about the tail entries, if the nr_to_scan isn't enough to reach the end of active list?
-Seems this problem is apporached by isolate_lru_pages with for-loop and list_add insert and move_active_pages_to_lru ( lru - LRU_ACTIVE).
-* activate writeback pages
-mm: vmscan: move dirty pages out of the way until they're flushed - c55e8d035b28b2867e68b0e2d0eee2c0f1016b43
-
-## Organization
-LRU-2Q
-### active list and inactive list
-active list: working set; Am of LRU 2Q; how often
-[Better active/inactive list balancing](https://lwn.net/Articles/495543/)
-mark_page_accessed and called sub-functions.
-active -> inactive head - list_add(&page->lru, &l_inactive); in shrink_active_list
-inactive -> active head - __activate_page <- mark_page_accessed <- pagecache_get_page or generic_file_buffered_read
-inactive -> inactive tail - rotate_reclaimable_page
-## Occasions
-* Periodically Keep a halthy avaliable free pages.
+# Occasions
+* Periodically Keep a halthy avaliable free pages and in interrupt context handler cannot reclaim pages.
 kswapd_shrink_node
 * No enough memory for a large memory alloc.
 get_page_from_freelist->node_claim
@@ -87,9 +74,49 @@ try_to_free_pages
 * Manually initiate, ondemand
 hibernate_preallocate_memory->shrink_all_memory
 drop_caches
-## Policy
-OOM
-### Second chance
+
+# Reclaimable pages
+all pages of a User Mode process are reclaimable except locked.
+Lokced userspace pages: 
+1. Temporarily locked pages: PG_locked, 
+2. Memory locked pages: VM_LOCKED, [Misunderstanding mlock](https://eklitzke.org/mlock-and-mlockall)
+## Swapbacked pages
+1. Private
+1.1 malloc memory map
+1.2 Dirty file private mapping - data, bbs segments
+2. Shared - tmpfs: 
+2.1 Anonymous shared mapping memory between P&C; 
+2.2 System v IPC shared memory.
+## Filebacked pages
+1. Private: Clean file private mapping - text segment
+2. Shared: Shared file mapping memory.
+
+# LRU-2Q
+page.lru and struct lruvec 
+New page is inserted to head, PG_reclaim page is rotated to the tail.
+## Move LRU page reclaim from zones to node
+[1st RFC](https://lkml.org/lkml/2015/6/8/298)
+## shrink_active_list
+lru_to_page(head) (list_entry((head)->prev, struct page, lru))
+## active list and inactive list
+active list: working set; Am of LRU 2Q; how often
+[Better active/inactive list balancing](https://lwn.net/Articles/495543/)
+mark_page_accessed and called sub-functions.
+active -> inactive head - list_add(&page->lru, &l_inactive); in shrink_active_list
+inactive -> active head - __activate_page <- mark_page_accessed <- pagecache_get_page or generic_file_buffered_read
+inactive -> inactive tail - rotate_reclaimable_page
+
+# Second chance
+commit dfc8d636cdb95f7b792d5ba8c9f3b295809c125d
+Author: Johannes Weiner <hannes@cmpxchg.org>
+Date:   Fri Mar 5 13:42:19 2010 -0800
+    vmscan: factor out page reference checks
+commit 645747462435d84c6c6a64269ed49cc3015f753d
+Author: Johannes Weiner <hannes@cmpxchg.org>
+Date:   Fri Mar 5 13:42:22 2010 -0800
+    vmscan: detect mapped file pages used only once
+
+
 [Second Chance Page Replacement Algorithm](https://www.youtube.com/watch?v=eHK749r5RGs)
 [Second Chance Page Replacement Algorithms and Clock Page Replacement Algorithms](https://www.youtube.com/watch?v=DFmsm0J8joY)
 core: page_check_references() in shrink_page_list().
@@ -167,8 +194,10 @@ https://www.kernel.org/doc/gorman/html/understand/understand013.html
 [PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 https://www.cnblogs.com/tolimit/p/5447448.html
 
-# SUSE page cache limit
-Check box/pagecache-limit
+# Lumpy reclaim
+[mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
+[mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
+
 
 # Steps of reclaim
 ## WriteBack
@@ -182,45 +211,27 @@ Leave kswapd to deal with IO, mark it reclaim and skip it.
 ## pageout
 including shared memory
 
-# Page flags
-PG_reclaim:
-commit 3b0db538ef6782a1e2a549c68f1605ca8d35dd7e
-Author: Andrew Morton <akpm@digeo.com>
-Date:   Mon Dec 2 21:31:09 2002 -0800
+#ETC Leave questions open
+* activate writeback pages
+mm: vmscan: move dirty pages out of the way until they're flushed - c55e8d035b28b2867e68b0e2d0eee2c0f1016b43
+Fixing writeback from direct reclaim https://lwn.net/Articles/396561/
 
-    [PATCH] Move reclaimable pages to the tail ofthe inactive list on
 
-PG_swapcace means page is in the swap cache.
-PG_swapbacked: stack, heap, data segment, anoymous mmap, shmem, it means page is backed by RAM or Swap. It means this page is no real file related(pagecache), reclaim this page should use swap.
-PG_active: active page
-PG_referenced: accessed recently
-PG_lru: page is on the lru linked list
-PG_mlocked: mlock()
-PG_locked in generic_file_buffered_read add_to_page_cache_lru and __SetPageLocked
-check mark_buffer_async_read
-tglx tree
-commit d58e41eec6859e9590f8f70ccdc1d58f4f6a1b84
-Author: Andrew Morton <akpm@zip.com.au>
-Date:   Sun May 5 01:10:37 2002 -0700
-
-    [PATCH] Fix concurrent writepage and readpage
-# struct page
-## page.lru
-lruvec, buddy system, slab, isolate list
-
-# ETC
-commit dfc8d636cdb95f7b792d5ba8c9f3b295809c125d
-Author: Johannes Weiner <hannes@cmpxchg.org>
-Date:   Fri Mar 5 13:42:19 2010 -0800
-
-    vmscan: factor out page reference checks
-    
-    The used-once mapped file page detection patchset.
-
+# Shrink slab caches
 ## double slab pressure
 tglx tree
 commit b65bbded3935b896d55cb6b3e420a085d3089368
 Author: Andrew Morton <akpm@digeo.com>
 Date:   Wed Sep 25 07:20:18 2002 -0700
-
     [PATCH] slab reclaim balancing
+
+# SUSE page cache limit
+Check box/pagecache-limit
+
+# LQO
+## mapping is NULL?
+e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
++               /* Treat this page as congested if underlying BDI is */
++               mapping = page_mapping(page);
++               if (mapping && bdi_write_congested(mapping->backing_dev_info))
+

@@ -7,12 +7,7 @@ category: cs
 ---
 
 # GFP flags
-__GFP_THISNODE:
-9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
-__GFP_IO: allow disk IO
-__GFP_FS: allow fs operations, depend on io.
-[Avoiding memory-allocation deadlocks](https://lwn.net/Articles/594725/)
-[Understanding __GFP_FS](https://lwn.net/Articles/596618/)
+__GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
 
 # Do anonymous page, zero page

@@ -44,6 +44,8 @@ https://bugzilla.suse.com/show_bug.cgi?id=1132789
 * proc_cgroupstats_show
 * [Tracing a packet journey using Linux tracepoints, perf and eBPF](https://blog.yadutaf.fr/2017/07/28/tracing-a-packet-journey-using-linux-tracepoints-perf-ebpf/)
 * https://www.marxists.org/reference/archive/debord/society.htm
+* Speculative page faults https://lkml.org/lkml/2018/4/17/572
+* mm: speculative page references https://lkml.org/lkml/2008/6/5/93
 
 
 # Work
