@@ -86,6 +86,82 @@ domain_dirty_limits
 inode_write_congested
 PGDAT_WRITEBACK,
 
+# Write
+ => __block_write_full_page
+ => __writepage
+ => write_cache_pages
+ => generic_writepages
+ => do_writepages
+ => __filemap_fdatawrite_range
+ => iterate_bdevs
+ => ksys_sync
+
+[root@snow tracing]# grep wb_writeback trace | wc -l
+518
+[root@snow tracing]# grep __block_write_full_ trace | wc -l
+1036
+ => __block_write_full_page
+ => __writepage
+ => write_cache_pages
+ => generic_writepages
+ => do_writepages
+ => __writeback_single_inode
+ => writeback_sb_inodes
+ => __writeback_inodes_wb
+ => wb_writeback
+ => wb_workfn
+or
+ => blkdev_writepage
+ => __writepage
+ => write_cache_pages
+ => generic_writepages
+ => do_writepages
+ => __writeback_single_inode
+ => writeback_sb_inodes
+ => __writeback_inodes_wb
+ => wb_writeback
+# wb_check_background_flush or  wb_check_old_data_flush  or wb_check_start_all
+ => wb_workfn
+
+
+# IO completetion hanlder
+[root@snow tracing]# grep block_write_full_page trace | wc -l 
+484
+[root@snow tracing]# grep wb_workfn trace | wc -l 
+242
+10474  => end_page_writeback
+10475  => __block_write_full_page
+10476  => __writepage
+10477  => write_cache_pages
+10478  => generic_writepages
+10479  => do_writepages
+10480  => __writeback_single_inode
+10481  => writeback_sb_inodes
+10482  => __writeback_inodes_wb
+10483  => wb_writeback
+10484  => wb_workfn
+
+10720  => end_page_writeback	# Parent should be end_buffer_async_write
+10721  => end_bio_bh_io_sync	# submit_bh_wbc
+10722  => blk_update_request
+10723  => scsi_end_request
+10724  => scsi_io_completion
+10725  => blk_done_softirq
+
+  793  => end_page_writeback
+  794  => ext4_finish_bio
+  795  => ext4_end_bio		# io_submit_init_bio
+  796  => blk_update_request
+  797  => scsi_end_request
+  798  => scsi_io_completion
+  799  => blk_done_softirq
+
+ => end_buffer_async_write
+ => end_bio_bh_io_sync
+ => blk_update_request
+ => scsi_end_request
+ => scsi_io_completion
+ => blk_done_softirq
 # ETC
 writeback代码分析 and cgroup http://kernel.pursuitofcloud.org/713974
 Writeback and control groups https://lwn.net/Articles/648292/
