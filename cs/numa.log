@@ -7,4 +7,10 @@
 [NUMA架构的CPU -- 你真的用好了么？](http://cenalulu.github.io/linux/numa/)
 
 # Init NUMA
-setup_arch->initmem_init
+setup_arch->initmem_init->numa_init
+
+# Nude distance
+ACPI 2.0 SLIT distance definitions
+#define LOCAL_DISTANCE          10
+#define REMOTE_DISTANCE         20
+numa_distance

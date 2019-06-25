@@ -12,7 +12,43 @@ __GFP_FS: allow fs operations, depend on io.
 [Avoiding memory-allocation deadlocks](https://lwn.net/Articles/594725/)
 ## ETC for general idea of page reclaimation from Brown
 [Understanding __GFP_FS](https://lwn.net/Articles/596618/)
-
+__GFP_DIRECT_RECLAIM
+__GFP_MEMALLOC allows access to all memory. This should only be used when
+the caller guarantees the allocation will allow more memory to be freed
+very shortly e.g. process exiting or swapping. Users either should
+be the MM or co-ordinating closely with the VM (e.g. swap over NFS).
+Check sk_set_memalloc
+__GFP_KSWAPD_RECLAIM indicates that the caller wants to wake kswapd when
+ * the low watermark is reached and have it reclaim pages until the high
+ * watermark is reached. A caller may wish to clear this flag when fallback
+ * options are available and the reclaim is likely to disrupt the system. The
+ * canonical example is THP allocation where a fallback is cheap but
+ * reclaim/compaction may cause indirect stalls.
+GFP_ATOMIC	(__GFP_HIGH|__GFP_ATOMIC|__GFP_KSWAPD_RECLAIM)
+GFP_KERNEL	(__GFP_RECLAIM | __GFP_IO | __GFP_FS)
+GFP_NOWAIT	(__GFP_KSWAPD_RECLAIM)
+GFP_NOIO	(__GFP_RECLAIM)
+GFP_NOFS	(__GFP_RECLAIM | __GFP_IO)
+## For interrupt handler and atomic context
+commit 0aaa29a56e4fb0fc9e24edb649e2733a672ca099
+Author: Mel Gorman <mgorman@techsingularity.net>
+Date:   Fri Nov 6 16:28:37 2015 -0800
+    mm, page_alloc: reserve pageblocks for high-order atomic allocations on demand
+gfp_to_alloc_flags
+/*
+ * The caller may dip into page reserves a bit more if the caller
+ * cannot run direct reclaim, or if the caller has realtime scheduling
+ * policy or is asking for __GFP_HIGH memory.  GFP_ATOMIC requests will
+ * set both ALLOC_HARDER (__GFP_ATOMIC) and ALLOC_HIGH (__GFP_HIGH).
+ */
+### ALLOC_HIGH:
+__zone_watermark_ok()
+        if (alloc_flags & ALLOC_HIGH)
+                min -= min / 2;
+### ALLOC_HARDER
+rmqueue()
+if (alloc_flags & ALLOC_HARDER) {
+                        page = __rmqueue_smallest(zone, order, MIGRATE_HIGHATOMIC);
 # Page flags
 PG_reclaim:
 commit 3b0db538ef6782a1e2a549c68f1605ca8d35dd7e
@@ -49,7 +85,24 @@ enum page_references {
 [without being forced to write out dirty pages](https://stackoverflow.com/a/40899585/1025001)
 [并不是所有进程都有的。kswapd，direct reclaim的process等在回收的时候会设置这个标志](http://bbs.chinaunix.net/thread-4078724-1-1.html)
 check __perform_reclaim
-## PFMEMALLOC
+memalloc_noreclaim_save
+kswapd-> PF_MEMALLOC-> try to pageout some pages ->  allocates some page using alloc_page for pageout -> no memory in lowreserve -> goto slowpath
+        /* Avoid recursion of direct reclaim */
+        if (current->flags & PF_MEMALLOC)
+                goto nopage;
+otherwise
+	__alloc_pages_direct_reclaim->__perform_reclaim->Set PF_MEMALLOC.
+## __gfp_pfmemalloc_flags
+                if (current->flags & PF_MEMALLOC)
+                        return ALLOC_NO_WATERMARKS;
+
+## get_page_from_freelist
+                        if (alloc_flags & ALLOC_NO_WATERMARKS)
+                                goto try_this_zone;
+
+# PFMEMALLOC
+## prep_new_page
+page_is_pfmemalloc
 Example: get_page_from_freelist and __ac_get_obj
                /*
                  * page is set pfmemalloc is when ALLOC_NO_WATERMARKS was
@@ -64,16 +117,48 @@ commit c93bdd0e03e848555d144eb44a1f275b871a8dd5
 Author: Mel Gorman <mgorman@suse.de>
 Date:   Tue Jul 31 16:44:19 2012 -0700
     netvm: allow skb allocation to use PFMEMALLOC reserves
-# Occasions
-* Periodically Keep a halthy avaliable free pages and in interrupt context handler cannot reclaim pages.
-kswapd_shrink_node
-* No enough memory for a large memory alloc.
-get_page_from_freelist->node_claim
-try_to_free_mem_cgroup_pages
-try_to_free_pages
-* Manually initiate, ondemand
+
+# Kswapd
+pgdat->kswapd_wait
+It's not peoridic. Check kswapd_try_to_sleep: premature sleep and full sleep.
+[Historically, kswapd used to wake up every 10 seconds but now it is only woken by the physical page allocator when the pages_low number of free pages in a zone is reached](https://www.kernel.org/doc/gorman/html/understand/understand013.html#toc71)
+se.sum_exec_runtime                          :             0.036973
+se.avg.last_update_time                      :           1884199936
+## Fastpath boosted  watermark
+ZONE_BOOSTED_WATERMARK
+get_page_from_freelist->rmqueue->wakeup_kswapd
+kswapd->balance_pgdat->kswapd_shrink_node->shrink_node
+{
+	shrink_node_memcg-> shrink_list
+	or maybe
+	shrink_slab
+}
+## Slowpath: __GFP_KSWAPD_RECLAIM
+wake_all_kswapds(order, gfp_mask, ac)
+## Slowpath: direct reclaim synchronous page reclaim  throttle_direct_reclaim
+__alloc_pages_direct_reclaim->__perform_reclaim->try_to_free_pages->allow_direct_reclaim->wake_up_interruptible(&pgdat->kswapd_wait)
+
+# Fastpath watermake low, node reclaim or zone reclaim
+Documentation/sysctl/vm.txt
+/proc/sys/vm/zone_reclaim_mode
+get_page_from_freelist->node_reclaim->__node_reclaim->shrink_node
+
+# Slow path
+## Direct compact allocation
+__alloc_pages_direct_compact
+## Direct reclaim allocation
+__alloc_pages_direct_reclaim->__perform_reclaim->try_to_free_pages
+{
+	throttle_direct_reclaim
+	do_try_to_free_pages-> shrink_zones->mem_cgroup_soft_limit_reclaim ->mem_cgroup_soft_reclaim ->mem_cgroup_shrink_node->shrink_node
+}
+## Direct compact allocation
+
+# Hibernate
 hibernate_preallocate_memory->shrink_all_memory
-drop_caches
+
+# writepage and end_page_writeback
+Check Locking
 
 # Reclaimable pages
 all pages of a User Mode process are reclaimable except locked.
@@ -115,7 +200,6 @@ commit 645747462435d84c6c6a64269ed49cc3015f753d
 Author: Johannes Weiner <hannes@cmpxchg.org>
 Date:   Fri Mar 5 13:42:22 2010 -0800
     vmscan: detect mapped file pages used only once
-
 
 [Second Chance Page Replacement Algorithm](https://www.youtube.com/watch?v=eHK749r5RGs)
 [Second Chance Page Replacement Algorithms and Clock Page Replacement Algorithms](https://www.youtube.com/watch?v=DFmsm0J8joY)
@@ -187,31 +271,15 @@ http://www.10tiao.com/html/606/201807/2664605543/1.html
 [A CLOCK-Pro page replacement implementation](https://lwn.net/Articles/147879/)
 [CLOCK-Pro: An Effective Improvement of the CLOCK Replacement](https://www.usenix.org/legacy/publications/library/proceedings/usenix05/tech/general/full_papers/jiang/jiang_html/html.html)
 ### Other notes on Replacement polices
-replacement policies:
 https://www.kernel.org/doc/gorman/html/understand/understand013.html
 https://linux-mm.org/PageReplacementDesign
-https://www.kernel.org/doc/gorman/html/understand/understand013.html
 [PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
-https://www.cnblogs.com/tolimit/p/5447448.html
 
 # Lumpy reclaim
 [mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
 [mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
 
-
-# Steps of reclaim
-## WriteBack
-1. if page is alreday marked reclaim, skip it this time.
-2. if not makred reclaim, normal writeback, and IO isn't permitted, then mark it as reclaim and will be pended at tail of LRU after writeback complete.
-3. Cgroup cases. Just wait for the complte of writeback.
-## Add to swap cache
-## Unmap pte.
-## Dirty page
-Leave kswapd to deal with IO, mark it reclaim and skip it.
-## pageout
-including shared memory
-
-#ETC Leave questions open
+# ETC Leave questions open
 * activate writeback pages
 mm: vmscan: move dirty pages out of the way until they're flushed - c55e8d035b28b2867e68b0e2d0eee2c0f1016b43
 Fixing writeback from direct reclaim https://lwn.net/Articles/396561/
@@ -234,4 +302,6 @@ e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
 +               /* Treat this page as congested if underlying BDI is */
 +               mapping = page_mapping(page);
 +               if (mapping && bdi_write_congested(mapping->backing_dev_info))
-
+[When writeback goes wrong](https://lwn.net/Articles/384093/)
+[Dynamic writeback throttling](https://lwn.net/Articles/405076/)
+[Fixing writeback from direct reclaim](https://lwn.net/Articles/396561/)
