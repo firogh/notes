@@ -22,6 +22,8 @@ Author: Linus Torvalds <torvalds@athlon.transmeta.com>
 Date:   Mon Feb 4 19:14:54 2002 -0800
 
     v2.4.7 -> v2.4.7.1
+# page
+_count set_page_count
 
 
 # Hot and cold pages

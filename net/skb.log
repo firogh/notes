@@ -1,6 +1,13 @@
 # SKB
-truesize -- alloc_skb
+truesize -- skb + data size: SKB_TRUESIZE(X) ((X) +                                          \
+                         SKB_DATA_ALIGN(sizeof(struct sk_buff)) +       \
+                         SKB_DATA_ALIGN(sizeof(struct skb_shared_info)))
 data_len -- len of frags + frag_list
+dataref: how many skb is refering to skb->data.
+commit 99a54de720dcd9902cd51a77d5275fa91850036c
+Author: Herbert Xu <herbert@gondor.apana.org.au>
+Date:   Wed Feb 23 03:17:24 2005 -0800
+    [NET]: Add skb_header_release and use it in net/ipv4/tcp ??
 len -- head_len + frgas + frag_list
 [frags and frag_list](http://stackoverflow.com/questions/10039744/difference-between-skbuff-frags-and-frag-list/)
 [skb_shared_info](http://marc.info/?l=linux-netdev&m=115508038817177&w=2)

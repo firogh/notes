@@ -1,3 +1,15 @@
 
 # VMA
 vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.
+
+
+# split_vma
+new_below
+commit 5846fc6c31162234e88bdfd91548b1cf0d2cebbd
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Tue Sep 17 06:35:47 2002 -0700
+
+    [PATCH] consolidate the VMA splitting code
+
+new_below means the place where the old vma go to! Bad naming!
+0 means the old will save the head part. 1 means tail part.

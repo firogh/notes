@@ -1,9 +1,45 @@
-# Memory variables
+# Memory variables - layout
 extern unsigned long max_low_pfn;
 extern unsigned long min_low_pfn;
 extern unsigned long max_pfn;
-high_memory
 Committed_AS and __vm_enough_memory
+crash> p vmemmap_base
+vmemmap_base = $1 = 0xffffe69900000000
+crash> p vmalloc_base
+vmalloc_base = $2 = 0xffffb7d2c0000000
+p high_memory
+high_memory = $3 = (void *) 0xffff9c0940000000
+arch/x86/include/asm/pgtable_64_types.h
+#define __START_KERNEL_map      _AC(0xffffffff80000000, UL)
+# if kaslr CONFIG_RANDOMIZE_MEMORY=y
+page_offset_base = $4 = 0xffff908900000000 # kaslr
+# else
+#ifdef CONFIG_X86_5LEVEL
+#define __PAGE_OFFSET_BASE      _AC(0xff10000000000000, UL)
+#else
+#define __PAGE_OFFSET_BASE      _AC(0xffff880000000000, UL)
+#endif
+
+
+# Process VM stat
+oom_badness
+dump_tasks
+unsigned long total_vm;         /* Total pages mapped */
+task->mm->total_vm, 
+total_vm is increased in mm/mmap.c
+get_mm_rss(task->mm)
+static inline unsigned long get_mm_rss(struct mm_struct *mm)
+{
+        return get_mm_counter(mm, MM_FILEPAGES) +
+                get_mm_counter(mm, MM_ANONPAGES) +
+                get_mm_counter(mm, MM_SHMEMPAGES);
+These three entries are increased in do_page_fault
+atomic_long_t nr_ptes;                  /* PTE page table pages */
+atomic_long_read(&task->mm->nr_ptes),
+mm_nr_pmds(task->mm), 
+get_mm_counter(task->mm, MM_SWAPENTS), # one of usages is in rmap.c unmap
+
+
 
 # Pages
 [Some are in the "page cache" used to store the contents of files.](https://lwn.net/Articles/446317/) 
@@ -12,11 +48,6 @@ Some are used as "slabs" and divided into pieces to answer kmalloc() requests.
 Others are simply part of a multi-page allocation or maybe are on a free list waiting to be used. 
 Each of these different use cases could be seen as a subtype of the general class of "page".  -- Neil Brown.
 
-## In page fault
-Ondemanding page
-COW - do_wp_page
-Major fault, or minor fault.
-Private, shared, anonymous, file pages
 ## Page frame reclaimation
 page_is_file_cache
 Check page_check_dirty_writeback() for anonymous pages's definition.
@@ -31,7 +62,36 @@ Check page_check_dirty_writeback() for anonymous pages's definition.
                 return;
         }
 
+# swap
+total_swap_pages
+nr_swap_pages: available swap slots.
+cat /proc/meminfo  | grep Swap
+SwapCached:            0 kB
+unsigned long total_swapcache_pages(void)
+{
+        for (i = 0; i < MAX_SWAPFILES; i++) {
+                nr = nr_swapper_spaces[i];
+                spaces = rcu_dereference(swapper_spaces[i]);
+                if (!nr || !spaces)
+                        continue;
+                for (j = 0; j < nr; j++)
+                        ret += spaces[j].nrpages;
+SwapTotal:             0 kB
+SwapFree:              0 kB
+void si_swapinfo(struct sysinfo *val)
+{
+        for (type = 0; type < nr_swapfiles; type++) {
+                struct swap_info_struct *si = swap_info[type];
+
+                if ((si->flags & SWP_USED) && !(si->flags & SWP_WRITEOK))
+                        nr_to_be_unused += si->inuse_pages;
+        }
+        val->freeswap = atomic_long_read(&nr_swap_pages) + nr_to_be_unused;
+        val->totalswap = total_swap_pages + nr_to_be_unused;
+
+
 # VM stat
+totalram_pages
 /proc/meminfo
 meminfo_proc_show
 /proc/zoneinfo

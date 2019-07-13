@@ -293,6 +293,15 @@ Author: Andrew Morton <akpm@digeo.com>
 Date:   Wed Sep 25 07:20:18 2002 -0700
     [PATCH] slab reclaim balancing
 
+# OOM
+oom_score_adj in Documentation/filesystems/proc.txt
+fs/proc/base.c
+ONE("oom_score",  S_IRUGO, proc_oom_score),
+REG("oom_adj",    S_IRUGO|S_IWUSR, proc_oom_adj_operations),
+REG("oom_score_adj", S_IRUGO|S_IWUSR, proc_oom_score_adj_operations),
+oom_badness
+
+
 # SUSE page cache limit
 Check box/pagecache-limit
 

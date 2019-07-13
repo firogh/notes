@@ -42,3 +42,7 @@ Chrome adobe flash player
 # Verifier
 ~/kernel/tools/testing/selftests/bpf/test_verifier.c
 [BPF Verifier Overview](https://www.spinics.net/lists/xdp-newbies/msg00185.html)
+
+# Use cases
+[Cilium: Network and Application Security with BPF and XDP connect and lsm at 22:00](https://www.youtube.com/watch?v=ilKlmTDdFgk)
+

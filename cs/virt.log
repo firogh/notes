@@ -15,3 +15,6 @@ reboot
 [2]: https://blog.scottlowe.org/2009/12/02/what-is-sr-iov/
 [SR-IOV VF Data Path][1]
 [What is SR-IOV][2]
+
+# iommu
+[DMAR 与 IOMMU](http://linuxperf.com/?p=67)

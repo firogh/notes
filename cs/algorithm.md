@@ -132,3 +132,5 @@ type: Reclaim
 
 # Lock
 MCS lock
+
+# Ring buffer or Circular buffer

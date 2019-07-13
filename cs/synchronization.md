@@ -130,34 +130,6 @@ _QW_WAITING
 queued_read_trylock
 queued_read_lock
 
-# Semaphore 
-[Linus on semaphore](https://yarchive.net/comp/linux/semaphores.html)
- 150    213  kernel/printk/printk.c <<down_console_sem>>
-             down(&console_sem);\
- 151    231  net/core/netpoll.c <<netpoll_poll_disable>>
-             down(&ni->dev_lock);
-it was implement based on spinlock.
-it can have more than one holder at any time (the number decided at initialization time), 
-although it is most commonly used as a single-holder lock (a mutex).
-if you can not get a semaphore, your task will put itself on the wait queue, and be woken 
-up the semaphore is released.
-sleepable
-preemptable
-* xadd vs spinlock
-## LQO
-* %k1 %w1 in kernel up_write
-https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#x86Operandmodifiers
-https://stackoverflow.com/questions/34459803/in-gnu-c-inline-asm-whatre-the-modifiers-for-xmm-ymm-zmm-for-a-single-operand?rq=1
-
-# RW semaphore
-[rwsem: Support optimistic spinning](https://lwn.net/Articles/598577/)
-
-# RCU -- lockless
-Check The Journey to RCU for more details
-# examples
-list_add_tail_rcu(&p->tasks, &init_task.tasks); in copy_process
-no rcu read block and unlock
-
 # LQO
 ##When to save irq rather than just disable irq, recusive?
 local_irq_disable() used in the code path that never disabled interrupts.

@@ -1,3 +1,8 @@
+# Xen
+https://wiki.xenproject.org/wiki/Xen_Project_Software_Overview
+https://wiki.xenproject.org/wiki/XenParavirtOps
+
+# Crash
 [xen dump-core format](https://xenbits.xenproject.org/docs/unstable/misc/dump-core-format.txt)
 [Dom0 and hypervisor coredump](http://xen.1045712.n5.nabble.com/xm-dump-core-and-analyzing-td2498845.html)
 Note that with Magnus Damm's latest hypervisor/xen0 kexec/kdump "combination" 
@@ -15,3 +20,149 @@ session can be run on the xen-syms binary as well, as in:
 When that occurs, the crash utility veers off and offers up a different 
 set of commands appropriate to the hypervisor, i.e., instead of commands 
 relevant to the vmlinux kernel. 
+
+# Guest vs Host by cpuid
+setup_arch->init_hypervisor_platform->detect_hypervisor_vendor->h->detect->xen_platform->
+static inline uint32_t xen_cpuid_base(void)
+{
+        return hypervisor_cpuid_base("XenVMMXenVMM", 2);
+}
+kvm 
+kvm_detect -> __kvm_cpuid_base
+hypervisor_cpuid_base("KVMKVMKVM\0\0\0", 0);
+# Dom0 or DomU or unrelated?
+xen_sysfs_uuid_init
+https://stackoverflow.com/questions/3490995/is-there-an-os-command-i-can-run-to-determine-if-running-inside-a-xen-based-virt
+
+# Terminology
+https://wiki.xenproject.org/wiki/XenTerminology
+[Use bfn (Bus Frame Number) rather than dfn to match the](https://lists.xen.org/archives/html/xen-devel/2015-08/msg00270.html)
+[Question on p2m table](http://old-list-archives.xenproject.org/archives/html/xen-devel/2011-05/msg02051.html)
+
+# swiotlb
+arch/x86/xen/pci-swiotlb-xen.c
+drivers/xen/swiotlb-xen.c
+crash-vliaskovitis> p dma_ops
+dma_ops = $14 = (struct dma_map_ops *) 0xffffffff81e1cdc0 <xen_swiotlb_dma_ops>
+crash-vliaskovitis> p no_iommu
+no_iommu = $15 = 0x1
+crash-vliaskovitis> log | grep iommu
+crash-vliaskovitis> p xen_swiotlb
+xen_swiotlb = $16 = 0x1
+crash-vliaskovitis> p swiotlb
+swiotlb = $17 = 0x0
+crash-vliaskovitis> p swiotlb_force
+swiotlb_force = $19 = SWIOTLB_NORMAL
+crash-vliaskovitis> p max_pfn
+max_pfn = $18 = 0x490000
+crash-vliaskovitis> sys config | grep CONFIG_XEN_PCIDEV_FRONTEND
+CONFIG_XEN_PCIDEV_FRONTEND=m
+crash-vliaskovitis> lsmod | grep -i xen
+ffffffffa00e0080  xen_privcmd           16384  ./modules.debug/kernel/drivers/xen/xen-privcmd.ko.debug 
+ffffffffa00ff1c0  xenfs                 16384  ./modules.debug/kernel/drivers/xen/xenfs/xenfs.ko.debug 
+ffffffffa02a8080  xen_evtchn            16384  ./modules.debug/kernel/drivers/xen/xen-evtchn.ko.debug 
+ffffffffa02ae340  xen_gntdev            20480  ./modules.debug/kernel/drivers/xen/xen-gntdev.ko.debug 
+ffffffffa02b71c0  xen_gntalloc          16384  ./modules.debug/kernel/drivers/xen/xen-gntalloc.ko.debug 
+ffffffffa0377700  xen_blkback           45056  ./modules.debug/kernel/drivers/block/xen-blkback/xen-blkback.ko.debug 
+ffffffffa03a8380  xen_netback           53248  ./modules.debug/kernel/drivers/net/xen-netback/xen-netback.ko.debug 
+ffffffffa0408c80  xen_pciback           69632  ./modules.debug/kernel/drivers/xen/xen-pciback/xen-pciback.ko.debug 
+crash-vliaskovitis> ^Z
+[1]+  Stopped                 ./c.sh
+fyang@l3slave:~/s/1133140/SR101230129466/2019-06-18/mcafee-on-offload-off/hec99p00029_190617/var/crash/2019-06-17-10:44> find ./modules/ | grep xen-pcifront
+./modules/kernel/drivers/pci/xen-pcifront.ko
+IOMMU_INIT_FINISH(pci_xen_swiotlb_detect,
+                  NULL,
+                  pci_xen_swiotlb_init,
+                  NULL);
+crash-vliaskovitis> p pci_acs_enable
+pci_acs_enable = $20 = 0x1
+## Onset initialiazation
+io_tlb_nslabs = $23 = 0x8000
+xen_io_tlb_nslabs = $21 = 0x8000
+xen_io_tlb_start = $22 = 0xffff880480e00000
+xen_io_tlb_end = $24 = 0xffff880484e00000 
+crash-vliaskovitis> p io_tlb_overflow_buffer
+io_tlb_overflow_buffer = $26 = 0x7b7f8000
+CONFIG_NO_BOOTMEM=y
+p start_dma_addr
+start_dma_addr = $27 = 0x1c0000
+p xen_max_p2m_pfn
+xen_max_p2m_pfn = $28 = 0x8000000
+
+start_kernel->mm_init->mem_init->
+{
+	# memblock allocation 
+	pci_iommu_alloc -> pci_xen_swiotlb_detect and pci_xen_swiotlb_init -> xen_swiotlb_init
+	# PG_reserved
+	free_all_bootmem ->free_low_memory_core_early->reserve_bootmem_region->SetPageReserved
+}
+
+## Nuclus
+__dev_open->ndo_open is ixgbe_open->
+{
+	ixgbe_setup_all_rx_resources->ixgbe_setup_rx_resources->dma_alloc_coherent->dma_alloc_attrs->xen_swiotlb_alloc_coherent->get_free_pages
+	ixgbe_configure->ixgbe_configure_rx->ixgbe_configure_rx_ring->ixgbe_alloc_rx_buffers->ixgbe_alloc_mapped_page
+	{
+		dev_alloc_pages(1): compund page
+		dma_map_page_attrs->xen_swiotlb_map_page
+		dma is (mfn of page) << 12; or dma is swiotlb from orig addr check swiotlb_tbl_map_single
+	}
+}
+ixgbe_clean_rx_irq ->ixgbe_alloc_rx_buffers->dma_sync_single_range_for_device -> xen_swiotlb_sync_single_for_device
+## Core function
+xen_swiotlb_init->
+{
+	start_dma_addr = xen_virt_to_bus(xen_io_tlb_start);
+}
+xen_swiotlb_map_page->swiotlb_tbl_map_single
+xen_swiotlb_sync_single->
+{
+	is_xen_swiotlb_buffer and 
+	swiotlb_tbl_sync_single		# orig addr
+}
+## Core tables
+xen_p2m_addr
+io_tlb_list
+io_tlb_nslabs
+io_tlb_orig_addr
+x/(io_tlb_nslabs)gx io_tlb_orig_addr | grep victim-page-pfn
+virt of swiotlb: xen_io_tlb_start
+phys of swiotlb: io_tlb_start, io_tlb_end
+mfn of swiotlb : start_dma_addr >> 12
+### pfn => mfn
+io_tlb_start = $8 = 0x480e00000
+eval 0x480e00 * 8
+hexadecimal: 2407000  (36892KB)
+xen_p2m_addr = $9 = (unsigned long *) 0xffffc90000000000
+x/gx 0xffffc90000000000 + 0x2407000
+0xffffc90002407000:     0x00000000000001c0
+start_dma_addr = $10 = 0x1c0000
+
+
+
+## ops
+crash-vliaskovitis> p xen_swiotlb_dma_ops | grep xen
+xen_swiotlb_dma_ops = $5 = {
+  alloc = 0xffffffff81414240 <xen_swiotlb_alloc_coherent>, 
+  free = 0xffffffff81414db0 <xen_swiotlb_free_coherent>, 
+  map_page = 0xffffffff814145a0 <xen_swiotlb_map_page>, 
+  unmap_page = 0xffffffff814141d0 <xen_swiotlb_unmap_page>, 
+  map_sg = 0xffffffff81414980 <xen_swiotlb_map_sg_attrs>, 
+  unmap_sg = 0xffffffff814141e0 <xen_swiotlb_unmap_sg_attrs>, 
+  sync_single_for_cpu = 0xffffffff814152c0 <xen_swiotlb_sync_single_for_cpu>, 
+  sync_single_for_device = 0xffffffff814152d0 <xen_swiotlb_sync_single_for_device>, 
+  sync_sg_for_cpu = 0xffffffff81415340 <xen_swiotlb_sync_sg_for_cpu>, 
+  sync_sg_for_device = 0xffffffff814152e0 <xen_swiotlb_sync_sg_for_device>, 
+  mapping_error = 0xffffffff81413d30 <xen_swiotlb_dma_mapping_error>, 
+  dma_supported = 0xffffffff81413d50 <xen_swiotlb_dma_supported>
+
+
+# P2M table
+xen_p2m_addr
+
+# MM layout?
+#define __HYPERVISOR_VIRT_START 0xFFFF800000000000
+#define __HYPERVISOR_VIRT_END   0xFFFF880000000000
+#define __MACH2PHYS_VIRT_START  0xFFFF800000000000
+#define __MACH2PHYS_VIRT_END    0xFFFF804000000000
+#define __MACH2PHYS_SHIFT       3

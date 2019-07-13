@@ -1,7 +1,12 @@
+# GRO
+commit d565b0a1a9b6ee7dff46e1f68b26b526ac11ae50
+Author: Herbert Xu <herbert@gondor.apana.org.au>
+Date:   Mon Dec 15 23:38:52 2008 -0800
+    net: Add Generic Receive Offload infrastructure
+
 commit 86911732d3996a9da07914b280621450111bb6da
 Author: Herbert Xu <herbert@gondor.apana.org.au>
 Date:   Thu Jan 29 14:19:50 2009 +0000
-
     gro: Avoid copying headers of unmerged packets
 
  struct napi_gro_cb {
@@ -13,10 +18,24 @@ Date:   Thu Jan 29 14:19:50 2009 +0000
 [Segmentation Offloads in the Linux Networking Stack](https://www.kernel.org/doc/Documentation/networking/segmentation-offloads.txt)
 [GSO: Generic Segmentation Offload](https://lwn.net/Articles/188489/)
 
+## Instance
+__skb_checksum at ffffffff815110ba
+skb_checksum at ffffffff81511272
+__skb_gro_checksum_complete at ffffffff8151fd60
+tcp4_gro_receive at ffffffff81588027
+inet_gro_receive at ffffffff81597da4
+dev_gro_receive at ffffffff815244e6
+napi_gro_receive at ffffffff81524653
+ixgbe_clean_rx_irq at ffffffffa0743764 [ixgbe]
+ixgbe_poll at ffffffffa0744a00 [ixgbe]
+net_rx_action at ffffffff8152407c
+__do_softirq at ffffffff810874e8
+irq_exit at ffffffff810879ba
+
+
 # TSO in tcp_v4_connect
 tcp_set_skb_tso_segs
 [TSO Explained](https://tejparkash.wordpress.com/2010/03/06/tso-explained/)
-
 # Ethernet GRO
 commit 9b174d88c257150562b0101fcc6cb6c3cb74275c
 Author: Jesse Gross <jesse@nicira.com>
@@ -33,7 +52,6 @@ Date:   Tue Dec 30 19:10:15 2014 -0800
 commit e1a8000228e16212c93b23cfbed4d622e2ec7a6b
 Author: Herbert Xu <herbert@gondor.apana.org.au>
 Date:   Thu Oct 9 12:00:17 2008 -0700
-
     gre: Add Transparent Ethernet Bridging
 
 

@@ -45,3 +45,5 @@ __loadsegment_simple()
 
 # constprop
 
+# Builtin
+[Other Built-in Functions Provided by GCC](https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html)

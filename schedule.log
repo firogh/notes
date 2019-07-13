@@ -51,6 +51,14 @@ https://bugzilla.suse.com/show_bug.cgi?id=1132789
 =======
 * return value of __block_write_full_page kprobe
 >>>>>>> 45da324522a3d3fa74b92362b4e1bb4ab21bffdd
+* x/a dmair bug
+* stack
+ffff91f2ce245dc0: 7af0e96fc     # stack
+ffff91f3047fc228: 7af0e96fc 
+ffff96435e1b0ea8: 7af0e96fc
+ffff9c0359087098: 7af0e96fc 
+ffffb7d33d307dc0: 7af0e96fc     # stack
+
 
 
 # Work

@@ -1,5 +1,3 @@
-# Flags
-This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
 
 # Pending bit
 [Normally, the workqueue subsystem resets a work entry's pending flag prior to calling the work function; that action, among other things, allows the function to resubmit itself if need be.](https://lwn.net/Articles/211279/)
@@ -22,3 +20,105 @@ v3.6-rc1-24-gdbf2576e37da
         non-reentrance is enforced across all CPUs.  Work items queued
         to a non-reentrant wq are guaranteed to be executed by at most
         one worker system-wide at any given time.
+
+# Workqueue lockup
+wq_watchdog_timer_fn
+wq_watchdog_thresh
+wq_watchdog_timer
+workqueues
+workqueue_struct.flags
+        WQ_UNBOUND              = 1 << 1, /* not bound to any cpu */
+        WQ_FREEZABLE            = 1 << 2, /* freeze during suspend */
+        WQ_MEM_RECLAIM          = 1 << 3, /* may be used for memory reclaim */
+        WQ_HIGHPRI              = 1 << 4, /* high priority */
+ * system_highpri_wq is similar to system_wq but for work items which
+ * require WQ_HIGHPRI.
+        WQ_CPU_INTENSIVE        = 1 << 5, /* cpu intensive workqueue */
+        WQ_SYSFS                = 1 << 6, /* visible in sysfs, see wq_sysfs_register() */
+
+WQ_FREEZABLE
+freeze_kernel_threads
+	try_to_freeze_tasks->
+		freeze_workqueues_begin->pwq_adjust_max_active # Core
+		freeze_workqueues_busy
+	thaw_kernel_threads->thaw_workqueues
+#define PF_KTHREAD              0x00200000
+#define PF_KSWAPD               0x00020000
+#define PF_IDLE                 0x00000002      /* I am an IDLE thread */
+#define PF_VCPU                 0x00000010      /* I'm a virtual CPU */
+#define PF_WQ_WORKER            0x00000020      /* I'm a workqueue worker */
+PID: 197    TASK: ffff8bc8dd350480  CPU: 0   COMMAND: "kswapd0"
+  flags = 0xa20840,
+PID: 19     TASK: ffff8bc214160780  CPU: 1   COMMAND: "kworker/1:0H"
+  flags = 0x4208060,
+crash> task -R flags
+PID: 0      TASK: ffffffff880134c0  CPU: 0   COMMAND: "swapper/0"
+  flags = 0x200102,
+PID: 0      TASK: ffff8bc21476c500  CPU: 14  COMMAND: "swapper/14"
+  flags = 0x200042,
+
+# work_struct
+
+
+# pwq pool_workqueue
+pwq_activate_delayed_work->pwq->nr_active++
+__queue_work->pwq->nr_active++
+
+process_one_work or try_to_grab_pending -> pwq_dec_nr_in_flight->pwq->nr_active-- and pwq->nr_in_flight[color]--
+
+# worker_pool
+show_pwq
+worker_pool_idr
+struct worker_pool {
+        int                     id;             /* I: pool ID */
+        unsigned int            flags;          /* X: flags */
+        unsigned long           watchdog_ts;    /* L: watchdog timestamp */
+        /*
+         * worker_pool flags
+         *
+         * A bound pool is either associated or disassociated with its CPU.
+         * While associated (!DISASSOCIATED), all workers are bound to the
+         * CPU and none has %WORKER_UNBOUND set and concurrency management
+         * is in effect.
+         *
+         * While DISASSOCIATED, the cpu may be offline and all workers have
+         * %WORKER_UNBOUND set and concurrency management disabled, and may
+         * be executing on any CPU.  The pool behaves as an unbound one.
+         *
+         * Note that DISASSOCIATED should be flipped only while holding
+         * attach_mutex to avoid changing binding state while
+         * worker_attach_to_pool() is in progress.
+         */
+        POOL_MANAGER_ACTIVE     = 1 << 0,       /* being managed */
+        POOL_DISASSOCIATED      = 1 << 2,       /* cpu can't serve workers */
+## Neil Brown
+This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
+
+# worker
+        /* worker flags */
+        WORKER_DIE              = 1 << 1,       /* die die die */
+        WORKER_IDLE             = 1 << 2,       /* is idle */
+        WORKER_PREP             = 1 << 3,       /* preparing to run works */
+        WORKER_CPU_INTENSIVE    = 1 << 6,       /* cpu intensive */
+        WORKER_UNBOUND          = 1 << 7,       /* worker is unbound */
+        WORKER_REBOUND          = 1 << 8,       /* worker was rebound */
+
+        WORKER_NOT_RUNNING      = WORKER_PREP | WORKER_CPU_INTENSIVE |
+                                  WORKER_UNBOUND | WORKER_REBOUND,
+
+        NR_STD_WORKER_POOLS     = 2,            /* # standard pools per cpu */
+
+        UNBOUND_POOL_HASH_ORDER = 6,            /* hashed by pool->attrs */
+        BUSY_WORKER_HASH_ORDER  = 6,            /* 64 pointers */
+
+        MAX_IDLE_WORKERS_RATIO  = 4,            /* 1/4 of busy can be idle */
+        IDLE_WORKER_TIMEOUT     = 300 * HZ,     /* keep idle ones for 5 mins */
+
+        MAYDAY_INITIAL_TIMEOUT  = HZ / 100 >= 2 ? HZ / 100 : 2,
+                                                /* call for help after 10ms
+                                                   (min two ticks) */
+        MAYDAY_INTERVAL         = HZ / 10,      /* and then every 100ms */
+        CREATE_COOLDOWN         = HZ,           /* time to breath after fail */
+
+# Onset
+workqueue_init_early

@@ -5,6 +5,10 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
+# initrd
+/usr/lib/dracut/skipcpio
+/usr/lib/dracut/skipcpio $your-img | gunzip -c | cpio -id
+
 # systemd
  sudo systemd-analyze  blame 
       2min 732ms systemd-udev-settle.service
@@ -161,6 +165,9 @@ aaa quiet bbb quiet
 aaa
 quiet \naaa
 
+# Weechat
+/set irc.server..ssl_verify off
+https://blog.petrzemek.net/2015/08/08/a-new-notification-plugin-for-weechat/
 
 # Game
 cd /home/firo/.local/share/Steam/steamapps/common/Divinity\ Original\ Sin\ Enhanced\ Edition/

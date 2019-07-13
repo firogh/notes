@@ -2,6 +2,15 @@
 # Crash
 [Crash Dump Analysis](https://drive.google.com/file/d/1NhZZo5DLOmE0d_97ZfwAsQ6ae1av3knw/view?usp=sharing)
 
+
+# Crash-python
+[See comment on crash-python pykdump and drgn A kernel debugger in Python: drgn](https://lwn.net/Articles/789641/)
+crash.sh
+target kdumpfile vmcore
+[gdb.Command Commands In Python](https://sourceware.org/gdb/onlinedocs/gdb/Commands-In-Python.html#Commands-In-Python)
+[drn live debugging?](https://github.com/osandov/drgn)
+
+
 # Debug symbol
 make kernel/sched.s V=1
 ./scripts/decodecode < Oops.txt
@@ -96,4 +105,3 @@ log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓
 保存function,在oops把这块内存打出来. 此法非常有用, timer的function一下子就找到了, 进而
 确认了问题是use after free. 非常开心:-)这里的解释了如何收集observations的技巧.对待use
 after free的问题是够了, 以后用到这类问题基本可以妙解了.
-

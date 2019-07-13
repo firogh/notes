@@ -99,8 +99,22 @@ switch_to
 -                      [next_ip]  "m" (next->thread.ip),                \
 [Why does switch_to use push+jmp+ret to change EIP, instead of jmp directly?](https://stackoverflow.com/questions/15019986/why-does-switch-to-use-pushjmpret-to-change-eip-instead-of-jmp-directly/15024312)
 
-## Kernel thread
-kernel_thread->kthread->do_exit
+# kthread - Kernel thread
+kernel_thead->kthread->do_exit
+## task => kthread
+to_kthread and vfork_done
+commit 63706172f332fd3f6e7458ebfb35fa6de9c21dc5
+Author: Oleg Nesterov <oleg@redhat.com>
+Date:   Wed Jun 17 16:27:45 2009 -0700
+
+## kthread and worker
+kthread->data
+
+## worker is rescuer?
+current_is_workqueue_rescuer and worker->rescue_wq
+
+
+
 
 ## Task switching
 https://lkml.org/lkml/2016/3/21/517

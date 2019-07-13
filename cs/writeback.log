@@ -1,0 +1,189 @@
+
+# backing_dev_info
+commit 1f6acea0de867d7f5e5a43ba43cf3be744da412c
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Sun May 19 02:22:01 2002 -0700
+    [PATCH] pdflush exclusion infrastructure
+    Collision avoidance for pdflush threads.
+    Turns the request_queue-based `unsigned long ra_pages' into a structure
+    which contains ra_pages as well as a longword.
+
+# pdflush
+[R.I.P. pdflush](https://lwn.net/Articles/508212/)
+Page dirty flush in LKD3 chapter 16
+[Flushing out pdflush](https://lwn.net/Articles/326552/)
+## Why pdflush should die?
+[In defense of per-BDI writeback](https://lwn.net/Articles/354851/)
+# Per-bdi thread writeback and dynamically creating threads
+[A MUST READ: Per backing device writeback](https://blog.linuxplumbersconf.org/2009/slides/Jens-Axboe-lpc2009-slides-axboe.pdf)
+commit 03ba3782e8dcc5b0e1efe440d33084f066e38cae
+Author: Jens Axboe <jens.axboe@oracle.com>
+Date:   Wed Sep 9 09:08:54 2009 +0200
+    writeback: switch to per-bdi threads for flushing data
+[Horrible namings! writeback_inodes_wb, writeback vs wb?]https://lore.kernel.org/patchwork/patch/169283/
+# s_dirty
+hitory
+commit 6f3ded5fe19cea608b838d9bc86452736e7b6e5a (tag: 2.1.49pre1)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:13:43 2007 -0500
+    Import 2.1.49pre1
+
+# s_io
+tglx
+commit 799391cc6d6ff6b37192eb49d5ea3e3aa1137e31
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Sun May 19 02:22:50 2002 -0700
+    [PATCH] improved I/O scheduling for indirect blocks
+    Fixes a performance problem with many-small-file writeout.
+and check
+## queue io
+/*
+ * Queue all expired dirty inodes for io, eldest first.
+ * Before
+ *         newly dirtied     b_dirty    b_io    b_more_io
+ *         =============>    gf         edc     BA
+ * After
+ *         newly dirtied     b_dirty    b_io    b_more_io
+ *         =============>    g          fBAedc
+ *                                           |
+ *                                           +--> dequeue for IO
+ */
+static void queue_io(struct bdi_writeback *wb, struct wb_writeback_work *work)
+
+# s_more_io
+commit 0e0f4fc22ece8e593167eccbb1a4154565c11faa
+Author: Ken Chen <kenchen@google.com>
+Date:   Tue Oct 16 23:30:38 2007 -0700
+
+    writeback: fix periodic superblock dirty inode flushing
+    
+    Current -mm tree has bucketful of bug fixes in periodic writeback path.
+    However, we still hit a glitch where dirty pages on a given inode aren't
+    completely flushed to the disk, and system will accumulate large amount of
+    dirty pages beyond what dirty_expire_interval is designed for.
+    The problem is __sync_single_inode() will move an inode to sb->s_dirty list
+    even when there are more pending dirty pages on that inode.  If there is
+    another inode with a small number of dirty pages, we hit a case where the loop
+    iteration in wb_kupdate() terminates prematurely because wbc.nr_to_write > 0.
+    Thus leaving the inode that has large amount of dirty pages behind and it has
+    to wait for another dirty_writeback_interval before we flush it again.  We
+    effectively only write out MAX_WRITEBACK_PAGES every dirty_writeback_interval.
+    If the rate of dirtying is sufficiently high, the system will start
+    accumulate a large number of dirty pages.
+    So fix it by having another sb->s_more_io list on which to park the inode
+    while we iterate through sb->s_io and to allow each dirty inode which resides
+    on that sb to have an equal chance of flushing some amount of dirty pages.
+
+
+# b_io b_more_io b_dirty
+commit 66f3b8e2e103a0b93b945764d98e9ba46cb926dd
+Author: Jens Axboe <jens.axboe@oracle.com>
+Date:   Wed Sep 2 09:19:46 2009 +0200
+    writeback: move dirty inodes from super_block to backing_dev_info
+    This is a first step at introducing per-bdi flusher threads. We should
+    have no change in behaviour, although sb_has_dirty_inodes() is now
+    ridiculously expensive, as there's no easy way to answer that question.
+    Not a huge problem, since it'll be deleted in subsequent patches.
+
+# bdi_writeback
+commit 03ba3782e8dcc5b0e1efe440d33084f066e38cae
+Author: Jens Axboe <jens.axboe@oracle.com>
+Date:   Wed Sep 9 09:08:54 2009 +0200
+    writeback: switch to per-bdi threads for flushing data
+
+# Inode
+inode_sync_complete
+writeback_inodes_wb => wb_writeback_work
+writeback_sb_inodes => writeback_control wbc
+
+# ubound workqueue writeback
+commit 839a8e8660b6777e7fe4e80af1a048aebe2b5977
+Author: Tejun Heo <tj@kernel.org>
+Date:   Mon Apr 1 19:08:06 2013 -0700
+    writeback: replace custom worker pool implementation with unbound workqueue
+
+## wb_workfn and bdi_wq
+crash> bdi_writeback.dwork.work.func 0xffff880002ad6348
+  dwork.work.func = 0xffffffff812301a0 <wb_workfn>
+
+# wb_workfn and __writeback_inodes_wb
+__writeback_single_inode -> do_writepages-> a_ops->writepages...-> __block_write_full_page-> submit_bh_wbc-> 
+{
+	bio->bi_bdev = bh->b_bdev
+	submit_bio-> request_queue
+}
+blk_flush_plug
+inode_sync_complete
+
+# Memory pressure
+do_try_to_free_pages
+
+# Geography 
+super_blocks
+bdi_list
+
+
+# kupdate
+history: migrating kupdate() to kernel from userspace
+commit 58cf0ac4320a67b6fa00950c2d375a816ccf3b56 (tag: 2.3.23pre1)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:27:47 2007 -0500
+    Import 2.3.23pre1
+
++/*
++ * This is the kernel update daemon. It was used to live in userspace
++ * but since it's need to run safely we want it unkillable by mistake.
++ * You don't need to change your userspace configuration since
++ * the userspace `update` will do_exit(0) at the first sys_bdflush().
++ */
++int kupdate(void * unused) 
+
+tglx: for_kupdate
+commit 20b96b5225db64dbc4b1226a46dfdb9fd659deb7
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Sat Dec 14 03:17:52 2002 -0800
+    [PATCH] fs-writeback rework.
+
+tglx: wb_update
+commit 090da37209e13c26f3723e847860e9f7ab23e113
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Mon Apr 29 23:52:10 2002 -0700
+
+    [PATCH] writeback from address spaces
++/*
++ * The interval between `kupdate'-style writebacks.
++ *
++ * Traditional kupdate writes back data which is 30-35 seconds old.
++ * This one does that, but it also writes back just 1/6th of the dirty
++ * data.  This is to avoid great I/O storms.
++ *
++ * We chunk the writes up and yield, to permit any throttled page-allocators
++ * to perform their I/O against a large file.
++ */
++static int wb_writeback_jifs = 5 * HZ;
++
++/*
++ * Periodic writeback of "old" data.
++ *
++ * Define "old": the first time one of an inode's pages is dirtied, we mark the
++ * dirtying-time in the inode's address_space.  So this periodic writeback code
++ * just walks the superblock inode list, writing back any inodes which are
++ * older than a specific point in time.
++ *
++ * Spot the bug: at jiffies wraparound, the attempt to set the inode's dirtying
++ * time won't work, because zero means not-dirty.  That's OK. The data will get
++ * written out later by the VM (at least).
++ *
++ * We also limit the number of pages which are written out, to avoid writing
++ * huge amounts of data against a single file, which would cause memory
++ * allocators to block for too long.
++ */
++static void wb_kupdate(unsigned long arg)
+
+tglx: merged with pdflush
+commit 9d78e51bbbecd38045bf0d3929bd57249b8659e8
+Author: Andrew Morton <akpm@zip.com.au>
+Date:   Tue Apr 9 21:30:06 2002 -0700
+
+    [PATCH] replace kupdate and bdflush with pdflush
+
