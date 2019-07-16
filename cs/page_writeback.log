@@ -1,134 +1,21 @@
-# History of page writeback / flusher
-[Dynamic writeback throttling](https://lwn.net/Articles/405076/)
-## pdflush
-Professional Linux kernel architecture.
-[LINUX缓存写回机制](http://oenhan.com/linux-cache-writeback)
-## bdi_writeback
-[Linux内核延迟写机制 - ilinuxkernel](http://www.ilinuxkernel.com/files/Linux.Kernel.Delay.Write.pdf)
-Scalability of multiple disks 
-[In defense of per-BDI writeback](https://lwn.net/Articles/354851/)
-[Flushing out pdflush](https://lwn.net/Articles/326552/)
-[Per backing device writeback jens axboe](https://blog.linuxplumbersconf.org/2009/slides/Jens-Axboe-lpc2009-slides-axboe.pdf)
-[Explaination from Jens on LPC 2009](https://blog.linuxplumbersconf.org/ocw/proposals/22)
-[kernelnewbies Per-backing-device based writeback](https://kernelnewbies.org/Linux_2_6_32#Per-backing-device_based_writeback)
-## cmwq delayed work and [writback rescuer](http://www.wowotech.net/irq_subsystem/cmwq-intro.html)
-Linux 技术内幕
-[writeback: convert writeback to unbound workqueue](https://groups.google.com/forum/#!topic/fa.linux.kernel/OnsAP-Zy-s8)
+# Page writeback
 [Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
 default_bdi_init->alloc_workqueue("writeback", WQ_MEM_RECLAIM...)
+bdi_wq = alloc_workqueue("writeback", WQ_MEM_RECLAIM | WQ_FREEZABLE
+root        40  0.0  0.0      0     0 ?        I<   10:08   0:00 [writeback]
 mm/backing-dev.c
 mm/page-writeback.c
 bdi->wb_list
-### Core function
-wb_workfn
-### Queue wb work
-wb_queue_work
-wb_wakeup
-wb_wakeup_delayed
 
 # Page flags
 PG_writeback, lost in past;
 set_page_writeback
 
-# Page frame reclamation ??
+# Page frame reclamation
 shrink_inactive_list->wakeup_flusher_threads(WB_REASON_VMSCAN) ?
 WB_REASON_FREE_MORE_MEM: no use it; [buffer: eliminate the need to call free_more_memory() in __getblk_slow()](https://patchwork.kernel.org/patch/9974719/)
 
-# sync, fsync, fdatasync -- seems irrevelant
-fs/sync.c
-syncfs
-sync_inodes_sb
-writeback_inodes_sb(sb, WB_REASON_SYNC)
-sys_sync-> ksys_sync
-vfs_fsync_range -> ext2_fsync->generic_file_fsync
-{
-	file_write_and_wait_range->write_pages/write_page->block_write_full_page->submit_bh_wbc->submit_bio
-	or
-	blkdev_issue_flush -> submit_bio_wait
-}
-
-# Write
-generic_perform_write->balance_dirty_pages_ratelimited
-domain_dirty_limits
-/proc/sys/vm/dirty_background_bytes  
-/proc/sys/vm/dirty_bytes
-
-# Fault
-wp_page_shared and do_shared_fault
-fault_dirty_shared_page->balance_dirty_pages_ratelimited
-domain_dirty_limits
-/proc/sys/vm/dirty_background_bytes  
-/proc/sys/vm/dirty_bytes
-
-# Periodic - time
-/proc/sys/vm/dirty_expire_centisecs 
-/proc/sys/vm/dirty_writeback_centisecs
-dirty_writeback_centisecs_handler -> wakeup_flusher_threads(WB_REASON_PERIODIC)
-wb_workfn->wb_do_writeback->wb_check_old_data_flush...->bio
-and 
-        else if (wb_has_dirty_io(wb) && dirty_writeback_interval)
-                wb_wakeup_delayed(wb);
-
-# Periodic - ratio
-fs/fs-writeback.c
-wb_workfn->wb_do_writeback->wb_check_background_flush->wb_over_bg_thresh
-and 
-        else if (wb_has_dirty_io(wb) && dirty_writeback_interval)
-                wb_wakeup_delayed(wb);
-
-/proc/sys/vm/dirty_background_ratio 
-/proc/sys/vm/dirty_ratio 
-domain_dirty_limits
-/proc/sys/vm/dirty_background_bytes  
-/proc/sys/vm/dirty_bytes
-
-# Congestion
-inode_write_congested
-PGDAT_WRITEBACK,
-
-# Write
- => __block_write_full_page
- => __writepage
- => write_cache_pages
- => generic_writepages
- => do_writepages
- => __filemap_fdatawrite_range
- => iterate_bdevs
- => ksys_sync
-
-[root@snow tracing]# grep wb_writeback trace | wc -l
-518
-[root@snow tracing]# grep __block_write_full_ trace | wc -l
-1036
- => __block_write_full_page
- => __writepage
- => write_cache_pages
- => generic_writepages
- => do_writepages
- => __writeback_single_inode
- => writeback_sb_inodes
- => __writeback_inodes_wb
- => wb_writeback
- => wb_workfn
-or
- => blkdev_writepage
- => __writepage
- => write_cache_pages
- => generic_writepages
- => do_writepages
- => __writeback_single_inode
- => writeback_sb_inodes
- => __writeback_inodes_wb
- => wb_writeback
-# wb_check_background_flush or  wb_check_old_data_flush  or wb_check_start_all
- => wb_workfn
-
-
 # IO completetion hanlder
-[root@snow tracing]# grep block_write_full_page trace | wc -l 
-484
-[root@snow tracing]# grep wb_workfn trace | wc -l 
-242
 10474  => end_page_writeback
 10475  => __block_write_full_page
 10476  => __writepage
@@ -163,12 +50,6 @@ or
  => scsi_io_completion
  => blk_done_softirq
 # ETC
-writeback代码分析 and cgroup http://kernel.pursuitofcloud.org/713974
-Writeback and control groups https://lwn.net/Articles/648292/
-writeback visibility writeback visibility
-node_dirty_ok
-writeback_set_ratelimit
-global_dirty_limits
 /sys/kernel/debug/bdi/0\:80/stats 
 bdi_debug_stats_show
 write_begin and write_end
