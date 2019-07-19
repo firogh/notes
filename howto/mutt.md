@@ -65,3 +65,6 @@ to tls_trust_file /etc/ssl/certs/ca-certificates.crt
 
 Error sending message, child exited 68 (Host unknown.).
 echo "test" |proxychains mutt -s " first_test" firogm@gmail.com
+
+# Outlook office 365
+https://support.office.com/en-us/article/pop-and-imap-email-settings-for-outlook-8361e398-8af4-4e97-b147-6c6c4ac95353
