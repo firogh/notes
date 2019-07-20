@@ -6,6 +6,7 @@
 [MCS locks and qspinlocks](https://lwn.net/Articles/590243/)
 [MCS locks on quora](https://www.quora.com/How-does-an-MCS-lock-work)
 [Cancellable MCS spinlock rework](https://lwn.net/Articles/604130/)
+[Question about qspinlock nest](https://lkml.org/lkml/2019/1/10/799)
 
 # Bit spinlock
 include/linux/bit_spinlock.h

@@ -1,5 +1,6 @@
 # Locking in kernel
 [An Overview of Kernel Lock Improvements](http://events17.linuxfoundation.org/sites/events/files/slides/linuxcon-2014-locking-final.pdf)
+[Waiman Long: Recent Locking Improvements in the Linux Kernel](https://www.youtube.com/watch?v=8DdawGCvFBU)
 
 # File locking
 [Mandatory File Locking For The Linux Operating System](https://www.kernel.org/doc/Documentation/filesystems/mandatory-locking.txt)

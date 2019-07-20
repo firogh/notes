@@ -1,0 +1,32 @@
+# x86 locked atomic operations:
+v3a chapter 8
+* Guaranteed atomic operations
+* Bus locking, using the LOCK# signal and the LOCK instruction prefix
+* ??Cache coherency protocols that ensure that atomic operations can be carried out on cached data structures(cache lock); this mechanism is present in the Pentium 4, Intel Xeon, and P6 family processors
+# Uniprocessor
+[all signle instructions is atomic, including cmpxchg](https://wiki.osdev.org/Atomic_operation#Single_processor-single_core_systems)
+[Anything is atomic if you do it with interrupts disabled on a UP system](https://stackoverflow.com/a/39358907/1025001)
+# SMP
+cmpxchg isn't atomic; it needs LOCK prefix.
+# Examples
+x86 inc isn't atomic; check atomic_inc.c
+# RMW
+[Atomic vs. Non-Atomic Operations](http://preshing.com/20130618/atomic-vs-non-atomic-operations/)
+# misalgined access
+[AMD 7.3.2 Access Atomicity](https://support.amd.com/TechDocs/24593.pdf#page=224)
+Also check Intel 8.1.1
+[naturally-aligned  vs atomic vs cache](https://stackoverflow.com/questions/36624881/why-is-integer-assignment-on-a-naturally-aligned-variable-atomic-on-x86/36685056#36685056)
+# Why CAS?
+## Cache locking
+v3a: 8.1.4
+Effects of a LOCK Operation on Internal Processor Caches
+## cmpxchg vs xchg on LOCK prefix implicit
+[Check Linux SMP alternatives](https://stackoverflow.com/a/44273130/1025001)
+## interrupt/exception vs non-atomic operation
+v3a 6.6
+To allow the restarting of program or task following the handling of an exception or an interrupt, all exceptions
+(except aborts) are guaranteed to report exceptions on an instruction boundary. All interrupts are guaranteed to be
+taken on an instruction boundary.
+## Two processor writing to the same address
+[What happens when two CPU cores require write access to the same memory address at the same exact moment?](https://www.quora.com/What-happens-when-two-CPU-cores-require-write-access-to-the-same-memory-address-at-the-same-exact-moment)
+[When an interrupt occurs, what happens to the process that is currently getting executed?](https://www.quora.com/When-an-interrupt-occurs-what-happens-to-the-process-that-is-currently-getting-executed)
