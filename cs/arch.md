@@ -97,9 +97,12 @@ which increases the system's performance due to the way the CPU handles memory.
 3. Pading to alignment
 填上所有空.
 
-
-# Endianess
+# Endianess and bitfield
+[The order of allocation of bit-fields within a unit](https://gcc.gnu.org/onlinedocs/gcc/Structures-unions-enumerations-and-bit-fields-implementation.html)
+It's Determined by ABI not Gcc. Check comments on [Bitfield endianness in gcc](https://stackoverflow.com/questions/47600584/bitfield-endianness-in-gcc)
 ## [How Endianness Effects Bitfield Packing](http://mjfrazer.org/mjfrazer/bitfields/)
 if defined(__LITTLE_ENDIAN_BITFIELD)
     __u8    ihl:4,
-        version:4;
+        version:4;	# MSB, check wikipeida ipv4 header
+## GCC bug on bitfield
+[Betrayed by a bitfield](https://lwn.net/Articles/478657/)

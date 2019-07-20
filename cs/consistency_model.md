@@ -42,4 +42,6 @@ When we are talking on memory model, we are refering memory consistency model or
 [A formal kernel memory-ordering model](https://lwn.net/Articles/718628/)
 [A formal kernel memory-ordering model (part 2)](https://lwn.net/Articles/720550/)
 [Linux-Kernel Memory Model](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4374.html)
+[Linux-Kernel Memory Model](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0124r4.html)
+[Linux-Kernel Memory Model](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0124r6.html)
 [Linux-Kernel Memory Ordering: Help Arrives At Last!](http://events.linuxfoundation.org/sites/events/files/slides/LinuxMM.2016.09.19a.LCE_.pdf) and [Talk on youtube on this!](https://www.youtube.com/watch?v=ULFytshTvIY)

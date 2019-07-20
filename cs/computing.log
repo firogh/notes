@@ -282,19 +282,9 @@ forces
 
 ### Synchronization of different direction forces - different concurrent
 
-
 # Fairness
-## Class-based fairness
-## Same class fairness
-### Fairness of order - FIFO
-#### numeric order: atomic inc
-* [Ticket spinlocks](https://lwn.net/Articles/267968/) and [Remove Ticket spinlocks](https://patchwork.kernel.org/patch/9121811/)
-#### structural order
-[MCS spinlocks](http://www.cs.rochester.edu/~scott/papers/1991_TOCS_synch.pdf)
-Queue spink locks is based on MCS spinlocks, but it has some differences.
-queued_spin_lock_slowpath
-[MCS locks and qspinlocks](MCS locks and qspinlocks)
-?? RW LOCK fariness
+## numeric order: atomic inc
+## structural order
 ### Fairness of quantaty
 #### Dynamic compensation
 New: compensation

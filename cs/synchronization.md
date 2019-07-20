@@ -108,20 +108,6 @@ taken on an instruction boundary.
 
 # Disabling and Enabling Deferrable Functions
 
-# Spinlock - unsleepable mutex
-[MCS locks and qspinlocks](https://lwn.net/Articles/590243/)
-[MCS locks on quora](https://www.quora.com/How-does-an-MCS-lock-work)
-## Bit spinlock
-include/linux/bit_spinlock.h
-
-# Optimistic spin queue
-[Cancellable MCS spinlock rework](https://lwn.net/Articles/604130/)
-[An Overview of Kernel Lock Improvements](http://events17.linuxfoundation.org/sites/events/files/slides/linuxcon-2014-locking-final.pdf)
-
-# Mutex
-Monitor lock before sleep.
-Faireness: queue, rt mutex
-
 # RW Lock
 ## rwlock
 include/linux/rwlock.h

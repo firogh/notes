@@ -1,0 +1,21 @@
+# Locking in kernel
+[An Overview of Kernel Lock Improvements](http://events17.linuxfoundation.org/sites/events/files/slides/linuxcon-2014-locking-final.pdf)
+
+# File locking
+[Mandatory File Locking For The Linux Operating System](https://www.kernel.org/doc/Documentation/filesystems/mandatory-locking.txt)
+[Linux 2.6 中的文件锁](https://www.ibm.com/developerworks/cn/linux/l-cn-filelock/index.html)
+[Demo for File locking](http://voyager.deanza.edu/~perry/lock.html)
+
+# Semaphore 
+[Linus on semaphore](https://yarchive.net/comp/linux/semaphores.html)
+ 150    213  kernel/printk/printk.c <<down_console_sem>>
+             down(&console_sem);\
+ 151    231  net/core/netpoll.c <<netpoll_poll_disable>>
+             down(&ni->dev_lock);
+it was implement based on spinlock.
+it can have more than one holder at any time (the number decided at initialization time),
+although it is most commonly used as a single-holder lock (a mutex).
+if you can not get a semaphore, your task will put itself on the wait queue, and be woken
+up the semaphore is released.
+sleepable
+preemptable

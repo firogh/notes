@@ -1,4 +1,3 @@
-[1]: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
 # plt
 secureplt and bss-plt
 
@@ -39,9 +38,10 @@ How does gcc attribute((aligned)) work?
 See [Whenever you leave out the alignment factor in an aligned attribute specification](https://gcc.gnu.org/onlinedocs/gcc-6.3.0/gcc/Common-Type-Attributes.html#Common-Type-Attributes)
 
 
-# Extend ASM
-__loadsegment_simple()
-[6.45.2.8 x86 Operand Modifiers][1]
+# Inline assembly
+[How to Use Inline Assembly Language in C Code](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html)
+[x86 Operand Modifiers](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#x86Operandmodifiers)
+[Machine Modes: Describing the size and format of a datum.](https://gcc.gnu.org/onlinedocs/gccint/Machine-Modes.html#Machine-Modes)
 
 # constprop
 

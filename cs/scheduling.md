@@ -117,6 +117,15 @@ Date:   Tue Jun 27 02:54:51 2006 -0700
     [PATCH] pi-futex: scheduler support for pi
     Add framework to boost/unboost the priority of RT tasks.
 
+# rq->lock in schedule() and context_switch()
+commit 3a5f5e488ceee9e08df3dff3f01b12fafc9e7e68
+Author: Ingo Molnar <mingo@elte.hu>
+Date:   Fri Jul 14 00:24:27 2006 -0700
+    [PATCH] lockdep: core, fix rq-lock handling on __ARCH_WANT_UNLOCKED_CTXSW
++        * Since the runqueue lock will be released by the next
++        * task
+
+
 # ETC
 ## the wake-up lost problem
 [Kernel Korner - Sleeping in the Kernel](https://www.linuxjournal.com/article/8144)

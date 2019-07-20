@@ -1,0 +1,18 @@
+# list_empty_carefull
+tglx: commit a2c72fae694277071dcbab33dfb7f88af5e54954
+Author: Linus Torvalds <torvalds@home.osdl.org>
+Date:   Thu Dec 11 22:20:08 2003 -0800
+
+    Fix subtle bug in "finish_wait()", which can cause kernel stack
+    corruption on SMP because of another CPU still accessing a waitqueue
+    even after it was de-allocated.
+    
+    Use a careful version of the list emptiness check to make sure we
+    don't de-allocate the stack frame before the waitqueue is all done.
+
+* NOTE: using list_empty_careful() without synchronization
+* can only be safe if the only activity that can happen
+* to the list entry is list_del_init(). Eg. it cannot be used
+* if another CPU could re-list_add() it.
+[finish_wait with list_empty_careful maybe fragile or buggy??](https://lkml.org/lkml/2018/3/11/143)
+Actually, it's not careful, but it's just specific.
