@@ -26,6 +26,15 @@ slab size = PAGE_SIZE << gfporder		#SSIZE in kmem -S
 ## page->active
 check get_slabinfo
 
+## alias
+__kmem_cache_alias()
+        cachep = find_mergeable(size, align, flags, name, ctor);
+        if (cachep) {
+                cachep->refcount++;
+                 * Adjust the object sizes so that we clear
+                 * the complete object on kzalloc.
+                cachep->object_size = max_t(int, cachep->object_size, size);
+
 # SLUB
 [SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
 [SLUB fastpath improvements and potential booster shots through bulk alloc and free](https://www.youtube.com/watch?v=s0lZzP1jOzI)

@@ -6,3 +6,7 @@ irqsafe = timer->flags & TIMER_IRQSAFE
 check del_timer_sync
 and definition of TIMER_IRQSAFE
 https://patchwork.kernel.org/patch/10811995/
+
+# timer 
+Is timer pending
+

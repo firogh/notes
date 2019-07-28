@@ -20,6 +20,9 @@ page_offset_base = $4 = 0xffff908900000000 # kaslr
 #define __PAGE_OFFSET_BASE      _AC(0xffff880000000000, UL)
 #endif
 
+percpu
+p pcpu_base_addr 
+pcpu_base_addr = $4 = (void *) 0xffff88023fc00000
 
 # Process VM stat
 oom_badness

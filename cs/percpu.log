@@ -1,5 +1,6 @@
 
 # Reference
+[Driver porting: per-CPU variables](https://lwn.net/Articles/22911/)
 [Per-cpu patches on top of PDA stuff...   Rusty Russell](https://lists.linuxfoundation.org/pipermail/virtualization/2006-September/thread.html#5010)
 [Using %gs for per-cpu areas on x86 ](https://lists.linuxfoundation.org/pipermail/virtualization/2006-September/thread.html#5042)
 [A graphic explanation](https://www.cnblogs.com/yangjiguang/p/8277720.html)jj

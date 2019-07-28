@@ -113,9 +113,6 @@ kthread->data
 ## worker is rescuer?
 current_is_workqueue_rescuer and worker->rescue_wq
 
-
-
-
 ## Task switching
 https://lkml.org/lkml/2016/3/21/517
 ### DBG: Softlockup
@@ -238,4 +235,3 @@ Deamonize
 forked child not reaped by parent will hooked in process list.
 if parent was killed and exit <defunct> will repaped.
 <defunct>表明父活着, 但不收尸.
-

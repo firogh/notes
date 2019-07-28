@@ -14,3 +14,13 @@ list -o file_lock.fl_link -s file_lock.fl_file -H ffff880c6fa17d20
 # Tree
 tree -t rbtree -ls vm_area_struct.vm_start -r mm_struct.mm_rb  0xffff91f2cd94a240  -o vm_area_struct.vm_rb
 0xffff91f2cd94a240 is address of mm_struct
+
+
+# libkdumpfile and kdumpid
+
+# dugn
+
+# drgn
+
+# Gdb on kdump
+http://ales.jikos.cz/gdb_kdump/

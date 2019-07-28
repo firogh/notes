@@ -1,1 +1,4 @@
 scripts/kconfig/confdata.c
+
+# Moudles
+<module_name>-y check https://www.kernel.org/doc/Documentation/kbuild/makefiles.txt

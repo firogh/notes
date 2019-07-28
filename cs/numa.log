@@ -5,6 +5,7 @@
 [NUMA (Non-Uniform Memory Access): An Overview](https://queue.acm.org/detail.cfm?id=2513149)
 [The MySQL “swap insanity” problem and the effects of the NUMA architecture](https://blog.jcole.us/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/)
 [NUMA架构的CPU -- 你真的用好了么？](http://cenalulu.github.io/linux/numa/)
+[Red Hat Enterprise Linux NUMA support for HPE ProLiant servers](https://h50146.www5.hpe.com/products/software/oe/linux/mainstream/support/whitepaper/pdfs/a00039147enw.pdf)
 
 # Init NUMA
 setup_arch->initmem_init->numa_init
@@ -14,3 +15,10 @@ ACPI 2.0 SLIT distance definitions
 #define LOCAL_DISTANCE          10
 #define REMOTE_DISTANCE         20
 numa_distance
+
+# Automatic NUMA Balancing
+[Automatic NUMA Balancing v10](https://lore.kernel.org/lkml/1354875832-9700-1-git-send-email-mgorman@suse.de/)
+[[GIT PULL] Automatic NUMA Balancing V11](https://lkml.org/lkml/2012/12/12/96)
+
+# AutoNUMA
+[AutoNUMA alpha10](https://lwn.net/Articles/488686/)

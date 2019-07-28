@@ -1,0 +1,3 @@
+
+[Kernel PAT (Page Attribute Table)](https://www.kernel.org/doc/Documentation/x86/pat.txt)
+[ioremap() and memremap()](https://lwn.net/Articles/653585/)

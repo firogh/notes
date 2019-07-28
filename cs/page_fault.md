@@ -40,6 +40,8 @@ page_add_new_anon_rmap
 set_pte_at
 ## Private file page
 Libray Private  read: do_read_page, pte prot is PAGE_COPY check protection_map.
+map_region         vma->vm_page_prot = vm_get_page_prot(vm_flags);
+do_set_pte(vma, address, fault_page, pte, false, false); vm_page_prot
 ## Shared file page
 do_shared_page
 ## Shared anonymous page
@@ -70,3 +72,38 @@ Author: Linus Torvalds <torvalds@linux-foundation.org>
 Date:   Sun Oct 12 13:16:12 2008 -0700
 
     x86/mm: do not trigger a kernel warning if user-space disables interrupts and generates a page fault
+
+# Propection
+tglx: commit 0457d99a336be658cea1a5bdb689de5adb3b382d
+Author: Andi Kleen <ak@muc.de>
+Date:   Tue Feb 12 20:17:35 2002 -0800
+    [PATCH] x86_64 merge: arch + asm
+    This adds the x86_64 arch and asm directories and a Documentation/x86_64.
++/*
++ * The i386 can't do page protection for execute, and considers that
++ * the same are read. Also, write permissions imply read permissions.
++ * This is the closest we can get..
++ */
++#define __P000 PAGE_NONE
++#define __P001 PAGE_READONLY
++#define __P010 PAGE_COPY
++#define __P011 PAGE_COPY
++#define __P100 PAGE_READONLY
++#define __P101 PAGE_READONLY
++#define __P110 PAGE_COPY
++#define __P111 PAGE_COPY
++
++#define __S000 PAGE_NONE
+## PROT_NONE
+/* If _PAGE_BIT_PRESENT is clear, we use these: */
+/* - if the user mapped it with PROT_NONE; pte_present gives true */
+[A MUST READ: Mel on PAGE_PROTNONE](https://www.kernel.org/doc/gorman/html/understand/understand006.html)
+[Using mprotect(.., .., PROT_NONE) on Linux](https://volatility-labs.blogspot.com/2015/05/using-mprotect-protnone-on-linux.html)
+[Linus on _PAGE_PROTNONE](https://lkml.org/lkml/1998/9/21/55)
+#define _PAGE_BIT_PROTNONE      _PAGE_BIT_GLOBAL
+tglx: commit 06d9f6ff137579551a2ee18661847915fe2bb812 (tag: 0.97.5)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:09:05 2007 -0500
+    [PATCH] Linux-0.97.5 (September 12, 1992)
+There isn't too much useful information.
+

@@ -1,18 +1,31 @@
-
 # Reference
+Documentation/kdump
 [Reboot Linux faster using kexec](http://web.archive.org/web/20130121033946/http://www.ibm.com/developerworks/linux/library/l-kexec/index.html)
-[Kdump on sourcefoge](http://lse.sourceforge.net/kdump/)
-man 5 kdump
-man makedumpfile
+[kdump: usage and internals](https://events.static.linuxfound.org/sites/events/files/slides/kdump_usage_and_internals.pdf)
+[Kdump history on sourcefoge](http://lse.sourceforge.net/kdump/)
 
-# SUSE
-Package: kdump
-/lib/kdump/load.sh
-https://doc.opensuse.org/documentation/leap/tuning/html/book.sle.tuning/cha.tuning.kexec.html
-
-# Kexec and tools
+# Kexec-tools
 git://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git
 EADDRNOTAVAIL: Cannot assign requested address
+## elfcorehdr=; it's used to control if /proc/vmcore is generated
+arch/x86: setup_cmdline()
+        if (image->type == KEXEC_TYPE_CRASH) {
+                len = sprintf(cmdline_ptr,
+                        "elfcorehdr=0x%lx ", image->arch.elf_load_addr);
 
-# Gdb on kdump
-http://ales.jikos.cz/gdb_kdump/
+## /usr/sbin/kdump
+commit 7acd257ae67b4ca94f8c23cb8bda0ee0709b9216
+Author: Bhupesh Sharma <bhsharma@redhat.com>
+Date:   Thu May 24 13:08:03 2018 +0530
+    Remove obsolete kdump tool
+
+# makedumpfile
+By using the makedumpfile command, it is possible to shorten the dumpfile of kdump.
+https://sourceforge.net/projects/makedumpfile/
+According to man makedumpfile, makedumpfile provides two DUMPFILE formats (the ELF format and the kdump-compressed format).
+
+# SUSE way on kdump - scripts for kernel dump invoking makedumpfile
+https://github.com/openSUSE/kdump
+man kdump
+/lib/kdump/load.sh
+https://doc.opensuse.org/documentation/leap/tuning/html/book.sle.tuning/cha.tuning.kexec.html
