@@ -74,7 +74,13 @@ extern const int kallsyms_offsets[] __weak;
 extern const u8 kallsyms_names[] __weak;
 
 # Speedup and reduction
-commit e10392112d315c45f054c22c862e3a7ae27d17d4
+tglx: commit fccef669d1d489d675fd6a8ae5fb87cac72a54d6
+Author: Andi Kleen <ak@muc.de>
+Date:   Wed Dec 25 09:46:32 2002 -0600
+
+    kbuild: Stem compression for kallsyms
+
+tglx: commit e10392112d315c45f054c22c862e3a7ae27d17d4
 Author: Paulo Marques <pmarques@grupopie.com>
 Date:   Mon Oct 18 17:59:03 2004 -0700
     [PATCH] kallsyms data size reduction / lookup speedup
