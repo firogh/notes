@@ -2,6 +2,11 @@
 https://wiki.xenproject.org/wiki/Xen_Project_Software_Overview
 https://wiki.xenproject.org/wiki/XenParavirtOps
 
+# Xen tools
+ rpm -ql xen-libs | grep ctrl
+/usr/lib64/libxenctrl.so.4.10
+/usr/lib64/libxenctrl.so.4.10.0
+
 # Crash
 [xen dump-core format](https://xenbits.xenproject.org/docs/unstable/misc/dump-core-format.txt)
 [Dom0 and hypervisor coredump](http://xen.1045712.n5.nabble.com/xm-dump-core-and-analyzing-td2498845.html)

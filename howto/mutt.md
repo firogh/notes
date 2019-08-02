@@ -4,9 +4,14 @@ title: 使用mutt收发邮件
 category: howto
 ---
 
+[Mutt中文手册](https://handsomecheung.github.io/mutt-manual-cn/mutt-manual-1.5.19-cn.html)
 [sane Gmail filters for high-volume mailing lists](http://deferred.io/2011/09/23/sane-gmail-filters-for-high-volume-mailing-lists.html)
 
 ![Trigun](http://upload.wikimedia.org/wikipedia/en/5/5f/Trigun_manga.jpg)
+
+# Sidebar message stats
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=850604
+
 ###Reference
 昨天用web Gmail给社区的maillist回信, 被退信了. 提示Gmail发送的邮件包含html.
 这才想起来社区的mailist只接收:

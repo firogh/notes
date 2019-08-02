@@ -23,10 +23,22 @@ https://lwn.net/Kernel/Index/#Memory_management-Writeback
 
 slab size = PAGE_SIZE << gfporder		#SSIZE in kmem -S
 
-## page->active
+# Manage objects
+## struct slab 
+commit 106a74e13b329cf609c145dc198087c04f5f8ca5
+Author: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+Date:   Thu Oct 24 10:07:48 2013 +0900
+    slab: replace free and inuse in struct slab with newly introduced active
+
+## page->freelist and page->active
+commit 8456a648cf44f14365f1f44de90a3da2526a4776
+Author: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+Date:   Thu Oct 24 10:07:49 2013 +0900
+
+    slab: use struct page for slab management
 check get_slabinfo
 
-## alias
+# alias
 __kmem_cache_alias()
         cachep = find_mergeable(size, align, flags, name, ctor);
         if (cachep) {
@@ -34,6 +46,20 @@ __kmem_cache_alias()
                  * Adjust the object sizes so that we clear
                  * the complete object on kzalloc.
                 cachep->object_size = max_t(int, cachep->object_size, size);
+
+# Free - kfree
+## objp => array_cache
+objp => kmem_cache->cpu_cache ( or array for older version kernel)
+## array_cache check cache_flusharray()
+ac =>  shared => 
+or if shared reached limit
+ac => page->free_list and marked with page->active
+tglx: commit dd6b3d93b062c8461867d95c86e40b2a8241c43b
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Mon Jun 2 03:38:42 2003 -0700
+    [PATCH] magazine layer for slab
+introduced shared array_cache
++               new_shared->limit = batchcount*shared;
 
 # SLUB
 [SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
