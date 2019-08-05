@@ -59,6 +59,8 @@ ffff96435e1b0ea8: 7af0e96fc
 ffff9c0359087098: 7af0e96fc 
 ffffb7d33d307dc0: 7af0e96fc     # stack
 * try_to_wakeup's comment
+*debug dwarf
+https://llvm.org/devmtg/2014-10/Slides/Christopher-DebugInfoTutorial.pdf
 
 
 

@@ -40,6 +40,9 @@ x86: unify pte_present
 [On casting void *: I said "you don't cast", not "you don't need to cast"](https://stackoverflow.com/questions/605845/do-i-cast-the-result-of-malloc/605858#605858)
 [Escape sequences in C][1]
 
+# struct
+[static struct?](https://stackoverflow.com/questions/7259830/why-and-when-to-use-static-structures-in-c-programming)
+
 # C 
 ## Type
 * Object type and function type
