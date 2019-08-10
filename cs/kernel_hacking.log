@@ -40,3 +40,7 @@ origin	git://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git (push)
 ## Kernel refactoring
 https://linuxtv.org/wiki/index.php/Development:_Hints_for_Refactoring_Existing_Drivers
 [Kernel Recipes 2017 - Refactoring the Linux Kernel - Thomas Gleixner](https://www.youtube.com/watch?v=mxxicJZ8cis)
+
+# Prefix, changes and tags
+[Patch v2, v3, ... Changes, tags](https://kernelnewbies.org/PatchTipsAndTricks)
+

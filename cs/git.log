@@ -17,6 +17,9 @@ git diff HEAD:working tree..HEAD
 [core]
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 
+# Find version
+[Finding a patch's kernel version with git]https://lwn.net/Articles/392293/)
+
 # Revisions
 man gitrevisions
 https://devhints.io/git-revisions

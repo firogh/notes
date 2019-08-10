@@ -5,9 +5,11 @@ category: philosophy
 ---
 # Causality
 If you don't control youself, you will be definitely controlled by others.
-# Architecture and Divide and conquer
-Pragmatism and Bottom-up
-# ETC
+
+# Histructure
+
+# Form or abstration or Architecture; Simplification, few is more.
+要把它想的很简单, 达到豁然开朗; 记少不记多，反而记更多; 时间是否充裕，都先记少; Occam's razor
 
 # Ego
 Love yourself; I know I will be lost and confused in my whole life.
@@ -27,27 +29,27 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 All plan should be based on problem and pragmatism.
 # Learn by doing;
 accumulate ... over a long period
+Pragmatism and Bottom-up
 to proceed in an orderly way and advance step by step 
 Internalization
 Creativity
 # No poll and no wait
 # Critical thinking
 Completeness, consistency, validity, soundness. -- Logic
-# Reflexcity -- Soros
+
+# Hyposis and test; Trail and error; Reflexcity -- Soros
+Hypothesize bravely/boldly, to prove carefully
 Feedback: 英语 是模仿与实践, 英语不是理性能得出的, 是大量模仿实践. 理论很少， 而且尽量减少理论投入
+
 # Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
 # Pragmatic
 不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」
 我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 How much we understand the world isn't better than how well.
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
-# Simplification, few is more.
-要把它想的很简单, 达到豁然开朗; 记少不记多，反而记更多; 时间是否充裕，都先记少; Occam's razor
 # Dividing
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Imitate and creativity; Top-down, bottom-up; Beginner, intermediate, advanced; Understanding and doing; MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references; Positive and negtive; Onset, nucleus, coda
-# Hyposis and test; Trail and error
-Hypothesize bravely/boldly, to prove carefully
 # Leave questions open 
 there are always some knowledge which is too complicated to understand and we should leave them alone.
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 

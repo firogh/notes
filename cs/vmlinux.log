@@ -1,3 +1,6 @@
 
 # Sections
 [Special sections in Linux binaries](https://lwn.net/Articles/531148/)
+
+# vmlinux.debug
+objcopy --only-keep-debug vmlinux vmlinux.debug

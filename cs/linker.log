@@ -1,9 +1,9 @@
+
+# linker scripts
 [3 Linker Scripts](https://sourceware.org/binutils/docs/ld/Scripts.html)
 
 # Key words
-loadable, allocatable, VMA, LMA.
-
-VMA vs LMA
+ld vs ld.so, loadable, allocatable, VMA, LMA.
 
 # Find which function belongs to which library
 LD_DEBUG=bindings ./ptem01 2>&1  | grep tcsendbrea
