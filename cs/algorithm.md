@@ -73,11 +73,6 @@ postfix and prefix and sort
 # Depth first sarch
 DAG
 
-
-# Redblack tree
-https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/
-http://yuex.in/post/2017/08/red-black-tree-in-action.html
-
 # Interval tree in kernel
 anonymous page: anon_vma_interval_tree_insert
 
