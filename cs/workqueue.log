@@ -1,7 +1,8 @@
 
 
 # History
-task queue
+[I’ll Do It Later: Softirqs, Tasklets, Bottom Halves, Task Queues, Work Queues and Timers](http://www.cs.unca.edu/brock/classes/Spring2013/csci331/notes/paper-1130.pdf)
+## task queue
 history: commit 98606bddf430f0a60d21fba93806f4e3c736b170 (tag: 1.1.13)
 Author: Linus Torvalds <torvalds@linuxfoundation.org>
 Date:   Fri Nov 23 15:09:30 2007 -0500
@@ -25,12 +26,16 @@ Date:   Fri Nov 23 15:09:30 2007 -0500
 + * - Bottom halfs are called in the reverse order that they were linked into
 + *   the list.
 +struct tq_struct {
-workqueue
+Check ULK2nd 4.7.3.1 Extending a bottom half for task queues, especially tq_context and keventd
+[The end of task queues](https://lwn.net/Articles/11351/)
+The Old Task Queue Mechanism in LKD3rd
+## workqueue
 tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
 Author: Ingo Molnar <mingo@elte.hu>
 Date:   Mon Sep 30 22:17:42 2002 -0700
     [PATCH] Workqueue Abstraction
     This is the next iteration of the workqueue abstraction.
+[generic work queue handling, workqueue-2.5.39-D6](https://lwn.net/Articles/11247/)
 [Details of the workqueue interface](https://lwn.net/Articles/11360/)
 [Driver porting: the workqueue interface.](https://lwn.net/Articles/23634/)
 [Robert Love: Kernel Korner - The New Work Queue Interface in the 2.6 Kernel](https://www.linuxjournal.com/article/6916)
