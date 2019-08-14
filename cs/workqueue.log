@@ -1,4 +1,41 @@
 
+
+# History
+task queue
+history: commit 98606bddf430f0a60d21fba93806f4e3c736b170 (tag: 1.1.13)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:09:30 2007 -0500
+    Import 1.1.13
++ * New proposed "bottom half" handlers:
++ * (C) 1994 Kai Petzke, wpp@marie.physik.tu-berlin.de
++ * Advantages:
++ * - Bottom halfs are implemented as a linked list.  You can have as many
++ *   of them, as you want.
++ * - No more scanning of a bit field is required upon call of a bottom half.
++ * - Support for chained bottom half lists.  The run_task_queue() function can be
++ *   used as a bottom half handler.  This is for example usefull for bottom
++ *   halfs, which want to be delayed until the next clock tick.
++ * Problems:
++ * - The queue_task_irq() inline function is only atomic with respect to itself.
++ *   Problems can occur, when queue_task_irq() is called from a normal system
++ *   call, and an interrupt comes in.  No problems occur, when queue_task_irq()
++ *   is called from an interrupt or bottom half, and interrupted, as run_task_queue()
++ *   will not be executed/continued before the last interrupt returns.  If in
++ *   doubt, use queue_task(), not queue_task_irq().
++ * - Bottom halfs are called in the reverse order that they were linked into
++ *   the list.
++struct tq_struct {
+workqueue
+tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
+Author: Ingo Molnar <mingo@elte.hu>
+Date:   Mon Sep 30 22:17:42 2002 -0700
+    [PATCH] Workqueue Abstraction
+    This is the next iteration of the workqueue abstraction.
+[Details of the workqueue interface](https://lwn.net/Articles/11360/)
+[Driver porting: the workqueue interface.](https://lwn.net/Articles/23634/)
+[Robert Love: Kernel Korner - The New Work Queue Interface in the 2.6 Kernel](https://www.linuxjournal.com/article/6916)
+
+
 # Pending bit
 [Normally, the workqueue subsystem resets a work entry's pending flag prior to calling the work function; that action, among other things, allows the function to resubmit itself if need be.](https://lwn.net/Articles/211279/)
 
@@ -6,20 +43,18 @@
 commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
 Author: Tejun Heo <tj@kernel.org>
 Date:   Mon Aug 20 14:51:23 2012 -0700
-
     workqueue: make all workqueues non-reentrant
 git describe dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
 v3.6-rc1-24-gdbf2576e37da
 
-#   WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
-
-        By default, a wq guarantees non-reentrance only on the same
-        CPU.  A work item may not be executed concurrently on the same
-        CPU by multiple workers but is allowed to be executed
-        concurrently on multiple CPUs.  This flag makes sure
-        non-reentrance is enforced across all CPUs.  Work items queued
-        to a non-reentrant wq are guaranteed to be executed by at most
-        one worker system-wide at any given time.
+# WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
+By default, a wq guarantees non-reentrance only on the same
+CPU.  A work item may not be executed concurrently on the same
+CPU by multiple workers but is allowed to be executed
+concurrently on multiple CPUs.  This flag makes sure
+non-reentrance is enforced across all CPUs.  Work items queued
+to a non-reentrant wq are guaranteed to be executed by at most
+one worker system-wide at any given time.
 
 # Workqueue lockup
 wq_watchdog_timer_fn
