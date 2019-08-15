@@ -37,6 +37,7 @@ https://www.kernel.org/doc/Documentation/filesystems/journalling.rst
 [Journaling In Action: ext3](http://www.eecs.harvard.edu/~cs161/notes/journaling.pdf)
 ext4_write_begin
 [High-Performance Transaction Processing in Journaling File Systems](https://www.usenix.org/system/files/conference/fast18/fast18-son.pdf)
+[slides](https://www.usenix.org/sites/default/files/conference/protected-files/fast18_slides_son.pdf)
 
 ## Revoke records
 jbd2_journal_write_revoke_records
