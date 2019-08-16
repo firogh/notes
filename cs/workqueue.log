@@ -54,6 +54,8 @@ deadlock: It's discouragingly easy to create deadlocks with workqueues when one 
 This is true even if the number of threads currently in the pool can be increased - provided there's a hard ceiling.
 This cannot be solved without making a second pool whereby each type of task is segregated into its own pool.
 That said, if the dependent task is marked as SLOW_WORK_VERY_SLOW it should provide this effect.  The slow-work facility guarantees to keep at least one thread nominally earmarked for ordinary slow work free from very-slow-work tasks, even through it will usually let ordinary threads process very-slow-work tasks if there's nothing better to do.
+## Workqueues problems by TJ
+Check old_workqueue.log
 
 # CMWQ
 [Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
@@ -99,6 +101,21 @@ There are two worker-pools, one for normal work items and the other
 for high priority ones, for each possible CPU and some extra
 worker-pools to serve work items queued on unbound workqueues - the
 number of these backing pools is dynamic.
+
+### v3.6[Making workqueues non-reentrant](https://lwn.net/Articles/511421/)
+commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+Author: Tejun Heo <tj@kernel.org>
+Date:   Mon Aug 20 14:51:23 2012 -0700
+    workqueue: make all workqueues non-reentrant
+git describe dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
+By default, a wq guarantees non-reentrance only on the same
+CPU.  A work item may not be executed concurrently on the same
+CPU by multiple workers but is allowed to be executed
+concurrently on multiple CPUs.  This flag makes sure
+non-reentrance is enforced across all CPUs.  Work items queued
+to a non-reentrant wq are guaranteed to be executed by at most
+one worker system-wide at any given time.
 
 ### pending bit
 tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
@@ -146,9 +163,6 @@ Date:   Fri Aug 3 10:30:46 2012 -0700
     workqueue: introduce WORK_OFFQ_FLAG_*
 
 ### worker_pool
-show_pwq
-worker_pool_idr
-
 [workqueue: remove gcwq and make worker_pool the only backend abstraction](https://lkml.org/lkml/2013/1/16/838)
 commit 9daf9e678d18585433a4ad90ec51a448e5fd054c
 Author: Tejun Heo <tj@kernel.org>
@@ -177,9 +191,9 @@ to NUMA affinity.
 
 ## Material
 static LIST_HEAD(workqueues);           /* PR: list of all workqueues */
+show_pwq 
 for_each_cpu_worker_pool(pool, cpu)                             \
         for ((pool) = &per_cpu(cpu_worker_pools, cpu)[0];               \
-
 for_each_pool(pool, pi)                                         \
         idr_for_each_entry(&worker_pool_idr, pool, pi)                  \
 fb0e7beb5c1b workqueue: implement cpu intensive workqueue
@@ -216,8 +230,7 @@ c790bce04818 workqueue: kill RT workqueue
 b56c0d8937e6 kthread: implement kthread_worke
 
 ## High Priori
-https://lore.kernel.org/patchwork/patch/312674/
-https://lwn.net/Articles/506029/
+[[PATCHSET] workqueue: reimplement high priority using a separate worker pool](https://lkml.org/lkml/2012/7/9/460)
 3270476a6c0c workqueue: reimplement WQ_HIGHPRI using a separate worker_pool
 4ce62e9e30ca workqueue: introduce NR_WORKER_POOLS and for_each_worker_pool()
 d55e5bd0201a Merge branch 'timers-urgent-for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
@@ -231,25 +244,6 @@ queue_delayed_work
 
 ## cancel work
 
-
-
-# [workqueue: make all workqueues non-reentrant](https://lkml.org/lkml/2012/8/13/723)
-commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
-Author: Tejun Heo <tj@kernel.org>
-Date:   Mon Aug 20 14:51:23 2012 -0700
-    workqueue: make all workqueues non-reentrant
-git describe dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
-v3.6-rc1-24-gdbf2576e37da
-[Making workqueues non-reentrant](https://lwn.net/Articles/511421/)
-
-# WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
-By default, a wq guarantees non-reentrance only on the same
-CPU.  A work item may not be executed concurrently on the same
-CPU by multiple workers but is allowed to be executed
-concurrently on multiple CPUs.  This flag makes sure
-non-reentrance is enforced across all CPUs.  Work items queued
-to a non-reentrant wq are guaranteed to be executed by at most
-one worker system-wide at any given time.
 
 # Workqueue lockup
 wq_watchdog_timer_fn

@@ -5,11 +5,8 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-# LQO
-* GNU AS
-inline asm '='?
-& https://stackoverflow.com/questions/45895564/how-does-r-differ-from-r
-"memory clobber"?
+# Basic conceptions
+Reentrancy
 
 # CPS
 https://spin.atomicobject.com/2012/11/01/hey-c-is-a-functional-language-too/
