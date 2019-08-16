@@ -100,11 +100,84 @@ for high priority ones, for each possible CPU and some extra
 worker-pools to serve work items queued on unbound workqueues - the
 number of these backing pools is dynamic.
 
+<<<<<<< HEAD
+# NUMA and ubound workqueues
+=======
+### pending bit
+tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
+Author: Ingo Molnar <mingo@elte.hu>
+Date:   Mon Sep 30 22:17:42 2002 -0700
+    [PATCH] Workqueue Abstraction
+    there's now a 'pending work' counter, which is used to accurately detect
+    when the last work-function has finished execution. It's also used to
+    correctly flush against timed requests. I'm not convinced whether the old
+    keventd implementation got this detail right.
+-       if (floppy_tq.sync)
++       if (floppy_work.pending)
+This pending bit derives from tq_struct.sync
+See LDD2:
+The sync flag in the structure is used by the kernel to prevent queueing the same task more than
+once, because this would corrupt the next pointer.
+See ULK2:
+sync: Used to prevent multiple activations
+1. disturb order in work list
+2. don't corrupt argument data
+### WORK_STRUCT_LINKED_BIT
+commit affee4b294a0fc97d67c8a77dc080c4dd262a79e
+Author: Tejun Heo <tj@kernel.org>
+Date:   Tue Jun 29 10:07:12 2010 +0200
+    workqueue: reimplement work flushing using linked works
+### WORK_STRUCT_DELAYED_BIT
+commit 8a2e8e5dec7e29c56a46ba176c664ab6a3d04118
+Author: Tejun Heo <tj@kernel.org>
+Date:   Wed Aug 25 10:33:56 2010 +0200
+    workqueue: fix cwq->nr_active underflow
+
+### WORK_STRUCT_CWQ_BIT or PWQ_BIT
+commit e120153ddf8620fd0a194d301e9c5a8b28483bb5
+Author: Tejun Heo <tj@kernel.org>
+Date:   Thu Jul 22 14:14:25 2010 +0200
+    workqueue: fix how cpu number is stored in work->data
++ * A work's data points to the cwq with WORK_STRUCT_CWQ set while the
++ * work is on queue.  Once execution starts, WORK_STRUCT_CWQ is
++ * cleared and the work data contains the cpu number it was last on.
+
+### OFFQ
+commit b5490077274482efde57a50b060b99bc839acd45
+Author: Tejun Heo <tj@kernel.org>
+Date:   Fri Aug 3 10:30:46 2012 -0700
+    workqueue: introduce WORK_OFFQ_FLAG_*
+
+### worker_pool
+show_pwq
+worker_pool_idr
+
+[workqueue: remove gcwq and make worker_pool the only backend abstraction](https://lkml.org/lkml/2013/1/16/838)
+commit 9daf9e678d18585433a4ad90ec51a448e5fd054c
+Author: Tejun Heo <tj@kernel.org>
+Date:   Thu Jan 24 11:01:33 2013 -0800
+    workqueue: add worker_pool->id
+commit 7c3eed5cd60d0f736516e6ade77d90c6255860bd
+Author: Tejun Heo <tj@kernel.org>
+Date:   Thu Jan 24 11:01:33 2013 -0800
+    workqueue: record pool ID instead of CPU in work->data when off-queue
+
 ### NUMA ubound
+>>>>>>> 74c1e19... work_struct flags
 commit df2d5ae4995b3fb9392b6089b9623d20b6c3a542
 Author: Tejun Heo <tj@kernel.org>
 Date:   Mon Apr 1 11:23:35 2013 -0700
     workqueue: map an unbound workqueues to multiple per-node pool_workqueues
+
+## Purpose
+[[13/14] workqueue: implement NUMA affinity for unbound workqueues](https://lore.kernel.org/patchwork/patch/369416/)
+Currently, an unbound workqueue has single current, or first, pwq
+(pool_workqueue) to which all new work items are queued.  This often
+isn't optimal on NUMA machines as workers may jump around across node
+boundaries and work items get assigned to workers without any regard
+to NUMA affinity.
+
+
 
 ## Material
 static LIST_HEAD(workqueues);           /* PR: list of all workqueues */
@@ -156,6 +229,11 @@ d55e5bd0201a Merge branch 'timers-urgent-for-linus' of git://git.kernel.org/pub/
 63d95a9150ee workqueue: use @pool instead of @gcwq or @cpu where applicable
 bd7bdd43dcb8 workqueue: factor out worker_pool from global_cwq
 974271c485a4 workqueue: don't use WQ_HIGHPRI for unbound workqueues
+
+## queue work
+queue_delayed_work
+
+## cancel work
 
 
 
@@ -216,37 +294,11 @@ PID: 0      TASK: ffff8bc21476c500  CPU: 14  COMMAND: "swapper/14"
 # work_struct
 
 
-# pwq pool_workqueue
+# pool_workqueue
 pwq_activate_delayed_work->pwq->nr_active++
 __queue_work->pwq->nr_active++
-
 process_one_work or try_to_grab_pending -> pwq_dec_nr_in_flight->pwq->nr_active-- and pwq->nr_in_flight[color]--
 
-# worker_pool
-show_pwq
-worker_pool_idr
-struct worker_pool {
-        int                     id;             /* I: pool ID */
-        unsigned int            flags;          /* X: flags */
-        unsigned long           watchdog_ts;    /* L: watchdog timestamp */
-        /*
-         * worker_pool flags
-         *
-         * A bound pool is either associated or disassociated with its CPU.
-         * While associated (!DISASSOCIATED), all workers are bound to the
-         * CPU and none has %WORKER_UNBOUND set and concurrency management
-         * is in effect.
-         *
-         * While DISASSOCIATED, the cpu may be offline and all workers have
-         * %WORKER_UNBOUND set and concurrency management disabled, and may
-         * be executing on any CPU.  The pool behaves as an unbound one.
-         *
-         * Note that DISASSOCIATED should be flipped only while holding
-         * attach_mutex to avoid changing binding state while
-         * worker_attach_to_pool() is in progress.
-         */
-        POOL_MANAGER_ACTIVE     = 1 << 0,       /* being managed */
-        POOL_DISASSOCIATED      = 1 << 2,       /* cpu can't serve workers */
 ## Neil Brown
 This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
 

@@ -66,6 +66,15 @@ git pull {repo} {remotebranchname}:{localbranchname}
 git pull origin xyz:xyz
 git pull next master:now
 
+# git rebase
+fyang@l3mule:~/s/kernel> git checkout  -b 1143300-15 firo/SLE15
+Branch '1143300-15' set up to track remote branch 'SLE15' from 'firo'.
+Switched to a new branch '1143300-15'
+fyang@l3mule:~/s/kernel> git status
+On branch 1143300-12-4
+nothing to commit, working tree clean
+fyang@l3mule:~/s/kernel> git rebase --onto  1143300-15 firo/SLE12-SP4
+
 # git sendmail
 shadowsocks
 /etc/proxychains.conf
