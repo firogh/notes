@@ -100,9 +100,6 @@ for high priority ones, for each possible CPU and some extra
 worker-pools to serve work items queued on unbound workqueues - the
 number of these backing pools is dynamic.
 
-<<<<<<< HEAD
-# NUMA and ubound workqueues
-=======
 ### pending bit
 tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
 Author: Ingo Molnar <mingo@elte.hu>
@@ -162,8 +159,7 @@ Author: Tejun Heo <tj@kernel.org>
 Date:   Thu Jan 24 11:01:33 2013 -0800
     workqueue: record pool ID instead of CPU in work->data when off-queue
 
-### NUMA ubound
->>>>>>> 74c1e19... work_struct flags
+# NUMA and ubound workqueues
 commit df2d5ae4995b3fb9392b6089b9623d20b6c3a542
 Author: Tejun Heo <tj@kernel.org>
 Date:   Mon Apr 1 11:23:35 2013 -0700
