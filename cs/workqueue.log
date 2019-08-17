@@ -81,41 +81,81 @@ Same goals from workqueues.rst
   resource.
 * Automatically regulate worker pool and level of concurrency so that
   the API users don't need to worry about such details.
-
-## Formal cause
-work, work queue
-worker, worker pool
 commit e22bee782b3b00bd4534ae9b1c5fb2e8e6573c5c
 Author: Tejun Heo <tj@kernel.org>
 Date:   Tue Jun 29 10:07:14 2010 +0200
     workqueue: implement concurrency managed dynamic worker pool
- As long as there's one or more
+ 	As long as there's one or more
     running workers on the cpu, no new worker is scheduled so that works
     can be processed in batch as much as possible but when the last
     running worker blocks, gcwq immediately schedules new worker so that
     the cpu doesn't sit idle while there are works to be processed.
-wq_worker_sleeping
 
-worker pool cition from workqueue.rst
-There are two worker-pools, one for normal work items and the other
-for high priority ones, for each possible CPU and some extra
-worker-pools to serve work items queued on unbound workqueues - the
-number of these backing pools is dynamic.
+## Formal cause
 
-### v3.6[Making workqueues non-reentrant](https://lwn.net/Articles/511421/)
-commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+### non-reentrant
+v2.6.36-rc1
+commit 8cca0eea3964b72b14e8c3f88e3a40bef7b9113e
 Author: Tejun Heo <tj@kernel.org>
-Date:   Mon Aug 20 14:51:23 2012 -0700
-    workqueue: make all workqueues non-reentrant
-git describe dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
-WQ_NON_REENTRANT from 3.0.101 Documentation/workqueue.txt
-By default, a wq guarantees non-reentrance only on the same
+Date:   Tue Jun 29 10:07:13 2010 +0200
+    workqueue: add find_worker_executing_work() and track current_cwq
+    Now that all the workers are tracked by gcwq, we can find which worker
+    is executing a work from gcwq.  Implement find_worker_executing_work()
+    and make worker track its current_cwq so that we can find things the
+    other way around.  This will be used to implement non-reentrant wqs.
+commit 7a22ad757ec75186ad43a5b4670fa7423ee8f480
+Author: Tejun Heo <tj@kernel.org>
+Date:   Tue Jun 29 10:07:13 2010 +0200
+    workqueue: carry cpu number in work data once execution starts
+    To implement non-reentrant workqueue, the last gcwq a work was
+    executed on must be reliably obtainable as long as the work structure
+    is valid even if the previous workqueue has been destroyed.
+commit 18aa9effad4adb2c1efe123af4eb24fec9f59b30
+Author: Tejun Heo <tj@kernel.org>
+Date:   Tue Jun 29 10:07:13 2010 +0200
+    workqueue: implement WQ_NON_REENTRANT
+    With gcwq managing all the workers and work->data pointing to the last
+    gcwq it was on, non-reentrance can be easily implemented by checking
+    whether the work is still running on the previous gcwq on queueing.
+    Implement it.
+
+WORK_STRUCT_CWQ_BIT or PWQ_BIT
+commit e120153ddf8620fd0a194d301e9c5a8b28483bb5
+Author: Tejun Heo <tj@kernel.org>
+Date:   Thu Jul 22 14:14:25 2010 +0200
+    workqueue: fix how cpu number is stored in work->data
++ * A work's data points to the cwq with WORK_STRUCT_CWQ set while the
++ * work is on queue.  Once execution starts, WORK_STRUCT_CWQ is
++ * cleared and the work data contains the cpu number it was last on.
+
+3.0.101 Documentation/workqueue.txt
+WQ_NON_REENTRANT By default, a wq guarantees non-reentrance only on the same
 CPU.  A work item may not be executed concurrently on the same
 CPU by multiple workers but is allowed to be executed
 concurrently on multiple CPUs.  This flag makes sure
 non-reentrance is enforced across all CPUs.  Work items queued
 to a non-reentrant wq are guaranteed to be executed by at most
 one worker system-wide at any given time.
+
+v3.7-rc1 
+commit b5490077274482efde57a50b060b99bc839acd45
+Author: Tejun Heo <tj@kernel.org>
+Date:   Fri Aug 3 10:30:46 2012 -0700
+    workqueue: introduce WORK_OFFQ_FLAG_*
++       WORK_OFFQ_CPU_SHIFT     = WORK_OFFQ_FLAG_BASE + WORK_OFFQ_FLAG_BITS,
+
+v3.7-rc1 [Making workqueues non-reentrant](https://lwn.net/Articles/511421/)
+commit dbf2576e37da0fcc7aacbfbb9fd5d3de7888a3c1
+Author: Tejun Heo <tj@kernel.org>
+Date:   Mon Aug 20 14:51:23 2012 -0700
+    workqueue: make all workqueues non-reentrant
+
+v3.9-rc1
+commit 7c3eed5cd60d0f736516e6ade77d90c6255860bd
+Author: Tejun Heo <tj@kernel.org>
+Date:   Thu Jan 24 11:01:33 2013 -0800
+    workqueue: record pool ID instead of CPU in work->data when off-queue
++       set_work_data(work, (unsigned long)pool_id << WORK_OFFQ_POOL_SHIFT, 0);
 
 ### pending bit
 tglx: commit 6ed12ff83c765aeda7d38d3bf9df7d46d24bfb11
@@ -136,33 +176,50 @@ See ULK2:
 sync: Used to prevent multiple activations
 1. disturb order in work list
 2. don't corrupt argument data
-### WORK_STRUCT_LINKED_BIT
+
+### WORK_STRUCT_STATIC
+commit dc186ad741c12ae9ecac8b89e317ef706fdaf8f6
+Author: Thomas Gleixner <tglx@linutronix.de>
+Date:   Mon Nov 16 01:09:48 2009 +0900
+    workqueue: Add debugobjects support
+
+### flush
+#### colored flushing
+commit 73f53c4aa732eced5fcb1844d3d452c30905f20f
+Author: Tejun Heo <tj@kernel.org>
+Date:   Tue Jun 29 10:07:11 2010 +0200
+    workqueue: reimplement workqueue flushing using color coded works
+TJ's description.
+so even with many concurrent flushers, the new
+implementation won't build up huge queue of flushers which has to be
+processed one after another
+Firo: originally, flush should be phased.
+A flusher: cwq->nr_in_flight[color] and wq->nr_cwqs_to_flush
+
+#### WORK_STRUCT_LINKED_BIT
 commit affee4b294a0fc97d67c8a77dc080c4dd262a79e
 Author: Tejun Heo <tj@kernel.org>
 Date:   Tue Jun 29 10:07:12 2010 +0200
     workqueue: reimplement work flushing using linked works
-### WORK_STRUCT_DELAYED_BIT
-commit 8a2e8e5dec7e29c56a46ba176c664ab6a3d04118
-Author: Tejun Heo <tj@kernel.org>
-Date:   Wed Aug 25 10:33:56 2010 +0200
-    workqueue: fix cwq->nr_active underflow
 
-### WORK_STRUCT_CWQ_BIT or PWQ_BIT
-commit e120153ddf8620fd0a194d301e9c5a8b28483bb5
-Author: Tejun Heo <tj@kernel.org>
-Date:   Thu Jul 22 14:14:25 2010 +0200
-    workqueue: fix how cpu number is stored in work->data
-+ * A work's data points to the cwq with WORK_STRUCT_CWQ set while the
-+ * work is on queue.  Once execution starts, WORK_STRUCT_CWQ is
-+ * cleared and the work data contains the cpu number it was last on.
-
-### OFFQ
-commit b5490077274482efde57a50b060b99bc839acd45
-Author: Tejun Heo <tj@kernel.org>
-Date:   Fri Aug 3 10:30:46 2012 -0700
-    workqueue: introduce WORK_OFFQ_FLAG_*
+### High Priori
+[[PATCHSET] workqueue: reimplement high priority using a separate worker pool](https://lkml.org/lkml/2012/7/9/460)
+3270476a6c0c workqueue: reimplement WQ_HIGHPRI using a separate worker_pool
+4ce62e9e30ca workqueue: introduce NR_WORKER_POOLS and for_each_worker_pool()
+d55e5bd0201a Merge branch 'timers-urgent-for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+11ebea50dbc1 workqueue: separate out worker_pool flags
+63d95a9150ee workqueue: use @pool instead of @gcwq or @cpu where applicable
+bd7bdd43dcb8 workqueue: factor out worker_pool from global_cwq
+974271c485a4 workqueue: don't use WQ_HIGHPRI for unbound workqueues
 
 ### worker_pool
+Firo: worker_pool derives from high prioir development and cwq or gcwq
+workqueue.rst
+There are two worker-pools, one for normal work items and the other
+for high priority ones, for each possible CPU and some extra
+worker-pools to serve work items queued on unbound workqueues - the
+number of these backing pools is dynamic.
+
 [workqueue: remove gcwq and make worker_pool the only backend abstraction](https://lkml.org/lkml/2013/1/16/838)
 commit 9daf9e678d18585433a4ad90ec51a448e5fd054c
 Author: Tejun Heo <tj@kernel.org>
@@ -173,13 +230,26 @@ Author: Tejun Heo <tj@kernel.org>
 Date:   Thu Jan 24 11:01:33 2013 -0800
     workqueue: record pool ID instead of CPU in work->data when off-queue
 
-# NUMA and ubound workqueues
+Neil Brown: This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
+
+#### WORK_STRUCT_DELAYED_BIT
+commit 8a2e8e5dec7e29c56a46ba176c664ab6a3d04118
+Author: Tejun Heo <tj@kernel.org>
+Date:   Wed Aug 25 10:33:56 2010 +0200
+    workqueue: fix cwq->nr_active underflow
+
+### pool_workqueue
+It derives from cwq
+pwq_activate_delayed_work->pwq->nr_active++
+__queue_work->pwq->nr_active++
+process_one_work or try_to_grab_pending -> pwq_dec_nr_in_flight->pwq->nr_active-- and pwq->nr_in_flight[color]--
+
+### NUMA and ubound workqueues
 commit df2d5ae4995b3fb9392b6089b9623d20b6c3a542
 Author: Tejun Heo <tj@kernel.org>
 Date:   Mon Apr 1 11:23:35 2013 -0700
     workqueue: map an unbound workqueues to multiple per-node pool_workqueues
-
-## Purpose
+#### Purpose
 [[13/14] workqueue: implement NUMA affinity for unbound workqueues](https://lore.kernel.org/patchwork/patch/369416/)
 Currently, an unbound workqueue has single current, or first, pwq
 (pool_workqueue) to which all new work items are queued.  This often
@@ -188,8 +258,7 @@ boundaries and work items get assigned to workers without any regard
 to NUMA affinity.
 
 
-
-## Material
+# Material
 static LIST_HEAD(workqueues);           /* PR: list of all workqueues */
 show_pwq 
 for_each_cpu_worker_pool(pool, cpu)                             \
@@ -229,21 +298,13 @@ c790bce04818 workqueue: kill RT workqueue
 7bc465605ffa ivtv: use kthread_worker instead of workqueue
 b56c0d8937e6 kthread: implement kthread_worke
 
-## High Priori
-[[PATCHSET] workqueue: reimplement high priority using a separate worker pool](https://lkml.org/lkml/2012/7/9/460)
-3270476a6c0c workqueue: reimplement WQ_HIGHPRI using a separate worker_pool
-4ce62e9e30ca workqueue: introduce NR_WORKER_POOLS and for_each_worker_pool()
-d55e5bd0201a Merge branch 'timers-urgent-for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
-11ebea50dbc1 workqueue: separate out worker_pool flags
-63d95a9150ee workqueue: use @pool instead of @gcwq or @cpu where applicable
-bd7bdd43dcb8 workqueue: factor out worker_pool from global_cwq
-974271c485a4 workqueue: don't use WQ_HIGHPRI for unbound workqueues
-
 ## queue work
 queue_delayed_work
 
 ## cancel work
 
+## Onset
+workqueue_init_early
 
 # Workqueue lockup
 wq_watchdog_timer_fn
@@ -266,57 +327,3 @@ freeze_kernel_threads
 		freeze_workqueues_begin->pwq_adjust_max_active # Core
 		freeze_workqueues_busy
 	thaw_kernel_threads->thaw_workqueues
-#define PF_KTHREAD              0x00200000
-#define PF_KSWAPD               0x00020000
-#define PF_IDLE                 0x00000002      /* I am an IDLE thread */
-#define PF_VCPU                 0x00000010      /* I'm a virtual CPU */
-#define PF_WQ_WORKER            0x00000020      /* I'm a workqueue worker */
-PID: 197    TASK: ffff8bc8dd350480  CPU: 0   COMMAND: "kswapd0"
-  flags = 0xa20840,
-PID: 19     TASK: ffff8bc214160780  CPU: 1   COMMAND: "kworker/1:0H"
-  flags = 0x4208060,
-crash> task -R flags
-PID: 0      TASK: ffffffff880134c0  CPU: 0   COMMAND: "swapper/0"
-  flags = 0x200102,
-PID: 0      TASK: ffff8bc21476c500  CPU: 14  COMMAND: "swapper/14"
-  flags = 0x200042,
-
-# work_struct
-
-
-# pool_workqueue
-pwq_activate_delayed_work->pwq->nr_active++
-__queue_work->pwq->nr_active++
-process_one_work or try_to_grab_pending -> pwq_dec_nr_in_flight->pwq->nr_active-- and pwq->nr_in_flight[color]--
-
-## Neil Brown
-This is POOL_MANAGER_ACTIVE and is only set one a pool is creating a new worker thread.
-
-# worker
-        /* worker flags */
-        WORKER_DIE              = 1 << 1,       /* die die die */
-        WORKER_IDLE             = 1 << 2,       /* is idle */
-        WORKER_PREP             = 1 << 3,       /* preparing to run works */
-        WORKER_CPU_INTENSIVE    = 1 << 6,       /* cpu intensive */
-        WORKER_UNBOUND          = 1 << 7,       /* worker is unbound */
-        WORKER_REBOUND          = 1 << 8,       /* worker was rebound */
-
-        WORKER_NOT_RUNNING      = WORKER_PREP | WORKER_CPU_INTENSIVE |
-                                  WORKER_UNBOUND | WORKER_REBOUND,
-
-        NR_STD_WORKER_POOLS     = 2,            /* # standard pools per cpu */
-
-        UNBOUND_POOL_HASH_ORDER = 6,            /* hashed by pool->attrs */
-        BUSY_WORKER_HASH_ORDER  = 6,            /* 64 pointers */
-
-        MAX_IDLE_WORKERS_RATIO  = 4,            /* 1/4 of busy can be idle */
-        IDLE_WORKER_TIMEOUT     = 300 * HZ,     /* keep idle ones for 5 mins */
-
-        MAYDAY_INITIAL_TIMEOUT  = HZ / 100 >= 2 ? HZ / 100 : 2,
-                                                /* call for help after 10ms
-                                                   (min two ticks) */
-        MAYDAY_INTERVAL         = HZ / 10,      /* and then every 100ms */
-        CREATE_COOLDOWN         = HZ,           /* time to breath after fail */
-
-# Onset
-workqueue_init_early

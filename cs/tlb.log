@@ -1,0 +1,27 @@
+# TLB
+v3a Chapter 4.10
+https://github.com/torvalds/linux/blob/master/Documentation/x86/tlb.txt
+[进程切换分析（2）：TLB处理](http://www.wowotech.net/process_management/context-switch-tlb.html)
+https://lwn.net/Articles/379748/
+[Paging: Faster Translations TLBs](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf)
+## [Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
+Because the processor does not ensure that the data that it caches are always consistent with the structures in memory, it is important for software developers to understand how and when the processor may cache such data. They should also understand what actions software can take to remove cached
+data that may be inconsistent and when it should do so.-- SDM 4.10 CACHING TRANSLATION INFORMATION
+4.10.4 Invalidation of TLBs and Paging-Structure Caches
+## Lazy TLB
+x86/mm: Rework lazy TLB mode and TLB freshness tracking - 94b1b03b519b81c494900cb112aa00ed205cc2d9
+## TLB Shootdown
+[What's TLB shootdown](https://stackoverflow.com/questions/3748384/what-is-tlb-shootdown)
+[Great question and answers on performing TLB shootdown](https://stackoverflow.com/questions/50256740/who-performs-the-tlb-shootdown)
+## ?? PCID
+1.10. Longer-lived TLB Entries with PCID in kernel newbies:
+The relatted commit: x86/mm: Give each mm TLB flush generation a unique ID
+f39681ed0f48498b80455095376f11535feea332
+x86/mm: Implement PCID based optimization: try to preserve old TLB entries using PCID
+10af6235e0d327d42e1bad974385197817923dc1
+## methods
+INVLPG: include global
+mov to CR3: except global
+mov to CR4: include golbal
+INVPCID
+VMX transitions

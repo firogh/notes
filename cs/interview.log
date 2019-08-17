@@ -46,3 +46,33 @@ http://www.programmerinterview.com/
 4. page writeback
 5. huge page
 6. reverse linked list
+# LQO
+* [Netfilter conntrack 性能调整](http://jaseywang.me/2012/08/16/%E8%A7%A3%E5%86%B3-nf_conntrack-table-full-dropping-packet-%E7%9A%84%E5%87%A0%E7%A7%8D%E6%80%9D%E8%B7%AF/)
+* [Conntrack tuning](https://wiki.khnet.info/index.php/Conntrack_tuning#Default_values_of_CONNTRACK_MAX_and_HASHSIZE)
+
+# interview question
+https://www.quora.com/Kernel-programming-is-a-big-area-Network-stack-might-have-nothing-in-common-with-block-drivers-etc-To-test-someone%E2%80%99s-overall-knowledge-what-would-be-some-good-interview-questions-on-Linux-kernel-programming
+* xiao mi
+关于抢占的理解（何时抢占,怎样实现的抢占）
+kmalloc与vmalloc的区别
+kmalloc内核是如何实现存储管理的，比如申请了14B的空间
+A,B两个进程，运行顺序是A—B—A,有多少种可能导致的，比如阻塞，抢占等。
+http://ju.outofmemory.cn/entry/141418
+
+https://blog.csdn.net/zhangjikuan/article/details/49021407
+https://blog.csdn.net/laviolette/article/details/51481175
+https://www.jobui.com/mianshiti/it/qianrushi/5739/
+http://unicornx.github.io/2015/12/20/20151220-lk-drv-questions/
+https://www.cnblogs.com/cdwodm/p/4633460.html
+https://forum.mianbaoban.cn/topic/64466_1_1.html
+http://cprogrammingwithlinux.blogspot.com/p/linux-interview-questions.html
+https://www.quora.com/What-are-some-good-interview-questions-on-Linux-Memory-Management
+http://www.eetop.cn/blog/html/49/204849-35836.html
+https://sites.google.com/view/embeddedprograms/interview-questions/linux-kernel-internal-interview-questions
+http://guruoflinux.blogspot.com/2011/12/linux-kernel-programming-interview.html
+http://jobslnxinterview.blogspot.com/p/interrupt-handling.html
+http://www.voidcn.com/article/p-czrbuirf-ho.html
+http://cinterviewquestionandanswer.blogspot.com/2014/06/spin-lock-in-linux-kernel.html
+* intel
+http://www.zheyibu.com/article/4094.html
+https://www.douban.com/note/232065796/
