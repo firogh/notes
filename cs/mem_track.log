@@ -1,3 +1,35 @@
+
+# E820 memory map
+Kerenl setup header?: detect_memory() Load BIOS memory map into boot_params.e820_map
+setup_arch->
+{
+        setup_memory_map -> default_machine_specific_memory_setup // Save e820 memory map into struct vriable e820 from boot_params.e820_map.
+        max_pfn = e820_end_of_ram_pfn(); // max_pfn  BIOS-e820: mem 0x0000000100000000-0x00000003227fffff usable and last_pfn = 0x322800(12840MB), so last_pfn is invalid address, use it with <.
+        mtrr update max_pfn, see [Processor supplementary capability](https://en.wikipedia.org/wiki/Processor_supplementary_capability)
+        trim_low_memory_range // reserve 64k
+        max_low_pfn = e820_end_of_low_ram_pfn(); //end of block below 4GB
+}
+
+# Memblock and bootmem
+setup_arch->
+        memblock_x86_fill// copy e820 to memblock, reconstructs direct memory mapping and setups the direct mapping of the physical memory at PAGE_OFFSET
+memblock the [implementations](https://0xax.gitbooks.io/linux-insides/content/mm/linux-mm-1.html) of memblock is quite simple. static initialization with variable memblock.
+bootmem is discarded by [ARM](https://lkml.org/lkml/2015/12/21/333) and x86
+a little history in e820_register_active_region about memblock [replaced by lmb](https://lkml.org/lkml/2010/7/13/68)
+## What is the meaning of the following notes?
+### memblock (constantly Y for x86)
+memblock_free_late->__memblock_free_late->__free_pages_bootmem
+### bootmem (discarded by x86)
+memblock_free_late->free_bootmem_late->__free_pages_bootmem
+free_all_bootmem->free_all_bootmem_core->__free_pages_bootmem
+### nobootmem
+free_bootmem_late->__free_pages_bootmem
+free_all_bootmem->free_low_memory_core_early->__free_memory_core->*__free_pages_memory*->__free_pages_bootmem->__free_pages_boot_core
+### free bootmem core/earyly
+mm_init->mem_init->free_all_bootmem
+### free bootmem late
+start_kernel->efi_free_boot_services->free_bootmem_late->__free_pages_bootmem
+
 # Memory variables - layout
 extern unsigned long max_low_pfn;
 extern unsigned long min_low_pfn;
@@ -34,6 +66,8 @@ pfn_to_page
 page_zone
 virt_to_page
 
+
+
 # Process VM stat
 oom_badness
 dump_tasks
@@ -51,8 +85,6 @@ atomic_long_t nr_ptes;                  /* PTE page table pages */
 atomic_long_read(&task->mm->nr_ptes),
 mm_nr_pmds(task->mm), 
 get_mm_counter(task->mm, MM_SWAPENTS), # one of usages is in rmap.c unmap
-
-
 
 # Pages
 [Some are in the "page cache" used to store the contents of files.](https://lwn.net/Articles/446317/) 
@@ -74,6 +106,7 @@ Check page_check_dirty_writeback() for anonymous pages's definition.
                 *writeback = false;
                 return;
         }
+
 
 # swap
 total_swap_pages
@@ -194,5 +227,3 @@ mm/shmem.c <<shmem_lock>>
              mapping_set_unevictable(file->f_mapping);
 SHM_LOCK (Linux-specific)
                  Prevent  swapping  of the shared memory segment. 
-=======
-# Memory leak

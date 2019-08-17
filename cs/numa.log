@@ -6,6 +6,9 @@
 [The MySQL “swap insanity” problem and the effects of the NUMA architecture](https://blog.jcole.us/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/)
 [NUMA架构的CPU -- 你真的用好了么？](http://cenalulu.github.io/linux/numa/)
 [Red Hat Enterprise Linux NUMA support for HPE ProLiant servers](https://h50146.www5.hpe.com/products/software/oe/linux/mainstream/support/whitepaper/pdfs/a00039147enw.pdf)
+[NUMA Memory Architectures and the Linux Memory System](https://pok.acm.org/meetings/foils/Ladd16.pdf)
+[NUMA in a hurry](https://lwn.net/Articles/524977/)
+[How NUMA Balancing Moves KVM Guests](https://events.static.linuxfound.org/sites/events/files/slides/LCJ2014-How_NUMA_Balancing_Moves_KVM_Guests.pdf)
 
 # Init NUMA
 setup_arch->initmem_init->numa_init
