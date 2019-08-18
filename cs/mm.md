@@ -8,6 +8,9 @@ category: cs
 
 # Ref
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
+[Kernel developers MM documentation](https://www.kernel.org/doc/html/v4.18/vm/index.html)
+[kernel.org Memory Management](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
+https://linux-mm.org/
 
 # VM
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
