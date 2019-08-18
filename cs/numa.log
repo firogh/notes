@@ -10,9 +10,6 @@
 [NUMA in a hurry](https://lwn.net/Articles/524977/)
 [How NUMA Balancing Moves KVM Guests](https://events.static.linuxfound.org/sites/events/files/slides/LCJ2014-How_NUMA_Balancing_Moves_KVM_Guests.pdf)
 
-# Init NUMA
-setup_arch->initmem_init->numa_init
-
 # Nude distance
 ACPI 2.0 SLIT distance definitions
 #define LOCAL_DISTANCE          10
@@ -25,3 +22,6 @@ numa_distance
 
 # AutoNUMA
 [AutoNUMA alpha10](https://lwn.net/Articles/488686/)
+
+# Material
+setup_arch->initmem_init->numa_init -> numa_register_memblks -> alloc_node_data

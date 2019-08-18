@@ -13,12 +13,31 @@ category: cs
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
 [Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
 
-# Memory model
-flat mem -> uma
-discontig -> NUMA
-sparse -> Hotplug + NUMA
-
 # Zones and Nodes
+ULK 2: 7.1.2 Memory Zones
+LDD: Memory zones
+LKD3: Zones
+UVM: Chapter 2  Describing Physical Memory
+history: commit 4d1ceac2980133513fec009b18514f026ff58afa (tag: 2.3.23pre5)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:27:55 2007 -0500
+    Import 2.3.23pre5
++#define MEM_TYPE_DMA           0
++#define MEM_TYPE_NORMAL                1
++#define MEM_TYPE_HIGH          2
+
+history: commit cb75bc5a9d9a433f6b5c8015a0f43c1b4d0fad79 (tag: 2.3.27pre6)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:28:33 2007 -0500
+    Import 2.3.27pre6
++ *  Reshaped it to be a zoned allocator, Ingo Molnar, Red Hat, 1999
+-#define MEM_TYPE_DMA           0
+-#define MEM_TYPE_NORMAL                1
++#define ZONE_DMA               0
++#define ZONE_NORMAL            1
+-static struct free_area_struct free_area[NR_MEM_TYPES][NR_MEM_LISTS];
++typedef struct zone_struct {
+
 setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes
 {
 	free_area_init_node-> 
@@ -34,7 +53,7 @@ setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init
 			init_currently_empty_zone(zone, zone_start_pfn, size);
 			// Set all page to reserved. MIGRATE_MOVABLE?
 			// Set node, zone to page->flags; set_page_links
-			memmap_init_zone 
+			memmap_init_zone
 		}
 }
 ## Zone lists

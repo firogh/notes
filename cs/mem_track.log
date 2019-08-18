@@ -65,7 +65,7 @@ pfn_to_nid
 pfn_to_page
 page_zone
 virt_to_page
-
+page_pgdat
 
 
 # Process VM stat
