@@ -6,17 +6,81 @@ title: Linux memory management
 category: cs
 ---
 
-# Ref
+# Reference
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
 [Kernel developers MM documentation](https://www.kernel.org/doc/html/v4.18/vm/index.html)
 [kernel.org Memory Management](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
 https://linux-mm.org/
 
-# VM
+# History
+Dragon book 9th chapter 8 main memory
+## Unknow old era for fixed/variable-sized partitioning
+[Partitioned allocation](https://en.wikipedia.org/wiki/Memory_management_(operating_systems)#Partitioned_allocation)
+Dragon OS book 8.3.2 Memory Allocation
+OSIDP: 7.2 MEMORY PARTITIONING
+fixed-sized partitions.
+variable-partition scheme or Segmentation
+
+## 1959 paging
+[Paging](https://en.wikipedia.org/wiki/Paging) according to [History of VM](https://en.wikipedia.org/wiki/Virtual_memory) is developed at 1959.
+
+## 1961 segmentation
+Fist appears in Burroughs B5500
+
+## 1963 ~ 1965  buddy system
+[Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
+
+## 1956 ~ 1962 VM
 [BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
 [Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
 
-# Zones and Nodes
+# Purposes
+## keeping track of physical memory, 
+Buddy system, why?
+## obtain/alloc and return/free memory
+page allocator
+### for user space application =>
+VM, paging, page tables, page fault, memory mapping.
+### for mitigating fragmenatations
+buddy system, memory compaction
+### for maintain healthy memory
+page reclamation, memory compaction
+
+# Formal cause
+[Dynamic Storage Allocation: A Survey and Critical Review]
+## Memory partitioning
+Check OSIDP 7.2
+### Page vs variable-sized memory allocations
+By variable-sized, we are not taking historical segementation.
+Placement algorithm: Best-fit, first-fit. Within variable-szied memory allocations, it's very difficult to track free memories compared with page-sized.
+
+### Segmentation
+OSIDP
+The difference, compared to dynamic partitioning, is that with seg-
+mentation a program may occupy more than one partition, and these partitions
+need not be contiguous. Segmentation eliminates internal fragmentation but, like
+dynamic partitioning, it suffers from external fragmentation. However, because a
+process is broken up into a number of smaller pieces, the external fragmentation
+should be less.
+
+### [buddy system 1965](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) [Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
+[buddy system variants 1977](https://dl.acm.org/citation.cfm?id=359626)
+The following cited from above 1965 paper.
+The oporations involved in obtaining blocks from and retm'ning thom to the free
+storage lists aro vory fast, making this scheme particularly appropriate for list structure operations and for other
+situations involving many sizes of blocks which are fixed in size and location. This is in fact tho storago bookkeeping
+mothod used in tho Boll Telephone Laboratories Low-Level List Language'
+
+OSIDP
+Both fixed and dynamic partitioning schemes have drawbacks. A fixed partitioning
+scheme limits the number of active processes and may use space inefficiently if there is
+a poor match between available partition sizes and process sizes. A dynamic partition-
+ing scheme is more complex to maintain and includes the overhead of compaction. An
+interesting compromise is the buddy system
+
+## Fragmentations
+
+## Zones
 ULK 2: 7.1.2 Memory Zones
 LDD: Memory zones
 LKD3: Zones
@@ -40,26 +104,7 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 +#define ZONE_NORMAL            1
 -static struct free_area_struct free_area[NR_MEM_TYPES][NR_MEM_LISTS];
 +typedef struct zone_struct {
-
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes
-{
-	free_area_init_node-> 
-		calculate_node_totalpages
-		
-		alloc_node_mem_map// mem_map for FLAT, but not for us because we use sparsemem
-		free_area_init_core
-		{
-			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
-			// init percpu pageset with boot_pageset
-			zone_pcp_init 
-			// free_area.free_list
-			init_currently_empty_zone(zone, zone_start_pfn, size);
-			// Set all page to reserved. MIGRATE_MOVABLE?
-			// Set node, zone to page->flags; set_page_links
-			memmap_init_zone
-		}
-}
-## Zone lists
+### Zone lists
 zone list is for Node not for zone. NUMA system has two zone lists:
 Check MAX_ZONELISTS
  * [0]  : Zonelist with fallback
@@ -83,49 +128,22 @@ or hotpulg or /proc/sys/vm/numa_zonelist_order: numa_zonelist_order_handler
         }, {
           zone = 0x0, 
           zone_idx = 0
-## mm_init
-Most of the reset the memory initialization is done in this function.
-start_kernel->
-	mm_init
-{
-	# ??
+# Material
+## Onset
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes
+	free_area_init_node-> 
+		calculate_node_totalpages
+		alloc_node_mem_map// mem_map for FLAT, but not for us because we use sparsemem
+		free_area_init_core
+			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
+			// init percpu pageset with boot_pageset
+			zone_pcp_init 
+			// free_area.free_list
+			init_currently_empty_zone(zone, zone_start_pfn, size);
+			// Set all page to reserved. MIGRATE_MOVABLE?
+			// Set node, zone to page->flags; set_page_links
+			memmap_init_zone
+### Buddy system
+start_kernel->mm_init
 	# /* this will put all low memory onto the freelists */
 	mem_init-> memblock_free_all or free_all_bootmem
-}
-
-# Watermarks
-Check Documentation/sysctl/vm.txt for min_free_kbytes
-min_free_kbytes_sysctl_handler or watermark_scale_factor_sysctl_handler or
-core_initcall(init_per_zone_wmark_min) ->
-	setup_per_zone_wmarks-> __setup_per_zone_wmarks
-{
-	firo@linux-6qg8:~> grep managed /proc/zoneinfo 
-		managed  3973
-		managed  464142
-		managed  7726451
-	>>> 3973 + 464142 + 7726451
-	8194566
-	firo@linux-6qg8:~> cat /proc/sys/vm/min_free_kbytes 
-	67584
-	>>> 67584 / 4 * 3973 / 8194566
-	8
-	# Unit of watermark is Page.	
-	WMARK_MIN = page_no(min_free_kbytes) * (zone.managed_pages / \Sum of zone.managed_pages)
-	WMARK_LOW = 1.25 * min or min + 1/1000 * zone.managed_pages
-	WMARK_HIGH = 1.5 * min or min + 2/1000 * zone.managed_pages 
-}
-if min_free_kbytes > 1/250*total mamanged_pages, we use 1.25 min or 1.5 min
-
-# Low memory reserved
-Check Documentation/sysctl/vm.txt for lowmem_reserve_ratio
-lowmem_reserve_ratio_sysctl_handler or core_initcall(init_per_zone_wmark_min) ->
-	setup_per_zone_lowmem_reserve
-firo@linux-6qg8:~> cat /proc/zoneinfo | grep protection
-        protection: (0, 1813, 31994, 31994, 31994)
-        protection: (0, 0, 30181, 30181, 30181)
-        protection: (0, 0, 0, 0, 0)
-        protection: (0, 0, 0, 0, 0)
-        protection: (0, 0, 0, 0, 0)
-Check __alloc_pages_nodemask(), lowmem_reserve is used for checking if there is enough pages in current zone to which allcation fallbacks from a prefered zone.
-lowmem_reserv is used for fallback allcations from a perfered zone in the zonelist.
-The index of lowmme_reserv is the prefered zoneref.zone_idx

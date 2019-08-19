@@ -40,3 +40,40 @@ libfc, fcoe: fixes for highmem skb linearize panics:18fa11efc279c20af5eefff2bbe8
 # Obselete feature - Fair-zone allocation
 [mm, page_alloc: Remove fair zone allocation policy](https://lore.kernel.org/patchwork/patch/691300/)
 [Configurable fair allocation zone policy](https://lwn.net/Articles/576778/)
+
+# Watermarks
+Check Documentation/sysctl/vm.txt for min_free_kbytes
+min_free_kbytes_sysctl_handler or watermark_scale_factor_sysctl_handler or
+core_initcall(init_per_zone_wmark_min) ->
+        setup_per_zone_wmarks-> __setup_per_zone_wmarks
+{
+        firo@linux-6qg8:~> grep managed /proc/zoneinfo
+                managed  3973
+                managed  464142
+                managed  7726451
+        >>> 3973 + 464142 + 7726451
+        8194566
+        firo@linux-6qg8:~> cat /proc/sys/vm/min_free_kbytes
+        67584
+        >>> 67584 / 4 * 3973 / 8194566
+        8
+        # Unit of watermark is Page.    
+        WMARK_MIN = page_no(min_free_kbytes) * (zone.managed_pages / \Sum of zone.managed_pages)
+        WMARK_LOW = 1.25 * min or min + 1/1000 * zone.managed_pages
+        WMARK_HIGH = 1.5 * min or min + 2/1000 * zone.managed_pages
+}
+if min_free_kbytes > 1/250*total mamanged_pages, we use 1.25 min or 1.5 min
+
+# Low memory reserved
+Check Documentation/sysctl/vm.txt for lowmem_reserve_ratio
+lowmem_reserve_ratio_sysctl_handler or core_initcall(init_per_zone_wmark_min) ->
+        setup_per_zone_lowmem_reserve
+firo@linux-6qg8:~> cat /proc/zoneinfo | grep protection
+        protection: (0, 1813, 31994, 31994, 31994)
+        protection: (0, 0, 30181, 30181, 30181)
+        protection: (0, 0, 0, 0, 0)
+        protection: (0, 0, 0, 0, 0)
+        protection: (0, 0, 0, 0, 0)
+Check __alloc_pages_nodemask(), lowmem_reserve is used for checking if there is enough pages in current zone to which allcation fallbacks from a prefered zone.
+lowmem_reserv is used for fallback allcations from a perfered zone in the zonelist.
+The index of lowmme_reserv is the prefered zoneref.zone_idx

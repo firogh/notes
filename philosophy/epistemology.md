@@ -16,6 +16,7 @@ The Archaeology of Knowledge
 [Aristotle: we do not have knowledge of a thing until we have grasped its why, that is to say, its cause](https://en.wikipedia.org/wiki/Four_causes)
 If you don't control youself, you will be definitely controlled by others.
 [Richard Feynman. Why.](https://www.youtube.com/watch?v=36GT2zI8lVA)
+Firo: some causes are very intutive. However, others are not easy to be deduced theoritically.
 ## Histructure
 ## Form or abstration or Architecture; 
 
