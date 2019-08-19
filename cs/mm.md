@@ -14,7 +14,7 @@ https://linux-mm.org/
 
 # History
 Dragon book 9th chapter 8 main memory
-## Unknow old era for fixed/variable-sized partitioning
+## 1964 fixed-sized partitioning
 [Partitioned allocation](https://en.wikipedia.org/wiki/Memory_management_(operating_systems)#Partitioned_allocation)
 Dragon OS book 8.3.2 Memory Allocation
 OSIDP: 7.2 MEMORY PARTITIONING
