@@ -40,7 +40,7 @@ Buddy system, why?
 ## obtain/alloc and return/free memory
 page allocator
 ### for user space application =>
-VM, paging, page tables, page fault, memory mapping.
+VM, paging, memory mapping.
 ### for mitigating fragmenatations
 buddy system, memory compaction
 ### for maintain healthy memory
