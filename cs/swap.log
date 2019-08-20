@@ -1,3 +1,18 @@
+
+# Formal causes
+
+# Materials
+## page
+* private
+store swap type and offset/slot in private
+Check page_swapcount
+__add_to_swap_cache -> set_page_private
+why?
+* mapping
+NULL
+* flags
+PG_swapcache
+* _refcount
 # Swap
 [In defence of swap: common misconceptions](https://chrisdown.name/2018/01/02/in-defence-of-swap.html)
 # Enable Swap

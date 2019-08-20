@@ -8,8 +8,10 @@ I think kernel developers are abusing the terminology 'memory model'. [Physical 
 [Memory: the flat, the discontiguous, and the sparse](https://lwn.net/Articles/789304/)
 [[PATCH] sparsemem memory model](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d41dee369bff3b9dcb6328d4d822926c28cc2594)
 
-
-
 # Unrelatted by interesting topic
 [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/)
 [History of Memory Models](https://www.youtube.com/watch?v=3e1ZF1L1VhY)
+
+# Sparse
+8170e6bed465b4b0c7687f93e9948aca4358a33b
+x86, 64bit: Use a #PF handler to materialize early mappings on demand

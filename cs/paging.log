@@ -16,6 +16,7 @@ operating systems in the 1950s dreamt of relieving the programming burden by
 automating all this storage management.
 
 # Formal causes
+v3a Chapter 4
 Also come from 'before virtual memory'.
 At the heart of their idea was a radical innovation --- a distinction between “address” and “memory location”.
 Firo: address => virtual address; "memory location" => physical address. Marvellous!
@@ -25,12 +26,42 @@ Firo: this hardware is MMU including TLB.
 (2) They devised demand paging, an interrupt mechanism triggered by the address translator that moved a missing page of data into the main memory.
 (3) They built a replacement algorithm, a procedure to detect and move the least useful pages back to secondary memory.
 Firo: PFRA
+## address translator MMU
+
+## Page tables
+v3a: P121 
+5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
+6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
+Check _PAGE_BIT_ACCESSED
+
+## Page faults
 
 # Material
-# Init paging
+## Walk and change page tables
+ptdump_walk_pgd_level_core
+and change page attr
+__change_page_attr
+
+For vmalloc(), chechk here vmap_page_range_noflush()
+For kmap(), check kmap_init()
+[How to emulate the process of translate va to pa?](http://edsionte.com/techblog/archives/1966)
+## Onset
 setup_arch->
 	early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
 	init_mem_mapping //set page table and cr3.
+
+## x86_64
+PAE is 3-level page tables: pgd, pmd, pte.
+So early_level4_pgt(level4, level3, level2) in startup_64() with 
+ENTRY(secondary_startup_64)
+  /* Enable PAE mode and PGE */
+  movl  $(X86_CR4_PAE | X86_CR4_PGE), %ecx
+  movq  %rcx, %cr4
+  /* Setup early boot stage 4 level pagetables. */
+  addq  phys_base(%rip), %rax
+  movq  %rax, %cr3
+X86_CR0_PG: enable paging.
+x86_64_start_kernel
 
 # PTE and PDE and page flags
 v3a chapter 4.5 4-level paging, p132, Figure 4-11. Formats of CR3 and Paging-Structure Entries with 4-Level Paging
@@ -46,33 +77,8 @@ Check SWP_TYPE_FIRST_BIT
 Swap work on only userspace pages.
 ## _PAGE_SWP_SOFT_DIRTY
 Documentation/vm/soft-dirty.txt
-## _PAGE _PROTNONE
-https://www.spinics.net/lists/newbies/msg08579.html
-man mprotect, PROT_NONE
-userspace addr is associated with non-GLOBAL pte, so the 8th G is reused by PROT_NONE.
 
-# Format of Page-Table entry 
-v3a: P121: 
-5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
-6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
-Check this _PAGE_BIT_ACCESSED
-
-# TLB
-spurious_fault:a stale TLB entry
-
-# struct page
-## SWAP
-* private
-store swap type and offset/slot in private
-Check page_swapcount
-__add_to_swap_cache -> set_page_private
-why?
-* mapping
-NULL
-* flags
-PG_swapcache
-* _refcount
-### 
+# ETC
 ## _refcount
 after __alloc_pages_nodemask _refcount=0, 
 post_alloc_hook: init should be 0. 
@@ -80,49 +86,4 @@ but set_page_refcounted -> set_page_count(page, 1);
 and Check put_page
 ## _mapcount
 from -1: page_mapcount_reset
-### LQO
-* page in swap cache vs swap area?
-* counters vs _mapcount vs _refcount
-_mapcount: numbers of ptes; check page_mapped
-# Ref
-v3a Chapter 4
-https://wiki.osdev.org/Paging
-https://en.wikipedia.org/wiki/Paging
-
-# Links
-[1]: http://larmbr.com/2014/01/19/the-evolution-of-4-level-page-talbe-in-linux/
-[2]: http://ytliu.info/blog/2016/03/14/linuxnei-cun-chu-shi-hua-assembly/
-# x86 64
-[Linux内核4级页表的演进][1]
-[Linux内存初始化][2]
-PAE is 3-level page tables: pgd, pmd, pte.
-So early_level4_pgt(level4, level3, level2) in startup_64() with 
-ENTRY(secondary_startup_64)
-  /* Enable PAE mode and PGE */
-  movl  $(X86_CR4_PAE | X86_CR4_PGE), %ecx
-  movq  %rcx, %cr4
-
-  /* Setup early boot stage 4 level pagetables. */
-  addq  phys_base(%rip), %rax
-  movq  %rax, %cr3
-
-should be OK.
-
-X86_CR0_PG: enable paging.
-x86_64_start_kernel
-
-
 All processes's page table(task_strcut pgd) was derived form init_mm's swapper_pg_dir which inited in native_pagetable_init(). #FIXME.
-# Sparse page tables
-8170e6bed465b4b0c7687f93e9948aca4358a33b
-x86, 64bit: Use a #PF handler to materialize early mappings on demand
-
-# Walk on page tables
-ptdump_walk_pgd_level_core
-and change page attr
-__change_page_attr
-
-## Page table
-For vmalloc(), chechk here vmap_page_range_noflush()
-For kmap(), check kmap_init()
-[How to emulate the process of translate va to pa?](http://edsionte.com/techblog/archives/1966)
