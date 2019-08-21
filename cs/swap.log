@@ -1,5 +1,14 @@
 
 # Formal causes
+## PTE Encode and de-code a swap entry
+
+|     ...            | 11| 10|  9|8|7|6|5| 4| 3|2| 1|0| <- bit number
+|     ...            |SW3|SW2|SW1|G|L|D|A|CD|WT|U| W|P| <- bit names
+| OFFSET (14->63) | TYPE (9-13)  |0|0|X|X| X| X|X|SD|0| <- swp entry
+Check SWP_TYPE_FIRST_BIT
+Swap work on only userspace pages.
+_PAGE_SWP_SOFT_DIRTY and Documentation/vm/soft-dirty.txt
+
 
 # Materials
 ## page

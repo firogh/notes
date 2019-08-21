@@ -14,9 +14,9 @@ Date:   Wed Sep 25 07:20:08 2002 -0700
     [PATCH] prepare_to_wait/finish_wait sleep/wakeup API
 [Use prepare_to_wait_exclusive() instead prepare_to_wait](https://lore.kernel.org/patchwork/patch/182029/)
 ## wbt bug caused by auto removing
-commit 8506110dc2e866c4f1f015cfd0f7360ac90cab5a (HEAD -> bsc1141543)
+commit 2887e41b910bb14fd847cf01ab7a5993db989d88
 Author: Anchal Agarwal <anchalag@amazon.com>
-Date:   Fri Jul 19 10:46:03 2019 +0200
+Date:   Tue Aug 7 14:40:49 2018 -0600
     blk-wbt: Avoid lock contention and thundering herd issue in wbt_wait
 
 # DECLARE_WAITQUEUE and waitqueue_lock

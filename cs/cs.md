@@ -40,6 +40,10 @@ Energy-efficiency
 Debugging
 Memory management
 
+# Unrelatted by interesting topic on memory models
+[The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/)
+[History of Memory Models](https://www.youtube.com/watch?v=3e1ZF1L1VhY)
+
 # The fundermental
 Buffer: for bandwidth
 Cache: for speed

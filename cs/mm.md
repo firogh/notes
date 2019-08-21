@@ -39,12 +39,13 @@ Fist appears in Burroughs B5500
 Buddy system, why?
 ## obtain/alloc and return/free memory
 page allocator
-### for user space application =>
-VM, paging, memory mapping.
-### for mitigating fragmenatations
-buddy system, memory compaction
-### for maintain healthy memory
 page reclamation, memory compaction
+## Lift the burden of loading program from application
+paging
+## user space application
+VM, memory mapping.
+## mitigating fragmenatations
+buddy system, memory compaction
 
 # Formal cause
 [Dynamic Storage Allocation: A Survey and Critical Review]
@@ -104,46 +105,5 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 +#define ZONE_NORMAL            1
 -static struct free_area_struct free_area[NR_MEM_TYPES][NR_MEM_LISTS];
 +typedef struct zone_struct {
-### Zone lists
-zone list is for Node not for zone. NUMA system has two zone lists:
-Check MAX_ZONELISTS
- * [0]  : Zonelist with fallback
- * [1]  : No fallback (__GFP_THISNODE)
-start_kernel->
-	build_all_zonelists
-or hotpulg or /proc/sys/vm/numa_zonelist_order: numa_zonelist_order_handler
-  node_zonelists = {{
-      _zonerefs = {{
-          zone = 0xffff88107ffd5d80, # node 0
-          zone_idx = 2
-        }, {
-          zone = 0xffff88107ffd56c0, # node 0
-          zone_idx = 1
-        }, {
-          zone = 0xffff88107ffd5000, # node 0
-          zone_idx = 0
-        }, {
-          zone = 0xffff88207ffd2d80, # Node 1; fallback.
-          zone_idx = 2
-        }, {
-          zone = 0x0, 
-          zone_idx = 0
+
 # Material
-## Onset
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes
-	free_area_init_node-> 
-		calculate_node_totalpages
-		alloc_node_mem_map// mem_map for FLAT, but not for us because we use sparsemem
-		free_area_init_core
-			zone->managed_pages = zone->present_pages - memmap_pages - DMA?dma_reserve:0
-			// init percpu pageset with boot_pageset
-			zone_pcp_init 
-			// free_area.free_list
-			init_currently_empty_zone(zone, zone_start_pfn, size);
-			// Set all page to reserved. MIGRATE_MOVABLE?
-			// Set node, zone to page->flags; set_page_links
-			memmap_init_zone
-### Buddy system
-start_kernel->mm_init
-	# /* this will put all low memory onto the freelists */
-	mem_init-> memblock_free_all or free_all_bootmem
