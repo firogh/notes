@@ -70,6 +70,10 @@ root        16  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/1]
 root        22  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/2]
 root        28  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/3]
 
+# Hardware watchdog
+watchdog_overflow_callback
+watchdog_nmi_enable ->watchdog_overflow_callback
+
 # Hung tasks bugs
 ## think for myself
 A kernel bug casuse task to be stuck in "D" state indefinitely.
