@@ -57,7 +57,7 @@ History: commit 6cc120a8e71a8d124bf6411fc6e730a884b82701 (tag: 2.3.43pre7)
 Author: Linus Torvalds <torvalds@linuxfoundation.org>
 Date:   Fri Nov 23 15:30:52 2007 -0500
     Import 2.3.43pre7
-+/* Tasklets --- multithreaded analogue of BHs.
++ Tasklets --- multithreaded analogue of BHs.
 +   Main feature differing them of generic softirqs: tasklet
 +   is running only on one CPU simultaneously.
 +   Main feature differing them of BHs: different tasklets
@@ -72,6 +72,16 @@ Date:   Fri Nov 23 15:30:52 2007 -0500
 +   * Tasklet is strictly serialized wrt itself, but not
 +     wrt another tasklets. If client needs some intertask synchronization,
 +     he makes it with spinlocks.
+
+# Timer
+## irqsafe timer
+ __run_timers
+irqsafe = timer->flags & TIMER_IRQSAFE
+check del_timer_sync
+and definition of TIMER_IRQSAFE
+https://patchwork.kernel.org/patch/10811995/
+Is timer pending
+
 
 # LQO
 [Deal PF_MEMALLOC in softirq](http://thread.gmane.org/gmane.linux.kernel/1152658)

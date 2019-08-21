@@ -38,5 +38,3 @@ ps -fC vim
 # wget 
 wget -r -l1 --no-parent www.rfc-editor.org/ien/
 '-A *.txt'
-
-

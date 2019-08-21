@@ -135,7 +135,6 @@ void si_swapinfo(struct sysinfo *val)
         val->freeswap = atomic_long_read(&nr_swap_pages) + nr_to_be_unused;
         val->totalswap = total_swap_pages + nr_to_be_unused;
 
-
 # VM stat
 totalram_pages
 /proc/meminfo
@@ -200,7 +199,6 @@ Date:   Thu Jul 28 15:47:05 2016 -0700
 commit 71c799f4982d340fff86e751898841322f07f235
 Author: Minchan Kim <minchan@kernel.org>
 Date:   Thu Jul 28 15:47:26 2016 -0700
-
     mm: add per-zone lru list stat
 Check update_lru_size
 

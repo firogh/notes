@@ -17,6 +17,10 @@ https://en.wikipedia.org/wiki/Direct_style
 programming principles
 High cohesion low coupling
 
+# Design pattern
+[Linux kernel design patterns](http://lwn.net/Articles/336224/)
+[Linux Kernel Programming Patterns](http://www.cs.fsu.edu/~baker/devices/notes/patterns.html#)
+
 # Computer programming
 编程作为我重要的谋生手段, 有必要审慎的加以考察审视. 程序设计应该包含那些最少的, 必备的, 重要的能力呢?
 [The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/)给出了大概的框架, 但不完整.

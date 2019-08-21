@@ -5,9 +5,27 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
+# docker
+ocker run -i -t --rm=true -v /buildarea1/firo/bd:/mnt pek-lpdfs01:5000/centos7_64:wrl /bin/bash
+
 # initrd
 /usr/lib/dracut/skipcpio
 /usr/lib/dracut/skipcpio $your-img | gunzip -c | cpio -id
+
+# rpm
+## identify the rpm version that built the package
+rpm -qp --qf '%{rpmversion}\n' xxx.rpm
+rpm5 -qp --yaml xxx.rpm | grep Rpmversion
+
+# ssh
+## ssh tunnel
+windows:
+ssh -vvv -fNR 2222:127.0.0.1:22 root@138.128.195.217 -p 29781
+autossh -M 20000 -fNR 2222:localhost:22 root@138.128.195.217 -p 29781
+VPS:
+ssh -fN -g -L 138.128.195.217:2223:localhost:2222 root@localhost -p 29781
+Linux:
+ssh  -v yongmiya@138.128.195.217 -p 2223
 
 # systemd
  sudo systemd-analyze  blame 

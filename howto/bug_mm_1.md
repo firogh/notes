@@ -52,12 +52,3 @@ Both node 0 and node 1's SLAB's partial and full lists were corrupted. After loo
 He provided a fix for this issue. That is 7810e6781e0fcbca78b91cf65053f895bf59e85f - mm, page_alloc: do not break __ GFP_THISNODE by zonelist reset.
 
 Now, I have a question: why did I cannot solve this issue?
-
-
-
-
-
-
-
-
-

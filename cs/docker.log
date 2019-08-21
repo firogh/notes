@@ -1,2 +1,0 @@
-docker run -i -t --rm=true -v /buildarea1/firo/bd:/mnt pek-lpdfs01:5000/centos7_64:wrl /bin/bash
-

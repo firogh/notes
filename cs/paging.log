@@ -27,7 +27,7 @@ Firo: this hardware is MMU including TLB.
 Firo: PFRA
 ## address translator - MMU
 
-## Page tables
+## Page table
 v3a: P121 
 5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
 6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
@@ -39,22 +39,11 @@ Check _PAGE_BIT_ACCESSED
 
 ## Memory mapping
 _mapcount -1: page_mapcount_reset
+kmap(), check kmap_init()
 
 # Material
+## x86_64 paging
 v3a Chapter 4
-## Walk and change page tables
-ptdump_walk_pgd_level_core
-and change page attr
-__change_page_attr
-
-For vmalloc(), chechk here vmap_page_range_noflush()
-For kmap(), check kmap_init()
-[How to emulate the process of translate va to pa?](http://edsionte.com/techblog/archives/1966)
-## Onset
-### Kernel virtual address space
-setup_arch -> init_mem_mapping //set page table and cr3.
-	early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault
-## x86_64 enable paging
 PAE is 3-level page tables: pgd, pmd, pte.
 So early_level4_pgt(level4, level3, level2) in startup_64() with 
 ENTRY(secondary_startup_64)
@@ -66,9 +55,6 @@ ENTRY(secondary_startup_64)
   movq  %rax, %cr3
 X86_CR0_PG: enable paging.
 x86_64_start_kernel
-
-## Page tables 
-PTE and PDE v3a chapter 4.5 4-level paging, p132, Figure 4-11. Formats of CR3 and Paging-Structure Entries with 4-Level Paging
-| G | PAT | D | A | PCD | PWT | U/S | R/W | Present
-## PTE pte_none
-x86/mm: Ignore A/D bits in pte/pmd/pud_none() -  97e3c602ccbdd7db54e92fe05675c664c052a466
+setup_arch -> 
+	init_mem_mapping //set page table and cr3.
+	early_trap_pf_init //  X86_TRAP_PF, page_fault) => do_page_fault

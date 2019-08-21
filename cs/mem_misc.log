@@ -1,0 +1,23 @@
+
+
+# Hotplug
+add_memory
+|-add_memory_resource
+ |-add_memory_resource
+  |-arch_add_memory
+   |-__add_pages
+    |-__add_section
+     |-sparse_add_one_section
+      |-kmalloc_section_memmap
+       |-sparse_mem_map_populate
+        |-vmemmap_populate
+
+...->arch_add_memory->init_memory_mapping
+
+# Vmalloc
+map_vm_area 页表映射
+## Vmalloc coherence with vfree() after vmalloc_sync_one
+在进程的内核页目录中补上的是只是页目录项，而页表对所有进程来说是共用的，不管vfree()多大的内存块，在vmalloc()时新分配的页表不会被释放，
+当重新vmalloc()时，仍旧使用原来的页表。 
+page_fault使得进程的内核页目录项与swapper_pg_dir保持同步，swapper_pg_dir的内核页目录项一旦建立就不再被改变，需要改变的只是共享的页表而已。
+deatils in vmalloc_sync_one() and vunmap_pte_range()

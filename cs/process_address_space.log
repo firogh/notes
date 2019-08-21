@@ -1,6 +1,18 @@
 # Reference
 [Memory – Part 2: Understanding Process memory](https://techtalk.intersec.com/2013/07/memory-part-2-understanding-process-memory/)
 
+# Formal causes
+## vma
+vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.
+### split_vma
+new_below
+commit 5846fc6c31162234e88bdfd91548b1cf0d2cebbd
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Tue Sep 17 06:35:47 2002 -0700
+    [PATCH] consolidate the VMA splitting code
+new_below means the place where the old vma go to! Bad naming!
+0 means the old will save the head part. 1 means tail part.
+
 # Synchronization
 arg_lock and mmap_sem: [mm: get_cmdline use arg_lock instead of mmap_sem](https://lore.kernel.org/lkml/20190417120347.15397-1-mkoutny@suse.com/)
 
@@ -32,8 +44,6 @@ do_execveat_common and elf_mmap
 cat /proc/self/maps and man 5 proc
 read: file rmap, file backed.
 write: anon ramp, swapbacked. check wp_page_copy and page_add_new_anon_rmap
-
-# Fork
 
 # Memory mmapping
 [Understanding memory mapping](https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.genprogc/understanding_mem_mapping.htm)

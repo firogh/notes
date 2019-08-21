@@ -18,3 +18,12 @@ reboot
 
 # iommu
 [DMAR 与 IOMMU](http://linuxperf.com/?p=67)
+
+# KVM
+[Learning KVM - implement your own Linux kernel](https://david942j.blogspot.com/2018/10/note-learning-kvm-implement-your-own.html)
+[KVM源代码分析1:基本工作原理](http://oenhan.com/kvm-src-1)
+
+# VMware
+[Linux Kernel Coredump Analysis with Crash Utility](http://blog.dynofu.me/post/2015/08/31/crash-utility-tutorial.html)
+https://www.vmware.com/pdf/snapshot2core_technote.pdf
+https://vmware.github.io/photon/assets/files/html/3.0/photon_troubleshoot/investigating-the-guest-kernel.html

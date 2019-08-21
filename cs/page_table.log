@@ -1,0 +1,21 @@
+# PTE and PDE 
+v3a chapter 4.5 4-level paging, p132, Figure 4-11. Formats of CR3 and Paging-Structure Entries with 4-Level Paging
+| G | PAT | D | A | PCD | PWT | U/S | R/W | Present
+5 (A) Accessed; indicates whether software has accessed the 4-KByte page referenced by this entry (see Section 4.8)
+6 (D) Dirty; indicates whether software has written to the 4-KByte page referenced by this entry (see Section 4.8)
+Check _PAGE_BIT_ACCESSED
+
+## PTE pte_none
+x86/mm: Ignore A/D bits in pte/pmd/pud_none() -  97e3c602ccbdd7db54e92fe05675c664c052a466
+
+## Walk and change page tables
+ptdump_walk_pgd_level_core
+and change page attr
+__change_page_attr
+[Mannully va to pa](http://edsionte.com/techblog/archives/1966)
+
+# PAT
+[Kernel PAT (Page Attribute Table)](https://www.kernel.org/doc/Documentation/x86/pat.txt)
+
+# ioremap and memremap
+[ioremap() and memremap()](https://lwn.net/Articles/653585/)

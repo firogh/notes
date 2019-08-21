@@ -7,7 +7,7 @@ category: cs
 
 # Reference
 [What is the status of POSIX asynchronous I/O AIO](http://stackoverflow.com/questions/87892/what-is-the-status-of-posix-asynchronous-i-o-aio)
-[hat's the difference between event-driven and asynchronous? Between epoll and AIO?](http://stackoverflow.com/questions/5844955/whats-the-difference-between-event-driven-and-asynchronous-between-epoll-and-a)
+[What's the difference between event-driven and asynchronous? Between epoll and AIO?](http://stackoverflow.com/questions/5844955/whats-the-difference-between-event-driven-and-asynchronous-between-epoll-and-a)
 [Asynchronous I/O and event notification on linux](http://davmac.org/davpage/linux/async-io.html)
 [Gnu Libc Perform I/O Operations in Parallel](https://www.gnu.org/software/libc/manual/html_node/Asynchronous-I_002fO.html)
 

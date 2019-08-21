@@ -14,6 +14,7 @@ commit a0140c1d85637ee5f4ea7c78f066e3611a6a79dc
 Author: KAMEZAWA Hiroyuki <kamezawa.hiroyu@jp.fujitsu.com>
 Date:   Mon Mar 27 01:15:55 2006 -0800
     [PATCH] remove zone_mem_map
+
 ### page pfn 
 pfn_to_page
 
@@ -22,10 +23,12 @@ free_area
 
 # Material
 ## Onset
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> zone_sizes_init->free_area_init_nodes -> free_area_init_node-> free_area_init_core
-	zone_pcp_init # init percpu pageset with boot_pageset
-	init_currently_empty_zone(zone, zone_start_pfn, size); # free_area.free_list
-	memmap_init_zone # Memory map a) Set all page to reserved. MIGRATE_MOVABLE? b) Set node, zone to page->flags; set_page_links
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init -> 
+	sparse_init ...-> vmemmap_populate	# vmemmap
+	zone_sizes_init->free_area_init_nodes -> free_area_init_node-> free_area_init_core
+		zone_pcp_init # init percpu pageset with boot_pageset
+		init_currently_empty_zone(zone, zone_start_pfn, size); # free_area.free_list
+		memmap_init_zone # Memory map a) Set all page to reserved. MIGRATE_MOVABLE? b) Set node, zone to page->flags; set_page_links
 
 start_kernel->mm_init
         mem_init-> memblock_free_all or free_all_bootmem # /* this will put all low memory onto the freelists */

@@ -44,6 +44,8 @@ Date:   Mon Feb 4 19:14:54 2002 -0800
 [Configurable fair allocation zone policy](https://lwn.net/Articles/576778/)
 
 # Watermarks
+totalreserve_pages is wmark high; check calculate_totalreserve_pages and Documentation/sysctl/vm.txt 
+
 Check Documentation/sysctl/vm.txt for min_free_kbytes
 min_free_kbytes_sysctl_handler or watermark_scale_factor_sysctl_handler or
 core_initcall(init_per_zone_wmark_min) ->

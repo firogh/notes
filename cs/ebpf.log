@@ -10,6 +10,17 @@
 2. The original Unix packetfilter was designed around a stack-based filter evaluator that performs sub-optimally on current RISC CPUs.
 3. BPF also uses a straightforward buffering strategy that makes its overall performance up to 100 times faster than Sun’s NIT running on the same hardware
 
+
+# From xdp
+XDP eBPF tutorial presentation given at LLC2017
+http://people.netfilter.org/hawk/presentations/LLC2017/
+[BPF design paper][1]
+[eBPF - extended Berkeley Packet Filter described in XDP][0]
+[eBPF tracing filters with BPF never crash][2]
+[0]: prototype-kernel.readthedocs.io/en/latest/bpf/
+[1]: http://www.vodun.org/papers/net-papers/van_jacobson_the_bpf_packet_filter.pdf
+[2]: https://lwn.net/Articles/575444/
+
 # seccomp
 [seccomp Wikipedia](https://en.wikipedia.org/wiki/Seccomp)
 [Official site seccompsandbox](https://code.google.com/archive/p/seccompsandbox/wikis/overview.wiki)
