@@ -35,7 +35,7 @@ Check _PAGE_BIT_ACCESSED
 
 ## Page faults
 
-## Virtual address space
+## Address space
 
 ## Memory mapping
 _mapcount -1: page_mapcount_reset

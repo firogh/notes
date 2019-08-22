@@ -4,10 +4,18 @@ title: Linux device driver
 date: 2015-02-27T15:46:12+08:00 
 category: cs
 ---
-#Bibilography
+# Reference
 Driver porting: Device model overview: http://lwn.net/Articles/31185/
-/Documentation/driver-model
+Documentation/driver-model
 The Linux Kernel Driver Model
+
+# Formal causes
+## DMA
+ULK 3rd
+
+## Mapping
+ioremap, memremap
+
 # Device tree
 * What infomation was included in dtb
 HW platform识别，runtime parameter传递以及硬件设备描述

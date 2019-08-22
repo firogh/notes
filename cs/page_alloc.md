@@ -24,6 +24,7 @@ Date:   Wed Feb 5 16:57:54 2003 -0800
 [An introduction to compound pages](https://lwn.net/Articles/619514/)
 libfc, fcoe: fixes for highmem skb linearize panics:18fa11efc279c20af5eefff2bbe814ca067e51ae
 [what is "compound_page()" all about?](https://www.spinics.net/lists/newbies/msg41159.html)
+[Compound page overhaul](https://lwn.net/Articles/112311/)
 
 # GFP flags
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions

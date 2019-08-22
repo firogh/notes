@@ -24,6 +24,13 @@ Firo: some causes are very intutive. However, others are not easy to be deduced 
 Primary and secondary
 Continuousness, completeness, consistency, soundness. -- Logic
 Neural connections.
+Translation from implementation to fromal; More specific, less form and abstraction; for example, mm_struct doesn't fully eque address space; it's much like VM; so just focus on specific element, e.g. mm_rb vma
+for ioremmap, put it along with device driver.
+
+## Ego
+Love yourself; I know I will be lost and confused in my whole life.
+Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
+牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 
 # Think for yourself
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
@@ -35,11 +42,6 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What is science by Feyman](http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf), do you know brown-throated thrush?
-## Ego
-Love yourself; I know I will be lost and confused in my whole life.
-Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
-牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
-
 # Falsifiability 
 Critical thinking: 
 Hyposis and test; Trail and error; Reflexcity -- Soros

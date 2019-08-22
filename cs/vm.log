@@ -1,7 +1,26 @@
 
-# totalreserve_pages is wmark high
-check calculate_totalreserve_pages
-Documentation/sysctl/vm.txt
+# History
+bvm
 
-# Address space
+# Purposes
+Efficiency
+Protection
+VM isolates an address space for these two purposes.
+
+# Formal causes
+mm_struct
+History: commit b7c2deb6ea38080e7f6254b2d779b0bfce71eecb (tag: 1.1.11)
+Author: Linus Torvalds <torvalds@linuxfoundation.org>
+Date:   Fri Nov 23 15:09:29 2007 -0500
+    Import 1.1.11
+Firo: Isolate mm_struct from task_struct; no helpful comment.
+
+## Address
+LDD 3rd: Address Types
+## Address space
 [Virtual Memory I: the problem](https://lwn.net/Articles/75174/) 
+vma, mm_rb: address space area
+## page table
+pgd
+
+## Memory mapping
