@@ -24,6 +24,10 @@ Shared memory
 Multiprocessor
 Memory access
 [Formal of Sequential Consistency by Jepsen](https://jepsen.io/consistency/models/sequential#formally)
+[sequential consistency](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/How-to-Make-a-Multiprocessor-Computer-That-Correctly-Executes-Multiprocess-Programs.pdf)
+[processor consistency: CACHE CONSISTENCY AND SEQUENTIAL CONSISTENCY](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.3766&rep=rep1&type=pdf)
+[weak consistency: Memory access buffering in multiprocessors](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/oldquiz/p434-dubois.pdf)
+[Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
 ## definition of memory consistency model form above release consistency paper.
 The set of allowable memory access orderings forms the memory consistency model or event ordering model for an architecture.
 

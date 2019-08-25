@@ -26,6 +26,7 @@ Continuousness, completeness, consistency, soundness. -- Logic
 Neural connections.
 Translation from implementation to fromal; More specific, less form and abstraction; for example, mm_struct doesn't fully eque address space; it's much like VM; so just focus on specific element, e.g. mm_rb vma
 for ioremmap, put it along with device driver.
+more causality, less fromal abstraction.
 
 ## Ego
 Love yourself; I know I will be lost and confused in my whole life.
