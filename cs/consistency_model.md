@@ -1,11 +1,31 @@
 ---
 tags: [ cs ] 
-title: Memory-ordering model
+title: Memory consistency model
 date: 2017-12-16T15:46:12+08:00 
 category: cs
 ---
 
 When we are talking on memory model, we are refering memory consistency model or memory ordering model.
+
+# Hisotry
+1979
+According to the following post by Jepsen. Lamport defined Sequential consistency in [How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Progranm](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/How-to-Make-a-Multiprocessor-Computer-That-Correctly-Executes-Multiprocess-Programs.pdf)
+1987 ~ 1990 
+[Linearizability: A Correctness Condition for Concurrent Objects](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)
+1990
+[Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
+1991
+[Proving sequential consistency of high-performance shared memories](https://dl.acm.org/citation.cfm?id=113406)
+
+# Purposes
+
+# Formal cause
+Shared memory
+Multiprocessor
+Memory access
+[Formal of Sequential Consistency by Jepsen](https://jepsen.io/consistency/models/sequential#formally)
+## definition of memory consistency model form above release consistency paper.
+The set of allowable memory access orderings forms the memory consistency model or event ordering model for an architecture.
 
 # ETC
 [Why do we need mb for SLEEP AND WAKE-UP FUNCTIONS?](https://www.kernel.org/doc/Documentation/memory-barriers.txt)
