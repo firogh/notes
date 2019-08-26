@@ -30,6 +30,9 @@ Cache entry structure
 ## Replacement polices
 Pseudo-LRU
 
+## Store buffers
+[Stores Result in Unnecessary Stalls](http://www.rdrop.com/users/paulmck/scalability/paper/whymb.2010.06.07c.pdf)
+
 # Material
 Why is transposing a matrix of 512x512 much slower than transposing a matrix of 513x513?
 https://github.com/sysprog21/phonebook
