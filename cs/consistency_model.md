@@ -12,11 +12,12 @@ When we are talking on memory model, we are refering memory consistency model or
 [How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Progranm](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/How-to-Make-a-Multiprocessor-Computer-That-Correctly-Executes-Multiprocess-Programs.pdf)
 1987 ~ 1990 
 [Linearizability: A Correctness Condition for Concurrent Objects](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)
+1989
+[processor consistency: CACHE CONSISTENCY AND SEQUENTIAL CONSISTENCY](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.3766&rep=rep1&type=pdf)
 1990
 [Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
 1991
 [Proving sequential consistency of high-performance shared memories](https://dl.acm.org/citation.cfm?id=113406)
-
 1992
 [TSO Sparc v8: A standard memory model called Total Store Ordering (TSO) is defined for SPARC](https://www.gaisler.com/doc/sparcv8.pdf)
 [Formal Specification of Memory Models: and two store ordered models TSO and PSO defined by the Sun Microsystem's SPARC architecture.](https://link.springer.com/chapter/10.1007/978-1-4615-3604-8_2)
@@ -50,16 +51,6 @@ program order
 [sequential consistency](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/How-to-Make-a-Multiprocessor-Computer-That-Correctly-Executes-Multiprocess-Programs.pdf)
 [Formal of Sequential Consistency by Jepsen](https://jepsen.io/consistency/models/sequential#formally)
 
-## PC
-[processor consistency: CACHE CONSISTENCY AND SEQUENTIAL CONSISTENCY](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.3766&rep=rep1&type=pdf)
-
-## RC
-[Firo: a must-read: Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
-[Acquire and Release Semantics](https://preshing.com/20120913/acquire-and-release-semantics/)
-
-## Weak consistency
-[weak consistency: Memory access buffering in multiprocessors](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/oldquiz/p434-dubois.pdf)
-
 ## TSO 
 Total Store Ordering in Appendix k Sparc v8.
 ### TSO in x86
@@ -70,6 +61,18 @@ Total Store Ordering in Appendix k Sparc v8.
 ### TSO and Peterson's algorithm
 [Who ordered memory fences on an x86?](https://bartoszmilewski.com/2008/11/05/who-ordered-memory-fences-on-an-x86/)
 [共同进入与饥饿](https://www.cnblogs.com/caidi/p/6708789.html)
+
+## PC
+[processor consistency: CACHE CONSISTENCY AND SEQUENTIAL CONSISTENCY](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.3766&rep=rep1&type=pdf)
+
+## WC
+[weak consistency: Memory access buffering in multiprocessors](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/oldquiz/p434-dubois.pdf)
+They distinguish between ordinary shared accesses and synchronization accesses, where the latter are used to control concurrency
+between several processes and to maintain the integrity of ordinary shared data.
+
+## RC
+[Firo: a must-read: Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
+[Acquire and Release Semantics](https://preshing.com/20120913/acquire-and-release-semantics/)
 
 ## Kernel
 [Why do we need mb for SLEEP AND WAKE-UP FUNCTIONS?](https://www.kernel.org/doc/Documentation/memory-barriers.txt)
