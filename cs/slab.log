@@ -89,6 +89,7 @@ introduced shared array_cache
 
 
 # SLUB
+[How does the SLUB allocator work](https://events.static.linuxfound.org/images/stories/pdf/klf2012_kim.pdf)
 [SLAUOB: Kernel memory allocator design and philosophy](https://www.youtube.com/watch?v=h0VMLXavx30)
 [SLUB fastpath improvements and potential booster shots through bulk alloc and free](https://www.youtube.com/watch?v=s0lZzP1jOzI)
 Documentation/vm/slub.txt

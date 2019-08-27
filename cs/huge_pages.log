@@ -12,6 +12,7 @@ https://www.kernel.org/doc/Documentation/vm/transhuge.txt
 [THP: Hugepage导致进程占用物理内存过多的问题](http://hustcat.github.io/hugepage-problem/
 [Disable Transparent Huge Pages (THP)](https://docs.mongodb.com/manual/tutorial/transparent-huge-pages/)
 [Disable Transparent Hugepages](https://blog.nelhage.com/post/transparent-hugepages/)
+[Transparent Hugepages: measuring the performance impact](https://alexandrnikitin.github.io/blog/transparent-hugepages-measuring-the-performance-impact/)
 
 ## Purposes or ends
 Transparent Hugepage Support is an alternative means of

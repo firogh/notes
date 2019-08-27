@@ -1,6 +1,9 @@
 # Reference
 filesystems/vfs.txt
 
+# LQO
+[Linux内核文件Cache 机制](http://www.ilinuxkernel.com/files/Linux.Kernel.Cache.pdf)
+
 # The history Buffer cache
 [Beefing Up the Buffer Cache](https://drive.google.com/file/d/11sLlREfK_3EnEK_BlqnOxVGFUFnDbQVs/view?usp=sharing) and [UBC](https://drive.google.com/file/d/1ZY2MaoJCb8R317ZjLfGdvxcKq4Jo_k6i/view?usp=sharing)
 Starting from stable version 2.4.10, the buffer cache does not really exist anymore. In

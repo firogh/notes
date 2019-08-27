@@ -232,3 +232,4 @@ Date:   Wed Nov 9 12:36:15 2016 -0700
 [Dynamic writeback throttling](https://lwn.net/Articles/405076/)
 writeback代码分析 and cgroup http://kernel.pursuitofcloud.org/713974
 Writeback and control groups https://lwn.net/Articles/648292/
+[Linux内核延迟写机制](http://www.ilinuxkernel.com/files/Linux.Kernel.Delay.Write.pdf)
