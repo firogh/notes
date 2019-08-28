@@ -1,0 +1,15 @@
+Finite state machine of memory 
+
+Physical memory ===(free)=> buddy pages ==(page allocator)===> slab objects
+			|
+			|===(page fault)==================> PAS Private page
+						|
+						|
+						|===========> PAS Shared page
+
+
+
+# Porperties of memory space
+Shared or private
+Size
+
