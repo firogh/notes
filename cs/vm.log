@@ -1,6 +1,8 @@
 
 # History
 bvm
+1979
+Paged VM on Unix. [Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX Operating System](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
 
 # Purposes
 Efficiency

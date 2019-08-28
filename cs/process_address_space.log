@@ -1,6 +1,9 @@
 # Reference
 [Memory – Part 2: Understanding Process memory](https://techtalk.intersec.com/2013/07/memory-part-2-understanding-process-memory/)
 
+# History
+[2. Memory management](http://bitsavers.trailing-edge.com/pdf/sun/sunos/1.1/800-1108-01E_System_Interface_Manual_for_the_Sun_Workstation_Jan84.pdf)
+
 # Formal causes
 ## vma
 vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.
