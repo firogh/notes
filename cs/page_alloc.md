@@ -16,16 +16,6 @@ category: cs
 [Hot and cold pages](https://lwn.net/Articles/14768/)
 [mm, Remove cold parameter from free_hot_cold_page*](https://patchwork.kernel.org/patch/10013971/)
 
-## Compound pages
-tglx: commit eefb08ee7da81e1548ffd5b664682dc5b229ddc2
-Author: Andrew Morton <akpm@digeo.com>
-Date:   Wed Feb 5 16:57:54 2003 -0800
-    [PATCH] Infrastructure for correct hugepage refcounting
-[An introduction to compound pages](https://lwn.net/Articles/619514/)
-libfc, fcoe: fixes for highmem skb linearize panics:18fa11efc279c20af5eefff2bbe814ca067e51ae
-[what is "compound_page()" all about?](https://www.spinics.net/lists/newbies/msg41159.html)
-[Compound page overhaul](https://lwn.net/Articles/112311/)
-
 # GFP flags
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
