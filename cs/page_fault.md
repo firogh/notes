@@ -59,9 +59,7 @@ linux-tglx
 commit b50661029222940e24d2fba7c982ac0774a38c78
 Author: Andi Kleen <ak@muc.de>
 Date:   Thu Sep 16 22:00:12 2004 -0700
-
     [PATCH] x86-64: avoid deadlock in page fault handler
-    
     Avoid deadlock when kernel fault happens inside mmap sem.
 Check ULKv3 Page 380.
 https://lkml.org/lkml/2004/5/19/108
@@ -70,7 +68,6 @@ https://lkml.org/lkml/2013/5/13/418
 commit 891cffbd6bcba26409869c19c07ecd4bfc0c2460
 Author: Linus Torvalds <torvalds@linux-foundation.org>
 Date:   Sun Oct 12 13:16:12 2008 -0700
-
     x86/mm: do not trigger a kernel warning if user-space disables interrupts and generates a page fault
 
 # Propection
@@ -92,6 +89,4 @@ Date:   Tue Feb 12 20:17:35 2002 -0800
 +#define __P101 PAGE_READONLY
 +#define __P110 PAGE_COPY
 +#define __P111 PAGE_COPY
-+
 +#define __S000 PAGE_NONE
-

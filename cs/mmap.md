@@ -1,11 +1,38 @@
+---
+tags: [ kernel ]
+title: memory mapping
+date: 2018-08-22T21:39:41+08:00
+category: cs
+---
+
 This article is talking about user space Memory mmapping; it's not limitted to mmap(2) system call.
 [Understanding memory mapping](https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.genprogc/understanding_mem_mapping.htm)
 TLPI:chapter 49 and LSP: Chapter 8
 
 # History
 BSD 4.2
+1990 SunOS 4.1
+[A Must-read: The applications programmer gains access to the facilities of the VM system through several sets of system calls.](http://bitsavers.trailing-edge.com/pdf/sun/sunos/4.1/800-3846-10A_System_Services_Overview_199003.pdf)
 
 # Formal causes
+[What are memory mappings? - Landley](https://landley.net/writing/memory-faq.txt)
+
+> A memory mapping is a set of page table entries describing the properties
+> of a consecutive virtual address range.  Each memory mapping has a
+> start address and length, permissions (such as whether the program can
+> read, write, or execute from that memory), and associated resources (such
+> as physical pages, swap pages, file contents, and so on).
+
+## VAS
+vma, mm_rb, mmap, 
+if file, i_mmap
+
+## PAS
+Protection, Shared, Private.
+vm_page_prot, vm_flags
+
+## Backing dev
+vm_file, vm_pgoff
 
 ## Private anonymouse mappings
 Heap - malloc mmap
@@ -34,7 +61,8 @@ do_mmap -> mmap_region -> vma_link -> (__shmem_file_setup) && __vma_link_file: i
 Read: do_read_fault
 Write: do_shared_fault -> shmem_getpage_gfp shmem_add_to_page_cache
 WP: do_wp_page -> wp_page_shared or wp_page_reuse
-## File shared mappings - a) Memory-mapped I/O, b)IPC using a shared file mapping
+b)IPC using a shared file mapping
+## File shared mappings - a) Memory-mapped I/O
 
 # mmap
 ## MAP_SYNC

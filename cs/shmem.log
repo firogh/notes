@@ -24,8 +24,9 @@ Fast IPC
 Conserving memory.
 
 # Formal cause
-[Chapter 12  Shared Memory Virtual Filesystem](https://www.kernel.org/doc/gorman/html/understand/understand015.html)
+[Chapter 12  Shared Memory Virtual Filesystem:](https://www.kernel.org/doc/gorman/html/understand/understand015.html)
 
-# LQO
-/dev/shm
-/dev/zero
+> This is a very clean interface that is conceptually easy to understand but it does not help anonymous pages as there is no file backing. To keep this nice interface, Linux creates an artifical file-backing for anonymous pages using a RAM-based filesystem where each VMA is backed by a “file” in this filesystem. Every inode in the filesystem is placed on a linked list called shmem_inodes so that they may always be easily located. This allows the same file-based interface to be used without treating anonymous pages as a special case.
+
+Firo: every time you create a shared memory via mmap(2), you create a inode with same name dev/zero in the hidden shm_mnt fs;
+The name dev/zero is only a name. It has nothing related to /dev/zero in drivers/char/mem.c. And /dev/shm is only a tmpfs; it has nothing related shmemfs.

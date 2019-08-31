@@ -5,6 +5,13 @@ title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
 
+# Submitting patch
+## Resending the patch
+[First revision, version, second revision](https://meta.stackexchange.com/questions/314212/why-is-it-called-initial-revision-if-its-not-a-revision)
+[Versioning one patch revision](https://kernelnewbies.org/Outreachyfirstpatch)
+[For example, if you're sending the second revision of a patch, you should use [PATCH v2]](https://kernelnewbies.org/PatchTipsAndTricks)
+[use PATCHv2 (or PATCHv3 and so on) in the subject lines instead of PATCH ... To update the subject lines, add the -v 2 (or -v 3, etc) options to git format-patch](https://kernelnewbies.org/PatchPhilosophy)
+[Finally, to send your new patch series as a reply to the previous one, first look up the Message-Id of the cover letter (or the one-and-only patch) in your previous patch series, and then pass that to the --in-reply-to= option of either git format-patch or git send-email.](https://kernelnewbies.org/PatchPhilosophy)
 # Goal 
 1. find the best to get involed in kernel hacking.
 

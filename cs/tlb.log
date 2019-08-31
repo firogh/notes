@@ -14,6 +14,56 @@ https://elixir.bootlin.com/linux/latest/source/Documentation/x86/tlb.txt
 v3a Chapter 4.10
 spurious_fault:a stale TLB entry
 
+# TLB shooot down
+history: commit a27c6530ff12bab100e64c5b43e84f759fa353ae
+Author: Linus Torvalds <torvalds@athlon.transmeta.com>
+Date:   Mon Feb 4 20:19:13 2002 -0800
+    v2.4.9.12 -> v2.4.9.13
+      - Hugh Dickins: VM/shmem cleanups and swap search speedup
++++ b/include/asm-generic/tlb.h
+@@ -0,0 +1,113 @@
++/* asm-generic/tlb.h
++ *     Generic TLB shootdown code
++ * Copyright 2001 Red Hat, Inc.
++ * Based on code from mm/memory.c Copyright Linus Torvalds and others.
++/* mmu_gather_t is an opaque type used by the mm code for passing around any
++ * data needed by arch specific code for tlb_remove_page.  This structure can
++ * be per-CPU or per-MM as the page table lock is held for the duration of TLB
++ * shootdown.
+-               freed += free_pte(page);
++               if (pte_present(pte)) {
++                       freed ++;
++                       /* This will eventually call __free_pte on the pte. */
++                       tlb_remove_page(tlb, ptep, address + offset);
+Form
++       flush_cache_range(mm, address, end);
++       tlb = tlb_gather_mmu(mm);
++
+        do {
+-               freed += zap_pmd_range(mm, dir, address, end - address);
++               freed += zap_pmd_range(tlb, dir, address, end - address);	# Unhook
+                address = (address + PGDIR_SIZE) & PGDIR_MASK;
+                dir++;
+        } while (address && (address < end));
++
++       /* this will flush any remaining tlb entries */
++       tlb_finish_mmu(tlb, start, end);
+commit dea2434c23c102b3e7d320849ec1cfeb432edb60
+Author: Peter Zijlstra <peterz@infradead.org>
+Date:   Tue Sep 4 10:43:14 2018 +0200
+    asm-generic/tlb: Provide a comment
+ * Generic MMU-gather implementation.
+ * The mmu_gather data structure is used by the mm code to implement the
+ * correct and efficient ordering of freeing pages and TLB invalidations.
+ * This correct ordering is:
+ *  1) unhook page
+ *  2) TLB invalidate page
+ *  3) free page
+ * That is, we must never free a page before we have ensured there are no live
+ * translations left to it. Otherwise it might be possible to observe (or
+ * worse, change) the page content after it has been reused.
+[The point is: we *never* have the order 1) unhook, 2) TLB invalidate, 3) free. If there is concurrency due to a multi-threaded application we have to do the unhook of the page-table entry and the TLB flush with a single instruction.](https://patchwork.kernel.org/patch/10599105/)
+
 # TLB
 https://github.com/torvalds/linux/blob/master/Documentation/x86/tlb.txt
 [进程切换分析（2）：TLB处理](http://www.wowotech.net/process_management/context-switch-tlb.html)

@@ -7,6 +7,7 @@ category: cs
 ---
 
 # Reference
+[A must-read: memory FAQ by Landley](https://landley.net/writing/memory-faq.txt)
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)
 [Kernel developers MM documentation](https://www.kernel.org/doc/html/v4.18/vm/index.html)
 [kernel.org Memory Management](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
@@ -107,3 +108,4 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 +typedef struct zone_struct {
 
 # Material
+[Zone-lock and mmap_sem scalability](https://lwn.net/Articles/753269/)
