@@ -102,6 +102,21 @@ or hotpulg or /proc/sys/vm/numa_zonelist_order: numa_zonelist_order_handler
           zone_idx = 2
           zone = 0x0,
           zone_idx = 0
+# OOM
+dump_header(), show_mem(), dump_tasks
+
+# FSM
+                                |===============================================================================|
+                                v                                                                               |
+Physical memory ===(free)=> buddy pages ==(page allocator)===> slab objects                                     |
+                        |                                                                                       |
+                        |===(page fault)======== PAS =========> Private page ====|      |===(OOM Kill)===>|     |
+                                                |                                |      |                 |     |
+                                                |                                | ===> |===(PFRA) ======>|     |
+                                                |===============> Shared page====|      |                 | ====|
+                                                                                        |===(do_unmap) ==>|
+                                                                                        |                 |
+                                                                                        |===(exit_mmap) =>|
 
 # Material
 ## _refcount
