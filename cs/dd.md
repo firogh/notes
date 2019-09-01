@@ -14,7 +14,7 @@ The Linux Kernel Driver Model
 ULK 3rd
 
 ## Mapping
-ioremap, memremap
+[ioremap() and memremap()](https://lwn.net/Articles/653585/)
 
 # Device tree
 * What infomation was included in dtb

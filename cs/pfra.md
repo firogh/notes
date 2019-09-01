@@ -6,6 +6,8 @@ title:  Page frame reclaimation
 category: cs
 ---
 
+# Formal causes
+[Chapter 10  Page Frame Reclamation](https://www.kernel.org/doc/gorman/html/understand/understand013.html)
 # GFP flags
 __GFP_IO: allow disk IO
 __GFP_FS: allow fs operations, depend on io.

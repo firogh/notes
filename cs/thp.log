@@ -38,7 +38,8 @@ Benefits:
 3. a single TLB entry will be mapping a much larger amount of virtual memory in turn reducing the number of TLB misses. 
 
 # Form design
-Currently it only works for anonymous memory mappings and tmpfs/shmem.
+Currently it only works for anonymous memory mappings and tmpfs/shmem and fs which support huge_fault.
+page fault
 
 ## Compound pages
 tglx: commit eefb08ee7da81e1548ffd5b664682dc5b229ddc2

@@ -9,6 +9,9 @@ Check bvm
 # Purposes
 
 # Formal causes
+ULK 3rd: Handling the hardware cache
+PLKA: 3.7 Processor Cache and TLB Control
+[Getting a handle on caching](https://lwn.net/Articles/282250/)
 ## Associativity
 * trade-off
 a) Checking more places takes more power and chip area,
@@ -29,6 +32,19 @@ Cache entry structure
 • write-back cache implementation.
 • write-combining; and
 • uncacheable.
+### PAT
+[PAT (Page Attribute Table) in Linux Kernel](https://www.kernel.org/doc/Documentation/x86/pat.txt)
+[PATting Linux](https://www.kernel.org/doc/ols/2008/ols2008v2-pages-135-144.pdf)
+tglx: commit c8712aebdb2455a095d596c1a5a6af358b3efde3
+Author: Andi Kleen <ak@suse.de>
+Date:   Mon Jun 17 19:43:55 2002 -0700
+    [PATCH] change_page_attr and AGP update
++ * Change the page attributes of an page in the linear mapping.
++ * This should be used when a page is mapped with a different caching policy
++ * than write-back somewhere - some CPUs do not like it when mappings with
++ * different caching policies exist. This changes the page attributes of the
++ * in kernel linear mapping too.
+
 ## Cache coherence
 [MESI in Javascript](https://www.scss.tcd.ie/~jones/vivio/caches/MESI.htm)
 ## Replacement polices
