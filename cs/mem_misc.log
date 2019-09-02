@@ -26,3 +26,21 @@ map_vm_area 页表映射
 当重新vmalloc()时，仍旧使用原来的页表。 
 page_fault使得进程的内核页目录项与swapper_pg_dir保持同步，swapper_pg_dir的内核页目录项一旦建立就不再被改变，需要改变的只是共享的页表而已。
 deatils in vmalloc_sync_one() and vunmap_pte_range()
+
+# Memory pool
+[Memory pools on lwn](https://lwn.net/Articles/22909/)
+[Use of mempool in bio](https://lwn.net/Articles/736534/)
+tglx: commit 800446073f02f3035bffad7f1ced654ff6b474c9
+Author: Linus Torvalds <torvalds@athlon.transmeta.com>
+Date:   Mon Feb 4 23:58:50 2002 -0800
+    v2.5.0.9 -> v2.5.0.10
+    - Jens Axboe: more bio stuff
+    - Ingo Molnar: mempool for bio
++++ b/mm/mempool.c
++ *  linux/mm/mempool.c
++ *  memory buffer pool support. Such pools are mostly used to
++ *  guarantee deadlock-free IO operations even during extreme
++ *  VM load.
++ *  started by Ingo Molnar, Copyright (C) 2001
+Check mempool_create_node for detailsi
+mempool_alloc_slab

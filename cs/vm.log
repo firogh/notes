@@ -45,3 +45,9 @@ vma, mm_rb: address space area
 pgd
 
 ## Memory mapping
+
+## Memory allocation
+### overcommit
+https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
+[理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
+[Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)
