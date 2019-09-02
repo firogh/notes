@@ -8,6 +8,13 @@ category: cs
 # History
 [Atlas](http://www.chilton-computing.org.uk/acl/technology/atlas/overview.htm)
 
+# Formal causes
+[Ken Thompson UNIX Implementation](https://users.soe.ucsc.edu/~sbrandt/221/Papers/History/thompson-bstj78.pdf)
+[Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX† Operating System‡](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
+Process control: Process creation and  program execution, Swapping/paging, Synchronization, scheduling
+Memory management: paged VM
+I/O system; filesystem
+
 # Documents
 [ Linux Foundation Referenced Specifications](http://refspecs.linuxbase.org/)
 
@@ -39,11 +46,13 @@ Security/Protection/isolation
 Reliability
 Energy-efficiency
 
+
+
 # The abilities of Computer science programmer
 Debugging
 Memory management
 
-# Unrelatted by interesting topic on memory models
+# Unrelatted but interesting topic on memory models
 [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/)
 [History of Memory Models](https://www.youtube.com/watch?v=3e1ZF1L1VhY)
 
@@ -70,3 +79,11 @@ The above remarks may be summarized by saying sub-routines are very useful —
 https://en.wikipedia.org/wiki/Link_register
 ?? [The Linux x86 ORC Stack Unwinder](http://www.codeblueprint.co.uk/2017/07/31/the-orc-unwinder.html)
 [The ORCs are coming](https://lwn.net/Articles/728339/)
+
+# Unix
+[The Evolution of the UNIX Time-sharing System](https://www.cs.grinnell.edu/~curtsinger/teaching/2019S/CSC213/files/unix_evolution.pdf)
+[Twenty Years of Berkeley Unix From AT&T-Owned to Freely Redistributable](https://www.oreilly.com/openbook/opensources/book/kirkmck.html)
+[The UNIX TimeSharing System Dennis M. Ritchie and Ken Thompson Bell Laboratories](https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf)
+[The UNIX Time-sharing SystemA Retrospective](https://www.bell-labs.com/usr/dmr/www/retro.pdf)
+[SunOS 1.0 - 4.1.2](http://bitsavers.trailing-edge.com/pdf/sun/sunos/)
+Life with Unix

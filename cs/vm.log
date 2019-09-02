@@ -17,7 +17,11 @@ Protection
 VM isolates an address space for these two purposes.
 
 # Formal causes
+[Virtual Memory Architecture in SunOS](http://kos.enix.org/pub/gingell8.pdf)
 [Virtual memory from Atlas](http://curation.cs.manchester.ac.uk/computer50/www.computer50.org/kgill/atlas/atdef.html):
+[Tiled Virtual Memory for UNIX](https://www.usenix.org/legacy/publications/library/proceedings/sa92/franklin.pdf)
+[SunOS Virtual Memory Implementation](https://pdfs.semanticscholar.org/c035/746e00023aa421b75bb2c8b2137f60bccd65.pdf)
+[Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX† Operating System‡](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
 
 > A system in which a process' workspace is held partly in high speed memory and partly on some slower and cheaper backing store. When the process refers to a memory location the system hardware detects whether or not the required location is physically present in memory and generates an interrupt if it is not, this allows, the system supervisor to transfer the required data area from backing store into memory.
 Firo: seems not accurate, consider the kernel space.
