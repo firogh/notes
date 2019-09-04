@@ -1,3 +1,43 @@
+# History
+commit ddbcc7e8e50aefe467c01cac3dec71f118cd8ac2
+Author: Paul Menage <menage@google.com>
+Date:   Thu Oct 18 23:39:30 2007 -0700
+    Task Control Groups: basic task cgroup framework
++Control Groups provide a mechanism for aggregating/partitioning sets of
++tasks, and all their future children, into hierarchical groups with
++specialized behaviour.
++Definitions:
++A *cgroup* associates a set of tasks with a set of parameters for one
++or more subsystems.
++A *subsystem* is a module that makes use of the task grouping
++facilities provided by cgroups to treat groups of tasks in
++particular ways. A subsystem is typically a "resource controller" that
++schedules a resource or applies per-cgroup limits, but it may be
++anything that wants to act on a group of processes, e.g. a
++virtualization subsystem.
++
++A *hierarchy* is a set of cgroups arranged in a tree, such that
++every task in the system is in exactly one of the cgroups in the
++hierarchy, and a set of subsystems; each subsystem has system-specific
++state attached to each cgroup in the hierarchy.  Each hierarchy has
++an instance of the cgroup virtual filesystem associated with it.
++At any one time there may be multiple active hierachies of task
++cgroups. Each hierarchy is a [partition](https://en.wikipedia.org/wiki/Partition_of_a_set) of all tasks in the system.
+
+# Purposes
+## Why Multiple hierarchy?
+https://www.kernel.org/doc/Documentation/admin-guide/cgroup-v1/cgroups.rst
++Multiple hierarchy support is provided to allow for situations where
++the division of tasks into cgroups is distinctly different for
++different subsystems - having parallel hierarchies allows each
++hierarchy to be a natural division of tasks, without having to handle
++complex combinations of tasks that would be present if several
++unrelated subsystems needed to be forced into the same tree of
++cgroups.
+
+## Why mutiple hierarchy failed?
+[[RFD] cgroup: about multiple hierarchies](https://lkml.org/lkml/2012/2/21/379)
+
 # V1
 [Control groups series by Neil Brown](https://lwn.net/Articles/604609/)
 [Documentation/cgroups/cgroups.txt](https://lwn.net/Articles/524935/) or Documentation/cgroup-v1/cgroups.txt

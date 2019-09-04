@@ -9,3 +9,8 @@
 
 # Purposes
 Why Cgroup v2?[Fixing control groups](https://lwn.net/Articles/484251/)
+
+# Cgroup v1
+the *only* reason to support multiple
+hierarchies is if you want to apply resource limits based on different
+orthogonal categorizations.
