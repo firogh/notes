@@ -87,6 +87,8 @@ Date:   Mon Jun 2 03:38:42 2003 -0700
 introduced shared array_cache
 +               new_shared->limit = batchcount*shared;
 
+# Debugging
+slab_nomerge
 
 # SLUB
 [How does the SLUB allocator work](https://events.static.linuxfound.org/images/stories/pdf/klf2012_kim.pdf)
@@ -108,9 +110,8 @@ Freeing a full slab will make it present in per cpu partial of node partial.
 
 ## SLUB debug
 [SLUB DEBUG原理](http://www.wowotech.net/memory_management/427.html)
+[如何诊断SLUB问题](http://linuxperf.com/?p=184)
 
-# Debugging
-slab_nomerge
 
 DEBUG_SLAB_LEAK
 [怎样诊断SLAB泄露问题](http://linuxperf.com/?p=148)

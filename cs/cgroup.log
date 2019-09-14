@@ -141,4 +141,5 @@ cgroup_tasks_write -> cgroup_attach_task->
 # Cgroup v2
 Utility controller
 [[RFD] cgroup: about multiple hierarchies](https://lkml.org/lkml/2012/2/21/379)
+[Control groups, part 7: To unity and beyond](https://lwn.net/Articles/608425/)
 cooperate

@@ -41,6 +41,9 @@ tcp_current_mss
 mss derives from MTU; see rfc6691
 When TCP is used in a situation where either the IP or TCP headers are not minimum, the sender must reduce the amount of TCP data in any given packet by the number of octets used by the IP and TCP options.
 
+# Sack
+[SACK 分析](http://www.tecyle.com/2019/06/22/sack-%E5%88%86%E6%9E%90/)
+
 # Time-wait
 [Coping with the TCP TIME-WAIT state on busy Linux servers](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 tcp: remove tcp_tw_recycle - 4396e46187ca5070219b81773c4e65088dac50cc

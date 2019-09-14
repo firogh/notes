@@ -1,4 +1,5 @@
 http://nenya.ms.mff.cuni.cz/teaching/crash_dump_analysis/slides/09-crash.pdf
+https://w3.suse.de/~ptesarik/crash-refcard/refcard.pdf
 
 # list
 crash> p file_lock_list

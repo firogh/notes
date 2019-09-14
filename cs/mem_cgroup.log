@@ -15,6 +15,49 @@ AuthorDate: Thu Feb 7 00:13:53 2008 -0800
 Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
 CommitDate: Thu Feb 7 08:42:18 2008 -0800
     Memory controller: memory accounting
+git log -p  v3.8-rc1
+## Page allocator kmem controller
+commit 510fc4e11b772fd60f2c545c64d4c55abd07ce36
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:21:47 2012 -0800
+    memcg: kmem accounting basic infrastructure
+    Add the basic infrastructure for the accounting of kernel memory.  To
+    control that, the following files are created:
+     * memory.kmem.usage_in_bytes
+     * memory.kmem.limit_in_bytes
+     * memory.kmem.failcnt
+     * memory.kmem.max_usage_in_bytes
+commit 7ae1e1d0f8ac2927ed7e3ca6d15e42d485903459
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:21:56 2012 -0800
+    memcg: kmem controller infrastructure
+commit 6a1a0d3b625a4091e7a0eb249aefc6a644385149
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:22:00 2012 -0800
+    mm: allocate kernel pages to the right memcg
+commit 7de37682bec35bbe0cd69b8112ef257bc5fb1c3e
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:22:07 2012 -0800
+    memcg: kmem accounting lifecycle management
+
+## Slab controller
+commit ba6c496ed834a37a26fc6fc87fc9aecb0fa0014d
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:22:27 2012 -0800
+    slab/slub: struct memcg_params
+    For the kmem slab controller, we need to record some extra information in
+    the kmem_cache structure.
+commit 2633d7a028239a738b793be5ca8fa6ac312f5793
+Author: Glauber Costa <glommer@parallels.com>
+Date:   Tue Dec 18 14:22:34 2012 -0800
+    slab/slub: consider a memcg parameter in kmem_create_cache
+
+commit 241994ed8649f7300667be8b13a9e04ae04e05a1
+Author: Johannes Weiner <hannes@cmpxchg.org>
+Date:   Wed Feb 11 15:26:06 2015 -0800
+    mm: memcontrol: default hierarchy interface for memory
+-static struct cftype mem_cgroup_files[] = {
++static struct cftype mem_cgroup_legacy_files[] = {
 
 # Purposes
 Why Cgroup v2?[Fixing control groups](https://lwn.net/Articles/484251/)
@@ -73,4 +116,9 @@ mem_cgroup_commit_charge
 page -> mm -> memcg
 page_counter_charge
 
+## Memory+swap for v2
+[mm: memcontrol: memory+swap accounting for cgroup-v2](https://lkml.org/lkml/2017/12/19/694)
+
 #Limiting
+
+
