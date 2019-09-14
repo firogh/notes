@@ -2,7 +2,7 @@
 # Reference
 [How the Compiler Tells Its Secrets to the Debugger](https://events.static.linuxfound.org/images/stories/pdf/lfcs2012_eager.pdf)
 [Introduction to the DWARF Debugging Format](http://www.dwarfstd.org/doc/Debugging%20using%20DWARF-2012.pdf)
-[LLVM Debug Info Tutorial](https://www.youtube.com/watch?time_continue=19&v=8cIToPOJPFs)
+[LLVM Debug Info Tutorial](https://www.youtube.com/watch?time_continue=19&v=8cIToPOJPFs) [Slide](https://llvm.org/devmtg/2014-10/Slides/Christopher-DebugInfoTutorial.pdf)
 [Debugging Debug Information - Francesco Zappa Nardelli](https://www.youtube.com/watch?v=lBJIrGgEP1A)
 [Exploiting the hard-working DWARF](https://www.youtube.com/watch?v=nLH7ytOTYto)
 

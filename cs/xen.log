@@ -38,6 +38,7 @@ hypervisor_cpuid_base("KVMKVMKVM\0\0\0", 0);
 # Dom0 or DomU or unrelated?
 xen_sysfs_uuid_init
 https://stackoverflow.com/questions/3490995/is-there-an-os-command-i-can-run-to-determine-if-running-inside-a-xen-based-virt
+[Is Dom0 HVM? Firo: No, Dom0 is PV](https://stackoverflow.com/questions/19147398/is-xen-dom0-a-guest-or-a-host)
 
 # Terminology
 https://wiki.xenproject.org/wiki/XenTerminology

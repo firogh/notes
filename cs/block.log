@@ -3,6 +3,9 @@
 [book_linuxkernel_blockdrv](https://github.com/gurugio/book_linuxkernel_blockdrv)
 [A block layer introduction part 1: the bio layer](https://lwn.net/Articles/736534/?spm=a2c4e.11153940.blogcont609907.5.1c543f4bc9Aaop)
 
+# Formal causes
+[Firo A must watch: Kernel Recipes 2015 - Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
+
 # bdev fs
 def_blk_fops
 blkdev_open

@@ -1,3 +1,25 @@
+# History
+tglx: writeback_index
+commit 9672a337305358ecc81dc17700e58ce3f42c11f6
+Author: Andrew Morton <akpm@osdl.org>
+Date:   Sun Apr 11 23:15:07 2004 -0700
+    [PATCH] writeback efficiency and QoS improvements
+tglx: overload start==0 && end == 0
+commit f07812ca2925f6dc6027883ab15891781dba4827
+Author: Andrew Morton <akpm@osdl.org>
+Date:   Sun Aug 22 22:59:27 2004 -0700
+    [PATCH] Writeback page range hint
+    Modify mpage_writepages to optionally only write back dirty pages within a
+    specified range in a file (as in the case of O_SYNC).  Cheat a little to avoid
+    changes to prototypes of aops - just put the <start, end> hint into the
+    writeback_control struct instead.  If <start, end> are not set, then default
+    to writing back all the mapping's dirty pages.
+commit 111ebb6e6f7bd7de6d722c5848e95621f43700d9
+Author: OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
+Date:   Fri Jun 23 02:03:26 2006 -0700
+
+    [PATCH] writeback: fix range handling
+
 # Page writeback
 [Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
 default_bdi_init->alloc_workqueue("writeback", WQ_MEM_RECLAIM...)

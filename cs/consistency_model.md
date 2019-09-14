@@ -98,3 +98,19 @@ between several processes and to maintain the integrity of ordinary shared data.
 # Material
 ## Practices
 [Memory Reordering Caught in the Act](http://preshing.com/20120515/memory-reordering-caught-in-the-act/)
+
+## LQO
+ 134 static void sysrq_handle_crash(int key)
+ 135 {
+ 136         char *killer = NULL;
+ 137 
+ 138         /* we need to release the RCU read lock here,
+ 139          * otherwise we get an annoying
+ 140          * 'BUG: sleeping function called from invalid context'
+ 141          * complaint from the kernel before the panic.
+ 142          */
+ 143         rcu_read_unlock();
+ 144         panic_on_oops = 1;      /* force panic */
+ 145         wmb();
+ 146         *killer = 1;
+ 147 }

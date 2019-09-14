@@ -138,6 +138,7 @@ void si_swapinfo(struct sysinfo *val)
 # VM stat
 totalram_pages
 /proc/meminfo
+[/PROC/MEMINFO之谜](http://linuxperf.com/?p=142)
 meminfo_proc_show
 /proc/zoneinfo
 ## Buffer cache of command 'free'

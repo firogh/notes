@@ -28,6 +28,11 @@ Translation from implementation to fromal; More specific, less form and abstract
 for ioremmap, put it along with device driver.
 more causality, less fromal abstraction.
 
+# Future
+Gradual changing
+Classify or container/protection or tidy & tidy up
+It’s easier to invent future than to predict it. —Alan Kay
+
 ## Ego
 Love yourself; I know I will be lost and confused in my whole life.
 Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
