@@ -11,6 +11,7 @@ category: cs
 [PIDTYPE_PID](https://lwn.net/Articles/606925/)
 
 # kthread - Kernel thread
+[active_mm](https://www.kernel.org/doc/Documentation/vm/active_mm.txt)
 kernel_thead->kthread->do_exit
 #define PF_KTHREAD              0x00200000
 #define PF_KSWAPD               0x00020000

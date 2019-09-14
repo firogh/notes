@@ -133,3 +133,12 @@ cgroup_tasks_write -> cgroup_attach_task->
 			task->cgroups->subsys[subsys_id]
 		struct task_group *sched_task_group; // task_struct
 		task_move_group_fair -> set_task_rq
+
+# Task counter and pid subsystem
+[add nproc cgroup subsystem](https://lkml.org/lkml/2015/2/22/204)
+[The dark fate of cgroups: Task counter subsystem v8](https://lkml.org/lkml/2013/4/1/508)
+
+# Cgroup v2
+Utility controller
+[[RFD] cgroup: about multiple hierarchies](https://lkml.org/lkml/2012/2/21/379)
+cooperate

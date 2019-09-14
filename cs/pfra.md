@@ -8,6 +8,30 @@ category: cs
 
 # Formal causes
 [Chapter 10  Page Frame Reclamation](https://www.kernel.org/doc/gorman/html/understand/understand013.html)
+Exceptional condition
+2nd chance
+## reverse process of page fault of a memory  mapping
+PTEs: try_to_unmap: 
+Dirty? Buffer_head?
+### remove_mapping: file/swap in PAS
+commit 49d2e9cc4544369635cd6f4ef6d5bb0f757079a7
+Refs: v2.6.15-1461-g49d2e9cc4544
+Author:     Christoph Lameter <clameter@sgi.com>
+AuthorDate: Sun Jan 8 01:00:48 2006 -0800
+Commit:     Linus Torvalds <torvalds@g5.osdl.org>
+CommitDate: Sun Jan 8 20:12:41 2006 -0800
+    [PATCH] Swap Migration V5: migrate_pages() function
+
+## workingset
+[Better active/inactive list balancing](https://lwn.net/Articles/495543/)
+commit a528910e12ec7ee203095eb1711468a66b9b60b0
+Refs: v3.14-7406-ga528910e12ec
+Author:     Johannes Weiner <hannes@cmpxchg.org>
+AuthorDate: Thu Apr 3 14:47:51 2014 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Thu Apr 3 16:21:01 2014 -0700
+
+    mm: thrash detection-based file cache sizing
 # GFP flags
 __GFP_IO: allow disk IO
 __GFP_FS: allow fs operations, depend on io.

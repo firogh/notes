@@ -1,11 +1,20 @@
 # History
-[Cgroup-v1 Memory Resource Controller](https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt)
 [Control Group v2](https://www.kernel.org/doc/Documentation/cgroup-v2.txt)
-[Cgroup-v2 Memory Controller](https://facebookmicrosites.github.io/cgroup2/docs/memory-controller.html)
 [Resource control at Facebook](https://lwn.net/Articles/764761/)
 [cgroupv2: Linux's new unified control group hierarchy](https://chrisdown.name/2017/03/01/cgroupv2-linux-new-cgroup-hierarchy.html)
 [What's new in control groups (cgroups) version 2](https://www.youtube.com/watch?v=yZpNsDe4Qzg) comparing to v1. 
 [The unified control group hierarchy in 3.16](https://lwn.net/Articles/601840/)
+
+# History
+[Cgroup-v1 Memory Resource Controller](https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt)
+[Cgroup-v2 Memory Controller](https://facebookmicrosites.github.io/cgroup2/docs/memory-controller.html)
+commit 8a9f3ccd24741b50200c3f33d62534c7271f3dfc
+Refs: u2.6.24-8075-g8a9f3ccd2474
+Author:     Balbir Singh <balbir@linux.vnet.ibm.com>
+AuthorDate: Thu Feb 7 00:13:53 2008 -0800
+Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
+CommitDate: Thu Feb 7 08:42:18 2008 -0800
+    Memory controller: memory accounting
 
 # Purposes
 Why Cgroup v2?[Fixing control groups](https://lwn.net/Articles/484251/)
@@ -14,3 +23,54 @@ Why Cgroup v2?[Fixing control groups](https://lwn.net/Articles/484251/)
 the *only* reason to support multiple
 hierarchies is if you want to apply resource limits based on different
 orthogonal categorizations.
+
+# Formal
+Accounting
+Unite: page
+type: swap, page cache, RSS
+Process: memcg
+Allocate and free: charge or uncharge
+## Memcg
+Onset
+mem_cgroup_css_alloc
+### mm => memcg
+commit 78fb74669e80883323391090e4d26d17fe29488f
+Refs: u2.6.24-8074-g78fb74669e80
+Author:     Pavel Emelianov <xemul@openvz.org>
+AuthorDate: Thu Feb 7 00:13:51 2008 -0800
+Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
+CommitDate: Thu Feb 7 08:42:18 2008 -0800
+    Memory controller: accounting setup
+@@ -219,6 +222,9 @@ struct mm_struct {
+        /* aio bits */
+        rwlock_t                ioctx_list_lock;
+        struct kioctx           *ioctx_list;
++#ifdef CONFIG_CGROUP_MEM_CONT
++       struct mem_cgroup *mem_cgroup;
++#endif
+commit cf475ad28ac35cc9ba612d67158f29b73b38b05d
+Refs: v2.6.25-6172-gcf475ad28ac3
+Author:     Balbir Singh <balbir@linux.vnet.ibm.com>
+AuthorDate: Tue Apr 29 01:00:16 2008 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Tue Apr 29 08:06:10 2008 -0700
+    cgroups: add an owner to the mm_struct
+### shadow entry and swap
+mem_cgroup_idr
+commit 73f576c04b9410ed19660f74f97521bee6e1c546
+Refs: v4.7-rc7-93-g73f576c04b94
+Author:     Johannes Weiner <hannes@cmpxchg.org>
+AuthorDate: Wed Jul 20 15:44:57 2016 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Sat Jul 23 10:25:54 2016 +0900
+    mm: memcontrol: fix cgroup creation failure after many small jobs
+### normal
+get_mem_cgroup_from_mm => mem_cgroup_from_task(rcu_dereference(mm->owner)
+## Charge
+mem_cgroup_try_charge
+mem_cgroup_try_charge_delay
+mem_cgroup_commit_charge
+page -> mm -> memcg
+page_counter_charge
+
+#Limiting

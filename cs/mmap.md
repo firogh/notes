@@ -22,16 +22,18 @@ BSD 4.2
 > start address and length, permissions (such as whether the program can
 > read, write, or execute from that memory), and associated resources (such
 > as physical pages, swap pages, file contents, and so on).
-
+Firo:  mmap, page fault, PFRA.
 ## VAS
 vma, mm_rb, mmap, 
 if file, i_mmap
 
-## PAS
+## File
+### PAS
 Protection, Shared, Private.
 vm_page_prot, vm_flags
+remove_mapping
 
-## Backing dev
+### Backing dev
 vm_file, vm_pgoff
 
 ## Private anonymouse mappings
