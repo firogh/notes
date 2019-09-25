@@ -26,6 +26,10 @@ When that occurs, the crash utility veers off and offers up a different
 set of commands appropriate to the hypervisor, i.e., instead of commands 
 relevant to the vmlinux kernel. 
 
+## Debug Xen HV
+l3mule: /suse/fyang/s/1150597/SR101256835093
+crash xen-syms-4.7.6_05-43.42.1.16518.2.PTF vmcore
+
 # Guest vs Host by cpuid
 setup_arch->init_hypervisor_platform->detect_hypervisor_vendor->h->detect->xen_platform->
 static inline uint32_t xen_cpuid_base(void)

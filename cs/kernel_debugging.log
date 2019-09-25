@@ -6,7 +6,6 @@ https://github.com/brendangregg/perf-tools/blob/master/kernel/funcslower
 # Crash
 [Crash Dump Analysis](https://drive.google.com/file/d/1NhZZo5DLOmE0d_97ZfwAsQ6ae1av3knw/view?usp=sharing)
 
-
 # Crash-python
 [See comment on crash-python pykdump and drgn A kernel debugger in Python: drgn](https://lwn.net/Articles/789641/)
 crash.sh
