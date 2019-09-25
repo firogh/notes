@@ -1,4 +1,8 @@
 # History
+<<<<<<< HEAD
+[mustread: When writeback goes wrong](https://lwn.net/Articles/384093/)
+[mustread: Fixing writeback from direct reclaim]
+=======
 tglx: writeback_index
 commit 9672a337305358ecc81dc17700e58ce3f42c11f6
 Author: Andrew Morton <akpm@osdl.org>
@@ -18,6 +22,7 @@ commit 111ebb6e6f7bd7de6d722c5848e95621f43700d9
 Author: OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
 Date:   Fri Jun 23 02:03:26 2006 -0700
     [PATCH] writeback: fix range handling
+>>>>>>> 49c4aea97c1cf93a0049a0f01480407f6c54ec8f
 
 # Page writeback
 [Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
