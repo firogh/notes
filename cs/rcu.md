@@ -89,3 +89,56 @@ CONFIG_RCU_BOOST
 [Decoding Those Inscrutable RCU CPU Stall Warnings](https://www.youtube.com/watch?v=23_GOr8Sz-E)
 update_process_times->rcu_check_callbacks->rcu_pending->__rcu_pending->check_cpu_stall->print_other_cpu_stall
 Documentation/RCU/stallwarn.txt
+
+# list rcu
+[Using RCU to Protect Read-Mostly Linked Lists](https://www.kernel.org/doc/Documentation/RCU/listRCU.rst)
+
+## hlist-nulls
+commit bbaffaca4810de1a25e32ecaf836eeaacc7a3d11
+Refs: v2.6.28-rc4-513-gbbaffaca4810
+Author:     Eric Dumazet <dada1@cosmosbay.com>
+AuthorDate: Sun Nov 16 19:37:55 2008 -0800
+Commit:     David S. Miller <davem@davemloft.net>
+CommitDate: Sun Nov 16 19:37:55 2008 -0800
+    rcu: Introduce hlist_nulls variant of hlist
+    hlist uses NULL value to finish a chain.
+    hlist_nulls variant use the low order bit set to 1 to signal an end-of-list marker.
+    This allows to store many different end markers, so that some RCU lockless
+    algos (used in TCP/UDP stack for example) can save some memory barriers in
+    fast paths.
+
+[Usage of hilsit-nulls in kernel doc](https://www.kernel.org/doc/Documentation/RCU/rculist_nulls.txt)
+
+# slab rcu
+commit 77631565ae40a44f23eac2e9c440cbceed8962a7
+Author:     Hugh Dickins <hugh@veritas.com>
+AuthorDate: Mon Aug 23 21:24:22 2004 -0700
+Commit:     Linus Torvalds <torvalds@ppc970.osdl.org>
+CommitDate: Mon Aug 23 21:24:22 2004 -0700
+    [PATCH] rmaplock: SLAB_DESTROY_BY_RCU
+
+commit d7de4c1dc3a2faca0bf05d9e342f885cb2696766
+Refs: v2.6.28-rc4-307-gd7de4c1dc3a2
+Author:     Peter Zijlstra <a.p.zijlstra@chello.nl>
+AuthorDate: Thu Nov 13 20:40:12 2008 +0200
+Commit:     Pekka Enberg <penberg@cs.helsinki.fi>
+CommitDate: Thu Nov 13 20:49:02 2008 +0200
+    slab: document SLAB_DESTROY_BY_RCU
+    Explain this SLAB_DESTROY_BY_RCU thing..
+
+## SLAB_TYPESAFE_BY_RCU
+commit 5f0d5a3ae7cff0d7fa943c199c3a2e44f23e1fac
+Refs: v4.11-rc2-1-g5f0d5a3ae7cf
+Author:     Paul E. McKenney <paulmck@linux.vnet.ibm.com>
+AuthorDate: Wed Jan 18 02:53:44 2017 -0800
+Commit:     Paul E. McKenney <paulmck@linux.vnet.ibm.com>
+CommitDate: Tue Apr 18 11:42:36 2017 -0700
+    mm: Rename SLAB_DESTROY_BY_RCU to SLAB_TYPESAFE_BY_RCU
+    A group of Linux kernel hackers reported chasing a bug that resulted
+    from their assumption that SLAB_DESTROY_BY_RCU provided an existence
+    guarantee, that is, that no block from such a slab would be reallocated
+    during an RCU read-side critical section.  Of course, that is not the
+    case.  Instead, SLAB_DESTROY_BY_RCU only prevents freeing of an entire
+    slab of blocks.
+
+

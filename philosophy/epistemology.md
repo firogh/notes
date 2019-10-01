@@ -9,6 +9,9 @@ Just as the largest library, badly arranged, is not so useful as a very moderate
 The whole is other than the sum of the parts. --Gestalt psychology
 ## Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
 
+## Different structure.
+If you not spend too much time on understanding specific things. Then, it will show different structure rather than learning it thoroughly
+
 # History
 The Archaeology of Knowledge
 
