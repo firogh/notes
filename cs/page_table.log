@@ -17,7 +17,7 @@ Firo: _PAGE_KNL_ERRATUM_MASK
 ### PDE
 
 ## Copy ptes
-### fork's wp page and COW - copy_page_range
+### fork's wp page and COW - copy_page_range ... copy_pte_range
 is_cow_mapping(vm_flags_t flags) => return (flags & (VM_SHARED | VM_MAYWRITE)) == VM_MAYWRITE;
 What about Shared & Write? Check the following commit:
 commit d08b3851da41d0ee60851f2c75b118e1f7a5fc89

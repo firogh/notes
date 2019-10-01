@@ -19,7 +19,6 @@ Date:   Sun Aug 22 22:59:27 2004 -0700
 commit 111ebb6e6f7bd7de6d722c5848e95621f43700d9
 Author: OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
 Date:   Fri Jun 23 02:03:26 2006 -0700
-
     [PATCH] writeback: fix range handling
 
 # Page writeback

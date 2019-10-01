@@ -6,7 +6,6 @@ https://github.com/brendangregg/perf-tools/blob/master/kernel/funcslower
 # Crash
 [Crash Dump Analysis](https://drive.google.com/file/d/1NhZZo5DLOmE0d_97ZfwAsQ6ae1av3knw/view?usp=sharing)
 
-
 # Crash-python
 [See comment on crash-python pykdump and drgn A kernel debugger in Python: drgn](https://lwn.net/Articles/789641/)
 crash.sh
@@ -69,6 +68,9 @@ root        13  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/0]
 root        16  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/1]
 root        22  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/2]
 root        28  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/3]
+NMI watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [test.sh:16464]
+...
+Kernel panic - not syncing: softlockup: hung tasks
 
 # Hardware watchdog
 watchdog_overflow_callback

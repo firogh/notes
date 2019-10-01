@@ -136,11 +136,94 @@ void si_swapinfo(struct sysinfo *val)
         val->totalswap = total_swap_pages + nr_to_be_unused;
 
 # VM stat
+vm_stat and vm_event_stats; unit is 4KB; they are same as output of kmem -V in crash-utility.
 totalram_pages
 /proc/meminfo
 [/PROC/MEMINFO之谜](http://linuxperf.com/?p=142)
 meminfo_proc_show
 /proc/zoneinfo
+
+NR_FILE_MAPPED could be larger than NR_ACTIVE_FILE or NR_INACTIVE_FILE because multiple processes map same page to it's process address space. It also includes shmem.
+
+NR_FILE_PAGES: It alos contains the page in the swap cache so it should be larger than NR_INACTIVE_FILE + NR_ACTIVE_FILE.
+commit 347ce434d57da80fd5809c0c836f206a50999c26
+Refs: v2.6.17-4184-g347ce434d57d
+Author:     Christoph Lameter <clameter@sgi.com>
+AuthorDate: Fri Jun 30 01:55:35 2006 -0700
+Commit:     Linus Torvalds <torvalds@g5.osdl.org>
+CommitDate: Fri Jun 30 11:25:34 2006 -0700
+    [PATCH] zoned vm counters: conversion of nr_pagecache to per zone counter
++++ b/mm/swap_state.c
+@@ -87,7 +87,7 @@ static int __add_to_swap_cache(struct page *page, swp_entry_t entry,
+                        SetPageSwapCache(page);
+                        set_page_private(page, entry.val);
+                        total_swapcache_pages++;
+-                       pagecache_acct(1);
++                       __inc_zone_page_state(page, NR_FILE_PAGES);
+                }
+                write_unlock_irq(&swapper_space.tree_lock);
+                radix_tree_preload_end();
+@@ -132,7 +132,7 @@ void __delete_from_swap_cache(struct page *page)
+        set_page_private(page, 0);
+        ClearPageSwapCache(page);
+        total_swapcache_pages--;
+-       pagecache_acct(-1);
++       __dec_zone_page_state(page, NR_FILE_PAGES);
+
+## Process memory usage.
+__show_smap task_mem
+also check tgid_base_stuff
+/proc/self/stat  proc_tgid_stat the corresponding linux kernel function do_task_stat() and child function get_mm_rss() and struct mm_rss_stat rss_stat;
+/proc/self/status task_mem() file = get_mm_counter(mm, MM_FILEPAGES); unit is 4kB.
+/proc/self/statm  proc_pid_statm
+
+
+## Free area
+show_free_areas
+
+## zonelist
+node_zonelist
+NODE_DATA(nid)->node_zonelists + gfp_zonelist(flags);
+
+## GFP ZONE table
+commit b70d94ee438b3fd9c15c7691d7a932a135c18101
+Refs: v2.6.30-5489-gb70d94ee438b
+Author:     Christoph Lameter <cl@linux.com>
+AuthorDate: Tue Jun 16 15:32:46 2009 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Tue Jun 16 19:47:41 2009 -0700
+    page-allocator: use integer fields lookup for gfp_zone and check for errors in flags passed to the page allocator
++ * GFP_ZONE_TABLE is a word size bitstring that is used for looking up the
++ * zone to use given the lowest 4 bits of gfp_t. Entries are ZONE_SHIFT long
++ * and there are 16 of them to cover all possible combinations of
++ * __GFP_DMA, __GFP_DMA32, __GFP_MOVABLE and __GFP_HIGHMEM
++ *
++ * The zone fallback order is MOVABLE=>HIGHMEM=>NORMAL=>DMA32=>DMA.
++ * But GFP_MOVABLE is not only a zone specifier but also an allocation
++ * policy. Therefore __GFP_MOVABLE plus another zone selector is valid.
++ * Only 1bit of the lowest 3 bit (DMA,DMA32,HIGHMEM) can be set to "1".
++ *
++ *       bit       result
++ *       =================
++ *       0x0    => NORMAL
++ *       0x1    => DMA or NORMAL
++ *       0x2    => HIGHMEM or NORMAL
++ *       0x3    => BAD (DMA+HIGHMEM)
++ *       0x4    => DMA32 or DMA or NORMAL
++ *       0x5    => BAD (DMA+DMA32)
++ *       0x6    => BAD (HIGHMEM+DMA32)
++ *       0x7    => BAD (HIGHMEM+DMA32+DMA)
++ *       0x8    => NORMAL (MOVABLE+0)
++ *       0x9    => DMA or NORMAL (MOVABLE+DMA)
++ *       0xa    => MOVABLE (Movable is valid only if HIGHMEM is set too)
++ *       0xb    => BAD (MOVABLE+HIGHMEM+DMA)
++ *       0xc    => DMA32 (MOVABLE+HIGHMEM+DMA32)
++ *       0xd    => BAD (MOVABLE+DMA32+DMA)
++ *       0xe    => BAD (MOVABLE+DMA32+HIGHMEM)
++ *       0xf    => BAD (MOVABLE+DMA32+HIGHMEM+DMA)
+
+
+
 ## Buffer cache of command 'free'
 "Buffers" represent how much portion of RAM is dedicated to cache disk blocks
 1. Open block device directly open("/dev/sdb"...) -> blkdev_open

@@ -126,6 +126,8 @@ get the meaning of this struct by looking d_path().It includes the two endpoints
 Check mount.log
 
 ## LQO
+mount->mnt_mountpoint  和 mount ->mnt_mp->m_dentry;
+
 Check follow_managed
 * for DCACHE_MOUNTED in get_mountpoint
 Amnt: Protect the mountpoint hashtable with mount_lock - 3895dbf8985f656675b5bde610723a29cbce3fa7
@@ -136,6 +138,7 @@ get rid of full-hash scan on detaching vfsmounts - 84d17192d2afd52aeba88c71ae495
     mount hash table if it is set -- before following the mount, vfsmount lock is
     taken and mount re-checked without races.
 fs: dcache remove d_mounted - 5f57cbcc02cf18f6b22ef4066bb10afeb8f930ff
+如果是很多基本概念没有可以看看，因为就是个中规中矩的教科书，从历史到单机存储方方面面，如果写过store，就没必要了，可以关心rise lab 或者peloton lab他们的项目和publication，我曾经想弄存储，最后觉得最后都是玩电路了，感觉自己玩不下去，就放弃了。整体的工业设计可以找找emc的人写的书
 
 # Open
 sys_open ->
