@@ -14,15 +14,39 @@ instead, they are stored in dedicated pages called “buffer pages,” which are
 the page cache.  -- ULK Chapter 15: Storing Blocks in the Page Cache
 Section Storing Blocks in Page Cache is invaluable; 
 
+## [Linux pagecache history](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
+
+
 # Formal causes
+[Must-read: General description on page cache: A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 Pages added to page cache or buffer cache.
 grow_dev_page => find_or_create_page => pagecache_get_page => add_to_page_cache_lru
 
-# Reference
-filesystems/vfs.txt
+## Lockless pagecache
+tig tags/v2.6.27-rc1~154
+[Must-read Bachelor papper Nick Piggin: detailed version: A lockless pagecache in Linux](https://drive.google.com/file/d/1WIxOJaRTVs2gXfQrWKqpFyd0XyYA9Hqq/view?usp=sharing)
+[A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 
-# LQO
-[Linux内核文件Cache 机制](http://www.ilinuxkernel.com/files/Linux.Kernel.Cache.pdf)
+## address_space
+address_space is subpart of as layer in [Virtual Memory Architecture in SunOS](http://kos.enix.org/pub/gingell8.pdf)
+
+[Linux Page Cache in Linux Kernel 2.4 Internals](http://www.tldp.org/LDP/lki/lki.html#toc4)
+
+> While the SVR4 pagecache is only used for filesystem data cache and thus uses the struct vnode and an offset
+> into the file as hash parameters, the Linux page cache is designed to be more generic, and therefore uses a
+> struct address_space (explained below) as first parameter. Because the Linux pagecache is tightly coupled to
+> the notation of address spaces, you will need at least a basic understanding of adress_spaces to understand the
+> way the pagecache works. An address_space is some kind of software MMU that maps all pages of one object
+> (e.g. inode) to an other concurrency (typically physical disk blocks).
+
+PLKA
+To manage the various target objects that can be processed and cached in whole pages, the kernel uses
+an abstraction of the ‘‘address space‘‘that associates the pages in memory with a specific block device (or
+any other system unit or part of a system unit).
+This type of address space must not be confused with the virtual and physical
+address spaces provided by the system or processor. It is a separate abstraction of
+the Linux kernel that unfortunately bears the same name.
+
 # Block buffers
 buffer_head
 This descriptor contains all the information needed by the kernel to know how to handle the block;

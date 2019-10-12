@@ -16,3 +16,24 @@ Date:   Thu Dec 11 22:20:08 2003 -0800
 * if another CPU could re-list_add() it.
 [finish_wait with list_empty_careful maybe fragile or buggy??](https://lkml.org/lkml/2018/3/11/143)
 Actually, it's not careful, but it's just specific.
+
+# hlist nulls
+https://patchwork.ozlabs.org/patch/8567/
+commit 88ab1932eac721c6e7336708558fa5ed02c85c80
+Refs: v2.6.28-rc4-514-g88ab1932eac7
+Author:     Eric Dumazet <dada1@cosmosbay.com>
+AuthorDate: Sun Nov 16 19:39:21 2008 -0800
+Commit:     David S. Miller <davem@davemloft.net>
+CommitDate: Sun Nov 16 19:39:21 2008 -0800
+
+    udp: Use hlist_nulls in UDP RCU code
+
+    This is a straightforward patch, using hlist_nulls infrastructure.
+
+    RCUification already done on UDP two weeks ago.
+
+    Using hlist_nulls permits us to avoid some memory barriers, both
+    at lookup time and delete time.
+
+    Patch is large because it adds new macros to include/net/sock.h.
+    These macros will be used by TCP & DCCP in next patch.
