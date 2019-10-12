@@ -5,6 +5,10 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
+# proxy
+https://hitun.io/user/shop
+curl -Ls https://install.direct/go.sh | sudo bash
+
 # docker
 ocker run -i -t --rm=true -v /buildarea1/firo/bd:/mnt pek-lpdfs01:5000/centos7_64:wrl /bin/bash
 

@@ -28,7 +28,21 @@ tig tags/v2.6.27-rc1~154
 [A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 
 ## address_space
-address_space is subpart of as layer in [Virtual Memory Architecture in SunOS](http://kos.enix.org/pub/gingell8.pdf)
+
+[Re: struct address_space](http://lkml.iu.edu/hypermail/linux/kernel/9911.0/0273.html)
+
+> > looks like we started using things called struct address_space a couple
+> > of rels back. could someone please explain why the change was made ? there
+> > don't seem to have been any postings on it.
+> Because we have caches that are not associated with any particular inode.
+> (swap, for one). Moreover, we don't actually need to know the inode - just
+> a small subset. Said subset makes perfect sense for any sort of page cache
+> and switching to that allows to avoid fake inodes. Moreover, it lets us
+> use several caches per inode, etc. And makes for cleaner code, IMHO.
+
+[[Q] [VFS] i_mapping vs. i_data ?](https://lkml.org/lkml/2001/5/22/103)
+
+Firo: FIXME: address_space is subpart of as layer in [Virtual Memory Architecture in SunOS](http://kos.enix.org/pub/gingell8.pdf)
 
 [Linux Page Cache in Linux Kernel 2.4 Internals](http://www.tldp.org/LDP/lki/lki.html#toc4)
 
