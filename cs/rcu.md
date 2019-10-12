@@ -5,6 +5,67 @@ date: 2015-05-24T09:52:12+08:00
 category: cs
 ---
 
+
+# Network RX  path
+commit 2d331915a04144dad738e725769d8fac06ef6155
+Author: Eric Dumazet <edumazet@google.com>
+Date:   Fri Apr 1 08:52:15 2016 -0700
+    tcp/dccp: use rcu locking in inet_diag_find_one_icsk()
+    RX packet processing holds rcu_read_lock(), so we can remove
+    pairs of rcu_read_lock()/rcu_read_unlock() in lookup functions
+    if inet_diag also holds rcu before calling them.
+    This is needed anyway as __inet_lookup_listener() and
+    inet6_lookup_listener() will soon no longer increment
+    refcount on the found listener.
+    Signed-off-by: Eric Dumazet <edumazet@google.com>
+    Signed-off-by: David S. Miller <davem@davemloft.net>
+
+5142 static int process_backlog(struct napi_struct *napi, int quota)
+...
+5160                 while ((skb = __skb_dequeue(&sd->process_queue))) {
+5161                         rcu_read_lock();
+5162                         __netif_receive_skb(skb);
+5163                         rcu_read_unlock();
+Refs: v4.1-12249-g2c17d27c36dc
+Author:     Julian Anastasov <ja@ssi.bg>
+AuthorDate: Thu Jul 9 09:59:10 2015 +0300
+Commit:     David S. Miller <davem@davemloft.net>
+CommitDate: Fri Jul 10 18:16:36 2015 -0700
+
+    net: call rcu_read_lock early in process_backlog
+
+    Incoming packet should be either in backlog queue or
+    in RCU read-side section. Otherwise, the final sequence of
+    flush_backlog() and synchronize_net() may miss packets
+    that can run without device reference:
+
+    CPU 1                  CPU 2
+                           skb->dev: no reference
+                           process_backlog:__skb_dequeue
+                           process_backlog:local_irq_enable
+
+    on_each_cpu for
+    flush_backlog =>       IPI(hardirq): flush_backlog
+                           - packet not found in backlog
+
+                           CPU delayed ...
+    synchronize_net
+    - no ongoing RCU
+    read-side sections
+
+    netdev_run_todo,
+    rcu_barrier: no
+    ongoing callbacks
+                           __netif_receive_skb_core:rcu_read_lock
+                           - too late
+    free dev
+                           process packet for freed dev
+
+    Fixes: 6e583ce5242f ("net: eliminate refcounting in backlog queue")
+    Cc: Eric W. Biederman <ebiederm@xmission.com>
+    Cc: Stephen Hemminger <stephen@networkplumber.org>
+    Signed-off-by: Julian Anastasov <ja@ssi.bg>
+    Signed-off-by: David S. Miller <davem@davemloft.net>
 # RCU
 ## Causality
 Read Copy Update HOWTO

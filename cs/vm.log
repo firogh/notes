@@ -11,6 +11,10 @@ Logical Design of a Digital Computer with Multiple Asynchronous Rotating Drums a
 1979 Paged VM on Unix. 
 [Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX Operating System](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
 
+1987
+[Virtual Memory Architecture in SunOS](http://kos.enix.org/pub/gingell8.pdf)
+[SunOS Virtual Memory Implementation](http://kos.enix.org/pub/sunos-vi.pdf)
+
 # Purposes
 Efficiency
 Protection
