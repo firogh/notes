@@ -10,6 +10,8 @@ Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt
 [JINKYU KOO's Linux kernel scheduler](https://helix979.github.io/jkoo/post/os-scheduler/)
 
+[TIF_NEED_RESCHED: why is it needed](http://www.joelfernandes.org/linuxinternals/2016/03/20/tif-need-resched-why-is-it-needed.html)
+
 # General runqueues
 static DEFINE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
 activate_task - move a task to the runqueue.

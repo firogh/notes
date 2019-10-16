@@ -9,6 +9,7 @@ category: cs
 [Linux Filesystems in 21 days 45 minutes](https://www.samba.org/samba/samba/ftp/cifs-cvs/ols2006-fs-tutorial-smf.pdf)
 Documentation/filesystems/vfs.txt
 [Why does open before read/write?](https://unix.stackexchange.com/a/265680/16335)
+[Linux 2.4: 3. Virtual Filesystem (VFS)](http://www.tldp.org/LDP/lki/lki-3.html)
 
 # Init rootfs 
 init_mount_tree
@@ -89,6 +90,14 @@ __getblk_slow
 grow_buffers
 grow_dev_page
 alloc_page_buffers
+
+## BH_delay
+16:53大疆创新李磊 阿克曼
+@杨永明 Firo 延迟分配，可以减少多进程同时写文件造成文件碎片
+设想一个场景，两个进程pa,pb同时追加写文件，如果直接申请块就马上给的话，就会出现pa申请的block在1,3,5……
+pb申请的block在2,4，6……
+bh_delayn推迟块的分配时机到回写时候进行。这样pa和pb就能分别获取连续的物理块
+[[RFC] basic delayed allocation in VFS](https://linux-fsdevel.vger.kernel.narkive.com/bGiQumkf/rfc-basic-delayed-allocation-in-vfs)
 
 # FS format
 fs-sb; fs-inode space; Spare space
