@@ -27,9 +27,26 @@ grow_dev_page => find_or_create_page => pagecache_get_page => add_to_page_cache_
 tig tags/v2.6.27-rc1~154
 [Must-read Bachelor papper Nick Piggin: detailed version: A lockless pagecache in Linux](https://drive.google.com/file/d/1WIxOJaRTVs2gXfQrWKqpFyd0XyYA9Hqq/view?usp=sharing)
 [A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
+### Page PG_nonewrefs -> page_freeze_refs -> page_ref_freeze
+commit e286781d5f2e9c846e012a39653a166e9d31777d
+Refs: v2.6.26-7311-ge286781d5f2e
+Author:     Nick Piggin <npiggin@suse.de>
+AuthorDate: Fri Jul 25 19:45:30 2008 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Sat Jul 26 12:00:06 2008 -0700
+    mm: speculative page references
+	[...]
+    Thanks to Hugh for pointing out an improvement to the algorithm setting
+    page_count to zero when we have control of all references, in order to
+    hold off speculative getters.
+
+commit fe896d1878949ea92ba547587bc3075cc688fb8f
+Author: Joonsoo Kim <iamjoonsoo.kim@lge.com>
+Date:   Thu Mar 17 14:19:26 2016 -0700
+    mm: introduce page reference manipulation functions
+page_freeze_refs -> page_ref_freeze; is it much better name?
 
 ## address_space
-
 [Re: struct address_space](http://lkml.iu.edu/hypermail/linux/kernel/9911.0/0273.html)
 
 > > looks like we started using things called struct address_space a couple
@@ -61,6 +78,9 @@ any other system unit or part of a system unit).
 This type of address space must not be confused with the virtual and physical
 address spaces provided by the system or processor. It is a separate abstraction of
 the Linux kernel that unfortunately bears the same name.
+
+## reorder
+[mm/huge_memory.c: reorder operations in __split_huge_page_tail()](https://marc.info/?l=linux-kernel&m=151844440831709&w=2)
 
 # Block buffers
 buffer_head

@@ -48,6 +48,10 @@ See [Whenever you leave out the alignment factor in an aligned attribute specifi
 [x86 Operand Modifiers](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#x86Operandmodifiers)
 [Machine Modes: Describing the size and format of a datum.](https://gcc.gnu.org/onlinedocs/gccint/Machine-Modes.html#Machine-Modes)
 
+# Volatile
+[Should volatile Acquire Atomicity and Thread Visibility Semantics?](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2016.html)
+[When is a Volatile Object Accessed?](https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html)
+
 # constprop
 
 # Builtin

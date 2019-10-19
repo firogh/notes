@@ -47,6 +47,7 @@ program order
 [Recommened by CAAQA: Observity in SC, TSO, PC: Paragraph Relaxing the Write to Read Program Order in Shared Memory Consistency Models: A Tutorial](https://www.hpl.hp.com/techreports/Compaq-DEC/WRL-95-7.pdf) 
 [Memory Barriers: a Hardware View for Software Hackers - must read](http://www.rdrop.com/users/paulmck/scalability/paper/whymb.2010.06.07c.pdf)
 ['A Summary of Relaxed Consistency' CMU](http://15418.courses.cs.cmu.edu/spring2013/article/41)[Slides](https://www.cs.cmu.edu/afs/cs/academic/class/15418-s12/www/lectures/14_relaxedReview.pdf)
+
 ## SC
 [sequential consistency](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/How-to-Make-a-Multiprocessor-Computer-That-Correctly-Executes-Multiprocess-Programs.pdf)
 [Formal of Sequential Consistency by Jepsen](https://jepsen.io/consistency/models/sequential#formally)
@@ -72,7 +73,28 @@ between several processes and to maintain the integrity of ordinary shared data.
 
 ## RC
 [Firo: a must-read: Release consistency: Memory consistency and event ordering in scalable shared-memory multiprocessors](https://dl.acm.org/citation.cfm?id=325102)
+[Must-read: Lockless Programming Considerations for Xbox 360 and Microsoft Windows](https://docs.microsoft.com/en-us/windows/win32/dxtecharts/lockless-programming?redirectedfrom=MSDN#read-acquire-and-write-release-barriers)
+At right top of page 6 
+Condition 3.1: Conditions for Release Consistency
+(A) before an ordinary load or store access is allowed to perform with respect to any other processor,
+all previous acquire accesses must be performed, and
+(B) before a release access is allowed to perform with
+respect to any other processor, all previous ordinary
+load and store accesses must be performed, and
+(C) special accesses are processor consistent with respect to one another.
 [Acquire and Release Semantics](https://preshing.com/20120913/acquire-and-release-semantics/)
+https://www.kernel.org/doc/Documentation/memory-barriers.txt
+### Examples
+[mm/page_ref: use atomic_set_release in page_ref_unfreeze](https://marc.info/?l=linux-kernel&m=151844394031510&w=2)
+commit 7088efa9137a15d7d21e3abce73e40c9c8a18d68
+Refs: v4.15-rc1-4-g7088efa9137a
+Author:     Paul E. McKenney <paulmck@linux.vnet.ibm.com>
+AuthorDate: Mon Oct 9 10:04:27 2017 -0700
+Commit:     Paul E. McKenney <paulmck@linux.vnet.ibm.com>
+CommitDate: Mon Dec 4 10:52:52 2017 -0800
+    fs/dcache: Use release-acquire for name/length update
+
+
 
 ## Kernel
 [Why do we need mb for SLEEP AND WAKE-UP FUNCTIONS?](https://www.kernel.org/doc/Documentation/memory-barriers.txt)

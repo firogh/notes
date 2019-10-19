@@ -65,7 +65,7 @@ dynamic partitioning, it suffers from external fragmentation. However, because a
 process is broken up into a number of smaller pieces, the external fragmentation
 should be less.
 
-### [buddy system 1965](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) [Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
+### [buddy system 1965 a fast storage allocator.](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) [Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
 [buddy system variants 1977](https://dl.acm.org/citation.cfm?id=359626)
 The following cited from above 1965 paper.
 The oporations involved in obtaining blocks from and retm'ning thom to the free
