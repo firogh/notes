@@ -10,7 +10,7 @@ The scheduling of life
 
 # CS
 
-# kernel
+# Kernel
 * perf ftrace 'echo > '
 * Compound page
 * ALTERNATIVE and RESTRICT_IB_SPEC
@@ -61,7 +61,3 @@ ffffb7d33d307dc0: 7af0e96fc     # stack
 * try_to_wakeup's comment
 *debug dwarf
 https://llvm.org/devmtg/2014-10/Slides/Christopher-DebugInfoTutorial.pdf
-
-
-
-# Work

@@ -15,6 +15,13 @@ some results or progress information for PFRA
 http://www.joelfernandes.org/linuxinternals/
 https://paulmck.livejournal.com/
 
+# Mailing list archives
+[The Linux Kernel Archives](https://www.kernel.org/lore.html)
+Online: https://lore.kernel.org/lists.html
+Git: https://git.kernel.org/pub/scm/public-inbox/
+[LKML archives on lore.kernel.org](https://lwn.net/Articles/758034/)
+and marc.info
+
 # Submitting patch
 ## Resending the patch
 [First revision, version, second revision](https://meta.stackexchange.com/questions/314212/why-is-it-called-initial-revision-if-its-not-a-revision)

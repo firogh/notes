@@ -46,7 +46,8 @@ Date:   Thu Mar 17 14:19:26 2016 -0700
     mm: introduce page reference manipulation functions
 page_freeze_refs -> page_ref_freeze; is it much better name?
 
-## address_space
+## The address space object - address_space
+Documentation/filesystems/vfs.rst
 [Re: struct address_space](http://lkml.iu.edu/hypermail/linux/kernel/9911.0/0273.html)
 
 > > looks like we started using things called struct address_space a couple
@@ -81,6 +82,15 @@ the Linux kernel that unfortunately bears the same name.
 
 ## reorder
 [mm/huge_memory.c: reorder operations in __split_huge_page_tail()](https://marc.info/?l=linux-kernel&m=151844440831709&w=2)
+
+## Readahead
+[Linux readahead: less tricks for more](https://www.kernel.org/doc/ols/2007/ols2007v2-pages-273-284.pdf)
+[Adaptive file readahead](https://lwn.net/Articles/155510/)
+[Improving readahead](https://lwn.net/Articles/372384/)
+
+## Operations
+find_get_page, add_to_page_cache, delete_from_page_cache, replace_page_cache_page
+add_to_page_cache_lru
 
 # Block buffers
 buffer_head
