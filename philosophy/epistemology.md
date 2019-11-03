@@ -19,6 +19,14 @@ Translation from implementation to fromal; More specific, less form and abstract
 for ioremmap, put it along with device driver.
 more causality, less fromal abstraction.
 
+# Will
+Self control and free. - Kant.
+## If you don't control yourself, you will be controlled by others.
+## Tendency and mini habits
+"“Be the person with embarrassing goals and impressive results instead of one of the many people with impressive goals and embarrassing results.”
+## Reward Mechanism
+gay science, showoff
+
 # Structure
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
 The whole is other than the sum of the parts. --Gestalt psychology
@@ -53,7 +61,6 @@ Gradual changing
 Classify or container/protection or tidy & tidy up
 It’s easier to invent future than to predict it. —Alan Kay
 
-# Tendency
 
 # Ego
 Love yourself; I know I will be lost and confused in my whole life.

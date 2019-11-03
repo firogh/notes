@@ -4,6 +4,31 @@ title: Scheduling in operating system
 date: 2017-03-29T10:49:04+08:00 
 category: cs
 ---
+
+# Formal causes
+## Preemption
+### [Voluntary Kernel Preemption, 2.6.12-rc4-mm2](https://lwn.net/Articles/137259/)
+Voluntary preemption works by adding a cond_resched() 
+(reschedule-if-needed) call to every might_sleep() check. It is lighter 
+than CONFIG_PREEMPT - at the cost of not having as tight latencies. It 
+represents a different latency/complexity/overhead tradeoff.
+
+[voluntary preemption](https://stackoverflow.com/questions/5174955/what-is-voluntary-preemption)
+[Optimizing preemption](https://lwn.net/Articles/563185/)
+commit 41719b03091911028116155deddc5eedf8c45e37
+Refs: v2.6.29-rc1-226-g41719b030919
+Author:     Peter Zijlstra <a.p.zijlstra@chello.nl>
+AuthorDate: Wed Jan 14 15:36:26 2009 +0100
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Wed Jan 14 18:09:00 2009 +0100
+    mutex: preemption fixes
+    The problem is that dropping the spinlock right before schedule is a voluntary
+    preemption point and can cause a schedule, right after which we schedule again.
+    Fix this inefficiency by keeping preemption disabled until we schedule, do this
+    by explicity disabling preemption and providing a schedule() variant that
+    assumes preemption is already disabled.
+Firo: spin_unlock_mutex
+
 # Reference
 Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 [A complete guide to Linux process scheduling](https://tampub.uta.fi/bitstream/handle/10024/96864/GRADU-1428493916.pdf)

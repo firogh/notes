@@ -6,6 +6,41 @@ title: Linux time subsystem
 category: cs
 ---
 
+# Formal causes
+## CPU time
+
+### CPU time iowait
+
+###CPU time nice
+Documentation/admin-guide/pm/cpufreq.rst
+commit b9170836d1aa4ded7cc1ac1cb8fbc7867061c98c
+Refs: v2.6.12-rc5-248-gb9170836d1aa
+Author:     Dave Jones <davej@redhat.com>
+AuthorDate: Tue May 31 19:03:47 2005 -0700
+Commit:     Dave Jones <davej@redhat.com>
+CommitDate: Tue May 31 19:03:47 2005 -0700
+
+    [CPUFREQ] Conservative cpufreq governer
+
+    A new cpufreq module, based on the ondemand one with my additional patches
+    just posted.  This one is more suitable for battery environments where its
+    probably more appealing to have the cpu freq gracefully increase and decrease
+    rather than flip between the min and max freq's.
+
+    N.B. Bruno Ducrot pointed out that the amd64's "do have unacceptable latency
+    between min and max freq transition, due to the step-by-step requirements
+    (200MHz IIRC)"; so AMD64 users would probably benefit from this too.
+
+``ignore_nice_load``
+        If set to 1 (default 0), it will cause the CPU load estimation code to
+        treat the CPU time spent on executing tasks with "nice" levels greater
+        than 0 as CPU idle time.
+        This may be useful if there are tasks in the system that should not be
+        taken into account when deciding what frequency to run the CPUs at. 
+        Then, to make that happen it is sufficient to increase the "nice" level
+        of those tasks above 0 and set this attribute to 1.
+
+
 # TSC
 [Pitfalls of TSC usage](http://oliveryang.net/2015/09/pitfalls-of-TSC-usage/)
 [The trouble with the TSC](https://lwn.net/Articles/388188/)

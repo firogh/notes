@@ -9,6 +9,7 @@ ULK 3rd: Handling the TLB
 PLKA: 3.7 Processor Cache and TLB Control
 UVM: [3.8  Translation Lookaside Buffer (TLB)](https://www.kernel.org/doc/gorman/html/understand/understand006.html)
 [Memory part 3: Virtual Memory: 4.3 Optimizing Page Table Access](https://lwn.net/Articles/253361/)
+[Understanding TLB from CPUID results on Intel and Firo is Level2 TLB shared?](https://stackoverflow.com/questions/58128776/understanding-tlb-from-cpuid-results-on-intel)
 ## Kernel API
 [Cache and TLB Flushing Under Linux](https://www.kernel.org/doc/html/latest/core-api/cachetlb.html)
 ## Costs

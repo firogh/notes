@@ -253,7 +253,7 @@ CommitDate: Sun Nov 16 19:37:55 2008 -0800
 [Usage of hilsit-nulls in kernel doc](https://www.kernel.org/doc/Documentation/RCU/rculist_nulls.txt)
 
 # slab and rcu
-commit 77631565ae40a44f23eac2e9c440cbceed8962a7
+tglx: commit 77631565ae40a44f23eac2e9c440cbceed8962a7
 Author:     Hugh Dickins <hugh@veritas.com>
 AuthorDate: Mon Aug 23 21:24:22 2004 -0700
 Commit:     Linus Torvalds <torvalds@ppc970.osdl.org>

@@ -38,6 +38,11 @@ debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug
 [systemtap脚本分析系统中dentry SLAB占用过高问题](https://yq.aliyun.com/articles/131870)
 https://sourceware.org/systemtap/examples/keyword-index.html
 
+stap -L 'kernel.statement("__inet_lookup_established@net/ipv4/inet_hashtables.c:*")'
+stap -g -v -e '%{ int foo; %} probe kernel.function("vfs_read"){ %{ foo=1 %}; printf("addr: %x\n", %{ &foo %} );exit()}'
+stap -g -v -e '%{ int foo; %} probe kprobe.function("vfs_read"){ %{ foo=1 %}; printf("addr: %x\n", %{ &foo %} );exit()}'
+sudo stap -g -v -e '%{ int foo; %} probe kprobe.function("vfs_read"){  %{ printk("addr: %p\n",  &foo) %}; exit()}'
+
 # Syzkaller
 golang-google-golang-api-devel.noarch
 golang-github-golang-sys-devel.noarch
