@@ -9,23 +9,18 @@ category: philosophy
 If you don't control youself, you will be definitely controlled by others.
 [Richard Feynman. Why.](https://www.youtube.com/watch?v=36GT2zI8lVA)
 Firo: some causes are very intutive. However, others are not easy to be deduced theoritically.
-## Histructure
-## Form or abstration or Architecture; 
-## Efficient cause
-Primary and secondary
-Continuousness, completeness, consistency, soundness. -- Logic
-Neural connections.
-Translation from implementation to fromal; More specific, less form and abstraction; for example, mm_struct doesn't fully eque address space; it's much like VM; so just focus on specific element, e.g. mm_rb vma
-for ioremmap, put it along with device driver.
-more causality, less fromal abstraction.
 
 # Will
 Self control and free. - Kant.
 ## If you don't control yourself, you will be controlled by others.
+you lose yourself.
+## specific, use positive result not negative result to guide yourself.
 ## Tendency and mini habits
 "“Be the person with embarrassing goals and impressive results instead of one of the many people with impressive goals and embarrassing results.”
 ## Reward Mechanism
 gay science, showoff
+## indirect cause, by-product. 
+## Seven deadly sins
 
 # Structure
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
@@ -33,6 +28,8 @@ The whole is other than the sum of the parts. --Gestalt psychology
 ## Model of thinking - [Linus Torvalds talking with Aalto University students 11:00](https://www.youtube.com/watch?v=PDEce3mtkRg)
 ## Different structure.
 If you not spend too much time on understanding specific things. Then, it will show different structure rather than learning it thoroughly
+
+# Uncertainty
 
 # Complexcity
 Abstraction(up and down, overall control, and refinement), simplification, dividing
@@ -52,6 +49,12 @@ requires you to keep in the air at once, the more likely you’ll drop one of th
 leading to a design or coding error.
 
 [The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
+## Ways
+Primary and secondary
+Continuousness, completeness, consistency, soundness. -- Logic
+Neural connections.
+Translation from implementation to fromal; More specific, less form and abstraction; for example, mm_struct doesn't fully eque address space; it's much like VM; so just focus on specific element, e.g. mm_rb vma
+for ioremmap, put it along with device driver.
 
 # History
 The Archaeology of Knowledge
@@ -81,6 +84,11 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What is science by Feyman](http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf), do you know brown-throated thrush?
+### Language must be restored to real life.
+凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
+to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
+Genealogy -- Michel Foucault.
+### First principle
 ## Learning by doing
 我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 ### Purpose practice

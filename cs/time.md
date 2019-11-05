@@ -9,7 +9,74 @@ category: cs
 # Formal causes
 ## CPU time
 
+commit 0a71336b6a8858a525007c5b4e0d14ba57f9f315
+Author:     Martin Schwidefsky <schwidefsky@de.ibm.com>
+AuthorDate: Tue Jan 11 01:40:38 2005 -0800
+Commit:     Linus Torvalds <torvalds@ppc970.osdl.org>
+CommitDate: Tue Jan 11 01:40:38 2005 -0800
+    [PATCH] cputime: introduce cputime
+    This patch introduces the concept of (virtual) cputime.  Each architecture
+    can define its method to measure cputime.  The main idea is to define a
+    cputime_t type and a set of operations on it (see asm-generic/cputime.h).
+    Then use the type for utime, stime, cutime, cstime, it_virt_value,
+    it_virt_incr, it_prof_value and it_prof_incr and use the cputime operations
+    for each access to these variables.  The default implementation is jiffies
+    based and the effect of this patch for architectures which use the default
+    implementation should be neglectible.
+
+    There is a second type cputime64_t which is necessary for the kernel_stat
+    cpu statistics.  The default cputime_t is 32 bit and based on HZ, this will
+    overflow after 49.7 days.  This is not enough for kernel_stat (ihmo not
+    enough for a processes too), so it is necessary to have a 64 bit type.
+### How to caculate cpu time usage
+http://www.ilinuxkernel.com/files/Linux_CPU_Usage_Analysis.pdf
+CPU time =user+system+nice+idle+iowait+irq+softirq+Stl
+%us =(User time + Nice time)/CPU time * 100
+%sy =(System time + Hard Irq time +SoftIRQ time)/CPU time * 100
+#### vmstat.c
+        duse = *cpu_use + *cpu_nic;
+        dsys = *cpu_sys + *cpu_xxx + *cpu_yyy;
+        didl = *cpu_idl;
+        diow = *cpu_iow;
+        dstl = *cpu_zzz;
+        Div = duse + dsys + didl + diow + dstl;
+        if (!Div) Div = 1, didl = 1;
+        divo2 = Div / 2UL;
+        printf(w_option ? wide_format : format,
+               running, blocked,
+               unitConvert(kb_swap_used), unitConvert(kb_main_free),
+               unitConvert(a_option?kb_inactive:kb_main_buffers),
+               unitConvert(a_option?kb_active:kb_main_cached),
+               (unsigned)( (unitConvert(*pswpin  * kb_per_page) * hz + divo2) / Div ),
+               (unsigned)( (unitConvert(*pswpout * kb_per_page) * hz + divo2) / Div ),
+               (unsigned)( (*pgpgin                * hz + divo2) / Div ),
+               (unsigned)( (*pgpgout               * hz + divo2) / Div ),
+               (unsigned)( (*intr                  * hz + divo2) / Div ),
+               (unsigned)( (*ctxt                  * hz + divo2) / Div ),
+               (unsigned)( (100*duse                    + divo2) / Div ),
+               (unsigned)( (100*dsys                    + divo2) / Div ),
+               (unsigned)( (100*didl                    + divo2) / Div ),
+               (unsigned)( (100*diow                    + divo2) / Div ),
+               (unsigned)( (100*dstl                    + divo2) / Div )
+
+
+### CPU time STEAL 
+[iostat - What does the 'steal' field mean?](https://unix.stackexchange.com/questions/264958/iostat-what-does-the-steal-field-mean)
+Author:     Martin Schwidefsky <schwidefsky@de.ibm.com>
+AuthorDate: Tue Jan 11 01:40:38 2005 -0800
+Commit:     Linus Torvalds <torvalds@ppc970.osdl.org>
+CommitDate: Tue Jan 11 01:40:38 2005 -0800
+    [PATCH] cputime: introduce cputime
+...
+    The third thing that gets introduced by this patch is an additional field
+    for the /proc/stat interface: cpu steal time.  An architecture can account
+    cpu steal time by calls to the account_stealtime function.  The cpu which
+    backs a virtual processor doesn't spent all of its time for the virtual
+    cpu.  To get meaningful cpu usage numbers this involuntary wait time needs
+    to be accounted and exported to user space.
+
 ### CPU time iowait
+check io.log
 
 ###CPU time nice
 Documentation/admin-guide/pm/cpufreq.rst
