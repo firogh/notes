@@ -11,7 +11,9 @@ If you don't control youself, you will be definitely controlled by others.
 Firo: some causes are very intutive. However, others are not easy to be deduced theoritically.
 
 # Will
+人性论》中说：理性是感性的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 Self control and free. - Kant.
+休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 ## If you don't control yourself, you will be controlled by others.
 you lose yourself.
 ## specific, use positive result not negative result to guide yourself.

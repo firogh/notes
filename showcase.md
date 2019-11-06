@@ -1,4 +1,3 @@
-
 **Be a useful and necessary person to this world**
 
 Laptop: ThinkPad T460s
