@@ -31,6 +31,8 @@ The whole is other than the sum of the parts. --Gestalt psychology
 ## Different structure.
 If you not spend too much time on understanding specific things. Then, it will show different structure rather than learning it thoroughly
 
+# Abyss
+
 # Uncertainty
 
 # Complexcity
@@ -66,6 +68,9 @@ Gradual changing
 Classify or container/protection or tidy & tidy up
 It’s easier to invent future than to predict it. —Alan Kay
 
+# Unended quest
+hypotheses, action plan, certainty
+[How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 
 # Ego
 Love yourself; I know I will be lost and confused in my whole life.
