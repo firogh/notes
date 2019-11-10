@@ -31,9 +31,30 @@ The whole is other than the sum of the parts. --Gestalt psychology
 ## Different structure.
 If you not spend too much time on understanding specific things. Then, it will show different structure rather than learning it thoroughly
 
+# History
+The Archaeology of Knowledge
+
+# Future
+Gradual changing
+Classify or container/protection or tidy & tidy up
+It’s easier to invent future than to predict it. —Alan Kay
+
 # Abyss
 
 # Uncertainty
+
+# Unended quest
+hypotheses, action plan, certainty
+[How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
+Continuousness, completeness, consistency, soundness. -- Logic
+## Limitations, restrictions
+## Falsifiability 
+Critical thinking: 
+Hyposis and test; Trail and error; Reflexcity -- Soros
+Hypothesize bravely/boldly, to prove carefully
+Feedback: 英语 是模仿与实践, 英语不是理性能得出的, 是大量模仿实践. 理论很少， 而且尽量减少理论投入
+### Subjectivity
+All plan should be based on problem and pragmatism.
 
 # Complexcity
 Abstraction(up and down, overall control, and refinement), simplification, dividing
@@ -54,23 +75,8 @@ leading to a design or coding error.
 
 [The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
 ## Ways
+High-level description
 Primary and secondary
-Continuousness, completeness, consistency, soundness. -- Logic
-Neural connections.
-Translation from implementation to fromal; More specific, less form and abstraction; for example, mm_struct doesn't fully eque address space; it's much like VM; so just focus on specific element, e.g. mm_rb vma
-for ioremmap, put it along with device driver.
-
-# History
-The Archaeology of Knowledge
-
-# Future
-Gradual changing
-Classify or container/protection or tidy & tidy up
-It’s easier to invent future than to predict it. —Alan Kay
-
-# Unended quest
-hypotheses, action plan, certainty
-[How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 
 # Ego
 Love yourself; I know I will be lost and confused in my whole life.
@@ -91,11 +97,18 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 ![his blackboard at the time of death](http://archives.caltech.edu/pictures/1.10-29.jpg)
 [What is science by Feyman](http://profizgl.lu.lv/pluginfile.php/32795/mod_resource/content/0/WHAT_IS_SCIENCE_by_R.Feynman_1966.pdf), do you know brown-throated thrush?
+
+The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
+[由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
 ### Language must be restored to real life.
 凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
 to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
 Genealogy -- Michel Foucault.
 ### First principle
+### High-level description
+[In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
+[Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
+This method is created during understanding vxlan.
 ## Learning by doing
 我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 ### Purpose practice
@@ -105,19 +118,10 @@ Genealogy -- Michel Foucault.
 Bottom-up;不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」--Hushi
 How much we understand the world isn't better than how well.
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
-#### Limitations, restrictions
 #### SMART
 #### Leave questions open 
 there are always some knowledge which is too complicated to understand and we should leave them alone.
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
-
-# Falsifiability 
-Critical thinking: 
-Hyposis and test; Trail and error; Reflexcity -- Soros
-Hypothesize bravely/boldly, to prove carefully
-Feedback: 英语 是模仿与实践, 英语不是理性能得出的, 是大量模仿实践. 理论很少， 而且尽量减少理论投入
-## Subjectivity
-All plan should be based on problem and pragmatism.
 
 # Dividing
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
@@ -128,5 +132,4 @@ Problem-resolver thinking vs symbol-cacther thinking
 # Analogy
 Successful cases analysis: Background, what she/he did, environment, chance
 # Feynman technique
-Break things down to first principles
 # Transforming
