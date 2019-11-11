@@ -53,8 +53,6 @@ Critical thinking:
 Hyposis and test; Trail and error; Reflexcity -- Soros
 Hypothesize bravely/boldly, to prove carefully
 Feedback: 英语 是模仿与实践, 英语不是理性能得出的, 是大量模仿实践. 理论很少， 而且尽量减少理论投入
-### Subjectivity
-All plan should be based on problem and pragmatism.
 
 # Complexcity
 Abstraction(up and down, overall control, and refinement), simplification, dividing
@@ -82,6 +80,9 @@ Primary and secondary
 Love yourself; I know I will be lost and confused in my whole life.
 Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
+## Subjectivity
+All plan should be based on problem and pragmatism.
+## Concrete gravity
 
 # Relative minds; main causes and secondary causes, Essential causes and additional causes;
 Writers are different to you. They don't know wht you really want.
