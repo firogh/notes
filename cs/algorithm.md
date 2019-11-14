@@ -9,6 +9,9 @@ category: cs
 Algorithms: Design Techniques and Analysis
 The Algorithm Design Manual 2nd Edition
 
+# Bitmap
+Long array
+
 # Computational complexity theory
 http://bigocheatsheet.com/
 

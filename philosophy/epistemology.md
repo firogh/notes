@@ -22,7 +22,6 @@ you lose yourself.
 ## Reward Mechanism
 gay science, showoff
 ## indirect cause, by-product. 
-## Seven deadly sins
 
 # Structure
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
@@ -37,9 +36,23 @@ The Archaeology of Knowledge
 # Future
 Gradual changing
 Classify or container/protection or tidy & tidy up
-It’s easier to invent future than to predict it. —Alan Kay
+It’s easier to invent future than to predict it. — Alan Kay
 
 # Abyss
+## Losing the self. Colony.
+Amusing ourselves to death.
+The Society of the Spectacle
+Kakurenbo
+
+# LQO
+Output
+法乎其上，得乎其中，法乎其中，仅得其下
+By-product
+Massive work.
+SWOT: strengths, weaknesses, opportunities, threats.
+
+# Weaknesses
+Seven deadly sins
 
 # Uncertainty
 
@@ -47,8 +60,9 @@ It’s easier to invent future than to predict it. —Alan Kay
 hypotheses, action plan, certainty
 [How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 Continuousness, completeness, consistency, soundness. -- Logic
-## Limitations, restrictions
 ## Falsifiability 
+## Limitations, restrictions
+## Feasibility
 Critical thinking: 
 Hyposis and test; Trail and error; Reflexcity -- Soros
 Hypothesize bravely/boldly, to prove carefully
@@ -101,15 +115,23 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 
 The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
-### Language must be restored to real life.
+### Connect to reality, then make it concrete.
+Language must be restored to real life. --Ludwig Wittgenstein
 凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
 to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
 Genealogy -- Michel Foucault.
+### Focus
+### Gradually grow up.
+Small, simple, few is more.
+Peaceful walker
+### Order in all and no-split
 ### First principle
 ### High-level description
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
 This method is created during understanding vxlan.
+### Disgust
+
 ## Learning by doing
 我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
 ### Purpose practice
