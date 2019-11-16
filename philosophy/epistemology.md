@@ -101,6 +101,7 @@ Learn by doing.
 
 # Neural circuit
 Learn by doing.
+[Focus](https://nickgreenquist.github.io/blog/miscl/2018/04/10/Learning-How-to-Learn.html)
 
 # Weaknesses
 Seven deadly sins
