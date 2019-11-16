@@ -39,10 +39,14 @@ Classify or container/protection or tidy & tidy up
 It’s easier to invent future than to predict it. — Alan Kay
 
 # Abyss
-## Losing the self. Colony.
+## Losing the self. Colonized by others.
 Amusing ourselves to death.
 The Society of the Spectacle
 Kakurenbo
+assimilated by language, reluctant to use new language.
+## Lost understanding of causality in complexcity and uncertanty.
+Lost cause and , in turn, the effect.
+lost the feeling of 'Love before BC'; Fading.
 
 # LQO
 Output
@@ -51,15 +55,14 @@ By-product
 Massive work.
 SWOT: strengths, weaknesses, opportunities, threats.
 
-# Weaknesses
-Seven deadly sins
-
-# Uncertainty
-
-# Unended quest
+# Uncertainty and unended quest
 hypotheses, action plan, certainty
 [How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 Continuousness, completeness, consistency, soundness. -- Logic
+## SMART
+## Leave questions open 
+there are always some knowledge which is too complicated to understand and we should leave them alone.
+[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 ## Falsifiability 
 ## Limitations, restrictions
 ## Feasibility
@@ -73,6 +76,9 @@ Abstraction(up and down, overall control, and refinement), simplification, divid
 No silver bullet. The Mythical Man-Month
 Object-Oriented Analysis and Design with Applications
 The philosophy of software design
+## Detail complexcity and dynamic complexcity
+See chapter 20 Rewriting the Code of The Fifith discipline.
+
 ## Code complete 2
 In my view, it’s so important that Software’s Primary Technical Imperative has to be managing complexity.
 
@@ -90,6 +96,16 @@ leading to a design or coding error.
 High-level description
 Primary and secondary
 
+# Delay feedback. -- The fifth discipline
+Learn by doing.
+
+# Neural circuit
+Learn by doing.
+
+# Weaknesses
+Seven deadly sins
+Mind is so weak.
+
 # Ego
 Love yourself; I know I will be lost and confused in my whole life.
 Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
@@ -106,7 +122,7 @@ Unerstanding always has some drawbacks: incomplete, wrong, vicroness.
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清. -- Wang Yin
-我们必须流下热汗 才能真正拥有父亲留下的遗产 --Goethe
+我们必须流下热汗 才能真正拥有父亲留下的遗产 -- Goethe
 Don't start from the pure conceptions, from the real basic problems. Problems before conceptions.
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
@@ -115,37 +131,39 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 
 The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
+### Good order all part of life
+youth free feelings.
+compplexcity and uncertanty could frustrate us to get cause. And the effect.
+
 ### Connect to reality, then make it concrete.
 Language must be restored to real life. --Ludwig Wittgenstein
 凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
 to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
 Genealogy -- Michel Foucault.
-### Focus
-### Gradually grow up.
+### First principle
+no divisiable feeling. no feeling of anaolgy and unfamiliar.
+
+### Focus and Gradually grow up.
 Small, simple, few is more.
 Peaceful walker
-### Order in all and no-split
-### First principle
+
+### Learning by doing
+我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
+#### Purpose practice
+深刻感受自己不足. 感受灵活熟练使用能力. 二者的差距. 做不到的桎梏.
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+
+
 ### High-level description
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
 This method is created during understanding vxlan.
-### Disgust
+### Detest and disgust
 
-## Learning by doing
-我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
-### Purpose practice
-深刻感受自己不足. 感受灵活熟练使用能力. 二者的差距. 做不到的桎梏.
-[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
-### Pragmatism
+# Pragmatism
 Bottom-up;不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」--Hushi
 How much we understand the world isn't better than how well.
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
-#### SMART
-#### Leave questions open 
-there are always some knowledge which is too complicated to understand and we should leave them alone.
-[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
-
 # Dividing
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Imitate and creativity; Top-down, bottom-up; Beginner, intermediate, advanced; Understanding and doing; MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references; Positive and negtive; Onset, nucleus, coda
