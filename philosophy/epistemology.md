@@ -103,14 +103,16 @@ Chunk
 ## weak; frail; vulnerable 
 repeatition and recall
 
-# Weaknesses
+# Weaknesses of life
 Seven deadly sins
-Mind is so weak.
+
+# Weaaknesses of mind
+Mind is too weak.
 ## Concrete gravity
 ## Subjectivity
 All plan should be based on problem and pragmatism.
 
-# Relative minds; main causes and secondary causes, Essential causes and additional causes;
+# Relative minds; 
 Writers are different to you. They don't know wht you really want.
 The creators are different to you, too. You are not only lack of what they created, but also ablities they used to create things. Unerstanding vs creation.
 Unerstanding always has some drawbacks: incomplete, wrong, vicroness.
@@ -127,7 +129,7 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 
 The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
-### Good order, expection, problem
+### Good order, expection, problem, weakness.
 Compplexcity and uncertanty could prevent us from procuring cause. And the effect. So good order is mandatory.
 It implies detest and disgust
 Classify or container/protection or tidy & tidy up
@@ -168,6 +170,7 @@ I have never thought about questions that are not real ones - I have not squande
 # Dividing
 [Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
 Imitate and creativity; Top-down, bottom-up; Beginner, intermediate, advanced; Understanding and doing; MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references; Positive and negtive; Onset, nucleus, coda
+# main causes and secondary causes, Essential causes and additional causes;
 # Simplification, few is more.
 要把它想的很简单, 达到豁然开朗; 记少不记多,反而记更多; 时间是否充裕,都先记少; Occam's razor
 Problem-resolver thinking vs symbol-cacther thinking
