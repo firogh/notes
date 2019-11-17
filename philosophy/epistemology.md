@@ -72,16 +72,6 @@ time. You might think of this as mental juggling—the more mental balls the pro
 requires you to keep in the air at once, the more likely you’ll drop one of the balls,
 leading to a design or coding error.
 
-## Biology
-[The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
-
-# Feedback 
-## delay -- The fifth discipline
-Learn by doing.
-## Vicariousness, 
-Learn by doing.
-Illusion of Competence
-
 # Abyss
 ## Losing the self. Colonized by others.
 Amusing ourselves to death.
@@ -91,6 +81,21 @@ assimilated by language, reluctant to use new language.
 ## Lost understanding of causality in complexcity and uncertanty.
 Lost cause and , in turn, the effect.
 lost the feeling of 'Love before BC'; Fading.
+
+# causalites as method
+## The more Concrete and specific the more cleare
+## Feedback 
+### delay -- The fifth discipline
+Learn by doing.
+### Vicariousness, 
+Learn by doing.
+Illusion of Competence
+
+# Life
+Seven deadly sins
+
+## Biology
+[The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
 
 # Neural circuit
 ## different behavoir; different circuit; different me.
@@ -103,20 +108,18 @@ Chunk
 ## weak; frail; vulnerable 
 repeatition and recall
 
-# Weaknesses of life
-Seven deadly sins
-
-# Weaaknesses of mind
-Mind is too weak.
+# Mind
+## Mind the starter of causality
+good order, expection, problem
 ## Concrete gravity
+## Mind is too weak.
 ## Subjectivity
-All plan should be based on problem and pragmatism.
-
-# Relative minds; 
+## Relative minds; 
 Writers are different to you. They don't know wht you really want.
 The creators are different to you, too. You are not only lack of what they created, but also ablities they used to create things. Unerstanding vs creation.
 Unerstanding always has some drawbacks: incomplete, wrong, vicroness.
-## Think for yourself
+
+# Think for yourself
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
 不要成为跑马场, 叔本华晚年整理的论文杂集《附录和补遗》里的《论思考》第4节 别人的跑马场. or in 叔本华美学随笔. 
 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清. -- Wang Yin
