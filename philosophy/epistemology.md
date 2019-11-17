@@ -11,17 +11,12 @@ If you don't control youself, you will be definitely controlled by others.
 Firo: some causes are very intutive. However, others are not easy to be deduced theoritically.
 
 # Will
-人性论》中说：理性是感性的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 Self control and free. - Kant.
 休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 ## If you don't control yourself, you will be controlled by others.
 you lose yourself.
-## specific, use positive result not negative result to guide yourself.
-## Tendency and mini habits
-"“Be the person with embarrassing goals and impressive results instead of one of the many people with impressive goals and embarrassing results.”
-## Reward Mechanism
-gay science, showoff
-## indirect cause, by-product. 
+## Future
+It’s easier to invent future than to predict it. — Alan Kay
 
 # Structure
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
@@ -33,33 +28,19 @@ If you not spend too much time on understanding specific things. Then, it will s
 # History
 The Archaeology of Knowledge
 
-# Future
-Gradual changing
-Classify or container/protection or tidy & tidy up
-It’s easier to invent future than to predict it. — Alan Kay
-
-# Abyss
-## Losing the self. Colonized by others.
-Amusing ourselves to death.
-The Society of the Spectacle
-Kakurenbo
-assimilated by language, reluctant to use new language.
-## Lost understanding of causality in complexcity and uncertanty.
-Lost cause and , in turn, the effect.
-lost the feeling of 'Love before BC'; Fading.
-
-# LQO
-Output
-法乎其上，得乎其中，法乎其中，仅得其下
-By-product
-Massive work.
-SWOT: strengths, weaknesses, opportunities, threats.
-
-# Uncertainty and unended quest
+# Uncertainty and unended quest and hypotheses
 hypotheses, action plan, certainty
 [How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
+法乎其上，得乎其中，法乎其中，仅得其下
 Continuousness, completeness, consistency, soundness. -- Logic
+## specific, use positive result not negative result to guide yourself.
+## Tendency and mini habits
+"“Be the person with embarrassing goals and impressive results instead of one of the many people with impressive goals and embarrassing results.”
+## Reward Mechanism
+gay science, showoff
+## indirect cause, by-product.
 ## SMART
+## SWOT: strengths, weaknesses, opportunities, threats.
 ## Leave questions open 
 there are always some knowledge which is too complicated to understand and we should leave them alone.
 [知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
@@ -91,29 +72,43 @@ time. You might think of this as mental juggling—the more mental balls the pro
 requires you to keep in the air at once, the more likely you’ll drop one of the balls,
 leading to a design or coding error.
 
+## Biology
 [The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
-## Ways
-High-level description
-Primary and secondary
 
-# Delay feedback. -- The fifth discipline
+# Feedback 
+## delay -- The fifth discipline
 Learn by doing.
+## Vicariousness, 
+Learn by doing.
+Illusion of Competence
+
+# Abyss
+## Losing the self. Colonized by others.
+Amusing ourselves to death.
+The Society of the Spectacle
+Kakurenbo
+assimilated by language, reluctant to use new language.
+## Lost understanding of causality in complexcity and uncertanty.
+Lost cause and , in turn, the effect.
+lost the feeling of 'Love before BC'; Fading.
 
 # Neural circuit
+## different behavoir; different circuit; different me.
 Learn by doing.
-[Focus](https://nickgreenquist.github.io/blog/miscl/2018/04/10/Learning-How-to-Learn.html)
+[Neuroplasticity](https://en.wikipedia.org/wiki/Neuroplasticity)
+## Formulation of neural circuit 
+[Focus](https://nickgreenquist.github.io/blog/miscl/2018/04/10/Learning-How-to-Learn.html) 
+## Formal of neural circuit
+Chunk
+## weak; frail; vulnerable 
+repeatition and recall
 
 # Weaknesses
 Seven deadly sins
 Mind is so weak.
-
-# Ego
-Love yourself; I know I will be lost and confused in my whole life.
-Don't limit yourself. Don't be paranoid. Don't get religous about specific programming skill.
-牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
+## Concrete gravity
 ## Subjectivity
 All plan should be based on problem and pragmatism.
-## Concrete gravity
 
 # Relative minds; main causes and secondary causes, Essential causes and additional causes;
 Writers are different to you. They don't know wht you really want.
@@ -132,34 +127,39 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 
 The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
-### Good order all part of life
-youth free feelings.
-compplexcity and uncertanty could frustrate us to get cause. And the effect.
+### Good order, expection, problem
+Compplexcity and uncertanty could prevent us from procuring cause. And the effect. So good order is mandatory.
+It implies detest and disgust
+Classify or container/protection or tidy & tidy up
+#### examples
+牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 
 ### Connect to reality, then make it concrete.
 Language must be restored to real life. --Ludwig Wittgenstein
 凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
 to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
 Genealogy -- Michel Foucault.
+
 ### First principle
 no divisiable feeling. no feeling of anaolgy and unfamiliar.
-
-### Focus and Gradually grow up.
-Small, simple, few is more.
-Peaceful walker
-
-### Learning by doing
-我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
-#### Purpose practice
-深刻感受自己不足. 感受灵活熟练使用能力. 二者的差距. 做不到的桎梏.
-[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
-
+Primary and secondary
 
 ### High-level description
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
 This method is created during understanding vxlan.
-### Detest and disgust
+Primary and secondary
+
+### Learning by doing
+Output. what you did define you.
+我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
+#### Purpose practice
+深刻感受自己不足. 感受灵活熟练使用能力. 二者的差距. 做不到的桎梏.
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+
+### Focus and Gradually grow up.
+Small, simple, few is more.
+Peaceful walker
 
 # Pragmatism
 Bottom-up;不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」--Hushi

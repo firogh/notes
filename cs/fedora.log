@@ -201,3 +201,7 @@ https://steamcommunity.com/app/373420/discussions/0/451848854988674764/?ctp=3
 
 # Disable discrete GPU
 https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_mod_modprobe.html
+
+# vlc
+zypper in gstreamer-plugins-vaapi # hx264
+## "mp4a" (MPEG AAC Audio)
