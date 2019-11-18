@@ -13,6 +13,7 @@ category: philosophy
 # Will, the cause
 休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 ## Non-concrete and Compplexcity and uncertanty could prevent us from procuring cause.
+I have never thought about questions that are not real ones - I have not squandered myself. -- N
 ## Good order, expection, problem, weakness, detest, disgust
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 ## If you don't control yourself, you will be controlled by others. In turn, you lose yourself.
@@ -62,9 +63,14 @@ indirect cause, by-product.
 Continuousness, completeness, consistency, soundness. -- Logic
 ### Delay -- The fifth discipline
 ### Vicariousness, Illusion of Competence
+## Pragmatism
+How much we understand the world isn't better than how well.
+### Leave questions open
+there are always some knowledge which is too complicated to understand and we should leave them alone.
+[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
 
 # Reality
-concrete
+Concrete
 
 # Biology
 [The Magical Number Seven, Plus or Minus Two: Some Limits on our Capacity for Processing Information](http://psychclassics.yorku.ca/Miller/)
@@ -95,6 +101,16 @@ Writers are different to you. They don't know wht you really want.
 The creators are different to you, too. You are not only lack of what they created, but also ablities they used to create things. Unerstanding vs creation.
 ## Abyss
 Losing the self. Colonized by others. Amusing ourselves to death. The Society of the Spectacle Kakurenbo; assimilated by language, reluctant to use new language.
+## Mind abilities
+### Dividing
+[Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
+MECE (Mutually Exclusive and Collectively Exhaustive): Onset, nucleus, coda
+### Simplification, few is more.
+记少不记多,反而记更多; 时间是否充裕,都先记少; Occam's razor
+### Analogy
+Successful cases analysis
+### Transforming
+### Feynman technique
 
 # Think for yourself
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
@@ -109,44 +125,23 @@ All by themselves my eyes put an end to all bookwormery, otherwise known as phil
 
 The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. -- John Locke, An Essay Concerning Human Understanding (1690)
 ## Good order, expection, problem, weakness, detest, disgust
+Beginner, intermediate, advanced
 Classify or container/protection or tidy & tidy up
 ## Connect to reality, then make it concrete.
 Language must be restored to real life. --Ludwig Wittgenstein
-凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。--路德维希·维特根斯坦《哲学评论》
+凡可说的，皆无意义。凡有意义的，皆不得不以荒唐的语言传递其意义。-- 路德维希·维特根斯坦《哲学评论》
 to bring into prominence the fact that the speaking of language is part of an activity, or a form of life.(PI 23)
 Genealogy -- Michel Foucault.
 ## First principle
 no divisiable feeling. no feeling of anaolgy and unfamiliar.
-Primary and secondary
 ## High-level description
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
 This method is created during understanding vxlan.
 Primary and secondary
-## Learning by doing
-Output. what you did define you.
-我们要实事求是，现在像贴贴标语，什么打倒田中义一等，都仅务虚名，像豆腐店里生意不好，看看“对我生财”泄闷一样。又像是以前的画符，一画符病就好的思想。贴了打倒帝国主义，帝国主义就真个打倒了么？这不对，我们应做切实的工作，奋力的做去。 -- Hu Shi
+## Main causes and secondary causes, Essential causes and additional causes;
+## Learning by doing - what you did defines you.
 ### Purpose practice
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
 ## Focus and Gradually grow up.
-Small, simple, few is more.
-Peaceful walker
 
-# Pragmatism
-Bottom-up;不要一味盲目追求「高级感」，而忽视「小事」/「简单事」/「基础事」--Hushi
-How much we understand the world isn't better than how well.
-I have never thought about questions that are not real ones - I have not squandered myself. -- N
-## Leave questions open 
-there are always some knowledge which is too complicated to understand and we should leave them alone.
-[知之为知之,不知为不知,是知也.](http://blog.sina.com.cn/s/blog_679ef4210102vsud.html) 
-# Dividing
-[Descartes's methods](https://en.wikipedia.org/wiki/Discourse_on_the_Method#Part_II:_The_principal_rules_of_the_Method_which_the_Author_has_discovered)
-Imitate and creativity; Top-down, bottom-up; Beginner, intermediate, advanced; Understanding and doing; MECE (Mutually Exclusive and Collectively Exhaustive): Expand all cases, check page_check_references; Positive and negtive; Onset, nucleus, coda
-# main causes and secondary causes, Essential causes and additional causes;
-# Simplification, few is more.
-要把它想的很简单, 达到豁然开朗; 记少不记多,反而记更多; 时间是否充裕,都先记少; Occam's razor
-Problem-resolver thinking vs symbol-cacther thinking
-# Analogy
-Successful cases analysis: Background, what she/he did, environment, chance
-# Feynman technique
-# Transforming
