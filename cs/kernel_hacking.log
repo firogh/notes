@@ -5,6 +5,17 @@ title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
 
+# Hacking goals
+## Trade time for space
+search_exception_tables
+# define _ASM_EXTABLE_HANDLE(from, to, handler)                 \
+        .pushsection "__ex_table","a" ;                         \
+        .balign 4 ;                                             \
+        .long (from) - . ;                                      \
+        .long (to) - . ;                                        \
+        .long (handler) - . ;                                   \
+        .popsection
+
 # Hacking area
 mm
 https://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project
@@ -73,11 +84,9 @@ https://linuxtv.org/wiki/index.php/Development:_Hints_for_Refactoring_Existing_D
 # Prefix, changes and tags
 [Patch v2, v3, ... Changes, tags](https://kernelnewbies.org/PatchTipsAndTricks)
 
-
 [1]: https://www.gnu.org/software/global/links.html
 [2]: http://os.phil-opp.com/
 [3]: https://blacks3pt3mb3r.wordpress.com/linux-stuffz/264-2/
-
 
 # Build minimal bootable rootfs
 ./etc/yum.repos.d/
@@ -95,7 +104,6 @@ sudo dnf --releasever=27 --installroot=/home/firo/kernel/k/testfs/ --setopt=repo
 [Writing an OS in Rust][1]
 
 # Subscribe linux kenrel maillist
-
 
 # linux next source code
 [Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)

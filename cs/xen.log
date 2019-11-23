@@ -7,6 +7,34 @@ https://wiki.xenproject.org/wiki/XenParavirtOps
 /usr/lib64/libxenctrl.so.4.10
 /usr/lib64/libxenctrl.so.4.10.0
 
+# kdump Xen 
+## PV domains
+According to [Kexec and Kdump for Xen](http://xenbits.xenproject.org/docs/4.3-testing/misc/kexec_and_kdump.txt), kdump only works on hypervisor and dom0 kernel. So there is nothig realtead to PV domU. But I
+find a [kdump support for PV domU kexec/kdump implementation for Xen PV domU](https://lkml.org/lkml/2013/7/29/469); it seems not merged to upstream(FIXME). The commit from Petr Tesarik also states that PV domains didn't works with kdump since reserving a crashkernel memory region is not possible due to this commit.
+commit 3db3eb285259ac129f7aec6b814b3e9f6c1b372b
+Author: Petr Tesarik <ptesarik@suse.cz>
+Date:   Wed Apr 25 12:08:35 2018 +0200
+    x86/setup: Do not reserve a crash kernel region if booted on Xen PV
+    Xen PV domains cannot shut down and start a crash kernel. Instead,
+    the crashing kernel makes a SCHEDOP_shutdown hypercall with the
+    reason code SHUTDOWN_crash, cf. xen_crash_shutdown() machine op in
+    arch/x86/xen/enlighten_pv.c.
+    A crash kernel reservation is merely a waste of RAM in this case. It
+    may also confuse users of kexec_load(2) and/or kexec_file_load(2).
+    When flags include KEXEC_ON_CRASH or KEXEC_FILE_ON_CRASH,
+    respectively, these syscalls return success, which is technically
+    correct, but the crash kexec image will never be actually used.
+Generating crash dump for PV dom0: [Enter the xen console; then 'Select C for "trigger a crashdump"'](http://xenbits.xenproject.org/docs/4.3-testing/misc/kexec_and_kdump.txt)
+Generating crash dump for PV domU: [xm dump-core <vm name>](https://support.microfocus.com/kb/doc.php?id=7001384)
+
+## Will PV guest crash lead dom0 crash too?
+[I don't think so: My Xen PV guest kernel crashes, how can I debug it and get a stack/call trace?](https://wiki.xenproject.org/wiki/Xen_Common_Problems#My_Xen_PV_guest_kernel_crashes.2C_how_can_I_debug_it_and_get_a_stack.2Fcall_trace.3F)
+│21:12:06       firo | Hi jgross , if a Xen PV guest is crashed, will the host and other PV guest be affected? I mean stop working.                                                   │ jroedel
+│21:13:50     jgross | firo: no                                                                                                                                                       │ jvanz
+│21:14:09     jgross | firo: otherwise it would be a bug                                                                                                                              │ jwiesner
+│21:15:46       firo | jgross: OK. Do you mean if a PV guest calls xen_crash_shutdown, it will only shut down itself, right?                                                          │ LDewey_office
+│21:17:48     jgross | firo: mostly right. Dom0 calling that will crash the host. 
+
 # Crash
 [xen dump-core format](https://xenbits.xenproject.org/docs/unstable/misc/dump-core-format.txt)
 [Dom0 and hypervisor coredump](http://xen.1045712.n5.nabble.com/xm-dump-core-and-analyzing-td2498845.html)
@@ -30,7 +58,13 @@ relevant to the vmlinux kernel.
 l3mule: /suse/fyang/s/1150597/SR101256835093
 crash xen-syms-4.7.6_05-43.42.1.16518.2.PTF vmcore
 
-# Guest vs Host by cpuid
+
+# Is it Dom0 or DomU? 
+[How do I tell if I'm running in a dom0 or a domU?](https://wiki.xenproject.org/wiki/Xen_FAQ_Dom0)
+/proc/xen/capabilities; xen_initial_domain(); 
+In crash, xen_domain_type == XEN_PV_DOMAIN, xen_start_info && xen_start_info->flags & SIF_INITDOMAIN
+[Is OS running in XEN xen_sysfs_uuid_init](https://stackoverflow.com/questions/3490995/is-there-an-os-command-i-can-run-to-determine-if-running-inside-a-xen-based-virt)
+## Guest vs Host by cpuid
 setup_arch->init_hypervisor_platform->detect_hypervisor_vendor->h->detect->xen_platform->
 static inline uint32_t xen_cpuid_base(void)
 {
@@ -39,17 +73,14 @@ static inline uint32_t xen_cpuid_base(void)
 kvm 
 kvm_detect -> __kvm_cpuid_base
 hypervisor_cpuid_base("KVMKVMKVM\0\0\0", 0);
-# Dom0 or DomU or unrelated?
-xen_sysfs_uuid_init
-https://stackoverflow.com/questions/3490995/is-there-an-os-command-i-can-run-to-determine-if-running-inside-a-xen-based-virt
+## Is Dom0 HVM?
 [Is Dom0 HVM? Firo: No, Dom0 is PV](https://stackoverflow.com/questions/19147398/is-xen-dom0-a-guest-or-a-host)
-
 # Terminology
 https://wiki.xenproject.org/wiki/XenTerminology
 [Use bfn (Bus Frame Number) rather than dfn to match the](https://lists.xen.org/archives/html/xen-devel/2015-08/msg00270.html)
 [Question on p2m table](http://old-list-archives.xenproject.org/archives/html/xen-devel/2011-05/msg02051.html)
 
-# swiotlb
+# Swiotlb
 arch/x86/xen/pci-swiotlb-xen.c
 drivers/xen/swiotlb-xen.c
 crash-vliaskovitis> p dma_ops
@@ -147,8 +178,6 @@ xen_p2m_addr = $9 = (unsigned long *) 0xffffc90000000000
 x/gx 0xffffc90000000000 + 0x2407000
 0xffffc90002407000:     0x00000000000001c0
 start_dma_addr = $10 = 0x1c0000
-
-
 
 ## ops
 crash-vliaskovitis> p xen_swiotlb_dma_ops | grep xen

@@ -30,11 +30,6 @@ echo "MAKEINFO = :" >> Makefile
 -time
 -x c: c language
 -: stdin
-asmlinkage
-However, for C functions invoked from assembly code, 
-we should explicitly declare the function's calling convention, 
-because the parameter passing code in assembly side has been fixed. 
-Show all predefined macros for your compiler
 gcc -dM -E -x c /dev/null
 
 # Alignment of struct

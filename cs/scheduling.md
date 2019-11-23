@@ -47,19 +47,6 @@ ttwu_do_activate
 cfa_rq
 on_list
 sched_entity->on_rq, check enqueue_entity
-## Leaf CFS runqueues
-/*
- * leaf cfs_rqs are those that hold tasks (lowest schedulable entity in
- * a hierarchy). Non-leaf lrqs hold other higher schedulable entities
- * (like users, containers etc.)
- *
- * leaf_cfs_rq_list ties together list of leaf cfs_rq's in a cpu. This
- * list is used during load balance.
- */
-int on_list;
-struct list_head leaf_cfs_rq_list;
-Head of list: rq->leaf_cfs_rq_list
-
 ## CFS runqueue and sched entity
 set_task_rq
 
@@ -368,6 +355,91 @@ static struct sched_domain_topology_level default_topology[] = {
         { sd_init_CPU, cpu_cpu_mask, },
         { NULL, },
 };
+
+## Leaf CFS runqueues leaf_cfs_rq
+### First
+commit 6aa645ea5f7a246702e07f29edc7075d487ae4a3
+Refs: v2.6.22-14-g6aa645ea5f7a
+Author:     Ingo Molnar <mingo@elte.hu>
+AuthorDate: Mon Jul 9 18:51:58 2007 +0200
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Mon Jul 9 18:51:58 2007 +0200
+    sched: cfs rq data types
+ * leaf cfs_rqs are those that hold tasks (lowest schedulable entity in
+ * a hierarchy). Non-leaf lrqs hold other higher schedulable entities
+ * (like users, containers etc.)
+ * leaf_cfs_rq_list ties together list of leaf cfs_rq's in a cpu. This
+ * list is used during load balance.
+Head of list: rq->leaf_cfs_rq_list
+
+### Core load_balance_fair
+commit bf0f6f24a1ece8988b243aefe84ee613099a9245
+Refs: v2.6.22-10-gbf0f6f24a1ec
+Author:     Ingo Molnar <mingo@elte.hu>
+AuthorDate: Mon Jul 9 18:51:58 2007 +0200
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Mon Jul 9 18:51:58 2007 +0200
+    sched: cfs core, kernel/sched_fair.c
+    add kernel/sched_fair.c - which implements the bulk of CFS's
+    behavioral changes for SCHED_OTHER tasks.
++load_balance_fair(struct rq *this_rq, int this_cpu, struct rq *busiest,
++       for_each_leaf_cfs_rq(busiest, busy_cfs_rq) {
+
+### make parent appear after us.
+commit 67e86250f8ea7b8f7da53ac25ea73c6bd71f5cd9
+Author: Paul Turner <pjt@google.com>
+Date:   Mon Nov 15 15:47:05 2010 -0800
+    sched: Introduce hierarchal order on shares update list
+    Avoid duplicate shares update calls by ensuring children always appear before                 # leaf's meaning is changed
+    parents in rq->leaf_cfs_rq_list.
+    This allows us to do a single in-order traversal for update_shares().
+    Since we always enqueue in bottom-up order this reduces to 2 cases:
+    1) Our parent is already in the list, e.g.
+       root
+         \
+          b
+          /\
+          c d* (root->b->c already enqueued)
+    Since d's parent is enqueued we push it to the head of the list, implicitly ahead of b.
+    2) Our parent does not appear in the list (or we have no parent)
+    In this case we enqueue to the tail of the list, if our parent is subsequently enqueued
+    (bottom-up) it will appear to our right by the same rule.
+
+### tmp_alone_branch
+commit 9c2791f936ef5fd04a118b5c284f2c9a95f4a647
+Refs: v4.9-rc5-195-g9c2791f936ef
+Author:     Vincent Guittot <vincent.guittot@linaro.org>
+AuthorDate: Tue Nov 8 10:53:43 2016 +0100
+Commit:     Ingo Molnar <mingo@kernel.org>
+CommitDate: Wed Nov 16 10:29:08 2016 +0100
+    sched/fair: Fix hierarchical order in rq->leaf_cfs_rq_list
+    Fix the insertion of cfs_rq in rq->leaf_cfs_rq_list to ensure that a
+    child will always be called before its parent.
+    The hierarchical order in shares update list has been introduced by
+    commit:
+      67e86250f8ea ("sched: Introduce hierarchal order on shares update list")
+### 
+commit 5d299eabea5a251fbf66e8277704b874bbba92dc
+Author: Peter Zijlstra <peterz@infradead.org>
+Date:   Wed Jan 30 14:41:04 2019 +0100
+    sched/fair: Add tmp_alone_branch assertion
+    The magic in list_add_leaf_cfs_rq() requires that at the end of
+    enqueue_task_fair():
+      rq->tmp_alone_branch == &rq->lead_cfs_rq_list
+
+
+### load_balance_fair - removed
+commit 9763b67fb9f3050c6da739105888327587c30c4d
+Refs: v3.0-rc7-197-g9763b67fb9f3
+Author:     Peter Zijlstra <a.p.zijlstra@chello.nl>
+AuthorDate: Wed Jul 13 13:09:25 2011 +0200
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Thu Jul 21 18:01:46 2011 +0200
+    sched, cgroup: Optimize load_balance_fair()
+    Use for_each_leaf_cfs_rq() instead of list_for_each_entry_rcu(), this
+    achieves that load_balance_fair() only iterates those task_groups that
+    actually have tasks on busiest, and that we iterate bottom-up, trying to
+    move light groups before the heavier ones.
 
 # Throttling entities 
 commit 85dac906bec3bb41bfaa7ccaa65c4706de5cfdf8

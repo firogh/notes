@@ -77,7 +77,10 @@ According to [x86 syscall instruction](https://www.felixcloutier.com/x86/syscall
 According to entry_SYSCALL_64, rcx is rip before it is pushed on the kernel stack.
 So r10 is right 4th args passed from userspace.
 According to do_syscall_64,
-                regs->ax = sys_call_table[nr](
-                        regs->di, regs->si, regs->dx,
-                        regs->r10, regs->r8, regs->r9);
+                regs->ax = sys_call_table[nr](regs->di, regs->si, regs->dx, regs->r10, regs->r8, regs->r9);
 
+## x86 32 asmlinkage
+[By default gcc passes parameters on the stack for x86-32 arch, so what is it needed for? It's because linux kernel uses -mregparm=3 option which overrides the default behaviour](https://qr.ae/Ti5MJJ)
+[enbaled -mregparm=3 Shrinking the kernel with gcc](https://lwn.net/Articles/67175/)
+[What is asmlinkage?](https://kernelnewbies.org/FAQ/asmlinkage)
+However, for C functions invoked from assembly code, we should explicitly declare the function's calling convention, because the parameter passing code in assembly side has been fixed. Show all predefined macros for your compiler

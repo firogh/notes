@@ -36,7 +36,7 @@ Hypotheses, Critical thinking, Falsifiability
 # Causalites as methods and tools, and inherently hypotheses and action plans
 Hyposis and test; Trail and error; Reflexcity -- Soros
 Hypothesize bravely/boldly, to prove carefully -- Hushi
-## The more Concrete and specific the more effective
+## *The more Concrete and specific the more effective*
 [How to Create an Effective Action Plan:  The less clear you are about what you want to do, the less effective your plan will be. ](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 SMART, SWOT: strengths, weaknesses, opportunities, threats.
 ## Feasibility
@@ -76,6 +76,7 @@ Repeatition and recall
 good order, expection, problem
 ## Lose/ cannot find cause due to complexcity and uncertanty. In turn, the effect is lost, too.
 ## Mind is restricted by how it is represented.
+Stereoscopic Thinking
 ## Concrete gravity
 ## Subjectivity
 ## Different minds; different behavoir; Relative minds; 
@@ -99,17 +100,19 @@ Successful cases analysis
 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清. -- Wang Yin
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
 我们必须流下热汗, 才能真正拥有父亲留下的遗产 -- Goethe
-## Good order, expection, problem, weakness, detest, disgust
+## Good order, goals, expection, problem, weakness, detest, disgust
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
-Classify or container/protection or tidy & tidy up
 ## Connect to reality, then make it concrete.
 Language must be restored to real life. -- Ludwig Wittgenstein
 Genealogy -- Michel Foucault.
+## Dividing
+## Direct and Classify or container/protection or tidy & tidy up
 ## First principle
+## Main/primary causes and secondary causes, Essential causes and additional causes;
 ## High-level description
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
-## Main/primary causes and secondary causes, Essential causes and additional causes;
+## Centric and stereoscopic Thinking
 ## Learning by doing - what you did defines you.
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 ### Purpose practice
