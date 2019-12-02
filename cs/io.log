@@ -16,3 +16,6 @@ CommitDate: Wed Sep 2 08:44:08 2009 +0200
     need a higher resolution version of the iowait time.
     This patch below adds this scheduler statistic to the kernel.
 Firo: p->in_iowait
+
+# asynchronous I/O
+[Non-blocking buffered file read operations](https://lwn.net/Articles/612483/)

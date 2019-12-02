@@ -15,6 +15,10 @@ Process control: Process creation and  program execution, Swapping/paging, Synch
 Memory management: paged VM
 I/O system; filesystem
 
+# Problems
+Asynchronous
+latency
+
 # Documents
 [ Linux Foundation Referenced Specifications](http://refspecs.linuxbase.org/)
 

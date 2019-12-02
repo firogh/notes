@@ -75,6 +75,7 @@ Repeatition and recall
 ## Mind the starter of causality
 good order, expection, problem
 ## Lose/ cannot find cause due to complexcity and uncertanty. In turn, the effect is lost, too.
+## Sharttered mind: don't think for yourself. You minds depends on input. If no input, you cannot think.
 ## Mind is restricted by how it is represented.
 Stereoscopic Thinking
 ## Concrete gravity
@@ -100,18 +101,37 @@ Successful cases analysis
 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清. -- Wang Yin
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
 我们必须流下热汗, 才能真正拥有父亲留下的遗产 -- Goethe
-## Good order, goals, expection, problem, weakness, detest, disgust
+Firo: part-> whole concrete causality-> divide->connnection/conflicts/link: 拼接组合创造游戏, 机械迷城解密游戏. Eletmets: final cause and formal cause. Output: de-symbolized hierarchical knapsack.
+## Good order, goals, expection, problem, weakness, detest, disgust, all things should covered by causality including understanding Linux kernel. whatt is my goal?
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
+Marginalism
+Direct and Classify or container/protection or tidy & tidy up
 ## Connect to reality, then make it concrete.
 Language must be restored to real life. -- Ludwig Wittgenstein
 Genealogy -- Michel Foucault.
-## Dividing
-## Direct and Classify or container/protection or tidy & tidy up
-## First principle
-## Main/primary causes and secondary causes, Essential causes and additional causes;
+## From raw edition.
+## Being and time
+Causalities in 3 minutes
+If one thing you have to do, do it now.
+Put it in time
+This strange life. Granin.
+## Knapsack problem.
+life is short. Time is limited.
+One priority list.
+- 千年吸血鬼，一直学知识？kernel总在变。
+贪多求全, 一知半解.
 ## High-level description
+- 扫雷，一花一世界
+- 去符号化，causality 化。
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
 [Level of causal analysis](https://en.wikipedia.org/wiki/Level_of_analysis)
+## Interactions/linkage/connections/conflicts/complete/
+Elements mixed up
+To the end. Perform the ultimate/final cause.
+## Dividing
+Main/primary causes and secondary causes, Essential causes and additional causes;
+## First principle
+It's concrete causality not abstraction.
 ## Centric and stereoscopic Thinking
 ## Learning by doing - what you did defines you.
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)

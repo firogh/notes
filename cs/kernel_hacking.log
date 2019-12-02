@@ -5,6 +5,10 @@ title: Yet another guide on the way to linux kernel hacking
 category: cs
 ---
 
+# Goals of understanding kernel
+High level
+Interactions between componnent.
+kernel总在变.  不能一直学下去. 没有个头.
 # Hacking goals
 ## Trade time for space
 search_exception_tables

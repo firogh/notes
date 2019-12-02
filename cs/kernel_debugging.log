@@ -9,25 +9,9 @@ https://github.com/brendangregg/perf-tools/blob/master/kernel/funcslower
 [16890783.384011]  [<ffffffff81336fee>] ? copy_user_handle_tail+0x5e/0x70
 [16890783.384341]  [<ffffffff8133d250>] ? iov_iter_copy_from_user_atomic+0x90/0x2b0
 
-# Crash
-[Crash Dump Analysis](https://drive.google.com/file/d/1NhZZo5DLOmE0d_97ZfwAsQ6ae1av3knw/view?usp=sharing)
-
-# Crash-python
-[See comment on crash-python pykdump and drgn A kernel debugger in Python: drgn](https://lwn.net/Articles/789641/)
-crash.sh
-target kdumpfile vmcore
-[gdb.Command Commands In Python](https://sourceware.org/gdb/onlinedocs/gdb/Commands-In-Python.html#Commands-In-Python)
-[drn live debugging?](https://github.com/osandov/drgn)
-
 # Debug symbol
 make kernel/sched.s V=1
 ./scripts/decodecode < Oops.txt
-
-# GDB
-gdb vmlinux /proc/kcore
-text_addr=/sys/module/char-read-write/sections/.text
-add-symbol-file /home/nkhare/char-read-write.ko $text_addr
-print &((struct kmem_cache *)0)->offset
 
 # Boot issues
 debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
@@ -37,27 +21,6 @@ debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug
 [kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
 [Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
 
-# Kprobes 
-
-# Systemtap
-[systemtap脚本分析系统中dentry SLAB占用过高问题](https://yq.aliyun.com/articles/131870)
-https://sourceware.org/systemtap/examples/keyword-index.html
-
-stap -L 'kernel.statement("__inet_lookup_established@net/ipv4/inet_hashtables.c:*")'
-stap -g -v -e '%{ int foo; %} probe kernel.function("vfs_read"){ %{ foo=1 %}; printf("addr: %x\n", %{ &foo %} );exit()}'
-stap -g -v -e '%{ int foo; %} probe kprobe.function("vfs_read"){ %{ foo=1 %}; printf("addr: %x\n", %{ &foo %} );exit()}'
-sudo stap -g -v -e '%{ int foo; %} probe kprobe.function("vfs_read"){  %{ printk("addr: %p\n",  &foo) %}; exit()}'
-
-# Syzkaller
-golang-google-golang-api-devel.noarch
-golang-github-golang-sys-devel.noarch
-golang-golangorg-net-devel
-golang-golangorg-oauth2-devel
-qemu-system-x86_64 -m 2048 -net nic -net user,host=10.0.2.10,hostfwd=tcp::51727-:22 -display none -serial stdio -no-reboot -numa node,nodeid=0,cpus=0-1 -numa node,nodeid=1,cpus=2-3 -smp sockets=2,cores=2,threads=1 -enable-kvm -usb -usbdevice mouse -usbdevice tablet -soundhw all -hda /home/firo/kernel/kvm/wheezy.img -snapshot -kernel /home/firo/kernel/arch/x86/boot/bzImage -append "console=ttyS0 vsyscall=native rodata=n oops=panic panic_on_warn=1 panic=86400 ftrace_dump_on_oops=orig_cpu earlyprintk=serial slub_debug=UZ net.ifnames=0 biosdevname=0  kvm-intel.nested=1 kvm-intel.unrestricted_guest=1 kvm-intel.vmm_exclusive=1 kvm-intel.fasteoi=1  kvm-intel.ept=1 kvm-intel.flexpriority=1  kvm-intel.vpid=1 kvm-intel.emulate_invalid_guest_state=1 kvm-intel.eptad=1  kvm-intel.enable_shadow_vmcs=1 kvm-intel.pml=1 kvm-intel.enable_apicv=1 root=/dev/sda"
-
-# Perf
-perf record -a -e kmem:kmalloc --filter "bytes_alloc==64"
-
 # Hardware debug watchpoints
 https://www.kernel.org/doc/ols/2009/ols2009-pages-149-158.pdf
 https://lwn.net/Articles/353050/
@@ -66,9 +29,6 @@ https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-cha
 # CONFIG_DEBUG_PAGEALLOC
 check_poison_mem in alloc_pages
 free_pages_prepare posion
-# eBPF
-https://lwn.net/Articles/740157/
-[How to turn any syscall into an event: Introducing eBPF Kernel probes](https://blog.yadutaf.fr/2016/03/30/turn-any-syscall-into-event-introducing-ebpf-kernel-probes/)
 
 # Lockup
 [kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
@@ -153,13 +113,6 @@ define_dev_printk_level
 THese functions are like pr_func
 dev_debug
 
-# BUG made by me
-* print_signal_info wrong pritk parameters position
-        printk(KERN_NOTICE "K %d : %d -> %s %d %s %d\n", sig, q->info.si_code,
-                ss[2], ss[3], task_tgid_vnr(r_t), task_tgid_vnr(r_p));
- Watch compile warning info can be avoid of this bug.
-* spin_lock(sighand) invoke down_sem and cond_resched...
-        __send_signal()
 
 # The nulified timer function issue
 我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.

@@ -43,6 +43,9 @@ activate_task - move a task to the runqueue.
 wake_up_new_task
 ttwu_do_activate
 
+# Latency
+[Improving scheduler latency](https://lwn.net/Articles/404993/)
+
 # CFS runqueues
 cfa_rq
 on_list

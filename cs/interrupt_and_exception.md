@@ -156,6 +156,8 @@ x86: Don't use frame pointer to save old stack on irq entry
 ...
 2:     /* Store previous stack value */
        pushq %rsi
+[Firo: end of EOI; x86/dumpstack: make stack name tags more comprehensible](https://lore.kernel.org/patchwork/patch/736894/)
+
 ## LQO
 ### do_nmi do_int3 debug_stack_usage_inc, debug_idt_descr, debug_idt_table,
 load_debug_idt

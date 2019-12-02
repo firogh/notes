@@ -15,6 +15,9 @@ Documentation/filesystems/vfs.txt
 init_mount_tree
 and sys_chroot
 
+# fsck
+man systemd-fsck-root.service
+
 # ?? mkfs.ext2
 e2fsprog
 
