@@ -14,3 +14,14 @@ CommitDate: Fri Jun 23 07:42:51 2006 -0700
     [PATCH] add page_mkwrite() vm_operations method
 
 [File holes, races, and mmap()](https://lwn.net/Articles/357767/)
+[Add notification of page becoming writable to VMA ops](https://lwn.net/Articles/162178/)
+
+# Page cache
+
+# Page writeback
+
+# Buffer head
+
+# Block
+
+
