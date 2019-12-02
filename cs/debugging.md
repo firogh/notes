@@ -5,7 +5,12 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Quote
+Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?
+"The Elements of Programming Style", 2nd edition, chapter 2. Brian Kernighan
+
 # Reference
+[CWE VIEW: Research Concepts](https://cwe.mitre.org/data/definitions/1000.html)
 Debug hacks: a book on how to debug.
 
 # OOB

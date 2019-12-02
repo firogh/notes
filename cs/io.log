@@ -19,3 +19,6 @@ Firo: p->in_iowait
 
 # asynchronous I/O
 [Non-blocking buffered file read operations](https://lwn.net/Articles/612483/)
+
+# Buffered I/O 
+
