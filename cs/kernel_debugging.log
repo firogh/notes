@@ -88,9 +88,6 @@ Author: Thomas Gleixner <tglx@linutronix.de>
 Date:   Wed Apr 30 00:55:03 2008 -0700
     debugobjects: add timer specific object debugging code
 
-# Tracing
-[Linux Tracing Technologies](https://www.kernel.org/doc/html/v4.18/trace/index.html)
-
 # Print
 ## Early print
 putstr
