@@ -21,4 +21,4 @@ Firo: p->in_iowait
 [Non-blocking buffered file read operations](https://lwn.net/Articles/612483/)
 
 # Buffered I/O 
-
+[Ensuring data reaches disk](https://lwn.net/Articles/457667/)

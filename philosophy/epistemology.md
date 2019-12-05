@@ -102,6 +102,8 @@ Successful cases analysis
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
 我们必须流下热汗, 才能真正拥有父亲留下的遗产 -- Goethe
 Firo: part-> whole concrete causality-> divide->connnection/conflicts/link: 拼接组合创造游戏, 机械迷城解密游戏. Eletmets: final cause and formal cause. Output: de-symbolized hierarchical knapsack.
+Firo: Where to find causality: in your heart; time Archaeology; causes of cause
+Firo: First Cause; second effect. 
 ## Good order, goals, expection, problem, weakness, detest, disgust, all things should covered by causality including understanding Linux kernel. whatt is my goal?
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 Marginalism

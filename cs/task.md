@@ -9,6 +9,9 @@ category: cs
 [thread vs event](http://courses.cs.vt.edu/cs5204/fall09-kafura/Presentations/Threads-VS-Events.pdf)
 ## PID
 [PIDTYPE_PID](https://lwn.net/Articles/606925/)
+task->pid: thread id: unique
+task->tgid: task group id: child thread share parent's tgid
+Check copy_process
 
 # kthread - Kernel thread
 [active_mm](https://www.kernel.org/doc/Documentation/vm/active_mm.txt)

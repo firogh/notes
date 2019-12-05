@@ -15,6 +15,16 @@ instead, they are stored in dedicated pages called “buffer pages,” which are
 the page cache.  -- ULK Chapter 15: Storing Blocks in the Page Cache
 Section Storing Blocks in Page Cache is invaluable; 
 
+Block buffers: This descriptor contains all the information needed by the kernel to know how to handle the block;
+thus, before operating on each block, the kernel checks its buffer head.
+
+Buffer pages: attach_page_buffers
+Block device buffer pages
+grow_buffers-> grow_dev_page
+try_to_release_page
+Buffer cache: Inode is stored on the buffer cache; check sync_inode_metadata and __ext2_write_inode
+
+
 ## [Linux pagecache history](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 
 
@@ -91,23 +101,6 @@ the Linux kernel that unfortunately bears the same name.
 ## Operations
 find_get_page, add_to_page_cache, delete_from_page_cache, replace_page_cache_page
 add_to_page_cache_lru
-
-# Block buffers
-buffer_head
-This descriptor contains all the information needed by the kernel to know how to handle the block;
-thus, before operating on each block, the kernel checks its buffer head.
-submit_bh()
-
-# Buffer pages 
-attach_page_buffers
-
-# Block device buffer pages
-grow_buffers-> grow_dev_page
-try_to_release_page
-
-# Buffer cache
-Inode is stored on the buffer cache; check sync_inode_metadata and __ext2_write_inode
-
 
 ## Search structure
 file page cache : key is page.index( offset in file), item is page.

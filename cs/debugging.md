@@ -12,7 +12,11 @@ Everyone knows that debugging is twice as hard as writing a program in the first
 # Reference
 Debug hacks: a book on how to debug.
 
+# Hardware Bugs
+If this has only happened on a single physical machine, I suggest that machine be considered to be faulty.
+
 # Bug classifications
+Every bug belons to a known type
 [CWE VIEW: Research Concepts](https://cwe.mitre.org/data/definitions/1000.html)
 [BUG type of Jim Gray][2],除了Bohrbug,其他都不太好解.
 The National Vulnerability Database是一个非常有用的网站, 国内鲜少有人提及.尤其是,

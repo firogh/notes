@@ -57,27 +57,6 @@ Remove an inode
 Read the content of an inode
 Write contents of an inode
 
-## Principles
-Layering
-Performance: page cache
-## Thinking over
-Backdev info
-FS format
-inode content space index
-## FS
-Read the first block
-buffer head:hard drive locations and sizes; memory addr
-alloc an inode: linked to parent and mark parent dirty in memory, then write to disk
-alloc spare space: record the locations of the spare space in inode
-write the dirty space: user the buffer head record the locations 
-* page cache 
-address_space a_ops
-page size vs block size
-VMA: process map a whole page and use vma to descirbe it.
-but if write overflow? the adjacent  buffer head will corrupt.
-* block io
-buffer head: unite 512
-
 ### FS block size
 blockdev --getbsz /dev/sda1 
 4096
@@ -87,24 +66,6 @@ sudo tune2fs -l /dev/sda1 | grep size
 Parameters: locations and size
 Read content from disk
 Write content form disk
-
-# buffer head
-__getblk_slow
-grow_buffers
-grow_dev_page
-alloc_page_buffers
-
-## BH_delay
-16:53大疆创新李磊 阿克曼
-@杨永明 Firo 延迟分配，可以减少多进程同时写文件造成文件碎片
-设想一个场景，两个进程pa,pb同时追加写文件，如果直接申请块就马上给的话，就会出现pa申请的block在1,3,5……
-pb申请的block在2,4，6……
-bh_delayn推迟块的分配时机到回写时候进行。这样pa和pb就能分别获取连续的物理块
-[[RFC] basic delayed allocation in VFS](https://linux-fsdevel.vger.kernel.narkive.com/bGiQumkf/rfc-basic-delayed-allocation-in-vfs)
-
-# FS format
-fs-sb; fs-inode space; Spare space
-The hierarchy of inode is mantained linked lists.
 
 # inode_hashtable
 ext2_iget
