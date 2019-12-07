@@ -1,5 +1,11 @@
+
+# Reference
 http://nenya.ms.mff.cuni.cz/teaching/crash_dump_analysis/slides/09-crash.pdf
 https://w3.suse.de/~ptesarik/crash-refcard/refcard.pdf
+[lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
+[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
+[Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
+
 
 # list
 crash> p file_lock_list

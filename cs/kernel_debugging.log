@@ -1,30 +1,6 @@
 
-# Top
-https://github.com/iovisor/bcc/blob/master/tools/opensnoop.py
-https://github.com/brendangregg/perf-tools/blob/master/kernel/funcslower
-
-# Backtrace
-[16890783.380940] Call Trace:
-[16890783.383440] Inexact backtrace:
-[16890783.384011]  [<ffffffff81336fee>] ? copy_user_handle_tail+0x5e/0x70
-[16890783.384341]  [<ffffffff8133d250>] ? iov_iter_copy_from_user_atomic+0x90/0x2b0
-
-# Debug symbol
-make kernel/sched.s V=1
-./scripts/decodecode < Oops.txt
-
 # Boot issues
 debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
-
-# Kernel oops
-[lkml-Linus-Al-Viro-oops-debug](http://yarchive.net/comp/linux/oops_decoding.html)
-[kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
-[Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
-
-# Hardware debug watchpoints
-https://www.kernel.org/doc/ols/2009/ols2009-pages-149-158.pdf
-https://lwn.net/Articles/353050/
-https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-change-in-linux-kernel-and-print-stack-trace
 
 # CONFIG_DEBUG_PAGEALLOC
 check_poison_mem in alloc_pages
@@ -42,7 +18,7 @@ NMI watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [test.sh:16464]
 ...
 Kernel panic - not syncing: softlockup: hung tasks
 
-# Hardware watchdog
+## Hardlockup
 watchdog_overflow_callback
 watchdog_nmi_enable ->watchdog_overflow_callback
 
@@ -64,62 +40,20 @@ DETECT_HUNG_TASK, kernel/hung_task.c, check_hung_uninterruptible_tasks
 3: t->nvcsw + t->nivcsw, t->last_switch_count and timeout
 cat /proc/self/status | grep ctxt_switches
 
+# Use after free
+SLUB Redzone
+KASAN
 
-# slab Redzone
-
-# Deadlock
-Lockdep
-[The kernel lock validator](https://lwn.net/Articles/185666/)
-[Runtime locking correctness validator](https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt)
-https://lkml.org/lkml/2013/2/4/4
-
-# Kasan
-setup_arch->kasan_init
-[KernelAddressSanitizer a fast memory error detector for the Linux kernel](http://events.linuxfoundation.org/sites/events/files/slides/LinuxCon%20North%20America%202015%20KernelAddressSanitizer.pdf)
-[kasan found stack out of bounds](https://github.com/zfsonlinux/zfs/pull/4708/commits/01709937be3c28a89eff83e0e657a72826947506)
-[lwn The kernel address sanitizer](https://lwn.net/Articles/612153/)
-[out of bounds](https://lkml.org/lkml/2014/12/3/128)
-Interceptors of memset/memmove/memcpy 393f203f5fd54421fddb1e2a263f64d3876eeadb
-
-# [The object-lifetime debugging infrastructure](https://www.kernel.org/doc/html/latest/core-api/debug-objects.html)
+## [The object-lifetime debugging infrastructure](https://www.kernel.org/doc/html/latest/core-api/debug-objects.html)
 [LWN: An object debugging infrastructure](https://lwn.net/Articles/271614/)
 commit c6f3a97f86a5c97be0ca255976110bb9c3cfe669
 Author: Thomas Gleixner <tglx@linutronix.de>
 Date:   Wed Apr 30 00:55:03 2008 -0700
     debugobjects: add timer specific object debugging code
 
-# Print
-## Early print
-putstr
-early_printk
-Linux serial-port driver is interrupt driven, if irq-off console will not work!
 
-## Dynamic print
-Precondition: CONFIG_DYNAMIC_DEBUG
-How to use it during kernel booting?
-Use boot option:
-dyndbg="file drivers/usb/host/ehci-hcd.c +p; file
-drivers/usb/host/ehci-ppc-of.c +p" loglevel=8
-loglevel=8 dyndbg="module ehci_pci +p;
-module ehci_hcd +p; module usbcore +p"
-After booting:
-/sys/kernel/debug/dynamic_debug/control
-## Dev print
-drivers/base/core.c
-define_dev_printk_level
-THese functions are like pr_func
-dev_debug
-
-
-# The nulified timer function issue
-我前几天定位了一个Softirq中timer corruption的问题, 现象是timer func是个非法地址.
-首先, 一下子不能确认是由那种Bug type导致的.可能是Improper Restriction of Operations
-within the Bounds of a Memory Buffer 也可能是Use after free. 所以此时debug的关键所在
-就是收集observations,也就是function的名字, 而我遇到的这个问题timer 被完全写坏了.
-可以用ftrace收集所有timer 的地址和function, 再从oops里面得到timer地址,回头找ftrace
-log中记录的function, 从而定位问题. 稍后介绍, 如何通过expect抓屏幕log.
-这个方法没成功, 时候分析知道是因为panic的瞬间出问题的timer的地址和function没来得及
-记录到ftrace.怎么办? 我直接说了, 我想到一个办法, 把timer的空间增大, 增大的空间用来
-保存function,在oops把这块内存打出来. 此法非常有用, timer的function一下子就找到了, 进而
-确认了问题是use after free. 非常开心:-)这里的解释了如何收集observations的技巧.对待use
-after free的问题是够了, 以后用到这类问题基本可以妙解了.
+# Deadlock
+Lockdep
+[The kernel lock validator](https://lwn.net/Articles/185666/)
+[Runtime locking correctness validator](https://www.kernel.org/doc/Documentation/locking/lockdep-design.txt)
+https://lkml.org/lkml/2013/2/4/4
