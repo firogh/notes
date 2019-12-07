@@ -11,6 +11,9 @@ http://c-faq.com/index.html
 # size of zero-length array
 [Although the size of a zero-length array is zero](https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html)
 
+# array
+[Zero-based numbering](https://en.wikipedia.org/wiki/Zero-based_numbering)
+
 # Initialization
 ## unilialzed of members of struct on automiact storage 
 If there are fewer initializers in a brace-enclosed list than there are elements or members
