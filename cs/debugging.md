@@ -12,14 +12,13 @@ Everyone knows that debugging is twice as hard as writing a program in the first
 # Reference
 Debug hacks: a book on how to debug.
 
-# Hardware Bugs
-If this has only happened on a single physical machine, I suggest that machine be considered to be faulty.
-
 # Bug classifications
 [Software bug types](https://en.wikipedia.org/wiki/Software_bug#Types)
 [CWE VIEW: Research Concepts](https://cwe.mitre.org/data/definitions/1000.html)
 [CWE VIEW: Simplified Mapping](https://cwe.mitre.org/data/definitions/1003.html)
 [CWE VIEW: Development Concepts](https://cwe.mitre.org/data/definitions/699.html)
+## Hardware Bugs
+If this has only happened on a single physical machine, I suggest that machine be considered to be faulty.
 ## Memory corruption
 [The generic term "memory corruption"](https://cwe.mitre.org/data/definitions/119.html)is often used to describe the consequences of writing to memory outside the bounds of a buffer, when the root cause is something other than a sequential copies of excessive data from a fixed starting location(i.e., classic buffer overflows or CWE-120). This may include issues such as incorrect pointer arithmetic, accessing invalid pointers due to incomplete initialization or memory release, etc.]
 [An example by Neil Brown: The corrupted list of inodes could be due to one inode being freed and re-used while still on the list - or it could be due to memory corruption of a forward pointer.](https://bugzilla.suse.com/show_bug.cgi?id=1155930#c12)
@@ -39,15 +38,19 @@ Invalid page fault(including NULL pointer dereference)
 # Debugging
 [Abductive reasoning](https://en.wikipedia.org/wiki/Abductive_reasoning#Logic-based_abduction)
 Every bug belons to a known type.
-## Steps according to observations, narrow down Hypothses 
-Data: whole structure, life corruption;life cycle; which part is ok and which part is wrong
+## Steps according to observations, narrow down Hypothses, successive approximation
+Scientific method
+## Get observations and analysis data
+observation.log
+Data: whole structure, list corruption;life cycle; which part is ok and which part is wrong, Data connections
 call paths: related
-H1, H2, H3, ... => X : But types
+## Think backward
+How far from symptom to root cause could we think?
+Missing cause:
+## Known bug types assumptions 
+Mix up Bug types, observations and related all paths
 
 ## Connect to programming skills.
-
-# Get observations
-observation.log
 
 # Anti-debugging
 * Syntax checking
