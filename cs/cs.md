@@ -18,6 +18,21 @@ I/O system; filesystem
 # Problems
 Asynchronous
 latency
+scalibity
+
+# Concurrency
+CSAPP3e: Chapter 12 concurrent programming
+Parallel and Concurrent Programming in Haskell
+The origin of concurrent programming: from semaphores to remote procedure calls - Per Brinch Hansen
+[Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)
+[Firo: good introduction on history of concurrency: Shared-Memory Concurrency](https://www.dcl.hpi.uni-potsdam.de/teaching/pvprog/Slides/C1_concurrency.pdf)
+[Turing lecture: The computer science of concurrency: the early years](https://dl.acm.org/citation.cfm?id=2771951)
+[Firo: example: Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
+## concurrent vs parallel
+Programming vs computing: software vs hardware
+concurrent programming: multi-thread stress on how to create thread to model the outside world.
+parallel programming: smp, synchronization, lock, lock-free, atomic
+
 
 # Documents
 [ Linux Foundation Referenced Specifications](http://refspecs.linuxbase.org/)
