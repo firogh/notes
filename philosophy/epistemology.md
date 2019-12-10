@@ -8,6 +8,7 @@ category: philosophy
 # Causality
 [Aristotle: we do not have knowledge of a thing until we have grasped its why, that is to say, its cause](https://en.wikipedia.org/wiki/Four_causes)
 [Richard Feynman. Why.](https://www.youtube.com/watch?v=36GT2zI8lVA)
+Causality means concrete. All surround causality.
 
 # Will, the cause
 休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
@@ -99,6 +100,10 @@ MECE (Mutually Exclusive and Collectively Exhaustive): Onset, nucleus, coda
 Successful cases analysis
 ### Transforming
 ### Feynman technique
+
+# Knowledge
+Knowledge is created from causality not empty.
+The generic knowloedge is abrstracted from causalities. Conversely, generic knowledge can control causalities, which is total fallacy.
 
 # Think for yourself
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
