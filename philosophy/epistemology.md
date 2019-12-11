@@ -1,6 +1,6 @@
 ---
 date: 2008-09-13
-title: The epistemology on which I am living
+title: Will to causality
 category: philosophy
 ---
 # Being
