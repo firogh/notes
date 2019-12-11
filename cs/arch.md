@@ -4,16 +4,9 @@ title: Computer architecture
 date: 2015-10-13
 category: cs
 ---
-# ref
-https://people.cs.clemson.edu/~mark/architects.html
-
-# ASM
-Reference asm global label in C
-char _text[];           x86_64_64;
-unsigned long _text;    x86_64_PC32
-They are different in amrithmatic operstion.
 
 ##Reference
+https://people.cs.clemson.edu/~mark/architects.html
 [Latency Numbers Every Programmer Should Know](http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
 [How a CPU Works](https://youtu.be/cNN_tTXABUA)
 A Symbolic Analysis of Relay and Switching Circuits
@@ -41,21 +34,7 @@ with the rigorous mathematical study of the meaning of programming languages.
 Language primitive
 ISA: memory model, registers, data types, instructions, word size(?).
 Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory barrier/memory order primitive's semantics.
-#x86 Interrupt
-If interrupt occured in user mode, then cpu will context swith for potential reschedule.
-The Interrupt Descriptor Table (IDT) is a data structure used by the x86 architecture to implement an interrupt vector table. 
-##Hardware interrupts
-are used by devices to communicate that they require attention from the operating system.
-asynchronus
-more details in init_IRQ() or set_irq() in driver.
-##software interrupt 
-synchronus
-more details in trap_init().
-* exception or trap
-is caused either by an exceptional condition in the processor itself, 
-divide zero painc?
-* special instruction, for example INT 0x80
-or a special instruction in the instruction set which causes an interrupt when it is executed.
+
 # I/O IC 
 serial communication: UART(16550) + RS-232 
 parallel communication: SCSI, ISA, ATA, PCI, FSB

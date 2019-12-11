@@ -16,6 +16,9 @@ Causality means concrete. All surround causality.
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
 ## If you don't control yourself, you will be controlled by others. In turn, you lose yourself.
 
+# Universal connection
+Aspect and perspective.
+
 # Time, History, future, being, death
 It’s easier to invent future than to predict it. — Alan Kay
 Denial of reliazation of death will lose control of time. - Firo
@@ -78,6 +81,8 @@ Repeatition and recall
 # Life
 哈哈哈哈，中学时期我也隐隐约约的感受到这一点，只不过那时候描述不出来这个道理：反反复复的做自己擅长的题目，是没办法提高自己的成绩的！虽然反复练习可以提高熟练度，但是更多人是一种本能的享受安逸。所以，那些看起来很刻苦、很花时间的学生，并不一定有一个好的成绩。。
 https://book.douban.com/review/8490682/
+Marginalism
+just for fun -> participate -> control -> fewer but power
 
 # Mind
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)

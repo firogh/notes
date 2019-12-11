@@ -30,6 +30,7 @@ vfs_fsync_range -> ext2_fsync->generic_file_fsync
  => ksys_sync
 
 # fysnc
+[Asynchronous fsync()](https://lwn.net/Articles/789024/)
 sync_mapping_buffers
 commit 43152186ec28f3d4adf2a79ff8becacdfca9c82d
 Author:     Andrew Morton <akpm@zip.com.au>

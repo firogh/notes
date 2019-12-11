@@ -6,6 +6,9 @@ https://w3.suse.de/~ptesarik/crash-refcard/refcard.pdf
 [kernel oops tracing](https://www.kernel.org/doc/Documentation/oops-tracing.txt)
 [Debugging a kernel crash found by syzkaller](http://vegardno.blogspot.com/2016/08/sync-debug.html?m=1)
 
+# Build
+ncurses-devel-32bit for termcap
+zlib-devel-32bit
 
 # list
 crash> p file_lock_list

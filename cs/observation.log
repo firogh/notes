@@ -57,6 +57,8 @@ https://lwn.net/Articles/353050/
 https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-change-in-linux-kernel-and-print-stack-trace
 
 # Backtrace
+The Linux x86 ORC Stack Unwinder](http://www.codeblueprint.co.uk/2017/07/31/the-orc-unwinder.html)
+[The ORCs are coming](https://lwn.net/Articles/728339/)
 [16890783.380940] Call Trace:
 [16890783.383440] Inexact backtrace:
 [16890783.384011]  [<ffffffff81336fee>] ? copy_user_handle_tail+0x5e/0x70
