@@ -1,5 +1,4 @@
 # Formal causes
-[Firo A must watch: Kernel Recipes 2015 - Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
 [book_linuxkernel_blockdrv](https://github.com/gurugio/book_linuxkernel_blockdrv)
 [Linux Block Device Architecture](https://yannik520.github.io/blkdevarch.html)
 [Notes on the Generic Block Layer Rewrite in Linux 2.5](https://www.kernel.org/doc/Documentation/block/biodoc.txt)

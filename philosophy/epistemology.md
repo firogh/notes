@@ -75,6 +75,10 @@ Chunk
 ### Weak, frail, vulnerable
 Repeatition and recall
 
+# Life
+哈哈哈哈，中学时期我也隐隐约约的感受到这一点，只不过那时候描述不出来这个道理：反反复复的做自己擅长的题目，是没办法提高自己的成绩的！虽然反复练习可以提高熟练度，但是更多人是一种本能的享受安逸。所以，那些看起来很刻苦、很花时间的学生，并不一定有一个好的成绩。。
+https://book.douban.com/review/8490682/
+
 # Mind
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
 ## Mind the starter of causality
@@ -104,6 +108,9 @@ Successful cases analysis
 # Knowledge
 Knowledge is created from causality not empty.
 The generic knowloedge is abrstracted from causalities. Conversely, generic knowledge can control causalities, which is total fallacy.
+## Define the question, restore to life and causlaity
+## Architecture: common causes for many effects.
+## Just for fun.
 
 # Think for yourself
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer

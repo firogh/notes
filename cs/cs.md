@@ -16,9 +16,12 @@ Memory management: paged VM
 I/O system; filesystem
 
 # Problems
-Asynchronous
-latency
-scalibity
+Concurrency
+VM
+IO
+Memory hierarchy
+Latency
+Scalibity
 
 # Concurrency
 CSAPP3e: Chapter 12 concurrent programming
