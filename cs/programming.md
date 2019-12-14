@@ -22,15 +22,21 @@ High cohesion low coupling
 [Linux Kernel Programming Patterns](http://www.cs.fsu.edu/~baker/devices/notes/patterns.html#)
 
 # Computer programming
-编程作为我重要的谋生手段, 有必要审慎的加以考察审视. 程序设计应该包含那些最少的, 必备的, 重要的能力呢?
-[The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/)给出了大概的框架, 但不完整.
-我认为最重要的就是Abstraction and design.
-[How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/)还有[SICP](http://sarabander.github.io/sicp/)以及Elements of programming.
-其次我们要掌握几门Programming language.
-养成好的Coding style, 
-Valid and verification
-Testing
-Debuging
+[The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
+
+## Procedure and Subroutine
+https://en.wikipedia.org/wiki/Link_register
+[Dijkstra, E. W. (1960). "Recursive Programming"](https://link.springer.com/article/10.1007%2FBF01386232)
+[Subroutine and procedure call support](https://people.cs.clemson.edu/~mark/subroutines.html)
+https://people.cs.clemson.edu/~mark/subroutines.html
+https://en.wikipedia.org/wiki/Subroutine
+* 1945 Turing on subroutines in [Proposed electronic calculator.](http://www.alanturing.net/turing_archive/archive/p/p01/P01-011.html)
+In Chapter 6. Outline of Logical Control.
+We also wish to be able to arrange for the splitting up of operations into...
+When we wish to start on a subsidiary operation we need only make a note
+of where we left off the major operation...
+* 1952 [The use of sub-routines in programmes](http://www.laputan.org/pub/papers/wheeler.pdf)
+The above remarks may be summarized by saying sub-routines are very useful — although not absolutely necessary — and that the prime objectives to be born     in mind when constructing them are simplicity of use, correctness of codes and accuracy of description. All complexities should—if possible—be buried out of sight.
 
 # Files sytle
 [kernel asm/asm-generic](https://lists.kernelnewbies.org/pipermail/kernelnewbies/2012-March/004986.html)
