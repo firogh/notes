@@ -131,6 +131,7 @@ Other adresses are always Absolute except register
 [x86: Add documentation for rd/wr fs/gs base](https://lore.kernel.org/patchwork/patch/560242/)
 [x86: Add support for rd/wr fs/gs base](https://lkml.org/lkml/2016/3/21/517)
 http://drops.xmd5.com/static/drops/papers-4860.html
+For using in TLS, please check [OSDEV TLS](http://wiki.osdev.org/Thread_Local_Storage#ABI)
 ## IA32e
 v3a 3.4.4 Segment Loading Instructions in IA-32e Mode
 When FS and GS segment overrides are used in 64-bit mode, their respective base addresses are used in the linear
