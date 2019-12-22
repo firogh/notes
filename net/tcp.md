@@ -142,3 +142,6 @@ sk_timer
 listen: synack
 estblished: keepalive
 timewait:
+
+# close
+[从linux源码看socket的close](https://my.oschina.net/alchemystar/blog/1821680)

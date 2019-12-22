@@ -79,6 +79,7 @@ Chunk
 Repeatition and recall
 
 # Life
+One of the conditions for reading what is good is that we must not read what is bad; for life is short and time and energy are limited. - Schopenhauver on reading and books
 哈哈哈哈，中学时期我也隐隐约约的感受到这一点，只不过那时候描述不出来这个道理：反反复复的做自己擅长的题目，是没办法提高自己的成绩的！虽然反复练习可以提高熟练度，但是更多人是一种本能的享受安逸。所以，那些看起来很刻苦、很花时间的学生，并不一定有一个好的成绩。。
 https://book.douban.com/review/8490682/
 Marginalism
@@ -113,25 +114,43 @@ Successful cases analysis
 # Knowledge
 Knowledge is created from causality not empty.
 The generic knowloedge is abrstracted from causalities. Conversely, generic knowledge can control causalities, which is total fallacy.
+We can never read the bad too little and the good too often. Inferior books are intellectual poison; they ruin the mind. - Schopenhauver on reading and books
+## 活知识
+## Swim and history
 ## Define the question, restore to life and causlaity
 ## Architecture: common causes for many effects.
 ## Just for fun.
 
 # Think for yourself
+When we read, another person thinks for us: we merely repeat his mental process. - Schopenhauver on reading and books
+From all this it may be concluded that thoughts put down on paper are nothing more than footprints in the sand: one sees the road the man has taken, but in order to know what he saw on the way, one requires his eyes. - Schopenhauver on reading and books
 “记录在纸上的思想，不过是像在沙上行走者的足迹而已，我们也许能看到他所走过的路径；如果我们想要知道他在路上看见些什么，则必须用我们的眼睛” - Schopenhauer
 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清. -- Wang Yin
-All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. --Human, All Too Human With Two Continuations
+All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. -- Ecce Homo Nietzsche, Why I write such good books, Review of Human, All Too Human section 4.(Firo: search bookwormery)
+If he does not skim, he does not think. - Ecce Homo Friedrich Nietzsche, Why I Am So Clever, section 8
 我们必须流下热汗, 才能真正拥有父亲留下的遗产 -- Goethe
 Firo: part-> whole concrete causality-> divide->connnection/conflicts/link: 拼接组合创造游戏, 机械迷城解密游戏. Eletmets: final cause and formal cause. Output: de-symbolized hierarchical knapsack.
 Firo: Where to find causality: in your heart; time Archaeology; causes of cause
 Firo: First Cause; second effect. 
+
 ## Good order, goals, expection, problem, weakness, detest, disgust, all things should covered by causality including understanding Linux kernel. whatt is my goal?
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 Marginalism
 Direct and Classify or container/protection or tidy & tidy up
+
 ## Connect to reality, then make it concrete.
 Language must be restored to real life. -- Ludwig Wittgenstein
 Genealogy -- Michel Foucault.
+## Learning by doing - what you did defines you.
+[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
+[Why I Don’t Use A Smart Phone | Ann Makosinski | TEDxTeen](https://www.youtube.com/watch?v=TjaM0tdxtYA)
+Firo: There are many levels of creation, e.g. a blank piece of paper.
+[Stop Thinking and Start Doing: The Power of Practicing More](https://jamesclear.com/learning-vs-practicing)
+[Feynman: Name of something vs something](Richard Feynman - Names Don't Constitute Knowledge)
+### Doing vs learning
+“When we practice something, we are involved in the deliberate repetition of a process with the intention of reaching a specific goal. The words deliberate and intention are key here because they define the difference between actively practicing something and passively learning it.” --Thomas Sterner, The Practicing Mind
+### Purpose practice
+[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
 ## From raw edition.
 ## Being and time
 Causalities in 3 minutes
@@ -156,8 +175,5 @@ Main/primary causes and secondary causes, Essential causes and additional causes
 ## First principle
 It's concrete causality not abstraction.
 ## Centric and stereoscopic Thinking
-## Learning by doing - what you did defines you.
-[What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
-### Purpose practice
-[The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
+
 ## Focus and Gradually grow up

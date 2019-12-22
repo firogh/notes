@@ -7,6 +7,7 @@ set solib-search-path /usr/lib/debug/lib/x86_64-linux-gnu/
 
 # Core dump
 echo /tmp/core-%e-%p-%s-%c-%P > /proc/sys/kernel/core_pattern
+[How to Use getappcore for SUSE Support](https://www.suse.com/support/kb/doc/?id=7018642)
 
 # info
 Host OS name and version number.

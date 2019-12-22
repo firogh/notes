@@ -2,6 +2,7 @@
 
 # Reference
 [Welcome to GCC Wiki](https://gcc.gnu.org/wiki/HomePage)
+[google/EXEgesis](https://github.com/google/EXEgesis)
 
 # plt
 secureplt and bss-plt
@@ -11,34 +12,12 @@ configure --enable-languages=c --target=x86_64-unknown-linux --disable-multilib 
 Do NOT build doc
 echo "MAKEINFO = :" >> Makefile 
 
-# common options
--E -S -c 
--I -L -l
--ansi
--fsyntax-only 
--Werror
--save-temps
--H: show all header used
--v
--Wall
--fPIC: for shared library
--Q: print function and statisc?
--Wextra: 用处不大.
--U: undefine a preprocessor macro.
--pipe: make compilation faster, replace xx.S with |
--Wpadded: we can rearrange the fields of structure to make the structure smaller
--time
--x c: c language
--: stdin
-gcc -dM -E -x c /dev/null
-
 # Alignment of struct
 [The Lost Art of C Structure Packing](http://www.catb.org/esr/structure-packing/)
 How does gcc attribute((aligned)) work?
 See [Whenever you leave out the alignment factor in an aligned attribute specification](https://gcc.gnu.org/onlinedocs/gcc-6.3.0/gcc/Common-Type-Attributes.html#Common-Type-Attributes)
 
-
-# Inline assembly
+# Inline assembly in gcc
 [How to Use Inline Assembly Language in C Code](https://gcc.gnu.org/onlinedocs/gcc/Using-Assembly-Language-with-C.html)
 [x86 Operand Modifiers](https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#x86Operandmodifiers)
 [Machine Modes: Describing the size and format of a datum.](https://gcc.gnu.org/onlinedocs/gccint/Machine-Modes.html#Machine-Modes)

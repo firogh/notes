@@ -5,6 +5,8 @@ date: 2015-05-24T09:52:12+08:00
 category: cs
 ---
 
+# Reference
+http://www.cnhalo.net/2016/06/13/linux-rcu/ linux 4.9内核rcu实现
 
 # Network RX  path
 commit 2d331915a04144dad738e725769d8fac06ef6155
