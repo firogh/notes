@@ -1,5 +1,6 @@
 
 # References
+[firo-must: Local and Remote Memory: Memory in a Linux/NUMA System](https://pdfs.semanticscholar.org/41b1/74a97c812c281387803902a3d99afa4ca454.pdf)
 [Memory part 4: NUMA support](https://lwn.net/Articles/254445/)
 [What is Linux Memory Policy?](https://www.kernel.org/doc/Documentation/vm/numa_memory_policy.txt)
 [NUMA (Non-Uniform Memory Access): An Overview](https://queue.acm.org/detail.cfm?id=2513149)
