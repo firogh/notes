@@ -37,3 +37,6 @@ CommitDate: Sun Nov 16 19:39:21 2008 -0800
 
     Patch is large because it adds new macros to include/net/sock.h.
     These macros will be used by TCP & DCCP in next patch.
+
+# rcu
+[Using RCU for linked lists — a case study](https://lwn.net/Articles/610972/)
