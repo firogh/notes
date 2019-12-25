@@ -171,6 +171,7 @@ Direct and Classify or container/protection or tidy & tidy up
 Firo: Work on a realife problem.
 Language must be restored to real life. -- Ludwig Wittgenstein
 Genealogy -- Michel Foucault.
+## Just in causality
 ## Being and time and life
 Causalities in 3 minutes
 If one thing you have to do, do it now.
