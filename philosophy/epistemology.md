@@ -135,6 +135,7 @@ Firo: part-> whole concrete causality-> divide->connnection/conflicts/link: 拼�
 Firo: Where to find causality: in your heart; time Archaeology; causes of cause
 
 ## Learning by doing - what you did defines you. reinvent, creating, using.
+Firo: Must show off!
 [What did Richard Feynman mean when he said, "What I cannot create, I do not understand"?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 我们必须流下热汗, 才能真正拥有父亲留下的遗产 -- Goethe
 [Why I Don’t Use A Smart Phone | Ann Makosinski | TEDxTeen](https://www.youtube.com/watch?v=TjaM0tdxtYA)
