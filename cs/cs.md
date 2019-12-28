@@ -50,6 +50,8 @@ The origin of concurrent programming: from semaphores to remote procedure calls 
 Programming vs computing: software vs hardware
 concurrent programming: multi-thread stress on how to create thread to model the outside world.
 parallel programming: smp, synchronization, lock, lock-free, atomic
+[Linus: The Whole "Parallel Computing Is The Future" Is A Bunch Of Crock.](http://highscalability.com/blog/2014/12/31/linus-the-whole-parallel-computing-is-the-future-is-a-bunch.html)
+[Linus: Avoiding ping pong](https://www.realworldtech.com/forum/?threadid=146066&curpostid=146227)
 
 
 # Documents

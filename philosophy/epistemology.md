@@ -148,6 +148,7 @@ I have been impressed with the urgency of doing. Knowing is not enough; we must 
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge.  - on education, Albert Einstein
 ### vs learn by observations
 Different processes: nature grow, creation direction vs string search, artificial translation direction
+vs 只有接受, 没有思维锻炼的机会.
 return to myself vs made mute beneath the constant need to pay heed to other selves (—which is what reading is!) -- Ecce Homo
 process to 'see'/experience philosophy vs symbols only
 dependent knowledge vs force knowledge
