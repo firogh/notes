@@ -38,8 +38,9 @@ In my view, it’s so important that Software’s Primary Technical Imperative h
 
 # Uncertainty and unended quest 
 Hypotheses, Critical thinking, Falsifiability 
+atifragile
 
-# Chaos
+# Chaos theory
 
 # Causalites as methods and tools, and inherently hypotheses and action plans
 Hyposis and test; Trail and error; Reflexcity -- Soros
@@ -84,6 +85,7 @@ One of the conditions for reading what is good is that we must not read what is 
 https://book.douban.com/review/8490682/
 Marginalism
 just for fun -> participate -> control -> fewer but power
+“I love those who can smile in trouble, who can gather strength from distress, and grow brave by reflection. 'Tis the business of little minds to shrink, but they whose heart is firm, and whose conscience approves their conduct, will pursue their principles unto death.” -Leonardo da Vinci
 
 # Mind
 [由「為什麼 “abstraction”不應該譯為“抽象化”」談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization)
@@ -141,6 +143,8 @@ Firo: There are many levels of creation, e.g. a blank piece of paper.
 [Why Should We Learn By Doing?](http://www.engines4ed.org/hyperbook/nodes/NODE-224-pg.html)
 Firo: 有些知识由别人创造, 而然间来到了流转到你的手中.
 “For the things we have to learn before we can do them, we learn by doing them.” - Aristotle, The Nicomachean Ethics
+I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do. -[Leonardo da Vinci](https://en.wikiquote.org/wiki/Talk:Leonardo_da_Vinci)
+The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge.  - on education, Albert Einstein
 ### vs learn by observations
 Different processes: nature grow, creation direction vs string search, artificial translation direction
 return to myself vs made mute beneath the constant need to pay heed to other selves (—which is what reading is!) -- Ecce Homo
@@ -148,6 +152,8 @@ process to 'see'/experience philosophy vs symbols only
 dependent knowledge vs force knowledge
 vs name of something, symbols
 vs foreign to the drift and temper
+causality vs reverse causalaity
+extension vs intension
 vs 纸上得来终觉浅。 observation limited by symbols, named only.
 Focus energy on goals. vs the wanderer, unlimited scope vague goals
 “When we practice something, we are involved in the deliberate repetition of a process with the intention of reaching a specific goal. The words deliberate and intention are key here because they define the difference between actively practicing something and passively learning it.” --Thomas Sterner, The Practicing Mind
@@ -177,14 +183,22 @@ Causalities in 3 minutes
 If one thing you have to do, do it now.
 Put it in time
 This strange life. Granin.
-### From raw edition.
+### Imperfect, From raw edition. 2/8 principle.
 ### Knapsack problem.
 life is short. Time is limited.
 One priority list.
 - 千年吸血鬼，一直学知识？kernel总在变。
 贪多求全, 一知半解.
 ### Focus and Gradually grow up
-## High-level description
+## Wanderer in darkness
+## Facts describing
+## Imagination is more important than knowledge.
+chaos  theory
+## Simplification: 1. we need to do it. 2 less will make more because we know the foundations before other things.
+procedural knowledge: swim, ride a bike, english gramar => wangyin gramar
+fact knowledge: kernel
+没有人担心那些不懂空气动力学定理或不会解运动方程式的孩童们学不会骑自行车. Antifragile 14.2 骑自行车, 学英语. The Paradox of Choice. 所以，少即是多：一方面，研究得越多，就越容易忽略基础但根本的事情；另一方面，行>动能将事情剥丝抽茧，直至剩下尽可能简单的模型。
+## High-level description and role-perspective
 - 扫雷，一花一世界
 - 去符号化，causality 化。
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
