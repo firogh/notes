@@ -146,6 +146,7 @@ Firo: 有些知识由别人创造, 而然间来到了流转到你的手中.
 “For the things we have to learn before we can do them, we learn by doing them.” - Aristotle, The Nicomachean Ethics
 I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do. -[Leonardo da Vinci](https://en.wikiquote.org/wiki/Talk:Leonardo_da_Vinci)
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge.  - on education, Albert Einstein
+[Get your brain back](https://www.youtube.com/watch?v=OcdxW2XF0v8)
 ### vs learn by observations
 Different processes: nature grow, creation direction vs string search, artificial translation direction
 vs 只有接受, 没有思维锻炼的机会.
@@ -193,7 +194,7 @@ One priority list.
 贪多求全, 一知半解.
 ### Focus and Gradually grow up
 ## Wanderer in darkness
-## Facts describing
+## Chronicle facts describing
 ## Imagination is more important than knowledge.
 chaos  theory
 ## Simplification: 1. we need to do it. 2 less will make more because we know the foundations before other things.
