@@ -1,6 +1,13 @@
 # LQO
 [An Overview of Kernel Lock Improvements](https://events.static.linuxfound.org/sites/events/files/slides/linuxcon-2014-locking-final.pdf)
 
+# Lock
+Advisory lock vs mandatory lock
+
+# Block(wait) vs Lock
+
+# Granularity
+
 # Locking in kernel
 [A must read: Linus on semaphore and mutex](https://yarchive.net/comp/linux/semaphores.html)
 [Linus on recursive lock](https://yarchive.net/comp/linux/recursive_locks.html)

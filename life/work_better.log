@@ -1,7 +1,17 @@
 
 
-# Work time arrangement
-Work 25 minutes, then reset 5 minutes
+# Time
+Unit: Work 25 minutes, then reset 5 minutes
+Build: Take 19 minutes to build a TEST kernel with a prepared beug patch. 
+
+# Prallel
+Build and analysis
+
+# Build 
+
+# Analysis
+direct reason
+bug type and causal chains
 
 # Work goals
 Don't waste time on doing rabbish things.

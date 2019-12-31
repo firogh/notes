@@ -147,6 +147,8 @@ Firo: 有些知识由别人创造, 而然间来到了流转到你的手中.
 I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do. -[Leonardo da Vinci](https://en.wikiquote.org/wiki/Talk:Leonardo_da_Vinci)
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge.  - on education, Albert Einstein
 [Get your brain back](https://www.youtube.com/watch?v=OcdxW2XF0v8)
+knowing how to deal well with you setbacks is as important as knowing how to move forward. -- Ray Dalio
+Learn by doing is essentially learn by mistakes. -- Firo
 ### vs learn by observations
 Different processes: nature grow, creation direction vs string search, artificial translation direction
 vs 只有接受, 没有思维锻炼的机会.
@@ -201,7 +203,7 @@ chaos  theory
 procedural knowledge: swim, ride a bike, english gramar => wangyin gramar
 fact knowledge: kernel
 没有人担心那些不懂空气动力学定理或不会解运动方程式的孩童们学不会骑自行车. Antifragile 14.2 骑自行车, 学英语. The Paradox of Choice. 所以，少即是多：一方面，研究得越多，就越容易忽略基础但根本的事情；另一方面，行>动能将事情剥丝抽茧，直至剩下尽可能简单的模型。
-## High-level description and role-perspective
+## High-level description and role-perspective; Fern 
 - 扫雷，一花一世界
 - 去符号化，causality 化。
 [In order to understand the meaning you first need to understand the context. It could mean either important  or abstract or macro:](https://qr.ae/TWWiRp)
