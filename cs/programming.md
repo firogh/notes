@@ -71,8 +71,6 @@ command-comment ⊃ all input ∪ output
 # Lock-free programming
 ring buffer, rcu
 
-# Debugging
-see debugging.md
 # Testing
 [Google testing blog](http://googletesting.blogspot.com/)
 1.Black-box testing test software function.

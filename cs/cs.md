@@ -63,11 +63,19 @@ parallel programming: smp, synchronization, lock, lock-free, atomic
 ## Concurrency problem 1 with communications
 IPC check wait.log
 
-## Prblem 2 with memory
+## Prblem 2 with memory access
 consistency model
 
 # Resource management
-gc.log
+## Garbage collection
+[Linus Torvalds on Garbage Collection (2002)](https://news.ycombinator.com/item?id=2473932)
+[Linus on refrence counting](https://yarchive.net/comp/linux/reference_counting.html)
+[Paul E. McKenney: Overview of Linux-Kernel Reference Counting](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.145.3800&rep=rep1&type=pdf)
+Book: The Garbage Collection Handbook
+Book: Japanese GC book.
+https://www.linuxidc.com/Linux/2015-01/111565.htm
+### Reference counting
+[Introducing lockrefs](https://lwn.net/Articles/565734/)
 
 # Memory hierarchy
 
