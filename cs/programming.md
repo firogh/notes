@@ -21,6 +21,9 @@ High cohesion low coupling
 [Linux kernel design patterns](http://lwn.net/Articles/336224/)
 [Linux Kernel Programming Patterns](http://www.cs.fsu.edu/~baker/devices/notes/patterns.html#)
 
+# IPC
+[Busy waiting vs blocking](http://www.cyberiapc.com/os/ipc_whatisit.htm)
+
 # Computer programming
 [The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
 

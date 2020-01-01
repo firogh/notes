@@ -65,6 +65,13 @@ rsz() {
 		[[ -n ${commands[repo-elephant]} ]] && repo-elephant || print 'Usage: rsz'  ## Easter egg here :)
 	fi
 }
+## input comand line wraps
+http://shallowsky.com/blog/tags/embedded/
+resize
+xterm-resize-330-3.fc27.x86_64
+/etc/profile
+PS1='[\[\033[0;32m\]\u@\h:\[\033[36m\]\W\[\033[0m\]]\$ '
+
 
 # Android
 sudo adb shell "settings put global captive_portal_server www.google.cn"

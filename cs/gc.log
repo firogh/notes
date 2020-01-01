@@ -4,3 +4,6 @@
 Book: The Garbage Collection Handbook
 Book: Japanese GC book.
 https://www.linuxidc.com/Linux/2015-01/111565.htm
+
+# Refrence counting
+Introducing lockrefs](https://lwn.net/Articles/565734/)

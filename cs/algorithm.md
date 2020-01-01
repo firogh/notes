@@ -9,8 +9,14 @@ category: cs
 Algorithms: Design Techniques and Analysis
 The Algorithm Design Manual 2nd Edition
 
-# Bitmap
-Long array
+# Leetcode
+## 1p3c
+http://www.1point3acres.com/bbs/thread-270312-1-1.html
+最终我觉得像word search12， word break12，word ladder12，LIS，sort color，LRU，insert & delete in O1，rob house123，234sum这种题要达到闭眼秒杀的程度，min/max heap，bucket sort，topological sort，binary pre/in/post/level 遍历，combination/permutation这种东西要做梦都梦到
+最后祝lz好运，加油~ 
+## Why do we have to solve leetcode problems?
+尤其是在北美，Google，Facebook，Microsoft，Amazon 等等大公司，无一不考刷题，以算法面试为主。而无论是北美留学生，还是工作几年的上班族，想进大公司，唯一的出路就是刷题。
+[Leetcode 分类顺序表第二版](https://cspiration.com/leetcodeClassification)
 
 # Computational complexity theory
 http://bigocheatsheet.com/
@@ -128,7 +134,15 @@ dcache
 Page reclaim algorithm
 type: Reclaim
 
-# Lock
-MCS lock
-
 # Ring buffer or Circular buffer
+
+# Redblack tree
+gap between linar node can be optimized by argument rb tree. O(n) -> O(log n)
+mm: augment vma rbtree with rb_subtree_gap d37371870ceb1d2165397dc36114725b6dca946c
+[Rank-Balanced Trees](http://sidsen.azurewebsites.net//papers/rb-trees-talg.pdf)
+https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/
+http://yuex.in/post/2017/08/red-black-tree-in-action.html
+[Left-Leaning Red-Black Trees](https://www.cs.princeton.edu/~rs/talks/LLRB/08Dagstuhl/RedBlack.pdf)
+## History
+AVL tree, B-tree, symmetric binary B-tree or 2–3–4 tree, red–black tree
+[2-3-4 Trees and RedBlack Trees](https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap13b.pdf)

@@ -70,11 +70,6 @@ middle part in suspend_enter
 
 * Platform PM
 last part in suspend_enter 
-# Steps of resume
-
-
-# Knowledge
-console switch、process freeze、CPU hotplug、wakeup
 
 
 # Introdution
@@ -89,7 +84,6 @@ can recognize interrupt.
 * Power down: core power down, l1 flush, cache not mantained/snoop stoped, but l2 & fabric 
 can not recognize interrupt, recovery is fully depended on MP_PMU
 
-
 In hardware layer, we need [PMU](https://en.wikipedia.org/wiki/Power_Management_Unit) to complete power management.
 What is the relation of PMU and CPU?
 armadaxp的PMU与CPU物理上与逻辑上是独立的.
@@ -97,9 +91,6 @@ The Power Management functions are provided by two power manager units:
 The Device Power Management Unit (DEV_PMU)
 The Multiprocessor Power Management Service Unit (MP_PMU).
 PMU省电模式:
-
-
-
 
 # kernel cpuidle subsystem
 ## Steps of cpuilde
@@ -135,10 +126,5 @@ struct cpuidle_driver
 struct cpuidle_state
 struct cpuidle_device used by ladder or menu
 
-
-
 device_initcall -> armadaxp_init_cpuidle -> cpuidle_register_driver  cpuidle_register_device
 cpu_idle -> cpuidle_idle_call
-
-
-

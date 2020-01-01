@@ -66,4 +66,10 @@ According to do_syscall_64, regs->ax = sys_call_table[nr](regs->di, regs->si, re
 However, for C functions invoked from assembly code, we should explicitly declare the function's calling convention, because the parameter passing code in assembly side has been fixed. Show all predefined macros for your compiler
 
 ## vDSO
-check vdso.log
+[Creating a vDSO: the Colonel's Other Chicken](http://www.linuxjournal.com/content/creating-vdso-colonels-other-chicken?page=0,0)
+[What is linux-gate.so.1](http://www.trilithium.com/johan/2005/08/linux-gate/)
+glibc -> AT_SYSINFO-> __kernel_vsyscall -> sysenter/syscall/in0x80
+just for vDSO syscalls
+glibc -> AT_SYSINFO_EHDR-> vDSO elf 
+[On vsyscalls and the vDSO](https://lwn.net/Articles/446528/)
+[linux syscalls on x86 64](http://blog.tinola.com/?e=5)

@@ -154,7 +154,7 @@ Different processes: nature grow, creation direction vs string search, artificia
 vs 只有接受, 没有思维锻炼的机会.
 return to myself vs made mute beneath the constant need to pay heed to other selves (—which is what reading is!) -- Ecce Homo
 process to 'see'/experience philosophy vs symbols only
-dependent knowledge vs force knowledge
+dependent knowledge, the underlying vs superfical knowledge
 vs name of something, symbols
 vs foreign to the drift and temper
 causality vs reverse causalaity

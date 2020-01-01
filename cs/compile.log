@@ -30,3 +30,6 @@ See [Whenever you leave out the alignment factor in an aligned attribute specifi
 
 # Builtin
 [Other Built-in Functions Provided by GCC](https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html)
+
+# Arch
+[Pre-defined Compiler Macros](https://sourceforge.net/p/predef/wiki/Architectures/)

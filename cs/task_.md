@@ -53,3 +53,23 @@ this_cpu_write(cpu_current_top_of_stack,(unsigned long)task_stack_page(next_p) +
 # Zombie process <defunct>
 forked child not reaped by parent will hooked in process list.
 if parent was killed and exit <defunct> will repaped.
+
+# Context switch
+[Evolution of the x86 context switch in Linux](https://www.maizure.org/projects/evolution_x86_context_switch_linux/index.html)
+[Al Viro's new execve/kernel_thread design](https://lwn.net/Articles/520227/)
+## call+jump+ret - 0100301bfdf56a2a370c7157b5ab0fbf9313e1cd
+((last) = __switch_to_asm((prev), (next)));                             #=====> call
+jmp     __switch_to                                                     #=====> jmp + ret
+[Why does switch_to use push+jmp+ret to change EIP, instead of jmp directly?](https://stackoverflow.com/questions/15019986/why-does-switch-to-use-pushjmpret-to-change-eip-instead-of-jmp-directly/15024312)
+
+# Wait example
+ #6 [ffff883f15637c90] proc_evict_inode at ffffffff812696fd
+ #7 [ffff883f15637ca0] evict at ffffffff8121cded
+ #8 [ffff883f15637cc0] __dentry_kill at ffffffff812194b6
+ #9 [ffff883f15637ce0] shrink_dentry_list at ffffffff8121a0c0
+#10 [ffff883f15637d10] d_invalidate at ffffffff8121a8c8
+#11 [ffff883f15637d50] proc_flush_task at ffffffff8126e609
+#12 [ffff883f15637dc0] release_task at ffffffff81081230
+                        # wait_task_zombie
+#13 [ffff883f15637e18] wait_consider_task at ffffffff81081c19
+#14 [ffff883f15637e80] do_wait at ffffffff8108226d
