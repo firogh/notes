@@ -177,7 +177,6 @@ also check tgid_base_stuff
 /proc/self/status task_mem() file = get_mm_counter(mm, MM_FILEPAGES); unit is 4kB.
 /proc/self/statm  proc_pid_statm
 
-
 ## Free area
 show_free_areas
 
