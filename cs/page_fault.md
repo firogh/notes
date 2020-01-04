@@ -6,10 +6,6 @@ title: Page fault
 category: cs
 ---
 
-# Formal causes
-page frame
-read from backing store
-PTE
 # Page Fault
 * page-fault exceptions error code
 v3a: 4.7 - Figure 4-12. Page-Fault Error Code

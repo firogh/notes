@@ -23,9 +23,17 @@ BSD 4.2
 > read, write, or execute from that memory), and associated resources (such
 > as physical pages, swap pages, file contents, and so on).
 Firo:  mmap, page fault, PFRA.
-## VAS
-vma, mm_rb, mmap, 
-if file, i_mmap
+
+# VMA
+vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.
+## split_vma
+new_below
+commit 5846fc6c31162234e88bdfd91548b1cf0d2cebbd
+Author: Andrew Morton <akpm@digeo.com>
+Date:   Tue Sep 17 06:35:47 2002 -0700
+    [PATCH] consolidate the VMA splitting code
+new_below means the place where the old vma go to! Bad naming!
+0 means the old will save the head part. 1 means tail part.
 
 ## File
 ### PAS
@@ -38,10 +46,13 @@ vm_file, vm_pgoff
 
 ## Private anonymouse mappings
 Heap - malloc mmap
+Anonymous Memory Mappings, LSP chapter 9
 
 ## File private mappings
 Program: execve text,data,bss
 Libraries
+openat(AT_FDCWD, "/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3 
+mmap(NULL, 1857568, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f27cbb02000
 * onset - mmap
 do_mmap -> mmap_region 
 ext2: generic_file_mmap -> vma->vm_ops = generic_file_vm_ops

@@ -332,6 +332,10 @@ oom_badness
 Check box/pagecache-limit
 
 # LQO
+/proc/vmstat
+pgsteal_kswapd 0
+pgsteal_direct 0
+vm_event_item PGSTEAL_KSWAPD
 ## mapping is NULL?
 e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
 +               /* Treat this page as congested if underlying BDI is */

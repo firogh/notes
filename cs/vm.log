@@ -26,6 +26,7 @@ VM isolates an address space for these two purposes.
 [Tiled Virtual Memory for UNIX](https://www.usenix.org/legacy/publications/library/proceedings/sa92/franklin.pdf)
 [SunOS Virtual Memory Implementation](https://pdfs.semanticscholar.org/c035/746e00023aa421b75bb2c8b2137f60bccd65.pdf)
 [Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX† Operating System‡](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
+[Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
 
 > A system in which a process' workspace is held partly in high speed memory and partly on some slower and cheaper backing store. When the process refers to a memory location the system hardware detects whether or not the required location is physically present in memory and generates an interrupt if it is not, this allows, the system supervisor to transfer the required data area from backing store into memory.
 Firo: seems not accurate, consider the kernel space.
@@ -37,20 +38,54 @@ Author: Linus Torvalds <torvalds@linuxfoundation.org>
 Date:   Fri Nov 23 15:09:29 2007 -0500
     Import 1.1.11
 Firo: Isolate mm_struct from task_struct; no helpful comment.
-## FSM
-Partitioning-buddy-allocator, mmap, vm based paging, page tables, PFRA.
 
 ## Address
 LDD 3rd: Address Types
 ## Address space
 [Virtual Memory I: the problem](https://lwn.net/Articles/75174/) 
 vma, mm_rb: address space area
-## page table
-pgd
 
-## Memory mapping
+# Page table
+[Chapter 3  Page Table Management](https://www.kernel.org/doc/gorman/html/understand/understand006.html)
+[Page Table Isolation](https://www.kernel.org/doc/Documentation/x86/pti.txt)
+## PTE bits
+v3a chapter 4.5 4-level paging
+Check _PAGE_BIT_ACCESSED
+commit 97e3c602ccbdd7db54e92fe05675c664c052a466
+Author: Dave Hansen <dave.hansen@linux.intel.com>
+Date:   Thu Jul 7 17:19:12 2016 -0700
+    x86/mm: Ignore A/D bits in pte/pmd/pud_none()
+Firo: _PAGE_KNL_ERRATUM_MASK
 
-### rmap
+## Copy ptes
+### fork's wp page and COW - copy_page_range ... copy_pte_range
+is_cow_mapping(vm_flags_t flags) => return (flags & (VM_SHARED | VM_MAYWRITE)) == VM_MAYWRITE;
+What about Shared & Write? Check the following commit:
+commit d08b3851da41d0ee60851f2c75b118e1f7a5fc89
+Author: Peter Zijlstra <a.p.zijlstra@chello.nl>
+Date:   Mon Sep 25 23:30:57 2006 -0700
+    [PATCH] mm: tracking shared dirty pages
+For good understanding, check do_wp_page().
+
+## Zap ptes - zap_page_range
+exit and munmap
+
+## Unmap ptes
+PFRA, migation
+
+## MMU notifier
+[Memory management notifiers](https://lwn.net/Articles/266320/)
+commit cddb8a5c14aa89810b40495d94d3d2a0faee6619
+Author: Andrea Arcangeli <andrea@qumranet.com>
+Date:   Mon Jul 28 15:46:29 2008 -0700
+    mmu-notifiers: core
+## Walk page tables
+ptdump_walk_pgd_level_core
+[Mannully va to pa](http://edsionte.com/techblog/archives/1966)
+
+# Memory mapping
+setup_arch -> init_mem_mapping # set page table and cr3.
+## rmap
 The key part for understanding rmap is the 'file'; They comform with same rule that pages are mapped to a file. Eventhrough the file is virutalized sometimes.
 File page: Disk file backed page: page.index is offset of page in that file; vm_pgoff is offset of VMA in that file
 Shmem page: file is in the shmem fs. page.index is offset of page in that shmem file (not in address space! not same as anonymous private page); vm_pgoff is offset of VMA in that shmem file which is 0.
@@ -74,8 +109,7 @@ History:
 
 LQO VMA: vma_link_file vs pault hanlder
 
-## Memory allocation
-### overcommit
+# Memory allocation overcommit
 https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
 [理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
 [Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)

@@ -9,8 +9,6 @@ category: cs
 # Reference
 [Driver porting: low-level memory allocation]https://lwn.net/Articles/22909/)
 
-# History
-
 # Formal causes
 ## Hot and cold pages
 [Hot and cold pages](https://lwn.net/Articles/14768/)
