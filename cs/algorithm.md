@@ -10,6 +10,19 @@ Algorithms: Design Techniques and Analysis
 The Algorithm Design Manual 2nd Edition
 
 # Leetcode
+## http://joshuablog.herokuapp.com/Leetcode-%E6%80%BB%E7%BB%93.html#%E5%A5%97%E8%B7%AF
+如果问最短，最少，BFS
+如果问连通性，静态就是 DFS,BFS，动态就 UF
+如果问依赖性就 topo sort
+DAG 的问题就 dfs+memo
+矩阵和 Array 通常都是 DP
+问数量的通常都是 DP
+问是否可以，也很有可能 DP
+求所有解的，基本 backtracking
+排序总是可以想一想的
+万事总可以想HashMap
+找规律试试Stack
+## [漫谈LeetCode解题思路](https://sophiesongge.github.io/leetcode/2017/01/19/get-random.html)
 ## 1p3c
 http://www.1point3acres.com/bbs/thread-270312-1-1.html
 最终我觉得像word search12， word break12，word ladder12，LIS，sort color，LRU，insert & delete in O1，rob house123，234sum这种题要达到闭眼秒杀的程度，min/max heap，bucket sort，topological sort，binary pre/in/post/level 遍历，combination/permutation这种东西要做梦都梦到
@@ -146,3 +159,5 @@ http://yuex.in/post/2017/08/red-black-tree-in-action.html
 ## History
 AVL tree, B-tree, symmetric binary B-tree or 2–3–4 tree, red–black tree
 [2-3-4 Trees and RedBlack Trees](https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap13b.pdf)
+
+

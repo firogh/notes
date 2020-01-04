@@ -33,7 +33,7 @@ Life with Unix
 
 # Problems
 Concurrency
-VM
+VM: layered smantics
 IO
 Memory hierarchy
 Resource management
