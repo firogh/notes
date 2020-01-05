@@ -5,6 +5,10 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
+# Assembly programming
+[Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
+
+
 # Basic conceptions
 Reentrancy
 

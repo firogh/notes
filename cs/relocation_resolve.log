@@ -5,6 +5,9 @@
 # Relcation
 [Interpreting readelf -r, in this case R_X86_64_PC32](http://www.mindfruit.co.uk/2012/06/interpreting-readelf-r-in-this-case.html)
 [Relocations, Relocations](http://www.mindfruit.co.uk/2012/06/relocations-relocations.html)
+## global label in C
+char _text[];           x86_64_64;
+unsigned long _text;    x86_64_PC32
 
 # PIE vs PIC and fpic vs fpie 
 [fpie vs fpic](https://gcc.gnu.org/ml/gcc-help/2009-07/msg00351.html)
