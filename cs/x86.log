@@ -7,6 +7,7 @@
 [xchg %ax %ax](https://stackoverflow.com/questions/2136043/why-does-visual-studio-use-xchg-ax-ax)
 ## ABI
 [x86 calling conventions](http://redstack.net/blog/x86-calling-conventions.html)
+[x86_64 ABI 1.0](https://github.com/hjl-tools/x86-psABI/wiki/X86-psABI)
 
 # Reference
 [Agner Fog on x86](https://www.agner.org/optimize/#manuals)
