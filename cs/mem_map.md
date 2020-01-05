@@ -63,6 +63,13 @@ Write - do_cow_page
 Read - do_read_page
 Read & write - do_wp_page
 
+# Shared memory mapping
+[Chapter 12  Shared Memory Virtual Filesystem:](https://www.kernel.org/doc/gorman/html/understand/understand015.html)
+
+> This is a very clean interface that is conceptually easy to understand but it does not help anonymous pages as there is no file backing. To keep this nice interface, Linux creates an artifical file-backing for anonymous pages using a RAM-based filesystem where each VMA is backed by a “file” in this filesystem. Every inode in the filesystem is placed on a linked list called shmem_inodes so that they may always be easily located. This allows the same file-based interface to be used without treating anonymous pages as a special case. 
+
+Firo: every time you create a shared memory via mmap(2), you create a inode with same name dev/zero in the hidden shm_mnt fs; 
+The name dev/zero is only a name. It has nothing related to /dev/zero in drivers/char/mem.c. And /dev/shm is only a tmpfs; it has nothing related shmemfs, but POSIX's shm_open uses /dev/shm.
 ## Shared anonymouse mappings
 [vmscan: limit VM_EXEC protection to file pages](https://lore.kernel.org/patchwork/patch/174306/)
 If someone may take advange of reclaimation code by mmap(..., VM_EXEC, SHRED|ANON), OOM may occur since the old code protect it from reclaiming by add it back to the active list. Great patch. However, program running in tmpfs will also penalized.
@@ -76,6 +83,25 @@ Write: do_shared_fault -> shmem_getpage_gfp shmem_add_to_page_cache
 WP: do_wp_page -> wp_page_shared or wp_page_reuse
 b)IPC using a shared file mapping
 ## File shared mappings - a) Memory-mapped I/O
+## History
+late 70s - IPC: see TLPI: Chapter 45 INTRODUCTION TO SYSTEM V IPC 
+they first appear together in Columbus UNIX, a Bell UNIX for database and efficient transaction processing
+1983 - IPC See TLPI or wikipedia shared mmeory.
+they land together in System V that made them popular in mainstream UNIX-es, hence the name
+
+1983 - BSD mmap with shared vs private memory mapping
+BSD 4.2: The system supports sharing of data between processes by allowing pages to be mapped into memory. These mapped pages may be shared with other processes or private to the process.
+
+1984 Jan - BSD mmap with file memory mapping support by SunOS
+The mmap seems firstly implemented by [SunOS 1.1](http://bitsavers.trailing-edge.com/pdf/sun/sunos/1.1/800-1108-01E_System_Interface_Manual_for_the_Sun_Workstation_Jan84.pdf)
+N.B. This call is not completely implemented In 4.2(BSD).
+More sunos docs: http://bitsavers.trailing-edge.com/pdf/sun/sunos/
+
+1988
+[SunOS 4[4] introduced Unix's mmap, which permitted programs "to map files into memory."](https://en.wikipedia.org/wiki/Memory-mapped_file#History)
+1989
+One paper found in OSTEP: [Memory Coherence in Shared Virtual Memory Systems](https://courses.cs.washington.edu/courses/cse551/09sp/papers/memory_coherence.pdf)
+
 
 # mmap
 ## MAP_SYNC

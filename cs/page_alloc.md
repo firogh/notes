@@ -19,7 +19,7 @@ __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
 
 # Free page state
-page_expected_state and check_new_page
+page_expected_state and check_new_page, page_mapcount_reset
 
 # Do anonymous page, zero page
 tglx: commit 382a7dec462a90ad6ae01227f1e8758ae721f6ed

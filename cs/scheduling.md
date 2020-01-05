@@ -186,30 +186,6 @@ Date:   Fri Jul 14 00:24:27 2006 -0700
 +        * Since the runqueue lock will be released by the next
 +        * task
 
-
-# ETC
-## the wake-up lost problem
-[Kernel Korner - Sleeping in the Kernel](https://www.linuxjournal.com/article/8144)
-## Reordering issue
-CPU0:Process A
-while(!done) {
-        schedule();
-        set_current_state = *interruptable;
-}
-CPU1: Process B
-done = true;
-wake_up_process(A);
-Ordering issue: reorder load of done and store of state;
-A: load of done
-B: done = true
-B: wake up
-A: set state
-A: schedule
-Check bcbd94ff481ec1d7b5c824d90df82d0faafabd35
-dm crypt: fix a possible hang due to race condition on exit
-## PELT
-[Per-entity load tracking](https://lwn.net/Articles/531853/)
-
 # Running time
 proc_sched_show_task
 

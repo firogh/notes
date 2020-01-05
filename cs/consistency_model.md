@@ -93,8 +93,6 @@ Commit:     Paul E. McKenney <paulmck@linux.vnet.ibm.com>
 CommitDate: Mon Dec 4 10:52:52 2017 -0800
     fs/dcache: Use release-acquire for name/length update
 
-
-
 ## Kernel
 [Why do we need mb for SLEEP AND WAKE-UP FUNCTIONS?](https://www.kernel.org/doc/Documentation/memory-barriers.txt)
 [A formal kernel memory-ordering model](https://lwn.net/Articles/718628/)

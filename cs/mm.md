@@ -15,7 +15,6 @@ Dragon book 9th chapter 8 main memory
 https://linux-mm.org/
 [2. Memory management](http://bitsavers.trailing-edge.com/pdf/sun/sunos/1.1/800-1108-01E_System_Interface_Manual_for_the_Sun_Workstation_Jan84.pdf)
 
-
 # History
 ## 1959 paging
 [Paging](https://en.wikipedia.org/wiki/Paging) according to [History of VM](https://en.wikipedia.org/wiki/Virtual_memory) is developed at 1959.
@@ -122,8 +121,11 @@ start_kernel->mm_init
         mem_init-> memblock_free_all or free_all_bootmem # /* this will put all low memory onto the freelists */
 
 ## obtain/alloc and return/free memory
-page allocator
-page reclamation, memory compaction
+page allocator, page reclamation, memory compaction
+### Memory allocation overcommit
+https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
+[理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
+[Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)
 
 ## Garbage collection
 [Linus Torvalds on Garbage Collection (2002)](https://news.ycombinator.com/item?id=2473932)
