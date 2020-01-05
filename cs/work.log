@@ -1,5 +1,10 @@
 
 
+# Worker
+Related code:
+kthread->data: from kthread to worker.
+current_is_workqueue_rescuer and worker->rescue_wq: worker to rescuer.
+
 # History
 Check ../box/old_workqueue.log
 [I’ll Do It Later: Softirqs, Tasklets, Bottom Halves, Task Queues, Work Queues and Timers](http://www.cs.unca.edu/brock/classes/Spring2013/csci331/notes/paper-1130.pdf)

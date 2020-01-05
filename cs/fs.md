@@ -5,9 +5,6 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
-# rootfs 
-init_mount_tree
-and sys_chroot
 
 # fsck
 man systemd-fsck-root.service
@@ -48,77 +45,16 @@ tools to operate on different things. - [Linus](http://yarchive.net/comp/linux/e
 hard link to directory, recursive
 hard link to file accross partitions, may led confilict with inode number.
 
+# rootfs 
+init_rootfs
+init_mount_tree and sys_chroot and rootfs_mount
+do_basic_setup->rootfs_initcall(populate_rootfs);
+
+# tmpfs
+[关于 tmpfs](http://wangcong.org/2012/02/17/-e5-85-b3-e4-ba-8e-tmpfs/)
+fs/ramfs,  tmpfs mm/shmem.c
+
 # Sysfs
-sysfs is strongly depend on driver module, just rmmod tg3 then /sys/class/net/enp9s0 went away!
-[hierarchy of sysfs](https://lwn.net/Articles/604413/)
-## 4.10 +
-kernfs_drain
-## 3.14
-root      3000  0.0  0.0 7241420 13352 ?       Sl   06:19   0:00 vi_config_replicator
-root     12783  0.0  0.0  21980  1704 ?        S    06:16   0:00 /usr/bin/socat TCP-LISTEN:16509,fork TCP:10.0.2.16:16509
-root     30718  0.0  0.0   4224   364 ttyS3    D    06:52   0:00 cat /sys/class/uio/uio3/name
-root     30719  0.0  0.0   6676   644 ttyS3    D    06:52   0:00 modprobe -r uio_dma_proxy
-root     30723  0.0  0.0   4408   636 ttyS3    S+   06:52   0:00 grep -e modprobe\|cat
-[host:/]$ cat /proc/30718/stack
-[<ffffffff8a0656bf>] msleep+0x2f/0x40
-[<ffffffff8a3fc1dc>] name_show+0x1c/0x50
-[<ffffffff8a3b5b30>] dev_attr_show+0x20/0x60
-[<ffffffff8a219b44>] sysfs_kf_seq_show+0xc4/0x170
-[<ffffffff8a21ce63>] kernfs_seq_show+0x23/0x30
-[<ffffffff8a1c68cd>] seq_read+0xcd/0x3c0
-[<ffffffff8a21d805>] kernfs_fop_read+0xf5/0x160
-[<ffffffff8a1a31b7>] vfs_read+0x97/0x160
-[<ffffffff8a1a3c96>] SyS_read+0x46/0xc0
-[<ffffffff8a5c2909>] system_call_fastpath+0x16/0x1b
-[<ffffffffffffffff>] 0xffffffffffffffff
-[host:/]$ cat /proc/30719/stack
-[<ffffffff8a21ca3c>] kernfs_addrm_finish+0x8c/0xf0
-[<ffffffff8a21cca1>] kernfs_remove_by_name_ns+0x51/0xa0
-[<ffffffff8a21ab71>] remove_files.isra.1+0x41/0x80
-[<ffffffff8a21aeb7>] sysfs_remove_group+0x47/0xa0
-[<ffffffff8a21af43>] sysfs_remove_groups+0x33/0x50
-[<ffffffff8a3b50ef>] device_remove_attrs+0x6f/0x80
-[<ffffffff8a3b5d19>] device_del+0x119/0x1c0
-[<ffffffff8a3b5dde>] device_unregister+0x1e/0x70
-[<ffffffff8a3b5eac>] device_destroy+0x3c/0x50
-[<ffffffff8a3fcabd>] uio_release_complete+0x7d/0xd0
-[<ffffffff8a3fcbf7>] uio_work+0xe7/0x110
-[<ffffffff8a3fcc5e>] uio_unregister_device+0x3e/0x50
-[<ffffffffa028b5ea>] remove+0x1a/0x50 [uio_dma_proxy]
-[<ffffffff8a3bb517>] platform_drv_remove+0x17/0x20
-[<ffffffff8a3b9a59>] __device_release_driver+0x69/0xd0
-[<ffffffff8a3ba428>] driver_detach+0xb8/0xc0
-[<ffffffff8a3b96a5>] bus_remove_driver+0x55/0xe0
-[<ffffffff8a3ba87c>] driver_unregister+0x2c/0x50
-[<ffffffff8a3bbc12>] platform_driver_unregister+0x12/0x20
-[<ffffffffa028c44b>] destroy_platform_drivers+0x5f/0x7b [uio_dma_proxy]
-[<ffffffffa028c4f7>] cleanup+0x15/0x21 [uio_dma_proxy]
-[<ffffffff8a0cb7e2>] SyS_delete_module+0x142/0x1b0
-[<ffffffff8a5c2909>] system_call_fastpath+0x16/0x1b
-[<ffffffffffffffff>] 0xffffffffffffffff
-and    
-0xffffffff8121ca37 <+135>:   callq  0xffffffff815b6ad0 <wait_for_completion>
-   0xffffffff8121ca3c <+140>:   nopl   0x0(%rax)
-echo 2 > /proc/sys/vm/firo_uio
-echo 0 > /sys/kernel/debug/tracing/tracing_on
-echo function_graph > /sys/kernel/debug/tracing/current_tracer
-modprobe uio_dma_proxy
-: > /sys/kernel/debug/tracing/trace
-cat /sys/class/uio/uio0/name &
-echo 1 > /sys/kernel/debug/tracing/tracing_on
-modprobe -r uio_dma_proxy &
-sleep 1
-echo 0 > /sys/kernel/debug/tracing/tracing_on
-#Why DDM?
-The device model was originally intended to make power management tasks easier 
-* I/o Architecture
-1 Expansion hardware. 
-Bus includes internal bus/system bus(PCI,ISA,SBus,I2C) and external bus(ieee1394/firewire,USB) and both(SCSI).
-2 Communication with peripherals
-I/O ports
-I/O memory mapping
-Interrupts
-hrough the maintenance of a representation of the host system's hardware structure.
 
 # Procfs
 ##How many parts does procfs has?
@@ -130,25 +66,6 @@ hrough the maintenance of a representation of the host system's hardware structu
 /proc/sys/kernel
 
 # btrfs 
-Bdi related
-mount, super_block
-ffff8800f4455740 ffff8800f27f2000 btrfs  /dev/xvda2 /    
-ffff880002844200 ffff8800f2798800 autofs systemd-1 /@/proc/sys/fs/binfmt_misc
-ffff8800f44553c0 ffff8800f3d05800 mqueue mqueue    /@/dev/mqueue
-ffff8800f4533c80 ffff8800f44d2000 debugfs debugfs  /@/sys/kernel/debug
-ffff8800f200fc80 ffff8800f27f2000 btrfs  /dev/xvda2 /@/var/cache
-ffff8800f37d9740 ffff8800f27f2000 btrfs  /dev/xvda2 /@/opt    
-ffff8800f4455200 ffff8800f27f2000 btrfs  /dev/xvda2 /@/tmp    
-ffff8800f4455040 ffff8800f27f2000 btrfs  /dev/xvda2 /@/global/local
-ffff8800f245c900 ffff8800f2eda000 ext3   /dev/xvda1 /@/boot   
-ffff880002844040 ffff8800f27f2000 btrfs  /dev/xvda2 /@/var/spool
-ffff880002840040 ffff8800f27f2000 btrfs  /dev/xvda2 /@/var/tmp
-ffff880002840200 ffff8800f27f2000 btrfs  /dev/xvda2 /@/var/opt
-ffff8800f200f900 ffff8800f27f2000 btrfs  /dev/xvda2 /@/var/log
-ffff8800028403c0 ffff8800f27f2000 btrfs  /dev/xvda2 /@/home   
-ffff8800f245ce40 ffff8800f27f2000 btrfs  /dev/xvda2 /@/.snapshots
-ffff8800f37d93c0 ffff8800f27f2000 btrfs  /dev/xvda2 /@/lfs  
 btrfs_mount 
 btrfs_fill_super
 setup_bdi
-

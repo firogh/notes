@@ -125,6 +125,16 @@ start_kernel->mm_init
 page allocator
 page reclamation, memory compaction
 
+## Garbage collection
+[Linus Torvalds on Garbage Collection (2002)](https://news.ycombinator.com/item?id=2473932)
+[Linus on refrence counting](https://yarchive.net/comp/linux/reference_counting.html)
+[Paul E. McKenney: Overview of Linux-Kernel Reference Counting](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.145.3800&rep=rep1&type=pdf)
+Book: The Garbage Collection Handbook
+Book: Japanese GC book.
+https://www.linuxidc.com/Linux/2015-01/111565.htm
+### Reference counting
+[Introducing lockrefs](https://lwn.net/Articles/565734/)
+
 # Lift the burden of loading program from application
 paging
 # Decopule addresses and memory locations

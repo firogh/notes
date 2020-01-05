@@ -50,3 +50,10 @@ Date:   Wed Feb 5 16:57:54 2003 -0800
 libfc, fcoe: fixes for highmem skb linearize panics:18fa11efc279c20af5eefff2bbe814ca067e51ae
 [what is "compound_page()" all about?](https://www.spinics.net/lists/newbies/msg41159.html)
 [Compound page overhaul](https://lwn.net/Articles/112311/)
+
+# Hugetlb page
+https://www.kernel.org/doc/Documentation/vm/hugetlbpage.txt
+[Huge pages part 1 (Introduction)](https://lwn.net/Articles/374424/)
+[hugepage 分析](https://ggaaooppeenngg.github.io/zh-CN/2017/04/30/hugepage-%E5%88%86%E6%9E%90/)
+## status
+p hstates

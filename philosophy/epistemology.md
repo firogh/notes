@@ -171,9 +171,11 @@ Firo: name of something, symbols
 We take other men’s knowledge and opinions upon trust; which is an idle and superficial learning. We must make them our own. We are just like a man who, needing fire, went to a neighbor’s house to fetch it, and finding a very good one there, sat down to warm himself without remembering to carry any back home. What good does it do us to have our belly full of meat if it is not digested, if it is not transformed into us, if it does not nourish and support us?
 ### Purpose practice
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
-## First principle and foundation, reality, mistakes
+## The invisiable world
+desymbolize
+## First principle, then minimum essential fundamentals.
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
-It's concrete causality not abstraction.
+“I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
 ## Good order, goals, expection, problem, weakness, detest, disgust, all things should covered by causality including understanding Linux kernel. whatt is my goal?
 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
 Marginalism
@@ -182,6 +184,7 @@ Direct and Classify or container/protection or tidy & tidy up
 Firo: Work on a realife problem.
 Language must be restored to real life. -- Ludwig Wittgenstein
 Genealogy -- Michel Foucault.
+“I tend to approach things from a physics framework,” - Musk said in an interview. 
 ## Just in causality
 ## Being and time and life
 Causalities in 3 minutes

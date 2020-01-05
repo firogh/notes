@@ -5,9 +5,19 @@ date: 2017-03-29T10:49:04+08:00
 category: cs
 ---
 
-# Formal causes
-## Preemption
-### [Voluntary Kernel Preemption, 2.6.12-rc4-mm2](https://lwn.net/Articles/137259/)
+# scheduling
+[Scheduling (computing)](https://en.wikipedia.org/wiki/Scheduling_(computing))
+
+# Context switch
+[Evolution of the x86 context switch in Linux](https://www.maizure.org/projects/evolution_x86_context_switch_linux/index.html)
+[Al Viro's new execve/kernel_thread design](https://lwn.net/Articles/520227/)
+## call+jump+ret - 0100301bfdf56a2a370c7157b5ab0fbf9313e1cd
+((last) = __switch_to_asm((prev), (next)));                             #=====> call
+jmp     __switch_to                                                     #=====> jmp + ret
+[Why does switch_to use push+jmp+ret to change EIP, instead of jmp directly?](https://stackoverflow.com/questions/15019986/why-does-switch-to-use-pushjmpret-to-change-eip-instead-of-jmp-directly/15024312)
+
+# Preemption
+## [Voluntary Kernel Preemption, 2.6.12-rc4-mm2](https://lwn.net/Articles/137259/)
 Voluntary preemption works by adding a cond_resched() 
 (reschedule-if-needed) call to every might_sleep() check. It is lighter 
 than CONFIG_PREEMPT - at the cost of not having as tight latencies. It 

@@ -238,7 +238,9 @@ The solution was the creation of RCU-bh, which does local_bh_disable() across it
 [Tree preempt RCU: 3.0 and RCU: what went wrong](https://lwn.net/Articles/453002/)
 
 # list and rcu
+[Using RCU for linked lists — a case study](https://lwn.net/Articles/610972/)
 [Using RCU to Protect Read-Mostly Linked Lists](https://www.kernel.org/doc/Documentation/RCU/listRCU.rst)
+
 ## hlist-nulls
 commit bbaffaca4810de1a25e32ecaf836eeaacc7a3d11
 Refs: v2.6.28-rc4-513-gbbaffaca4810
