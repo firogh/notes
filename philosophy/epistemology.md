@@ -123,6 +123,16 @@ We can never read the bad too little and the good too often. Inferior books are 
 ## Architecture: common causes for many effects.
 ## Just for fun.
 
+# Change/process
+Matter, space, Enegy, force, Time(finite), Motion
+
+# Understanding/learning.
+1. doing and creating
+2. Test your foundermental principles.
+3. accumulate your abilities and skills, principles.
+4. it's a logic game.
+5. since it's an instance of first principle, it must be finite.
+
 # [Think for yourself](https://en.m.wikisource.org/wiki/On_Thinking_for_Oneself)
 When we read, another person thinks for us: we merely repeat his mental process. - Schopenhauver on reading and books
 From all this it may be concluded that thoughts put down on paper are nothing more than footprints in the sand: one sees the road the man has taken, but in order to know what he saw on the way, one requires his eyes. - Schopenhauver on reading and books

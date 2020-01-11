@@ -55,6 +55,8 @@ The origin of concurrent programming: from semaphores to remote procedure calls 
 [Turing lecture: The computer science of concurrency: the early years](https://dl.acm.org/citation.cfm?id=2771951)
 [Firo: example: Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
 [Rob Pike: Concurrency is the composition of independently executing computations.](https://talks.golang.org/2012/concurrency.slide#6)
+## [Asynchrony (computer programming)](https://en.wikipedia.org/wiki/Asynchrony_(computer_programming))
+
 ## concurrent vs parallel
 Programming vs computing: software vs hardware
 concurrent programming: multi-thread stress on how to create thread to model the outside world.
@@ -66,6 +68,8 @@ IPC check wait.log
 
 ## Problem 2 with memory access
 consistency model
+
+
 # Resource management
 check mm.md
 
