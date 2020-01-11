@@ -17,6 +17,10 @@ Architecture: Memory hierarchy
 OS: VM(layered smantic), Concurrency
 Application: 
 
+# Tools
+Parallemism and locality
+Bandwidth and latency
+
 # Problems
 Complexity
 Resource management
@@ -50,6 +54,7 @@ The origin of concurrent programming: from semaphores to remote procedure calls 
 [Firo: good introduction on history of concurrency: Shared-Memory Concurrency](https://www.dcl.hpi.uni-potsdam.de/teaching/pvprog/Slides/C1_concurrency.pdf)
 [Turing lecture: The computer science of concurrency: the early years](https://dl.acm.org/citation.cfm?id=2771951)
 [Firo: example: Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
+[Rob Pike: Concurrency is the composition of independently executing computations.](https://talks.golang.org/2012/concurrency.slide#6)
 ## concurrent vs parallel
 Programming vs computing: software vs hardware
 concurrent programming: multi-thread stress on how to create thread to model the outside world.

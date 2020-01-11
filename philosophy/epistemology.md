@@ -173,7 +173,7 @@ We take other men’s knowledge and opinions upon trust; which is an idle and su
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
 ## The invisiable world
 desymbolize
-## First principle, then minimum essential fundamentals.
+## First principle, then minimum essential fundamentals. World and mind both evolve from first principle.
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
 ## Good order, goals, expection, problem, weakness, detest, disgust, all things should covered by causality including understanding Linux kernel. whatt is my goal?

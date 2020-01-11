@@ -65,6 +65,9 @@ According to do_syscall_64, regs->ax = sys_call_table[nr](regs->di, regs->si, re
 [What is asmlinkage?](https://kernelnewbies.org/FAQ/asmlinkage)
 However, for C functions invoked from assembly code, we should explicitly declare the function's calling convention, because the parameter passing code in assembly side has been fixed. Show all predefined macros for your compiler
 
+## Hacking
+[Obtain sys_call_table on amd64(x86_64)](https://www.exploit-db.com/papers/13146)
+
 ## vDSO
 [Creating a vDSO: the Colonel's Other Chicken](http://www.linuxjournal.com/content/creating-vdso-colonels-other-chicken?page=0,0)
 [What is linux-gate.so.1](http://www.trilithium.com/johan/2005/08/linux-gate/)

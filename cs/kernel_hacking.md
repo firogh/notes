@@ -77,6 +77,7 @@ Just make tags; make cscope
 [Building a KVM host machine.](https://blacks3pt3mb3r.wordpress.com/linux-stuffz/264-2/)
 [Speeding up kernel development with QEMU](https://lwn.net/Articles/660404/)
 [How to Build A Custom Linux Kernel For Qemu](http://mgalgs.github.io/2015/05/16/how-to-build-a-custom-linux-kernel-for-qemu-2015-edition.html)
+[Rapid kernel development with dracut and Qemu](https://morbidrsa.github.io/2017/04/19/rapid-kernel-development-with-dracut-and-qemu.html)
 ## Build minimal bootable rootfs - fedora
 ./etc/yum.repos.d/
 ./etc/yum.repos.d/fedora-updates-testing.repo

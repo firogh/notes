@@ -7,7 +7,7 @@ category: cs
 
 # Assembly programming
 [Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
-
+[Bootloader with qemu](https://stackoverflow.com/questions/38041478/int-10h-not-working-in-qemu)
 
 # Basic conceptions
 Reentrancy
