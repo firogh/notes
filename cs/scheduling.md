@@ -11,9 +11,10 @@ category: cs
 # Context switch
 [Evolution of the x86 context switch in Linux](https://www.maizure.org/projects/evolution_x86_context_switch_linux/index.html)
 [Al Viro's new execve/kernel_thread design](https://lwn.net/Articles/520227/)
-## call+jump+ret - 0100301bfdf56a2a370c7157b5ab0fbf9313e1cd
-((last) = __switch_to_asm((prev), (next)));                             #=====> call
-jmp     __switch_to                                                     #=====> jmp + ret
+commit 0100301bfdf56a2a370c7157b5ab0fbf9313e1cd
+Author: Brian Gerst <brgerst@gmail.com>
+Date:   Sat Aug 13 12:38:19 2016 -0400
+    sched/x86: Rewrite the switch_to() code
 [Why does switch_to use push+jmp+ret to change EIP, instead of jmp directly?](https://stackoverflow.com/questions/15019986/why-does-switch-to-use-pushjmpret-to-change-eip-instead-of-jmp-directly/15024312)
 
 # Preemption
@@ -39,10 +40,8 @@ CommitDate: Wed Jan 14 18:09:00 2009 +0100
     assumes preemption is already disabled.
 Firo: spin_unlock_mutex
 ## User preemption - Linux kernel user mode is always User preemption.
-* When returning to user-space from a system call.
-syscall_return_slowpath
-* When returning to user-space from an interrupt hander.
-retint_user->prepare_exit_to_usermode
+system call returns mode . syscall_return_slowpath
+interrupt hander returns user mode .retint_user->prepare_exit_to_usermode
 ## Linux kernel kernel mode is coppertive when CONFIG_PREEMPT is not set.
 bloked (which results in a call to schedule())
 If a task in the kernel explicitly calls schedule() it's involuntary!!!
@@ -70,7 +69,6 @@ wakeup: check_preempt_wakeup
 
 ## LQO
 * if (!preempt && prev->state)in __schedule; why prev->state?
-if preempt is true; it should mean PREEMPT_VOLUNTARY.
 prev->state means deactivate.
 
 # Reference

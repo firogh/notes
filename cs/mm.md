@@ -15,19 +15,6 @@ Dragon book 9th chapter 8 main memory
 https://linux-mm.org/
 [2. Memory management](http://bitsavers.trailing-edge.com/pdf/sun/sunos/1.1/800-1108-01E_System_Interface_Manual_for_the_Sun_Workstation_Jan84.pdf)
 
-# History
-## 1959 paging
-[Paging](https://en.wikipedia.org/wiki/Paging) according to [History of VM](https://en.wikipedia.org/wiki/Virtual_memory) is developed at 1959.
-
-## 1961 segmentation
-Fist appears in Burroughs B5500
-
-## 1963 ~ 1965  buddy system
-[Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
-
-## 1956 ~ 1962 VM
-[BEFORE MEMORY WAS VIRTUAL](http://denninginstitute.com/pjd/PUBS/bvm.pdf)
-[Memory part 3: Virtual Memory](https://lwn.net/Articles/253361/)
 
 # Memory partitioning
 Check OSIDP 7.2
@@ -35,7 +22,8 @@ Check OSIDP 7.2
 By variable-sized, we are not taking historical segementation.
 Placement algorithm: Best-fit, first-fit. Within variable-szied memory allocations, it's very difficult to track free memories compared with page-sized.
 
-## Segmentation
+## 1961 segmentation
+Fist appears in Burroughs B5500
 OSIDP
 The difference, compared to dynamic partitioning, is that with seg-
 mentation a program may occupy more than one partition, and these partitions
@@ -91,38 +79,9 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 
 # Memory allocation
 [Dynamic Storage Allocation: A Survey and Critical Review](https://compas.cs.stonybrook.edu/~nhonarmand/courses/sp17/cse506/papers/dsa.pdf)
-## track: buddy memory system
-[buddy system 1965 a fast storage allocator.](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) 
-[Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
-[buddy system variants 1977](https://dl.acm.org/citation.cfm?id=359626)
-The following cited from above 1965 paper.
-The oporations involved in obtaining blocks from and retm'ning thom to the free
-storage lists aro vory fast, making this scheme particularly appropriate for list structure operations and for other
-situations involving many sizes of blocks which are fixed in size and location. This is in fact tho storago bookkeeping
-mothod used in tho Boll Telephone Laboratories Low-Level List Language'
+Page allocator.
 
-OSIDP
-Both fixed and dynamic partitioning schemes have drawbacks. A fixed partitioning
-scheme limits the number of active processes and may use space inefficiently if there is
-a poor match between available partition sizes and process sizes. A dynamic partition-
-ing scheme is more complex to maintain and includes the overhead of compaction. An
-interesting compromise is the buddy system
-
-### Related code
-free_area; page_is_buddy; PageBuddy(buddy) && page_order(buddy) 
-setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init ->
-        sparse_init ...-> vmemmap_populate      # vmemmap
-        zone_sizes_init->free_area_init_nodes -> free_area_init_node-> free_area_init_core
-                zone_pcp_init # init percpu pageset with boot_pageset
-                init_currently_empty_zone(zone, zone_start_pfn, size); # free_area.free_list
-                memmap_init_zone # Memory map a) Set all page to reserved. MIGRATE_MOVABLE? b) Set node, zone to page->flags; set_page_links
-
-start_kernel->mm_init
-        mem_init-> memblock_free_all or free_all_bootmem # /* this will put all low memory onto the freelists */
-
-## obtain/alloc and return/free memory
-page allocator, page reclamation, memory compaction
-### Memory allocation overcommit
+## Memory allocation overcommit
 https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
 [理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
 [Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)
@@ -137,10 +96,12 @@ https://www.linuxidc.com/Linux/2015-01/111565.htm
 ### Reference counting
 [Introducing lockrefs](https://lwn.net/Articles/565734/)
 
-# Lift the burden of loading program from application
-paging
-# Decopule addresses and memory locations
-VM, memory mapping.
+# Memory I/O
+## Paging
+Lift the burden of loading program from application
+
+# VM
+Decopule addresses and memory locations
 
 # Fragmentations
 buddy system, memory compaction

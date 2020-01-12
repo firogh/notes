@@ -90,6 +90,10 @@ ls  | while read line; do echo $line;m=${line%%".mp3"}; echo $line;echo "ffmpeg 
 Edit below file to rename dir in place menu of sidebar.
 vim ~/.config/user-dirs.dirs
 
+# vim
+/usr/share/vim/vim82/autoload/netrw.vim
+   if !hasmapto('<Plug>NetrwRefresh')           |nmap <buffer> <silent> <nowait> <c-l>   <Plug>NetrwRefresh|endif
+
 #xdg 
 * Specification
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html

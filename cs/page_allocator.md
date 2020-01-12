@@ -6,6 +6,34 @@ title: Linux kernel page allocation
 category: cs
 ---
 
+# track: buddy memory system 1963 ~ 1965
+[buddy system 1965 a fast storage allocator.](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) 
+[Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
+[buddy system variants 1977](https://dl.acm.org/citation.cfm?id=359626)
+The following cited from above 1965 paper.
+The oporations involved in obtaining blocks from and retm'ning thom to the free
+storage lists aro vory fast, making this scheme particularly appropriate for list structure operations and for other
+situations involving many sizes of blocks which are fixed in size and location. This is in fact tho storago bookkeeping
+mothod used in tho Boll Telephone Laboratories Low-Level List Language'
+
+OSIDP
+Both fixed and dynamic partitioning schemes have drawbacks. A fixed partitioning
+scheme limits the number of active processes and may use space inefficiently if there is
+a poor match between available partition sizes and process sizes. A dynamic partition-
+ing scheme is more complex to maintain and includes the overhead of compaction. An
+interesting compromise is the buddy system
+
+## Related code
+free_area; page_is_buddy; PageBuddy(buddy) && page_order(buddy) 
+setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init ->
+        sparse_init ...-> vmemmap_populate      # vmemmap
+        zone_sizes_init->free_area_init_nodes -> free_area_init_node-> free_area_init_core
+                zone_pcp_init # init percpu pageset with boot_pageset
+                init_currently_empty_zone(zone, zone_start_pfn, size); # free_area.free_list
+                memmap_init_zone # Memory map a) Set all page to reserved. MIGRATE_MOVABLE? b) Set node, zone to page->flags; set_page_links
+
+start_kernel->mm_init
+        mem_init-> memblock_free_all or free_all_bootmem # /* this will put all low memory onto the freelists */
 # Reference
 [Driver porting: low-level memory allocation]https://lwn.net/Articles/22909/)
 
@@ -18,7 +46,8 @@ category: cs
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d - Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
 
-# Free page state
+# Free 
+## page state
 page_expected_state and check_new_page, page_mapcount_reset
 
 # Do anonymous page, zero page
