@@ -32,6 +32,11 @@ CommitDate: Tue Feb 12 20:17:35 2002 -0800
 
 # Entry system calls
 [The Definitive Guide to Linux System Calls](https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/)
+## Fast path
+commit 21d375b6b34ff511a507de27bf316b3dde6938d9
+Author: Andy Lutomirski <luto@kernel.org>
+Date:   Sun Jan 28 10:38:49 2018 -0800
+    x86/entry/64: Remove the SYSCALL64 fast path
 
 ## sysenter vs syscall
 [SYSENTER/SYSEXIT vs.SYSCALL/SYSRET](https://groups.google.com/forum/#!topic/comp.arch/CjDs4MJCBow%5B1-25%5D)

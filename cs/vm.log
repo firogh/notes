@@ -68,6 +68,15 @@ Date:   Thu Jul 7 17:19:12 2016 -0700
     x86/mm: Ignore A/D bits in pte/pmd/pud_none()
 Firo: _PAGE_KNL_ERRATUM_MASK
 
+## pud_large
+commit 61e19a347ad4bcdda615ef77ef9c3e656e254f3d
+Refs: u2.6.24-6998-g61e19a347ad4
+Author:     Andi Kleen <ak@suse.de>
+AuthorDate: Mon Feb 4 16:48:09 2008 +0100
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Mon Feb 4 16:48:09 2008 +0100
+    x86: add pgtable accessor functions for gbpages
+
 ## Copy ptes
 ### fork's wp page and COW - copy_page_range ... copy_pte_range
 is_cow_mapping(vm_flags_t flags) => return (flags & (VM_SHARED | VM_MAYWRITE)) == VM_MAYWRITE;

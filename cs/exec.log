@@ -2,11 +2,12 @@
 [How programs get run](https://lwn.net/Articles/630727/)
 [How programs get run: ELF binaries](https://lwn.net/Articles/631631/)
 
-# Temporary stack
-__bprm_mm_init
+# Binary format and interpreter
+[Kernel Support for miscellaneous (your favourite) Binary Formats](https://www.kernel.org/doc/html/latest/admin-guide/binfmt-misc.html)
 
-# Finialize stack
-setup_arg_pages
+# Stack
+Temporary stack: __bprm_mm_init
+Finialized stack: setup_arg_pages
 
 # DYN BASE
 ssc 'echo 0 > /proc/sys/kernel/randomize_va_space'

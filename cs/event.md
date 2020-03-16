@@ -43,6 +43,37 @@ v3a: 6.12.1 Exception- or Interrupt-Handler Procedures
 local_irq_disable() used in the code path that never disabled interrupts.
 local_irq_save(flags) used in the code path that already disabled interrupts.
 
+## in_interrupt
+383 static inline void tick_irq_exit(void)
+384 {
+385 #ifdef CONFIG_NO_HZ_COMMON
+386         int cpu = smp_processor_id();
+387 
+388         /* Make sure that timer wheel updates are propagated */
+389         if ((idle_cpu(cpu) && !need_resched()) || tick_nohz_full_cpu(cpu)) {
+390                 if (!in_interrupt())
+391                         tick_nohz_irq_exit();
+392         }
+393 #endif
+394 }
+395 
+396 /*
+397  * Exit an interrupt context. Process softirqs if needed and possible:
+398  */
+399 void irq_exit(void)
+400 {
+401 #ifndef __ARCH_IRQ_EXIT_IRQS_DISABLED
+402         local_irq_disable();
+403 #else
+404         lockdep_assert_irqs_disabled();
+405 #endif
+406         account_irq_exit_time(current);
+407         preempt_count_sub(HARDIRQ_OFFSET);
+408         if (!in_interrupt() && local_softirq_pending())
+409                 invoke_softirq();
+410 
+411         tick_irq_exit();
+
 # Exceptions
 [Exceptions](http://wiki.osdev.org/Exceptions)
 related code:

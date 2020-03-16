@@ -78,6 +78,11 @@ Just make tags; make cscope
 [Speeding up kernel development with QEMU](https://lwn.net/Articles/660404/)
 [How to Build A Custom Linux Kernel For Qemu](http://mgalgs.github.io/2015/05/16/how-to-build-a-custom-linux-kernel-for-qemu-2015-edition.html)
 [Rapid kernel development with dracut and Qemu](https://morbidrsa.github.io/2017/04/19/rapid-kernel-development-with-dracut-and-qemu.html)
+## SUSE
+zypper --root /home/firo/ws/suse addrepo http://download.opensuse.org/distribution/leap/15.0/repo/oss/ foss
+https://en.opensuse.org/Package_repositories
+zypper --root /home/firo/ws/suse install kernel-default-devel
+
 ## Build minimal bootable rootfs - fedora
 ./etc/yum.repos.d/
 ./etc/yum.repos.d/fedora-updates-testing.repo
@@ -97,6 +102,10 @@ Some ftrace stuff
 CONFIG_SLUB
 CONFIG_KASAN
 ## [Kernel.org: Build a tiny kernel](https://tiny.wiki.kernel.org/)
+## make initrd for NFS
+[Upgrade kernel and initrd in Linux](http://migueleonardortiz.com.ar/linux/upgrade-kernel-and-initrd-in-linux/2067)
+sudo chroot suse mkinitrd -m 'nfs nfsv3 nfsv4 iwlwifi' -A -D wlp4s0
+
 ## KVM and NFS
 qemu-system-x86_64 -nographic -enable-kvm  -kernel ./bzImag  -append ' console=ttyS0 ip=dhcp root=/dev/nfs nfsroot=192.168.0.104:/home/firo/kernel/k/testfs,nfsvers=3,tcp rw nfsrootdebug debug  raid=noautodetect selinux=0 enforcing=0 '
 dnf install nfs-utils
@@ -160,6 +169,12 @@ Don't include this line.  We can get it from you email address.
 Include everyone from the ./scripts/get_maintainer.pl output except
 don't include linux-kernel@vger.kernel.org if there is another mailing
 list there already.
+## Kubecek
+│17:31:57 mkubecek | For the record, once the commit is in net or net-next tree, there is no chance to tweak its commit message. │ vtsironis_ho
+│17:32:26   alesak | mkubecek: ok, thanks for the clarification                                                                  │ wpreston
+│17:33:19 mkubecek | These trees do not rebase and some people (like me) would appreciate if other subsystem trees didn't        │ Zara
+│                  | either.                                                                                                     │ zuzka
+│17:34:20 mkubecek | We could avoid spurious git_sort failures and commits like kernel-source 174731527683 
 
 # git mutt patch
 [Greg: How to Apply a Patch to the Linux Kernel Stable Tree](https://www.youtube.com/watch?v=6zUVS4kJtrA)
