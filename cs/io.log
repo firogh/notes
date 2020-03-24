@@ -94,3 +94,6 @@ CommitDate: Mon Apr 29 23:52:10 2002 -0700
 
 # Block
 
+# I/O hardware
+serial communication: UART(16550) + RS-232 
+parallel communication: SCSI, ISA, ATA, PCI, FSB 

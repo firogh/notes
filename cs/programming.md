@@ -5,20 +5,43 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-# Assembly programming
-[Vijay Kumar B's Embedded Programming with the GNU Toolchain](http://www.bravegnu.org/gnu-eprog/)
-[Bootloader with qemu](https://stackoverflow.com/questions/38041478/int-10h-not-working-in-qemu)
+# Computer programming
+[The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
 
-# Basic conceptions
 Reentrancy
+## Function/[subroutine](https://en.wikipedia.org/wiki/Subroutine) and 
+1945 Turing on subroutines in [Proposed electronic calculator.](http://www.alanturing.net/turing_archive/archive/p/p01/P01-011.html): In Chapter 6. Outline of Logical Control. We also wish to be able to arrange for the splitting up of operations into... When we wish to start on a subsidiary operation we need only make a note of where we left off the major operation...
+## stack
+[Firo-must: Dijkstra, E. W. (1960). "Recursive Programming"](https://link.springer.com/article/10.1007%2FBF01386232)
+[call stack](https://en.wikipedia.org/wiki/Call_stack)
+Stack overflow: gurad page
+Stack based buffer overflow: canary, STACKPROTECTOR, Stack Protector buffer overflow detection
 
-# CPS
-https://spin.atomicobject.com/2012/11/01/hey-c-is-a-functional-language-too/
-https://en.wikipedia.org/wiki/Direct_style
+Related code: boot_init_stack_canary
 
-# Reference
+# Concurrent programming
+[Firo: must thinking summary: EW Dijkstra: Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)
+CSAPP3e: Chapter 12 concurrent programming
+Parallel and Concurrent Programming in Haskell
+The origin of concurrent programming: from semaphores to remote procedure calls - Per Brinch Hansen
+[Introduction on history of concurrency: Shared-Memory Concurrency](https://www.dcl.hpi.uni-potsdam.de/teaching/pvprog/Slides/C1_concurrency.pdf)
+[Turing lecture: The computer science of concurrency: the early years](https://dl.acm.org/citation.cfm?id=2771951)
+[Firo: example: Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
+[Rob Pike: Concurrency is the composition of independently executing computations.](https://talks.golang.org/2012/concurrency.slide#6)
+## [Asynchrony (computer programming)](https://en.wikipedia.org/wiki/Asynchrony_(computer_programming))
+
+## process vs event
+[thread vs event](http://courses.cs.vt.edu/cs5204/fall09-kafura/Presentations/Threads-VS-Events.pdf)
+
+# Lock-free programming
+ring buffer, rcu
+
+# Functional programming
+[CPS in C](https://spin.atomicobject.com/2012/11/01/hey-c-is-a-functional-language-too/)
+[Continuation-passing style](https://en.wikipedia.org/wiki/Direct_style)
+
+# programming principles
 [Programming principles](http://en.wikipedia.org/wiki/Category:Programming_principles)
-programming principles
 High cohesion low coupling
 
 # Design pattern
@@ -28,43 +51,16 @@ High cohesion low coupling
 # IPC
 [Busy waiting vs blocking](http://www.cyberiapc.com/os/ipc_whatisit.htm)
 
-# Computer programming
-[The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
-
-# Files sytle
+# Project engineering
 [kernel asm/asm-generic](https://lists.kernelnewbies.org/pipermail/kernelnewbies/2012-March/004986.html)
 asm stands for arch specific macros(FIXME).
+
 # Coding style
 [GNU Coding Standards](http://www.gnu.org/prep/standards/standards.html)
 比如GNU coding standards, Linux kernel coding style, Shell coding standard
 * Label
 It is considered to be safer that the label reflect what happens at the
 destination, and not the reason for reaching the label. --Julia
-
-# Verification and validation
-抽象的知识来自生活经验的总结, 所以学习抽象知识的重要方向是从实践不断总结抽象.
-programming is a goal-oriented activity
-14.4 
-Before attempting to solve a problem, make absolutely sure you  what the problem is.
-14.5
-Before developing a program, make precise and refine the pre/postcondition.
-program -> 
-{Q} S {R}: predicte, formal notation
-Q: input asseration
-R: output asseration 
-predictes -> asseration
-asseration: a predicate placed in a program is called an asseration.
-Proof outline: a program together with an asseration between each pair of statements
-Program specification ⊃ excution ∪ speed ∪ size 
-Instances: summation, squre root approximation, sorting
-command-comment ⊃ all input ∪ output
-# Lock-free programming
-ring buffer, rcu
-
-# Testing
-[Google testing blog](http://googletesting.blogspot.com/)
-1.Black-box testing test software function.
-2.White-box testing test software internal logic.
 
 # Good taste
 remove_list_entry(entry)

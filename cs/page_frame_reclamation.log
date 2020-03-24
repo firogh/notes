@@ -22,16 +22,26 @@ Commit:     Linus Torvalds <torvalds@g5.osdl.org>
 CommitDate: Sun Jan 8 20:12:41 2006 -0800
     [PATCH] Swap Migration V5: migrate_pages() function
 
-## workingset
+# workingset
+Memory pressure is high wich is the reason that the refaulted page was evicted before.
+Time is transformed to space metric, distance.
+If a page is refaulted, it means that page is a protential active pages. What is the obstacle to prevent from putting it into active list.
+Under high memory pressure, #active means max capacity for workingset. Also because we cannot compare refaulted page and pages in active. Assuming that #distance pages are all promoted to active list, #distance < #active means #active still has room for the refaulted page. Else, it means #workingset is large then are memory capacity for #active. Thrashing is unavoidable.
+Prvent workingset page from being evicted by PFRA again; in turn, avoid memory thrashing.
+
 [Better active/inactive list balancing](https://lwn.net/Articles/495543/)
+## First version(not accepted)
+[mm: refault distance-based file cache sizing](https://lore.kernel.org/linux-mm/1335861713-4573-6-git-send-email-hannes@cmpxchg.org/)
+
+## 2nd version (merged by upstream)
 commit a528910e12ec7ee203095eb1711468a66b9b60b0
 Refs: v3.14-7406-ga528910e12ec
 Author:     Johannes Weiner <hannes@cmpxchg.org>
 AuthorDate: Thu Apr 3 14:47:51 2014 -0700
 Commit:     Linus Torvalds <torvalds@linux-foundation.org>
 CommitDate: Thu Apr 3 16:21:01 2014 -0700
-
     mm: thrash detection-based file cache sizing
+
 # GFP flags
 __GFP_IO: allow disk IO
 __GFP_FS: allow fs operations, depend on io.

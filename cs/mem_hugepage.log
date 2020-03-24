@@ -42,7 +42,7 @@ Benefits:
 Currently it only works for anonymous memory mappings and tmpfs/shmem and fs which support huge_fault.
 page fault
 
-## Compound pages
+# Compound pages
 tglx: commit eefb08ee7da81e1548ffd5b664682dc5b229ddc2
 Author: Andrew Morton <akpm@digeo.com>
 Date:   Wed Feb 5 16:57:54 2003 -0800
@@ -72,6 +72,9 @@ Date:   Wed Jun 24 16:56:33 2015 -0700
  {
 -       return !PageSlab(page) && !PageHeadHuge(page);
 +       return PageAnon(page) && !PageSlab(page) && !PageHeadHuge(page);
+
+## non-compound higher-order page
+split_page() in alloc_pages() path
 
 # Tail page refcounting
 [Transparent huge page reference counting](https://lwn.net/Articles/619738/)

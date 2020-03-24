@@ -6,6 +6,7 @@ category: philosophy
 # Being
 Chaos, abyss, unknown, Thing-in-itself, Universal connection, causality, Life, Uncertainty, Reality, Effect and Inefficiency, change/process, complexicity
 Matter, space, Enegy, force, Time, Motion, The invisiable world and desymbolize. Conflicts.
+Problems world.
 
 # The invisiable world
 Mind is restricted by how it is represented.
@@ -34,12 +35,24 @@ In my view, it’s so important that Software’s Primary Technical Imperative h
 # Will, the cause
 休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 
+# Problems world
+Purposes: Don't spent time on what it is. Focus on the purposes and do it yourself.
+Ablities, skilss: Engineer ablities
+
 # Life
-Physical(including Biology) and mental world; independence/free will and control by the Other; Think and doing; Subjectivity. In-thing vs Out-observing. Protection and Tidy
+Physical(including Biology) and mental world; independence/free will and control by the Other; Abilities and Procedural thinking and chaning world; Think and doing; subjectiv building and role based knowledge vs Subjectivity. In-thing vs Out-observing. Protection and Tidy; top-down vs bottom-up; de-symblize smantic and express yourself; mental arbitrariness vs physical concidence;
+# Abilities and chaning world
+Basic abilities
+Define yourself based on your abilites from the chaning perspective.
 
 # Mental world
 Work on a realife problem.
 Language must be restored to real life. -- Ludwig Wittgenstein
+
+# Mental arbitrariness
+Concrete problems is the basis of understanding; no concrete no gain.
+Mental in-thing. Physical in-thing. Don't do mental out-observing.
+Close and far connection; primary and secondary.
 
 # Independence and the Other 
 马蝇天下The Bots Masters 
@@ -94,12 +107,13 @@ Firo: There are many levels of creation, e.g. a blank piece of paper.
 Foundational facts analysis
 法乎其上,得乎其中,法乎其中,仅得其下
 
-# Effect
-
+# Effective ways
+Do what you really want to do.
 If you want to do something, but you are afraid to do it, then that is likely what you should do.
+Gradually grow up a little bit each day. 每天进步一点点.
+Plan, project.
 
 直接. [Don’t be a pussy](https://cirosantilli.com/#dont-be-a-pussy). 牛人心态: 牛人姿态, 会成为牛人, 研究东西，牛人洞察力，牛人水准, 研发出来的需要实战、需要工程化，否则只是玩具，而不能成为真的武器
-Gradually grow up a little bit each day. 每天进步一点点.
 Focus.
 From raw edition.
 Knapsack problem. One priority list. 
@@ -122,6 +136,8 @@ The whole is other than the sum of the parts. --Gestalt psychology
 
 # Scientific method; Reflexivity -- Soros; Hyposis and test. Trail and error. 
 Hypothesize bravely/boldly, to prove carefully -- Hushi
+Cause, process, effect/feedback
+Positive feedback; negative feedback
 ## Question
 I have never thought about questions that are not real ones - I have not squandered myself. -- N
 Concrete gravity. The more concrete and specific the more effective
@@ -142,6 +158,9 @@ Wang Yin: 观看阅读别人创造的现成的内容, 能让人短暂的知道�
 All by themselves my eyes put an end to all bookwormery, otherwise known as philology: I was released from the ‘book’, and read nothing more for years—the greatest favour I have ever done myself!That nethermost self, as if buried alive, as if made mute beneath the constant need to pay heed to other selves (—which is what reading is!) awoke slowly, shyly, hesitantly—but finally it spoke again. I have never been so happy with myself as in my life’s periods of greatest illness and pain: you need only take a look at Daybreak(Firo: also the dawn of day) or The Wanderer and His Shadow to understand what this ‘return to myself ’ was: the highest kind of recuperation!... The other kind simply followed on from this. -- Ecce Homo Nietzsche, Why I write such good books, Review of Human, All Too Human section 4.(Firo: search bookwormery)
 And [The Dawn of Day](http://www.gutenberg.org/files/39955/39955-h/39955-h.html#toc1) and [The wanderer and his shadow](http://www.gutenberg.org/files/37841/37841-h/37841-h.html#toc7)
 If he does not skim, he does not think. - Ecce Homo Friedrich Nietzsche, Why I Am So Clever, section 8
+
+# Fern
+Chaos theory
 
 # First principle, then minimum essential fundamentals. 
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk

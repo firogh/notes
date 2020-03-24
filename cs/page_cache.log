@@ -25,7 +25,6 @@ grow_buffers-> grow_dev_page
 try_to_release_page
 Buffer cache: Inode is stored on the buffer cache; check sync_inode_metadata and __ext2_write_inode
 
-
 ## [Linux pagecache history](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 
 

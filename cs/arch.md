@@ -20,19 +20,12 @@ Microarchitectural state, such as information stored in TLBs and caches
 # Circuits 
 A Symbolic Analysis of Relay and Switching Circuits
 
-# Memory hierarchy
-[Latency Numbers Every Programmer Should Know](http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
-
 # CPU
 [How a CPU Works](https://youtu.be/cNN_tTXABUA)
 
 ## ISA
 ISA: memory model, registers, data types, instructions, word size(?).
 Memory model: unit of address resolution, word, aligment, address space, addressing mode, memory barrier/memory order primitive's semantics.
-
-# I/O
-serial communication: UART(16550) + RS-232 
-parallel communication: SCSI, ISA, ATA, PCI, FSB
 
 ## Data struct alignment
 struct foo { char c; int i;};

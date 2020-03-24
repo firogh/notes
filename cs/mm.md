@@ -15,7 +15,6 @@ Dragon book 9th chapter 8 main memory
 https://linux-mm.org/
 [2. Memory management](http://bitsavers.trailing-edge.com/pdf/sun/sunos/1.1/800-1108-01E_System_Interface_Manual_for_the_Sun_Workstation_Jan84.pdf)
 
-
 # Memory partitioning
 Check OSIDP 7.2
 ## Page vs variable-sized memory allocations
@@ -74,7 +73,6 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 +#define ZONE_NORMAL            1
 -static struct free_area_struct free_area[NR_MEM_TYPES][NR_MEM_LISTS];
 +typedef struct zone_struct {
-
 [Zone-lock and mmap_sem scalability](https://lwn.net/Articles/753269/)
 
 # Memory allocation
@@ -95,13 +93,6 @@ Book: Japanese GC book.
 https://www.linuxidc.com/Linux/2015-01/111565.htm
 ### Reference counting
 [Introducing lockrefs](https://lwn.net/Articles/565734/)
-
-# Memory I/O
-## Paging
-Lift the burden of loading program from application
-
-# VM
-Decopule addresses and memory locations
 
 # Fragmentations
 buddy system, memory compaction
@@ -137,7 +128,5 @@ MIGRATE_HIGHATOMIC
 https://kernelnewbies.org/Linux_2_6_35#Memory_compaction
 [firo-must: The hard work behind large physical memory allocations in the kernel](https://linuxplumbersconf.org/event/2/contributions/65/attachments/15/171/slides-expanded.pdf)
 
-
 ## Anti fragmentation
 [The What, The Why and the Where To of Anti-Fragmentation](https://www.kernel.org/doc/ols/2006/ols2006v1-pages-369-384.pdf)
-

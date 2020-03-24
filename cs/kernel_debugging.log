@@ -1,4 +1,8 @@
 
+
+# Crash
+search -t 
+
 # Boot issues
 debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
 
@@ -50,7 +54,6 @@ commit c6f3a97f86a5c97be0ca255976110bb9c3cfe669
 Author: Thomas Gleixner <tglx@linutronix.de>
 Date:   Wed Apr 30 00:55:03 2008 -0700
     debugobjects: add timer specific object debugging code
-
 
 # Deadlock
 Lockdep
