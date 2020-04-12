@@ -102,6 +102,30 @@ More sunos docs: http://bitsavers.trailing-edge.com/pdf/sun/sunos/
 1989
 One paper found in OSTEP: [Memory Coherence in Shared Virtual Memory Systems](https://courses.cs.washington.edu/courses/cse551/09sp/papers/memory_coherence.pdf)
 
+## Shared memory in kernel
+### Initial version
+history: commit 9cb9f18b5d26bf176e13edbc0c248d121217c6b3
+Refs: <0.99.10>
+Author:     Linus Torvalds <torvalds@linuxfoundation.org>
+AuthorDate: Fri Nov 23 15:09:11 2007 -0500
+Commit:     Linus Torvalds <torvalds@linuxfoundation.org>
+CommitDate: Fri Nov 23 15:09:11 2007 -0500
+    [PATCH] Linux-0.99.10 (June 7, 1993)
+Firo: search 'shm_swap'
+
+### Ramfs based
+history: commit 4d372877c63baaaf4c1c3325cae43f6b9782e59e
+Refs: <2.4.0-test13pre3>
+Author:     Linus Torvalds <torvalds@linuxfoundation.org>
+AuthorDate: Fri Nov 23 15:40:55 2007 -0500
+Commit:     Linus Torvalds <torvalds@linuxfoundation.org>
+CommitDate: Fri Nov 23 15:40:55 2007 -0500
+[...]
+    The shmfs cleanup should be unnoticeable except to users who use SAP with
+    huge shared memory segments, where Christoph Rohlands work not only
+    makes the code much more readable, it should also make it dependable..
+[...]
+    - Christoph Rohland: shmfs for shared memory handling
 
 # mmap
 ## MAP_SYNC

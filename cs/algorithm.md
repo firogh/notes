@@ -107,18 +107,6 @@ Trees only store keys.
 [Radix tree vs Trie, check radix meaning](https://stackoverflow.com/questions/14708134/what-is-the-difference-between-trie-and-radix-trie-data-structures)
 Patricia is compact trie or Patricia is radix = 2 trie?
 
-# Radix tree in kernel not wikipedia
-page cache: page_cache_tree_insert
-Wikipedia: Radix tree looks like a compact trie.
-Kernel: Radix tree was more like a Multi-level index associative arrya or judy array.
-[Trees I: Radix trees](https://lwn.net/Articles/175432/)
-[Enhancing the Linux Radix Tree](http://events17.linuxfoundation.org/sites/events/files/slides/LinuxConNA2016%20-%20Radix%20Tree.pdf)
-[The design and implementation of the XArray](https://www.youtube.com/watch?v=v0C9_Fp-co4)
-[A multi-order radix tree](https://lwn.net/Articles/688130/)
-radix_tree_init_maxnodes(): height is 11 in kernel?
-__radix_tree_create() add one page__
-radix_tree_lookup_slot: find one page
-
 # Search
 Data property: unique key, indexed
 [Search data structure](https://en.wikipedia.org/wiki/Search_data_structure)
@@ -150,6 +138,7 @@ type: Reclaim
 # Ring buffer or Circular buffer
 
 # Redblack tree
+[红黑树 IN Linux part 1, 2, 3](http://tinylab.org/rbtree-part1/)
 gap between linar node can be optimized by argument rb tree. O(n) -> O(log n)
 mm: augment vma rbtree with rb_subtree_gap d37371870ceb1d2165397dc36114725b6dca946c
 [Rank-Balanced Trees](http://sidsen.azurewebsites.net//papers/rb-trees-talg.pdf)

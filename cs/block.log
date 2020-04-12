@@ -76,8 +76,44 @@ root        46  0.0  0.0      0     0 ?        I<   08:15   0:00 [kblockd]
 if schedule:  workqueue
 else synchronize ?? which function?
 
+# blk-mq
+commit 320ae51feed5c2f13664aa05a76bec198967e04d
+Refs: v3.12-rc5-9-g320ae51feed5
+Author:     Jens Axboe <axboe@kernel.dk>
+AuthorDate: Thu Oct 24 09:20:05 2013 +0100
+Commit:     Jens Axboe <axboe@kernel.dk>
+CommitDate: Fri Oct 25 11:56:00 2013 +0100
+    blk-mq: new multi-queue block IO queueing mechanism
+
 # LQO
 4. ext2_mount mount_dev
+
+# Completion
+scsi_end_request
+blk_finish_request
+__blk_mq_end_request
+
+scsi_end_request+0x116/0x1e0
+scsi_io_completion+0x168/0x6a0
+scsi_finish_command+0xdc/0x140
+scsi_softirq_done+0x132/0x160
+blk_done_softirq+0x96/0xc0
+
+# make_request_fn
+blk_queue_bio
+
+# Stat
+## requests queued in request queue
+request_queue.rq or root_rl
+request_queue.nr_rqs: removed in latest kernel.
+get_request and blk_finish_request
+for mq: blk_mq_ctx.rq_dispatched and blk_mq_ctx.rq_completed
+rq counts including following in_flight counts.
+## request_queue.in_flight: requests sent to drv
+blk_dequeue_request & RQF_STARTED both in blk_peek_request
+q->in_flight[rq_is_sync(rq)]++;
+__blk_put_request => elv_completed_request and elv_requeue_request
+q->in_flight[rq_is_sync(rq)]--
 
 # Block cgroup
 ## request_list
@@ -89,3 +125,19 @@ Commit:     Jens Axboe <axboe@kernel.dk>
 CommitDate: Tue Jun 26 18:42:49 2012 -0400
     blkcg: implement per-blkg request allocation
 
+# Debug
+https://en.opensuse.org/SDB:SCSI_debugging_hints
+scsi_logging_level -s -a 7
+/proc/sys/dev/scsi/logging_level
+sg3_utils
+
+# Nvme
+nvme_alloc_ns: nvme_make_request => blk_mq_make_request
+commit a4aea5623d4a54682b6ff5c18196d7802f3e478f
+Author: Matias Bjørling <m@bjorling.me>
+Date:   Tue Nov 4 08:20:14 2014 -0700
+    NVMe: Convert to blk-mq
+    This converts the NVMe driver to a blk-mq request-based driver.
+
+# IO scheduler
+elv_iosched_show, elv_register

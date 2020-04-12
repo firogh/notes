@@ -103,6 +103,15 @@ Date:   Mon Jul 28 15:46:29 2008 -0700
 ptdump_walk_pgd_level_core
 [Mannully va to pa](http://edsionte.com/techblog/archives/1966)
 
+# page_mapped vs page_mapcount
+commit e1534ae95004d6a307839a44eed40389d608c935
+Refs: v4.4-6427-ge1534ae95004
+Author:     Kirill A. Shutemov <kirill.shutemov@linux.intel.com>
+AuthorDate: Fri Jan 15 16:53:46 2016 -0800
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Fri Jan 15 17:56:32 2016 -0800
+    mm: differentiate page_mapped() from page_mapcount() for compound pages
+
 # Memory mapping
 setup_arch -> init_mem_mapping # set page table and cr3.
 ## rmap

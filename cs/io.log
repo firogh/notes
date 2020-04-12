@@ -26,6 +26,12 @@ CommitDate: Wed Sep 2 08:44:08 2009 +0200
     This patch below adds this scheduler statistic to the kernel.
 Firo: p->in_iowait
 
+# IO
+crash> dev -d | head
+MAJOR GENDISK            NAME       REQUEST_QUEUE      TOTAL ASYNC  SYNC   DRV
+request_queue.nr_rqs 
+request_queue.in_flight
+
 # Memory-mapped file I/O
 Check LSP chapter 4: Mapping Files into Memory
 

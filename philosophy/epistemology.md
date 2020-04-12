@@ -35,26 +35,34 @@ In my view, it’s so important that Software’s Primary Technical Imperative h
 # Will, the cause
 休谟更是猛烈地攻击了传统理性主义，他在《人性论》中说：理性是感性(Firo: 非理性) 的奴隶，除了服务和服从感性之外，再也不能有任何其他的作用。他认为理性本身是不存在的，纯理性不足以产生任何行动和意志作用。一切理性推理都不过是一种感觉。不但在文学艺术中，就是在哲学和科学中，我们也得遵循我们的爱好和情趣。
 
-# Problems world
+# Problems world & Painful world
+Limiting factor; obstacle;
 Purposes: Don't spent time on what it is. Focus on the purposes and do it yourself.
 Ablities, skilss: Engineer ablities
 
+
 # Life
-Physical(including Biology) and mental world; independence/free will and control by the Other; Abilities and Procedural thinking and chaning world; Think and doing; subjectiv building and role based knowledge vs Subjectivity. In-thing vs Out-observing. Protection and Tidy; top-down vs bottom-up; de-symblize smantic and express yourself; mental arbitrariness vs physical concidence;
+Physical(including Biology) and mental world; independence/free will and control by the Other; Think and doing; subjective building and role based knowledge vs Subjectivity. In-thing vs Out-observing. Protection and Tidy; top-down vs bottom-up; de-symblize smantic and express yourself; mental arbitrariness vs physical concidence; relative knowledge and relative essence. 人是没什么出路, 不能期望一个计划搞定事情.需要一点点做.把该做的都做就好了.
+
 # Abilities and chaning world
 Basic abilities
 Define yourself based on your abilites from the chaning perspective.
 
 # Mental world
-Work on a realife problem.
+Work on a real life problem.
 Language must be restored to real life. -- Ludwig Wittgenstein
+
+# subjective knowledge
+Focus on how well we understand this world; don't pursue a objective knowledge of this world.
+Role-based understanding.
 
 # Mental arbitrariness
 Concrete problems is the basis of understanding; no concrete no gain.
-Mental in-thing. Physical in-thing. Don't do mental out-observing.
-Close and far connection; primary and secondary.
+Role based mental in-thing. Role based physical in-thing. Don't do mental out-observing.
+Close and far connection; primary and secondary. four causes;  
+doing, root cause, end cause, feedback
 
-# Independence and the Other 
+# Independence and the Other
 马蝇天下The Bots Masters 
 什么是独立呢?“独立”是你们自己的事，给你自由而不独立这是奴隶，独立要不盲从，不受欺骗，不依傍门户，不依赖别人，不用别人耳朵为耳朵，不以别人的脑子为脑子，不用别人的眼睛为眼睛，这就是独立的精神。 -- 胡适在北京大学1946年开学演讲
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge.  - on education, Albert Einstein
@@ -165,13 +173,14 @@ Chaos theory
 # First principle, then minimum essential fundamentals. 
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
+## A complete use case
 
 # Learning by doing/creating - what you did defines you. reinvent, creating, using.
 [Leonardo da Vinci](https://en.wikiquote.org/wiki/Talk:Leonardo_da_Vinci): I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do.
 Aristotle, The Nicomachean Ethics: For the things we have to learn before we can do them, we learn by doing them.
 Feynman mean: [What I cannot create, I do not understand?](https://www.quora.com/What-did-Richard-Feynman-mean-when-he-said-What-I-cannot-create-I-do-not-understand)
 Goethe: 我们必须流下热汗, 才能真正拥有父亲留下的遗产.
-Ray Dalio: knowing how to deal well with you setbacks is as important as knowing how to move forward. -- 
+Ray Dalio: knowing how to deal well with you setbacks is as important as knowing how to move forward.
 John Dewey: [D is for John Dewey: His Approach To Education](https://www.thepositiveencourager.global/john-deweys-approach-to-doing-positive-work/)
 Montaigne: We take other men’s knowledge and opinions upon trust; which is an idle and superficial learning. We must make them our own. We are just like a man who, needing fire, went to a neighbor’s house to fetch it, and finding a very good one there, sat down to warm himself without remembering to carry any back home. What good does it do us to have our belly full of meat if it is not digested, if it is not transformed into us, if it does not nourish and support us?
 [Stop Thinking and Start Doing: The Power of Practicing More](https://jamesclear.com/learning-vs-practicing)

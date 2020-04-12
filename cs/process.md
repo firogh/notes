@@ -5,6 +5,10 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
+# Timestamp
+se.sum_exec_runtime                          :             0.036973
+se.avg.last_update_time                      :           1884199936
+
 # Pid
 [Namespaces in operation, part 3: PID namespaces](https://lwn.net/Articles/531419/)
 [PID, PGID, SID, PIDTYPE_PID](https://lwn.net/Articles/606925/)

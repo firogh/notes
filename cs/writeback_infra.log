@@ -128,8 +128,31 @@ threads are associated with a block device, so each thread grabs data from its p
 device dirty list and writes it back to its disk.Writeback is thus synchronous and the
 threads, because there is one per disk, do not need to employ complicated congestion
 avoidance.This approach improves fairness and decreases the risk of starvation.
-# Formal causes
 
+# Congestion
+set_wb_congested, clear_wb_congested, wb
+inode_write_congested
+PGDAT_WRITEBACK,
+sync? op_is_sync
+crash> request_queue -d ffff9224d4aaa908 |grep congestion
+  nr_congestion_on = 113, 
+  nr_congestion_off = 103,
+commit d40f75a06dd675808eed385d490ba9468200b23f
+Author: Tejun Heo <tj@kernel.org>
+Date:   Fri May 22 17:13:42 2015 -0400
+    writeback, blkcg: restructure blk_{set|clear}_queue_congested()
+commit a1ce35fa49852db60fc6e268038530be533c5b15
+Author: Jens Axboe <axboe@kernel.dk>
+Date:   Mon Oct 29 10:23:51 2018 -0600
+    block: remove dead elevator code
+    This removes a bunch of core and elevator related code. On the core
+    front, we remove anything related to queue running, draining,
+    initialization, plugging, and congestions. We also kill anything
+    related to request allocation, merging, retrieval, and completion.
+All removed; where congestion related code could be found?
+
+
+# Formal causes
 ## backing_dev_info
 bdi_list and super_blocks
 ### pdflush exclusion
@@ -201,25 +224,6 @@ Author: Jens Axboe <jens.axboe@oracle.com>
 Date:   Wed Sep 2 09:19:46 2009 +0200
     writeback: move dirty inodes from super_block to backing_dev_info
 
-## Congestion
-inode_write_congested
-PGDAT_WRITEBACK,
-
-## Throttling
-[Dynamic writeback throttling](https://lwn.net/Articles/405076/)
-### [Buffered writeback throttling](https://lwn.net/Articles/704739/)
-[Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
-[Background writeback](https://lwn.net/Articles/685894/)
-[1.4. Improved writeback management](https://kernelnewbies.org/Linux_4.10#Improved_writeback_management)
-commit 87760e5eef359788047d6fd54fc12eec74ce0d27
-Author: Jens Axboe <axboe@fb.com>
-Date:   Wed Nov 9 12:38:14 2016 -0700
-    block: hook up writeback throttling
-commit e34cbd307477ae07c5d8a8d0bd15e65a9ddaba5c
-Author: Jens Axboe <axboe@fb.com>
-Date:   Wed Nov 9 12:36:15 2016 -0700
-    blk-wbt: add general throttling mechanism
-
 ## Cgroup
 [Must-read: Very good picture on writeback代码分析 and cgroup] http://kernel.pursuitofcloud.org/713974
 [Writeback and control groups](https://lwn.net/Articles/648292/)
@@ -236,10 +240,13 @@ Commit:     Jens Axboe <axboe@fb.com>
 CommitDate: Tue Jun 2 08:33:34 2015 -0600
     writeback: move backing_dev_info->wb_lock and ->worklist into bdi_writeback
 
+# Writeback workqueue
+default_bdi_init->alloc_workqueue("writeback", WQ_MEM_RECLAIM...)
+bdi_wq = alloc_workqueue("writeback", WQ_MEM_RECLAIM | WQ_FREEZABLE
+root        40  0.0  0.0      0     0 ?        I<   10:08   0:00 [writeback]
+
 ## Writeback action
-[When writeback goes wrong](https://lwn.net/Articles/384093/)
 [Handling writeback errors](https://lwn.net/Articles/718734/)
-[Background writeback](https://lwn.net/Articles/685894/)
 ### Inode
 inode_sync_complete
 writeback_inodes_wb => wb_writeback_work

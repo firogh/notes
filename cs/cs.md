@@ -1,4 +1,4 @@
----
+--
 tags: [ cs ] 
 title: Firo's perspective on computer science
 date: 2015-02-27T15:46:14+08:00 
@@ -6,20 +6,20 @@ category: cs
 ---
 
 # Computation
+Don't think about what is what; don't think about the answer. Doing, root cause, end cause, feedback;
 Program: programming, Concurrency
 I/O: Locality of reference, memory hierarchy
 Calculation: Parallelism, ILP, superscalar, SMP
-Memory storage: memory, memory management, VM(layered smantic), the locality principle
+Memory storage: memory, memory allocation, VM(layered smantic), the locality principle
 
-# Memory management
-Allocation: buddy track system, metric, page allocator. PFRA & workingset, rmap
-VM: address space, page tables, tlb, page fault
+# Memory Allocation: buddy track system, metric, page allocator. PFRA & workingset, rmap
 
 # VM
+address space, page tables, tlb, page fault
 Decopule addresses and memory locations
 
 # Paging
-Lift the burden of loading program from application
+Lift the burden of loading program from application.
 
 # Program
 Completion time
