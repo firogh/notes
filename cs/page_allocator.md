@@ -6,6 +6,11 @@ title: Linux kernel page allocation
 category: cs
 ---
 
+# Reference
+[Driver porting: low-level memory allocation]https://lwn.net/Articles/22909/)
+[The "too small to fail" memory-allocation rule](https://lwn.net/Articles/627419/)
+[Revisiting "too small to fail"](https://lwn.net/Articles/723317/)
+
 # track: buddy memory system 1963 ~ 1965
 [buddy system 1965 a fast storage allocator.](http://sci-hub.tw/https://dl.acm.org/citation.cfm?doid=365628.365655) 
 [Buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
@@ -34,9 +39,9 @@ setup_arch->x86_init.paging.pagetable_init = native_pagetable_init = paging_init
 
 start_kernel->mm_init
         mem_init-> memblock_free_all or free_all_bootmem # /* this will put all low memory onto the freelists */
-# Reference
-[Driver porting: low-level memory allocation]https://lwn.net/Articles/22909/)
 
+# CPU set
+[Cpusets and memory policies](https://lwn.net/Articles/717797/)
 # GFP flags
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
@@ -328,15 +333,6 @@ commit c93bdd0e03e848555d144eb44a1f275b871a8dd5
 Author: Mel Gorman <mgorman@suse.de>
 Date:   Tue Jul 31 16:44:19 2012 -0700
     netvm: allow skb allocation to use PFMEMALLOC reserves
-
-# OOM
-dump_header(), show_mem(), dump_tasks
-oom_score_adj in Documentation/filesystems/proc.txt
-fs/proc/base.c
-ONE("oom_score",  S_IRUGO, proc_oom_score),
-REG("oom_adj",    S_IRUGO|S_IWUSR, proc_oom_adj_operations),
-REG("oom_score_adj", S_IRUGO|S_IWUSR, proc_oom_score_adj_operations),
-oom_badness
 
 # Expected page state
 page_expected_state and check_new_page, page_mapcount_reset, prep_new_page

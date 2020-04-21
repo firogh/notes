@@ -52,7 +52,7 @@ Date:   Mon Mar 27 01:15:55 2006 -0800
     [PATCH] remove zone_mem_map
 
 Related code: pfn_to_page
-#### Zones
+# Zones
 ULK 2: 7.1.2 Memory Zones; LDD: Memory zones; LKD3: Zones; UVM: Chapter 2  Describing Physical Memory
 history: commit 4d1ceac2980133513fec009b18514f026ff58afa (tag: 2.3.23pre5)
 Author: Linus Torvalds <torvalds@linuxfoundation.org>
@@ -96,37 +96,6 @@ https://www.linuxidc.com/Linux/2015-01/111565.htm
 
 # Fragmentations
 buddy system, memory compaction
-## Mobility
-PLKA - 3.5.2
-[Making kernel pages movable](https://lwn.net/Articles/650917/)
-Split the free lists for movable and unmovable allocations - b2a0ac8875a0a3b9f0739b60526f8c5977d2200f
-
-Related code:
-set_pageblock_migratetype
-
-find_suitable_fallback
-        [MIGRATE_UNMOVABLE]   = { MIGRATE_RECLAIMABLE, MIGRATE_MOVABLE,   MIGRATE_TYPES },
-        [MIGRATE_RECLAIMABLE] = { MIGRATE_UNMOVABLE,   MIGRATE_MOVABLE,   MIGRATE_TYPES },
-        [MIGRATE_MOVABLE]     = { MIGRATE_RECLAIMABLE, MIGRATE_UNMOVABLE, MIGRATE_TYPES },
-
-MIGRATE_RECLAIMABLE? 
-commit e12ba74d8ff3e2f73a583500d7095e406df4d093
-Refs: v2.6.23-4359-ge12ba74d8ff3
-Author:     Mel Gorman <mel@csn.ul.ie>
-AuthorDate: Tue Oct 16 01:25:52 2007 -0700
-Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
-CommitDate: Tue Oct 16 09:43:00 2007 -0700
-    Group short-lived and reclaimable kernel allocations
-[treewide: remove GFP_TEMPORARY allocation flag](https://lore.kernel.org/patchwork/patch/814997/)
-
-LQO:
-MIGRATE_HIGHATOMIC
-
-## Memory compaction
-[Memory compaction issues](https://lwn.net/Articles/591998/)
-[Memory compaction](https://lwn.net/Articles/368869/)
-https://kernelnewbies.org/Linux_2_6_35#Memory_compaction
-[firo-must: The hard work behind large physical memory allocations in the kernel](https://linuxplumbersconf.org/event/2/contributions/65/attachments/15/171/slides-expanded.pdf)
 
 ## Anti fragmentation
 [The What, The Why and the Where To of Anti-Fragmentation](https://www.kernel.org/doc/ols/2006/ols2006v1-pages-369-384.pdf)

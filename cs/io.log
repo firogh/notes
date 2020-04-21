@@ -1,6 +1,7 @@
 
 # IO
 [Firo A must watch: Kernel Recipes 2015 - Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
+https://www.postgresql.eu/events/fosdem2019/sessions/session/2346/slides/159/fosdem_linux_io.pdf
 ## Synchronized, Synchronous, and Asynchronous Operations
 Check LSP 3rd Chapter 4.
 Synchronous I/O is a user space notation.

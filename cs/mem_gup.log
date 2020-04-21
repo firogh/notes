@@ -13,3 +13,5 @@ Date:   Mon Feb 4 23:59:34 2002 -0800
 [The trouble with get_user_pages()](https://lwn.net/Articles/753027/)
 [DMA and get_user_pages()](https://lwn.net/Articles/774411/) [Slides and Jan Kara's problem](https://linuxplumbersconf.org/event/2/contributions/126/attachments/136/168/LPC_2018_gup_dma.pdf)
 
+# A practice
+Check sys_mlock and faultin_page

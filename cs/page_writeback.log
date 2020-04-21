@@ -64,6 +64,7 @@ WB_REASON_FREE_MORE_MEM: [buffer: eliminate the need to call free_more_memory() 
 
 # Dirty pages throttling
 [Dynamic writeback throttling](https://lwn.net/Articles/405076/)
+[No-I/O dirty throttling](https://lwn.net/Articles/456904/)
 balance_dirty_pages
 ## Leagcy memcg description from Tejun 
 commit 97c9341f727105c29478da19f1687b0e0a917256
@@ -104,39 +105,50 @@ Date:   Wed Nov 9 12:36:15 2016 -0700
     blk-wbt: add general throttling mechanism
 
 # IO completetion hanlder
-10474  => end_page_writeback
-10475  => __block_write_full_page
-10476  => __writepage
-10477  => write_cache_pages
-10478  => generic_writepages
-10479  => do_writepages
-10480  => __writeback_single_inode
-10481  => writeback_sb_inodes
-10482  => __writeback_inodes_wb
-10483  => wb_writeback
-10484  => wb_workfn
+__blk_mq_end_io(obsoleted)
+__blk_mq_end_request
+blk_update_request
+blk_mq_end_request
+scsi_end_request
+blk_mq_complete_request
+scsi_mq_done
+nvme_end_request
 
-10720  => end_page_writeback	# Parent should be end_buffer_async_write
-10721  => end_bio_bh_io_sync	# submit_bh_wbc
-10722  => blk_update_request
-10723  => scsi_end_request
-10724  => scsi_io_completion
-10725  => blk_done_softirq
+=> end_page_writeback
+=> __block_write_full_page
+=> __writepage
+=> write_cache_pages
+=> generic_writepages
+=> do_writepages
+=> __writeback_single_inode
+=> writeback_sb_inodes
+=> __writeback_inodes_wb
+=> wb_writeback
+=> wb_workfn
 
-  793  => end_page_writeback
-  794  => ext4_finish_bio
-  795  => ext4_end_bio		# io_submit_init_bio
-  796  => blk_update_request
-  797  => scsi_end_request
-  798  => scsi_io_completion
-  799  => blk_done_softirq
+=> end_page_writeback	# Parent should be end_buffer_async_write
+=> end_bio_bh_io_sync	# submit_bh_wbc
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq
 
- => end_buffer_async_write
- => end_bio_bh_io_sync
- => blk_update_request
- => scsi_end_request
- => scsi_io_completion
- => blk_done_softirq
+=> end_page_writeback
+=> ext4_finish_bio
+=> ext4_end_bio		# io_submit_init_bio
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq
+
+=> end_page_writeback
+=> end_buffer_async_write
+=> end_bio_bh_io_sync
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq
+
 # ETC
 /sys/kernel/debug/bdi/0\:80/stats 
 bdi_debug_stats_show

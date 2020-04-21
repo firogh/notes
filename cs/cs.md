@@ -36,6 +36,8 @@ parallel programming: smp, synchronization, lock, lock-free, atomic
 IPC check wait.log
 ## Problem 2 with memory access
 consistency model
+## Scalability - Lockless concurrency
+[What every systems programmer should know about lockless concurrency](https://news.ycombinator.com/item?id=15607869)
 
 # Metric
 Bandwidth and latency

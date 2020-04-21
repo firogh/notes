@@ -28,6 +28,9 @@ page_is_file_cache: what about setting PG_reclaim to anon page for prioritising 
 # References
 [Chapter 10  Page Frame Reclamation](https://www.kernel.org/doc/gorman/html/understand/understand013.html)
 [PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
+[Low_On_Memory](https://linux-mm.org/Low_On_Memory)
+[Add predictive memory reclamation and compaction](https://lkml.org/lkml/2019/8/12/1302)
+[PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 ## Clock-pro
 [ClockProApproximation](https://linux-mm.org/ClockProApproximation)
 [A CLOCK-Pro page replacement implementation](https://lwn.net/Articles/147879/)
@@ -48,6 +51,9 @@ Lokced userspace pages:
 ## Filebacked pages
 1. Private: Clean file private mapping - text segment
 2. Shared: Shared file mapping memory.
+
+# mlock
+[Deferred memory locking](https://lwn.net/Articles/650538/)
 
 # LRU-2Q
 page.lru and struct lruvec 
@@ -533,6 +539,32 @@ CommitDate: Sun Jan 8 20:12:41 2006 -0800
 [mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
 [mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
 
+# Page count
+alloc -> 1:  
+anonymous fualt: -> 1 
+shared fault: read ahead: 1) add to page cache +1 -> 2; 2) put_page -1 -> 1; 
+why put_page uncoditionally? No user acutally, sodecrement 1 which set by alloc.
+1. ptes; 2. address space; 3. pagevec; 4. buffer heads. 
+5?. mlock with FOLL_GET, seems not.
+tglx: commit 3aa1dc772547672e6ff453117d169c47a5a7cbc5
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Wed Aug 14 21:20:48 2002 -0700
+Commit:     Linus Torvalds <torvalds@home.transmeta.com>
+CommitDate: Wed Aug 14 21:20:48 2002 -0700
+    [PATCH] multithread page reclaim
+
++                * The non-racy check for busy page.  It is critical to check
++                * PageDirty _after_ making sure that the page is freeable and
++                * not in use by anybody.       (pagecache + us == 2)		# Firo: pagecache + us
+                 */
+-               if (mapping) {
+-                       write_lock(&mapping->page_lock);
+-                       if (is_page_cache_freeable(page))
+-                               goto page_freeable;
++               if (page_count(page) != 2 || PageDirty(page)) {
+                        write_unlock(&mapping->page_lock);
+
+
 # Shrink slab caches
 ## double slab pressure
 tglx: commit b65bbded3935b896d55cb6b3e420a085d3089368
@@ -667,3 +699,14 @@ AuthorDate: Fri May 22 18:23:36 2015 -0400
 Commit:     Jens Axboe <axboe@fb.com>
 CommitDate: Tue Jun 2 08:38:13 2015 -0600
     mm: vmscan: disable memcg direct reclaim stalling if cgroup writeback support is in use
+
+# pagevec and rotate
+commit 902aaed0d983dfd459fcb2b678608d4584782200
+Refs: v2.6.23-4285-g902aaed0d983
+Author:     Hisashi Hifumi <hifumi.hisashi@oss.ntt.co.jp>
+AuthorDate: Tue Oct 16 01:24:52 2007 -0700
+Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
+CommitDate: Tue Oct 16 09:42:54 2007 -0700
+    mm: use pagevec to rotate reclaimable page
+See lru_rotate_pvecs; Firo: seems all pages on lru_rotate_pvecs are get_page(). 
+Also see rotate_reclaimable_page().

@@ -2,6 +2,18 @@
 [book_linuxkernel_blockdrv](https://github.com/gurugio/book_linuxkernel_blockdrv)
 [Linux Block Device Architecture](https://yannik520.github.io/blkdevarch.html)
 [Notes on the Generic Block Layer Rewrite in Linux 2.5](https://www.kernel.org/doc/Documentation/block/biodoc.txt)
+[Improvements in the block layer](https://lwn.net/Articles/735275/)
+# blk-mq
+[The multiqueue block layer](https://lwn.net/Articles/552904/)
+[Linux Block IO: Introducing Multi-queue SSD Access on Multi-core Systems](https://kernel.dk/systor13-final18.pdf)
+
+# Request layer
+[Block layer introduction part 2: the request layer](https://lwn.net/Articles/738449/)
+[Driver porting: Request Queues I](https://lwn.net/Articles/27055/)
+[Driver porting: Request Queues II](https://lwn.net/Articles/27361/)
+
+# TCQ
+https://www.oreilly.com/library/view/linux-device-drivers/0596005903/ch16.html
 
 # bdev
 bi_dev is initialized from supber_block
@@ -20,8 +32,33 @@ def_blk_fops
 blkdev_open
 inode major minor
 
+# start
+https://bugzilla.suse.com/show_bug.cgi?id=930934
+
+The warnings from blk_complete_request() about request not having REQ_STARTED which are before the BUG_ON triggering are actually reporting that someone is queueing completion of a request that hasn't been run. So they are warning about problems that are coming.
+RQF_STARTED
+tglx:	commit 719eb3e1860791195ed7656b800d8bb57b277a75
+Author:     Jens Axboe <axboe@suse.de>
+AuthorDate: Thu Nov 7 21:50:01 2002 -0800
+Commit:     Jens Axboe <axboe@suse.de>
+CommitDate: Thu Nov 7 21:50:01 2002 -0800
+
+    [PATCH] soft and hard barriers
+
+    Right now we have one type of barrier in the block layer, and that is
+    used mainly for making sure that the io scheduler doesn't reorder
+    requests when we don't want it to.  We also need a flag to tell the io
+    scheduler and low level queue that this is a barrier.  So basically two
+    needs:
+
+    o software barrier, prevents the io scheduler from reordering
+    o hardware barrier, driver must prevent drive from reordering
+    So this patch gets rid of REQ_BARRIER and instead adds REQ_SOFTBARRIER
+    and REQ_HARDBARRIER.
+
 
 # gendisk and hd_struct and disk_part_tbl
+[Driver porting: the gendisk interface](https://lwn.net/Articles/25711/)
 bdev_get_queue(bio->bi_bdev)
 [Partition and gendisk](https://groups.google.com/forum/#!msg/zh-kernel/sg6BvXTJSUk/-fnTfL9_VXYJ)
 and
@@ -130,14 +167,6 @@ https://en.opensuse.org/SDB:SCSI_debugging_hints
 scsi_logging_level -s -a 7
 /proc/sys/dev/scsi/logging_level
 sg3_utils
-
-# Nvme
-nvme_alloc_ns: nvme_make_request => blk_mq_make_request
-commit a4aea5623d4a54682b6ff5c18196d7802f3e478f
-Author: Matias Bjørling <m@bjorling.me>
-Date:   Tue Nov 4 08:20:14 2014 -0700
-    NVMe: Convert to blk-mq
-    This converts the NVMe driver to a blk-mq request-based driver.
 
 # IO scheduler
 elv_iosched_show, elv_register

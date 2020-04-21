@@ -1,3 +1,7 @@
+# References
+[Fixing control groups](https://lwn.net/Articles/484251/)
+[The unified control group hierarchy in 3.16](https://lwn.net/Articles/601840/)
+
 # History
 commit ddbcc7e8e50aefe467c01cac3dec71f118cd8ac2
 Author: Paul Menage <menage@google.com>

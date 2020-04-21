@@ -1,8 +1,7 @@
 
 # History
 [OSTEP: Paging: Faster Translations TLBs](http://pages.cs.wisc.edu/~remzi/OSTEP/vm-tlbs.pdf)
-
-# Purposes
+[TLB flush optimization](https://lwn.net/Articles/684934/)
 
 # Formal causes
 ULK 3rd: Handling the TLB
@@ -22,8 +21,6 @@ Because the processor does not ensure that the data that it caches are always co
 flush_tlb_mm
 ## scheduling
 [进程切换分析（2）：TLB处理](http://www.wowotech.net/process_management/context-switch-tlb.html)
-### Lazy TLB
-x86/mm: Rework lazy TLB mode and TLB freshness tracking - 94b1b03b519b81c494900cb112aa00ed205cc2d9
 ## PCID
 1.10. Longer-lived TLB Entries with PCID in kernel newbies:
 commit f39681ed0f48498b80455095376f11535feea332
@@ -35,7 +32,12 @@ Author: Andy Lutomirski <luto@kernel.org>
 Date:   Mon Jul 24 21:41:38 2017 -0700
     x86/mm: Implement PCID based optimization: try to preserve old TLB entries using PCID
 
-## TLB shootdown
+# Lazy TLB
+x86/mm: Rework lazy TLB mode and TLB freshness tracking - 94b1b03b519b81c494900cb112aa00ed205cc2d9
+See cpu_vm_mask and Handling the TLB in ULK3rd
+https://www.kernel.org/doc/gorman/html/understand/understand007.html#sec:%20Process%20Address%20Space%20Descriptor
+
+# TLB shootdown
 [What's TLB shootdown](https://stackoverflow.com/questions/3748384/what-is-tlb-shootdown)
 [Great question and answers on performing TLB shootdown](https://stackoverflow.com/questions/50256740/who-performs-the-tlb-shootdown)
 history: commit a27c6530ff12bab100e64c5b43e84f759fa353ae

@@ -8,6 +8,17 @@ Documentation/filesystems/locking.rst for writepage and end_page_writeback
 [Page-based direct I/O](https://prod3.lwn.net/Articles/348719/)
 [PeterZ: Concurrent Pagecache](https://www.kernel.org/doc/ols/2007/ols2007v2-pages-311-318.pdf)
 
+# Terminology
+commit 906f9cdfc2a0800f13683f9e4ebdfd08c12ee81b
+Author: Hugh Dickins <hughd@google.com>
+Date:   Fri Nov 30 14:10:13 2018 -0800
+    mm/huge_memory: rename freeze_page() to unmap_page()
+    The term "freeze" is used in several ways in the kernel, and in mm it
+    has the particular meaning of forcing page refcount temporarily to 0.
+    freeze_page() is just too confusing a name for a function that unmaps a
+    page: rename it unmap_page(), and rename unfreeze_page() remap_page().
+Firo: See page_ref_freeze().
+
 # History 
 ## Buffer cache
 [Beefing Up the Buffer Cache](https://drive.google.com/file/d/11sLlREfK_3EnEK_BlqnOxVGFUFnDbQVs/view?usp=sharing) and [UBC](https://drive.google.com/file/d/1ZY2MaoJCb8R317ZjLfGdvxcKq4Jo_k6i/view?usp=sharing)
@@ -22,25 +33,37 @@ thus, before operating on each block, the kernel checks its buffer head.
 
 Buffer pages: attach_page_buffers
 Block device buffer pages
-grow_buffers-> grow_dev_page
+grow_buffers-> grow_dev_page => find_or_create_page => pagecache_get_page => add_to_page_cache_lru
 try_to_release_page
 Buffer cache: Inode is stored on the buffer cache; check sync_inode_metadata and __ext2_write_inode
 
 ## [Linux pagecache history](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
-
 # Radix tree in kernel
 p height_to_maxindex
 
-# Formal causes
-[Must-read: General description on page cache: A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
-Pages added to page cache or buffer cache.
-grow_dev_page => find_or_create_page => pagecache_get_page => add_to_page_cache_lru
+# Radix tree version pagecache
+commit 3d30a6cc3af49ca0b668a2cbbc9d43def619567c
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Tue Apr 9 21:29:24 2002 -0700
+Commit:     Linus Torvalds <torvalds@penguin.transmeta.com>
+CommitDate: Tue Apr 9 21:29:24 2002 -0700
 
-## Lockless pagecache
+    [PATCH] Velikov/Hellwig radix-tree pagecache
+## spinlock -> rwlock
+commit 1eeae0158ecd0535a2bc257a53d3472cc37ceb15
+Author:     bill.irwin@oracle.com <bill.irwin@oracle.com>
+AuthorDate: Fri Mar 4 17:27:21 2005 -0800
+Commit:     Linus Torvalds <torvalds@ppc970.osdl.org>
+CommitDate: Fri Mar 4 17:27:21 2005 -0800
+    [PATCH] make mapping->tree_lock an rwlock
+    Convert mapping->tree_lock to an rwlock
+
+# Lockless pagecache
 tig tags/v2.6.27-rc1~154
+[A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
 [Must-read Bachelor papper Nick Piggin: detailed version: A lockless pagecache in Linux](https://drive.google.com/file/d/1WIxOJaRTVs2gXfQrWKqpFyd0XyYA9Hqq/view?usp=sharing)
 [A Lockless Pagecache in Linux - Introduction, Progress, Performance](https://www.kernel.org/doc/ols/2006/ols2006v2-pages-249-262.pdf)
-### Page PG_nonewrefs -> page_freeze_refs -> page_ref_freeze
+## Page PG_nonewrefs -> page_freeze_refs -> page_ref_freeze
 commit e286781d5f2e9c846e012a39653a166e9d31777d
 Refs: v2.6.26-7311-ge286781d5f2e
 Author:     Nick Piggin <npiggin@suse.de>
@@ -58,8 +81,12 @@ Author: Joonsoo Kim <iamjoonsoo.kim@lge.com>
 Date:   Thu Mar 17 14:19:26 2016 -0700
     mm: introduce page reference manipulation functions
 page_freeze_refs -> page_ref_freeze; is it much better name?
+## reorder
+[mm/huge_memory.c: reorder operations in __split_huge_page_tail()](https://marc.info/?l=linux-kernel&m=151844440831709&w=2)
+## Lockless pagecache and RCU - Firo: why RCU?
+See comment of __page_cache_add_speculative().
 
-## The address space object - address_space
+# The address space object - address_space
 Documentation/filesystems/vfs.rst
 [Re: struct address_space](http://lkml.iu.edu/hypermail/linux/kernel/9911.0/0273.html)
 
@@ -93,30 +120,15 @@ This type of address space must not be confused with the virtual and physical
 address spaces provided by the system or processor. It is a separate abstraction of
 the Linux kernel that unfortunately bears the same name.
 
-## reorder
-[mm/huge_memory.c: reorder operations in __split_huge_page_tail()](https://marc.info/?l=linux-kernel&m=151844440831709&w=2)
-
-## Readahead
-[Linux readahead: less tricks for more](https://www.kernel.org/doc/ols/2007/ols2007v2-pages-273-284.pdf)
-[Adaptive file readahead](https://lwn.net/Articles/155510/)
-[Improving readahead](https://lwn.net/Articles/372384/)
-
-## Operations
-find_get_page, add_to_page_cache, delete_from_page_cache, replace_page_cache_page
-add_to_page_cache_lru
-
-
 
 # Radix tree and xarry
-Wikipedia: Radix tree looks like a compact trie.
-Kernel: Radix tree was more like a page tables or judy array.
+Wikipedia: Radix tree looks like a trie. Kernel: Radix tree was more like a page tables or judy array.
 [Trees I: Radix trees](https://lwn.net/Articles/175432/)
 [Enhancing the Linux Radix Tree](http://events17.linuxfoundation.org/sites/events/files/slides/LinuxConNA2016%20-%20Radix%20Tree.pdf)
 [The design and implementation of the XArray](https://www.youtube.com/watch?v=v0C9_Fp-co4)
 [A multi-order radix tree](https://lwn.net/Articles/688130/)
 [The XArray data structure](https://lwn.net/Articles/745073/)
 __radix_tree_create(), radix_tree_extend, radix_tree_lookup_slot, __radix_tree_lookup, radix_tree_extend
-
 ## Radix tree shift
 commit c12e51b07b3ac4c188fd91a82f96840fdb9cca6f
 Refs: v4.6-6714-gc12e51b07b3a
@@ -129,14 +141,7 @@ CommitDate: Fri May 20 17:58:30 2016 -0700
     array at this level.  It is equal to the old (node->height - 1) *
     RADIX_TREE_MAP_SHIFT.
 
-# Search structure
-add_to_swap, page_cache_tree_insert, add_to_page_cache_lru
-
-## Reclaim algorithm
-
-## Write behavior
-
-## Cache coherence
+# Cache coherence
 
 # Page flags
 PG_private: check definition
@@ -146,3 +151,64 @@ PG_private: check definition
 
 # SUSE page cache limit
 Check box/pagecache-limit
+
+# Truncation
+commit 97a894136f29802da19a15541de3c019e1ca147e
+Author: Peter Zijlstra <a.p.zijlstra@chello.nl>
+Date:   Tue May 24 17:12:04 2011 -0700
+    mm: Remove i_mmap_lock lockbreak
+    Hugh says:
+     "The only significant loser, I think, would be page reclaim (when
+      concurrent with truncation): could spin for a long time waiting for
+      the i_mmap_mutex it expects would soon be dropped? "
+    Counter points:
+     - cpu contention makes the spin stop (need_resched())
+     - zap pages should be freeing pages at a higher rate than reclaim
+       ever can
+    I think the simplification of the truncate code is definitely worth it.
+    Effectively reverts: 2aa15890f3c ("mm: prevent concurrent
+    unmap_mapping_range() on the same inode") and takes out the code that
+    caused its problem.
+
+# Readahead
+[Linux readahead: less tricks for more](https://www.kernel.org/doc/ols/2007/ols2007v2-pages-273-284.pdf)
+[Adaptive file readahead](https://lwn.net/Articles/155510/)
+[Improving readahead](https://lwn.net/Articles/372384/)
+## First design - Firo: see this commit for reason for why put_page in read_pages()
+tglx: commit 8fa498462272fec2c16a92a9a7f67d005225b640	# first design
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Tue Apr 9 21:29:32 2002 -0700
+Commit:     Linus Torvalds <torvalds@penguin.transmeta.com>
+CommitDate: Tue Apr 9 21:29:32 2002 -0700
+    [PATCH] readahead
+    I'd like to be able to claim amazing speedups, but
+    the best benchmark I could find was diffing two
+    256 megabyte files, which is about 10% quicker.  And
+    that is probably due to the window size being effectively
+    50% larger.
+commit 029e332ea717810172e965ec50f942755ad0c58a
+Refs: v2.6.19-rc4-152-g029e332ea717
+Author:     OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
+AuthorDate: Thu Nov 2 22:07:06 2006 -0800
+Commit:     Linus Torvalds <torvalds@g5.osdl.org>
+CommitDate: Fri Nov 3 12:27:56 2006 -0800
+    [PATCH] Cleanup read_pages()
+    Current read_pages() assume ->readpages() frees the passed pages.
+    This patch free the pages in ->read_pages(), if those were remaining in the
+    pages_list.  So, readpages() just can ignore the remaining pages in
+    pages_list.
++++ b/mm/readahead.c
+@@ -173,6 +173,8 @@ static int read_pages(struct address_space *mapping, struct file *filp,
+        if (mapping->a_ops->readpages) {
+                ret = mapping->a_ops->readpages(filp, mapping, pages, nr_pages);
++               /* Clean up the remaining pages */
++               put_pages_list(pages);
+
+## pagevec_move_fn or pagevec_move_tail
+commit 902aaed0d983dfd459fcb2b678608d4584782200
+Refs: v2.6.23-4285-g902aaed0d983
+Author:     Hisashi Hifumi <hifumi.hisashi@oss.ntt.co.jp>
+AuthorDate: Tue Oct 16 01:24:52 2007 -0700
+Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
+CommitDate: Tue Oct 16 09:42:54 2007 -0700
+    mm: use pagevec to rotate reclaimable page
