@@ -1,0 +1,9 @@
+
+# Boot
+debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
+
+# Crash
+search -t 
+
+# Gdb
+gdb -q /proc/kcore -ex 'p/s (char *)0xffffffffad0001c0' -ex q # linux_banner from /proc/kallsyms

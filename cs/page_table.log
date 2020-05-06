@@ -51,6 +51,14 @@ PFRA, migation
 ptdump_walk_pgd_level_core
 [Mannully va to pa](http://edsionte.com/techblog/archives/1966)
 
+# Share PTE pages
+[Sharing Page Tables in the Linux Kernel](https://www.kernel.org/doc/ols/2003/ols2003-pages-315-320.pdf)
+
+# Lock
+[Split page table lock](https://www.kernel.org/doc/html/latest/vm/split_page_table_lock.html)
+[Split PMD locks](https://lwn.net/Articles/568076/)
+pmd_page vs pmd_to_page
+
 # access flags
 commit 87050fae7607166d02c1eaf052f8a55d7eca8e5c
 Author:     Linus Torvalds <torvalds@ppc970.osdl.org>

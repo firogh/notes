@@ -1,11 +1,3 @@
-
-
-# Crash
-search -t 
-
-# Boot issues
-debug ignore_loglevel earlyprintk=ttyS0,115200, keep keep_bootcon initcall_debug dyndbg=+plmf
-
 # CONFIG_DEBUG_PAGEALLOC
 check_poison_mem in alloc_pages
 free_pages_prepare posion
@@ -21,7 +13,6 @@ root        28  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/3]
 NMI watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [test.sh:16464]
 ...
 Kernel panic - not syncing: softlockup: hung tasks
-
 ## Hardlockup
 watchdog_overflow_callback
 watchdog_nmi_enable ->watchdog_overflow_callback

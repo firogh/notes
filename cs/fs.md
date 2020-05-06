@@ -6,6 +6,14 @@ category: cs
 ---
 
 
+# References
+[hellofs](https://github.com/accelazh/hellofs/blob/master/super.c)
+[Linux Filesystems API summary](https://www.kernel.org/doc/html/latest/filesystems/api-summary.html)
+[Linux File Systems in 21 days 45 minutes](https://download.samba.org/pub/samba/cifs-cvs/ols2007-fs-tutorial-smf.pdf)
+
+# Buffer cache
+getblk: ULK2 14.2.3 The getblk( ) Function
+
 # fsck
 man systemd-fsck-root.service
 

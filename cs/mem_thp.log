@@ -304,7 +304,7 @@ Date:   Wed Nov 2 13:36:59 2011 -0700
 +               BUG_ON(tail_count < 0);
 +               BUG_ON(atomic_read(&page_tail->_count) != 0);
 
-## compound_mapcount - an optimization for atomic operations
+## compound_mapcount 
 commit ddc58f27f9eee9117219936f77e90ad5b2e00e96
 Author: Kirill A. Shutemov <kirill.shutemov@linux.intel.com>
 Date:   Fri Jan 15 16:52:56 2016 -0800
@@ -346,12 +346,12 @@ CommitDate: Fri Jan 15 17:56:32 2016 -0800
 
     page_mapcount() counts both: PTE and PMD mappings of the page.
 
-    Basically, we have mapcount for a subpage spread over two counters.  It	# Firo: this is the race - the last mapcount for page_mapped().
+    Basically, we have mapcount for a subpage spread over two counters.  It	# Firo: See whole patch.
     makes tricky to detect when last mapcount for a page goes away.
     We introduced PageDoubleMap() for this.  When we split THP PMD for the
     first time and there's other PMD mapping left we offset up ->_mapcount
-    in all subpages by one and set PG_double_map on the compound page.
-    These additional references go away with last compound_mapcount.
+    in all subpages by one and set PG_double_map on the compound page.		# PageDoubleMap - an optimization for atomic operations
+    These additional references go away with last compound_mapcount.		# See page_remove_anon_compound_rmap().
     This approach provides a way to detect when last mapcount goes away on
     per small page basis without introducing new overhead for most common
     cases.

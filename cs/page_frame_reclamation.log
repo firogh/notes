@@ -6,6 +6,22 @@ title:  Page frame reclaimation
 category: cs
 ---
 
+# mm hacking
+current->backing_dev_info: doest it really work as expected? block?
+PF_SWAPWRITE: meaning is unclear. swap is limited resource, so limit access from normal process?
+Seems only normal processes with PF_SWAPWRITE could write to swap area. migration and node reclaim and kswapd.
+No. In may_write_to_inode(), normal processes still get chances to do that.
+static int may_write_to_inode(struct inode *inode, struct scan_control *sc) 
+{
+        if (current->flags & PF_SWAPWRITE)
+                return 1;
+        if (!inode_write_congested(inode))
+                return 1;
+        if (inode_to_bdi(inode) == current->backing_dev_info)	# normal process? it's impossible. Dead code. Remove it. No, shmem pages.
+                return 1;
+        return 0;
+}
+
 # Memory testing tools
 commit e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
 Refs: u3.10-3577-ge2be15f6c3ee
@@ -26,11 +42,10 @@ activate writeback pages: mm: vmscan: move dirty pages out of the way until they
 page_is_file_cache: what about setting PG_reclaim to anon page for prioritising for reclaimation.
 
 # References
+[linux-mm: PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 [Chapter 10  Page Frame Reclamation](https://www.kernel.org/doc/gorman/html/understand/understand013.html)
-[PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 [Low_On_Memory](https://linux-mm.org/Low_On_Memory)
 [Add predictive memory reclamation and compaction](https://lkml.org/lkml/2019/8/12/1302)
-[PageReplacementDesign](https://linux-mm.org/PageReplacementDesign)
 ## Clock-pro
 [ClockProApproximation](https://linux-mm.org/ClockProApproximation)
 [A CLOCK-Pro page replacement implementation](https://lwn.net/Articles/147879/)
@@ -472,6 +487,11 @@ CommitDate: Fri Feb 24 17:46:54 2017 -0800
 
 # Pageout
 [Pageout and kswapd](https://linux-mm.org/PageOutKswapd)
+## PageWriteback
+__swap_writepage()
+        set_page_writeback(page);
+        unlock_page(page);		# In isolate page and shrink_page_list(), we have get_paged
+        submit_bio(bio);
 ## synchronous writepage()
 tglx: commit 961caf47918340aea55aa2ca9b68e7f1c8d91ca6
 Author:     Andrew Morton <akpm@osdl.org>
@@ -571,29 +591,6 @@ tglx: commit b65bbded3935b896d55cb6b3e420a085d3089368
 Author: Andrew Morton <akpm@digeo.com>
 Date:   Wed Sep 25 07:20:18 2002 -0700
     [PATCH] slab reclaim balancing
-
-# current->backing_dev_info
-tglx: commit 407ee6c87e477434e3cb8be96885ed27b5539b6f
-Author:     Andrew Morton <akpm@digeo.com>
-AuthorDate: Sun Sep 22 08:17:02 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Sun Sep 22 08:17:02 2002 -0700
-    [PATCH] low-latency page reclaim
-    Convert the VM to not wait on other people's dirty data.
-     - If we find a dirty page and its queue is not congested, do some writeback.
-     - If we find a dirty page and its queue _is_ congested then just
-       refile the page.
-     - If we find a PageWriteback page then just refile the page.
-     - There is additional throttling for write(2) callers.  Within
-       generic_file_write(), record their backing queue in ->current.
-       Within page reclaim, if this tasks encounters a page which is dirty
-       or under writeback onthis queue, block on it.  This gives some more
-       writer throttling and reduces the page refiling frequency.
-[...]
-+                * If this process is currently in generic_file_write() against
-+                * this page's queue, we can perform writeback even if that
-+                * will block.
-[...]
 
 # Congestion
 nr_congested, PGDAT_CONGESTED, pgdat_memcg_congested, set_wb_congested
@@ -699,6 +696,58 @@ AuthorDate: Fri May 22 18:23:36 2015 -0400
 Commit:     Jens Axboe <axboe@fb.com>
 CommitDate: Tue Jun 2 08:38:13 2015 -0600
     mm: vmscan: disable memcg direct reclaim stalling if cgroup writeback support is in use
+
+# may_write_to_inode or _queue
+tglx: commit e386771cbbc2a90b46df2ace02214f94cc23cb50
+Author:     Andrew Morton <akpm@digeo.com>
+AuthorDate: Sat Dec 21 01:07:33 2002 -0800
+Commit:     Linus Torvalds <torvalds@home.transmeta.com>
+CommitDate: Sat Dec 21 01:07:33 2002 -0800
+    [PATCH] Give kswapd writeback higher priority than pdflush	# Firo: pdflush and normal process
++static int may_write_to_queue(struct backing_dev_info *bdi)
++{
++       if (current_is_kswapd())
++               return 1;
++       if (current_is_pdflush())       /* This is unlikely, but why not... */
++               return 1;
++       if (!bdi_write_congested(bdi))
++               return 1;
++       if (bdi == current->backing_dev_info)	# Current process is write-intensive; at least it's writing.
++               return 1;
++       return 0;
++}
+[...]
+@@ -313,9 +324,7 @@ shrink_list(struct list_head *page_list, unsigned int gfp_mask,
+                                goto activate_locked;
+                        if (!may_enter_fs)
+                                goto keep_locked;
+-                       bdi = mapping->backing_dev_info;
+-                       if (bdi != current->backing_dev_info &&
+-                                       bdi_write_congested(bdi))
++                       if (!may_write_to_queue(mapping->backing_dev_info))
+## current->backing_dev_info
+tglx: commit 407ee6c87e477434e3cb8be96885ed27b5539b6f
+Author:     Andrew Morton <akpm@digeo.com>
+AuthorDate: Sun Sep 22 08:17:02 2002 -0700
+Commit:     Linus Torvalds <torvalds@home.transmeta.com>
+CommitDate: Sun Sep 22 08:17:02 2002 -0700
+    [PATCH] low-latency page reclaim
+    Convert the VM to not wait on other people's dirty data.
+     - If we find a dirty page and its queue is not congested, do some writeback.
+     - If we find a dirty page and its queue _is_ congested then just
+       refile the page.
+     - If we find a PageWriteback page then just refile the page.
+     - There is additional throttling for write(2) callers.  Within		# write throttling
+       generic_file_write(), record their backing queue in ->current.
+       Within page reclaim, if this tasks encounters a page which is dirty
+       or under writeback onthis queue, block on it.  This gives some more
+       writer throttling and reduces the page refiling frequency.
+[...]
++                * If this process is currently in generic_file_write() against
++                * this page's queue, we can perform writeback even if that
++                * will block.
+[...]
+
 
 # pagevec and rotate
 commit 902aaed0d983dfd459fcb2b678608d4584782200

@@ -5,6 +5,9 @@ Documentation/filesystems/vfs.rst
 [Linux Filesystems in 21 days 45 minutes](https://www.samba.org/samba/samba/ftp/cifs-cvs/ols2006-fs-tutorial-smf.pdf)
 
 
+# Scalability
+Scaling the Linux VFS, Nick Piggin, SuSE Labs, Novell Inc. October 16, 2009
+
 # LQO
 s_inode_lru
 s_inodes

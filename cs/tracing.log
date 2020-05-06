@@ -1,0 +1,58 @@
+
+# References
+[Tracing (software)](https://en.wikipedia.org/wiki/Tracing_(software))
+[Unifying kernel tracing](https://lwn.net/Articles/803347/)
+[Slides: The Unified Tracing Platform - Steven Rostedt, VMware Inc.](https://static.sched.com/hosted_files/osseu19/5f/unified-tracing-platform-oss-eu-2019.pdf)
+[Give me 15 minutes and I'll change your view of Linux tracing](https://www.youtube.com/watch?v=GsMs3n8CB6g)
+
+# Firo
+So what are we tracing on? Function and data.
+
+# Find out the kernel function for a specific sysfs or procfs file.
+ft record -p function_graph --max-graph-depth 9 -g ksys_read -n rw_verify_area -F cat /sys/block/sda/stat ; ft report |less
+
+# ftrace
+[Linux Tracing Technologies](https://www.kernel.org/doc/html/latest/trace/index.html)
+[Steven Rostedt - Learning the Linux Kernel with tracing](https://www.youtube.com/watch?v=JRyrhsx-L5Y)
+[Nov, 2019 Welcome to ftrace & the Start of Your Journey to Understanding the Linux Kernel!](https://blogs.vmware.com/opensource/2019/11/12/ftrace-linux-kernel/)
+## Function events
+[Fun with Dynamic Kernel Tracing Events - Steven Rostedt, VMware](https://events19.linuxfoundation.org/wp-content/uploads/2017/12/oss-eu-2018-fun-with-dynamic-trace-events_steven-rostedt.pdf)
+## Event triggers
+[Adding Inter-event Capabilities to the Linux Trace Event Subsystem](https://elinux.org/images/b/b4/Inter-event-elc2017-tzanussi.pdf)
+[Triggers for tracing](https://lwn.net/Articles/556186/)
+https://www.kernel.org/doc/html/latest/trace/events.html
+
+# Static event tacing
+Tracepoints and ftrace.
+
+# Dynamic event tracing
+[Lwn: Dynamic probes with ftrace](https://lwn.net/Articles/343766/)
+
+## kprobetrace at ftrace
+[Patch-set: tracing: kprobe-based event tracer and x86 instruction](https://lore.kernel.org/patchwork/cover/167260/)
+Also here parse_probe_arg()@kernel/trace/trace_probe.c
+[Doc: Kprobe-based Event Tracing](https://www.kernel.org/doc/Documentation/trace/kprobetrace.txt)
+echo 'p:myprobe do_sys_open jiffies=@jiffies dfd=%ax filename=%dx flags=%cx mode=+4($stack)' > /sys/kernel/debug/tracing/kprobe_events
+
+echo 'p:firo submit_bio name=%di +0xc(+8(%di)):string ' > kprobe_events
+### global symbols
+root@snow:/sys/kernel/debug/tracing # echo 'p:firo submit_bio @bio' > kprobe_events 
+bash: echo: write error: No such file or directory
+root@snow:/sys/kernel/debug/tracing # echo 'p:firo submit_bio @jiffies' > kprobe_events 
+root@snow:/sys/kernel/debug/tracing # 
+## perf
+perf probe -d 'submit_bio'; perf probe -a 'submit_bio bio->bi_end_io:x64 bio->bi_disk->disk_name'
+perf probe -d 'submit_bio'; perf probe -a 'submit_bio bio->bi_end_io:u64';
+perf trace -e probe:submit_bio
+
+# bpftrace
+[Brendan at lwn: Kernel analysis with bpftrace](https://lwn.net/Articles/793749/)
+
+# Top
+https://github.com/iovisor/bcc/blob/master/tools/opensnoop.py
+https://github.com/brendangregg/perf-tools/blob/master/kernel/funcslower
+
+# User mode tracing
+ltrace, strace, bash -x
+[How does strace work?](https://blog.packagecloud.io/eng/2016/02/29/how-does-strace-work/)
+PTRACE_PEEKDATA for showing pointer parameter(e.g. 2nd arg of read)

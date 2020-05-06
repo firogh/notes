@@ -246,7 +246,8 @@ vm_event_item ALLOCSTALL
 # Kswapd
 balance_pgdat PAGEOUTRUN
 
-# PF_SWAPWRITE - better name RECLAIMWRITE
+# PF_SWAPWRITE - Need a better name RECLAIMWRITE? 
+Intend to block, see e386771cbbc2a90b46df2ace02214f94cc23cb50 Give kswapd writeback higher priority than pdflush
 So what does swap mean? See [Swap Migration V4: Overview](https://lore.kernel.org/linux-mm/20051025193023.6828.89649.sendpatchset@schroedinger.engr.sgi.com/#r)
 [Swap Migration V5: Overview](https://lwn.net/Articles/157936/)
 commit 930d915252edda7042c944ed3c30194a2f9fe163

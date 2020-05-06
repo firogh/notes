@@ -139,7 +139,6 @@ out:
 
 int rb_tree_validate(struct rb_root *root)
 {
-
 	struct rb_node *n;
 	if (!root)
 		return 0;
@@ -150,7 +149,7 @@ int rb_tree_validate(struct rb_root *root)
 
 	if (rb_is_red(n)) {
 		printf("Root node is red\n");
-	//	BUG_ON(1);
+		return 1;
 	}
 
 	return firo_inorder_traversal(n);

@@ -62,10 +62,26 @@ CommitDate: Thu Feb 21 17:22:19 2013 -0800
 WB_REASON_VMSCAN: shrink_inactive_list->wakeup_flusher_threads(WB_REASON_VMSCAN)
 WB_REASON_FREE_MORE_MEM: [buffer: eliminate the need to call free_more_memory() in __getblk_slow()](https://patchwork.kernel.org/patch/9974719/)
 
-# Dirty pages throttling
+# Reference
+[Writeback and control groups](https://lwn.net/Articles/648292/)
+
+# Dirty pages throttling, write throttling
+[Predictive per-task write throttling](https://lwn.net/Articles/152635/)
 [Dynamic writeback throttling](https://lwn.net/Articles/405076/)
-[No-I/O dirty throttling](https://lwn.net/Articles/456904/)
 balance_dirty_pages
+# Per-device write throttling
+[Smarter write throttling](https://lwn.net/Articles/245600/)
+## WFG
+IO-less Dirty Throttling Slides
+Dirty throttling — How much dirty memory is too much? Slides
+[No-I/O dirty throttling](https://lwn.net/Articles/456904/)
+commit 9d823e8f6b1b7b39f952d7d1795f29162143a433
+Refs: v3.1-rc8-80-g9d823e8f6b1b
+Author:     Wu Fengguang <fengguang.wu@intel.com>
+AuthorDate: Sat Jun 11 18:10:12 2011 -0600
+Commit:     Wu Fengguang <fengguang.wu@intel.com>
+CommitDate: Mon Oct 3 21:08:57 2011 +0800
+    writeback: per task dirty rate limit
 ## Leagcy memcg description from Tejun 
 commit 97c9341f727105c29478da19f1687b0e0a917256
 Refs: v4.1-rc2-104-g97c9341f7271
@@ -92,6 +108,7 @@ c2aa723a6093 writeback: implement memcg writeback domain based throttling
 841710aa6e4a writeback: implement memcg wb_domain
 
 # Block writeback throttling - blk-wbt
+[Writeout throttling](https://lwn.net/Articles/261626/) and [patch: A clean approach to writeout throttling](https://lwn.net/Articles/261271/)
 [Buffered writeback throttling](https://lwn.net/Articles/704739/)
 [Toward less-annoying background writeback](https://lwn.net/Articles/682582/)
 [Background writeback](https://lwn.net/Articles/685894/)

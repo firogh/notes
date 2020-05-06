@@ -50,8 +50,6 @@ Missing cause:
 ## Known bug types assumptions 
 Mix up Bug types, observations and related all paths
 
-## Connect to programming skills.
-
 # Anti-debugging
 * Syntax checking
 gcc -Wall

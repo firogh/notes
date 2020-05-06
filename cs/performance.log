@@ -1,17 +1,32 @@
 
-# Concepts
+# Performance 
+[Velocity 2015: Linux Performance Tools](http://www.brendangregg.com/Slides/Velocity2015_LinuxPerfTools.pdf)
+[Linux Performance Tools, Brendan Gregg, part 1 of 2](https://www.youtube.com/watch?v=FJW8nGV4jxY)
+
+## Concepts
 Disk I/O latency: = response time = Service time + Wait time
 Network latency: can refer to the time it takes for a message to make a round trip between endpoints.
 I/O wait: account_idle_time
 
-# Mel Gorman
+## Mel Gorman
 https://bugzilla.suse.com/show_bug.cgi?id=1165925
 I'm out today on FTO but may also be out tomorrow as I've been getting sicker throughout the day. I'm also out part of next week so my availability is impaired. 
-
 Given that there is no differences in software versions, I would suggest focusing on the environment and see where time is being lost. The screenshots indicate that CPU utilisation is low but confirm with mpstat it really is low. The screenshots also suggest that processes are sleeping and this may be a problem with storage. Look at iostat -x for gen1 and gen2 to see if there are differences in IO or time spent blocked waiting on IO. If time is being lost on IO, pay attention to the storage configuration and check with fio if there really are differences in storage performance. Check also for differences in the IO scheduler configuration. Ideally, a supportconfig for gen1 and gen2 deployments would be attached to see if there are any obvious differences.
 
-# Instrumentation
-tracepoints
+# Benchmarking
+See SPATC chapter 12 benchmarking.
+Page 67 see above Velocity 2015: Linux Performance Tools
+[Active Benchmarking](http://www.brendangregg.com/activebenchmarking)
+[reaim aim7 sourceforge](https://sourceforge.net/projects/re-aim-7/)
+## https://lwn.net/Articles/736173/
+o sparse truncate microbenchmark, tiny
+o sparse truncate microbenchmark, large
+o reaim-io disk workfile
+o dbench4 (modified by mmtests to produce more stable results)
+o filebench varmail configuration for small memory size
+o bonnie, directory operations, working set size 2*RAM
+
+# Tuning
 
 # Backlog
 http://oliveryang.net/2017/12/linux-high-loadavg-analysis-1/
@@ -26,14 +41,10 @@ https://lore.kernel.org/lkml/1471106302-10159-5-git-send-email-brgerst@gmail.com
 
 [Off-CPU Analysis](http://www.brendangregg.com/offcpuanalysis.html#Analysis)
 
-# Tools
-[Give me 15 minutes and I'll change your view of Linux tracing](https://www.youtube.com/watch?v=GsMs3n8CB6g)
-
 # PELT - load-avg
 commit 5b51f2f80b3b906ce59bd4dce6eca3c7f34cb1b9
 Author: Paul Turner <pjt@google.com>
 Date:   Thu Oct 4 13:18:32 2012 +0200
-
     sched: Make __update_entity_runnable_avg() fast
 
 commit a481db34b9beb7a9647c23f2320dd38a2b1d681f

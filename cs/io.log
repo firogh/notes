@@ -1,7 +1,10 @@
 
 # IO
-[Firo A must watch: Kernel Recipes 2015 - Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
+[Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
 https://www.postgresql.eu/events/fosdem2019/sessions/session/2346/slides/159/fosdem_linux_io.pdf
+## Memory hierarchy
+[Latency Numbers Every Programmer Should Know](http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
+
 ## Synchronized, Synchronous, and Asynchronous Operations
 Check LSP 3rd Chapter 4.
 Synchronous I/O is a user space notation.
@@ -9,7 +12,8 @@ Synchronous here actually means wait or blocking.
 Execution of process waits for I/O operations. I/O operations can be explained in different level e.g. system call, buffer cache.
 [As Discrete lizard suggests, there is not some precise CS-wide definition for these terms. ... Nevertheless, a vague general statement is that in "synchronous" systems, things "wait" for other things, while in "asynchronous" systems, things don't "wait".](https://cs.stackexchange.com/questions/87195/what-does-synchronous-and-asynchronous-mean-in-computer-science)
 
-# io wait
+# Observability 
+io wait
 commit 8f0dfc34e9b323a028c2ec41abb7e9de477b7a94
 Refs: v2.6.31-rc8-33-g8f0dfc34e9b3
 Author:     Arjan van de Ven <arjan@linux.intel.com>
@@ -27,12 +31,6 @@ CommitDate: Wed Sep 2 08:44:08 2009 +0200
     This patch below adds this scheduler statistic to the kernel.
 Firo: p->in_iowait
 
-# IO
-crash> dev -d | head
-MAJOR GENDISK            NAME       REQUEST_QUEUE      TOTAL ASYNC  SYNC   DRV
-request_queue.nr_rqs 
-request_queue.in_flight
-
 # Memory-mapped file I/O
 Check LSP chapter 4: Mapping Files into Memory
 
@@ -45,6 +43,7 @@ Check LSP chapter 4: Mapping Files into Memory
 [Why buffered writes are sometimes stalled](http://yoshinorimatsunobu.blogspot.com/2014/03/why-buffered-writes-are-sometimes.html)
 [Status of buffered write path (deadlock fixes)](http://lkml.iu.edu/hypermail/linux/kernel/0612.0/1223.html)
 [Some VFS address space operations changes](https://lwn.net/Articles/254856/)
+Buffer-backed address_space
 
 # File mmap
 ## page_mkwrite
@@ -55,51 +54,8 @@ AuthorDate: Fri Jun 23 02:03:43 2006 -0700
 Commit:     Linus Torvalds <torvalds@g5.osdl.org>
 CommitDate: Fri Jun 23 07:42:51 2006 -0700
     [PATCH] add page_mkwrite() vm_operations method
-
 [File holes, races, and mmap()](https://lwn.net/Articles/357767/)
 [Add notification of page becoming writable to VMA ops](https://lwn.net/Articles/162178/)
-
-# Page cache
-Buffer-backed address_space
-
-# Page writeback
-
-# Mapping page to block on disk
-[Is nobh code still useful?](http://linux-kernel.2935.n7.nabble.com/Is-nobh-code-still-useful-td509649.html)
-[Linus on Buffer head](https://yarchive.net/comp/linux/buffer_heads.html)
-[The buffer_head api that used to give you access to the buffer cache, now gives you access to the page cache for the block device.](https://lwn.net/Articles/712467/)
-[Large pages, large blocks, and large problems](https://lwn.net/Articles/250335/)
-[Large block size support](https://lwn.net/Articles/232757/)
-## Buffer head LQO
-__getblk_slow
-grow_buffers
-grow_dev_page
-alloc_page_buffers
-## BH_delay
-16:53大疆创新李磊 阿克曼
-@杨永明 Firo 延迟分配，可以减少多进程同时写文件造成文件碎片
-设想一个场景，两个进程pa,pb同时追加写文件，如果直接申请块就马上给的话，就会出现pa申请的block在1,3,5……
-pb申请的block在2,4，6…… 
-bh_delayn推迟块的分配时机到回写时候进行。这样pa和pb就能分别获取连续的物理块
-[[RFC] basic delayed allocation in VFS](https://linux-fsdevel.vger.kernel.narkive.com/bGiQumkf/rfc-basic-delayed-allocation-in-vfs)
-
-# Block buffer write
-commit 090da37209e13c26f3723e847860e9f7ab23e113
-Author:     Andrew Morton <akpm@zip.com.au>
-AuthorDate: Mon Apr 29 23:52:10 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Mon Apr 29 23:52:10 2002 -0700
-    [PATCH] writeback from address spaces
-+ * The generic ->writepage function for buffer-backed address_spaces
-+ */
- int block_write_full_page(struct page *page, get_block_t *get_block)
-
-# Bio
-[KS2008: Filesystem and block layer interaction](https://lwn.net/Articles/298589/)
-
-# Request
-
-# Block
 
 # I/O hardware
 serial communication: UART(16550) + RS-232 
