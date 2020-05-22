@@ -7,11 +7,6 @@ category: cs
 ---
 
 # Formal causes
-
-# TSC
-[Pitfalls of TSC usage](http://oliveryang.net/2015/09/pitfalls-of-TSC-usage/)
-[The trouble with the TSC](https://lwn.net/Articles/388188/)
-
 ## Genus-differentia definition
 interrupt, clock event,  clock source, tick, timer, timekeeping, gettimeofday.
 

@@ -20,6 +20,8 @@ unsigned long _text;    x86_64_PC32
 [What are the differences comparing PIE, PIC code and executable on x86 64](https://stackoverflow.com/questions/28119365/what-are-the-differences-comparing-pie-pic-code-and-executable-on-64-bit-x86-pl)
 [-fPIE "position-independent executable on stackoverflow](http://stackoverflow.com/questions/2463150/fpie-position-independent-executable-option-gcc-ld) states PIE use PC relative relocation rather than PLT.
 [OpenBSD's Position Independent](http://www.openbsd.org/papers/nycbsdcon08-pie/mgp00001.html)
+## Randomize layout
+gcc -o inner2 -fpie -pie inner2.c
 
 # Kdump
 Before kernel supported the relocatable, [the kdump users had to compile the capture kernel with different configuration options in order to make it bootable at a different address](https://kernelnewbies.org/Linux_2_6_20#head-3c215483506a27123005168c491eea0f2e5549dd)

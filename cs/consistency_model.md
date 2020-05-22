@@ -148,6 +148,10 @@ Compiler and cpu do the same optimization: reorder of instructions
   (*) Compiler barrier.
   (*) CPU memory barriers.
   (*) MMIO write barrier.
+
+# Compiler
+[Who's afraid of a big bad optimizing compiler?](https://lwn.net/Articles/793253/#Load%20Tearing)
+[Calibrating your fear of big bad optimizing compilers](https://lwn.net/Articles/799218/)
 ## ACCESS_ONCE
 * Does it work cast a variable to volatile?
 No, there is no efects on cast a variable to volatile.
@@ -155,3 +159,4 @@ Because, access variable is before volatile cast! That means you
 still get a register value. What you do is just conversion a temporary variable
 Rationale for International Standard--Programming Languages--C
 [Understanding “volatile” qualifier in C](http://www.geeksforgeeks.org/understanding-volatile-qualifier-in-c/)
+[ACCESS_ONCE()](https://lwn.net/Articles/508991/)

@@ -5,14 +5,17 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-# Computation
-Don't think about what is what; don't think about the answer. Doing, root cause, end cause, feedback;
-Program: programming, Concurrency
-I/O: Locality of reference, memory hierarchy
-Calculation: Parallelism, ILP, superscalar, SMP
-Memory storage: memory, memory allocation, VM(layered smantic), the locality principle
+# CS
+Memory and Program and Computation and IO
+Memory hierarchy: FS, VFS
+Memory: VM, the locality principle
+IO stack: caching, Locality of reference, memory hierarchy
+Program: Concurrency and stack, user vs. system, system calls
+Event(interrupt and exception) and task, scheduling
+Computation: Parallelism Processor
 
-# Memory Allocation: buddy track system, metric, page allocator. PFRA & workingset, rmap
+# Memory allocation: 
+buddy track system, metric, page allocator. PFRA & workingset, rmap
 
 # VM
 address space, page tables, tlb, page fault
@@ -47,6 +50,20 @@ Easy to use
 Security/Protection/isolation
 Reliability
 Energy-efficiency
+
+# Perspectives
+Model
+Resource
+Workload
+Optimization
+
+# Model analysis
+causality, resouse, use
+
+# Resource analysis
+[compressible vs incompressible resource](https://en.wikipedia.org/wiki/System_resource)
+[The Kubernetes resource model](https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/design/resources.md)
+Time-based vs space-based resource.
 
 # History
 [Atlas](http://www.chilton-computing.org.uk/acl/technology/atlas/overview.htm)

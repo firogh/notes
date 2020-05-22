@@ -1,3 +1,21 @@
+
+# Model, Architecure
+[How a CPU Works](https://youtu.be/cNN_tTXABUA)
+[scalar vs vector in computer science](https://softwareengineering.stackexchange.com/a/207461/49259)
+[Modern Microprocessors A 90-Minute Guide!](http://www.lighterra.com/papers/modernmicroprocessors/)
+Superscalar vs. pipeline vs. SMT vs. SMP
+## Components	
+Control unit, ALU, registers
+Cache
+MMU, TLB
+Clock
+
+
+# Utilization
+CPU
+Process:u/k time
+
+
 # hardware
 [What is meant by the terms CPU, Core, Die and Package](https://superuser.com/questions/324284/what-is-meant-by-the-terms-cpu-core-die-and-package)
 

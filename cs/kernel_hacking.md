@@ -42,6 +42,9 @@ make oldconfig && make prepare
 make -C $(pwd) M=/home/firo/linux/fs/ext3 modules V=1 
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnu- drivers/pcmcia/sa11xx_base.o
 
+# Old kernel
+http://oldlinux.org/Linux.old/mail-archive/
+
 # Git repos
 [Git tree maintenance](https://lwn.net/Articles/572068/)
 ## next tree - 2.6.1x ~ latest tree; please rebase your patch against this tree before send it to upstream

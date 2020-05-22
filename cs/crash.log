@@ -13,6 +13,10 @@ zlib-devel-32bit
 # debuginfo
 objcopy --only-keep-debug vmlinux vmlinux.debug
 
+# Cross-compiling
+https://developer.ibm.com/linuxonpower/2017/07/06/analyzing-openpower-kernel-dump-information-laptop/
+make target=PPC64 lzo snappy
+
 # list
 crash> p file_lock_list
 PER-CPU DATA TYPE:

@@ -98,6 +98,7 @@ Different minds; different behavoir; Relative minds. Writers are different to yo
 Vicariousness, Illusion of Competence
 ## Symbols
 [Feynman: Name of something vs something](Richard Feynman - Names Don't Constitute Knowledge)
+## Subjetive and relative knowlodgy Theory
 ## Books
 Schopenhauver on reading and books:We can never read the bad too little and the good too often.Inferior books are intellectual poison; they ruin the mind.
 ## In-thing and out-observing
@@ -134,6 +135,7 @@ Feynman technique. Centric and stereoscopic Thinking
 root cause, end cause
 Continuousness, completeness, consistency, soundness. -- Logic
 2. make it simple to understand.
+3. Observe
 
 ## First principle, then minimum essential fundamentals. 
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
