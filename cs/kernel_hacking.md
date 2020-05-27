@@ -47,7 +47,7 @@ http://oldlinux.org/Linux.old/mail-archive/
 
 # Git repos
 [Git tree maintenance](https://lwn.net/Articles/572068/)
-## next tree - 2.6.1x ~ latest tree; please rebase your patch against this tree before send it to upstream
+## next tree - 2.6.1x ~ latest tree; please rebase your patch against this tree before sending it to upstream
 [Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)
 git add git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 ## tglx tree - 2.4 - 2.6.1x

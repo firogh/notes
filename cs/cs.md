@@ -5,30 +5,80 @@ date: 2015-02-27T15:46:14+08:00
 category: cs
 ---
 
-# CS
-Memory and Program and Computation and IO
-Memory hierarchy: FS, VFS
-Memory: VM, the locality principle
-IO stack: caching, Locality of reference, memory hierarchy
-Program: Concurrency and stack, user vs. system, system calls
-Event(interrupt and exception) and task, scheduling
-Computation: Parallelism Processor
+# Perspectives
+Causality model: Turing machine
+Resource
+Application: CS Hardware(Turing-completeness) and software(programming)
+Workload
+Optimization
+Observability
 
-# Memory allocation: 
+# Resources
+Unit
+Allocation: compressible
+Use
+## Resource analysis
+[compressible vs incompressible resource](https://en.wikipedia.org/wiki/System_resource)
+[The Kubernetes resource model](https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/design/resources.md)
+Time-based vs space-based resource.
+
+# Optimization
+Parallelism Processor
+https://en.wikipedia.org/wiki/Program_optimization
+
+# Causality model
+Causality, resource, use
+Turing machine, turing completeness. Symbols, states, instructions, read-write-move head, tape.
+Computations: a series of data and branch operation, arithmetic and logic operations and IO operations.
+Processor, storage.
+
+# Computer
+[Build an 8-bit computer from scratch](https://eater.net/8bit)
+Processor: scheduling
+Interrupt and exception
+Storage: Memory hierarchy, FS, VFS
+Memory: VM, the locality principle
+IO: Caching, Locality of reference, memory hierarchy
+
+# Program, OS
+Concurrency and stack, event, task, user vs. system, system calls
+
+# OS
+[Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+## Unix
+[Ken Thompson UNIX Implementation](https://users.soe.ucsc.edu/~sbrandt/221/Papers/History/thompson-bstj78.pdf)
+[The Evolution of the UNIX Time-sharing System](https://www.cs.grinnell.edu/~curtsinger/teaching/2019S/CSC213/files/unix_evolution.pdf)
+[Twenty Years of Berkeley Unix From AT&T-Owned to Freely Redistributable](https://www.oreilly.com/openbook/opensources/book/kirkmck.html)
+[The UNIX TimeSharing System Dennis M. Ritchie and Ken Thompson Bell Laboratories](https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf)
+[The UNIX Time-sharing SystemA Retrospective](https://www.bell-labs.com/usr/dmr/www/retro.pdf)
+[SunOS 1.0 - 4.1.2](http://bitsavers.trailing-edge.com/pdf/sun/sunos/)
+Life with Unix
+[Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX† Operating System‡](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
+## Linux 
+[Linux Foundation Referenced Specifications](http://refspecs.linuxbase.org/)
+
+# Programming
+## Function/[subroutine](https://en.wikipedia.org/wiki/Subroutine) and 
+1945 Turing on subroutines in [Proposed electronic calculator.](http://www.alanturing.net/turing_archive/archive/p/p01/P01-011.html): In Chapter 6. Outline of Logical Control. We also wish to be able to arrange for the splitting up of operations into... When we wish to start on a subsidiary operation we need only make a note of where we left off the major operation...
+## stack
+[Firo-must: Dijkstra, E. W. (1960). "Recursive Programming"](https://link.springer.com/article/10.1007%2FBF01386232)
+[call stack](https://en.wikipedia.org/wiki/Call_stack)
+Stack overflow: gurad page
+Stack based buffer overflow: canary, STACKPROTECTOR, Stack Protector buffer overflow detection
+Related code: boot_init_stack_cana
+
+# Memory allocation
 buddy track system, metric, page allocator. PFRA & workingset, rmap
 
 # VM
-address space, page tables, tlb, page fault
-Decopule addresses and memory locations
-
-# Paging
 Lift the burden of loading program from application.
-
-# Program
-Completion time
+address space, page tables, tlb, page fault, paging
+Decopule addresses and memory locations
 
 # Concurrency
 [EW Dijkstra: Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)
+https://en.wikipedia.org/wiki/Concurrent_computing
+https://slikts.github.io/concurrency-glossary/
 ## concurrent vs parallel
 Programming vs computing: software vs hardware
 concurrent programming: multi-thread stress on how to create thread to model the outside world.
@@ -42,46 +92,8 @@ consistency model
 ## Scalability - Lockless concurrency
 [What every systems programmer should know about lockless concurrency](https://news.ycombinator.com/item?id=15607869)
 
-# Metric
-Bandwidth and latency
-Scalability
-Performance
-Easy to use
-Security/Protection/isolation
-Reliability
-Energy-efficiency
-
-# Perspectives
-Model
-Resource
-Workload
-Optimization
-
-# Model analysis
-causality, resouse, use
-
-# Resource analysis
-[compressible vs incompressible resource](https://en.wikipedia.org/wiki/System_resource)
-[The Kubernetes resource model](https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/design/resources.md)
-Time-based vs space-based resource.
-
 # History
 [Atlas](http://www.chilton-computing.org.uk/acl/technology/atlas/overview.htm)
-
-# OS
-[Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
-## Unix
-[Ken Thompson UNIX Implementation](https://users.soe.ucsc.edu/~sbrandt/221/Papers/History/thompson-bstj78.pdf)
-[The Evolution of the UNIX Time-sharing System](https://www.cs.grinnell.edu/~curtsinger/teaching/2019S/CSC213/files/unix_evolution.pdf)
-[Twenty Years of Berkeley Unix From AT&T-Owned to Freely Redistributable](https://www.oreilly.com/openbook/opensources/book/kirkmck.html)
-[The UNIX TimeSharing System Dennis M. Ritchie and Ken Thompson Bell Laboratories](https://people.eecs.berkeley.edu/~brewer/cs262/unix.pdf)
-[The UNIX Time-sharing SystemA Retrospective](https://www.bell-labs.com/usr/dmr/www/retro.pdf)
-[SunOS 1.0 - 4.1.2](http://bitsavers.trailing-edge.com/pdf/sun/sunos/)
-Life with Unix
-[Design and Implementation of the Berkeley Virtual Memory Extensions to the UNIX† Operating System‡](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.9119&rep=rep1&type=pdf)
-
-# Specifications
-[Linux Foundation Referenced Specifications](http://refspecs.linuxbase.org/)
 
 # Computer science
 [Core topics of computer science](https://computersciencewiki.org/index.php/Welcome)

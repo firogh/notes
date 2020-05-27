@@ -120,6 +120,7 @@ Focus energy on goals. vs the wanderer, unlimited scope vague goals
 
 # Effective ways - 意志与方法, will and methods
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
+## Raw
 ## Small in physical and causal aspects: gradually grow up a little bit each day. 
 From raw edition.每天进步一点点. 
 I love those who can smile in trouble, who can gather strength from distress, and grow brave by reflection. 'Tis the business of little minds to shrink, but they whose heart is firm, and whose conscience approves their conduct, will pursue their principles unto death. -Leonardo da Vinci
@@ -131,12 +132,14 @@ Descartes's methods: Main/primary causes and secondary causes, Essential causes 
 Complete: MECE (Mutually Exclusive and Collectively Exhaustive). 
 Analogy: successful cases analysis and Transforming.
 Feynman technique. Centric and stereoscopic Thinking
+0. growing, connection from base.
 1. make a whole covering every parts.
 root cause, end cause
 Continuousness, completeness, consistency, soundness. -- Logic
+Model
 2. make it simple to understand.
 3. Observe
-
+symbols
 ## First principle, then minimum essential fundamentals. 
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
 

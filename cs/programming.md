@@ -7,17 +7,7 @@ category: cs
 
 # Computer programming
 [The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
-
 Reentrancy
-## Function/[subroutine](https://en.wikipedia.org/wiki/Subroutine) and 
-1945 Turing on subroutines in [Proposed electronic calculator.](http://www.alanturing.net/turing_archive/archive/p/p01/P01-011.html): In Chapter 6. Outline of Logical Control. We also wish to be able to arrange for the splitting up of operations into... When we wish to start on a subsidiary operation we need only make a note of where we left off the major operation...
-## stack
-[Firo-must: Dijkstra, E. W. (1960). "Recursive Programming"](https://link.springer.com/article/10.1007%2FBF01386232)
-[call stack](https://en.wikipedia.org/wiki/Call_stack)
-Stack overflow: gurad page
-Stack based buffer overflow: canary, STACKPROTECTOR, Stack Protector buffer overflow detection
-
-Related code: boot_init_stack_canary
 
 # Concurrent programming
 [Firo: must thinking summary: EW Dijkstra: Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)

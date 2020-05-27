@@ -5,6 +5,14 @@
 
 # Metrics
 [Counters, Gauge, Histogram](https://prometheus.io/docs/concepts/metric_types/)
+Time vs space
+Bandwidth and latency
+Scalability
+Performance
+Easy to use 
+Security/Protection/isolation
+Reliability
+Energy-efficiency
 
 # Debuginfo
 [How the Compiler Tells Its Secrets to the Debugger](https://events.static.linuxfound.org/images/stories/pdf/lfcs2012_eager.pdf)
