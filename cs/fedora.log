@@ -6,12 +6,23 @@ date: 2015-02-27T15:46:11+08:00
 category: cs
 ---
 
+# Initial
+gsettings set org.gnome.shell.app-switcher current-workspace-only true
+
+## Not sure
+unset command_not_found_handle
+
+
+
 # proxy
 https://hitun.io/user/shop
 curl -Ls https://install.direct/go.sh | sudo bash
 
 # docker
 ocker run -i -t --rm=true -v /buildarea1/firo/bd:/mnt pek-lpdfs01:5000/centos7_64:wrl /bin/bash
+
+# fonts
+https://copr.fedorainfracloud.org/coprs/chenxiaolong/ubuntu-fonts/
 
 # initrd
 /usr/lib/dracut/skipcpio

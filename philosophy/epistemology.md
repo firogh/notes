@@ -98,6 +98,7 @@ Different minds; different behavoir; Relative minds. Writers are different to yo
 Vicariousness, Illusion of Competence
 ## Symbols
 [Feynman: Name of something vs something](Richard Feynman - Names Don't Constitute Knowledge)
+Collecting huge symbols without meaning is completely wasting time and life.
 ## Subjetive and relative knowlodgy Theory
 ## Books
 Schopenhauver on reading and books:We can never read the bad too little and the good too often.Inferior books are intellectual poison; they ruin the mind.
@@ -120,12 +121,12 @@ Focus energy on goals. vs the wanderer, unlimited scope vague goals
 
 # Effective ways - 意志与方法, will and methods
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
-## Raw
+## Raw and think for yourself
 ## Small in physical and causal aspects: gradually grow up a little bit each day. 
 From raw edition.每天进步一点点. 
 I love those who can smile in trouble, who can gather strength from distress, and grow brave by reflection. 'Tis the business of little minds to shrink, but they whose heart is firm, and whose conscience approves their conduct, will pursue their principles unto death. -Leonardo da Vinci
 人是没什么出路, 不能期望一个计划搞定事情.需要一点点做.把该做的都做就好了.
-## Simplicity principle: Not only ends but means by humen especially in math, computer science; Knapsack problem. One priority list. 
+## Simplicity and meaningfulness principle: Not only ends but means by humen especially in math, computer science; Knapsack problem. One priority list. 
 记少不记多,反而记更多; 时间是否充裕,都先记少. So I saw the less is more in action: the more studies, the less obvious elementary but fundamental things become; activity, on the other hand, strips things to their simplest possible model. -- Antifragile, Nassim. First, we can do it. Second, less will make more because we know the foundations before other things. 基础的简单的事.
 Occam's razor
 Descartes's methods: Main/primary causes and secondary causes, Essential causes and additional causes;
@@ -139,9 +140,16 @@ Continuousness, completeness, consistency, soundness. -- Logic
 Model
 2. make it simple to understand.
 3. Observe
-symbols
-## First principle, then minimum essential fundamentals. 
+symbols vs meaning
+### First principle, then minimum essential fundamentals. 
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
+
+## Problems, Dynamics
+Inifinite problems. 
+
+## Speed and with-time
+work =  Speed * time
+speed controled by meaningful understanding and modelized knowledge
 
 ## Will - Plan, project.
 Do what you really want to do. If you want to do something, but you are afraid to do it, then that is likely what you should do.
@@ -151,6 +159,7 @@ Mind the starter of causality: good order, expection, problem, goals, weakness, 
 ## Observability - Have fun.
 
 ## Learning by doing/creating - what you did defines you. reinvent, creating, using.
+不是有希望才做, 是做了才有希望. -- twitter June 4.
 ![one of Hushi's effort](https://drive.google.com/file/d/1AbCS5qgAg1_ak7viwlE-g10z_8PmW1Hu/view?usp=sharing)
 没有输出, 输入再多都是0. Must show off! 直播.
 [Leonardo da Vinci](https://en.wikiquote.org/wiki/Talk:Leonardo_da_Vinci): I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do.

@@ -82,6 +82,20 @@ http://judy.sourceforge.net/
 # Hashtable
 [A generic hash table](https://lwn.net/Articles/510202/)
 hash function
+## hlist-nulls
+commit bbaffaca4810de1a25e32ecaf836eeaacc7a3d11
+Refs: v2.6.28-rc4-513-gbbaffaca4810
+Author:     Eric Dumazet <dada1@cosmosbay.com>
+AuthorDate: Sun Nov 16 19:37:55 2008 -0800
+Commit:     David S. Miller <davem@davemloft.net>
+CommitDate: Sun Nov 16 19:37:55 2008 -0800
+    rcu: Introduce hlist_nulls variant of hlist
+    hlist uses NULL value to finish a chain.
+    hlist_nulls variant use the low order bit set to 1 to signal an end-of-list marker.
+    This allows to store many different end markers, so that some RCU lockless
+    algos (used in TCP/UDP stack for example) can save some memory barriers in
+    fast paths.
+[Usage of hilsit-nulls in kernel doc](https://www.kernel.org/doc/Documentation/RCU/rculist_nulls.txt)
 
 # BST
 Pre-order

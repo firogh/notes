@@ -8,23 +8,23 @@ category: cs
 # Perspectives
 Causality model: Turing machine
 Resource
-Application: CS Hardware(Turing-completeness) and software(programming)
+Application: complexcity, CS Hardware(Turing-completeness) and software(programming)
+work
 Workload
 Optimization
 Observability
 
 # Resources
-Unit
 Allocation: compressible
-Use
+Use: complexcity
+Unit
+Reclaim:
+http://concurrencyfreaks.blogspot.com/2017/08/why-is-memory-reclamation-so-important.html
+“The Landscape and Exciting New Future of Safe Reclamation for High Performance” 27:00
 ## Resource analysis
 [compressible vs incompressible resource](https://en.wikipedia.org/wiki/System_resource)
 [The Kubernetes resource model](https://github.com/kubernetes/kubernetes/blob/release-1.1/docs/design/resources.md)
 Time-based vs space-based resource.
-
-# Optimization
-Parallelism Processor
-https://en.wikipedia.org/wiki/Program_optimization
 
 # Causality model
 Causality, resource, use
@@ -34,14 +34,79 @@ Processor, storage.
 
 # Computer
 [Build an 8-bit computer from scratch](https://eater.net/8bit)
-Processor: scheduling
+Processor
 Interrupt and exception
 Storage: Memory hierarchy, FS, VFS
 Memory: VM, the locality principle
 IO: Caching, Locality of reference, memory hierarchy
+Security, protection ring
+
+# IO
+User interface
+Storage allocation
+Storage location
+Memory area for IO data
+Queue
+Driver
+Hardware
+Completion
+
+# Speed, Work, computing, execution time
+[Time, space efficiency](https://en.wikipedia.org/wiki/Algorithmic_efficiency)
+worker, worker speed, worker stall, work stall, work response.
+Frequency, latency, response time.
+Execution time.
+Parallelism Processor
+https://en.wikipedia.org/wiki/Program_optimization
+
+# Latency, locality, cache
+
+# cache, dirty, data loss, writeback
+dirty paths
+dirty ratio: dirty pages / all pages in page cache
+
+# data race, processor clock, synchronous, completion, predictable, why synchronous important?
+Clock, lock, synchronous circuits,与clock一起.
+Clock: [why does processor need a clock?](https://qr.ae/pNyDsD)
+race, propergation delay, j-k flip-flop, synchronize
+https://www.youtube.com/watch?v=st3mUEub99E
+predicatable
+https://www.quora.com/Can-you-explain-in-details-why-we-need-a-processor-clock-what-it-does-what-happens-if-we-remove-it
+synchronous circuit: with clock-> wait for completing -> synchronous IO: wait for I/O completation.
+synchronize: coordinate
+## Synchronized, Synchronous, and Asynchronous Operations
+Check LSP 3rd Chapter 4.
+Synchronous I/O is a user space notation.
+Synchronous here actually means wait or blocking.
+Execution of process waits for I/O operations. I/O operations can be explained in different level e.g. system call, buffer cache.
+[As Discrete lizard suggests, there is not some precise CS-wide definition for these terms. ... Nevertheless, a vague general statement is that in "synchronous" systems, things "wait" for other things, while in "asynchronous" systems, things don't "wait".](https://cs.stackexchange.com/questions/87195/what-does-synchronous-and-asynchronous-mean-in-computer-science)
+[depend on previous task](https://stackoverflow.com/a/7132111/1025001)
+
+## https://www.yourdictionary.com/synchronous
+From Latin and Greek origins, synchronous translates as together with time. Referring to events that occur at the same instant of a coordinated time scale. If the events are repetitive, the instant of one event bears a fixed time relationship with the instant of a corresponding event, e.g., event a is followed 10 milliseconds later by event b. Synchronous processes in separate, networked devices depend on a common clocking source, on clocking pulses emitted by the transmitting device, or on synchronizing bits or bit patterns embedded in a set of data.
+
+## https://www.quora.com/Are-synchronous-and-asynchronous-transmission-different-types-of-parallel-transmission
+Phillip Remaker, connecting your computers since 1988
+Synchronous: (etymology: sun (together) khronos (time))
+In a synchronous system, there is a continuous time pulse signal (clock) that runs together with the data signal to indicate when sample should be taken. Serial or parallel does not matter; it only matters that a dedicated clock signal tells the receiver when to sample the data.
+In an asynchronous system (without together time), the sampling clock is embedded in and extracted from the data, and the data transmission can start and stop at will.
+
+# synchronous, asynchronous, completion
+cause, effect; begin and end
+limited states, order, exception, error
+next state
+## Mark of end 
+Variable: completion
+Callback:
+
+# Lock
+lock-free: https://www.youtube.com/watch?v=mHwU0TMuwgc
 
 # Program, OS
+http://www.joelfernandes.org/
+TIF_NEED_RESCHED: why is it needed http://www.joelfernandes.org/linuxinternals/2016/03/20/tif-need-resched-why-is-it-needed.html
 Concurrency and stack, event, task, user vs. system, system calls
+
 
 # OS
 [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
@@ -67,14 +132,6 @@ Stack overflow: gurad page
 Stack based buffer overflow: canary, STACKPROTECTOR, Stack Protector buffer overflow detection
 Related code: boot_init_stack_cana
 
-# Memory allocation
-buddy track system, metric, page allocator. PFRA & workingset, rmap
-
-# VM
-Lift the burden of loading program from application.
-address space, page tables, tlb, page fault, paging
-Decopule addresses and memory locations
-
 # Concurrency
 [EW Dijkstra: Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)
 https://en.wikipedia.org/wiki/Concurrent_computing
@@ -91,6 +148,14 @@ IPC check wait.log
 consistency model
 ## Scalability - Lockless concurrency
 [What every systems programmer should know about lockless concurrency](https://news.ycombinator.com/item?id=15607869)
+
+# Memory allocation
+buddy track system, metric, page allocator. PFRA & workingset, rmap
+
+# VM
+Lift the burden of loading program from application.
+address space, page tables, tlb, page fault, paging
+Decopule addresses and memory locations
 
 # History
 [Atlas](http://www.chilton-computing.org.uk/acl/technology/atlas/overview.htm)

@@ -50,8 +50,8 @@ commit a0140c1d85637ee5f4ea7c78f066e3611a6a79dc
 Author: KAMEZAWA Hiroyuki <kamezawa.hiroyu@jp.fujitsu.com>
 Date:   Mon Mar 27 01:15:55 2006 -0800
     [PATCH] remove zone_mem_map
-
 Related code: pfn_to_page
+
 # Zones
 ULK 2: 7.1.2 Memory Zones; LDD: Memory zones; LKD3: Zones; UVM: Chapter 2  Describing Physical Memory
 history: commit 4d1ceac2980133513fec009b18514f026ff58afa (tag: 2.3.23pre5)

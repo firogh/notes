@@ -37,19 +37,16 @@ dmesg | grep clocksource
 cat /sys/devices/system/clockevents/clockevent*/current_device 
 lapic-deadline
 tick_device
-
+## Hrtimer
+https://www.kernel.org/doc/Documentation/timers/hrtimers.txt
 ## ktime api
 https://www.kernel.org/doc/html/latest/core-api/timekeeping.html
 
-## Hrtimer
-https://www.kernel.org/doc/Documentation/timers/hrtimers.txt
+# Scheduling-Clock Ticks
+sched_clock tick_do_update_jiffies64
 
-## jiffies
-
-## sched_clock
-tick_do_update_jiffies64
-
-## NO_HZ: Reducing Scheduling-Clock Ticks
+## dyntick, NO_HZ
+https://www.youtube.com/watch?v=G3jHP9kNjwc
 https://www.kernel.org/doc/Documentation/timers/no_hz.rst
 
 ## dyntick and tick broadcast

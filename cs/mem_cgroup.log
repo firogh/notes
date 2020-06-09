@@ -237,6 +237,7 @@ AuthorDate: Tue Apr 29 01:00:16 2008 -0700
 Commit:     Linus Torvalds <torvalds@linux-foundation.org>
 CommitDate: Tue Apr 29 08:06:10 2008 -0700
     cgroups: add an owner to the mm_struct
+mm_update_next_owner
 ### shadow entry and swap
 mem_cgroup_idr
 commit 73f576c04b9410ed19660f74f97521bee6e1c546

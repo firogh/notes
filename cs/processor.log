@@ -9,7 +9,7 @@ Superscalar vs. pipeline vs. SMT vs. SMP
 Control unit, ALU, registers
 Cache
 MMU, TLB
-Clock
+Clock: [why does processor need a clock?](https://qr.ae/pNyDsD)
 
 # Utilization
 CPU
