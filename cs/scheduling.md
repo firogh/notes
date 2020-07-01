@@ -17,60 +17,6 @@ Date:   Sat Aug 13 12:38:19 2016 -0400
     sched/x86: Rewrite the switch_to() code
 [Why does switch_to use push+jmp+ret to change EIP, instead of jmp directly?](https://stackoverflow.com/questions/15019986/why-does-switch-to-use-pushjmpret-to-change-eip-instead-of-jmp-directly/15024312)
 
-# Preemption
-## [Voluntary Kernel Preemption, 2.6.12-rc4-mm2](https://lwn.net/Articles/137259/)
-Voluntary preemption works by adding a cond_resched() 
-(reschedule-if-needed) call to every might_sleep() check. It is lighter 
-than CONFIG_PREEMPT - at the cost of not having as tight latencies. It 
-represents a different latency/complexity/overhead tradeoff.
-
-[voluntary preemption](https://stackoverflow.com/questions/5174955/what-is-voluntary-preemption)
-[Optimizing preemption](https://lwn.net/Articles/563185/)
-commit 41719b03091911028116155deddc5eedf8c45e37
-Refs: v2.6.29-rc1-226-g41719b030919
-Author:     Peter Zijlstra <a.p.zijlstra@chello.nl>
-AuthorDate: Wed Jan 14 15:36:26 2009 +0100
-Commit:     Ingo Molnar <mingo@elte.hu>
-CommitDate: Wed Jan 14 18:09:00 2009 +0100
-    mutex: preemption fixes
-    The problem is that dropping the spinlock right before schedule is a voluntary
-    preemption point and can cause a schedule, right after which we schedule again.
-    Fix this inefficiency by keeping preemption disabled until we schedule, do this
-    by explicity disabling preemption and providing a schedule() variant that
-    assumes preemption is already disabled.
-Firo: spin_unlock_mutex
-## User preemption - Linux kernel user mode is always User preemption.
-system call returns mode . syscall_return_slowpath
-interrupt hander returns user mode .retint_user->prepare_exit_to_usermode
-## Linux kernel kernel mode is coppertive when CONFIG_PREEMPT is not set.
-bloked (which results in a call to schedule())
-If a task in the kernel explicitly calls schedule() it's involuntary!!!
-## Linux kernel kernel mode is coppertive + preemptive when CONFIG_PREEMPT is set.
-* When an interrupt handler exits, before returning to kernel-space.
-retint_kernel->preempt_schedule_irq->cond_resched
-* __local_bh_enable_ip -> preempt_check_resched
-## The following also t relates to preemption; it's PREEMPT_VOLUNTARY.
-For example, in might_resched(). The task willingly yeilds the CPU, but it should stay on rq. 
-config PREEMPT_VOLUNTARY
-        bool "Voluntary Kernel Preemption (Desktop)"
-        help
-          This option reduces the latency of the kernel by adding more
-          "explicit preemption points" to the kernel code. These new 
-          preemption points have been selected to reduce the maximum
-          latency of rescheduling, providing faster application reactions,
-          at the cost of slightly lower throughput.
-* need_resched - When kernel code becomes preemptible again.
-1. set_tsk_need_resched() in resched_curr
-tick: check_preempt_tick or entity_tick
-fork: wake_up_new_task->check_preempt_curr->check_preempt_wakeup
-wakeup: check_preempt_wakeup
-...
-2. if (need_resched()) cond_resched();
-
-## LQO
-* if (!preempt && prev->state)in __schedule; why prev->state?
-prev->state means deactivate.
-
 # Reference
 Process scheduling in Linux -- Volker Seeker from University of Edinburgh
 [A complete guide to Linux process scheduling](https://tampub.uta.fi/bitstream/handle/10024/96864/GRADU-1428493916.pdf)
@@ -89,9 +35,7 @@ ttwu_do_activate
 [Improving scheduler latency](https://lwn.net/Articles/404993/)
 
 # CFS runqueues
-cfa_rq
-on_list
-sched_entity->on_rq, check enqueue_entity
+cfa_rq, on_list, sched_entity->on_rq, check enqueue_entity
 ## CFS runqueue and sched entity
 set_task_rq
 
@@ -129,7 +73,6 @@ gse_CPUx's load = grq_CPUx's all se's load * task_group->shares / grq_CPU*'s all
         struct cfs_rq           *cfs_rq;
         /* rq "owned" by this entity/group: */
         struct cfs_rq           *my_q;
-
 [CFS group scheduling](https://lwn.net/Articles/240474/)
 commit 29f59db3a74b0bdf78a1f5b53ef773caa82692dc
 Author: Srivatsa Vaddagiri <vatsa@linux.vnet.ibm.com>
@@ -186,7 +129,6 @@ Date:   Fri Jul 14 00:24:27 2006 -0700
 
 # Running time
 proc_sched_show_task
-
 
 # Problems
 ## Why scheduling?
@@ -472,6 +414,8 @@ Date:   Thu Jul 21 09:43:33 2011 -0700
     run-time remaining.
 
 # PELT
+[Per-entity load tracking](https://lwn.net/Articles/531853/)
+
 commit 5b51f2f80b3b906ce59bd4dce6eca3c7f34cb1b9
 Author: Paul Turner <pjt@google.com>
 Date:   Thu Oct 4 13:18:32 2012 +0200

@@ -5,6 +5,7 @@
 
 # Metrics
 [Counters, Gauge, Histogram](https://prometheus.io/docs/concepts/metric_types/)
+Firo: Gauge should be same as usage(being used). Counter represents a single monotonically increasing counter.
 Time vs space
 Bandwidth and latency
 Scalability

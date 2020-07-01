@@ -25,17 +25,32 @@ RCU, cond_resched(), and performance regressions https://lwn.net/Articles/603252
 [RCU in 2019](http://www.joelfernandes.org/joel/slides/RCU_in_2019_KernelRecipes.pdf)
 [Kernel Recipes 2019 - RCU in 2019](https://www.youtube.com/watch?v=bsyXDAouI6E)
 https://www.slideshare.net/ennael/kernel-recipes-2019-rcu-in-2019-joel-fernandes
+## And
+Verification of the Tree-Based Hierarchical Read-Copy Update in the Linux Kernel: https://arxiv.org/pdf/1610.03052.pdf
+https://www.kernel.org/doc/Documentation/RCU/Design/Data-Structures/Data-Structures.html#The%20rcu_segcblist%20Structure
 
 # The problems - refrence
 The fundermental problems underlying RCU is how to make sure if there is a refrence to the data which is going to be reclaim.
 So RCU is essentially used as resource-reclamation mechanism. And we know there are 3 popular ways hazard pointer, reference counting, Quiescent state to do rerouce reclamation. RCU use quiescent state.
-## Quiescent state in Linux kernel
+
+# Quiescent state in Linux kernel
 [URCU: Any line of code not in an RCU read-side critical section is termed a quiescent state](https://lwn.net/Articles/573424/)
 [... after all the CPUs in the system have gone through at least one "quiescent" state (such as context switch, idle loop, or user code)](http://lse.sourceforge.net/locking/rcu/HOWTO/descrip.html)
 [The rcu and rcu_bh flavors of RCU have different sets of quiescent states.](https://lwn.net/Articles/305782/#Pass%20through%20a%20quiescent%20state.)
+rcu_flavor_sched_clock_irq rcu_rs
+rcu_report_qs_rnp
 ## CPU vs QS
 @冯博群 你好，请教一个问题，对于rcu-preempt， CPU report QS的意义是什么？ 我理解只有task QS 才不block GP。
 冯博群: qs都是CPU的，每个task都要report qs的话，那记录的结构得多复杂; rcu preempt是搞了一个list用来记录block当前qs的task; 当前gp; 过gp的条件就是list为空，且所有的CPU都report过qs;你说得概念上没啥问题，但是实现中不是这样作的.
+## EQS
+rcu_eqs_exit
+rcu_is_cpu_rrupt_from_idle: this idle is RCU-idle not PF_IDLE.
+smp_load_acquire?
+RCU implementations that avoid unnecessarily awakening dyntick-idle CPUs will mark those CPUs as being in an extended quiescent state from Hierarchical RCU
+: https://lwn.net/Articles/305782/
+## EQS vs interrupt vs read-side section
+
+## Heavy and light
 
 # Grace period - time to reclaim
 [URCU: any period of time during which each reader thread resides in at least one quiescent state is called a grace period.](https://lwn.net/Articles/573424/)
@@ -49,12 +64,13 @@ Updater want to free data if no GP is in-progress.
 ## GP vs Data(callback)
 continuos Data on GP. Segmented.
 
+## Deffered QS
+rcu_flavor_sched_clock_irq
+rcu_preempt_deferred_qs
+Reporting of a deferred QS reporting (when rcu_read_unlock() could not help).
 
 ## Memory ordering
 A Tour Through TREE_RCU’s Grace-Period Memory Ordering https://www.kernel.org/doc/html/latest/RCU/Design/Memory-Ordering/Tree-RCU-Memory-Ordering.html
-
-# Model
-
 
 # Start a grapce period
 [Start a New Grace Period](https://lwn.net/Articles/305782/#Start%20a%20new%20grace%20period.)
@@ -63,9 +79,51 @@ A Tour Through TREE_RCU’s Grace-Period Memory Ordering https://www.kernel.org/
 [Expedited Grace Period Design](https://www.kernel.org/doc/Documentation/RCU/Design/Expedited-Grace-Periods/Expedited-Grace-Periods.html)
 
 # Process data
-## Callbacks vs GP
+## Callbacks vs GP vs segments
 GP is completed, current, next
-https://www.kernel.org/doc/Documentation/RCU/Design/Data-Structures/Data-Structures.html#The%20rcu_segcblist%20Structure
+commit 5127bed588a2f8f3a1f732de2a8a190b7df5dce3
+Author: Lai Jiangshan <laijs@cn.fujitsu.com>
+Date:   Sun Jul 6 17:23:59 2008 +0800
+    rcu classic: new algorithm for callbacks-processing(v2)
+
+### Next segment list
+Finally, the RCU NEXT TAIL segment contains callbacks that are not yet associated with any grace period. from V..
+RCU_NEXT_TAIL: Callbacks that have not yet been associated with a grace period. from design/data-structure.
+commit 64db4cfff99c04cd5f550357edcc8780f96b54a2
+Refs: v2.6.28-rc8-92-g64db4cfff99c
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Thu Dec 18 21:55:32 2008 +0100
+Commit:     Ingo Molnar <mingo@elte.hu>
+CommitDate: Thu Dec 18 21:56:04 2008 +0100
+    "Tree RCU": scalable classic RCU implementation
++        * [*nxttail[RCU_NEXT_READY_TAIL], NULL = *nxttail[RCU_NEXT_TAIL]):
++        *      Entries that might have arrived after current GP ended
++        * [*nxttail[RCU_WAIT_TAIL], *nxttail[RCU_NEXT_READY_TAIL]):
++        *      Entries known to have arrived before current GP ended
+commit 15fecf89e46a962ccda583d919e25d9da7bf0723
+Refs: v4.11-rc2-13-g15fecf89e46a
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Wed Feb 8 12:36:42 2017 -0800
+Commit:     Paul E. McKenney <paulmck@kernel.org>
+CommitDate: Tue Apr 18 11:38:18 2017 -0700
+    srcu: Abstract multi-tail callback list handling
++ * [*tails[RCU_NEXT_READY_TAIL], *tails[RCU_NEXT_TAIL]):
++ *     Callbacks that might have arrived after the next GP started.
+## Adavnce segments
+rcu_advance_cbs
+rcu_segcblist_advance
+note_gp_changes 
+If an old grace period has ended,
+rcu advance cbs() is invoked to advance all callbacks,
+otherwise, rcu accelerate cbs() is invoked to assign a
+grace period to any recently arrived callbacks. If a new grace
+period has started, ->passed quiesce is set to zero, and if
+in addition RCU is waiting for a quiescent state from this
+CPU, ->qs pending is set to one, so that a new quiescent
+state will be detected for the new grace period.
+https://github.com/lihaol/verify-treercu/blob/master/main.c
+## Accelerate
+rcu_segcblist_accelerate - the core function
 ## Batch processing
 ## RCU callbacks offload
 [Relocating RCU callbacks](https://lwn.net/Articles/522262/)
@@ -80,6 +138,46 @@ update_process_times rcu_pending print_other_cpu_stall print_cpu_stall_info
 [Status of Linux dynticks](http://ertl.jp/~shinpei/conf/ospert13/slides/FredericWeisbecker.pdf)
 [Full dynticks status - Frederic Weisbecker, Red Hat](https://www.youtube.com/watch?v=G3jHP9kNjwc)
 [RCU and dynticks-idle mode](http://www.joelfernandes.org/linuxinternals/2018/06/15/rcu-dynticks.html)
+## Upcall
+/*
+ * Exit an RCU extended quiescent state, which can be either the
+ * idle loop or adaptive-tickless usermode execution.
+ *
+ * We crowbar the ->dynticks_nmi_nesting field to DYNTICK_IRQ_NONIDLE to
+ * allow for the possibility of usermode upcalls messing up our count of
+ * interrupt nesting level during the busy period that is just now starting.
+ */
+static void noinstr rcu_eqs_exit(bool user)
+See desgin/data-structures
+However, it turns out that when running in non-idle kernel context, the Linux kernel is fully capable of entering interrupt handlers that never exit and perhaps also vice versa. Therefore, whenever the ->dynticks_nesting field is incremented up from zero, the ->dynticks_nmi_nesting field is set to a large positive number, and whenever the ->dynticks_nesting field is decremented down to zero, the the ->dynticks_nmi_nesting field is set to zero. Assuming that the number of misnested interrupts is not sufficient to overflow the counter, this approach corrects the ->dynticks_nmi_nesting field every time the corresponding CPU enters the idle loop from process context.
+
+## Translation for Hierarchical RCU
+rcu_enter_nohz -> rcu_idle_enter
+RCU idle includes eqs which includes 
+/*
+ * Enter an RCU extended quiescent state, which can be either the
+ * idle loop or adaptive-tickless usermode execution.
+ *
+ * We crowbar the ->dynticks_nmi_nesting field to zero to allow for
+ * the possibility of usermode upcalls having messed up our count
+ * of interrupt nesting level during the prior busy period.
+ */
+static noinstr void rcu_eqs_enter(bool user)
+Firo: so extended quiescent state includes non-extended quiescent state.
+
+rcu_dynticks_in_eqs
+rcu_dynticks_curr_cpu_in_eqs
+### Special/bottom bit in rcu_data:: dynticks
+commit b8c17e6664c461e4aed545a943304c3b32dd309c
+Refs: v4.11-rc2-1-gb8c17e6664c4
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Tue Nov 8 14:25:21 2016 -0800
+Commit:     Paul E. McKenney <paulmck@kernel.org>
+CommitDate: Tue Apr 18 11:19:22 2017 -0700
+    rcu: Maintain special bits at bottom of ->dynticks counter
+### rcu_data::dynticks counter? validate by warn on?
+Integrating and Validating dynticks and Preemptable RCU?? https://lwn.net/Articles/279077/
+输了又怎样？
 
 # Model
 A GP completed seq A

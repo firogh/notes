@@ -86,13 +86,52 @@ Foundational facts analysis
 什么是独立呢?“独立”是你们自己的事，给你自由而不独立这是奴隶，独立要不盲从，不受欺骗，不依傍门户，不依赖别人，不用别人耳朵为耳朵，不以别人的脑子为脑子，不用别人的眼睛为眼睛，这就是独立的精神。 -- 胡适在北京大学1946年开学演讲
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge. -on education, Albert Einstein
 If you don't control yourself, you will be controlled by the Other. In turn, you lose yourself. - Firo
-## Knowledge
+
+# Knowledge
 活知识; the ability of Swim and learning of history; Define the question, restore to life and causlaity; Architecture: common causes for many effects. Just for fun.
-### Relative knowledge
+## Relative knowledge
 Focus on how well we understand this world; don't pursue a objective knowledge of this world.
 Role-based understanding.
+## JIT - a small set of essential knowledge
+
+## Dynamic
 
 # Mistakes
+
+## Human actions and practices set
+装修问题, kernel programming, reading kernel source code, meaning of writing from A River Runs Through It
+invariants: practice structure revealed by repeated problems.
+海边度假问题
+why did I not start kernel programming? I think I am not competent to do kernel programming.
+So I start reading kernel source code to understand what others do. # This is OK. I don't know 'computing' problem. My life experience and aweakenings and intelligence is limitted. And I was trying to make up the whole computer science from Turing Machine.
+Where am I wrong? I didn't think over computer science or kernel thoroughly from first principle or raw.
+How to make reading kernel source code equivalent to kernel programming?
+If don't consider problems, we can create whole things when we are reading kernel codes.
+So the fundamental difference between kernel programming and reading kernel codes is problems - we don't have/know the problems. Second difference is the amount of degree of creating.
+### Everyone can solve problems.
+### So what are the problems?
+Everyone can solve problems.
+Problems could be functionalties or goals.
+Problems could be optimizations which are better expressions of above functionalites or goals.
+Problems are structures(practices or actions?).
+Problems are growing upon others. Problems are growing structures.
+### The easy way without thinking or choosing methods.
+Is it the right way to do things?
+海边度假问题
+#### observing or imitate
+#### 成本高 vs. 效率高
+### Differences between reading kernel source code and kernel programming
+reading kernel source code: 1. easy way. trying to understand the problem and its solution. translation. repeating problems, remembering symbols.
+kernel programming: 1. find problems. 2. find or choose or create and verify solution. 3. related other problems.
+#### action and practice structure
+### Topology
+programming, reviewing, reading
+在义不在形。
+## Symbols Authoritarianism
+## Milgram experiment, 电击实验 权利服从空间
+conformity
+https://www.youtube.com/watch?v=6G3_7FAiM-E 女闺蜜权利空间。
+
 ## Subjectivity
 Different minds; different behavoir; Relative minds. Writers are different to you. They don't know wht you really want.
 Vicariousness, Illusion of Competence
@@ -109,7 +148,7 @@ In-thing vs out-observing: The creators are different to you, too. You are not o
 [Knowledge by Acquaintance vs. Description](https://plato.stanford.edu/entries/knowledge-acquaindescrip/#Dis)
 Different processes: nature grow, creation direction vs string search, artificial translation direction
 vs 只有接受, 没有思维锻炼的机会.
-return to myself vs made mute beneath the constant need to pay heed to other selves (—which is what reading is!) -- Ecce Homo
+return to myself vs made mute beneath the constant need to pay heed to other selves (which is what reading is!) -- Ecce Homo
 process to 'see'/experience philosophy vs symbols only
 dependent knowledge, the underlying vs superfical knowledge
 vs name of something, symbols
@@ -121,7 +160,8 @@ Focus energy on goals. vs the wanderer, unlimited scope vague goals
 
 # Effective ways - 意志与方法, will and methods
 [Principles For Success by Ray Dalio (In 30 Minutes)](https://www.youtube.com/watch?v=B9XGUpQZY38)
-## Raw and think for yourself
+## Think deeper from a high level: Raw, small and think for yourself
+在义不在形。
 ## Small in physical and causal aspects: gradually grow up a little bit each day. 
 From raw edition.每天进步一点点. 
 I love those who can smile in trouble, who can gather strength from distress, and grow brave by reflection. 'Tis the business of little minds to shrink, but they whose heart is firm, and whose conscience approves their conduct, will pursue their principles unto death. -Leonardo da Vinci

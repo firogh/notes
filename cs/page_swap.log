@@ -3,10 +3,7 @@
 [In defence of swap: common misconceptions](https://chrisdown.name/2018/01/02/in-defence-of-swap.html)
 [Reconsidering swapping](https://lwn.net/Articles/690079/)
 [2.6 swapping behavior](https://lwn.net/Articles/83588/)
-
-# History
-1978
-Swapping in [UNIX Implementation K. Thompson](https://users.soe.ucsc.edu/~sbrandt/221/Papers/History/thompson-bstj78.pdf)
+1978 Swapping in [UNIX Implementation K. Thompson](https://users.soe.ucsc.edu/~sbrandt/221/Papers/History/thompson-bstj78.pdf)
 
 # PTE Encode and de-code a swap entry
 
@@ -16,6 +13,9 @@ Swapping in [UNIX Implementation K. Thompson](https://users.soe.ucsc.edu/~sbrand
 Check SWP_TYPE_FIRST_BIT
 Swap work on only userspace pages.
 _PAGE_SWP_SOFT_DIRTY and Documentation/vm/soft-dirty.txt
+
+# Swappiness
+https://www.kernel.org/doc/Documentation/sysctl/vm.txt
 
 # page
 private: store swap type and offset/slot in private

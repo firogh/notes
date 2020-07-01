@@ -6,13 +6,14 @@ category: cs
 ---
 
 # Perspectives
-Causality model: Turing machine
+Causality model: Turing machine, microcosmos
 Resource
 Application: complexcity, CS Hardware(Turing-completeness) and software(programming)
 work
 Workload
 Optimization
 Observability
+Translation
 
 # Resources
 Allocation: compressible

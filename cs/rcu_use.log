@@ -1,3 +1,6 @@
+# kernel configurations
+Kernel configuration parameters for RCU: https://lwn.net/Articles/777214/
+
 # list and rcu
 [Using RCU for linked lists — a case study](https://lwn.net/Articles/610972/)
 [Using RCU to Protect Read-Mostly Linked Lists](https://www.kernel.org/doc/Documentation/RCU/listRCU.rst)

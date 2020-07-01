@@ -167,6 +167,10 @@ exiftool -json Baccano\!\ 永生之酒\(バッカーノ！\)\ ORIGINAL\ SOUNDTRA
 #indent
 indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs *.c *.h
 
+# input method
+How to disable the emoji suggestions? https://github.com/libpinyin/ibus-libpinyin/issues/164
+dconf write /com/github/libpinyin/ibus-libpinyin/libpinyin/emoji-candidate false
+
 # ps
 ps -eLo pid,tid,s,eip,esp,stackp,tty4,etime,comm,wchan
 ps -Llefmj or ps -Llef or ps -Lef
