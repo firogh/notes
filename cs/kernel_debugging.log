@@ -1,6 +1,9 @@
 
 # Lockup
 [kernle doc - Softlockup detector and hardlockup detector](https://www.kernel.org/doc/Documentation/lockup-watchdogs.txt)
+watchdog_enabled
+tk_core.timekeeper.tkr_mono.base
+
 ## Softlockup
 ps aux | grep watchdog
 root        13  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/0]
@@ -10,6 +13,8 @@ root        28  0.0  0.0      0     0 ?        S    08:23   0:00 [watchdog/3]
 NMI watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [test.sh:16464]
 ...
 Kernel panic - not syncing: softlockup: hung tasks
+### Crash
+watchdog_thresh
 ## Hardlockup
 watchdog_overflow_callback
 watchdog_nmi_enable ->watchdog_overflow_callback

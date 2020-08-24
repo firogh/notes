@@ -45,6 +45,42 @@ start_kernel->mm_init
 # GFP flags
 __GFP_THISNODE: 9b819d204cf602eab1a53a9ec4b8d2ca51e02a1d Add __GFP_THISNODE to avoid fallback to other nodes and ignore cpuset/memory policy restrictions
 __GFP_HIGHMEM in __alloc_zeroed_user_highpage??
+## GFP ZONE table
+commit b70d94ee438b3fd9c15c7691d7a932a135c18101
+Refs: v2.6.30-5489-gb70d94ee438b
+Author:     Christoph Lameter <cl@linux.com>
+AuthorDate: Tue Jun 16 15:32:46 2009 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Tue Jun 16 19:47:41 2009 -0700
+    page-allocator: use integer fields lookup for gfp_zone and check for errors in flags passed to the page allocator
++ * GFP_ZONE_TABLE is a word size bitstring that is used for looking up the
++ * zone to use given the lowest 4 bits of gfp_t. Entries are ZONE_SHIFT long
++ * and there are 16 of them to cover all possible combinations of
++ * __GFP_DMA, __GFP_DMA32, __GFP_MOVABLE and __GFP_HIGHMEM
++ *
++ * The zone fallback order is MOVABLE=>HIGHMEM=>NORMAL=>DMA32=>DMA.
++ * But GFP_MOVABLE is not only a zone specifier but also an allocation
++ * policy. Therefore __GFP_MOVABLE plus another zone selector is valid.
++ * Only 1bit of the lowest 3 bit (DMA,DMA32,HIGHMEM) can be set to "1".
++ *
++ *       bit       result
++ *       =================
++ *       0x0    => NORMAL
++ *       0x1    => DMA or NORMAL
++ *       0x2    => HIGHMEM or NORMAL
++ *       0x3    => BAD (DMA+HIGHMEM)
++ *       0x4    => DMA32 or DMA or NORMAL
++ *       0x5    => BAD (DMA+DMA32)
++ *       0x6    => BAD (HIGHMEM+DMA32)
++ *       0x7    => BAD (HIGHMEM+DMA32+DMA)
++ *       0x8    => NORMAL (MOVABLE+0)
++ *       0x9    => DMA or NORMAL (MOVABLE+DMA)
++ *       0xa    => MOVABLE (Movable is valid only if HIGHMEM is set too)
++ *       0xb    => BAD (MOVABLE+HIGHMEM+DMA)
++ *       0xc    => DMA32 (MOVABLE+HIGHMEM+DMA32)
++ *       0xd    => BAD (MOVABLE+DMA32+DMA)
++ *       0xe    => BAD (MOVABLE+DMA32+HIGHMEM)
++ *       0xf    => BAD (MOVABLE+DMA32+HIGHMEM+DMA)
 
 # Alloc flags
 gfp_to_alloc_flags
@@ -334,6 +370,3 @@ commit c93bdd0e03e848555d144eb44a1f275b871a8dd5
 Author: Mel Gorman <mgorman@suse.de>
 Date:   Tue Jul 31 16:44:19 2012 -0700
     netvm: allow skb allocation to use PFMEMALLOC reserves
-
-# Expected page state
-page_expected_state and check_new_page, page_mapcount_reset, prep_new_page

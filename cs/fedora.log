@@ -33,6 +33,11 @@ https://copr.fedorainfracloud.org/coprs/chenxiaolong/ubuntu-fonts/
 rpm -qp --qf '%{rpmversion}\n' xxx.rpm
 rpm5 -qp --yaml xxx.rpm | grep Rpmversion
 
+# redhat subscription
+https://www.reddit.com/r/sysadmin/comments/5136ty/anyone_has_access_to_redhats_knowledgebase/
+LifeProTip: go to http://developers.redhat.com/downloads/ and start downloading RedHat Enterprise Linux. It will ask you to Register for a free RedHat Developers Account.
+It's totally free and as a side effect gives you access to the RedHat support forums. You don't even have to finish the download.
+
 # ssh
 ## ssh tunnel
 windows:
@@ -215,6 +220,9 @@ aaa quiet bbb quiet
 aaa
 quiet \naaa
 
+# wget
+wget -r -np -R "index.html*"  https://concord.suse.cloud/cases/00203912/
+
 # Weechat
 /server add suse-de irc.suse.de/6697 -ssl
 /set irc.server.suse-de.ssl_verify off
@@ -256,3 +264,9 @@ https://help.github.com/en/articles/setting-up-an-apex-domain
 ## HTTPS
 https://help.github.com/en/articles/securing-your-github-pages-site-with-https
 
+
+# zypper
+zypper install --download-only sssd=1.16.1-7.5.1
+rpm -qp --changelog /var/cache/zypp/packages/SUSE_Linux_Enterprise_Server_12_SP5_x86_64:SLES12-SP5-Updates/x86_64/sssd-1.16.1-7.5.1.x86_64.rpm|grep -B3 1072728
+zypper install --type=srcpackage --download-only sssd=1.16.1-7.5.1
+rpm -qlp /var/cache/zypp/packages/SUSE_Linux_Enterprise_Server_12_SP5_x86_64:SLES12-SP5-Updates/src/sssd-1.16.1-7.5.1.src.rpm|grep speci

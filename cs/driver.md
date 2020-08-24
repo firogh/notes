@@ -5,6 +5,12 @@ date: 2015-02-27T15:46:12+08:00
 category: cs
 ---
 
+# Modversions
+https://lwn.net/Articles/21393/
+https://lwn.net/Articles/707520/
+## KABI 
+Ludicrously Technical – Kernel ABI Tracking: http://www.jonmasters.org/blog/2007/06/16/ludicrously-technical-kernel-abi-tracking/
+
 # Kernel module programming
 sudo depmod -n -a -F /boot/System.map-4.3.5-300.fc23.x86_64  4.3.5-300.fc23.x86_64 > /tmp/m.log
 CFLAGS_jc.o := -O2 

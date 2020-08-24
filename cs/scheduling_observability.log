@@ -67,7 +67,8 @@ CPU time =user+system+nice+idle+iowait+irq+softirq+Stl
                (unsigned)( (100*dstl                    + divo2) / Div )
 
 
-### CPU time STEAL 
+### CPU steal time
+[KVM-HV: KVM Steal time implementation](https://lore.kernel.org/patchwork/patch/257342/)
 [iostat - What does the 'steal' field mean?](https://unix.stackexchange.com/questions/264958/iostat-what-does-the-steal-field-mean)
 Author:     Martin Schwidefsky <schwidefsky@de.ibm.com>
 AuthorDate: Tue Jan 11 01:40:38 2005 -0800
