@@ -1,13 +1,11 @@
 ---
 date: 2015-04-25
-title: 使用mutt收发邮件
+title: Walk with Mutt
 category: howto
 ---
 
-[Mutt中文手册](https://handsomecheung.github.io/mutt-manual-cn/mutt-manual-1.5.19-cn.html)
-[sane Gmail filters for high-volume mailing lists](http://deferred.io/2011/09/23/sane-gmail-filters-for-high-volume-mailing-lists.html)
-
 ![Trigun](http://upload.wikimedia.org/wikipedia/en/5/5f/Trigun_manga.jpg)
+http://kroah.com/log/blog/2019/08/14/patch-workflow-with-mutt-2019/
 
 # Sidebar message stats
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=850604
@@ -58,6 +56,12 @@ vim/emacs用来编辑邮件.
 * 靠gmail 存了两份发送邮件, 把这句注释掉, gmail自己本身会缓存的:
 	`set record = "+[Gmail]/Sent Mail"`
 
+# Html
+dnf in links
+https://debian-administration.org/article/75/Reading_HTML_email_with_Mutt
+
+# switch mailbox or folder
+https://neomutt.org/feature/sidebar-intro
 
 # FAQ
 Error sending message, child exited 78 ().

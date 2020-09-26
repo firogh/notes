@@ -1,4 +1,5 @@
 
+
 # History
 tglx: commit d0415686774477153ca911a612f74c2d2bb11be6
 Author: Linus Torvalds <torvalds@athlon.transmeta.com>
@@ -7,9 +8,14 @@ Date:   Mon Feb 4 23:59:34 2002 -0800
 + * Access another process' address space.
 + * Source/target buffer must be kernel space, 
 + * Do not walk the page table directly, use get_user_pages
-+int get_user_pages(
++int get_user_pages()
 
+get_user_pages_fast: https://lwn.net/Articles/275808/ Toward better direct I/O scalability
+
+try_grab_page doesn't use get_page_unless_zero?
 # Reference
+Documentation/core-api/pin_user_pages.rst
+https://www.youtube.com/watch?v=97mmajwTjpY&t=5290
 [The trouble with get_user_pages()](https://lwn.net/Articles/753027/)
 [DMA and get_user_pages()](https://lwn.net/Articles/774411/) [Slides and Jan Kara's problem](https://linuxplumbersconf.org/event/2/contributions/126/attachments/136/168/LPC_2018_gup_dma.pdf)
 

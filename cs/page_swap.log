@@ -23,6 +23,35 @@ Check page_swapcount and __add_to_swap_cache -> set_page_private
 _refcount
 flags: PG_swapcache
 
+# swap address space
+swapper_spaces[]
+
+# ->private: PG_swapcache vs ->mapping:index
+tglx: commit 4875a6018bcc53201ddbf745bff35ed723b468eb
+Author:     Andrew Morton <akpm@osdl.org>
+AuthorDate: Mon Apr 12 00:54:03 2004 -0700
+    [PATCH] rmap 2 anon and swapcache
+    From: Hugh Dickins <hugh@veritas.com>
+    Tracking anonymous pages by anon_vma,pgoff or mm,address needs a
+    pointer,offset pair in struct page: mapping,index the natural choice.  But
+    swapcache uses those for &swapper_space,swp_entry_t.
+    It's trivial to separate swapcache from pagecache with radix tree; most of
+    swapper_space is actually unused, just a fiction to pretend swap like file;
+    and page->private is a good place to keep swp_entry_t, now that swap never
+    uses bufferheads
+[...]
++ * On an anonymous page mapped into a user virtual memory area,
++ * page->mapping points to its anon_vma, not to a struct address_space.
++ *
++ * Please note that, confusingly, "page_mapping" refers to the inode
++ * address_space which maps the page from disk; whereas "page_mapped"
++ * refers to user virtual address space into which the page is mapped.
++ */
++static inline struct address_space *page_mapping(struct page *page)
++{
++       return PageAnon(page)? NULL: page->mapping;
+
+
 # Enable Swap
 systemd->swapon->sys_swapon
 &def_blk_fops
@@ -37,7 +66,7 @@ swap_readpage
 swap_page_sector
 
 # Swapbacked pages
-Private file maps & write page fault 
+Private file maps & write page fault
 
 # Swapping out pages
 lru -> swap cache -> updating pte with try to unmap -> write page into swap area -> delete_from_swap_cache()

@@ -9,23 +9,6 @@ category: cs
 [The practice of programming](http://www.cs.princeton.edu/~bwk/tpop.webpage/), [How to design programs](http://www.ccs.neu.edu/home/matthias/HtDP2e/), [SICP](http://sarabander.github.io/sicp/), and Elements of programming.
 Reentrancy
 
-# Concurrent programming
-[Firo: must thinking summary: EW Dijkstra: Cooperating sequential processes](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html)
-CSAPP3e: Chapter 12 concurrent programming
-Parallel and Concurrent Programming in Haskell
-The origin of concurrent programming: from semaphores to remote procedure calls - Per Brinch Hansen
-[Introduction on history of concurrency: Shared-Memory Concurrency](https://www.dcl.hpi.uni-potsdam.de/teaching/pvprog/Slides/C1_concurrency.pdf)
-[Turing lecture: The computer science of concurrency: the early years](https://dl.acm.org/citation.cfm?id=2771951)
-[Firo: example: Concurrency-managed workqueues](https://lwn.net/Articles/355700/)
-[Rob Pike: Concurrency is the composition of independently executing computations.](https://talks.golang.org/2012/concurrency.slide#6)
-## [Asynchrony (computer programming)](https://en.wikipedia.org/wiki/Asynchrony_(computer_programming))
-
-## process vs event
-[thread vs event](http://courses.cs.vt.edu/cs5204/fall09-kafura/Presentations/Threads-VS-Events.pdf)
-
-# Lock-free programming
-ring buffer, rcu
-
 # Functional programming
 [CPS in C](https://spin.atomicobject.com/2012/11/01/hey-c-is-a-functional-language-too/)
 [Continuation-passing style](https://en.wikipedia.org/wiki/Direct_style)

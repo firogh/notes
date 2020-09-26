@@ -14,6 +14,9 @@ Workload
 Optimization
 Observability
 Translation
+# Programmer
+什么才算是真正的编程能力？ - h8liu的回答 - 知乎
+https://www.zhihu.com/question/31034164/answer/50423838
 
 # Resources
 Allocation: compressible

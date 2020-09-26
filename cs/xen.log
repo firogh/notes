@@ -12,7 +12,33 @@ https://wiki.xenproject.org/wiki/XenParavirtOps
 KEXEC_CMD_kexec_load in xen repo
 
 # kdump Xen 
+## Configure kdump for dom-0
+reserve memory for PV(include dom-0)
+http://xenbits.xenproject.org/docs/4.2-testing/misc/kexec_and_kdump.txt
+Also see here https://www.suse.com/support/kb/doc/?id=000016171: Note 4: For Xen installations, this parameter needs to be passed to the GRUB line for the Xen hypervisor, not the module line for the Dom0 kernel.
+/*
+ * Return 1 if its a PV guest.
+ * This includes dom0, which is the only PV guest where kexec/kdump works.
+ * HVM guests have to be handled as native hardware.
+ */
+int xen_present(void)
+{
+        if (!is_dom0) {
+                if (access("/proc/xen", F_OK) == 0)
+                        is_dom0 = xen_detect_pv_guest();
+                else
+                        is_dom0 = -1; 
+        }
+        return is_dom0 > 0;
+}
+
 ## PV domains
+[    0.000000] Hypervisor detected: Xen PV
+[    7.943267] Ignoring crashkernel for a Xen PV domain
+How do I tell if I'm running in a dom0 or a domU?
+Domain 0 will have a pseudo-file called /proc/xen/capabilities which will contain the string control_d. Some domUs will have the file and some will not; so a reliable shell test for running in Domain 0 would be:
+   -e /proc/xen/capabilities && grep -q control_d /proc/xen/capabilities
+
 According to [Kexec and Kdump for Xen](http://xenbits.xenproject.org/docs/4.3-testing/misc/kexec_and_kdump.txt), kdump only works on hypervisor and dom0 kernel. So there is nothig realtead to PV domU. But I
 find a [kdump support for PV domU kexec/kdump implementation for Xen PV domU](https://lkml.org/lkml/2013/7/29/469); it seems not merged to upstream(FIXME). The commit from Petr Tesarik also states that PV domains didn't works with kdump since reserving a crashkernel memory region is not possible due to this commit.
 commit 3db3eb285259ac129f7aec6b814b3e9f6c1b372b
@@ -69,6 +95,8 @@ crash xen-syms-4.7.6_05-43.42.1.16518.2.PTF vmcore
 In crash, xen_domain_type == XEN_PV_DOMAIN, xen_start_info && xen_start_info->flags & SIF_INITDOMAIN
 [Is OS running in XEN xen_sysfs_uuid_init](https://stackoverflow.com/questions/3490995/is-there-an-os-command-i-can-run-to-determine-if-running-inside-a-xen-based-virt)
 ## Guest vs Host by cpuid
+hypervisors
+pv_mmu_ops
 setup_arch->init_hypervisor_platform->detect_hypervisor_vendor->h->detect->xen_platform->
 static inline uint32_t xen_cpuid_base(void)
 {
@@ -79,6 +107,14 @@ kvm_detect -> __kvm_cpuid_base
 hypervisor_cpuid_base("KVMKVMKVM\0\0\0", 0);
 ## Is Dom0 HVM?
 [Is Dom0 HVM? Firo: No, Dom0 is PV](https://stackoverflow.com/questions/19147398/is-xen-dom0-a-guest-or-a-host)
+## Is Dom0 Guest?
+Is xen dom0 a guest or a host?: https://stackoverflow.com/questions/19147398/is-xen-dom0-a-guest-or-a-host/19159728#19159728
+/*
+ * Return 1 if its a PV guest.
+ * This includes dom0, which is the only PV guest where kexec/kdump works.
+ * HVM guests have to be handled as native hardware.
+ */
+int xen_present(void) from kexec-tools
 # Terminology
 https://wiki.xenproject.org/wiki/XenTerminology
 [Use bfn (Bus Frame Number) rather than dfn to match the](https://lists.xen.org/archives/html/xen-devel/2015-08/msg00270.html)

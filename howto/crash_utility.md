@@ -21,6 +21,9 @@ rpm -ql kernel-debuginfo | grep vmlinux
 # Start to use crash 
 sudo crash /usr/lib/debug/lib/modules/4.18.9-200.fc28.x86_64/vmlinux
 
+# p
+p *(void**)0xffff887f7ee24bb0@2
+
 ## help
 crash help list
 
