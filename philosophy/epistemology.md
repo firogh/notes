@@ -86,6 +86,7 @@ meaning vs name of something, symbols
 vs foreign to the drift and temper
 纸上得来终觉浅 vs observation limited by symbols, named only.
 Focus energy on goals. vs the wanderer, unlimited scope vague goals
+### 思维的材料
 ### 补完计划
 No pondering no gain.(Think for yourself). What you think what you get.
 ### [Think for yourself](https://en.m.wikisource.org/wiki/On_Thinking_for_Oneself)
