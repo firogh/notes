@@ -74,8 +74,15 @@ It led them to three inventions.
 * page-fault exceptions error code
 v3a: 4.7 - Figure 4-12. Page-Fault Error Code
 P, W/R, U/S, I/D, RSVD
+commit 891cffbd6bcba26409869c19c07ecd4bfc0c2460
+Author: Linus Torvalds <torvalds@linux-foundation.org>
+Date:   Sun Oct 12 13:16:12 2008 -0700
+    x86/mm: do not trigger a kernel warning if user-space disables interrupts and generates a page fault
 ## kernel address space
 vmalloc,spurious_fault, kprobes_fault
 [fixup_exception](https://www.kernel.org/doc/Documentation/x86/exception-tables.txt)
 [Kernel-Level Exception Handling](https://www.linuxjournal.com/article/2135)
 SIGSEGV, kernel oops
+## faultaround
+[map_pages: mm: map few pages around fault address if they are in page cache](https://lwn.net/Articles/588802/)
+

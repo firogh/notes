@@ -97,7 +97,6 @@ Date:   Fri Nov 6 16:28:37 2015 -0800
 [Hot and cold pages](https://lwn.net/Articles/14768/)
 [mm, Remove cold parameter from free_hot_cold_page*](https://patchwork.kernel.org/patch/10013971/)
 
-
 # Do anonymous page, zero page
 tglx: commit 382a7dec462a90ad6ae01227f1e8758ae721f6ed
 Author: Christoph Lameter <clameter@sgi.com>

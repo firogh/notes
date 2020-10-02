@@ -1,9 +1,17 @@
+# Fragmentation
+[Memory fragmentation: the silent performance killer](https://savvinov.com/2019/10/14/memory-fragmentation-the-silent-performance-killer/)
+
+# Observability
+/proc/buddyinfo frag_show_print()
+
 # Memory compaction
+[Yet another approach to memory fragmentation](https://lwn.net/Articles/121618/)
+[The hard work behind large physical memory allocations in the kernel](https://www.youtube.com/watch?v=mzT4QnCpef8)
 [Memory compaction issues](https://lwn.net/Articles/591998/)
 [Memory compaction](https://lwn.net/Articles/368869/)
 https://kernelnewbies.org/Linux_2_6_35#Memory_compaction
-[The hard work behind large physical memory allocations in the kernel](https://linuxplumbersconf.org/event/2/contributions/65/attachments/15/171/slides-expanded.pdf)
 [Proactive compaction](https://lwn.net/Articles/717656/)
+sysctl -w vm.compact_memory=1
 
 ## Mobility
 PLKA - 3.5.2
@@ -11,6 +19,7 @@ PLKA - 3.5.2
 Split the free lists for movable and unmovable allocations - b2a0ac8875a0a3b9f0739b60526f8c5977d2200f
 
 Related code:
+gfpflags_to_migratetype
 set_pageblock_migratetype
 
 find_suitable_fallback
@@ -30,3 +39,12 @@ CommitDate: Tue Oct 16 09:43:00 2007 -0700
 
 LQO:
 MIGRATE_HIGHATOMIC
+
+
+# Vmalloc
+map_vm_area 页表映射
+## Vmalloc coherence with vfree() after vmalloc_sync_one
+在进程的内核页目录中补上的是只是页目录项，而页表对所有进程来说是共用的，不管vfree()多大的内存块，在vmalloc()时新分配的页表不会被释放，
+当重新vmalloc()时，仍旧使用原来的页表。  
+page_fault使得进程的内核页目录项与swapper_pg_dir保持同步，swapper_pg_dir的内核页目录项一旦建立就不再被改变，需要改变的只是共享的页表而已。
+deatils in vmalloc_sync_one() and vunmap_pte_range()

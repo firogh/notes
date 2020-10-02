@@ -42,8 +42,8 @@ AuthorDate: Fri Sep 8 16:10:49 2017 -0700
 Commit:     Linus Torvalds <torvalds@linux-foundation.org>
 CommitDate: Fri Sep 8 18:26:45 2017 -0700
     mm: thp: introduce separate TTU flag for thp freezing
-    TTU_MIGRATION is used to convert pte into migration entry until thp			# Firo: "convert pte into migration entry" means that 
-    split completes.  This behavior conflicts with thp migration added later		# any access to that thp memory will wait in do_swap_page().
+    TTU_MIGRATION is used to convert pte into migration entry until thp		# Firo: "convert pte into migration entry" means that 
+    split completes.  This behavior conflicts with thp migration added later	# any access to that thp memory will wait in do_swap_page().
     patches, so let's introduce a new TTU flag specifically for freezing.
     try_to_unmap() is used both for thp split (via freeze_page()) and page
     migration (via __unmap_and_move()).  

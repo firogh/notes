@@ -1,8 +1,0 @@
-
-
-
-# Release memory resources
-exit_mm exit_mmap
-
-
-rmap: unlink_file_vma

@@ -78,24 +78,22 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 # Memory allocation
 [Dynamic Storage Allocation: A Survey and Critical Review](https://compas.cs.stonybrook.edu/~nhonarmand/courses/sp17/cse506/papers/dsa.pdf)
 Page allocator.
-
 ## Memory allocation overcommit
 https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
 [理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
 [Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)
 
-## Garbage collection
+# Garbage collection
 [Linus Torvalds on Garbage Collection (2002)](https://news.ycombinator.com/item?id=2473932)
 [Linus on refrence counting](https://yarchive.net/comp/linux/reference_counting.html)
 [Paul E. McKenney: Overview of Linux-Kernel Reference Counting](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.145.3800&rep=rep1&type=pdf)
 Book: The Garbage Collection Handbook
 Book: Japanese GC book.
 https://www.linuxidc.com/Linux/2015-01/111565.htm
-### Reference counting
+## Reference counting
 [Introducing lockrefs](https://lwn.net/Articles/565734/)
 
 # Fragmentations
 buddy system, memory compaction
-
 ## Anti fragmentation
 [The What, The Why and the Where To of Anti-Fragmentation](https://www.kernel.org/doc/ols/2006/ols2006v1-pages-369-384.pdf)

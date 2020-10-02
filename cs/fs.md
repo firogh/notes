@@ -11,6 +11,10 @@ category: cs
 [Linux Filesystems API summary](https://www.kernel.org/doc/html/latest/filesystems/api-summary.html)
 [Linux File Systems in 21 days 45 minutes](https://download.samba.org/pub/samba/cifs-cvs/ols2007-fs-tutorial-smf.pdf)
 
+# xfs
+https://xfs.wiki.kernel.org/
+https://xfs.org/docs/xfsdocs-xml-dev/XFS_User_Guide/tmp/en-US/html/index.html
+
 # Buffer cache
 getblk: ULK2 14.2.3 The getblk( ) Function
 

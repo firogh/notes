@@ -6,29 +6,11 @@ title:  Page frame reclaimation
 category: cs
 ---
 
-# mm hacking
-current->backing_dev_info: doest it really work as expected? block?
-PF_SWAPWRITE: meaning is unclear. swap is limited resource, so limit access from normal process?
-Seems only normal processes with PF_SWAPWRITE could write to swap area. migration and node reclaim and kswapd.
-No. In may_write_to_inode(), normal processes still get chances to do that.
-static int may_write_to_inode(struct inode *inode, struct scan_control *sc) 
-{
-        if (current->flags & PF_SWAPWRITE)
-                return 1;
-        if (!inode_write_congested(inode))
-                return 1;
-        if (inode_to_bdi(inode) == current->backing_dev_info)	# normal process? it's impossible. Dead code. Remove it. No, shmem pages.
-                return 1;
-        return 0;
-}
-
 # Memory testing tools
 commit e2be15f6c3eecedfbe1550cca8d72c5057abbbd2
 Refs: u3.10-3577-ge2be15f6c3ee
 Author:     Mel Gorman <mgorman@suse.de>
 AuthorDate: Wed Jul 3 15:01:57 2013 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Jul 3 16:07:28 2013 -0700
     mm: vmscan: stall page reclaim and writeback pages based on dirty/writepage pages encountered
 
 ## debugfs a convenient place for kernel hackers to play with VM variables.
@@ -69,6 +51,17 @@ Lokced userspace pages:
 
 # mlock
 [Deferred memory locking](https://lwn.net/Articles/650538/)
+
+# page replacement policy
+[... which does its best to evict pages which, with luck, will not be needed in the near future. --Linus](https://lwn.net/Articles/101230/)
+
+# Problems of PFRA
+## Infficient for high-order allocations
+When we are out of memory of a suitable size we enter reclaim.
+The current reclaim algorithm targets pages in LRU order, which
+is great for fairness but highly unsuitable if you desire pages at
+higher orders.  To get pages of higher order we must shoot down a
+very high proportion of memory; >95% in a lot of cases. -- [Lumpy Reclaim V3](https://lwn.net/Articles/211199/)
 
 # LRU-2Q
 page.lru and struct lruvec 
@@ -151,7 +144,6 @@ page from tail page_check_references
         } else
                 PAGEREF_RECLAIM
 }
-
  
 # workingset
 Memory pressure is high wich is the reason that the refaulted page was evicted before.
@@ -169,8 +161,6 @@ commit a528910e12ec7ee203095eb1711468a66b9b60b0
 Refs: v3.14-7406-ga528910e12ec
 Author:     Johannes Weiner <hannes@cmpxchg.org>
 AuthorDate: Thu Apr 3 14:47:51 2014 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Thu Apr 3 16:21:01 2014 -0700
     mm: thrash detection-based file cache sizing
 
 # Page flags
@@ -234,8 +224,6 @@ commit 63eb6b93ce725e4c5f38fc85dd703d49465b03cb
 Refs: v2.6.28-rc5-142-g63eb6b93ce72
 Author:     Hugh Dickins <hugh@veritas.com>
 AuthorDate: Wed Nov 19 15:36:37 2008 -0800
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Nov 19 18:49:59 2008 -0800
     vmscan: let GFP_NOFS go to swap again
     In the past, GFP_NOFS (but of course not GFP_NOIO) was allowed to reclaim
     by writing to swap.  That got partially broken in 2.6.23, when may_enter_fs
@@ -256,8 +244,6 @@ commit 63eb6b93ce725e4c5f38fc85dd703d49465b03cb
 Refs: v2.6.28-rc5-142-g63eb6b93ce72
 Author:     Hugh Dickins <hugh@veritas.com>
 AuthorDate: Wed Nov 19 15:36:37 2008 -0800
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Nov 19 18:49:59 2008 -0800
     vmscan: let GFP_NOFS go to swap again
     In the past, GFP_NOFS (but of course not GFP_NOIO) was allowed to reclaim
     by writing to swap.  That got partially broken in 2.6.23, when may_enter_fs
@@ -275,8 +261,6 @@ commit ecf5fc6e9654cd7a268c782a523f072b2f1959f9
 Refs: v4.2-rc5-34-gecf5fc6e9654
 Author:     Michal Hocko <mhocko@suse.cz>
 AuthorDate: Tue Aug 4 14:36:58 2015 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Aug 5 10:49:38 2015 +0200
     mm, vmscan: Do not wait for page writeback for GFP_NOFS allocations
     Nikolay has reported a hang when a memcg reclaim got stuck with the
     following backtrace:
@@ -317,8 +301,6 @@ commit ee72886d8ed5d9de3fa0ed3b99a7ca7702576a96
 Refs: u3.1-7237-gee72886d8ed5
 Author:     Mel Gorman <mel@csn.ul.ie>
 AuthorDate: Mon Oct 31 17:07:38 2011 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Mon Oct 31 17:30:46 2011 -0700
     mm: vmscan: do not writeback filesystem pages in direct reclaim
 [...]
 +                       /*
@@ -333,10 +315,7 @@ commit f84f6e2b0868f198f97a32ba503d6f9f319a249a
 Refs: u3.1-7241-gf84f6e2b0868
 Author:     Mel Gorman <mgorman@suse.de>
 AuthorDate: Mon Oct 31 17:07:51 2011 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Mon Oct 31 17:30:46 2011 -0700
     mm: vmscan: do not writeback filesystem pages in kswapd except in high priority
-
     It is preferable that no dirty pages are dispatched for cleaning from the
     page reclaim path.  At normal priorities, this patch prevents kswapd			# Firo: Normal prioties means DEF_PRIORITY
     writing pages.
@@ -362,11 +341,7 @@ commit d43006d503ac921c7df4f94d13c17db6f13c9d26
 Refs: u3.10-3573-gd43006d503ac
 Author:     Mel Gorman <mgorman@suse.de>
 AuthorDate: Wed Jul 3 15:01:50 2013 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Jul 3 16:07:28 2013 -0700
-
     mm: vmscan: have kswapd writeback pages based on dirty pages encountered, not priority
-
     Currently kswapd queues dirty pages for writeback if scanning at an
     elevated priority but the priority kswapd scans at is not related to the
     number of unqueued dirty encountered.  Since commit "mm: vmscan: Flatten
@@ -423,8 +398,6 @@ commit 49ea7eb65e7c5060807fb9312b1ad4c3eab82e2c
 Refs: u3.1-7243-g49ea7eb65e7c
 Author:     Mel Gorman <mgorman@suse.de>
 AuthorDate: Mon Oct 31 17:07:59 2011 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Mon Oct 31 17:30:47 2011 -0700
     mm: vmscan: immediately reclaim end-of-LRU dirty pages when writeback completes
     When direct reclaim encounters a dirty page, it gets recycled around the
     LRU for another cycle.  This patch marks the page PageReclaim similar to
@@ -449,8 +422,6 @@ commit 4eda48235011d6965f5229f8955ddcd355311570
 Refs: v4.10-9595-g4eda48235011
 Author:     Johannes Weiner <hannes@cmpxchg.org>
 AuthorDate: Fri Feb 24 14:56:20 2017 -0800
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Fri Feb 24 17:46:54 2017 -0800
     mm: vmscan: only write dirty pages that the scanner has seen twice
 
     Dirty pages can easily reach the end of the LRU while there are still
@@ -524,8 +495,6 @@ Firo: page->mapping set to NULL, but left on the LRU list due to page->_count > 
 commit 3aa1dc772547672e6ff453117d169c47a5a7cbc5
 Author:     Andrew Morton <akpm@zip.com.au>
 AuthorDate: Wed Aug 14 21:20:48 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Wed Aug 14 21:20:48 2002 -0700
     [PATCH] multithread page reclaim
 [...]
 +                * Rarely, pages can have buffers and no ->mapping.  These are
@@ -539,8 +508,6 @@ commit 28e4d965e6131ace1e813e93aebca89ac6b82dc1
 Refs: v2.6.18-1583-g28e4d965e613
 Author:     Nick Piggin <npiggin@suse.de>
 AuthorDate: Mon Sep 25 23:31:23 2006 -0700
-Commit:     Linus Torvalds <torvalds@g5.osdl.org>
-CommitDate: Tue Sep 26 08:48:48 2006 -0700
     [PATCH] mm: remove_mapping() safeness
     Some users of remove_mapping had been unsafe.
     Modify the remove_mapping precondition to ensure the caller has locked the
@@ -551,8 +518,6 @@ commit 49d2e9cc4544369635cd6f4ef6d5bb0f757079a7
 Refs: v2.6.15-1461-g49d2e9cc4544
 Author:     Christoph Lameter <clameter@sgi.com>
 AuthorDate: Sun Jan 8 01:00:48 2006 -0800
-Commit:     Linus Torvalds <torvalds@g5.osdl.org>
-CommitDate: Sun Jan 8 20:12:41 2006 -0800
     [PATCH] Swap Migration V5: migrate_pages() function
 
 # Lumpy reclaim (Obsoleted)
@@ -569,8 +534,6 @@ why put_page uncoditionally? No user acutally, sodecrement 1 which set by alloc.
 tglx: commit 3aa1dc772547672e6ff453117d169c47a5a7cbc5
 Author:     Andrew Morton <akpm@zip.com.au>
 AuthorDate: Wed Aug 14 21:20:48 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Wed Aug 14 21:20:48 2002 -0700
     [PATCH] multithread page reclaim
 
 +                * The non-racy check for busy page.  It is critical to check
@@ -601,8 +564,6 @@ commit 283aba9f9e0e4882bf09bd37a2983379a6fae805
 Refs: u3.10-3574-g283aba9f9e0e
 Author:     Mel Gorman <mgorman@suse.de>
 AuthorDate: Wed Jul 3 15:01:51 2013 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Wed Jul 3 16:07:28 2013 -0700
     mm: vmscan: block kswapd if it is encountering pages under writeback
     Historically, kswapd used to congestion_wait() at higher priorities if
     it was not making forward progress.  This made no sense as the failure
@@ -620,8 +581,6 @@ commit e62e384e9da8d9a0c599795464a7e76fd490931c
 Refs: u3.5-8304-ge62e384e9da8
 Author:     Michal Hocko <mhocko@suse.cz>
 AuthorDate: Tue Jul 31 16:45:55 2012 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Tue Jul 31 18:42:49 2012 -0700
     memcg: prevent OOM with too many dirty pages
     The current implementation of dirty pages throttling is not memcg aware
     which makes it easy to have memcg LRUs full of dirty pages.  Without
@@ -666,8 +625,6 @@ commit c3b94f44fcb0725471ecebb701c077a0ed67bd07
 Refs: u3.5-8305-gc3b94f44fcb0
 Author:     Hugh Dickins <hughd@google.com>
 AuthorDate: Tue Jul 31 16:45:59 2012 -0700
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Tue Jul 31 18:42:49 2012 -0700
     memcg: further prevent OOM with too many dirty pages
 [...]
     This residual problem comes from an accumulation of pages under ordinary
@@ -693,16 +650,12 @@ commit 97c9341f727105c29478da19f1687b0e0a917256
 Refs: v4.1-rc2-104-g97c9341f7271
 Author:     Tejun Heo <tj@kernel.org>
 AuthorDate: Fri May 22 18:23:36 2015 -0400
-Commit:     Jens Axboe <axboe@fb.com>
-CommitDate: Tue Jun 2 08:38:13 2015 -0600
     mm: vmscan: disable memcg direct reclaim stalling if cgroup writeback support is in use
 
 # may_write_to_inode or _queue
 tglx: commit e386771cbbc2a90b46df2ace02214f94cc23cb50
 Author:     Andrew Morton <akpm@digeo.com>
 AuthorDate: Sat Dec 21 01:07:33 2002 -0800
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Sat Dec 21 01:07:33 2002 -0800
     [PATCH] Give kswapd writeback higher priority than pdflush	# Firo: pdflush and normal process
 +static int may_write_to_queue(struct backing_dev_info *bdi)
 +{
@@ -729,8 +682,6 @@ CommitDate: Sat Dec 21 01:07:33 2002 -0800
 tglx: commit 407ee6c87e477434e3cb8be96885ed27b5539b6f
 Author:     Andrew Morton <akpm@digeo.com>
 AuthorDate: Sun Sep 22 08:17:02 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Sun Sep 22 08:17:02 2002 -0700
     [PATCH] low-latency page reclaim
     Convert the VM to not wait on other people's dirty data.
      - If we find a dirty page and its queue is not congested, do some writeback.
@@ -746,7 +697,6 @@ CommitDate: Sun Sep 22 08:17:02 2002 -0700
 +                * If this process is currently in generic_file_write() against
 +                * this page's queue, we can perform writeback even if that
 +                * will block.
-[...]
 
 
 # pagevec and rotate
@@ -754,8 +704,6 @@ commit 902aaed0d983dfd459fcb2b678608d4584782200
 Refs: v2.6.23-4285-g902aaed0d983
 Author:     Hisashi Hifumi <hifumi.hisashi@oss.ntt.co.jp>
 AuthorDate: Tue Oct 16 01:24:52 2007 -0700
-Commit:     Linus Torvalds <torvalds@woody.linux-foundation.org>
-CommitDate: Tue Oct 16 09:42:54 2007 -0700
     mm: use pagevec to rotate reclaimable page
 See lru_rotate_pvecs; Firo: seems all pages on lru_rotate_pvecs are get_page(). 
 Also see rotate_reclaimable_page().

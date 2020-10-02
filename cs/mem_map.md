@@ -26,9 +26,19 @@ Firo:  mmap, page fault, PFRA.
 
 # Lock
 arg_lock, mmap_sem: [mm: get_cmdline use arg_lock instead of mmap_sem](https://lore.kernel.org/lkml/20190417120347.15397-1-mkoutny@suse.com/)
+## down_read(&mm->mmap_sem)?
+linux-tglx
+commit b50661029222940e24d2fba7c982ac0774a38c78
+Author: Andi Kleen <ak@muc.de>
+Date:   Thu Sep 16 22:00:12 2004 -0700
+    [PATCH] x86-64: avoid deadlock in page fault handler
+    Avoid deadlock when kernel fault happens inside mmap sem.
+Check ULKv3 Page 380.
+https://lkml.org/lkml/2004/5/19/108
+https://lkml.org/lkml/2013/5/13/418
 
 # VMA
-vma's unit is PAGE_SIZE; (vm_end - vm_start) % 0x1000 == 0 is True.
+vma's unit is PAGE_SIZE;
 ## split_vma
 new_below
 commit 5846fc6c31162234e88bdfd91548b1cf0d2cebbd
@@ -38,33 +48,8 @@ Date:   Tue Sep 17 06:35:47 2002 -0700
 new_below means the place where the old vma go to! Bad naming!
 0 means the old will save the head part. 1 means tail part.
 
-## File
-### PAS
-Protection, Shared, Private.
-vm_page_prot, vm_flags
-remove_mapping
-
-### Backing dev
-vm_file, vm_pgoff
-
-## Private anonymouse mappings
-Heap - malloc mmap
-Anonymous Memory Mappings, LSP chapter 9
-
-## File private mappings
-Program: execve text,data,bss
-Libraries
-openat(AT_FDCWD, "/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3 
-mmap(NULL, 1857568, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f27cbb02000
-* onset - mmap
-do_mmap -> mmap_region 
-ext2: generic_file_mmap -> vma->vm_ops = generic_file_vm_ops
-ext4: ext4_file_mmap -> vma->vm_ops = ext4_file_vm_ops
-both: filemap_fault
-* nuclus 
-Write - do_cow_page
-Read - do_read_page
-Read & write - do_wp_page
+# Release memory resources
+exit_mm exit_mmap
 
 # Shared memory mapping
 [Chapter 12  Shared Memory Virtual Filesystem:](https://www.kernel.org/doc/gorman/html/understand/understand015.html)
@@ -85,7 +70,6 @@ Read: do_read_fault
 Write: do_shared_fault -> shmem_getpage_gfp shmem_add_to_page_cache
 WP: do_wp_page -> wp_page_shared or wp_page_reuse
 b)IPC using a shared file mapping
-## File shared mappings - a) Memory-mapped I/O
 ## History
 late 70s - IPC: see TLPI: Chapter 45 INTRODUCTION TO SYSTEM V IPC 
 they first appear together in Columbus UNIX, a Bell UNIX for database and efficient transaction processing
@@ -101,7 +85,7 @@ N.B. This call is not completely implemented In 4.2(BSD).
 More sunos docs: http://bitsavers.trailing-edge.com/pdf/sun/sunos/
 
 1988
-[SunOS 4[4] introduced Unix's mmap, which permitted programs "to map files into memory."](https://en.wikipedia.org/wiki/Memory-mapped_file#History)
+[SunOS 4 introduced Unix's mmap, which permitted programs "to map files into memory."](https://en.wikipedia.org/wiki/Memory-mapped_file#History)
 1989
 One paper found in OSTEP: [Memory Coherence in Shared Virtual Memory Systems](https://courses.cs.washington.edu/courses/cse551/09sp/papers/memory_coherence.pdf)
 
@@ -111,8 +95,6 @@ history: commit 9cb9f18b5d26bf176e13edbc0c248d121217c6b3
 Refs: <0.99.10>
 Author:     Linus Torvalds <torvalds@linuxfoundation.org>
 AuthorDate: Fri Nov 23 15:09:11 2007 -0500
-Commit:     Linus Torvalds <torvalds@linuxfoundation.org>
-CommitDate: Fri Nov 23 15:09:11 2007 -0500
     [PATCH] Linux-0.99.10 (June 7, 1993)
 Firo: search 'shm_swap'
 
@@ -121,8 +103,6 @@ history: commit 4d372877c63baaaf4c1c3325cae43f6b9782e59e
 Refs: <2.4.0-test13pre3>
 Author:     Linus Torvalds <torvalds@linuxfoundation.org>
 AuthorDate: Fri Nov 23 15:40:55 2007 -0500
-Commit:     Linus Torvalds <torvalds@linuxfoundation.org>
-CommitDate: Fri Nov 23 15:40:55 2007 -0500
 [...]
     The shmfs cleanup should be unnoticeable except to users who use SAP with
     huge shared memory segments, where Christoph Rohlands work not only

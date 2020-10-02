@@ -97,7 +97,6 @@ CommitDate: Fri Sep 8 18:26:46 2017 -0700
 +                       mpfn = migrate_pfn(pfn) | MIGRATE_PFN_MIGRATE;
 +                       mpfn |= pte_write(pte) ? MIGRATE_PFN_WRITE : 0;
 +               }
-[...]
 ## migration - do_swap_page
 Migrate page by DMA.
 commit 5042db43cc26f51eed51c56192e2c2317e44315f
@@ -108,5 +107,3 @@ Commit:     Linus Torvalds <torvalds@linux-foundation.org>
 CommitDate: Fri Sep 8 18:26:46 2017 -0700
     mm/ZONE_DEVICE: new type of ZONE_DEVICE for unaddressable memory
 Search do_swap_page.
-
-
