@@ -7,6 +7,7 @@ category: cs
 ---
 
 # Reference
+[Kernel Recipes 2017 - 20 years of Linux virtual memory - Andrea Arcangeli](https://www.youtube.com/watch?v=pZghXbeCH5s)
 Dragon book 9th chapter 8 main memory
 [A must-read: memory FAQ by Landley](https://landley.net/writing/memory-faq.txt)
 [An Evolutionary Study of Linux Memory Management for Fun and Profit](https://www.usenix.org/system/files/conference/atc16/atc16_paper-huang.pdf)

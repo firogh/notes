@@ -1,5 +1,11 @@
 
-# Pinned vs locked
+# Page table lock
+
+# Pin(get_page, refcount) vs mlock
+[论Linux的页迁移（Page Migration）完整版](https://www.ershicimi.com/p/484172f9441c686def73d485f5c005ce)
+migrate_page_move_mapping
+
+# Page - Pinned vs locked
 [Re: Filesystem crashes due to pages without buffers](https://lore.kernel.org/linux-fsdevel/20180104085244.GA29010@quack2.suse.cz/)
 > My first question is why is kswapd trying to reclaim a page with an
 > elevated active reference count? i.e. there are active references

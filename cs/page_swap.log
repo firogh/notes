@@ -60,6 +60,24 @@ swap_page_sector
 # Swapbacked pages
 Private file maps & write page fault
 
+# Try to unmap a PageAnon(page)  - swap code path
+commit eb94a8784427b28479f871b5d4121c547808d0fc
+Refs: v4.11-4538-geb94a8784427
+Author:     Minchan Kim <minchan@kernel.org>
+AuthorDate: Wed May 3 14:52:36 2017 -0700
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Wed May 3 15:52:08 2017 -0700
+    mm: fix lazyfree BUG_ON check in try_to_unmap_one()
+    If a page is swapbacked, it means it should be in swapcache in      # Firo: this means this try_to_unmap comes from shrik_page_list()
+    try_to_unmap_one's path.
+    If a page is !swapbacked, it mean it shouldn't be in swapcache in   # This is MAD_FREE page.
+    try_to_unmap_one's path.
++                       if (unlikely(PageSwapBacked(page) != PageSwapCache(page))) {
++                               WARN_ON_ONCE(1);
++                               ret = SWAP_FAIL;
++                               page_vma_mapped_walk_done(&pvmw);
++                               break;
+
 # Swapping out pages
 lru -> swap cache -> updating pte with try to unmap -> write page into swap area -> delete_from_swap_cache()
 key commit:

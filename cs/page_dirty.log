@@ -144,8 +144,6 @@ Commit:     Linus Torvalds <torvalds@linux-foundation.org>
 CommitDate: Thu Feb 21 17:22:19 2013 -0800
     mm: only enforce stable page writes if the backing device requires it
 
-### what about Memory-mapped I/O?
-
 ## memory-cleaning writeback
 
 ## data-integrity

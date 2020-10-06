@@ -162,5 +162,3 @@ http://yuex.in/post/2017/08/red-black-tree-in-action.html
 ## History
 AVL tree, B-tree, symmetric binary B-tree or 2–3–4 tree, red–black tree
 [2-3-4 Trees and RedBlack Trees](https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap13b.pdf)
-
-

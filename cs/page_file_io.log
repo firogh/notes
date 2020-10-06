@@ -35,3 +35,13 @@ They can be set simultaneously - 'uptodate' means page has at least as new
 data as is on disk, 'dirty' means page has strictly newer data than on
 disk.  - Jan Kara
 https://www.spinics.net/lists/linux-ext4/msg54452.html
+
+# Hole
+[File holes, races, and mmap()](https://lwn.net/Articles/357767/)
+
+# DAX
+Search "DAX" in [THP-enabled tmpfs/shmem using compound pages](https://lore.kernel.org/linux-fsdevel/1465222029-45942-1-git-send-email-kirill.shutemov@linux.intel.com/)
+As with DAX, split_huge_pmd() is implemented by unmapping the PMD: we can 
+re-fault the page with PTEs later.
+[Direct Access for files](https://www.kernel.org/doc/Documentation/filesystems/dax.txt)
+[DAX, mmap(), and a "go faster" flag](https://lwn.net/Articles/684828/)

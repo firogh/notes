@@ -30,6 +30,7 @@ https://xfs.org/docs/xfsdocs-xml-dev/XFS_User_Guide/tmp/en-US/html/ch02s08.html
 
 # Buffer head and block
 Is BUFFER_FNS BUFFER_FUNCTIONS?
+## Buffer head usage
 commit 205f87f6b342444f722e4559d33318686f7df2ca
 Refs: v2.6.16-2980-g205f87f6b342
 Author:     Badari Pulavarty <pbadari@us.ibm.com>
@@ -55,7 +56,6 @@ AuthorDate: Sun Mar 26 01:38:00 2006 -0800
 	allocation and properly handle ENOSPC caused by mmaped writes.
 	Signed-off-by: Jan Kara <jack@suse.cz>
 
-
 ## Buffer new and mapped
 commit 697b710337c6f365b367c1cb6f3a9dd48724441e
 Refs: <2.3.9pre5>
@@ -65,18 +65,13 @@ AuthorDate: Fri Nov 23 15:25:50 2007 -0500
 BH_New means newly created block has no data on block, which is different to !BH_Uptodate.
 
 see tglx fs/buffer.c
-/*
  * NOTE! All mapped/uptodate combinations are valid:
- *
  *      Mapped  Uptodate        Meaning
- *
  *      No      No              "unknown" - must do get_block()
  *      No      Yes             "hole" - zero-filled
  *      Yes     No              "allocated" - allocated on disk, not read in
  *      Yes     Yes             "valid" - allocated and up-to-date in memory.
- *
  * "Dirty" is valid only with the last case (mapped+uptodate).
- */
 
 # Buffer head necessary?
 ext4_mpage_readpages
@@ -110,7 +105,6 @@ Date:   Mon Jun 14 14:42:49 2010 -0400
 	32GB-64GB using PAE-36) that today we'd probably just say, "use
 	x86_64, you moron".  It would probably matter if someone were to want
 	to upgrade a non-64-bit capable machine to a newer kernel.  
-
 	Dropping nobh from ext3 at this point might prevent some of these
 	older systems from upgrading, I'm not sure how much we would care; on
 	the one hand, these machines tended to be pretty expensive, so people

@@ -72,16 +72,3 @@ Date:   Fri Nov 23 15:30:52 2007 -0500
 +   * Tasklet is strictly serialized wrt itself, but not
 +     wrt another tasklets. If client needs some intertask synchronization,
 +     he makes it with spinlocks.
-
-# Timer
-## irqsafe timer
- __run_timers
-irqsafe = timer->flags & TIMER_IRQSAFE
-check del_timer_sync
-and definition of TIMER_IRQSAFE
-https://patchwork.kernel.org/patch/10811995/
-Is timer pending
-
-
-# LQO
-[Deal PF_MEMALLOC in softirq](http://thread.gmane.org/gmane.linux.kernel/1152658)

@@ -91,6 +91,7 @@ Focus energy on goals. vs the wanderer, unlimited scope vague goals
 No pondering no gain.(Think for yourself). What you think what you get.
 ### [Think for yourself](https://en.m.wikisource.org/wiki/On_Thinking_for_Oneself)
 Don't steal other's knowledge;不要思考结论，思考conditions。
+[学习的智慧](https://www.yinwang.org/blog-cn/2019/07/12/learning-philosophy)
 Return to myself vs made mute beneath the constant need to pay heed to other selves (which is what reading is!) -- Ecce Homo
 Schopenhauver: From all this it may be concluded that thoughts put down on paper are nothing more than footprints in the sand: one sees the road the man has taken, but in order to know what he saw on the way, one requires his eyes.
 Wang Yin: 观看阅读别人创造的现成的内容, 能让人短暂的知道哪些东西是怎么实现的, 却不能让你获得创造那样内容的能力. 即便是看似最简单基础的内容都无法理清.
@@ -106,7 +107,7 @@ John Dewey:[D is for John Dewey: His Approach To Education](https://www.theposit
 #### Constructivism, sense-making theory, learn by creating
 从结构主义走向建构主义的课程观及其启示.pdf 
 Firo: There are many levels of creation, e.g. a blank piece of paper.
-### 经历困难的问题人才能成长. 越困难的问题, 对人的历练越多.
+### Pioneer 艰苦卓绝, 苦行僧；经历困难的问题人才能成长. 越困难的问题, 对人的历练越多.
 不要轻看那些初看自己想出来的简单的问题。 那个就是你思考的基础。
 勇敢面多苦难，经历苦难吧。
 苦难对于天才是垫脚石,对于强者是一笔财富,对于弱者是万丈深渊 --巴尔扎克
@@ -155,19 +156,19 @@ symbols vs meanings
 time: Immediate
 outside reality connections
 attention: [Get your brain back](https://www.youtube.com/watch?v=OcdxW2XF0v8)
-
-## Create it.
+## Meaningful and reality
+crash check kernel running status; not codes.
+## Easy Raw 
+List, MECE
 ## Conditions
 不是不能理解某个问题， 而是前提条件(or 问题)不知道.
-Pioneer
-think from zero/basis or read git log/human writings. DO NOT do abductive reasoning.
 ## Plan, timeline(timebound)
 Goal, SMART, work backwards(what about skill-forward) and actionable steps, milestones, timeline
 [How to Create an Effective Action Plan: The less clear you are about what you want to do, the less effective your plan will be.](https://www.wikihow.com/Create-an-Effective-Action-Plan)
+Ahead of time
 ### Get up to speed with it.
 List related contents. Allocate time for them.
 Degree:final human ideas.
-## Raw and easy
 ## Model and modules and casulities chains
 Feynman meaning bird's name and Feynman technique: underlying logic, no symbols
 Model: Human ideas.
@@ -178,7 +179,6 @@ List possibilites.
 ### First principle, then minimum essential fundamentals.
 “I tend to approach things from a physics framework,” Musk said in an interview. “Physics teaches you to reason from first principles rather than by analogy. So I said, okay, let’s look at the first principles. What is a rocket made of? Aerospace-grade aluminum alloys, plus some titanium, copper, and carbon fiber. Then I asked, what is the value of those materials on the commodity market? It turned out that the materials cost of a rocket was around two percent of the typical price.” - Elon Musk
 ### Relative and revelant knowledge
-
 ## Divide to small problems gradually
 So I saw the less is more in action: the more studies, the less obvious elementary but fundamental things become; activity, on the other hand, strips things to their simplest possible model. -- Antifragile, Nassim. First, we can do it. Second, less will make more because we know the foundations before other things.
 Occam's razor and Descartes's methods: Main/primary causes and secondary causes, Essential causes and additional causes;
@@ -193,10 +193,10 @@ Ray Dalio: knowing how to deal well with you setbacks is as important as knowing
 ## Purpose practice
 [The key is deliberative practice: not just doing it again and again, but challenging yourself with a task that is just beyond your current ability](http://www.norvig.com/21-days.html)
 Thomas Sterner, The Practicing Mind: When we practice something, we are involved in the deliberate repetition of a process with the intention of reaching a specific goal. The words deliberate and intention are key here because they define the difference between actively practicing something and passively learning it.
-
 ## Bawan, just for fun, grow by bawan
 put things in causlity not in mind.
 [Why I Don’t Use A Smart Phone | Ann Makosinski | TEDxTeen](https://www.youtube.com/watch?v=TjaM0tdxtYA)
+
 # Scientific method
 SMART: specific, measurable, achievable(attainable), Relevant, Time-bound; SWOT: strengths, weaknesses, opportunities, threats.
 Hypothesize bravely/boldly, to prove carefully -- Hushi

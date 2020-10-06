@@ -1,4 +1,7 @@
-# mlock
+# Tuning
+https://doc.opensuse.org/documentation/leap/archive/15.1/tuning/html/book.sle.tuning/cha-tuning-memory.html#cha-tuning-memory-optimize
+
+# mlock, mincore
 
 # madvise
 ## MADV_SEQUENTIAL and reclaim
