@@ -1,5 +1,6 @@
 # Tuning
 https://doc.opensuse.org/documentation/leap/archive/15.1/tuning/html/book.sle.tuning/cha-tuning-memory.html#cha-tuning-memory-optimize
+[System Analysis and Tuning Guide](https://documentation.suse.com/sles/15-SP2/html/SLES-all/book-sle-tuning.html)
 
 # mlock, mincore
 

@@ -1,4 +1,3 @@
-
 # Model, Architecure
 [How a CPU Works](https://youtu.be/cNN_tTXABUA)
 [scalar vs vector in computer science](https://softwareengineering.stackexchange.com/a/207461/49259)
@@ -25,9 +24,7 @@ _cpu_down->
 	cpu_notify_nofail(CPU_POST_DEAD | mod, hcpu)->cpufreq_cpu_callback->cpufreq exit = intel_pstate_cpu_exit,
 
 # CPU info
-/proc/cpuinfo
-show_cpuinfo
-x86_cap_flags
+/proc/cpuinfo show_cpuinfo x86_cap_flags
 struct cpuinfo_x86 x86_capability
 DECLARE_PER_CPU_READ_MOSTLY(struct cpuinfo_x86, cpu_info);
 cpu_data(cpu)           per_cpu(cpu_info, cpu)

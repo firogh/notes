@@ -11,7 +11,9 @@ Date:   Mon Feb 4 23:59:34 2002 -0800
 get_user_pages_fast: https://lwn.net/Articles/275808/ Toward better direct I/O scalability
 
 try_grab_page doesn't use get_page_unless_zero?
+
 # Reference
+LDD3 Chapter 15 Performing Direct I/O
 Documentation/core-api/pin_user_pages.rst
 https://www.youtube.com/watch?v=97mmajwTjpY&t=5290
 [The trouble with get_user_pages()](https://lwn.net/Articles/753027/)

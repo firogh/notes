@@ -56,7 +56,17 @@ AuthorDate: Sun Mar 26 01:38:00 2006 -0800
 	allocation and properly handle ENOSPC caused by mmaped writes.
 	Signed-off-by: Jan Kara <jack@suse.cz>
 
-## Buffer new and mapped
+#  a partially uptodate page with blocksize <   PAGE_CACHE_SIZE.
+tglx: commit d58e41eec6859e9590f8f70ccdc1d58f4f6a1b84
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Sun May 5 01:10:37 2002 -0700
+    [PATCH] Fix concurrent writepage and readpage
+    Pages under writeback are not locked.  So it is possible (and quite
+    legal) for a page to be under readpage() while it is still under
+    writeback.  For a partially uptodate page with blocksize <
+    PAGE_CACHE_SIZE.
+
+# Buffer new and mapped
 commit 697b710337c6f365b367c1cb6f3a9dd48724441e
 Refs: <2.3.9pre5>
 Author:     Linus Torvalds <torvalds@linuxfoundation.org>
@@ -73,8 +83,44 @@ see tglx fs/buffer.c
  *      Yes     Yes             "valid" - allocated and up-to-date in memory.
  * "Dirty" is valid only with the last case (mapped+uptodate).
 
+# Buffer vs page dirty
+
+# Locking for BH
+## page locking and BH locking
+comment  of buffer_busy()
+ * Exclusion against try_to_free_buffers may be obtained by either
+ * locking the page or by holding its mapping's private_lock.
+
+## PG_wirteback vs get_bh and try_to_relase_page
+See __block_write_full_page
+commit a2bcb3a084f4312844639e18cbe7eb7256c7c23c
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Mon Apr 29 23:54:18 2002 -0700
+    [PATCH] page writeback locking update
+@@ -1168,6 +1185,8 @@ int try_to_release_page(struct page *page, int gfp_mask)
++       if (PageWriteback(page))
++               return 0;
+@@ -1385,6 +1403,10 @@ static int __block_write_full_page(struct inode *inode,
++       BUG_ON(PageWriteback(page));
++       SetPageWriteback(page);         /* Keeps try_to_free_buffers() away */
++       unlock_page(page)
+
+commit c5da10acea4d6478ee90ca23f85a24763a860c4a
+Author:     Andrea Arcangeli <andrea@suse.de>
+AuthorDate: Sat Jul 10 19:38:08 2004 -0700
+    [PATCH] __block_write_full_page() comment fixups
++        * The page and its buffers are protected by PageWriteback(), so we can
++        * drop the bh refcounts early.
+        BUG_ON(PageWriteback(page));
+-       set_page_writeback(page);       /* Keeps try_to_free_buffers() away */
++       set_page_writeback(page);
+        unlock_page(page);
+-        * The page may come unlocked any time after the *first* submit_bh()
+-        * call.  Be careful with its buffers.
+
 # Buffer head necessary?
-ext4_mpage_readpages
+ext4_mpage_readpages seems not.
+block_read_full_page but generic 'read page' needs it; using the block device logic? seems not.
 
 # Nobh
 Compared to ext2_prepare_write(in turn __block_prepare_write), nobh_prepare_write doesn't has following code.

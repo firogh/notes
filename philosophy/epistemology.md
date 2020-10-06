@@ -5,7 +5,7 @@ category: philosophy
 ---
 
 # Unknown
-Causality, Reality, dynamic, Chaos, abyss, unknown, Thing-in-itself, Universal connection, Life, Uncertainty, Reality, Effect and Inefficiency, change/process, complexicity, Atifragile, the invisiable world
+Causality, reality, imperfact, dynamic, Chaos, abyss, unknown, Thing-in-itself, Universal connection, Life, Uncertainty, Reality, Effect and Inefficiency, change/process, complexicity, Atifragile, the invisiable world
 Matter, space, Enegy, force, Time, Motion, The invisiable world and desymbolize. Conflicts. Problems world.
 ## Causality
 [Aristotle:we don't have knowledge of a thing until we have grasped its why, that is to say, its cause](https://en.wikipedia.org/wiki/Four_causes)
@@ -116,6 +116,7 @@ Firo: There are many levels of creation, e.g. a blank piece of paper.
 Nature grow, creation direction vs string search, artificial translation, interpreting 
 Numa_interleave: 不是自然的， 不要通过构成部分理解。 它是意志的体现。
 不要思考结论，思考conditions。比如不要思考是否加锁，而是并发了怎么办？是否存在并发。反向递归,到根因, 之后从哪里思考，根据材料不同，需要多次反向递归。
+don't read code; but use them to verify our ideas.
 ### clarity of thought and exactness of definition
 Just as the largest library, badly arranged, is not so useful as a very moderate one that is well arranged, so the greatest amount of knowledge, if not elaborated by our own thoughts, is worth much less than a far smaller volume that has been abundantly and repeatedly thought over. The difference between the effect produced on the mind by thinking for oneself and that produced by reading is **incredibly great**; and thus it is for ever **increasing the original disparity between minds**, by virtue whereof we are driven to the one or to the other. Thus reading forces on the mind ideas that are as foreign and heterogeneous to the tendency and mood it has at the moment, as is the seal to the wax whereon it impresses its stamp. Thus the mind is totally compelled from without to think first of one thing and **then of another, for which it has absolutely no inclination or disposition.** ... Therefore the **mind is deprived of all its elasticity by much reading** as is a spring when a weight is continually applied to it; This practice is the reason why **erudition makes most men more stupid and simple than they are by nature and also deprives their literary careers of every success.** - Schopenhauer Parerga and Paralipomena Vol.2 Chapter XXII
 
@@ -162,8 +163,9 @@ crash check kernel running status; not codes.
 List, MECE
 ## Conditions
 不是不能理解某个问题， 而是前提条件(or 问题)不知道.
+Reverse to root conditions
 ## Plan, timeline(timebound)
-Goal, SMART, work backwards(what about skill-forward) and actionable steps, milestones, timeline
+Goal, SMART, work backwards(and skill-forward) and actionable steps, milestones, timeline
 [How to Create an Effective Action Plan: The less clear you are about what you want to do, the less effective your plan will be.](https://www.wikihow.com/Create-an-Effective-Action-Plan)
 Ahead of time
 ### Get up to speed with it.

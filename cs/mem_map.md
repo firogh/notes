@@ -14,7 +14,7 @@ BSD 4.2
 1990 SunOS 4.1
 [A Must-read: The applications programmer gains access to the facilities of the VM system through several sets of system calls.](http://bitsavers.trailing-edge.com/pdf/sun/sunos/4.1/800-3846-10A_System_Services_Overview_199003.pdf)
 
-# Formal causes
+# Memory mappings
 [What are memory mappings? - Landley](https://landley.net/writing/memory-faq.txt)
 
 > A memory mapping is a set of page table entries describing the properties
@@ -22,20 +22,6 @@ BSD 4.2
 > start address and length, permissions (such as whether the program can
 > read, write, or execute from that memory), and associated resources (such
 > as physical pages, swap pages, file contents, and so on).
-Firo:  mmap, page fault, PFRA.
-
-# Lock
-arg_lock, mmap_sem: [mm: get_cmdline use arg_lock instead of mmap_sem](https://lore.kernel.org/lkml/20190417120347.15397-1-mkoutny@suse.com/)
-## down_read(&mm->mmap_sem)?
-linux-tglx
-commit b50661029222940e24d2fba7c982ac0774a38c78
-Author: Andi Kleen <ak@muc.de>
-Date:   Thu Sep 16 22:00:12 2004 -0700
-    [PATCH] x86-64: avoid deadlock in page fault handler
-    Avoid deadlock when kernel fault happens inside mmap sem.
-Check ULKv3 Page 380.
-https://lkml.org/lkml/2004/5/19/108
-https://lkml.org/lkml/2013/5/13/418
 
 # VMA
 vma's unit is PAGE_SIZE;
@@ -109,8 +95,3 @@ AuthorDate: Fri Nov 23 15:40:55 2007 -0500
     makes the code much more readable, it should also make it dependable..
 [...]
     - Christoph Rohland: shmfs for shared memory handling
-
-# mmap
-## MAP_SYNC
-[Two more approaches to persistent-memory writes](https://lwn.net/Articles/731706/)
-dax_iomap_pte_fault

@@ -244,6 +244,9 @@ meminfo_proc_show
 /proc/zoneinfo
 
 NR_FILE_MAPPED could be larger than NR_ACTIVE_FILE or NR_INACTIVE_FILE because multiple processes map same page to it's process address space. It also includes shmem.
+## vmstat
+Search pgsteal from Documentation/admin-guide/cgroup-v2.rst
+[System Analysis and Tuning Guide](documentation.suse.com/sles/15-SP2/html/SLES-all/cha-tuning-memory.html#cha-tuning-memory-monitoring)
 
 ## Process memory usage.
 __show_smap task_mem

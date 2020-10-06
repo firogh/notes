@@ -30,6 +30,8 @@ fork workflow:attach to parent; alloc anon_vma for ownself. anon_vma_fork() -> a
 
 # anon vma managing same VMAs
 do_anonymous_page(1 forked but parent don't use vma. 2 exec) -> anon_vma_prepare & page_add_new_anon_rmap
+## Pending page_get_anon_vma
+
 ## objrmap v1 -- check tlgx anon_vma_prepare for deep understanding; shared private page set; add do_<private>_fault
 tglx: commit 8aa3448cabdfca146aa3fd36e852d0209fb2276a
 Author:     Andrew Morton <akpm@osdl.org>

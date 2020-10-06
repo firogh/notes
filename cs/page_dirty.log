@@ -27,6 +27,9 @@ AuthorDate: Wed Mar 30 16:27:05 2005 -0800
     bitmap. The capabilities available include:
       (*) BDI_CAP_NO_ACCT_DIRTY
 
+# Pending
+cancel_dirty_page
+
 # Clear page dirty for IO
 [How the OS knows a page is dirty in mapped memory?](https://stackoverflow.com/questions/41433299/)
 commit 7658cc289288b8ae7dd2c2224549a048431222b3

@@ -13,15 +13,28 @@ https://kernelnewbies.org/Linux_2_6_35#Memory_compaction
 [Proactive compaction](https://lwn.net/Articles/717656/)
 sysctl -w vm.compact_memory=1
 
+## Migrating movable pages out of non-movable pageblocks.
+commit 282722b0d258ec23fc79d80165418fee83f01736
+Refs: v4.11-10610-g282722b0d258
+Author:     Vlastimil Babka <vbabka@suse.cz>
+AuthorDate: Mon May 8 15:54:49 2017 -0700
+    mm, compaction: restrict async compaction to pageblocks of same migratetype
+[...]
+    However, with the exception of THP's, most high-order allocations are
+    not movable.  Should the async compaction succeed, this increases the
+    chance that the non-MOVABLE allocations will fallback to a MOVABLE
+    pageblock, making the long-term fragmentation worse.
+
+# When do compaction?
+Direct compact allocation: __alloc_pages_direct_compact
+
 ## Mobility
 PLKA - 3.5.2
 [Making kernel pages movable](https://lwn.net/Articles/650917/)
 Split the free lists for movable and unmovable allocations - b2a0ac8875a0a3b9f0739b60526f8c5977d2200f
-
 Related code:
 gfpflags_to_migratetype
 set_pageblock_migratetype
-
 find_suitable_fallback
         [MIGRATE_UNMOVABLE]   = { MIGRATE_RECLAIMABLE, MIGRATE_MOVABLE,   MIGRATE_TYPES },
         [MIGRATE_RECLAIMABLE] = { MIGRATE_UNMOVABLE,   MIGRATE_MOVABLE,   MIGRATE_TYPES },
@@ -37,9 +50,17 @@ CommitDate: Tue Oct 16 09:43:00 2007 -0700
     Group short-lived and reclaimable kernel allocations
 [treewide: remove GFP_TEMPORARY allocation flag](https://lore.kernel.org/patchwork/patch/814997/)
 
-LQO:
 MIGRATE_HIGHATOMIC
 
+# Lumpy Reclaim
+## Infficient for high-order allocations
+When we are out of memory of a suitable size we enter reclaim.
+The current reclaim algorithm targets pages in LRU order, which
+is great for fairness but highly unsuitable if you desire pages at
+higher orders.  To get pages of higher order we must shoot down a
+very high proportion of memory; >95% in a lot of cases. -- [Lumpy Reclaim V3](https://lwn.net/Articles/211199/)
+[mm: vmscan: Remove lumpy reclaim](https://lkml.org/lkml/2012/3/28/325)
+[mm: vmscan: Remove dead code related to lumpy reclaim waiting on pages under writeback](https://lore.kernel.org/patchwork/patch/262301/)
 
 # Vmalloc
 map_vm_area 页表映射

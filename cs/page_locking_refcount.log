@@ -1,9 +1,32 @@
 
+# Refcount
+1. ptes; 2. address space; 3. pagevec; 4. buffer heads.
+tglx: commit 3aa1dc772547672e6ff453117d169c47a5a7cbc5
+Author:     Andrew Morton <akpm@zip.com.au>
+AuthorDate: Wed Aug 14 21:20:48 2002 -0700
+    [PATCH] multithread page reclaim
++                * The non-racy check for busy page.  It is critical to check
++                * PageDirty _after_ making sure that the page is freeable and
++                * not in use by anybody.       (pagecache + us == 2)           # Firo: pagecache + us
+-               if (mapping) {
+-                       write_lock(&mapping->page_lock);
+-                       if (is_page_cache_freeable(page))
+-                               goto page_freeable;
++               if (page_count(page) != 2 || PageDirty(page)) {
+                        write_unlock(&mapping->page_lock);
 # Page table lock
 
-# Pin(get_page, refcount) vs mlock
+# Pin
+[Memory Pinning](https://2wisebit.wordpress.com/2018/06/05/memory-pinning/)
+
+# Pin(get_page, refcount, get_user_page*) vs mlock()ed
 [论Linux的页迁移（Page Migration）完整版](https://www.ershicimi.com/p/484172f9441c686def73d485f5c005ce)
 migrate_page_move_mapping
+[Locking and pinning](https://lwn.net/Articles/600502/)
+## mlock
+mlock_vma_page: If page on LRU, isolate and putback to move to unevictable list.
+[Deferred memory locking](https://lwn.net/Articles/650538/)
+VM_LOCKED: pending
 
 # Page - Pinned vs locked
 [Re: Filesystem crashes due to pages without buffers](https://lore.kernel.org/linux-fsdevel/20180104085244.GA29010@quack2.suse.cz/)
@@ -33,7 +56,6 @@ tables nor prepared with ->write_begin. So a similar race violating
 filesystem's assumptions can be like:
 
 CPU1					CPU2
-
 addr = mmap(file1, MAP_SHARED, ...);
 fd2 = open(file2, O_DIRECT | O_RDONLY);
 read(fd2, addr, len)
@@ -66,7 +88,6 @@ AuthorDate: Wed Mar 13 11:44:14 2019 -0700
     gone now, but this one is sort of weird since it's not necessarily a
     priority inversion that happens within the kernel, but rather because of
     something userspace does.
-
     We have giant applications that we want to protect, and parts of these
     giant applications do things like watch the system state to determine how
     healthy the box is for load balancing and such.  This involves running
@@ -84,3 +105,16 @@ AuthorDate: Wed Mar 13 11:44:14 2019 -0700
     throttled to the point that its IO is taking much longer than normal.  But
     because a higher priority group depends on this completing it is now stuck
     behind lower priority work.
+
+# Mem Lock
+arg_lock, mmap_sem: [mm: get_cmdline use arg_lock instead of mmap_sem](https://lore.kernel.org/lkml/20190417120347.15397-1-mkoutny@suse.com/)
+## down_read(&mm->mmap_sem)?
+linux-tglx
+commit b50661029222940e24d2fba7c982ac0774a38c78
+Author: Andi Kleen <ak@muc.de>
+Date:   Thu Sep 16 22:00:12 2004 -0700
+    [PATCH] x86-64: avoid deadlock in page fault handler
+    Avoid deadlock when kernel fault happens inside mmap sem.
+Check ULKv3 Page 380.
+https://lkml.org/lkml/2004/5/19/108
+https://lkml.org/lkml/2013/5/13/418
