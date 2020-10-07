@@ -25,3 +25,6 @@ print &((struct kmem_cache *)0)->offset
 ## request
 ## packet
 ## Lock
+
+# cgroup
+p cgroup_subsys

@@ -1,4 +1,3 @@
-
 # IO
 [Linux kernel IO subsystem - by Jan Kara](https://www.youtube.com/watch?v=2tu__ZHC0mI)
 https://www.postgresql.eu/events/fosdem2019/sessions/session/2346/slides/159/fosdem_linux_io.pdf
@@ -96,6 +95,38 @@ AuthorDate: Thu Nov 7 21:50:01 2002 -0800
 # Blk flush
 generic_file_fsync blkdev_issue_flush
 kblockd_workqueue -> blk_delay_work
+
+# Plug
+[Explicit block device plugging and comments](https://lwn.net/Articles/438256/)
+[A block layer introduction part 1: the bio layer: plug](https://lwn.net/Articles/736534/)
+[block: initial patch for on-stack per-task plugging](git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=73c101011926c58)
+Reduce the lock contection of request_queue lock. 
+ * blk_plug permits building a queue of related requests by holding the I/O 
+ * fragments for a short period. This allows merging of sequential requests
+ * into single larger request. As the requests are moved from a per-task list to
+ * the device's request_queue in a batch, this results in improved scalability
+ * as the lock contention for request_queue lock is reduced.
+## Unplug
+1. synchronized method
+__blk_run_queue
+2. asynchronized way 
+kblockd_workqueue
+kworker/%u:%d%s (cpu, id, priority)
+[workqueue: drop 'H' from kworker names of unbound worker pools](https://lkml.org/lkml/2013/3/19/661)
+ps aux | grep kblockd
+root         6  0.0  0.0      0     0 ?        I<   08:15   0:00 [kworker/0:0H-kblockd]
+root       435  0.0  0.0      0     0 ?        I<   08:15   0:00 [kworker/0:1H-kblockd]
+root        46  0.0  0.0      0     0 ?        I<   08:15   0:00 [kblockd]
+1. blk_finish_plug
+2. blk_schedule_flush_list
+3. in pluged state: more then BLK_MAX_REQUEST_COUNT
+3.1 ??deadlock avoidance: if memory is low and waiting for IO complete and reclaiming pages.??
+3.2 Short period queuing each bio just for baching. If Sleep, when flush the queued bio?
+3.3 schedule->sched_submit_work
+## all result in blk_flush_plug_list
+if schedule:  workqueue
+else synchronize ?? which function?
+
 
 # Queue
 ## Blk-mq

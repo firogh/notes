@@ -161,6 +161,7 @@ attention: [Get your brain back](https://www.youtube.com/watch?v=OcdxW2XF0v8)
 crash check kernel running status; not codes.
 ## Easy Raw 
 List, MECE
+Build
 ## Conditions
 不是不能理解某个问题， 而是前提条件(or 问题)不知道.
 Reverse to root conditions
