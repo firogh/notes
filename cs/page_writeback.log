@@ -1,0 +1,7 @@
+
+# Page flags
+## PageWriteback
+__swap_writepage()
+        set_page_writeback(page);
+        unlock_page(page);              # In isolate page and shrink_page_list(), we have get_paged
+        submit_bio(bio);

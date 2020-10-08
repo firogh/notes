@@ -52,6 +52,11 @@ CommitDate: Tue Oct 16 09:43:00 2007 -0700
 
 MIGRATE_HIGHATOMIC
 
+# CMA, contig allocator
+[Improving support for large, contiguous allocations](https://lwn.net/Articles/753167/)
+[A deep dive into CMA](https://lwn.net/Articles/486301/)
+alloc_contig_range
+
 # Lumpy Reclaim
 ## Infficient for high-order allocations
 When we are out of memory of a suitable size we enter reclaim.

@@ -19,6 +19,11 @@ expand_stack(): expand vma of stack; + good area workflow.
 # Private anonymous memory
 Read -> zeropage->write-> WP 
 Write -> Normal page with RW
+## zeroed user page
+tglx: commit 382a7dec462a90ad6ae01227f1e8758ae721f6ed
+Author: Christoph Lameter <clameter@sgi.com>
+Date:   Tue Feb 1 16:34:17 2005 -0800
+    [PATCH] alloc_zeroed_user_highpage() to fix the clear_user_highpage issue
 
 # Private file-backed memory
 ## Execute

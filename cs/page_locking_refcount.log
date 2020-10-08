@@ -14,6 +14,8 @@ AuthorDate: Wed Aug 14 21:20:48 2002 -0700
 -                               goto page_freeable;
 +               if (page_count(page) != 2 || PageDirty(page)) {
                         write_unlock(&mapping->page_lock);
+## set_page_refcounted
+
 # Page table lock
 
 # Pin

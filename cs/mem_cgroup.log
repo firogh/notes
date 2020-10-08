@@ -1,5 +1,5 @@
 # memory cgroup, memcg 
-Tracking/accounting, limiting, reclaim, oom
+aggreating/partitioning, tracking/accounting, limiting, reclaim, oom
 ## Per cgroup LRU and reclaim
 commit 66e1707bc34609f626e2e7b4fe7e454c9748bad5
 Refs: v2.6.24-8077-g66e1707bc346
@@ -48,6 +48,9 @@ AuthorDate: Fri Feb 22 16:32:30 2013 -0800
     then retried until the limit is met.
 ### target reclaim
 see callsites of try_to_free_mem_cgroup_pages
+## Memory reclaim protection
+[SUSE Labs Conference 2020 - Memory reclaim protection](https://www.youtube.com/watch?v=NrZropsBhjY)
+mem_cgroup_protection
 
 # Slab memory controller - slab reclaim
 commit ba6c496ed834a37a26fc6fc87fc9aecb0fa0014d
@@ -75,7 +78,7 @@ mem_cgroup_try_charge mem_cgroup_try_charge_delay mem_cgroup_commit_charge
 page -> mm -> memcg page_counter_charge
 
 # Memory cgroup translations
-root_mem_cgroup
+root_mem_cgroup; cgroup_on_dfl() ? v2 : v1; cgroup_base_files in css_populate_dir()
 ## use_hiearchy
 crash> p *root_mem_cgroup |grep use_hier
   use_hierarchy = true, 
@@ -86,6 +89,30 @@ Refs: v2.6.28-7536-g18f59ea7de08
 Author:     Balbir Singh <balbir@linux.vnet.ibm.com>
 AuthorDate: Wed Jan 7 18:08:07 2009 -0800
     memcg: memory cgroup hierarchy feature selector
+also see try_charge().
+## cgroup->self
+commit 9d800df12d31734a6853915e9d2deb5d6747985f
+Refs: v3.15-rc2-68-g9d800df12d31
+Author:     Tejun Heo <tj@kernel.org>
+AuthorDate: Wed May 14 09:15:00 2014 -0400
+    cgroup: rename cgroup->dummy_css to ->self and move it to the top
+    cgroup->dummy_css is used as the placeholder css when performing css
+    oriended operations on the cgroup.  We're gonna shift more cgroup
+    management to this css.  Let's rename it to ->self and move it to the
+    top.
+commit 67f4c36f83455b253445b2cb28ac9a2c4f85d99a
+Refs: v3.10-9324-g67f4c36f8345
+Author:     Tejun Heo <tj@kernel.org>
+AuthorDate: Thu Aug 8 20:11:24 2013 -0400
+    cgroup: add cgroup->dummy_css
+    cgroup subsystem API is being converted to use css
+    (cgroup_subsys_state) as the main handle, which makes things a bit
+    awkward for subsystem agnostic core features - the "cgroup.*"
+    interface files and various iterations - a bit awkward as they don't
+    have a css to use.
+    This patch adds cgroup->dummy_css which has NULL ->ss and whose only
+    role is pointing back to the cgroup.  This will be used to support
+    subsystem agnostic features on the coming css based API.
 
 # cgroup v2 memcg
 [Control Group v2](https://www.kernel.org/doc/Documentation/cgroup-v2.txt)

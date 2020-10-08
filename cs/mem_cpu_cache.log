@@ -6,9 +6,8 @@
 Check bvm
 1965 Wilkes, M. V. 1965. “Slave memories and dynamic storage allocation.
 
-# Purposes
-
-# Formal causes
+# References
+[Cache and TLB Flushing Under Linux](https://www.kernel.org/doc/html/latest/core-api/cachetlb.html)
 ULK 3rd: Handling the hardware cache
 PLKA: 3.7 Processor Cache and TLB Control
 [Getting a handle on caching](https://lwn.net/Articles/282250/)

@@ -73,8 +73,6 @@ commit e98be2d599207c6b31e9bb340d52a231b2f3662d
 Refs: v3.0-rc2-19-ge98be2d59920
 Author:     Wu Fengguang <fengguang.wu@intel.com>
 AuthorDate: Sun Aug 29 11:22:30 2010 -0600
-Commit:     Wu Fengguang <fengguang.wu@intel.com>
-CommitDate: Sat Jul 9 22:09:01 2011 -0700
     writeback: bdi write bandwidth estimation
 wb_update_write_bandwidth
 
@@ -118,8 +116,6 @@ PG_writeback and set_page_writeback
 commit a2bcb3a084f4312844639e18cbe7eb7256c7c23c
 Author:     Andrew Morton <akpm@zip.com.au>
 AuthorDate: Mon Apr 29 23:54:18 2002 -0700
-Commit:     Linus Torvalds <torvalds@home.transmeta.com>
-CommitDate: Mon Apr 29 23:54:18 2002 -0700
     [PATCH] page writeback locking update
 + * If a page is already under I/O, generic_writeback_mapping() skips it, even
 + * if it's dirty.  This is desirable behaviour for memory-cleaning writeback,
@@ -136,15 +132,11 @@ commit 7d311cdab663f4f7ab3a4c0d5d484234406f8268
 Refs: v3.8-3241-g7d311cdab663
 Author:     Darrick J. Wong <darrick.wong@oracle.com>
 AuthorDate: Thu Feb 21 16:42:48 2013 -0800
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Thu Feb 21 17:22:19 2013 -0800
     bdi: allow block devices to say that they require stable page writes
 commit 1d1d1a767206fbe5d4c69493b7e6d2a8d08cc0a0
 Refs: v3.8-3242-g1d1d1a767206
 Author:     Darrick J. Wong <darrick.wong@oracle.com>
 AuthorDate: Thu Feb 21 16:42:51 2013 -0800
-Commit:     Linus Torvalds <torvalds@linux-foundation.org>
-CommitDate: Thu Feb 21 17:22:19 2013 -0800
     mm: only enforce stable page writes if the backing device requires it
 
 ## memory-cleaning writeback
