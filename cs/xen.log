@@ -12,6 +12,17 @@ https://wiki.xenproject.org/wiki/XenParavirtOps
 KEXEC_CMD_kexec_load in xen repo
 
 # kdump Xen 
+xl info for command line; systemctl start kdump;
+/sys/kernel/kexec_* for PV kernel is meaningless.
+## Xen reserve kdump code
+kexec_reserve_area
+./xen/arch/x86/setup.c
+## kdump xen and /proc/iomem
+Crash kernel for PV kernel, is meaningless. Some old kernel (older than Petr's obslete patch), will show this. But it's just waste of memory.
+### Native x86
+fyang@l3mule:~$ sudo  cat /proc/iomem | grep -i crash
+  d5000000-d97fffff : Crash kernel
+  4014000000-401fafffff : Crash kernel
 ## Configure kdump for dom-0
 reserve memory for PV(include dom-0)
 http://xenbits.xenproject.org/docs/4.2-testing/misc/kexec_and_kdump.txt
@@ -31,6 +42,47 @@ int xen_present(void)
         }
         return is_dom0 > 0;
 }
+
+## kdump dom0 pv  sles12-sp3
+virt93:~ # cat /etc/os-release 
+NAME="SLES"
+VERSION="12-SP3"
+virt93:~ # systemctl status kdump
+● kdump.service - Load kdump kernel and initrd
+   Loaded: loaded (/usr/lib/systemd/system/kdump.service; enabled; vendor preset: disabled)
+   Active: active (exited) since Thu 2020-10-15 00:13:47 MDT; 4min 4s ago
+  Process: 2422 ExecStart=/lib/kdump/load.sh --update (code=exited, status=0/SUCCESS)
+ Main PID: 2422 (code=exited, status=0/SUCCESS)
+    Tasks: 0 (limit: 512)
+   CGroup: /system.slice/kdump.service
+Oct 15 00:13:46 virt93 systemd[1]: Starting Load kdump kernel and initrd...
+Oct 15 00:13:47 virt93 systemd[1]: Started Load kdump kernel and initrd.
+virt93:~ # cat /sys/kernel/kexec_crash_loaded 
+0
+virt93:~ # cat /sys/kernel/kexec_crash_size 
+136314880
+virt93:~ # cat /sys/kernel/kexec_loaded 
+0
+virt93:~ # /lib/kdump/load.sh --update 
+virt93:~ # echo $?
+0
+virt93:~ # grep crash /proc/iomem 
+virt93:~ # grep -i crash /proc/iomem 
+  6f000000-771fffff : Crash kernel
+virt93:~ # systemctl status kdump
+● kdump.service - Load kdump kernel and initrd
+   Loaded: loaded (/usr/lib/systemd/system/kdump.service; enabled; vendor preset: disabled)
+   Active: active (exited) since Thu 2020-10-15 00:13:47 MDT; 1min 39s ago
+  Process: 2422 ExecStart=/lib/kdump/load.sh --update (code=exited, status=0/SUCCESS)
+ Main PID: 2422 (code=exited, status=0/SUCCESS)
+    Tasks: 0 (limit: 512)
+   CGroup: /system.slice/kdump.service
+
+Oct 15 00:13:46 virt93 systemd[1]: Starting Load kdump kernel and initrd...
+Oct 15 00:13:47 virt93 systemd[1]: Started Load kdump kernel and initrd.
+virt93:~ # cat /proc/xen/capabilities 
+control_d
+
 
 ## PV domains
 [    0.000000] Hypervisor detected: Xen PV

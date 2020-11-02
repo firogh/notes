@@ -40,3 +40,7 @@ if low is reached (i.e. slow path) wakeup __GFP_KSWAPD_RECLAIM
 
 # ZONE_BOOSTED_WATERMARK
 get_page_from_freelist->rmqueue->wakeup_kswapd
+
+# extra free kbytes
+[add extra free kbytes tunable](https://marc.info/?l=linux-mm&m=131605773321672&w=2)
+[mapped-file-stream](https://lkml.org/lkml/2010/8/30/226)

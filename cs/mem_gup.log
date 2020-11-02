@@ -12,6 +12,13 @@ get_user_pages_fast: https://lwn.net/Articles/275808/ Toward better direct I/O s
 
 try_grab_page doesn't use get_page_unless_zero?
 
+# Follow page
+history: commit 197e67c54abad8c3633bc57d10ddbff917ec344a
+Refs: <2.3.12pre7>
+Author:     Linus Torvalds <torvalds@linuxfoundation.org>
++ * Do a quick page-table lookup for a single page.
++static unsigned long follow_page(unsigned long address)
+
 # Reference
 LDD3 Chapter 15 Performing Direct I/O
 Documentation/core-api/pin_user_pages.rst
