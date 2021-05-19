@@ -1,8 +1,11 @@
+# Work better
 
+# Leetcode
 
-# Time
-Unit: Work 25 minutes, then reset 5 minutes
-Build: Take 19 minutes to build a TEST kernel with a prepared beug patch. 
+# Kernel upstream
+Goal: review patches, create fixes, get known
+Raw: review patches, at least 1 hour per day 
+Work backwards: Get up to speed with upstream
 
 # Prallel
 Build and analysis
@@ -54,5 +57,3 @@ The main task and core responsibility of the L3 teams is to deliver exceptional 
 if you are on Incident Manager duty and escalate to your manager if any of the responsibilities or team objectives (including the response times SLAs) can not be met during your IM shift. 
 ## Handover
 Allow for easy handover of your incidents before your planned absence by following the "Vacation checklist" https://pes.suse.de/L3/Vacation/
-
-
