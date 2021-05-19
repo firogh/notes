@@ -128,6 +128,16 @@ init_IRQ()->x86_init.irqs.intr_init=native_init_IRQ     #===> external interrupt
 	pre_vector_init = init_ISA_irqs #===> 1) legacy_pic->init(0); init 8259a; 2) link irq_desc in irq_desc_tree with flow handle and chip.
 	idt_setup_apic_and_irq_gates    #===> apic normal(from 32) and system interrupts; 
 
+## affinity
+root@snow:/tmp# cat x.sh 
+echo 1 > /proc/irq/129/smp_affinity
+sudo trace-cmd record -p function_graph --max-graph-depth 70 -g __irq_set_affinity -c -F  ./x.sh
+__irq_set_affinity msi_domain_set_affinity intel_ir_set_affinity apic_set_affinity
+
+interrupt balancing
+Interrupts not distributed as specified in smp_affinity: https://www.suse.com/support/kb/doc/?id=000018837
+De-mystifying interrupt balancing: irqbalance: https://www.youtube.com/watch?v=hjMWVrqrt2U
+
 # IPI
 commit 52aec3308db85f4e9f5c8b9f5dc4fbd0138c6fa4
 Author: Alex Shi <alex.shi@intel.com>

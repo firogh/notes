@@ -5,3 +5,50 @@ __swap_writepage()
         set_page_writeback(page);
         unlock_page(page);              # In isolate page and shrink_page_list(), we have get_paged
         submit_bio(bio);
+
+
+
+# End writeback - translations
+__blk_mq_end_io(obsoleted)
+__blk_mq_end_request
+blk_update_request
+blk_mq_end_request
+scsi_end_request
+blk_mq_complete_request
+scsi_mq_done
+nvme_end_request
+
+=> end_page_writeback
+=> __block_write_full_page
+=> __writepage
+=> write_cache_pages
+=> generic_writepages
+=> do_writepages
+=> __writeback_single_inode
+=> writeback_sb_inodes
+=> __writeback_inodes_wb
+=> wb_writeback
+=> wb_workfn
+
+=> end_page_writeback   # Parent should be end_buffer_async_write
+=> end_bio_bh_io_sync   # submit_bh_wbc
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq
+
+=> end_page_writeback
+=> ext4_finish_bio
+=> ext4_end_bio         # io_submit_init_bio
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq
+
+=> end_page_writeback
+=> end_buffer_async_write
+=> end_bio_bh_io_sync
+=> blk_update_request
+=> scsi_end_request
+=> scsi_io_completion
+=> blk_done_softirq

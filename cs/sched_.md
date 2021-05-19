@@ -283,11 +283,10 @@ sched/fair: Fix fairness issue on migration
 curr was not kept in rb-tree
 
 # Load balancing
+https://www.kernel.org/doc/html/latest/_sources/scheduler/sched-domains.rst.txt
 [Scheduling domains](https://lwn.net/Articles/80911/)
-set sd
-kernel_init_freeable->
 sched_init_smp->
-init_sched_domains->build_sched_domains:->
+sched_init_domains or init_sched_domains build_sched_domains
 __visit_domain_allocation_hell()->__sdt_alloc() alloc the sdd->sg which is used by build groups
 and sg = kzalloc_node(sizeof(struct sched_group) + cpumask_size(); it covered the size of cpumask
 /* Build the groups for the domains */

@@ -79,10 +79,29 @@ Date:   Fri Nov 23 15:28:33 2007 -0500
 # Memory allocation
 [Dynamic Storage Allocation: A Survey and Critical Review](https://compas.cs.stonybrook.edu/~nhonarmand/courses/sp17/cse506/papers/dsa.pdf)
 Page allocator.
-## Memory allocation overcommit
+## Overcommit
 https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
 [理解LINUX的MEMORY OVERCOMMIT](http://linuxperf.com/?p=102)
 [Virtual memory settings in Linux - The Problem with Overcommit](http://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/)
+### MAP_NORESERVE
+history: commit 56307bd2d705fd2b982d89956e92d5ed142ee69d
+Refs: <2.1.2>
+Author:     Linus Torvalds <torvalds@linuxfoundation.org>
+    Import 2.1.2
+MAP_NORESERVE  0x10000         /* don't check for reservations */
+        /* Private writable mapping? Check memory availability.. */
+        if ((vma->vm_flags & (VM_SHARED | VM_WRITE)) == VM_WRITE) {
+-               if (!vm_enough_memory(len >> PAGE_SHIFT)) {
++               if (!(flags & MAP_NORESERVE) &&
++                   !vm_enough_memory(len >> PAGE_SHIFT)) {
+                        kfree(vma);
+                        return -ENOMEM;
+### Reserved vs committed
+Improve Native Memory Tracking to report the actual RSS usage https://bugs.openjdk.java.net/browse/JDK-8249666
+
+### Committed_AS address_space
+Documentation/filesystems/proc.rst
+https://www.kernel.org/doc/Documentation/vm/overcommit-accounting
 
 # Garbage collection
 [Linus Torvalds on Garbage Collection (2002)](https://news.ycombinator.com/item?id=2473932)

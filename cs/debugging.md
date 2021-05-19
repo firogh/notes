@@ -67,7 +67,9 @@ uninitialized memory: [wild pointer](https://en.wikipedia.org/wiki/Dangling_poin
 use after free: [dangling pointer](https://en.wikipedia.org/wiki/Dangling_pointer#Cause_of_dangling_pointers)
 buffer overflow:
 unknown source memory corruption: The generic "memory corruption".
-memory leak:
+
+## memory leak:
+memleax https://github.com/WuBingzheng/memleax
 
 # Anti-debugging
 Syntax checking: gcc -Wall, bash -n

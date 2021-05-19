@@ -3,8 +3,8 @@ It's programming technique.
 [什么才算是真正的编程能力？](https://www.zhihu.com/question/31034164/answer/50423838)
 
 # Goal
-Functionality(correctness)
 Shared memory concurrency
+Functionality(correctness)
 Performance
 Security
 Maintainable
@@ -17,6 +17,7 @@ Maintainable
 [Linus on refrence counting](https://yarchive.net/comp/linux/reference_counting.html)
 vs double-free: https://kernsec.org/wiki/index.php/Kernel_Protections/refcount_t
 Overview of Linux-Kernel Reference Counting: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.145.3800&rep=rep1&type=pdf
+[Linus: Each pointer implies a reference to an object...](https://www.realworldtech.com/forum/?threadid=146066&curpostid=146183)
 ## Firo
 users: asynchrous execution
 share object  between different concurrencies.

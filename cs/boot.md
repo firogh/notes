@@ -34,6 +34,30 @@ ap hp threadfn -> bringup_cpu -> __cpu_up -> smp_ops.cpu_up(cpu, tidle) is nativ
 trampoline_start -> ... -> startup_64 -> tr_start(%rip) is secondary_startup_64 -> initial_code(%rip) is start_secondary
 -> cpu_init
 
+# Memory
+arch/x86/kernel/head_64.S init_top_pgt
+
+break buffer see alloc_low_buffer
+static void __init memory_map_top_down(unsigned long map_start,
+                                       unsigned long map_end)
+{
+        unsigned long real_end, start, last_start;
+        unsigned long step_size;
+        unsigned long addr;
+        unsigned long mapped_ram_size = 0; 
+
+        /* xen has big range in reserved near end of ram, skip it at first.*/
+        addr = memblock_find_in_range(map_start, map_end, PMD_SIZE, PMD_SIZE);
+        real_end = addr + PMD_SIZE;
+
+        /* step_size need to be small so pgt_buf from BRK could cover it */
+        step_size = PMD_SIZE;
+        max_pfn_mapped = 0; /* will get exact value next */
+        min_pfn_mapped = real_end >> PAGE_SHIFT;
+        last_start = start = real_end;
+
+
+
 # initrd
 related code:
 reserve_initrd

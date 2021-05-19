@@ -10,15 +10,26 @@ boot into a readonly snapshot
 snapper rollback;
 reboot
 
+# Performance
+Virtualization lags and hypervisor overcommitment
+https://access.redhat.com/articles/5008811
+
 # VF
 [SR-IOV VF Data Path](https://docs.microsoft.com/en-us/windows-hardware/drivers/network/sr-iov-vf-data-path)
 [What is SR-IOV](https://blog.scottlowe.org/2009/12/02/what-is-sr-iov/)
 [Single Root I/O Virtualization (SR-IOV)](https://www.kernel.org/doc/Documentation/PCI/pci-iov-howto.txt)
 
+# Qemu
+GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0
+GRUB_TERMINAL="serial console"
+GRUB_TERMINAL="console"
+
 # iommu
 [DMAR 与 IOMMU](http://linuxperf.com/?p=67)
 
 # KVM
+kvm_guest_init pv_info
+
 [Learning KVM - implement your own Linux kernel](https://david942j.blogspot.com/2018/10/note-learning-kvm-implement-your-own.html)
 [KVM源代码分析1:基本工作原理](http://oenhan.com/kvm-src-1)
 ## Shadow page table

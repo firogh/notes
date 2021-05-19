@@ -17,7 +17,8 @@ search_exception_tables
         .popsection
 
 # Hacking area
-mm
+hugetlb memcg other mm areas
+
 https://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project
 [Variable-length arrays and the max() mess](https://lwn.net/Articles/749064/)
 [Sub-system Update: Kernel Self-Protection Project - Kees Cook, Google](https://www.youtube.com/watch?v=wlqjQe3vDx8&list=PLbzoR-pLrL6rOT6m50HdJFYUHyvA9lurI&index=11&t=0s)
@@ -29,6 +30,9 @@ some results or progress information for PFRA
 ## Write your own kernel
 [Writing an OS in Rust](http://os.phil-opp.com/)
 [BrokenThorn Entertainment Operating System Development Series](http://www.brokenthorn.com/Resources/OSDevIndex.html)
+
+# Format and send patches
+git format-patch -n2 --subject-prefix='PATCH v2' --cover-letter
 
 # Learning kernel 
 ## Is reading codes a way to learn kernel 

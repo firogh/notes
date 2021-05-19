@@ -34,6 +34,7 @@ Physical(including Biology) and mental world; subjective building and role based
 什么是独立呢?“独立”是你们自己的事，给你自由而不独立这是奴隶，独立要不盲从，不受欺骗，不依傍门户，不依赖别人，不用别人耳朵为耳朵，不以别人的脑子为脑子，不用别人的眼睛为眼睛，这就是独立的精神。 -- 胡适在北京大学1946年开学演讲
 The development of general ability for independent thinking and judgement should always be placed foremost, not the acquisition of special knowledge. -on education, Albert Einstein
 If you don't control yourself, you will be controlled by the Other. In turn, you lose yourself. - Firo
+##  反抗
 ## Mental abilities
 John Locke, An Essay Concerning Human Understanding: The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining ideas [...] 2. [..] it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made.
 Abstraction and concrete. [由為什麼 “abstraction”不應該譯為“抽象化”談正名](https://link.medium.com/TqmKU622u1) and [Generalization](https://en.wikipedia.org/wiki/Generalization) 
@@ -125,7 +126,9 @@ divide problems to small problems which could be solved.
 ## From Raw
 有什么样的材料都可以.需要的材料,可以不断制作。
 
-# Actual problems, reality
+# Reality
+接入，参与: 方法， 时间安排
+## Actual problems
 ## Fake problems
 Final cause: observabity is fake final; it's a set of final causes.
 fake final: what is it used for. things could be used as various functionalites.
@@ -145,6 +148,9 @@ I have never thought about questions that are not real ones - I have not squande
 Don't rember the solutions, understand the problems.
 ## Problems, arrnage, solutions
 
+# 目的 思维自由感觉
+可利用对象。
+
 # Goal
 ## The greats
 理想世界, 牛人心态; 自己变厉害, 会遇见更厉害的人. The greats 法乎其上, 得乎其中,法乎其中,仅得其下
@@ -157,11 +163,11 @@ symbols vs meanings
 time: Immediate
 outside reality connections
 attention: [Get your brain back](https://www.youtube.com/watch?v=OcdxW2XF0v8)
-## Meaningful and reality
+## Meaningful and reality, 直觉模型
 crash check kernel running status; not codes.
-## Easy Raw 
-List, MECE
-Build
+## Easy Raw, 少，every thing is available, 理想世界。
+List, MECE, Build, Weniger aber besser“更少,但更好”
+self asking, chaos->intuition
 ## Conditions
 不是不能理解某个问题， 而是前提条件(or 问题)不知道.
 Reverse to root conditions

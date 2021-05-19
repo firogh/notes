@@ -37,7 +37,7 @@ So RCU is essentially used as resource-reclamation mechanism. And we know there 
 [URCU: Any line of code not in an RCU read-side critical section is termed a quiescent state](https://lwn.net/Articles/573424/)
 [... after all the CPUs in the system have gone through at least one "quiescent" state (such as context switch, idle loop, or user code)](http://lse.sourceforge.net/locking/rcu/HOWTO/descrip.html)
 [The rcu and rcu_bh flavors of RCU have different sets of quiescent states.](https://lwn.net/Articles/305782/#Pass%20through%20a%20quiescent%20state.)
-rcu_flavor_sched_clock_irq rcu_rs
+rcu_flavor_sched_clock_irq rcu_qs
 rcu_report_qs_rnp
 ## CPU vs QS
 @冯博群 你好，请教一个问题，对于rcu-preempt， CPU report QS的意义是什么？ 我理解只有task QS 才不block GP。
@@ -50,7 +50,8 @@ RCU implementations that avoid unnecessarily awakening dyntick-idle CPUs will ma
 : https://lwn.net/Articles/305782/
 ## EQS vs interrupt vs read-side section
 
-## Heavy and light
+## heavy_qs
+rcu_momentary_dyntick_idle
 
 # Grace period - time to reclaim
 [URCU: any period of time during which each reader thread resides in at least one quiescent state is called a grace period.](https://lwn.net/Articles/573424/)
@@ -63,13 +64,54 @@ data: rcu_head
 Updater want to free data if no GP is in-progress.
 ## GP vs Data(callback)
 continuos Data on GP. Segmented.
+## Kernel move GP handling to kthread
+ "The reason for moving RCU grace-period handling to a kernel thread was to improve real-time latency
+[The new visibility of RCU processing](https://lwn.net/Articles/518953/)
+## gp_seq
+struct rcu_data.gp_seq rcu_data:a
+commit e3663b1024d1f94688e5233440ad67a9bc10b94e
+Refs: v3.19-rc1-6-ge3663b1024d1
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Mon Dec 8 20:26:55 2014 -0800
+    rcu: Handle gpnum/completed wrap while dyntick idle
+# nocb
+[Relocating RCU callbacks](https://lwn.net/Articles/522262/)
+## rcuog
+commit 12f54c3a8410102afb96ed437aebe7f1d87f399f
+Refs: v5.3-rc2-35-g12f54c3a8410
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Fri Mar 29 16:43:51 2019 -0700
+    rcu/nocb: Provide separate no-CBs grace-period kthreads
 
-## Deffered QS
+## nocb group leader
+commit fbce7497ee5af800a1c350c73f3c3f103cb27a15
+Refs: v3.16-rc1-3-gfbce7497ee5a
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Tue Jun 24 09:26:11 2014 -0700
+    rcu: Parallelize and economize NOCB kthread wakeups
+__call_rcu_nocb_enqueue replaced by __call_rcu_nocb_wake
+do_nocb_deferred_wakeup
+
+rcu_gp_kthread_wake
+
+# non-context-switch quiescent
+/*
+ * This function is invoked from each scheduling-clock interrupt,
+ * and checks to see if this CPU is in a non-context-switch quiescent
+ * state, for example, user mode or idle loop.  It also schedules RCU
+ * core processing.  If the current grace period has gone on too long,
+ * it will ask the scheduler to manufacture a context switch for the sole
+ * purpose of providing a providing the needed quiescent state.
+ */
+void rcu_sched_clock_irq(int user)
+
+
+# Deffered QS
 rcu_flavor_sched_clock_irq
 rcu_preempt_deferred_qs
 Reporting of a deferred QS reporting (when rcu_read_unlock() could not help).
 
-## Memory ordering
+# Memory ordering
 A Tour Through TREE_RCU’s Grace-Period Memory Ordering https://www.kernel.org/doc/html/latest/RCU/Design/Memory-Ordering/Tree-RCU-Memory-Ordering.html
 
 # Start a grapce period
@@ -295,4 +337,21 @@ CommitDate: Sun Aug 23 10:32:37 2009 +0200
     Make RCU-sched, RCU-bh, and RCU-preempt be underlying
     implementations, with "RCU" defined in terms of one of the
     three.  Update the outdated rcu_qsctr_inc() names, as these
-    functions no longer increment anything.
+    functions no loner increment anything.
+
+# RCU and preempt
+commit 95f0c1de3e6ed4383cc4b5f52ce4ecfb21026b49
+Refs: v3.5-rc5-17-g95f0c1de3e6e
+Author:     Paul E. McKenney <paulmck@kernel.org>
+AuthorDate: Tue Jun 19 11:58:27 2012 -0700
+Commit:     Paul E. McKenney <paulmck@kernel.org>
+CommitDate: Mon Jul 2 12:34:25 2012 -0700
+    rcu: Disable preemption in rcu_blocking_is_gp()
+    It is time to optimize CONFIG_TREE_PREEMPT_RCU's synchronize_rcu()
+    for uniprocessor optimization, which means that rcu_blocking_is_gp()
+    can no longer rely on RCU read-side critical sections having disabled
+    preemption.  This commit therefore disables preemption across
+    rcu_blocking_is_gp()'s scan of the cpu_online_mask.
+    (Updated from previous version to fix embarrassing bug spotted by
+    Wu Fengguang.)
+
