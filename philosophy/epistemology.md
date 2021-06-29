@@ -109,8 +109,6 @@ John Dewey:[D is for John Dewey: His Approach To Education](https://www.theposit
 从结构主义走向建构主义的课程观及其启示.pdf 
 Firo: There are many levels of creation, e.g. a blank piece of paper.
 ### Pioneer 艰苦卓绝, 苦行僧；经历困难的问题人才能成长. 越困难的问题, 对人的历练越多.
-不要轻看那些初看自己想出来的简单的问题。 那个就是你思考的基础。
-勇敢面多苦难，经历苦难吧。
 苦难对于天才是垫脚石,对于强者是一笔财富,对于弱者是万丈深渊 --巴尔扎克
 实际上，许多人缺乏内在的精神活力，常常被苦难摧毁。-- Rudolf Eucken 如何看待苦难造就人这种逻辑？zhihu.com/question/24526150/answer/35927869
 ### 正向思考: problems -> solutions, 解决问题, 而不是翻译猜谜。

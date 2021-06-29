@@ -79,6 +79,11 @@ sleep 17033 [002] 32332.939229: probe:tick_sched_timer: (ffffffffa316fc30)
 ## Hrtimer
 https://www.kernel.org/doc/Documentation/timers/hrtimers.txt
 hrtimer_bases
+
+## Range hrtimer _softexpires
+range hrtimers for .28: https://lwn.net/Articles/304089/
+High- (but not too high-) resolution timeouts: https://lwn.net/Articles/296578/
+
 ### Hrtimer vs normal timer 
 Reinventing the timer wheel: https://lwn.net/Articles/646950/
 rare vs many
@@ -135,3 +140,38 @@ check del_timer_sync
 and definition of TIMER_IRQSAFE
 https://patchwork.kernel.org/patch/10811995/
 Is timer pending
+
+# Timekeeping
+update_wall_time
+
+# ktime_get and sched_clock()
+  mwilck | firo: here's what I noted last time as I needed this:                                        │ alesak
+              │22:36:57    mwilck | ktime_get_ns() = tmono.base + (tmono.xtime_nsec >> tmono.shift), where tmono =               │ ali_afk
+              │                   | tk_core.timekeeper.tkr_mono sched_clock() = ktime_get_ns() + __gtod_offset -                 │ andreas
+              │                   | __sched_clock_offset                                                                         │ cedric
+              │22:37:44    mwilck | hm paste problem                                                                             │ cfconrad
+              │22:37:54    mwilck | ktime_get_ns() = tmono.base + (tmono.xtime_nsec >> tmono.shift)                              │ crazybyte
+              │22:38:01    mwilck | where tmono =  tk_core.timekeeper.tkr_mono                                                   │ danrodriguez
+              │22:38:13    mwilck | sched_clock() = ktime_get_ns() + __gtod_offset - __sched_clock_offset                        │ dfaggioli
+              │22:38:19  fweisbec | mwilck: I trust you on that, I never tried                                                   │ dmulder
+              │22:38:29      firo | mwilck: cool.                                                                                │ dom
+              │22:38:43    mwilck | Thus would be the ns readout at the time when ktime_get_ns() was last updated.               │ dsterba
+              │22:39:01    mwilck | The kernel would add a delta value based on an rdtsc readout                                 │ duwe
+              │22:39:34    mwilck | (which you obviously don't have in crash).                                                   │ egbert
+              │22:40:16    mwilck | s/Thus/This/ above                                                                           │ ematsumiya_away
+              │22:41:01      firo | Yes. that delta isn't necessary for us in crash.                                             │ firo
+              │22:41:07      firo | So perfect!                                                                                  │ Fleedwood
+              │22:42:27    mwilck | better double-check whether the result makes sense :-)                                       │ fweisbec
+              │22:42:43      firo | yes.                                                                                         │ gabrielftg
+              │22:47:57       <-- | lzhong (lzhong@cfontana.openvpn.suse.cz) has quit (Quit: Leaving)                            │ ggherdov
+              │22:52:32       <-- | fvogt (fabian@10.163.25.66) has quit (Quit: Konversation terminated!)                        │ goldwyn
+              │22:56:52  nborisov | so vlastimil went on a holiday and the share price is tanking !                              │ hare
+              │22:57:04  nborisov | vbabka,  come save the company!                                                              │ henrix
+              │23:02:05     metan | can we blame him for the heat wave too?                                                      │ hramrach
+              │23:02:21  nborisov | since he is not here to defend himself i'd say yeah :d                                       │ hsehic
+              │23:03:06    mwilck | firo: the above holds only when the TSC has been marked stable. You'll see the log:          │ iforster
+              │23:03:20    mwilck | sched_clock: Marking stable (466633950, 1057252)->(479924262, -12233060)                     │ jbohac
+              │23:03:37    mwilck | where the 2nd number is __gtod_offset and the 4th number is __sched_clock_offset             │ jcejka
+              │23:08:24      firo | mwilck: Got it.                                                                              │ jeffm
+              │23:08:57      firo | mwilck: still holds when TSC becomes unstable?                                               │ jeyu
+              │23:10:34      firo | Need to look into the implementation.  

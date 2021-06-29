@@ -5,6 +5,9 @@ date: 2015-11-12
 category: cs
 ---
 
+# Debug
+efi=debug earlyprintk=efi,keep earlycon=efifb keep_bootcon" and no "quiet" 
+
 
 # SMP boot
 Check SDM v3 BSP and AP Processors

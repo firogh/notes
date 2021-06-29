@@ -140,6 +140,10 @@ relevant to the vmlinux kernel.
 l3mule: /suse/fyang/s/1150597/SR101256835093
 crash xen-syms-4.7.6_05-43.42.1.16518.2.PTF vmcore
 
+# Xen hypervisor version
+xen_banner()
+kdumpid
+
 
 # Is it Dom0 or DomU? 
 [How do I tell if I'm running in a dom0 or a domU?](https://wiki.xenproject.org/wiki/Xen_FAQ_Dom0)

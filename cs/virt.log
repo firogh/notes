@@ -20,6 +20,7 @@ https://access.redhat.com/articles/5008811
 [Single Root I/O Virtualization (SR-IOV)](https://www.kernel.org/doc/Documentation/PCI/pci-iov-howto.txt)
 
 # Qemu
+https://documentation.suse.com/sles/11-SP4/html/SLES-all/cha-qemu-running.html
 GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0
 GRUB_TERMINAL="serial console"
 GRUB_TERMINAL="console"
