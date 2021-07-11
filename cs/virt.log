@@ -60,3 +60,7 @@ inject_page_fault
 [Linux Kernel Coredump Analysis with Crash Utility](http://blog.dynofu.me/post/2015/08/31/crash-utility-tutorial.html)
 https://www.vmware.com/pdf/snapshot2core_technote.pdf
 https://vmware.github.io/photon/assets/files/html/3.0/photon_troubleshoot/investigating-the-guest-kernel.html
+srv-sapgad-Snapshot4.vmem
+srv-sapgad-Snapshot4.vmsn
+crash -e emacs --kaslr auto --hex vmlinux.gz vmlinux.debug  srv-sapgad-Snapshot4.vmsn
+

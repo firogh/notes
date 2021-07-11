@@ -7,6 +7,7 @@ category: cs
 
 # Debug
 efi=debug earlyprintk=efi,keep earlycon=efifb keep_bootcon" and no "quiet" 
+Boot-time tracing: kernel.org/doc/html/latest/trace/boottime-trace.html
 
 
 # SMP boot
