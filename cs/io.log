@@ -204,6 +204,8 @@ else synchronize ?? which function?
 
 
 # Queue
+blk_mq_sched_insert_request: three queues
+mrege: __blk_mq_sched_bio_merge
 ## Blk-mq
 https://www.cnblogs.com/Linux-tech/p/12961279.html Multi-queue 架构分析
 [The multiqueue block layer](https://lwn.net/Articles/552904/)
