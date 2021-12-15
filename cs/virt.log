@@ -24,6 +24,7 @@ https://documentation.suse.com/sles/11-SP4/html/SLES-all/cha-qemu-running.html
 GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0
 GRUB_TERMINAL="serial console"
 GRUB_TERMINAL="console"
+## In fact we only need console=ttyS0
 
 # iommu
 [DMAR 与 IOMMU](http://linuxperf.com/?p=67)
