@@ -1,0 +1,22 @@
+# sched_rt_period/runtime_us test
+> # /proc/sys/kernel/sched_rt_period_us
+> 1000000
+> # /proc/sys/kernel/sched_rt_runtime_us
+> 950000
+in /mounts/ziu/SFSC00312045/scc_RDP_210901_1448/proc.txt. IOW, the RT tasks
+should be limited to 95% CPU time. 
+Starting a CPU hog:
+> c418:~ # taskset 0x2 stress-ng --cpu 1
+> stress-ng: info:  [13958] defaulting to a 86400 second (1 day, 0.00 secs) run per stressor
+> stress-ng: info:  [13958] dispatching hogs: 1 cpu 
+chrt -f -p 20 13959
+> c418:/proc/sys/kernel # grep . sched_rt*
+> sched_rt_period_us:1000000
+> sched_rt_runtime_us:100000
+
+## construct in mind
+
+
+
+
+

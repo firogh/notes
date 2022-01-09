@@ -4,6 +4,7 @@ free_area_init: spaned - absent(hole)
 [    0.035862] Initmem setup node 0 [mem 0x0000000000001000-0x00000003227fffff]
 [    0.035863] On node 0 totalpages: 2999131
 NODE_DATA(nid)->node_present_pages is equal to kernel global variables: memblock.memory or sum of zone[i]->present_pages
+memblock.memory.total_size
 
 ## total number of reserved pages
 memblock.reserved, memblock_reserve

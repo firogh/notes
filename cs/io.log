@@ -105,8 +105,6 @@ CommitDate: Sat Jan 14 11:30:00 2017 +0100
                 blk_stat_set_issue(&rq->issue_stat, blk_rq_sectors(rq));
                 rq->rq_flags |= RQF_STATS;
 
-
-
 ## bio
 [A block layer introduction part 1: the bio layer](https://lwn.net/Articles/736534/)
 For Recursion avoidance, see dm.c __split_and_process_bio()

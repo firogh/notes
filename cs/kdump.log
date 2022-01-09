@@ -4,6 +4,10 @@ Documentation/kdump
 [kdump: usage and internals](https://events.static.linuxfound.org/sites/events/files/slides/kdump_usage_and_internals.pdf)
 [Kdump history on sourcefoge](http://lse.sourceforge.net/kdump/)
 
+# basic logic of vmcoreinfo
+elfcorehdr
+crash_save_vmcoreinfo_init
+
 # vmcoreinfo
 [[PATCH 0/3] vmcoreinfo support for dump filtering](http://lists.infradead.org/pipermail/kexec/2007-August/000521.html)
 /sys/kernel/vmcoreinfo

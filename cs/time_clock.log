@@ -175,3 +175,29 @@ update_wall_time
               │23:08:24      firo | mwilck: Got it.                                                                              │ jeffm
               │23:08:57      firo | mwilck: still holds when TSC becomes unstable?                                               │ jeyu
               │23:10:34      firo | Need to look into the implementation.  
+
+# printk time
+print_time() and static bool printk_time = IS_ENABLED(CONFIG_PRINTK_TIME);
+        if (time)
+                len += print_time(msg->ts_nsec, buf ? buf + len : NULL);
+
+                msg->ts_nsec = local_clock();
+crash> sys config | grep CONFIG_HAVE_UNSTABLE_SCHED_CLOCK
+CONFIG_HAVE_UNSTABLE_SCHED_CLOCK=y
+static inline u64 local_clock(void)
+{
+        return sched_clock_cpu(raw_smp_processor_id());
+}
+
+crash> p tk_core.timekeeper.tkr_mono
+$28 = {
+  clock = 0xffffffff9003d8e0 <kvm_clock>,
+  mask = 0xffffffffffffffff,
+  cycle_last = 0x7320c82464f3b3,
+  mult = 0x80027d,
+  shift = 0x17,
+  xtime_nsec = 0x30a990165b085,
+  base = 0x6cc725290b6273
+}
+
+

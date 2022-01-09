@@ -1,3 +1,11 @@
+
+# Fully ordered
+powerpc: Make {cmp}xchg* and their atomic_ versions fully ordered: https://lists.ozlabs.org/pipermail/linuxppc-dev/2015-November/135875.html
+Chapter 8 Bus Locking, of the Intel 64 and IA-32 Architectures Software Developer’s Manual, Volume 3A: The memory-ordering model prevents loads and stores from being reordered with locked instructions that execute earlier or later.k
+
+# Reordering
+[Memory Reordering Caught in the Act](http://preshing.com/20120515/memory-reordering-caught-in-the-act/)
+
 # Acquire and release
 [The names "acquire" and "release" come from the operation of mutexes. -- Qt blog: Memory ordering semantics](https://www.qt.io/blog/2009/10/06/memory-ordering-semantics)
 
@@ -60,8 +68,6 @@ AuthorDate: Mon Oct 9 10:04:27 2017 -0700
 [Out-of-Thin-Air Execution is Vacuous](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4375.html)
 
 # Material
-## Practices
-[Memory Reordering Caught in the Act](http://preshing.com/20120515/memory-reordering-caught-in-the-act/)
 
 ## LQO
  134 static void sysrq_handle_crash(int key)
