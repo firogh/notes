@@ -1,0 +1,10 @@
+
+# Debugging OOM issue
+Total memory, how much was consumed? Reasonable? Expected? consumers of memory?
+
+Swap, if swap has enough free memory, why not used? => Reclaim logic
+
+slabinfo => total
+cat ../firo/slabinfo.log | awk 'BEGIN{sum=0;}{sum += $6*$15/256;print $1" : " $6*$15 " " $6*$15/256"MB"; }END{print "total : "sum*256" " sum"MB"}' | sort -n -k3 | column -t
+
+

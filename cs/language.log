@@ -19,3 +19,16 @@ However, perhaps this will dissuade the customer from contacting you so much in 
 Regis, I believe it would be much better to close this bug and start from scratch with some more useful information. E.g. high level metrics and expectations. It is also very important to define the reproducebility of numbers as well as isolation of a single event into userspace and kernel parts. E.g. these are systemcalls/kernel events involved in the measured unit (the SQL statement in this case). It would be ideal to isolate those and provide us with timings so that we can conclude major contributors.
 
 If the primary source of the performance difference was a HW change then we definitely need to know what has been changed.
+
+# compare qunatitafy
+1. What exactly does "high CPU load" mean and how does it quantitatively
+compare to the normal state?
+
+# condition
+Is the "high CPU load" condition reproducible reliably with the PTF?
+
+# confirm
+If I have understood correctly the customer is going to maintain the patches
+themselves in SLE15-SP2 and there is no work to do for us. Can you please
+confirm? I'll close the bug as WONTFIX in this case.
+
