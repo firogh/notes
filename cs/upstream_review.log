@@ -1,2 +1,15 @@
 mm
 
+# Thoughts on joining in upstream activity
+上游简单，只要看最新的逻辑就可以了。
+之前太在意符号了，实践上只要基础的含义就够了。
+
+
+# What I can do with review upstream patches
+* understand how it works
+* read others' comments
+关键是让自己一直在意义中.
+
+# Patches purposes
+Utilization
+https://lore.kernel.org/all/20200623174037.3951353-18-guro@fb.com/T/#m4a84d81e81174a3c36583d05ddfe43729d545b70

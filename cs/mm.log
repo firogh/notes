@@ -1,0 +1,21 @@
+
+# Control
+PageKmemcg:
+commit bcfe06bf2622f7c4899468e427683aec49070687
+    mm: memcontrol: Use helpers to read page's memcg data
+    But in general the kmemcg flag has nothing to do with mapping to
+    userspace.  It only means that the page has been accounted by the page
+    allocator, so it has to be properly uncharged on release.
+
+New slab controller
+https://lore.kernel.org/all/20200623174037.3951353-18-guro@fb.com/T/#m1cafea3990bc30f3a3964a15c879638fdcd5250f
+
+## Accounting
+
+# Map
+
+# Shrink
+fs releated memory
+
+# Throttle
+https://bugzilla.suse.com/show_bug.cgi?id=1192934#c8

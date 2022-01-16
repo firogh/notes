@@ -1,0 +1,3 @@
+
+# debug
+systemd.log_level=debug systemd.log_target=console printk.devkmsg=on
