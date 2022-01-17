@@ -1,25 +1,16 @@
 # 做什么
-worth
-first principle
-她者视角.
-Watch list
+worth, first principle, 她者视角, Watch list
 
 # 怎么做
 ## 人的目标应该是顺着事情的规律. 想契合.顺着因果律流. 
 看似相反的过程, 效果反倒更好, 因为行为与因果律流是匹配的. 比如付出智力, 收获更多, 反倒的得到的多, 留下来的更少. 
-
 不要一个直接的成为结果的可用"过程", 要知道这个过程的由来.
-
 无论对过去做出怎样的努力, 世界是围绕这最新的世界转的. 如果过去足够好, 你不需要东. 如果过去不好, 那就是现在.还是需要面对现在. 
 以现在为中心, 建立个圆, 面向未来, 有需要的看看过去.
-
-## 角度, start, 契机
-开始结束, 正反, 是非.
-
+## Just in time
 ## 不做
 ## 捨てる
 很有必要, 因为出发点就是个错误的假设.
-
 ## 循环迭代变化. oracle machine
 
 # Efficiency
@@ -33,6 +24,11 @@ Watch list
 
 # Optimization
 hotpath
+
+# Popper
+20/80 or 微内核, 有限状态机, 信心和胆识
+Popper这个工具, 是把事物以特定的topic为中心, 进行理解, 并不是从另外一个终极的 统一的视角看他.
+Popper把目标控制在有限的个数范围, 
 
 # Language learning
 shortcuts, 形成直接含义映射, 减少逻辑推导.
@@ -54,39 +50,30 @@ http://www.learnerhall.org/2013/04/it-pays-to-v-worth-worthy-of-worthwhile.html
 # 理解
 20/80法则 and 第一因 first principle, 一定要理解到根上, 根是什么? 
 这个根其实就是我真正想知道的, 其他只是这个根的衍生.
-
 问题意识: what why how, 开卷考试
 https://zhuanlan.zhihu.com/p/151657336
-
 理解概念, 用概念/含义包含每个关键符号.
 wo don't need details.
-
 想法加实例
-
 Construct something in your mind
 预想加事例.
 有限状态机.
 对象: 1-3, 3-1, 3-3
 过程: 正向过程, 与反过来的过程.
-
 细腻, 贴切, 放大镜.
-
 意义控制符号, 而不是反过来, 通过符号猜意义.
 不要被符号拦住, 杀出去, 找到含义.
 translate your idea into the existing symbols, not the reverse.
 这样你一直在意义的控制中.
 只看commit description, 不看代码!
-
 看不懂这个表述就换一个, 可能因为知识储备不足, 也可靠是对方表达不清楚有误.
-
 以现在为中心.
-
 直观, 模型
-
 意义是映射的, 不是构建出来的. 构造语义是有缺陷的. 映射是直接的, 而构造是现实的.
 corner case?no, 同一性,probably?
-
 理解, 可能是个翻译的过程. 实际的事物翻译到你所构建的的东西.
+## 理解kernel patch
+看到一个点不理解, 很大程度是因为看的不全. 要整体概览. 看看都涉及了哪些.
 
 ## 理解的基本事实
 从结果看, 我是最终理解的.
@@ -107,17 +94,12 @@ understand: 背景知识与提炼能力
 分多少. 均分, divide on request, throttle
 
 # 世界认识
-20%,80%法则
+20%, 80%法则
 知识, 思想的世界战场, 赢家通吃, 谎言需要现实世界的巨大成本来维持.
 
 # 事情分类
 力所能及, zero妙处理.
 距离之外的事, 设立目标, 不断的一点点靠近.
-
-# Popper
-20/80 or 微内核
-有限状态机
-信心和胆识
 
 # Book on learning methods
 夢をかなえるゾウ:https://www.youtube.com/watch?v=ZANPm_ixBBU
@@ -126,7 +108,8 @@ understand: 背景知识与提炼能力
 
 # 推动力, drive, 力量
 力所能及, 触手可及, 离自己近的事.
-
 限制理性使用.
-
 我发现, 一种推动力是当你知道这个事情怎么做的有用.
+
+# 表达, express
+目标结果与过程, 有些时候可以相互转换, 比如, 不方便列出全部目标, 用过程就很好.
