@@ -1,0 +1,3 @@
+struct apic_chip_data *data = irq_data->chip_data;
+547         err = assign_irq_vector(irq, data, dest);
++	trace_vector_update(irq, d->cfg.vector, d->domain, d->cfg.old_vector, d->old_domain);

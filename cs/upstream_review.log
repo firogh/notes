@@ -1,5 +1,9 @@
 mm
 
+# First principle
+不要靠读代码, 来理解代码. 
+以fanotify 的nonfiction_list为例, 我可以搜到suse.com/support/kb/doc/?id=000020332
+
 # Thoughts on joining in upstream activity
 上游简单，只要看最新的逻辑就可以了。
 之前太在意符号了，实践上只要基础的含义就够了。
