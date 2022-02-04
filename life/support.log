@@ -1,14 +1,19 @@
 # 做什么
-必须意识到它.Problems, goals, and desires, etc come into sight.
+## 必须意识到它.Problems, goals, and desires, etc come into sight.
+## 有些感觉事, 只要在做的过程中才会出现
 ## The unexamined life is not worth living.  --Socrates
 默认所有的事情, 都是未检视的. 需要审视其中的问题, 不舒服的地方, 设想预期的理想状态.
 不要以为看似简单, 实际上有很多事要多. 世界是连续的.
 ## 细腻觉察, 不要放过为难, 不舒服
-first principle, 她者视角, watch list
+first principle, 她者视角, watchlist
+## Priority
 ## Not worth doing
 混淆求真和生存, 理性和现实. 如果你无法生存, 你要如何求真.
 
-# 怎么做, 选择
+# 怎么做 - 选择:emotion, 情绪
+情绪就是主观的
+
+# 怎么做 - 选择: 其他
 简单说来, 就是人选择运用使用规律.
 ## 真实/现实, 力所能及
 人的目标应该是顺着事情的规律. 想契合.顺着因果律流. 
@@ -16,7 +21,8 @@ first principle, 她者视角, watch list
 不要一个直接的成为结果的可用"过程", 要知道这个过程的由来.
 无论对过去做出怎样的努力, 世界是围绕这最新的世界转的. 如果过去足够好, 你不需要东. 如果过去不好, 那就是现在.还是需要面对现在. 
 以现在为中心, 建立个圆, 面向未来, 有需要的看看过去.
-## Mustn't do and must do
+## Emotion, 情绪
+## Mustn't do and must do; 禁忌
 人生有些事一旦做了或者没去做, 将造成不可挽回的结果.
 ### Don't risk your health
 发现自己得病, 不要想着靠着这个病去学新东西.
@@ -39,6 +45,7 @@ first principle, 她者视角, watch list
 ### 彻底可错 - 认知能力问题
 认识中总会有错误.
 
+
 # 怎么做, 运用使用规律
 真实/现实, 力所能及, 除去细枝末节
 ## What is really necessary?
@@ -58,11 +65,12 @@ first principle, 她者视角, watch list
 ## 除去细枝末节
 简化, 找到重点, 一件事, 一个机制, 往往只要那么几个点理解了, 整体就通了, 就理解了. 如果不得要领, 耗费再多时光也是枉然. 
 这就是人脑的工作机制, 知道了大概思路,细节可以用时间来换, 来填充
+## 具体
 ## 找出难, 阻碍的地方
 ## Just in time
 很有必要, 因为出发点就是个错误的假设.
 ## 循环迭代变化. oracle machine
-## 推动力, drive, 力量
+## 推动力, progress, drive, 力量
 力所能及, 触手可及, 离自己近的事.
 限制理性使用.
 我发现, 一种推动力是当你知道这个事情怎么做的有用.
@@ -75,6 +83,22 @@ first principle, 她者视角, watch list
 ### 例子
 归零, 就像arm的vipt的问题
 
+# 怎么做 - Carry out or handle multiple goals parallelly at the same time.
+
+# 怎么做 - 时间安排
+Pomodoro
+
+# 无效
+## CSGNPTFR 缺少都算无效的
+## 抽象的, 不具体的
+## 虚假的困难
+不断测试那些认为是难的事情, 是否真的难. 
+## 识别出无效方法,目标
+之前思考如何在内核方面变厉害时, 用目标替换过程. 一个看似理想的目标替代了原由目标的过程.但是并没有提出新的过程.
+假定一个不实际的 '前件条件' or '目标'.
+推导不完整, 要不然没开头, 没结尾, 很多也没中间步骤.一定要考虑反例.
+潜意识寻找通用的, 统一的, 终极的方法.
+
 # Improve efficiency and optimization
 方法对了, 慢就是最快.
 减少依赖关系.
@@ -84,16 +108,9 @@ Focus and 休息好
 ## 时间
 *)减少时间消耗. *)只做必要的事. 不值得做的事, 不要做. *) 时间复利, 尽早开始. 
 不是必须的事情, 不要花时间. 比如非mm的bug, 不要深入理解. 有所不为, 才能有所为.
-## 减少依赖与阻碍: Carry out or handle multiple goals parallelly at the same time.
+## 减少依赖与阻碍: 
 不要轻易设立必要条件, 增加阻力;默认全部是非必要.
-## 破除虚假的困难
-不断测试那些认为是难的事情, 是否真的难. 
-## 识别出无效方法,目标
-之前思考如何在内核方面变厉害时, 用目标替换过程. 一个看似理想的目标替代了原由目标的过程.但是并没有提出新的过程.
-假定一个不实际的 '前件条件' or '目标'.
-推导不完整, 要不然没开头, 没结尾, 很多也没中间步骤.一定要考虑反例.
-潜意识寻找通用的, 统一的, 终极的方法.
-### distraction
+## distraction
 ## Optimization
 hotpath
 
