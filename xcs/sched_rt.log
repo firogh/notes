@@ -19,4 +19,13 @@ chrt -f -p 20 13959
 
 
 
+Without NO_RT_RUNTIME_SHARE, I can see
+/proc/sys/kernel # grep . sched_rt*
+sched_rt_period_us:1000000
+sched_rt_runtime_us:950000
+
+grep rt_runtime /proc/sched_debug        # My VM has two CPUs. 
+  .rt_runtime                    : 1000.000000 # CPU0
+  .rt_runtime                    : 900.000000  # CPU1
+In this case, CPU0's run queue's rt_runtime eventually went to same as sched_rt_period_us, so normal task has no chance to run on CPU0.
 

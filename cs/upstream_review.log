@@ -1,13 +1,24 @@
 mm
 
-# First principle
-不要靠读代码, 来理解代码. 
+# CSGNOPTFR
+*) 建立社交
+## 初期
+找到理解patch的一些方法. 积累些常见的上游知识. 发表关于patch的review
+## 成熟期
+## Emotion
+挑战的事变成有趣的事.
+
+# Unerstanding mechanism and patches
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes
+## 不要靠读代码, 来理解代码. 
 以fanotify 的nonfiction_list为例, 我可以搜到suse.com/support/kb/doc/?id=000020332
+## Usage 是天然的理解起点
+high level 抽象
+通常是非常好因果的起点: 原因
 
 # Thoughts on joining in upstream activity
 上游简单，只要看最新的逻辑就可以了。
 之前太在意符号了，实践上只要基础的含义就够了。
-
 
 # What I can do with review upstream patches
 * understand how it works
@@ -18,4 +29,29 @@ mm
 Utilization
 https://lore.kernel.org/all/20200623174037.3951353-18-guro@fb.com/T/#m4a84d81e81174a3c36583d05ddfe43729d545b70
 
-# Emotion
+# 看不懂patch commit description or 某个机制
+## 说明, 可能有些词汇你没理解,  很快被忽视了. 
+比如为什么#define pageblock_order         HUGETLB_PAGE_ORDER, commit 中说 It is assumed that grouping should be done at the lowest sensible order. 我没理解并忽略了the lowest sensible order这句话.
+## did the author say something
+
+# 我必须要转换我的思想从accumulate kernel knowledge 到improve linux kernel
+
+# Language
+## Open code
+> Just to minimize the code churn ! But I will be happy to open code them
+> here (and in other platforms) if that will be preferred.
+
+I think this will be clearer because all the processing will be at one place.
+Besides, this way include/asm/pgtable.h becomes shorter and less crowded.
+
+## Including original comment
+This looks extremely strange. It probably is correct when it comes to CoW, how
+about including the comment that was in the original definitions for the cases
+where CoW is expected?
+
+## fix also for stable
+I'm thinking it needs cc:stable.  It sounds unlikely that we'll hit it
+in real life, but lockdep splats are concerning and I expect downstream
+kernel consumers will end up merging this anyway, for this reason.
+
+

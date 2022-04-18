@@ -1,0 +1,36 @@
+
+# kernel的意志, worth doing and 我
+1) practice 使意志实体化的能力, review and create implementations
+2) kernel 的意志, 理解Extant的presented 实体 in high level
+3) Resource and usage of resource.
+4) all these in high level
+
+# 关于我对kernel认识的变化的记录和思考
+关注实现->在脑子里建立语言化的kernel->关注用不再关注实现, 没有我的部分, 都存在kernel 代码中
+连怎么用都不知道. 舍本逐末. 沉溺于表象.
+一个人忙碌十年, 从未了解最新进展. far away from reality.
+学很多用不上的东西
+## 宗教情结
+## 问题
+闭门造车 读死书 两耳不闻窗外事, 青蛙
+## 可能对的方向
+1. 想象你在空中, 控制各种各样的东西, 规律, 知识, 改变什么, 让什么移动到别的位置.
+2. 心在时间中.
+3. 不要把对象放在脑子里, 要在他本来的位置, 完整的时空, 而不是记忆的某个位置.
+4. 只关注usage, userland-visible aspects of xxx(e.g. cgroup)
+5. 表面: usage, general concepts
+
+
+# 真正的知识
+reference counting值得学习, 但page->refcount的实例不值得花时间. 他就是解决了问题而已.
+换句话说就是无形, 真正的知识是无形的.
+
+## 这个味道吗?
+https://zhuanlan.zhihu.com/p/356520259
+02.何为“动态学习”？
+这是我自己定义的一个概念。和“静态学习”相对应，指的是一种实时反馈、有效调整、有明显“推进感”的学习模式。
+
+# bugs
+sbitmap_word
+        spinlock_t swap_lock;
+

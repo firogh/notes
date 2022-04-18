@@ -1,0 +1,19 @@
+
+# kmem controller 
+The new slab memory controller: https://lwn.net/Articles/798605/
+[PATCH v7 00/19] The new cgroup slab memory controller: https://lore.kernel.org/all/20200623174037.3951353-7-guro@fb.com/T/#u
+
+# design ideas
+interfaces: files -> cgroup and controller
+same controllers is origanized in hierachy 
+Cgroups v2 "no internal processes" rule
+Resource Distribution Models: Work-conserving
+
+
+# usage
+Before starting reading the code, you need to know how to use it.
+https://man7.org/linux/man-pages/man7/cgroups.7.html
+https://lwn.net/Articles/679786/
+
+# Examples
+https://chrisdown.name/talks/cgroupv2/cgroupv2-fosdem.pdf

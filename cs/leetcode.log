@@ -1,0 +1,27 @@
+
+# 目标: 刷题的目的, 能得到什么?
+算法套路/模板, 如果他们不存在, 那刷题的意义是什么?
+套路具体体现在, 人类语言层面的问题分析与解题思路, 编程的coding实现能力, 以及潜在的neuron circuit 三个层面.
+后一个需要日积月累形成反射, 通常容易被忽略掉.
+刷题进阶Tips--分享给那些有刷题经验或工作经验的人: https://www.1point3acres.com/bbs/thread-289223-1-1.html: 
+## 套路的适用范围/准确性, 熟练度. 
+熟练度需要不断的刷题, 提升: 做题时间5, 10, 20分钟以内? bug-free? AC次数
+适用范围/准确性需要理性的思考,判断.
+## 套路的组成元素: 
+套路: 问题, 解法. 
+解法: 运算算法, 存储结构.
+## 套路的类型
+工具类套路: 存储结构, 基础算法.
+
+# 过程: 题分类, 解法总结
+盲刷?No. 题按类型分. Deliberate practice.
+胖头龙的咸鱼刷题笔记-算法篇: https://www.1point3acres.com/bbs/thread-678970-1-1.html
+学习算法和刷题的框架思维: https://labuladong.github.io/algo/1/2/
+## 题分类
+https://zhuanlan.zhihu.com/p/358653377
+https://www.educative.io/courses/grokking-the-coding-interview
+https://turingplanet.org/leetcode%e5%88%b7%e9%a2%98%e7%b3%bb%e5%88%97/
+重新分类 Leetcode 高频题 2021 版: https://github.com/resumejob/Leetcode-retag
+
+# 存储结构
+为什么有不同的存储结构?

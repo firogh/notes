@@ -1,4 +1,17 @@
 
+# Accounting
+
+## populated present vs managed
+[PATCH] mm/page_alloc: add zone to zonelist if populated
+During memory hotplug, when online/offline a zone, we need to rebuild
+the zonelist for all nodes. Current behavior would lose a valid zone in
+zonelist since only pick up managed_zone.
+There are two cases for a zone with memory but still !managed.
+  * all pages were allocated via memblock
+  * all pages were taken by ballooning / virtio-mem
+This state maybe temporary, since both of them may release some memory.
+Then it end up with a managed zone not in zonelist.
+
 # Control
 PageKmemcg:
 commit bcfe06bf2622f7c4899468e427683aec49070687
@@ -10,12 +23,21 @@ commit bcfe06bf2622f7c4899468e427683aec49070687
 New slab controller
 https://lore.kernel.org/all/20200623174037.3951353-18-guro@fb.com/T/#m1cafea3990bc30f3a3964a15c879638fdcd5250f
 
-## Accounting
 
 # Map
+
+# Memory barrier
+User-space RCU: Memory-barrier menagerie: https://lwn.net/Articles/573436
+membarrier system call performance and the future of Userspace RCU on Linux: https://lttng.org/blog/2018/01/15/membarrier-system-call-performance-and-userspace-rcu/
 
 # Shrink
 fs releated memory
 
 # Throttle
 https://bugzilla.suse.com/show_bug.cgi?id=1192934#c8
+
+# Virtio-mem
+https://virtio-mem.gitlab.io/
+virtio-mem: Paravirtualized Memory by David Hildenbrand: https://www.youtube.com/watch?v=H65FDUDPu9s
+Example Usage: [RFC,v4,00/13] virtio-mem: paravirtualized memory: https://patchwork.kernel.org/project/kvm/cover/20191212171137.13872-1-david@redhat.com/
+[PATCH v5 00/21] virtio-mem: Paravirtualized memory hot(un)plug: https://lore.kernel.org/kvm/20200626072248.78761-11-david@redhat.com/T/

@@ -1,0 +1,26 @@
+
+# mmap_sem
+mm: protect against concurrent vma expansion: https://lkml.org/lkml/2012/12/4/512
+[V5] drop the mmap_sem when doing IO in the fault path: https://lore.kernel.org/all/20181211173801.29535-2-josef@toxicpanda.com/T/#r65f9162c7f287f68f734656c0b30715460358fe4
+https://www.linuxplumbersconf.org/event/2/contributions/161/attachments/70/81/LPC2018_mmap_sem_abuse.pdf
+LPC2019 - Replacing mmap_sem with finer grained locks: https://www.youtube.com/watch?v=Mq95LKV24js
+LPC2019 - Killing the mmap_sem's contention: https://www.youtube.com/watch?v=dvdbeDZTj2o
+
+The Linux Maple Tree - Matthew Wilcox, Oracle: https://www.youtube.com/watch?v=XwukyRAL7WQ
+
+# Lockless
+ * raw_write_seqcount_latch() - redirect latch readers to even/odd copy
+ * @s: Pointer to seqcount_latch_t
+ *
+ * The latch technique is a multiversion concurrency control method that allows
+ * queries during non-atomic modifications. If you can guarantee queries never
+ * interrupt the modification -- e.g. the concurrency is strictly between CPUs
+ * -- you most likely do not need this.
+ *
+ * Where the traditional RCU/lockless data structures rely on atomic
+ * modifications to ensure queries observe either the old or the new state the
+ * latch allows the same for non-atomic updates. The trade-off is doubling the
+ * cost of storage; we have to maintain two copies of the entire data
+ * structure.
+
+ 

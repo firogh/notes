@@ -1,0 +1,49 @@
+# Understanding debugging
+search and observe
+## Symptoms
+现象清楚
+现象不清楚: CPU hung in hardware unkown state 不能进一步观测, 
+print and collect more information
+## (search) cause space
+Brute force, Binary search 
+Back Tracking Method
+Eliminate causes
+
+# Command line parameters 
+man bootparam
+man kernel-command-line
+man dracut.cmdline
+man systemd-udevd.service
+https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
+
+# Execution environment configurations 
+man systemd.exec like LimitNOFILE
+man ulimit for RLIMIT_NPROC(man setrlimit for systemcall)
+man systemd.resource-control: DefaultTasksMax / TasksMax / UserTasksMax settings: https://www.suse.com/support/kb/doc/?id=000015901
+https://doc.opensuse.org/documentation/leap/tuning/html/book-tuning/cha-tuning-cgroups.html
+
+# analyzing concurrent 时间分析, 假设
+在concurrent环境, 任何时间区间假设都不合理. 比如: https://patchwork.kernel.org/project/linux-block/patch/20170322021443.26397-1-tom.leiming@gmail.com/ dump中看汇编寄存器里request->q 是NULL, 但是内存是好的.
+
+# boot issue
+crash> p system_state
+system_state = $1 = SYSTEM_BOOTING
+
+udev.log_priority=debug, rd.udev.log_priority=debug systemd.log_level=debug systemd.log_target=console printk.devkmsg=on
+
+## the classic micorcode
+dis_ucode_ldr
+https://bugzilla.suse.com/show_bug.cgi?id=1195532
+
+## timeout and blacklist driver
+### https://bugzilla.suse.com/show_bug.cgi?id=1195764
+rd.driver.blacklist=qla2xxx in kernel cmdline or even
+/etc/dracut.conf.d/99-blacklist-qla2xxx.conf
+omit_drivers+="qla2xxx"
+
+# disassembly
+echo "Code: 40c2fff0 7c2004ac 2fa90000 40de0018 38210030 e8010010 ebe1fff8 7c0803a6 4e800020 7c210b78 e92d0000 89290009 <792affe3> 4082003c 813f0000 2fa90000" | OBJDUMPFLAGS=--architecture=powerpc:common64 ./scripts/decodecode
+
+# lockup
+nmi_watchdog=panic panic_on_warn softlockup_panic=1
+

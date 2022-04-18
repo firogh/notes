@@ -1,0 +1,35 @@
+https://docs.kernel.org/scheduler/sched-deadline.html
+
+If the crash dump can't be triggered from the keyboard then we might try to trigger it automatically. We could try the kernel parameters
+
+    nmi_watchdog=panic panic_on_warn softlockup_panic=1
+
+@@ -5788,8 +5788,10 @@ static void wq_watchdog_timer_fn(struct
+ 
+ 	rcu_read_unlock();
+ 
+-	if (lockup_detected)
++	if (lockup_detected) {
+ 		show_workqueue_state();
++		panic("Enforced panic on workqueue stall\n");
++	}
+ 
+
+# cgroup memory track
+Let's try cgroup to narrow down these suspicious tasks to a small range.
+Please, request customer:
+
+1. add DefaultMemoryAccounting=yes to /etc/systemd/system.conf
+2. add slab_nomerge to the kernel commandline
+3. reboot
+4. Then we have all kernel memory usage for each task under /sys/fs/cgroup/memory/; collect them with:
+
+while sleep 10; do tar -czvf cgroup_memory_$(date +%s).tar.gz /sys/fs/cgroup/memory/; done
+
+5. stop command in step 4 if kmalloc-2048 goes beyond 10GB - 16GB in /proc/slabinfo
+
+6. send all tar balls to me.
+
+
+# kprobe
+mokutil --disable-validation

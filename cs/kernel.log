@@ -1,1 +1,0 @@
-echo "Code: 40c2fff0 7c2004ac 2fa90000 40de0018 38210030 e8010010 ebe1fff8 7c0803a6 4e800020 7c210b78 e92d0000 89290009 <792affe3> 4082003c 813f0000 2fa90000" | OBJDUMPFLAGS=--architecture=powerpc:common64 ./scripts/decodecode

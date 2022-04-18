@@ -1,0 +1,17 @@
+# The priciples
+The reverse side
+
+# Common activities
+增删改查
+configuration and taking effect and stat; 
+allocation and free
+move in and move out
+object and object and life cycle
+object and object and dynamic mapping
+object and object and set/hierarchy
+object and modifications and lifecycle: lock and ref
+
+# debug
+granualty: https://bugzilla.suse.com/show_bug.cgi?id=1195532
+high level Descartes four precepts
+

@@ -1,0 +1,16 @@
+
+awk '{for (i=1; i<=NF;i++)print i":"$i}'
+
+stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
+
+
+git log --graph --pretty='%h %s' -n10
+
+find /sys/fs/cgroup/ \( -name "*.service" -o -name "*.scope" \) -type d -exec grep -H max {}/pids.events \;
+
+
+> mkdir /ram
+> mount -t tmpfs -o size=1500m tmpfs /ram
+cd /ram
+journalctl -b -o short-precise | grep kernel: | tail -n 100000 | gzip -c > journal.txt.gz
+tar cf perf-data.tar perf-*.data.gz kallsyms.gz journal.txt.gz

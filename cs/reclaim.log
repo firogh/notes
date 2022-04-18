@@ -1,0 +1,10 @@
+# GFP
+If get_order(size) > PAGE_ALLOC_COSTLY_ORDER, then this will fail even
+without the __GFP_NORETRY.  To make the guarantee that workloads are not
+receiving ENOMEM, it seems like we'd need to guarantee that allocations
+going through io_mem_alloc() are sufficiently small.
+
+For order > PAGE_ALLOC_COSTLY_ORDER, maybe we can use
+__GFP_RETRY_MAYFAIL. It will at least do more aggressive reclaim
+though I think that is a separate discussion. For this issue, we are
+seeing ENOMEMs even for order 0 allocations.

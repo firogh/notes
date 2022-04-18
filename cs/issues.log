@@ -1,4 +1,7 @@
 
+# memory leak
+trace-cmd  record -p function -e kmem:mm_page_alloc --func-stack  -l get_page_from_freelist -l free_unref_page_list  -l __free_pages_ok -l free_pcp_prepare
+
 # Debugging OOM issue
 Total memory, how much was consumed? Reasonable? Expected? consumers of memory?
 
@@ -6,5 +9,8 @@ Swap, if swap has enough free memory, why not used? => Reclaim logic
 
 slabinfo => total
 cat ../firo/slabinfo.log | awk 'BEGIN{sum=0;}{sum += $6*$15/256;print $1" : " $6*$15 " " $6*$15/256"MB"; }END{print "total : "sum*256" " sum"MB"}' | sort -n -k3 | column -t
+
+
+stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
 
 

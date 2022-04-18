@@ -1,0 +1,5 @@
+
+# Latency
+systemcalls: perf trace --duration
+
+

@@ -1,0 +1,65 @@
+
+# Search 
+非精确匹配, 逆向思维.
+Exit Condition, 终结状态的选取: 结束之后的状态, 还是结束之前.
+不要判断l,h, 记录状态. state view not action view. 结束是个虚假的抽象的状态.
+actions 会受具体的数据影响而采取的不同actions sequence.
+状态要和数据无关, 不能是比如开方后是整数还是小树, 而应该是结束前保存的最好一个x状态.
+状态: 程序状态, 变量状态, 衍生的概念的抽象的复合的状态, 比如区间内结果. 
+## 越general 算法越通用
+大小与奇数偶数通用
+最值:循环的大小判断的同一状态产生都有趋向
+循环里的大于判断: 可以是顺序的最大大于, 也可以逆序的最小大于.
+
+## while loop and exit condition
+## 状态等价转换
+转换成找最大的小, 和最小的大.
+不思考, 不同状态之间的关系. 只关心状态的内在逻辑.
+? 模糊的转为精确的. 不能精确的正向匹配转为.
+? 忽略变化的幅度, 看到找到单调变化的趋势状态. 
+? 要把复合抽象的状态, 转变为单一的变量的状态. 模糊的区间转换为边界, 上边界或者下边界? 二分状态, 大小是很适合二分的.
+
+
+# Algorithm
+program: action steps and states
+Iterative Algorithms: every iteration is an action step
+a loop invariant is a high-level. a loop invariant, which is an assertion
+states: viewing it as a sequence of snapshots of the state of the computer.
+The Advantages of the Sequence of Snapshots View: This new paradigm is
+useful one from which one can think about, explain, or develop an algorithm.
+states: input data states, continues states and exit states result states, and Convergence states
+Convergence states: 包含路径上所有状态开始到结束.
+
+# iterative vs recursive
+递归和循环都是上一轮和下一轮执行相同的操作， 唯一不同的区别是， 递归有参数的历史记录， 循环没有（如果你没有手工记录的话）。 所有递归都可以改写成循环吗？ - Isaac Zeng的回答 - 知乎 https://www.zhihu.com/question/20418254/answer/29020156
+
+递归算法, 压栈(非函数调用压栈)是可选择的, 因为stack, 递归算法天生易于保存中间状态.
+
+iteration can be conterted to Tail recursive
+recusion = iteration + preserving history states
+## Common properties, paradigms
+step by step. Part by part. Chaning by changing
+### processed and unprocessed
+Recursive: division into more than two. Every part can be processed and but not completed.
+Iterative: division into two: processed and unprocessed.
+### Subtasks
+Recursive: can be more than one subtasks. 
+## backward than forward
+Recursive with no-op-backward = iterative
+
+# 子问题划分, 很有学问.
+子问题划分不是, 简单对输入数据的divide. 比如hano塔问题, 如果简单每次排除最小的就不对, 最小的盘子就不参与后来的运算了. 这样就变成了类似于迭代的趋近逼近最终结果fibonacci可以但是, hano他不可以. 最小的数据不能置身世外, 知道最终的结果,虽然是最终一环.
+递归算法的子问题划分, 划分的是结果.
+一个递归函数等价于一个结果.
+* 数据划分的大小, 方向.
+* 还要涉及原有的数据.
+* 把问题数据 stack化, 
+* 处理顺序stack化
+ 先划分是栈底.
+子问题划分: 决定了处理的顺序.
+
+# output result
+point, less input 
+data structures, more of ouput
+	less, more
+input & output:	 lm, ml, ll, mm
