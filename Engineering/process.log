@@ -1,0 +1,7 @@
+
+# thread vs process
+LWP
+pid vs tgid
+
+# process stat
+pr_stat in procfs

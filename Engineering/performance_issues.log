@@ -1,0 +1,19 @@
+PERF tutorial: Finding execution hot spots: http://sandsoftwaresound.net/perf/perf-tutorial-hot-spots/
+
+
+# Issues
+Latency vs throughput
+
+# Bottlenecks
+CPU bound: lock, algorithm, memory
+I/O bound: memory, disk, network
+
+# Profiling
+Smapling
+Tracing
+Line-by-line
+Timeline
+
+
+
+

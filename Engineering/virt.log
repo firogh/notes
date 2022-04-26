@@ -1,0 +1,8 @@
+
+
+# Boot vmdk
+VMWare vmdk converted to raw image - Will Not Boot: https://groups.google.com/g/qubes-users/c/NDaWvlAFotQ
+
+qemu-img convert  -f vmdk prepatchvmfeb11-boot-disk -O raw prepatchvmfeb11-boot-disk.raw   
+qemu-system-x86_64 -nographic -m 4096  -no-reboot -drive format=raw,file=./prepatchvmfeb11-boot-disk.raw
+/mounts/ziu/SFSC00332801/firo/prepatchvmfeb11-boot-disk.raw

@@ -14,3 +14,6 @@ find /sys/fs/cgroup/ \( -name "*.service" -o -name "*.scope" \) -type d -exec gr
 cd /ram
 journalctl -b -o short-precise | grep kernel: | tail -n 100000 | gzip -c > journal.txt.gz
 tar cf perf-data.tar perf-*.data.gz kallsyms.gz journal.txt.gz
+
+# crash rbtree
+tree -t rbtree  -N 0xffff923817503218 -o vmap_area.rb_node -s vmap_area.va_start,va_end,vm

@@ -1,5 +1,8 @@
 mm
 
+# Patches
+trace_mm_page_alloc: __alloc_pages_bulk
+
 # CSGNOPTFR
 *) 建立社交
 ## 初期
@@ -53,5 +56,3 @@ where CoW is expected?
 I'm thinking it needs cc:stable.  It sounds unlikely that we'll hit it
 in real life, but lockdep splats are concerning and I expect downstream
 kernel consumers will end up merging this anyway, for this reason.
-
-
