@@ -1,0 +1,11 @@
+
+
+# task_rss_stat
+commit 34e55232e59f7b19050267a05ff1226e5cd122a5
+Refs: v2.6.33-5417-g34e55232e59f
+Author:     KAMEZAWA Hiroyuki <kamezawa.hiroyu@jp.fujitsu.com>
+AuthorDate: Fri Mar 5 13:41:40 2010 -0800
+Commit:     Linus Torvalds <torvalds@linux-foundation.org>
+CommitDate: Sat Mar 6 11:26:24 2010 -0800
+    mm: avoid false sharing of mm_counter
+
