@@ -1,0 +1,42 @@
+# We need at least ~800MB disk space for installing all necessary RPMs
+SUSE_BCC_DEBUG_PATH="/root/eric"	# Please change it accordingly
+mkdir -p $SUSE_BCC_DEBUG_PATH/debug
+cp ./xpageleak.py $SUSE_BCC_DEBUG_PATH/debug
+cd $SUSE_BCC_DEBUG_PATH
+
+#Setup BCC runtime evnironment
+## Add repo
+zypper --root $SUSE_BCC_DEBUG_PATH addrepo http://download.opensuse.org/distribution/leap/15.0/repo/oss/ foss
+## Install bcc-tools 
+zypper --root $SUSE_BCC_DEBUG_PATH in bcc-tools
+## Install kernel headers and scripts for bulding bpf prog/xpageleak.py
+KVER=$(uname -r)
+zypper download kernel-default-devel-${KVER%%-default}
+zypper download kernel-devel-${KVER%%-default}
+zypper --root $SUSE_BCC_DEBUG_PATH in < path to downloaded kernel-default-devel-${KVER%%-default}*.rpm > 
+zypper --root $SUSE_BCC_DEBUG_PATH in < path to downloaded kernel-devel-${KVER%%-default}*.rpm > 
+
+## Chroot to our new root 
+chroot $SUSE_BCC_DEBUG_PATH
+## Mount necessary filesystems
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t debugfs debugfs /sys/kernel/debug
+
+#  We need all following data
+cd debug
+cp /proc/meminfo ./meminfo_before.log
+cp /proc/slabinfo ./slabinfo_before.log
+./xpageleak.py
+<If possible memory leak happens, input ctrl+d to exit from ./xpageleak.py>
+<./xpageleak.py will save 4 log files like: 
+	suse_2022_05_03_04_15_00_PM_page_stackid.log
+	suse_2022_05_03_04_15_00_PM_stack_alloc_counter.log
+	suse_2022_05_03_04_15_00_PM_stack_free_counter.log
+	suse_2022_05_03_04_15_00_PM_stack_traces.log
+>
+cp /proc/meminfo ./meminfo_after.log
+cp /proc/slabinfo ./slabinfo_after.log
+cp /proc/kpageflags ./kpageflags
+cp /proc/kpagecount ./kpagecount
+cp /proc/kallsyms ./kallsyms

@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
 #
-# memleak   Trace and display outstanding allocations to detect
-#           memory leaks in user-mode processes and the kernel.
-#
-# USAGE: memleak [-h] [-p PID] [-t] [-a] [-o OLDER] [-c COMMAND]
-#                [--combined-only] [--wa-missing-free] [-s SAMPLE_RATE] #                [-T TOP] [-z MIN_SIZE] [-Z MAX_SIZE] [-O OBJ]
-#                [interval] [count]
 #
 # Licensed under the Apache License, Version 2.0 (the "License")
 # Copyright (C) 2016 Sasha Goldshtein.
@@ -20,7 +14,6 @@ import os
 import sys
 import code
 
-#vmemmap= BPF.
 class Allocation(object):
     def __init__(self, stack, size):
         self.stack = stack
@@ -136,33 +129,56 @@ struct stack_counters_t {
 
 BPF_HASH(kp_alloc_stackid, u32);
 BPF_HASH(stack_counters, u64, struct stack_counters_t, 10240);
-BPF_HASH(page_stackid, u64, struct alloc_info_t, 309600);
+BPF_HASH(page_stackid, u64, struct alloc_info_t, 3096000); // ~12GB
 BPF_STACK_TRACE(stack_traces, 20480);
+BPF_TABLE("percpu_hash", u64, u64, stack_alloc_counter, 10240);
+BPF_TABLE("percpu_hash", u64, u64, stack_free_counter, 10240);
 
-static inline void stack_counters_add(u64 stackid, u64 sz) {
-        struct stack_counters_t *spp, sp = {0};
+static inline void stack_counters_add(u64 stack_id, u64 sz) {
+        struct stack_counters_t *spp, sp;
+	u64 count = 0, *countp;
         
-        spp = stack_counters.lookup(&stackid);
+        spp = stack_counters.lookup(&stack_id);
         if (spp != 0)
             sp = *spp;
+	else {
+		sp.arqs = 0;
+		sp.alloced = 0;
+		sp.freed = 0;
+		sp.total = 0;
+	}
 
         sp.alloced += sz;
 	sp.total +=sz;
         sp.arqs += 1;
 
-        stack_counters.update(&stackid, &sp);
+        stack_counters.update(&stack_id, &sp);
+	countp = stack_alloc_counter.lookup(&stack_id);
+	if (countp != 0)
+		count = *countp;
+	count += sz;
+	stack_alloc_counter.update(&stack_id, &count);
 }
 
 static inline void stack_counters_del(u64 stack_id, u64 sz) {
-        struct stack_counters_t *spp, sp = {0};
+        struct stack_counters_t *spp, sp;
+	u64 count = 0, *countp;
 
         spp = stack_counters.lookup(&stack_id);
         if (spp != 0) {
                 sp = *spp;
                 sp.freed += sz;
                 sp.alloced -= sz;
+		if (sp.alloced < 0) /* because alloced isn't atomatic. */
+			sp.alloced = 0; 
                 stack_counters.update(&stack_id, &sp);
         }
+	countp = stack_free_counter.lookup(&stack_id);
+	if (countp != 0)
+		count = *countp;
+
+	count += sz;
+	stack_free_counter.update(&stack_id, &count);
 }
 
 static inline void add_one_page(struct alloc_info_t *info, u64 pfn)
@@ -200,7 +216,7 @@ static inline int xpage_alloc_enter(struct pt_regs *ctx, u64 pfn, int order) {
 
 		info.offset = i;
 		add_one_page(&info, pfn +i);
-		if ((i +1) == (1 << order))
+		if ((i +1) == (1<< order))
 			return 0;
 		i++;	
 
@@ -299,8 +315,10 @@ static inline int xpage_free_enter(struct pt_regs *ctx, void *pfn, unsigned int 
 		if (info == 0)
 			return 0;
 		page_stackid.delete(&addr);
+	/*
 		if (info->size < (4096 << order))
 			bpf_trace_printk("------: %ld %ld %ld\\n",info->stack_id,info->size,4096 << order);
+	*/
 
 		stack_counters_del(info->stack_id, 4096 << order);
 	}
@@ -341,7 +359,7 @@ if args.ebpf:
     exit()
 
 bpf = BPF(text=bpf_source)
-bpf.attach_kprobe(event="__alloc_pages", fn_name="kp_xpage_alloc_enter")
+bpf.attach_kprobe(event="__alloc_pages_nodemask", fn_name="kp_xpage_alloc_enter")
 
 print("Attaching to kernel allocators, Ctrl+C to quit.")
 def print_outstanding():
@@ -426,10 +444,10 @@ def print_total_outstanding_pages_from_stack_counters():
 		total_freed += info.freed
 		total_requests += info.arqs
 		if info.total < info.freed:
-			print("sid %d Outstanding %ldKB , totoal %d, freed %ldKB , in %d allocations"%(stack_id.value, info.alloced, info.total, info.freed, info.arqs))
+			print("Lost counters: Stackid %d Outstanding %ld , totoal %d, freed %ld , in %d allocations"%(stack_id.value, info.alloced/4096, info.total/4096, info.freed/4096, info.arqs))
 	print(datetime.now().strftime("%Y_%m_%d_%I_%M_%S_%p"))
-	print(": Outstanding %ldKB , alloced %ldKB , freed %ldKB , in %d allocations"
-			%(total_alloced >> 10, (total_alloced + total_freed)>>10, total_freed >> 10, total_requests))
+	print(": Outstanding %ld , alloced %ld , freed %ld , in %d allocations"
+			%(total_alloced /4096, (total_alloced + total_freed)/4096, total_freed/4096, total_requests))
 def oxs():
         stacks = bpf["stack_counters"].items()
         total_alloced = 0
@@ -454,25 +472,23 @@ def interactive_pageleak():
 #        u32 offset;
 #        u64 timestamp_ns;
 #        u64 stack_id;
-#        u64 pfn;
 
 def dump_page_stackid(dir, file_prefix):
     pses = bpf["page_stackid"].items()
     f = open(dir+"/"+file_prefix+"_pages_stackid.log", "w+")
     for pfn, ps in pses:
-        f.write("%lx %lx %lx \n"%(pfn.value, ps.timestamp_ns, ps.stack_id))
+        f.write("%ld %ld %ld %ld %ld %ld \n"%(pfn.value, ps.order, ps.offset, ps.size, ps.timestamp_ns, ps.stack_id))
 def dump_stack_counters(dir, file_prefix):
     sps = bpf["stack_counters"].items() 
     f = open(dir+"/"+file_prefix+"_stack_counters.log", "w+")
     for sid, sp in sps:
-        f.write("0x%lx 0x%lx 0x%lx 0x%lx \n"%(sid.value, sp.arqs, sp.alloced, sp.freed))
-
+        f.write("%ld %ld %ld %ld %ld \n"%(sid.value, sp.arqs, sp.alloced, sp.freed, sp.total))
 def dump_stack_traces(dir, file_prefix):
     f = open(dir+"/"+file_prefix+"_stack_traces.log", "w+")
     stack_counters = bpf["stack_counters"].items()
     stack_traces = bpf["stack_traces"]
     for stack_id, sp in stack_counters:
-        trace = ["=> %lx %lx %lx %lx "%(stack_id.value, sp.arqs, sp.alloced, sp.freed)]
+        trace = ["=> %ld %ld %ld %ld %ld "%(stack_id.value, sp.arqs, sp.alloced, sp.freed, sp.total)]
         try:
                 for addr in stack_traces.walk(stack_id.value):
                         sym = bpf.sym(addr, pid,
@@ -480,11 +496,71 @@ def dump_stack_traces(dir, file_prefix):
                                               show_offset=True)
                         trace.append(str(sym))
                # trace = "\n\t\t".join(trace)
-                trace = "".join(trace)
+                trace = " ".join(trace)
                 trace +="\n"
         except KeyError:
                 trace = "stack information lost\n"
         f.write(trace)
+def xa():
+	s = bpf["stack_alloc_counter"].items()
+	for i,c in s:
+		print("%ld "%(i.value), end="")
+		for j in c:
+			print("%ld "%(j), end="")
+		print("")
+
+def xf():
+	s = bpf["stack_free_counter"].items()
+	for i,c in s:
+		print("%ld "%(i.value), end="")
+		for j in c:
+			print("%ld "%(j), end="")
+		print("")
+
+def save_counter_items(items, filename):
+	fileobject = open(filename, "w+")
+	for i,a in items:
+		entry = "%ld %ld"%(i.value, sum(a))
+		for j in a:
+			entry += " %ld"%(j)
+		fileobject.write(entry)
+
+def save_stack_traces(stack_counters, filename):
+    stack_traces = bpf["stack_traces"]
+    f = open(filename, "w+")	
+    for stack_id, sp in stack_counters:
+        trace = ["=> %ld %ld %ld %ld %ld "%(stack_id.value, sp.arqs, sp.alloced, sp.freed, sp.total)]
+        try:
+                for addr in stack_traces.walk(stack_id.value):
+                        sym = bpf.sym(addr, pid,
+                                              show_module=True,
+                                              show_offset=True)
+                        trace.append(str(sym))
+               # trace = "\n\t\t".join(trace)
+                trace = " ".join(trace)
+                trace +="\n"
+        except KeyError:
+                trace = "stack information lost\n"
+        f.write(trace)
+
+def save_page_stackid(items, filename):
+	f = open(filename, "w+")
+	for pfn, ps in items:
+		f.write("%ld %ld %ld %ld %ld %ld \n"%(pfn.value, ps.order, ps.offset, ps.size, ps.timestamp_ns, ps.stack_id))
+
+def save_debug_data_from_bpf_maps():
+	tag =  datetime.now().strftime("%Y_%m_%d_%I_%M_%S_%p")
+	tag = "suse_"+tag+"_"
+	page_stackid_items = bpf["page_stackid"].items()
+	alloc_counter_items = bpf["stack_alloc_counter"].items()
+	free_counter_items = bpf["stack_free_counter"].items()
+	stack_counters_items = bpf["stack_counters"].items()
+
+	save_counter_items(alloc_counter_items, "./"+tag+"stack_alloc_counter.log")
+	save_counter_items(free_counter_items, "./"+tag+"stack_free_counter.log")
+	save_stack_traces(stack_counters_items, "./"+tag+"stack_traces.log")
+	save_page_stackid(page_stackid_items, "./"+tag+"page_stackid.log")
+
 def test_data():
     dump_stack_traces("./", "firo")
     dump_page_stackid("./", "firo")
@@ -499,11 +575,13 @@ def uf():
     while 1:
         print(bpf.trace_fields())
 
+
 while True:
         if trace_all:
                 print(bpf.trace_fields())
         else:
                 code.interact(local=locals())
-                save_data()
+                save_debug_data_from_bpf_maps()
                 sys.stdout.flush()
+                sleep(1)
                 exit(0)
