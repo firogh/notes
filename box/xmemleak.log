@@ -1,0 +1,42 @@
+The bcc script attached in comment#22 could help customer to find out the pssoible culprit for this OOM issue.
+
+# First setup environment for running bcc script
+SUSE_BCC_DEBUG_PATH="/root/bcc"        # Please change it accordingly
+mkdir -p $SUSE_BCC_DEBUG_PATH/debug
+cp ./xmemleak.py $SUSE_BCC_DEBUG_PATH/debug
+cd $SUSE_BCC_DEBUG_PATH
+
+## Add repo
+zypper --root $SUSE_BCC_DEBUG_PATH addrepo http://download.opensuse.org/distribution/leap/15.0/repo/oss/ foss
+## Install bcc-tools 
+zypper --root $SUSE_BCC_DEBUG_PATH in bcc-tools
+## Install kernel headers and scripts for bulding bpf prog/xpageleak.py
+KVER=$(uname -r) 
+zypper download kernel-default-devel-${KVER%%-default}
+zypper download kernel-devel-${KVER%%-default}
+zypper --root $SUSE_BCC_DEBUG_PATH in < path to downloaded kernel-default-devel-${KVER%%-default}*.rpm > 
+zypper --root $SUSE_BCC_DEBUG_PATH in < path to downloaded kernel-devel-${KVER%%-default}*.rpm > 
+
+## Chroot to our new root 
+chroot $SUSE_BCC_DEBUG_PATH
+## Mount necessary filesystems
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t debugfs debugfs /sys/kernel/debug
+
+# Then run xmemleak script and gather the following data we need.
+cd debug
+cp /proc/meminfo ./meminfo_before.log
+cp /proc/slabinfo ./slabinfo_before.log
+./xmemleak -z 2048 -Z 2048
+<this script will print the stack traces allocating kmalloc-2048 >
+<Once there are stack traces which allocates huge e.g. a few GBs kmalloc-2048,>
+<type ctrl-c to stop this script>
+<Befor exiting, this script will save two files like:
+suse_2022_05_11_11_25_20_AM_pages_stackid.log  suse_2022_05_11_11_25_20_AM_stack_traces.log
+we need these two files.
+>
+cp /proc/meminfo ./meminfo_after.log
+cp /proc/slabinfo ./slabinfo_after.log
+
+

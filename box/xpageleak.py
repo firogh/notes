@@ -325,8 +325,6 @@ static inline int xpage_free_enter(struct pt_regs *ctx, void *pfn, unsigned int 
 	return 0;
 }
 
-
-
 /* https://github.com/iovisor/bpftrace/issues/101 */
 int kp_xpage_alloc_enter(struct pt_regs *ctx) {
         u32 pid32 = bpf_get_current_pid_tgid();
@@ -359,7 +357,7 @@ if args.ebpf:
     exit()
 
 bpf = BPF(text=bpf_source)
-bpf.attach_kprobe(event="__alloc_pages_nodemask", fn_name="kp_xpage_alloc_enter")
+bpf.attach_kprobe(event="__alloc_pages", fn_name="kp_xpage_alloc_enter")
 
 print("Attaching to kernel allocators, Ctrl+C to quit.")
 def print_outstanding():
@@ -518,12 +516,13 @@ def xf():
 		print("")
 
 def save_counter_items(items, filename):
-	fileobject = open(filename, "w+")
-	for i,a in items:
-		entry = "%ld %ld"%(i.value, sum(a))
-		for j in a:
-			entry += " %ld"%(j)
-		fileobject.write(entry)
+    fileobject = open(filename, "w+")
+    for i,a in items:
+        entry = "%ld %ld"%(i.value, sum(a))
+        for j in a:
+            entry += " %ld"%(j)
+        entry += " \n"
+        fileobject.write(entry)
 
 def save_stack_traces(stack_counters, filename):
     stack_traces = bpf["stack_traces"]
@@ -574,7 +573,6 @@ def save_data():
 def uf():
     while 1:
         print(bpf.trace_fields())
-
 
 while True:
         if trace_all:
