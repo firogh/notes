@@ -30,6 +30,10 @@ https://lore.kernel.org/all/20200623174037.3951353-18-guro@fb.com/T/#m1cafea3990
 User-space RCU: Memory-barrier menagerie: https://lwn.net/Articles/573436
 membarrier system call performance and the future of Userspace RCU on Linux: https://lttng.org/blog/2018/01/15/membarrier-system-call-performance-and-userspace-rcu/
 
+# mmdrop
+commit 6fe3b423bf08cb927523d6906f91ae9bbb0b6b19
+    [PATCH] Don't call mmdrop under a spinlock
+
 # Shrink
 fs releated memory
 

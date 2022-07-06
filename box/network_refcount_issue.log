@@ -1,0 +1,50 @@
+Here is the patch caused this issue.
+diff --git a/net/ipv4/inet_diag.c b/net/ipv4/inet_diag.c
+index 3828b3a805cd..d5ecc230c0e9 100644
+--- a/net/ipv4/inet_diag.c
++++ b/net/ipv4/inet_diag.c
+@@ -966,7 +966,9 @@ void inet_diag_dump_icsk(struct inet_hashinfo *hashinfo, struct sk_buff *skb,
+                        if (!inet_diag_bc_sk(bc, sk))
+                                goto next_normal;
+ 
+-                       sock_hold(sk);
++                       if (!atomic_add_unless(&sk->sk_refcnt, 1, -1))
++                               goto next_normal;
++
+                        num_arr[accum] = num;
+                        sk_arr[accum] = sk;
+                        if (++accum == SKARR_SZ)
+
+
+This commit is wrong because sock::sk_refcnt could never reach to '-1'. That means inet_diag_dump_icsk() can get a sock when sock::sk_refcnt is '0'.
+
+So what is race for this issue?
+
+# Step 1
+In reqsk_alloc(), the newly alloced request_sock's rsk_refcnt was initialized with 0.
+
+reqsk_alloc()
+{
+        struct request_sock *req;
+
+        req = kmem_cache_alloc(ops->slab, GFP_ATOMIC | __GFP_NOWARN);
+
+        atomic_set(&req->rsk_refcnt, 0);
+
+
+# Step 2
+In reqsk_queue_hash_req(), this initialized reqeust_sock was inserted to tcp established hashtable. This is important because inet_diag_dump_icsk() will scan  this hashtable and get that reqeust_sock.
+
+        inet_ehash_insert(req_to_sk(req), NULL);
+
+
+# Step 3
+Above-mentioned inet_diag_dump_icsk()'s atomic_add_unless() increased rsk_refcnt 
+FYI:
+rsk_refcnt is defined as a macro to sk_refcnt, so they are same.
+#define rsk_refcnt                      __req_common.skc_refcnt
+
+# Step 4
+In reqsk_queue_hash_req()(same as Step 2), rsk_refcnt was set to 2 + 1.
+        atomic_set(&req->rsk_refcnt, 2 + 1);
+This assignment __overwrote__ inet_diag_dump_icsk()'s atomic_add_unless()'s increment on rsk_refcnt. So a potential double free bomb is set up.

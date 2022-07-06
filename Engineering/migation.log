@@ -1,0 +1,72 @@
+
+
+# Migration in fork and mprotect
+commit 0697212a411c1dae03c27845f2de2f3adb32c331
+    [PATCH] Swapless page migration: add R/W migration entries
+  From: Hugh Dickins <hugh@veritas.com>
+
+      Several times while testing swapless page migration, gcc has tried to exec
+      a pointer instead of a string: smells like COW mappings are not being
+      properly write-protected on fork.
+
+      The protection in copy_one_pte looks very convincing, until at last you
+      realize that the second arg to make_migration_entry is a boolean "write",
+      and SWP_MIGRATION_READ is 30.
+
+      Anyway, it's better done like in change_pte_range, using
+      is_write_migration_entry and make_migration_entry_read.
+
+Also: Read/Write migration entries: Make mprotect() convert write migrationentries to read
+https://www.uwsg.indiana.edu/hypermail/linux/kernel/0604.2/1183.html
+1. Introduce a new function make_migration_entry() to
+isolate common code between copy_pte_range and change_pte_range.
+2. Modify change_pte_range() to check for a migration entry.
+If a write migration entry is found and there is a request for
+a READ permissions then change the migration entry.
+I am a bit concerned about the check of newprot. Are there other
+values than PAGE_READONLY that indicate read only access?
+Signed-off-by: Christoph Lameter <clameter@xxxxxxx>
+
+And change_pte_range():
+                                /*
+                                 * A protection check is difficult so
+                                 * just be safe and disable write
+                                 */
+Firo:
+So we see mprotect and fork both change ptes, for safety
+1. in case of fork, set child and parent pte to cow states i.e. readonly
+2. in case of mprotect, set pte(no child involved?) to readonly since we are diffcult to know if real intetion of mprotect is changing pte to readonly or not. If its intection is not readonly, this can be fixed in do_wp_page I guess...
+
+# zone device memory migration
+commit 5042db43cc26f51eed51c56192e2c2317e44315f
+mm/ZONE_DEVICE: new type of ZONE_DEVICE for unaddressable memory
+    HMM (heterogeneous memory management) need struct page to support
+    migration from system main memory to device memory.  Reasons for HMM and
+    migration to device memory is explained with HMM core patch.
+    This patch deals with device memory that is un-addressable memory (ie CPU
+    can not access it).  Hence we do not want those struct page to be manage
+    like regular memory.  That is why we extend ZONE_DEVICE to support
+    different types of memory
+
+
++ * When a page is migrated from CPU to device, we set the CPU page table entry
++ * to a special SWP_DEVICE_* entry.							##!!!!!!!!
+
+Main logic support for migrating device page, not migrating page to device page: restore?
+commit a5430dda8a3a1cdd532e37270e6f36436241b6e7
+mm/migrate: support un-addressable ZONE_DEVICE page in migration
+
+helpers:
+commit 8763cb45ab967a92a5ee49e9c544c0f0ea90e2d6
+    mm/migrate: new memory migration helper for use with device memory
+
+comments;
++ svm_migrate_vma_to_vram
++		pr_debug("collect 0x%lx/0x%llx pages, retry\n", migrate.cpages,
++			 npages);
+npages 总共, cpages 是有效的被collected的pages,  一开始npages == cpages, check 之后 cpages <= npages.
+
+core function:
+migrate_vma_setup
+
+

@@ -1,0 +1,14 @@
+
+# rw_sem
+## writer lock steaming
+https://lkml.org/lkml/2013/1/29/84: aim7 performance regression by commit 5a50508 report from LKP
+rwsem: Implement writer lock-stealing for better scalability: https://lkml.iu.edu/hypermail/linux/kernel/1302.2/03309.html
+rwsem_wake
+
+rwsem_down_write_slowpath
+rwsem_down_read_slowpath
+
+## Handoff
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/kernel/locking/mutex.c?h=v5.17-rc7&id=9d659ae14b545c4296e812c70493bfdc999b5c1c
+locking/mutex: Add lock handoff to avoid starvation
+and pickup for mutex

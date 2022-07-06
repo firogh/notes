@@ -542,6 +542,19 @@ def save_stack_traces(stack_counters, filename):
                 trace = "stack information lost\n"
         f.write(trace)
 
+def dump_this_stack_trace(stack_id):
+    trace = ["=> id %ld "%(stack_id)]
+    try:
+        for addr in stack_traces.walk(stack_id):
+            sym = bpf.sym(addr, pid,show_module=True,show_offset=True)
+            trace.append(str(sym))
+           # trace = "\n\t\t".join(trace)
+            trace = " ".join(trace)
+            trace +="\n"
+    except KeyError:
+            trace = "stack information lost\n"
+    print(trace)
+
 def save_page_stackid(items, filename):
 	f = open(filename, "w+")
 	for pfn, ps in items:

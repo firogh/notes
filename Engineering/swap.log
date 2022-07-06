@@ -1,0 +1,21 @@
+
+# References to swapped-out page
+swap_duplicate: 最开始之分配了一个字节的counter, 后续溢出了用 COUNT_CONTINUED 标志, 在分配新的page, 从老的page->lru 找到新的page的之后+1
+
+# 锁竞争问题
+## swap_cluster_info per 256 page-sized slot on swap area
+815c2c543d3a 2013-09-11 swap: make swap discard async
+2a8f94493432 2013-09-11 swap: change block allocation algorithm for SSD
+6b53491598a4 2016-10-02 mm, swap: add swap_cluster_list
+for false sharing
+4b3ef9daa4fc 2017-02-22 mm/swap: split swap cache into 64MB trunks
+235b62176712 2017-02-22 mm/swap: add cluster lock
+## swapper_space[*][] per 64MB, 数组第一维是swap areas, 划分的是第二维.
+4b3ef9daa4fc 2017-02-22 mm/swap: split swap cache into 64MB trunks
+36005bae205d 2017-02-22 mm/swap: allocate swap slots in batches
+
+# Docs
+https://blog.csdn.net/qkhhyga2016/article/details/88722458#Swapout_327
+https://richardweiyang-2.gitbook.io/kernel-exploring/00-index-1/01-swapfile#swap_count
+Making swapping scalable https://lwn.net/Articles/704478/
+https://www.kernel.org/doc/gorman/html/understand/understand014.html
