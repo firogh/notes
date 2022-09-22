@@ -1,7 +1,10 @@
 
 # rw_sem
-## writer lock steaming
+## writer lock stealing
 https://lkml.org/lkml/2013/1/29/84: aim7 performance regression by commit 5a50508 report from LKP
+I think we should allow lock-steal between rwsem writers - that 
+will not hurt fairness as most rwsem fairness concerns relate to 
+reader vs. writer fairness.
 rwsem: Implement writer lock-stealing for better scalability: https://lkml.iu.edu/hypermail/linux/kernel/1302.2/03309.html
 rwsem_wake
 
@@ -10,5 +13,13 @@ rwsem_down_read_slowpath
 
 ## Handoff
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/kernel/locking/mutex.c?h=v5.17-rc7&id=9d659ae14b545c4296e812c70493bfdc999b5c1c
+Lock starvation is possible because mutex_lock() allows lock stealing,
+where a running (or optimistic spinning) task beats the woken waiter
+to the acquire.
+Lock stealing is an important performance optimization because waiting
+for a waiter to wake up and get runtime can take a significant time,
+during which everyboy would stall on the lock.
+
+queue -> woken writer waiter-> idle -> lock stealing -> lock starvation -> handoff
 locking/mutex: Add lock handoff to avoid starvation
 and pickup for mutex

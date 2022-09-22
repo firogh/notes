@@ -49,6 +49,17 @@ grep -nr trace_block_ block/
 blk_register_tracepoints
 blk_account_io_start see biosnoop.py
 
+mkdir /tmp/bt
+blktrace -w 30 -d /dev/sda -D /tmp/bt
+blkparse -i /tmp/bt/* -f '%M %m %t %z %d %S+%n \n'
+
+## Negative?
+blktrace -w 10 -d /dev/sda -o - | blkparse -i - -d /tmp/blktrace.bin1
+blktrace -w 10 -d /dev/sda -o - | blkparse -i - -d /tmp/blktrace.bin2
+blktrace -w 10 -d /dev/sda -o - | blkparse -i - -d /tmp/blktrace.bin3
+
+Then send me /tmp/blktrace.bin{1,2,3}.
+
 # blk utils
 blkparse -i sdc -d bb.sdc.bin
 btt -p sdc.bttp -i bb.sdc.bin

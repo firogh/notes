@@ -1,0 +1,26 @@
+https://blog.packagecloud.io/how-does-strace-work/
+
+tracer
+PTRACE_ATTACH->ptrace_attach->send_sig_info(SIGSTOP
+
+tracee
+get_signal->
+	do_signal_stop
+	do_jobctl_trap
+
+tracer
+PTRACE_SYSCALL->ptrace_resume 
+		*_SYSCALL_TRACE 
+		wake_up_state(child, __TASK_TRACED);
+
+tracee: 
+syscall enter->syscall_trace_enter *_SYSCALL_TRACE
+		ptrace_notify(SIGTRAP|<...>)->ptrace_stop: send SIGCHLD SIGTRAP to tracer with _SYSCALL_ENTRY
+
+tracer
+PTRACE_GET_SYSCALL_INFO
+PTRACE_SYSCALL->ptrace_resume resume tracee
+
+tracee:
+syscall exit->syscall_exit_to_user_mode_prepare
+		send SIGCHLD SIGTRAP to tracer

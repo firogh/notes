@@ -16,4 +16,37 @@ Timeline
 
 
 
+# Numa
+https://docs.datastax.com/en/dse-trblshoot/doc/troubleshooting/zoneReclaimMode.html
+echo 0 > /proc/sys/vm/zone_reclaim_mode
+
+
+# Firo
+process vs system
+CPU, memory, disk, network, vm
+Latency vs throughput
+Saturated
+expose benchmark
+VM entry/exit
+reproducer
+baseline
+
+I'm a big fan of using atop for CPU and Memory utilization, iotop for Disk usage, and iftop for network traffic. Keep in mind, these metrics are only useful in real time when the server is under load and experiencing this issue.
+
+
+Any of the big 4 above can cause substantial delay in processing when a page is requested. You mentioned this site is a blog, but did not mention whether the content is dynamically generated, which would add another layer to this equation - the Database. Long query response times can cause a trickle down effect that results in a long page load.
+
+# Test
+io用的比较多，iozone, fio, dbench, bonniepp
+网络netperf, sockperf, iperf, iperf3
+mysql用sysbench，postgre用pgbench
+libmicro, lmbench
+
+# VM exit
+kvm performance optimization technologies, part two: https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2020/10/01/kvm-performance-2
+## Mel https://bugzilla.suse.com/show_bug.cgi?id=1201990
+During an internal call, another interesting possibility came up -- spinlock contention releasing the CPU incurring a VM exit/entry penalty. The PV spinlock optimisation existed in SLE 12 SP5 and an old boot log showed it was enabled but the behavior could have changed between 12 SP5 and 15 SP3 and on the call, we were not sure if this could have happened.
+
+One possibility is to test booting with hv_nopvspin and see what impact it has.
+The theory is that if there are more entry/exit penalties for spinlocks idling the vcpu that cumulatively it could lose a lot of CPU time for any kernel path that takes a bunch of spinlocks.
 

@@ -10,6 +10,16 @@ import csv
 import xlwt
 import argparse
 
+# TODO
+# Horizontally Stacked Bars
+# https://notebook.community/dennisobrien/bokeh/examples/howto/Categorical%20Data
+
+
+# TODO
+# Btt Q & C activity 
+# Step lines
+# https://docs.bokeh.org/en/2.4.1/docs/user_guide/plotting.html
+
 def param_init():
         parser = argparse.ArgumentParser(description='CCM csv reader')
         parser.add_argument('-c', nargs=1, metavar='cve.csv', help='Specific the CVE list csv.')

@@ -1,16 +1,14 @@
-Please address the following topics in a PDF document:
-
 Experience
 
 I have solved many system issues in SUSE. Most of them can be categorized into two groups: crash issues and performance issues.
 
-For crash issues, I haved analyzed more than 100 kernel dumps with crash-utility. I can recall some challening issues I solved:
+# For crash issues, I haved analyzed more than 100 kernel dumps with crash-utility. I can recall some challening issues I solved:
 1) Kernel crashed due to buggy stack pointer(rsp). The most difficult part for this issue is that if this issue happens, then the call traces on stack will be overwritten by page fault handler. It means that you have no idea on what really has happened. 
 
 I came with an idea to solve this issue which is using X86 IST stack to prevent page fault handler from overwriting the task's stack.
 Here is the patch: https://github.com/firogh/notes/blob/master/box/0001-x86_64-page-fault-Introduce-pf_ist.patch
 
-The root cause for this issue is that a patch for ebpf miscalculated the rsp.
+The root cause for this issue is that a patch for ebpf miscalculated the x86 rsp.
 
 2) Another kernel crash issue. Kernel crashed in network stack due to using a wrong API to release refernce counter. I figured out the root cause by analyzing dump and going through the source of kernel network stack. The following is the stack traces for this issue.
 PID: 58411  TASK: ffff8d43eb61d180  CPU: 0   COMMAND: "python"
@@ -43,44 +41,43 @@ PID: 58411  TASK: ffff8d43eb61d180  CPU: 0   COMMAND: "python"
 #18 [ffff8cd51f603f98] __softirqentry_text_start at ffffffffb0a000ce
 #19 [ffff8cd51f603ff0] do_softirq_own_stack at ffffffffb080129a
 
+Here is the analysis made by me for this issue.
+https://github.com/firogh/notes/blob/master/box/network_refcount_issue.log
 
+To fix this kind of issue, there aren't many tools like kasan which can be used in customer's product environment; reading the source codes sometimes is the only option. To be frank, a few years a ago, I really liked reading kernel source codes. There are a lot of fun in it. Here are my notes on kernel: https://github.com/firogh/notes/tree/master/cs. Sorry, they are likely not readable to others.
 
-# Step 2
-In reqsk_queue_hash_req(), this initialized reqeust_sock was inserted to tcp established hashtable. This is important because inet_diag_dump_icsk() will scan  this hashtable and get that reqeust_sock.
+3) Sometimes, we also received dump generated due to soft or hard lockup.
+I worte a small script based on drgn to locate the holder of an spinlock causing lockup:
+https://github.com/firogh/notes/blob/master/box/qspinlock.py
+In fact, sometimes it's required to analyzed call traces/stack frames in dump to locate the real holder of spinlock because the holder might acquire the lock before contention appears. I this kind of case, using crash-utility is 'search' command would be very helpful.
 
-        inet_ehash_insert(req_to_sk(req), NULL);
+# For performance issue, I like using tracing tools, e.g. perf, ftrace/trace-cmd, ebpf to solve problems.
+Here is a bcc/ebpf script I used to solve a memory leak problem occuring at the page allocator level:
+https://github.com/firogh/notes/blob/master/box/xpageleak.py
 
-
-# Step 3
-Above-mentioned inet_diag_dump_icsk()'s atomic_add_unless() increased rsk_refcnt 
-FYI:
-rsk_refcnt is defined as a macro to sk_refcnt, so they are same.
-#define rsk_refcnt                      __req_common.skc_refcnt
-
-# Step 4
-In reqsk_queue_hash_req()(same as Step 2), rsk_refcnt was set to 2 + 1.
-        atomic_set(&req->rsk_refcnt, 2 + 1);
-This assignment __overwrote__ inet_diag_dump_icsk()'s atomic_add_unless()'s increment on rsk_refcnt. So a potential double free bomb is set up.
-
-
-We are interested in complex technical challenges you have had to resolve. Walk us through your thought process on choosing the tooling, programming language or colleagues to solve those challenges. How did you meet the quality requirements and how did you ensure this knowledge is passed on? We are particularly interested in any challenges you had with OpenStack, Kubernetes, Linux kernel or Ceph. In absence of experience with any of these, pick some other technology you found most fascinating. Please make sure to call out experience with various programming languages (C, C++, Python, Golang, Rust...).
-
-Also, please tell us about any involvement you have with Open Source projects.
+# Open sources
+I didn't work in upsteam community, so there are only a few kernel upsteam fixes:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep&q=firo.yang%40suse.com
+and an improvment on crash utility
+https://github.com/crash-utility/crash/commit/f091b5e76d2d6e81b12cd40df7b5863c9e2efed1
 
 Career development
 
-In this section we’d like to hear more about your career aspirations and long term goals. We’d like to understand what are your passions at work, what inspires you to come back to your workstation every day. Tell us what is your preferred programming language and why? We are also interested to know how and why did you start using Linux professionally? And, in the end, walk us through some of the proudest moments in your career and some of the downfalls.
+I want to be a kernel memory maintainer in future. So C would be my preferred programming language. 
+
+I started using Linux distro 10 years ago. And since that there is only one operating system on my laptop which is Linux. So basically, I use Linux and vim and gnome everyday. It's been a important part of my life.
+
+As for proudest moments, it would be letters of appreciation from our customer. And sometimes I can solve issues as twice as others. 
+For downfalls, one of our customer is moving to VMware from our Xen product due to a difficut memory corrution issue whose root cause is still unkown to me.
 
 Education
 
-Please discuss and describe your educational background in detail. What were your strongest subjects in hard sciences? What leadership roles did you take on? What degree and university did you choose, any why? What were your strongest or favorite courses? Do you have any exceptional achievements to share? 
+I have a computer science bachelor degree. My strongest subject would be operating system... I am good at analyzing problems. Ten-year study on philosopy. 
 
 Context
 
-Outline your thoughts on the mission of Canonical. What is it about the company's purpose and goals which is most appealing to you? What do you think is risky or unappealing? Are there any elements of the company goals that you are unsure about? Which other companies are building the sort of products you would like to work on? Why do you most want to work for Canonical?
+Canonical is an opensource compay. I also make my living on opensource. So we should fit each other well. I was touched by the idea of post-scarcity when I heard it 10 years ago. It's unreal for physical world, but it would likely be realized in software world in future.
 
-Please upload your submission as a PDF at the URL given below. Write as much as you need. To avoid bias I have set the system to keep your identity confidential during the review of your submission, please don’t include your name in the PDF or filename.
-
-Thank you! I look forward to reading your answers and meeting later in the process.
+Honestly, I am looking for an opportunity to help me move out from China to other country like Japan.
 
 

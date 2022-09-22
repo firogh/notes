@@ -1,1 +1,50 @@
 update_wall_time
+
+# clock
+list -H clocksource_list -o clocksource.list -s clocksource > clock_source.log
+
+# mult shit
+clocks_calc_mult_shift
+NS_count  = ((cycles *(1/freq))/NS_PER_SECOND
+=>
+NS_count = cycles * NS_PER_SECOND /freq
+=>
+avoid divide => shift.
+NS_count = (cycles * mult) >> shift
+mult = (NS_PER_SECOND << shift)/freq
+
+1. cycles * mult mustn't overflow => we need a max cycles
+
+# max idle ns
+int((0xffffffffffffffff / (0x6aaaa5 * 1.11)) *(0x6aaaa5 *(1-0.11))) >> 0x18
+881590404252 
+=> 50%
+0x66a1713928 or 440795216168
+## have to wake up before wrapping around => cycles * mult
+
+## timeline
+600 freq => mult shift => max cycles, max idle ns
+
+# TSC 
+tsc_khz
+
+# schedule tick 
+crash> p tick_cpu_sched:a | grep mode
+  nohz_mode = NOHZ_MODE_HIGHRES,
+  nohz_mode = NOHZ_MODE_HIGHRES,
+  nohz_mode = NOHZ_MODE_HIGHRES,
+  nohz_mode = NOHZ_MODE_HIGHRES,
+crash> p tick_cpu_sched:a | grep tick_stopped
+  tick_stopped = 0x1,
+  tick_stopped = 0x0,
+  tick_stopped = 0x1,
+  tick_stopped = 0x0,
+
+## ts->timer_expires_base = 0
+stopped? no
+
+## timeline
+Periodic => nohz mode low/high res res => nohz idle / full => tick_stopped 
+
+# last_jiffies_update
+tick_next_period

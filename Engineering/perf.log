@@ -1,0 +1,6 @@
+
+# work
+default_do_nmi => nmi_handle => perf_event_nmi_handler => (x86_pmu.handle_irq = intel_pmu_handle_irq) => intel_pmu_drain_bts_buffer => perf_prepare_sample
+
+# perf -g
+perf_callchain get_perf_callchain PERF_SAMPLE_CALLCHAIN

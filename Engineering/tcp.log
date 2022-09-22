@@ -1,0 +1,26 @@
+
+
+
+
+# FAQ
+## FIN and SYN and ACK
+https://stackoverflow.com/q/6804979/1025001
+That's because the ACK field means this when the ACK flag is set: Acknowledgment number (32 bits) – if the ACK flag is set then the value of this field is the next sequence number that the receiver is expecting.
+If it is not set to (inital sequence number+1), it would be inconsistently mean both ack'ing the SYN (both SYN and ACK flags must be set in this packet) and saying it is expecting that sequence number again (i.e. hasn't received it).
+
+https://stackoverflow.com/questions/2352524/why-does-a-syn-or-fin-bit-in-a-tcp-segment-consume-a-byte-in-the-sequence-number
+It's not particularly subtle - it's so that the SYN and FIN bits themselves can be acknowledged (and therefore re-sent if they're lost).
+For example, if the connection is closed without sending any more data, then if the FIN did not consume a sequence number the closing end couldn't tell the difference between an ACK for the FIN, and an ACK for the data that was sent prior to the FIN.
+
+## ACK'ed seq
+Sent: ACK SEQ from header, snd_una, sk_write_queue
+	next sent data: snd_nxt, sk_send_head
+	FYI: tcp_send_ack()
+Received: 
+	rcv_nxt: SEQ from header + datalen + FIN + SYN; see tcp control block and David's intro.
+	
+
+## Fast skb cloning, fclone
+Fast SKB cloning, continued: https://lwn.net/Articles/140552/
+
+

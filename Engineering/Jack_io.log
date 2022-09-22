@@ -1,0 +1,28 @@
+Jan 2021-01-12 15:14:15 UTC
+Couple of notes here:
+
+Regarding how to get the IO operation dumps: btt -p is one possibility as already noted in comment 14. Another possibility how to dump all the IOs as they happen is using blkparse(1) tool - I've just made it to work today. There's just a catch that it expects the file with the name <something>.blktrace.<number> - number can be 0 for our purposes. So I've renamed blktrace.bin1 to sda.blktrace.0 and then run "blkparse -i sda".
+
+Looking at its output, it is now more obvious what is happening from the VM side. The flush worker (kworker process) is submitting a lot of writeback. It appears the storage allows the VM to submit quite a lot of IO which it probably just caches - this happens until time 0.035960475 s it appears. Then probably things get stalled waiting for the IO to complete - which gradually happens until about 2 s. It appears we've submitted ~80 MB of data in first 35 ms and it took about 2 s to complete that IO so it seems the storage is capable of about 40 MB/s. Because the device is heavily backlogged, that is the reason why some IO takes close to 2s to complete.
+
+Then starting at time ~5.5s the situation looks very similar. Again we submit very rapidly quite some IO which then slowly completes (for about following 3 seconds). So at this point it is kind of obvious that the VM is congesting the disk by page writeback and because the disk buffers a lot of requests it causes high IO latency of individual requests.
+
+I'll attach here processed blktrace.bin1 file if others want to have a look.
+
+The question now is what is the real problem the customer observes? Because given how slow the storage is (~40 MB/s) and how much writeback they do, IO congestion is expected. Given the fact the storage allows a lot of requests pending (at some moments there are over 200 submitted IO requests) the high IO latency is kind of inevitable as well. So is there any particular performance / quality of service problem customer wants to solve?
+
+For example we could try to tune the VM so that writeback is not able to hog the disk as much if that is desirable. That will not improve the performance of writeback but other IO should be able to proceed more smoothly while writeback is in progress.
+
+
+
+Just to make it clear at this point I don't think there's further analysis needed from the hypervisor side unless the relatively low storage throughput or high amount of queueing in the storage in unexpected.
+
+
+https://lore.kernel.org/all/20210113112643.12893-1-jack@suse.cz/
+
+@@ -2797,6 +2798,7 @@ static void show_stats(void)
+ 
+ 	if (per_device_and_cpu_stats)
+ 		show_device_and_cpu_stats();
++	fprintf(ofp, "Trace started at %s\n", ctime(&abs_start_time.tv_sec));
+ 

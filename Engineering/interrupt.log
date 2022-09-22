@@ -1,3 +1,15 @@
 struct apic_chip_data *data = irq_data->chip_data;
 547         err = assign_irq_vector(irq, data, dest);
 +	trace_vector_update(irq, d->cfg.vector, d->domain, d->cfg.old_vector, d->old_domain);
+
+
+# Notes
+## inner ring: vectors NR_VECTORS
+0-31: CPU defined.
+IPI etc: software defined.
+## outer ring: IRQs
+IRQ0
+vector_irq do_IRQ
+
+# ETC
+python3 -c 'import sys; x=int(sys.argv[1].replace(",", ""), base=16); print("bitmask:", bin(x), "cpu:", x.bit_length())'  00000000,00000000,00000000,00040000

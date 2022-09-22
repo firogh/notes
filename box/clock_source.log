@@ -1,0 +1,168 @@
+ffffffff91e2e900
+struct clocksource {
+  read = 0xffffffff90033920 <read_tsc>,
+  mask = 0xffffffffffffffff,
+  mult = 0x6aaaa5,
+  shift = 0x18,
+  max_idle_ns = 0x66a1713928,
+  maxadj = 0xbbbbb,
+  uncertainty_margin = 0x30d40,
+  max_cycles = 0x22983938a92,
+  name = 0xffffffff916250e0 "tsc",
+  list = {
+    next = 0xffffffff92101f18 <clocksource_acpi_pm+56>,
+    prev = 0xffffffff91fa0dc0 <clocksource_list>
+  },
+  rating = 0x12c,
+  id = CSID_GENERIC,
+  vdso_clock_mode = VDSO_CLOCKMODE_TSC,
+  flags = 0x221,
+  enable = 0xffffffff90033940 <tsc_cs_enable>,
+  disable = 0x0,
+  suspend = 0x0,
+  resume = 0xffffffff90033c10 <tsc_resume>,
+  mark_unstable = 0xffffffff90033e50 <tsc_cs_mark_unstable>,
+  tick_stable = 0xffffffff90033e20 <tsc_cs_tick_stable>,
+  wd_list = {
+    next = 0xffffffff91e2e990 <clocksource_tsc+144>,
+    prev = 0xffffffff91e2e990 <clocksource_tsc+144>
+  },
+  cs_last = 0x0,
+  wd_last = 0x0,
+  owner = 0x0
+}
+ffffffff92101ee0
+struct clocksource {
+  read = 0xffffffff90a9b650 <acpi_pm_read>,
+  mask = 0xffffff,
+  mult = 0x8baebc15,
+  shift = 0x17,
+  max_idle_ns = 0x7c5145a0,
+  maxadj = 0xf5d75f8,
+  uncertainty_margin = 0x30d40,
+  max_cycles = 0xffffff,
+  name = 0xffffffff9161e2cb "acpi_pm",
+  list = {
+    next = 0xffffffff92aaeb58 <refined_jiffies+56>,
+    prev = 0xffffffff91e2e938 <clocksource_tsc+56>
+  },
+  rating = 0xc8,
+  id = CSID_GENERIC,
+  vdso_clock_mode = VDSO_CLOCKMODE_NONE,
+  flags = 0x21,
+  enable = 0x0,
+  disable = 0x0,
+  suspend = 0x0,
+  resume = 0x0,
+  mark_unstable = 0x0,
+  tick_stable = 0x0,
+  wd_list = {
+    next = 0xffffffff92101f70 <clocksource_acpi_pm+144>,
+    prev = 0xffffffff92101f70 <clocksource_acpi_pm+144>
+  },
+  cs_last = 0x0,
+  wd_last = 0x0,
+  owner = 0x0
+}
+ffffffff92aaeb20
+struct clocksource {
+  read = 0xffffffff9018fa30 <jiffies_read>,
+  mask = 0xffffffff,
+  mult = 0xf41a800,
+  shift = 0x8,
+  max_idle_ns = 0x6ca045c7935fb,
+  maxadj = 0x1ad9f47,
+  uncertainty_margin = 0x1e84800,
+  max_cycles = 0xffffffff,
+  name = 0xffffffff9161e32a "refined-jiffies",
+  list = {
+    next = 0xffffffff91fa0e18 <clocksource_jiffies+56>,
+    prev = 0xffffffff92101f18 <clocksource_acpi_pm+56>
+  },
+  rating = 0x2,
+  id = CSID_GENERIC,
+  vdso_clock_mode = VDSO_CLOCKMODE_NONE,
+  flags = 0x0,
+  enable = 0x0,
+  disable = 0x0,
+  suspend = 0x0,
+  resume = 0x0,
+  mark_unstable = 0x0,
+  tick_stable = 0x0,
+  wd_list = {
+    next = 0xffffffff92aaebb0 <refined_jiffies+144>,
+    prev = 0xffffffff92aaebb0 <refined_jiffies+144>
+  },
+  cs_last = 0x0,
+  wd_last = 0x0,
+  owner = 0x0
+}
+ffffffff91fa0de0
+struct clocksource {
+  read = 0xffffffff9018fa30 <jiffies_read>,
+  mask = 0xffffffff,
+  mult = 0xf424000,
+  shift = 0x8,
+  max_idle_ns = 0x6ca47fff935b8,
+  maxadj = 0x1adb000,
+  uncertainty_margin = 0x1e84800,
+  max_cycles = 0xffffffff,
+  name = 0xffffffff9161e332 "jiffies",
+  list = {
+    next = 0xffffffff91fa0dc0 <clocksource_list>,
+    prev = 0xffffffff92aaeb58 <refined_jiffies+56>
+  },
+  rating = 0x1,
+  id = CSID_GENERIC,
+  vdso_clock_mode = VDSO_CLOCKMODE_NONE,
+  flags = 0x0,
+  enable = 0x0,
+  disable = 0x0,
+  suspend = 0x0,
+  resume = 0x0,
+  mark_unstable = 0x0,
+  tick_stable = 0x0,
+  wd_list = {
+    next = 0xffffffff91fa0e70 <clocksource_jiffies+144>,
+    prev = 0xffffffff91fa0e70 <clocksource_jiffies+144>
+  },
+  cs_last = 0x0,
+  wd_last = 0x0,
+  owner = 0x0
+}
+
+crash> p watchdog
+watchdog = $2 = (struct clocksource *) 0xffffffff91e2e900 <clocksource_tsc>
+crash> clocksource 0xffffffff91e2e900
+struct clocksource {
+  read = 0xffffffff90033920 <read_tsc>,
+  mask = 0xffffffffffffffff,
+  mult = 0x6aaaa5,
+  shift = 0x18,
+  max_idle_ns = 0x66a1713928,
+  maxadj = 0xbbbbb,
+  uncertainty_margin = 0x30d40,
+  max_cycles = 0x22983938a92,
+  name = 0xffffffff916250e0 "tsc",
+  list = {
+    next = 0xffffffff92101f18 <clocksource_acpi_pm+56>,
+    prev = 0xffffffff91fa0dc0 <clocksource_list>
+  },
+  rating = 0x12c,
+  id = CSID_GENERIC,
+  vdso_clock_mode = VDSO_CLOCKMODE_TSC,
+  flags = 0x221,
+  enable = 0xffffffff90033940 <tsc_cs_enable>,
+  disable = 0x0,
+  suspend = 0x0,
+  resume = 0xffffffff90033c10 <tsc_resume>,
+  mark_unstable = 0xffffffff90033e50 <tsc_cs_mark_unstable>,
+  tick_stable = 0xffffffff90033e20 <tsc_cs_tick_stable>,
+  wd_list = {
+    next = 0xffffffff91e2e990 <clocksource_tsc+144>,
+    prev = 0xffffffff91e2e990 <clocksource_tsc+144>
+  },
+  cs_last = 0x0,
+  wd_last = 0x0,
+  owner = 0x0
+}

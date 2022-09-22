@@ -1,0 +1,7 @@
+
+# limits
+rlimit(RLIMIT_NPROC)
+
+# counters
+process counters
+user counter: task cred UCOUNT_RLIMIT_NPROC
