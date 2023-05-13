@@ -1,0 +1,11 @@
+
+
+# framework
+rcu_check_callbacks
+
+
+crash> list rcu_state.flavors -H rcu_struct_flavors -s rcu_state.name
+b45e00
+  name = 0xb49500 <rcu_sched_varname> "rcu_sched"
+b42600
+  name = 0xb45d00 <rcu_bh_varname> "rcu_bh"

@@ -13,3 +13,8 @@ vector_irq do_IRQ
 
 # ETC
 python3 -c 'import sys; x=int(sys.argv[1].replace(",", ""), base=16); print("bitmask:", bin(x), "cpu:", x.bit_length())'  00000000,00000000,00000000,00040000
+
+
+# interrupt remapping
+Bug 1193884 - L3: kernel:[150113.649086] do_IRQ: 56.219 No irq handler for vector messages on SLES12 SP5
+intremap=off nox2apic'

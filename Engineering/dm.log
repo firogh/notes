@@ -1,0 +1,21 @@
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1328077
+
+dd if=/dev/zero of=/tmp/disk1 bs=1M count=1024
+
+losetup /dev/loop6 /tmp/disk1
+
+brw-rw---- 1 root disk  7,   6 Feb 23 08:43 /dev/loop6
+
+dmsetup create -vv fmp --table "0 204800 multipath 0 0 2 1 round-robin 0 1 1 7:6 1 round-robin 0 1 1 7:6 1"
+
+multipathd -d resize map /dev/mapper/fmp
+
+ls -l /dev/mapper/
+total 0
+crw------- 1 root root 10, 236 Feb 14 11:32 control
+lrwxrwxrwx 1 root root       7 Feb 23 08:57 fmp -> ../dm-0
+
+ls -l /dev/dm-0
+brw-rw---- 1 root disk 254, 0 Feb 23 08:57 /dev/dm-0
+

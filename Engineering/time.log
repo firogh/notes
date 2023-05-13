@@ -48,3 +48,20 @@ Periodic => nohz mode low/high res res => nohz idle / full => tick_stopped
 
 # last_jiffies_update
 tick_next_period
+
+
+# nohz idle enter
+tick_nohz_idle_enter
+tick_cpu_sched
+  inidle = 0x1, 
+  tick_stopped = 0x1, 
+  idle_jiffies = 0x13bc72df7, 
+
+crash-ppc64le> p jiffies
+jiffies = $1 = 0x13bc7d72b
+crash-ppc64le> eval 0x13bc7d72b - 0x13bc72df7
+hexadecimal: a934  
+    decimal: 43316
+CONFIG_HZ=100
+crash-ppc64le> runq -T
+  CPU 23: 229.50 secs

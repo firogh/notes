@@ -4,3 +4,15 @@ default_do_nmi => nmi_handle => perf_event_nmi_handler => (x86_pmu.handle_irq = 
 
 # perf -g
 perf_callchain get_perf_callchain PERF_SAMPLE_CALLCHAIN
+
+# offcpu
+https://www.brendangregg.com/blog/2015-02-26/linux-perf-off-cpu-flame-graph.html
+perf record -e sched:sched_stat_sleep -e sched:sched_switch \
+    -e sched:sched_process_exit -a -g -o perf.data.raw sleep 1
+perf inject -v -s -i perf.data.raw -o perf.data
+perf script -F tid,pid,cpu,time,period,comm,event,ip,sym | awk '
+    NF > 4 { exec = $1; period_ms = int($5 / 1000000) }
+    NF > 1 && NF <= 4 && period_ms > 0 { print $2 }
+    NF < 2 && period_ms > 0 { printf "%s\n%d\n\n", exec, period_ms }'| \
+    ./stackcollapse.pl | \
+    ./flamegraph.pl --countname=ms --title="Off-CPU Time Flame Graph" --colors=io > offcpu.svg

@@ -17,3 +17,7 @@ https://lwn.net/Articles/679786/
 
 # Examples
 https://chrisdown.name/talks/cgroupv2/cgroupv2-fosdem.pdf
+
+# IO mem cgroup
+Bug 207273 - cgroup with 1.5GB limit and 100MB rss usage OOM-kills processes due to page cache usage after upgrading to kernel 5.4
+https://bugzilla.kernel.org/show_bug.cgi?id=207273
