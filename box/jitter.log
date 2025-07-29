@@ -1,0 +1,57 @@
+#!/bin/bash
+
+TRACING=/sys/kernel/tracing
+
+echo 0 > $TRACING/tracing_on
+echo nop > $TRACING/current_tracer
+
+# Timers
+echo 1 > $TRACING/events/timer/tick_stop/enable
+echo 1 > $TRACING/events/timer/timer_expire_entry/enable
+echo 1 > $TRACING/events/timer/hrtimer_expire_entry/enable
+echo "common_cpu == 3" > $TRACING/events/timer/filter
+
+# Context switches
+echo 1 > $TRACING/events/sched/sched_switch/enable
+echo "common_cpu == 3" > $TRACING/events/sched/filter
+
+# Workqueue on isolated CPU
+echo 1 > $TRACING/events/workqueue/workqueue_execute_start/enable
+echo "common_cpu == 3" > $TRACING/events/workqueue/filter
+
+# Function call IPIs
+echo 1 > $TRACING/events/csd/enable
+echo "common_cpu == 3" > $TRACING/events/csd/filter
+
+# Low level Irqs
+echo 1 > $TRACING/events/irq_vectors/deferred_error_apic_entry/enable
+echo 1 > $TRACING/events/irq_vectors/error_apic_entry/enable
+echo 1 > $TRACING/events/irq_vectors/irq_work_entry/enable
+echo 1 > $TRACING/events/irq_vectors/local_timer_entry/enable
+echo 1 > $TRACING/events/irq_vectors/reschedule_entry/enable
+echo 1 > $TRACING/events/irq_vectors/spurious_apic_entry/enable
+echo 1 > $TRACING/events/irq_vectors/thermal_apic_entry/enable
+echo 1 > $TRACING/events/irq_vectors/threshold_apic_entry/enable
+echo 1 > $TRACING/events/irq_vectors/x86_platform_ipi_entry/enable
+echo "common_cpu == 3" > $TRACING/events/irq_vectors/filter
+
+# Syscalls
+echo 1 > $TRACING/events/syscalls/enable
+echo "common_cpu == 3" > $TRACING/events/syscalls/filter
+
+# Page faults
+echo 1 > $TRACING/events/exceptions/page_fault_user/enable
+echo "common_cpu == 3" > $TRACING/events/exceptions/filter
+
+# Workqueue queue to isolated CPU
+echo 1 > $TRACING/events/workqueue/workqueue_queue_work/enable
+echo 'req_cpu == 3' > $TRACING/events/workqueue/workqueue_queue_work/filter
+echo 'stacktrace if req_cpu == 3' > $TRACING/events/workqueue/workqueue_queue_work/trigger
+
+# TLB flushes broadcast IPI queue
+echo 'p:on_each_cpu_cond_mask on_each_cpu_cond_mask func=$arg2:symbol' > $TRACING/kprobe_events
+echo 1 > $TRACING/events/kprobes/on_each_cpu_cond_mask/enable
+echo stacktrace > $TRACING/events/kprobes/on_each_cpu_cond_mask/trigger
+
+# Go
+echo 1 > $TRACING/tracing_on

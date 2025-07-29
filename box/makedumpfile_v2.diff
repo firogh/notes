@@ -1,0 +1,216 @@
+diff --git a/makedumpfile.c b/makedumpfile.c
+index 7d1dfcc..ad20b65 100644
+--- a/makedumpfile.c
++++ b/makedumpfile.c
+@@ -7151,6 +7151,9 @@ create_2nd_bitmap(struct cycle *cycle)
+ 	 */
+ 	exclude_nodata_pages(cycle);
+ 
++	if (cycle->flags & MRF_MANDATORY)
++		goto skip_and_sync;
++
+ 	/*
+ 	 * Exclude cache pages, cache private pages, user data pages,
+ 	 * and hwpoison pages.
+@@ -7210,6 +7213,7 @@ create_2nd_bitmap(struct cycle *cycle)
+ 		}
+ 	}
+ 
++skip_and_sync:
+ 	if (!sync_2nd_bitmap())
+ 		return FALSE;
+ 
+@@ -9507,6 +9511,97 @@ write_kdump_bitmap2(struct cycle *cycle) {
+ 	}
+ }
+ 
++/* 
++ * x86_64 implemention.
++ */
++int get_per_cpu_size_offset(int *pcpu_size, unsigned long *pcpu_offset)
++{
++	unsigned long pcpu_offsets[2]; // CPU0 and CPU1
++
++	if (SYMBOL(__per_cpu_offset) != NOT_FOUND_SYMBOL) {
++		if (!readmem(VADDR, SYMBOL(__per_cpu_offset), pcpu_offsets, sizeof(pcpu_offsets))) {
++			ERRMSG("Can't read __per_cpu_offset from vmcore memory.\n");
++			return FALSE;
++		}
++		*pcpu_size = pcpu_offsets[1] - pcpu_offsets[0];
++		*pcpu_offset = pcpu_offsets[0];
++	} else {
++		ERRMSG("Symbol __per_cpu_offset isn't found.\n");
++		return FALSE;
++	}
++		
++	return TRUE;
++}
++
++/*
++ * x86_64
++ * x = y + ((x > y) ? phys_base : (__START_KERNEL_map - PAGE_OFFSET));
++ */
++unsigned long __phys_addr(unsigned long va)
++{
++        unsigned long pa;
++
++	if (va > __START_KERNEL_map) {
++		pa = va - __START_KERNEL_map + info->phys_base;
++	} else {
++		pa = va - info->page_offset;
++	}
++
++        return pa;
++}
++
++int get_per_cpu_memory_range(struct mem_range *mr)
++{
++	int rv;
++	int pcpu_size;
++	unsigned long pcpu_offset;
++	int cpus = get_nr_cpus();
++
++	rv = get_per_cpu_size_offset(&pcpu_size, &pcpu_offset);
++	if (rv != TRUE) {
++		ERRMSG("Can't get __per_cpu_offset info.\n");
++		return FALSE;
++	}
++
++	mr->start = __phys_addr(pcpu_offset);
++	mr->end = __phys_addr(pcpu_offset + cpus * pcpu_size);
++
++	return TRUE;
++}
++
++void init_memory_range(struct mem_range *mr, unsigned long s, 
++			unsigned long e, unsigned flags)
++{
++	mr->start = s;
++	mr->end = e;
++	mr->start_pfn = paddr_to_pfn(s);
++	mr->end_pfn = paddr_to_pfn(roundup(e, PAGESIZE()));
++	mr->flags = flags;
++}
++/*
++ * [0]: 0 - per_cpu_start;
++ * [1]: per_cpu_start - per_cpu_end;
++ * [2]: per_cpu_end - maxpfn;
++ */
++int initialize_memory_ranges(struct mem_range *mr)
++{
++	int rv;
++	struct mem_range pcpu_mr;
++
++	rv = get_per_cpu_memory_range(&pcpu_mr);
++
++	if (rv != TRUE) {
++		init_memory_range(&mr[0], 0, info->max_mapnr * PAGESIZE(), 0);
++		return FALSE;
++	}
++
++	init_memory_range(&mr[0], 0, pcpu_mr.start, 0);
++	init_memory_range(&mr[1], pcpu_mr.start, pcpu_mr.end, MRF_MANDATORY);
++	init_memory_range(&mr[2], pcpu_mr.end, info->max_mapnr * PAGESIZE(), 0);
++
++	return 0;
++}
++
+ int
+ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_data *cd_page)
+ {
+@@ -9579,30 +9674,45 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 			return FALSE;
+ 	}
+ 
++	/*
++	 * Initialize physcial memory ranges.
++	 */
++	int nr_ranges= 3;
++	struct mem_range mr[nr_ranges];
++	if (!initialize_memory_ranges(mr)) {
++		nr_ranges = 1;
++	}
++
+ 	/*
+ 	 * Write pages and bitmap cyclically.
+ 	 */
+-	//cycle = {0, 0};
+-	memset(&cycle, 0, sizeof(struct cycle));
+-	for_each_cycle(0, info->max_mapnr, &cycle)
++	for (int i = 0; i < nr_ranges; i++) 
+ 	{
+-		if (info->flag_cyclic) {
+-			if (!create_2nd_bitmap(&cycle))
+-				return FALSE;
+-		}
+-
+-		if (!write_kdump_bitmap2(&cycle))
+-			return FALSE;
++		mdf_pfn_t start = mr[i].start_pfn;
++		mdf_pfn_t end = mr[i].end_pfn;
++		//cycle = {0, 0};
++		memset(&cycle, 0, sizeof(struct cycle));
++		cycle.flags = mr[i].flags;
++		for_each_cycle(start, end, &cycle)
++		{
++			if (info->flag_cyclic) {
++				if (!create_2nd_bitmap(&cycle))
++					return FALSE;
++			}
+ 
+-		if (info->num_threads) {
+-			if (!write_kdump_pages_parallel_cyclic(cd_header,
+-							cd_page, &pd_zero,
+-							&offset_data, &cycle))
+-				return FALSE;
+-		} else {
+-			if (!write_kdump_pages_cyclic(cd_header, cd_page, &pd_zero,
+-					&offset_data, &cycle))
++			if (!write_kdump_bitmap2(&cycle))
+ 				return FALSE;
++
++			if (info->num_threads) {
++				if (!write_kdump_pages_parallel_cyclic(cd_header,
++								cd_page, &pd_zero,
++								&offset_data, &cycle))
++					return FALSE;
++			} else {
++				if (!write_kdump_pages_cyclic(cd_header, cd_page, &pd_zero,
++						&offset_data, &cycle))
++					return FALSE;
++			}
+ 		}
+ 	}
+ 	free_bitmap2_buffer();
+diff --git a/makedumpfile.h b/makedumpfile.h
+index 6b43a8b..630fa4e 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -2352,6 +2352,19 @@ struct memory_range {
+ 	unsigned long long start, end;
+ };
+ 
++#define MRF_MANDATORY		(0x1 << 0)
++#define MRF_EXCLUDED		(0x1 << 1)
++
++#define MRT_PERCPU		0x1
++struct mem_range {
++	unsigned long long start;
++	unsigned long long end;
++	unsigned long start_pfn;
++	unsigned long end_pfn;
++	unsigned long long flags;
++	int type;
++};
++
+ #define CRASH_RESERVED_MEM_NR   8
+ extern struct memory_range crash_reserved_mem[CRASH_RESERVED_MEM_NR];
+ extern int crash_reserved_mem_nr;
+@@ -2539,6 +2552,7 @@ struct cycle {
+ 	mdf_pfn_t exclude_pfn_start;
+ 	mdf_pfn_t exclude_pfn_end;
+ 	mdf_pfn_t *exclude_pfn_counter;
++	unsigned long long flags;
+ };
+ 
+ static inline int

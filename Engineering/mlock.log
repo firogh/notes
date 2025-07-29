@@ -1,0 +1,51 @@
+# usage
+
+       MCL_CURRENT
+              Lock all pages which are currently mapped into the address
+              space of the process.
+
+       MCL_FUTURE
+              Lock all pages which will become mapped into the address
+              space of the process in the future.  These could be, for
+              instance, new pages required by a growing heap and stack
+              as well as new memory-mapped files or shared memory
+              regions.
+
+# size >= locked from smaps comment 274 ,bug 1217895
+Let me repeat. mlockall(MCL_CURRENT | MCL_FUTURE) (flags: 3) will lock all existing and future mappings. That means those mappings should be fully resident and locked i.e. size == rss but please note that size >= locked. The reason locked might be smaller is that smaps reports pss_locked rather than pss_locked. So a shared page will get its proportional ratio.
+
+So in other words
+awk '
+/^[0-9]/{mapping=$0} 
+/^Pss:/ {pss=$2} 
+/^Size:/{size=$2} 
+/^Locked/{locked=$2} 
+/^VmFlags:.*lo/ {
+    if (locked != pss) 
+        printf "mapping:%s %s size:%d pss:%d locked:%d\n", mapping, $0, size, pss, locked}
+' smaps
+
+Shouldn't really print anything. And it doesn't.
+
+There are couple of mappings without VM_LOCKED flag (lo in VmFlags) but without pids I have no idea which process they belong to.
+
+# Faults on mlocked
+ Are write faults expected on mlocked shared file mappings? Yes. This is how filesystems implement their dirty data tracking.
+Is a read fault expected on mlocked memory? Less so, but still possible
+1) if NUMA balancing is enabled then minor faults might occur as a result.
+Based on vmstat data this is not happening
+numa_pte_updates 0
+numa_huge_pte_updates 0
+numa_hint_faults 0
+numa_hint_faults_local 0
+numa_pages_migrated 0
+I would definitely recommend disabling numa balancing on this type of workload. Maybe it is already disabled, I haven't checked.
+2) mmapings of special (device) files could ignore mlock altogether. From the traces it seems this is the case here.
+3) KSM could have merged pages with the same content but that requires mapping to be explicitly marked as mergeable (madvise(MADV_MERGEABLE)). Generally not recommended in this type of workloads.
+4) MADV_DONTNEED_LOCKED (available since 5.18) allows to unmap mlocked memory which might lead to a later fault. Again something not recommended in this kind of workloads.
+5) userspace probing
+6) userfaultfd mechanism but I believe this is not used here.
+I cannot think of anything else. In other words mlockall doesn't really prevent from page faults. Major pagefaults shouldn't really happen but write faults on shared file data might be a risk as this triggers filesystem involvement and that might turn out rather expensive operation. So it should be avoided as well.
+Let me know if there are any other questions regarding faults.
+
+

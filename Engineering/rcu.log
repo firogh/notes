@@ -9,3 +9,84 @@ b45e00
   name = 0xb49500 <rcu_sched_varname> "rcu_sched"
 b42600
   name = 0xb45d00 <rcu_bh_varname> "rcu_bh"
+
+# real framework
+update_process_times -> rcu_sched_clock_irq->rcu_flavor_sched_clock_irq!!!
+commit c98cac603f1ce7d00e2a802b5640bced3bc3c1f2
+Author: Paul E. McKenney <paulmck@kernel.org>
+Date:   Wed Nov 21 11:35:03 2018 -0800
+    rcu: Rename rcu_check_callbacks() to rcu_sched_clock_irq()
+
+fake core:
+rcu_check_quiescent_state
+
+process callbacks
+rcu_core_si -> rcu_core -> rcu_check_quiescent_state
+
+idle:
+cpu_idle_poll ->
+ct_idle_enter 
+ct_kernel_exit
+deleted: rcu_idle_enter
+nohz-idle：当 CPU 进入空闲状态时，时钟中断被关闭，RCU_DYNTICKS_IDX 被用于跟踪这个状态变化，确保 RCU 能正确识别空闲 CPU 并调整其行为。
+nohz-full：不仅在空闲状态下关闭时钟中断，甚至在用户态运行时也可以关闭时钟中断。RCU_DYNTICKS_IDX 在 nohz-full 模式下仍然会用于管理空闲状态，但对于用户态的处理则依赖于其他机制。
+
+commit fe98db1c6d1ad7349e61a5a2766ad64975bc9ae4
+Author: Frederic Weisbecker <frederic@kernel.org>
+Date:   Wed Jun 8 16:40:22 2022 +0200
+
+    context_tracking: Rename context_tracking_enter/exit() to ct_user_enter/exit()
+
+eqs:
+static __always_inline bool rcu_dynticks_curr_cpu_in_eqs(void)
+{
+        return !(raw_atomic_read(this_cpu_ptr(&context_tracking.state)) & RCU_DYNTICKS_IDX);
+}
+
+# enable user eqs for nohz_full
+boot parameter-> tick_nohz_full_running
+tick_nohz_init:
+        for_each_cpu(cpu, tick_nohz_full_mask)
+                ct_cpu_track_user(cpu);
+
+void __init ct_cpu_track_user(int cpu)
+{
+        static __initdata bool initialized = false;
+
+        if (!per_cpu(context_tracking.active, cpu)) {
+                per_cpu(context_tracking.active, cpu) = true;
+                static_branch_inc(&context_tracking_key);
+        }
+
+## return back to user space
+void noinstr __ct_user_enter(enum ctx_state state)
+{
+        struct context_tracking *ct = this_cpu_ptr(&context_tracking);
+        lockdep_assert_irqs_disabled();
+
+        /* Kernel threads aren't supposed to go to userspace */
+        WARN_ON_ONCE(!current->mm);
+
+        if (!context_tracking_recursion_enter())
+                return;
+
+        if (__ct_state() != state) {
+                if (ct->active) {		#====> probably not enabled. see ct_cpu_track_user().
+		[...]
+		}else{
+		[...]
+
+                        if (!IS_ENABLED(CONFIG_CONTEXT_TRACKING_IDLE)) {
+                                /* Tracking for vtime only, no concurrent RCU EQS accounting */
+                                raw_atomic_set(&ct->state, state);
+                        } else {
+                                /*
+                                 * Tracking for vtime and RCU EQS. Make sure we don't race
+                                 * with NMIs. OTOH we don't care about ordering here since
+                                 * RCU only requires RCU_DYNTICKS_IDX increments to be fully
+                                 * ordered.
+                                 */
+                                raw_atomic_add(state, &ct->state);
+                        }
+
+

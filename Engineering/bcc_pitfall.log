@@ -1,0 +1,24 @@
+
+# Null or 0 of void *mapping is converted to NoneType
+struct pfn_stack_entry {
+    u64 pfn;
+    u64 stack_id;
+    void *mapping;
+    unsigned long flags;
+    int val;
+    int count;
+    int ret;
+    int type;
+};"""
+
+>>> e.mapping
+>>> type(e.mapping)
+<class 'NoneType'>
+>>> type(e.flags)
+<class 'int'>
+>>> if e.mapping  == 0: print("OK")
+... 
+>>> if e.mapping is None: print("OK")
+... 
+OK
+

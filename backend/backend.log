@@ -1,0 +1,51 @@
+
+
+# mysql
+## Installation
+dnf in mysql mysql-server
+
+## mysql shell
+https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/#repo-qg-yum-repo-setup
+sudo dnf localinstall ./d/mysql84-community-release-fc40-1.noarch.rpm
+dnf in mysql-shell.x86_64
+
+
+# Maven
+https://maven.apache.org/install.html
+## mirror
+https://developer.aliyun.com/mvn/search
+
+# MyBatis
+https://mybatis.org/mybatis-3/getting-started.html
+
+# SpringMVC
+## web.xml
+https://spring.io/blog/2011/01/04/green-beans-getting-started-with-spring-mvc
+
+# Tomcat
+## tomcat-maven-plugin
+https://tomcat.apache.org/maven-plugin-trunk/
+
+## SmartTomcat plugin
+The Tomcat plugin for Intellij IDEA
+The SmartTomcat will auto load the Webapp classes and libs from project and module, You needn't copy the classes and libs to the WEB-INF/classes and WEB-INF/lib. The Smart Tomcat plugin will auto config the classpath for tomcat server. The Smart Tomcat support Tomcat 6+
+Getting started
+1.In Run/Debug, choose SmartTomcat 
+2.config the run/debug 
+config Tomcat Server : config or choose tomcat server 
+Deployment : choose the webapp folder, e.g. "src\main\webapp" 
+Context Path : input the contextPath, e.g. "/mycontextpath" 
+Server Port : input the server port, e.g. "8080" 
+VM Options : input the vm options, e.g. "-DENV=DEV" 
+3.start run/debug enjoy it~
+
+### Firo
+Name: TomcatTestWeb
+Tomcat server: root of tomcat
+Catalina base: /home/firo/.SmartTomcat/TestBilibili/TestWeb ??
+Deployment directory: /home/firo/IdeaProjects/TestBilibili/TestWeb/src/main/webapp
+Useclasspath: TestWeb
+Contextpath: /TestWeb
+VM options: -DENV=DEV
+
+

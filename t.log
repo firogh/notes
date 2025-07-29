@@ -1,0 +1,18 @@
+Probably, the isolated CPUs should be skipped from draining the per-CPU LRU pages cache.
+
+A quick fix:
+diff --git a/mm/swap.c b/mm/swap.c
+index af3cad4e5378..f8ff45710413 100644
+--- a/mm/swap.c
++++ b/mm/swap.c
+@@ -815,6 +815,9 @@ inline void __lru_add_drain_all(bool force_all_cpus)
+        for_each_online_cpu(cpu) {
+                struct work_struct *work = &per_cpu(lru_add_drain_work, cpu);
+ 
++               if (!cpumask_test_cpu(cpu, housekeeping_cpumask(HK_TYPE_DOMAIN)))
++                       continue;
++
+                if (force_all_cpus ||
+                    pagevec_count(&per_cpu(lru_pvecs.lru_add, cpu)) ||
+                    data_race(pagevec_count(&per_cpu(lru_rotate.pvec, cpu))) ||
+

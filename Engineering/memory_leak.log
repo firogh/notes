@@ -1,0 +1,15 @@
+No that was wrong. Page being on LRU list doesn't increase its refcount, just the lru page flag indicates it. So pages on LRU list with no mapping and refcount of 1 means the refcounts were already leaked somewhere, and reclaim cannot do anything about it. Since it happened in the past, the crash dump cannot tell us where. We would have to observe a running system.
+
+Is the machine still OK after the reboot? One way to see if this is happening is looking at /proc/meminfo. The values of 
+
+Cached + Buffers – Shmem
+
+should be roughly equal to
+
+Active(file) + Inactive(file)
+
+If the latter is higher, and this difference grows over time, it indicates the same kind of leaking is occurring again.
+
+
+# shell
+egrep '(Cached:|Buffers:|Shmem:|ctive\(file\))' /proc/meminfo

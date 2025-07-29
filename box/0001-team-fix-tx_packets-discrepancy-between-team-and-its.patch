@@ -1,0 +1,62 @@
+From 907edad1a0bdbc1522f350045b8f7ee53e59ddd7 Mon Sep 17 00:00:00 2001
+From: Firo Yang <firo.yang@suse.com>
+Date: Fri, 18 Oct 2024 11:18:20 +0200
+Subject: [PATCH 1/1] team: fix tx_packets discrepancy between team and its
+ slave
+
+Patch-mainline: Not yet, debug only
+References: bsc#1228909
+
+Our customer reported the following problem. eth0+eth2 are the
+slave devices under team0. The txpck/s counter(247656.25) of
+the bond device team0 is much smaller than its slave device
+eth2(950424.75).
+Average: IFACE [...] txpck/s [...]
+Average: eth0 [...] 0.00 [...]
+Average: eth2 [...] 950424.75 [...]
+Average: team0 [...] 247656.25 [...]
+
+After some tracing, we found that the underlying slave device
+counts each GSO segment as an individual packet. For example,
+the Emulex device drivers:
+static void be_tx_stats_update([...])
+{
+        struct be_tx_stats *stats = tx_stats(txo);
+        u32 tx_pkts = skb_shinfo(skb)->gso_segs ? : 1;
+[...]
+        stats->tx_pkts += tx_pkts;
+[...]
+}
+
+To eliminate this discrepancy, in team driver, we count
+tx packets the same way.
+
+Signed-off-by: Firo Yang <firo.yang@suse.com>
+---
+ drivers/net/team/team.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/team/team.c b/drivers/net/team/team.c
+index dc83e1a4e7f8..678b4f14c36d 100644
+--- a/drivers/net/team/team.c
++++ b/drivers/net/team/team.c
+@@ -1709,6 +1709,7 @@ static netdev_tx_t team_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	struct team *team = netdev_priv(dev);
+ 	bool tx_success;
+ 	unsigned int len = skb->len;
++	unsigned short tx_pkts = skb_shinfo(skb)->gso_segs ? : 1;
+ 
+ 	tx_success = team_queue_override_transmit(team, skb);
+ 	if (!tx_success)
+@@ -1718,7 +1719,7 @@ static netdev_tx_t team_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 		pcpu_stats = this_cpu_ptr(team->pcpu_stats);
+ 		u64_stats_update_begin(&pcpu_stats->syncp);
+-		pcpu_stats->tx_packets++;
++		pcpu_stats->tx_packets += tx_pkts;
+ 		pcpu_stats->tx_bytes += len;
+ 		u64_stats_update_end(&pcpu_stats->syncp);
+ 	} else {
+-- 
+2.35.3
+

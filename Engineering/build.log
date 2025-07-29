@@ -1,0 +1,16 @@
+#CC=gcc-10
+#ccflags-y=-Wmissing-attributes -Werror -Wformat-nonliteral
+ccflags-y=-Werror -Wformat-nonliteral
+
+obj-m := dummy.o
+
+default:
+		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
+clean:
+		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
+
+
+# make
+$ make all WARNINGS_AS_ERRORS=n
+
+make EXTRA_CFLAGS="-Wno-error"  CFLAGS="-Wno-implicit-function-declaration"

@@ -1,0 +1,1269 @@
+diff --git a/diskdump_mod.h b/diskdump_mod.h
+index e4bce5c..ab3b41c 100644
+--- a/diskdump_mod.h
++++ b/diskdump_mod.h
+@@ -88,6 +88,12 @@ struct kdump_sub_header {
+ 	unsigned long long start_pfn_64;  /* header_version 6 and later */
+ 	unsigned long long end_pfn_64;	  /* header_version 6 and later */
+ 	unsigned long long max_mapnr_64;  /* header_version 6 and later */
++	unsigned long long page_offset;
++	int		   last_dump_level;	/* header_version 7 and later */
++	unsigned long long total_present_pages; /* header_version 7 and later */
++	unsigned long long total_dumpble_pages;	/* header_version 7 and later */
++	unsigned long long written_pages;	/* header_version 7 and later */
++	int			orig_size;
+ };
+ 
+ /* page flags */
+diff --git a/makedumpfile.c b/makedumpfile.c
+index cadc596..03c5b79 100644
+--- a/makedumpfile.c
++++ b/makedumpfile.c
+@@ -4708,12 +4708,27 @@ initialize_1st_bitmap(struct dump_bitmap *bitmap)
+ }
+ 
+ void
++
+ initialize_2nd_bitmap(struct dump_bitmap *bitmap)
+ {
+ 	initialize_bitmap(bitmap);
+ 	bitmap->offset = info->len_bitmap / 2;
+ }
+-
++initialize_bytemap(struct dump_bytemap *map)
++{
++	if (info->fd_bitmap >= 0) {
++		map->fd        = info->fd_bitmap;
++		map->file_name = info->name_bitmap;
++		map->no_block  = -1;
++		memset(bitmap->buf, 0, BUFSIZE_BITMAP);
++	} else {
++		map->fd        = -1;
++		map->file_name = NULL;
++		map->no_block  = -1;
++		memset(map->buf, 0, info->bufsize_cyclic);
++	}
++	map->offset = 0;
++}
+ void
+ initialize_2nd_bitmap_parallel(struct dump_bitmap *bitmap, int thread_num)
+ {
+@@ -4809,7 +4824,38 @@ set_bitmap(struct dump_bitmap *bitmap, mdf_pfn_t pfn, int val, struct cycle *cyc
+ 		return set_bitmap_buffer(bitmap, pfn, val, cycle);
+ 	}
+ }
++int
++sync_reason_map()
++{
++	struct dump_reason_map *map;
++	off_t offset;
++	offset = map->offset + BUFSIZE_REASON_MAP * bitmap->no_block;
++
++	/*
++	 * The bitmap doesn't have the fd, it's a on-memory bitmap.
++	 */
++	if (map->fd < 0)
++		return TRUE;
++	/*
++	 * The bitmap buffer is not dirty, and it is not necessary
++	 * to write out it.
++	 */
++	if (map->no_block < 0)
++		return TRUE;
+ 
++	if (lseek(map->fd, offset, SEEK_SET) < 0 ) {
++		ERRMSG("Can't seek the reason map(%s). %s\n",
++		    map->file_name, strerror(errno));
++		return FALSE;
++	}
++	if (write(map->fd, map->buf, BUFSIZE_BITMAP)
++	    != BUFSIZE_BITMAP) {
++		ERRMSG("Can't write the reason map(%s). %s\n",
++		    map->file_name, strerror(errno));
++		return FALSE;
++	}
++	return TRUE;
++}
+ int
+ sync_bitmap(struct dump_bitmap *bitmap)
+ {
+@@ -4873,6 +4919,48 @@ clear_bit_on_2nd_bitmap(mdf_pfn_t pfn, struct cycle *cycle)
+ 	return set_bitmap(info->bitmap2, pfn, 0, cycle);
+ }
+ 
++int set_reason_on_map(mdf_pfn_t pfn, short reason, cycle)
++{
++	int offset;
++        static int warning = 0;
++	struct dump_reason_map *map;
++
++        if (!is_cyclic_region(pfn, cycle)) {
++                if (warning == 0) {
++                        MSG("WARNING: PFN out of cycle range. (pfn:%llx, ", pfn); 
++                        MSG("cycle:[%llx-%llx])\n", cycle->start_pfn, cycle->end_pfn);
++                        warning = 1;
++                }
++                return FALSE;
++        }     
++
++	map = info->reason_map;
++        offset = pfn - cycle->start_pfn;
++
++	if (offset & 0x1)
++		reason = reason << 4;
++
++	map->buf[offset>>1] |= reason;
++
++        return TRUE;
++}
++
++int set_page_exclude_reason(mdf_pfn_t pfn, short reason, struct cycle *cycle)
++{
++	unsigned long long maddr;
++
++	if (is_xen_memory()) {
++		maddr = ptom_xen(pfn_to_paddr(pfn));
++		if (maddr == NOT_PADDR) {
++			ERRMSG("Can't convert a physical address(%llx) to machine address.\n",
++			    pfn_to_paddr(pfn));
++			return FALSE;
++		}
++		pfn = paddr_to_pfn(maddr);
++	}
++	return set_reason_on_map(pfn, reason, cycle);
++}
++
+ int
+ clear_bit_on_2nd_bitmap_for_kernel(mdf_pfn_t pfn, struct cycle *cycle)
+ {
+@@ -5182,6 +5270,33 @@ exclude_nodata_pages(struct cycle *cycle)
+ 	}
+ }
+ 
++static void
++set_page_exclude_reason_nodata_pages(struct cycle *cycle)
++{
++	int i;
++	unsigned long long phys_start, phys_end;
++	off_t file_size;
++
++	i = 0;
++	while (get_pt_load_extents(i, &phys_start, &phys_end,
++				   NULL, &file_size)) {
++		unsigned long long pfn, pfn_end;
++
++		pfn = paddr_to_pfn(phys_start + file_size);
++		pfn_end = paddr_to_pfn(roundup(phys_end, PAGESIZE()));
++
++		if (pfn < cycle->start_pfn)
++			pfn = cycle->start_pfn;
++		if (pfn_end >= cycle->end_pfn)
++			pfn_end = cycle->end_pfn;
++		while (pfn < pfn_end) {
++			set_reason_on_map(pfn, PAGE_EXCLUDE_NODATA, cycle);
++			++pfn;
++		}
++		++i;
++	}
++}
++
+ int
+ read_flat_data_header(struct makedumpfile_data_header *fdh)
+ {
+@@ -5461,7 +5576,103 @@ page_to_pfn(unsigned long page)
+ 	}
+ 	return pfn;
+ }
++int
++reset_reason_map_of_free_pages(unsigned long node_zones, struct cycle *cycle)
++{
++
++	int order, i, migrate_type, migrate_types;
++	unsigned long curr, previous, head, curr_page, curr_prev;
++	unsigned long addr_free_pages, free_pages = 0, found_free_pages = 0;
++	mdf_pfn_t pfn, start_pfn;
++
++	/*
++	 * On linux-2.6.24 or later, free_list is divided into the array.
++	 */
++	migrate_types = ARRAY_LENGTH(free_area.free_list);
++	if (migrate_types == NOT_FOUND_STRUCTURE)
++		migrate_types = 1;
++
++	for (order = (ARRAY_LENGTH(zone.free_area) - 1); order >= 0; --order) {
++		for (migrate_type = 0; migrate_type < migrate_types;
++		     migrate_type++) {
++			head = node_zones + OFFSET(zone.free_area)
++				+ SIZE(free_area) * order
++				+ OFFSET(free_area.free_list)
++				+ SIZE(list_head) * migrate_type;
++			previous = head;
++			if (!readmem(VADDR, head + OFFSET(list_head.next),
++				     &curr, sizeof curr)) {
++				ERRMSG("Can't get next list_head.\n");
++				return FALSE;
++			}
++			for (;curr != head;) {
++				curr_page = curr - OFFSET(page.lru);
++				start_pfn = page_to_pfn(curr_page);
++				if (start_pfn == ULONGLONG_MAX)
++					return FALSE;
++
++				if (!readmem(VADDR, curr+OFFSET(list_head.prev),
++					     &curr_prev, sizeof curr_prev)) {
++					ERRMSG("Can't get prev list_head.\n");
++					return FALSE;
++				}
++				if (previous != curr_prev) {
++					ERRMSG("The free list is broken.\n");
++					return FALSE;
++				}
++				for (i = 0; i < (1<<order); i++) {
++					pfn = start_pfn + i;
++					set_page_exclude_free(pfn, PAGE_EXCLUDE_FREE, cycle);
++				}
++
++				previous = curr;
++				if (!readmem(VADDR, curr+OFFSET(list_head.next),
++					     &curr, sizeof curr)) {
++					ERRMSG("Can't get next list_head.\n");
++					return FALSE;
++				}
++			}
++		}
++	}
++
++	return TRUE;
++	
++	/*
++	 * Check the number of free pages.
++	 */
++	if (OFFSET(zone.free_pages) != NOT_FOUND_STRUCTURE) {
++		addr_free_pages = node_zones + OFFSET(zone.free_pages);
++
++	} else if (OFFSET(zone.vm_stat) != NOT_FOUND_STRUCTURE) {
++		/*
++		 * On linux-2.6.21 or later, the number of free_pages is
++		 * in vm_stat[NR_FREE_PAGES].
++		 */
++		addr_free_pages = node_zones + OFFSET(zone.vm_stat)
++		    + sizeof(long) * NUMBER(NR_FREE_PAGES);
++
++	} else {
++		ERRMSG("Can't get addr_free_pages.\n");
++		return FALSE;
++	}
++	if (!readmem(VADDR, addr_free_pages, &free_pages, sizeof free_pages)) {
++		ERRMSG("Can't get free_pages.\n");
++		return FALSE;
++	}
++	if (free_pages != found_free_pages && !info->flag_cyclic) {
++		/*
++		 * On linux-2.6.21 or later, the number of free_pages is
++		 * sometimes different from the one of the list "free_area",
++		 * because the former is flushed asynchronously.
++		 */
++		DEBUG_MSG("The number of free_pages is invalid.\n");
++		DEBUG_MSG("  free_pages       = %ld\n", free_pages);
++		DEBUG_MSG("  found_free_pages = %ld\n", found_free_pages);
++	}
++	pfn_free += found_free_pages;
+ 
++	return TRUE;
++}
+ int
+ reset_bitmap_of_free_pages(unsigned long node_zones, struct cycle *cycle)
+ {
+@@ -5869,6 +6080,71 @@ out:
+ }
+ 
+ 
++int
++_set_page_exclude_free(struct cycle *cycle)
++{
++	int i, nr_zones, num_nodes, node;
++	unsigned long node_zones, zone, spanned_pages, pgdat;
++	struct timespec ts_start;
++
++	if ((node = next_online_node(0)) < 0) {
++		ERRMSG("Can't get next online node.\n");
++		return FALSE;
++	}
++	if (!(pgdat = next_online_pgdat(node))) {
++		ERRMSG("Can't get pgdat list.\n");
++		return FALSE;
++	}
++	clock_gettime(CLOCK_MONOTONIC, &ts_start);
++
++	for (num_nodes = 1; num_nodes <= vt.numnodes; num_nodes++) {
++
++		print_progress(PROGRESS_FREE_PAGES, num_nodes - 1, vt.numnodes, NULL);
++
++		node_zones = pgdat + OFFSET(pglist_data.node_zones);
++
++		if (!readmem(VADDR, pgdat + OFFSET(pglist_data.nr_zones),
++		    &nr_zones, sizeof(nr_zones))) {
++			ERRMSG("Can't get nr_zones.\n");
++			return FALSE;
++		}
++
++		for (i = 0; i < nr_zones; i++) {
++
++			print_progress(PROGRESS_FREE_PAGES, i + nr_zones * (num_nodes - 1),
++					nr_zones * vt.numnodes, NULL);
++
++			zone = node_zones + (i * SIZE(zone));
++			if (!readmem(VADDR, zone + OFFSET(zone.spanned_pages),
++			    &spanned_pages, sizeof spanned_pages)) {
++				ERRMSG("Can't get spanned_pages.\n");
++				return FALSE;
++			}
++			if (!spanned_pages)
++				continue;
++			if (!reset_reason_map_of_free_pages(zone, cycle))
++				return FALSE;
++		}
++		if (num_nodes < vt.numnodes) {
++			if ((node = next_online_node(node + 1)) < 0) {
++				ERRMSG("Can't get next online node.\n");
++				return FALSE;
++			} else if (!(pgdat = next_online_pgdat(node))) {
++				ERRMSG("Can't determine pgdat list (node %d).\n",
++				    node);
++				return FALSE;
++			}
++		}
++	}
++
++	/*
++	 * print [100 %]
++	 */
++	print_progress(PROGRESS_FREE_PAGES, vt.numnodes, vt.numnodes, NULL);
++	print_execution_time(PROGRESS_FREE_PAGES, &ts_start);
++
++	return TRUE;
++}
+ int
+ _exclude_free_page(struct cycle *cycle)
+ {
+@@ -5936,7 +6212,7 @@ _exclude_free_page(struct cycle *cycle)
+ }
+ 
+ int
+-exclude_free_page(struct cycle *cycle)
++set_page_exclude_free(struct cycle *cycle)
+ {
+ 	/*
+ 	 * Check having necessary information.
+@@ -5971,31 +6247,73 @@ exclude_free_page(struct cycle *cycle)
+ 	/*
+ 	 * Detect free pages and update 2nd-bitmap.
+ 	 */
+-	if (!_exclude_free_page(cycle))
++	if (!_set_page_exclude_free(cycle))
+ 		return FALSE;
+ 
+ 	return TRUE;
+ }
+ 
+-/*
+- * For the kernel versions from v2.6.17 to v2.6.37.
+- */
+-static int
+-page_is_buddy_v2(unsigned long flags, unsigned int _mapcount,
+-			unsigned long private, unsigned int _count)
++int
++exclude_free_page(struct cycle *cycle)
+ {
+-	if (flags & (1UL << NUMBER(PG_buddy)))
+-		return TRUE;
+-
+-	return FALSE;
+-}
+-
+-/*
+- * For v2.6.38 and later kernel versions.
+- */
+-static int
+-page_is_buddy_v3(unsigned long flags, unsigned int _mapcount,
+-			unsigned long private, unsigned int _count)
++	/*
++	 * Check having necessary information.
++	 */
++	if ((SYMBOL(node_data) == NOT_FOUND_SYMBOL)
++	    && (SYMBOL(pgdat_list) == NOT_FOUND_SYMBOL)
++	    && (SYMBOL(contig_page_data) == NOT_FOUND_SYMBOL)) {
++		ERRMSG("Can't get necessary symbols for excluding free pages.\n");
++		return FALSE;
++	}
++	if ((SIZE(zone) == NOT_FOUND_STRUCTURE)
++	    || ((OFFSET(zone.free_pages) == NOT_FOUND_STRUCTURE)
++	        && (OFFSET(zone.vm_stat) == NOT_FOUND_STRUCTURE))
++	    || (OFFSET(zone.free_area) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(zone.spanned_pages) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(pglist_data.node_zones) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(pglist_data.nr_zones) == NOT_FOUND_STRUCTURE)
++	    || (SIZE(free_area) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(free_area.free_list) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(list_head.next) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(list_head.prev) == NOT_FOUND_STRUCTURE)
++	    || (OFFSET(page.lru) == NOT_FOUND_STRUCTURE)
++	    || (ARRAY_LENGTH(zone.free_area) == NOT_FOUND_STRUCTURE)) {
++		ERRMSG("Can't get necessary structures for excluding free pages.\n");
++		return FALSE;
++	}
++	if (is_xen_memory() && !info->dom0_mapnr) {
++		ERRMSG("Can't get max domain-0 PFN for excluding free pages.\n");
++		return FALSE;
++	}
++
++	/*
++	 * Detect free pages and update 2nd-bitmap.
++	 */
++	if (!_exclude_free_page(cycle))
++		return FALSE;
++
++	return TRUE;
++}
++
++/*
++ * For the kernel versions from v2.6.17 to v2.6.37.
++ */
++static int
++page_is_buddy_v2(unsigned long flags, unsigned int _mapcount,
++			unsigned long private, unsigned int _count)
++{
++	if (flags & (1UL << NUMBER(PG_buddy)))
++		return TRUE;
++
++	return FALSE;
++}
++
++/*
++ * For v2.6.38 and later kernel versions.
++ */
++static int
++page_is_buddy_v3(unsigned long flags, unsigned int _mapcount,
++			unsigned long private, unsigned int _count)
+ {
+ 	if (flags & (1UL << NUMBER(PG_slab)))
+ 		return FALSE;
+@@ -6228,6 +6546,48 @@ is_in_segs(unsigned long long paddr)
+ 		return FALSE;
+ }
+ 
++int
++set_page_exclude_zero_pages_cyclic(struct cycle *cycle)
++{
++	mdf_pfn_t pfn;
++	unsigned long long paddr;
++	unsigned char *buf;
++	int ret = FALSE;
++
++	buf = malloc(info->page_size);
++	if (!buf) {
++		ERRMSG("Can't allocate memory: %s\n", strerror(errno));
++		return FALSE;
++	}
++
++	for (pfn = cycle->start_pfn, paddr = pfn_to_paddr(pfn); pfn < cycle->end_pfn;
++	    pfn++, paddr += info->page_size) {
++
++		if (!is_in_segs(paddr))
++			continue;
++
++		if (!sync_2nd_bitmap())
++			goto out_error;
++
++		if (!is_dumpable(info->bitmap2, pfn, cycle))
++			continue;
++
++		if (!readmem(PADDR, paddr, buf, info->page_size)) {
++			ERRMSG("Can't get the page data(pfn:%llx, max_mapnr:%llx).\n",
++			    pfn, info->max_mapnr);
++			goto out_error;
++		}
++		if (is_zero_page(buf, info->page_size)) {
++			set_reason_on_map(pfn, PAGE_EXCLUDE_ZERO, cycle);	
++		}
++	}
++
++	ret = TRUE;
++
++out_error:
++	free(buf);
++	return ret;
++}
+ /*
+  * Exclude the page filled with zero in case of creating an elf dumpfile.
+  */
+@@ -6323,62 +6683,304 @@ create_bitmap_from_memhole(struct cycle *cycle, struct dump_bitmap *bitmap, int
+ 			if (count_memhole)
+ 				pfn_memhole--;
+ 		}
+-
+-		pfn_start_byte = (pfn_start_roundup - cycle->start_pfn) >> 3;
+-		pfn_end_byte = (pfn_end_round - cycle->start_pfn) >> 3;
+-
+-		if (pfn_start_byte < pfn_end_byte) {
+-			memset(bitmap->buf + pfn_start_byte,
+-			       0xff,
+-			       pfn_end_byte - pfn_start_byte);
+-			if (count_memhole)
+-				pfn_memhole -= (pfn_end_byte - pfn_start_byte) << 3;
++
++		pfn_start_byte = (pfn_start_roundup - cycle->start_pfn) >> 3;
++		pfn_end_byte = (pfn_end_round - cycle->start_pfn) >> 3;
++
++		if (pfn_start_byte < pfn_end_byte) {
++			memset(bitmap->buf + pfn_start_byte,
++			       0xff,
++			       pfn_end_byte - pfn_start_byte);
++			if (count_memhole)
++				pfn_memhole -= (pfn_end_byte - pfn_start_byte) << 3;
++		}
++
++		if (pfn_end_round >= pfn_start) {
++			for (pfn = pfn_end_round; pfn < pfn_end; ++pfn) {
++				if (!set_bit(pfn, cycle))
++					return FALSE;
++				if (count_memhole)
++					pfn_memhole--;
++			}
++		}
++	}
++	/*
++	 * print 100 %
++	 */
++	print_progress(PROGRESS_HOLES, info->max_mapnr, info->max_mapnr, NULL);
++	print_execution_time(PROGRESS_HOLES, &ts_start);
++
++	return TRUE;
++}
++
++static void
++set_page_exclude_reason_for_pages(mdf_pfn_t pfn, mdf_pfn_t endpfn, short reason,
++	      struct cycle *cycle)
++{
++	if (cycle) {
++		cycle->exclude_pfn_start = cycle->end_pfn;
++		cycle->exclude_pfn_end = endpfn;
++		cycle->exclude_pfn_counter = counter;
++
++		if (cycle->end_pfn < endpfn)
++			endpfn = cycle->end_pfn;
++	}
++
++	while (pfn < endpfn) {
++		set_reason_on_map(pfn, reason, cycle);
++		++pfn;
++	}
++}
++static void
++exclude_range(mdf_pfn_t *counter, mdf_pfn_t pfn, mdf_pfn_t endpfn,
++	      struct cycle *cycle)
++{
++	if (cycle) {
++		cycle->exclude_pfn_start = cycle->end_pfn;
++		cycle->exclude_pfn_end = endpfn;
++		cycle->exclude_pfn_counter = counter;
++
++		if (cycle->end_pfn < endpfn)
++			endpfn = cycle->end_pfn;
++	}
++
++	while (pfn < endpfn) {
++		if (clear_bit_on_2nd_bitmap_for_kernel(pfn, cycle))
++			(*counter)++;
++		++pfn;
++	}
++}
++
++int
++__exclude_unnecessary_pages(unsigned long mem_map,
++    mdf_pfn_t pfn_start, mdf_pfn_t pfn_end, struct cycle *cycle)
++{
++	mdf_pfn_t pfn;
++	mdf_pfn_t *pfn_counter;
++	mdf_pfn_t nr_pages;
++	unsigned long index_pg, pfn_mm;
++	unsigned long long maddr;
++	mdf_pfn_t pfn_read_start, pfn_read_end;
++	unsigned char *page_cache;
++	unsigned char *pcache;
++	unsigned int _count, _mapcount = 0, compound_order = 0;
++	unsigned int order_offset, dtor_offset;
++	unsigned long flags, mapping, private = 0;
++	unsigned long compound_dtor, compound_head = 0;
++
++	/*
++	 * If a multi-page exclusion is pending, do it first
++	 */
++	if (cycle && cycle->exclude_pfn_start < cycle->exclude_pfn_end) {
++		exclude_range(cycle->exclude_pfn_counter,
++			cycle->exclude_pfn_start, cycle->exclude_pfn_end,
++			cycle);
++
++		mem_map += (cycle->exclude_pfn_end - pfn_start) * SIZE(page);
++		pfn_start = cycle->exclude_pfn_end;
++	}
++
++	/*
++	 * Refresh the buffer of struct page, when changing mem_map.
++	 */
++	pfn_read_start = ULONGLONG_MAX;
++	pfn_read_end   = 0;
++
++	page_cache = malloc(SIZE(page) * PGMM_CACHED);
++	if (!page_cache) {
++		ERRMSG("Can't allocate page cache: %s\n", strerror(errno));
++		return FALSE;
++	}
++
++	order_offset = info->compound_order_offset;
++	dtor_offset = info->compound_dtor_offset;
++
++	for (pfn = pfn_start; pfn < pfn_end; pfn++, mem_map += SIZE(page)) {
++
++		/*
++		 * If this pfn doesn't belong to target region, skip this pfn.
++		 */
++		if (info->flag_cyclic && !is_cyclic_region(pfn, cycle))
++			continue;
++
++		/*
++		 * Exclude the memory hole.
++		 */
++		if (is_xen_memory()) {
++			maddr = ptom_xen(pfn_to_paddr(pfn));
++			if (maddr == NOT_PADDR) {
++				ERRMSG("Can't convert a physical address(%llx) to machine address.\n",
++				    pfn_to_paddr(pfn));
++				free(page_cache);
++				return FALSE;
++			}
++			if (!is_in_segs(maddr))
++				continue;
++		} else {
++			if (!is_in_segs(pfn_to_paddr(pfn)))
++				continue;
++		}
++
++		index_pg = pfn % PGMM_CACHED;
++		pcache  = page_cache + (index_pg * SIZE(page));
++
++		if (pfn < pfn_read_start || pfn_read_end < pfn) {
++			if (roundup(pfn + 1, PGMM_CACHED) < pfn_end)
++				pfn_mm = PGMM_CACHED - index_pg;
++			else
++				pfn_mm = pfn_end - pfn;
++
++			if (!readmem(VADDR, mem_map, pcache, SIZE(page) * pfn_mm)) {
++				ERRMSG("Can't read the buffer of struct page.\n");
++				free(page_cache);
++				return FALSE;
++			}
++			pfn_read_start = pfn;
++			pfn_read_end   = pfn + pfn_mm - 1;
++		}
++
++		flags   = ULONG(pcache + OFFSET(page.flags));
++		_count  = UINT(pcache + OFFSET(page._refcount));
++		mapping = ULONG(pcache + OFFSET(page.mapping));
++
++		compound_order = 0;
++		compound_dtor = 0;
++		/*
++		 * The last pfn of the mem_map cache must not be compound head
++		 * page since all compound pages are aligned to its page order
++		 * and PGMM_CACHED is a power of 2.
++		 */
++		if ((index_pg < PGMM_CACHED - 1) && isCompoundHead(flags)) {
++			unsigned char *addr = pcache + SIZE(page);
++
++			if (order_offset) {
++				if (info->kernel_version >= KERNEL_VERSION(4, 16, 0))
++					compound_order = UCHAR(addr + order_offset);
++				else
++					compound_order = USHORT(addr + order_offset);
++			}
++
++			if (dtor_offset) {
++				/*
++				 * compound_dtor has been changed from the address of descriptor
++				 * to the ID of it since linux-4.4.
++				 */
++				if (info->kernel_version >= KERNEL_VERSION(4, 16, 0))
++					compound_dtor = UCHAR(addr + dtor_offset);
++				else if (info->kernel_version >= KERNEL_VERSION(4, 4, 0))
++					compound_dtor = USHORT(addr + dtor_offset);
++				else
++					compound_dtor = ULONG(addr + dtor_offset);
++			}
++
++			if ((compound_order >= sizeof(unsigned long) * 8)
++			    || ((pfn & ((1UL << compound_order) - 1)) != 0)) {
++				/* Invalid order */
++				compound_order = 0;
++			}
++		}
++		if (OFFSET(page.compound_head) != NOT_FOUND_STRUCTURE)
++			compound_head = ULONG(pcache + OFFSET(page.compound_head));
++
++		if (OFFSET(page._mapcount) != NOT_FOUND_STRUCTURE)
++			_mapcount = UINT(pcache + OFFSET(page._mapcount));
++		if (OFFSET(page.private) != NOT_FOUND_STRUCTURE)
++			private = ULONG(pcache + OFFSET(page.private));
++
++		nr_pages = 1 << compound_order;
++		pfn_counter = NULL;
++
++		/*
++		 * Excludable compound tail pages must have already been excluded by
++		 * exclude_range(), don't need to check them here.
++		 */
++		if (compound_head & 1) {
++			continue;
++		}
++		/*
++		 * Exclude the free page managed by a buddy
++		 * Use buddy identification of free pages whether cyclic or not.
++		 */
++		else if ((info->dump_level & DL_EXCLUDE_FREE)
++		    && info->page_is_buddy
++		    && info->page_is_buddy(flags, _mapcount, private, _count)) {
++			if ((ARRAY_LENGTH(zone.free_area) != NOT_FOUND_STRUCTURE) &&
++			    (private >= ARRAY_LENGTH(zone.free_area))) {
++				MSG("WARNING: Invalid free page order: pfn=%llx, order=%lu, max order=%lu\n",
++				    pfn, private, ARRAY_LENGTH(zone.free_area) - 1);
++				continue;
++			}
++			nr_pages = 1 << private;
++			pfn_counter = &pfn_free;
++		}
++		/*
++		 * Exclude the non-private cache page.
++		 */
++		else if ((info->dump_level & DL_EXCLUDE_CACHE)
++		    && is_cache_page(flags)
++		    && !isPrivate(flags) && !isAnon(mapping, flags)) {
++			pfn_counter = &pfn_cache;
++		}
++		/*
++		 * Exclude the cache page whether private or non-private.
++		 */
++		else if ((info->dump_level & DL_EXCLUDE_CACHE_PRI)
++		    && is_cache_page(flags)
++		    && !isAnon(mapping, flags)) {
++			if (isPrivate(flags))
++				pfn_counter = &pfn_cache_private;
++			else
++				pfn_counter = &pfn_cache;
++		}
++		/*
++		 * Exclude the data page of the user process.
++		 *  - anonymous pages
++		 *  - hugetlbfs pages
++		 */
++		else if ((info->dump_level & DL_EXCLUDE_USER_DATA)
++			 && (isAnon(mapping, flags) || isHugetlb(compound_dtor))) {
++			pfn_counter = &pfn_user;
++		}
++		/*
++		 * Exclude the hwpoison page.
++		 */
++		else if (isHWPOISON(flags)) {
++			pfn_counter = &pfn_hwpoison;
++		}
++		/*
++		 * Exclude pages that are logically offline.
++		 */
++		else if (isOffline(flags, _mapcount)) {
++			pfn_counter = &pfn_offline;
+ 		}
++		/*
++		 * Unexcludable page
++		 */
++		else
++			continue;
+ 
+-		if (pfn_end_round >= pfn_start) {
+-			for (pfn = pfn_end_round; pfn < pfn_end; ++pfn) {
+-				if (!set_bit(pfn, cycle))
+-					return FALSE;
+-				if (count_memhole)
+-					pfn_memhole--;
+-			}
++		/*
++		 * Execute exclusion
++		 */
++		if (nr_pages == 1) {
++			if (clear_bit_on_2nd_bitmap_for_kernel(pfn, cycle))
++				(*pfn_counter)++;
++		} else {
++			exclude_range(pfn_counter, pfn, pfn + nr_pages, cycle);
++			pfn += nr_pages - 1;
++			mem_map += (nr_pages - 1) * SIZE(page);
+ 		}
+ 	}
+-	/*
+-	 * print 100 %
+-	 */
+-	print_progress(PROGRESS_HOLES, info->max_mapnr, info->max_mapnr, NULL);
+-	print_execution_time(PROGRESS_HOLES, &ts_start);
+ 
++	free(page_cache);
+ 	return TRUE;
+ }
+ 
+-static void
+-exclude_range(mdf_pfn_t *counter, mdf_pfn_t pfn, mdf_pfn_t endpfn,
+-	      struct cycle *cycle)
+-{
+-	if (cycle) {
+-		cycle->exclude_pfn_start = cycle->end_pfn;
+-		cycle->exclude_pfn_end = endpfn;
+-		cycle->exclude_pfn_counter = counter;
+-
+-		if (cycle->end_pfn < endpfn)
+-			endpfn = cycle->end_pfn;
+-	}
+-
+-	while (pfn < endpfn) {
+-		if (clear_bit_on_2nd_bitmap_for_kernel(pfn, cycle))
+-			(*counter)++;
+-		++pfn;
+-	}
+-}
+-
+ int
+-__exclude_unnecessary_pages(unsigned long mem_map,
+-    mdf_pfn_t pfn_start, mdf_pfn_t pfn_end, struct cycle *cycle)
++__mark_unnecssary_reason_for_pages(unsigned long mem_map, mdf_pfn_t pfn_start, mdf_pfn_t pfn_end,
++				struct cycle *cycle)
+ {
+ 	mdf_pfn_t pfn;
+-	mdf_pfn_t *pfn_counter;
+ 	mdf_pfn_t nr_pages;
+ 	unsigned long index_pg, pfn_mm;
+ 	unsigned long long maddr;
+@@ -6389,7 +6991,8 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 	unsigned int order_offset, dtor_offset;
+ 	unsigned long flags, mapping, private = 0;
+ 	unsigned long compound_dtor, compound_head = 0;
+-
++	unsigned short reason = 0;
++	
+ 	/*
+ 	 * If a multi-page exclusion is pending, do it first
+ 	 */
+@@ -6510,7 +7113,6 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 			private = ULONG(pcache + OFFSET(page.private));
+ 
+ 		nr_pages = 1 << compound_order;
+-		pfn_counter = NULL;
+ 
+ 		/*
+ 		 * Excludable compound tail pages must have already been excluded by
+@@ -6533,7 +7135,7 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 				continue;
+ 			}
+ 			nr_pages = 1 << private;
+-			pfn_counter = &pfn_free;
++			reason = PAGE_EXCLUDE_FREE;
+ 		}
+ 		/*
+ 		 * Exclude the non-private cache page.
+@@ -6541,7 +7143,7 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 		else if ((info->dump_level & DL_EXCLUDE_CACHE)
+ 		    && is_cache_page(flags)
+ 		    && !isPrivate(flags) && !isAnon(mapping, flags)) {
+-			pfn_counter = &pfn_cache;
++			reason = PAGE_EXCLUDE_CACHE;
+ 		}
+ 		/*
+ 		 * Exclude the cache page whether private or non-private.
+@@ -6549,10 +7151,11 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 		else if ((info->dump_level & DL_EXCLUDE_CACHE_PRI)
+ 		    && is_cache_page(flags)
+ 		    && !isAnon(mapping, flags)) {
+-			if (isPrivate(flags))
+-				pfn_counter = &pfn_cache_private;
+-			else
+-				pfn_counter = &pfn_cache;
++			if (isPrivate(flags)) {
++				reason = PAGE_EXCLUDE_CACHE_PRI;
++			} else {
++				reason = PAGE_EXCLUDE_CACHE;
++			}
+ 		}
+ 		/*
+ 		 * Exclude the data page of the user process.
+@@ -6561,19 +7164,19 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 		 */
+ 		else if ((info->dump_level & DL_EXCLUDE_USER_DATA)
+ 			 && (isAnon(mapping, flags) || isHugetlb(compound_dtor))) {
+-			pfn_counter = &pfn_user;
++			reason = PAGE_EXCLUDE_USER_DATA;
+ 		}
+ 		/*
+ 		 * Exclude the hwpoison page.
+ 		 */
+ 		else if (isHWPOISON(flags)) {
+-			pfn_counter = &pfn_hwpoison;
++			reason = PAGE_EXCLUDE_HWPOISON;
+ 		}
+ 		/*
+ 		 * Exclude pages that are logically offline.
+ 		 */
+ 		else if (isOffline(flags, _mapcount)) {
+-			pfn_counter = &pfn_offline;
++			reason = PAGE_EXCLUDE_HWPOISON.
+ 		}
+ 		/*
+ 		 * Unexcludable page
+@@ -6585,10 +7188,9 @@ __exclude_unnecessary_pages(unsigned long mem_map,
+ 		 * Execute exclusion
+ 		 */
+ 		if (nr_pages == 1) {
+-			if (clear_bit_on_2nd_bitmap_for_kernel(pfn, cycle))
+-				(*pfn_counter)++;
++			set_page_exclude_reason(pfn, reason, cycle);
+ 		} else {
+-			exclude_range(pfn_counter, pfn, pfn + nr_pages, cycle);
++			set_page_exclude_reason_for_pages(pfn, pfn + nr_pages, reason, cycle);
+ 			pfn += nr_pages - 1;
+ 			mem_map += (nr_pages - 1) * SIZE(page);
+ 		}
+@@ -7138,6 +7740,121 @@ create_2nd_bitmap(struct cycle *cycle)
+ 	return TRUE;
+ }
+ 
++#define PAGE_PRESENT_RESERVE	0x1
++#define PAGE_EXCLUDE_NODATA	0x2
++#define PAGE_EXCLUDE_FREE	0x3
++#define PAGE_EXCLUDE_ZERO	0x4
++#define PAGE_EXCLUDE_XEN	0x5
++#define PAGE_EXCLUDE_CACHE	0x6
++#define PAGE_EXCLUDE_CACHE_PRI	0x7
++#define PAGE_EXCLUDE_USER_DATA	0x8
++#define PAGE_EXCLUDE_HWPOISON	0x9
++#define PAGE_EXCLUDE_OFFLINE	0xa
++
++int kernel_page_table_walk(void)
++{
++
++}
++
++int
++create_reason_map(struct cycle *cycle)
++{
++	if (info->flag_cyclic) {
++		initialize_2nd_bitmap_cyclic(cycle);
++	} else {
++		initialize_from_bitmap();
++		if (!copy_bitmap()) {
++			ERRMSG("Can't copy 1st-bitmap to 2nd-bitmap.\n");
++			return FALSE;
++		}
++	}
++
++	/*
++	 * If re-filtering ELF dump, exclude pages that were already
++	 * excluded in the original file.
++	 */
++	set_page_exclude_reason_nodata_pages
++	//exclude_nodata_pages(cycle);
++
++	/*
++	 * Exclude cache pages, cache private pages, user data pages,
++	 * and hwpoison pages.
++	 */
++	if (info->dump_level & DL_EXCLUDE_CACHE ||
++	    info->dump_level & DL_EXCLUDE_CACHE_PRI ||
++	    info->dump_level & DL_EXCLUDE_USER_DATA ||
++	    NUMBER(PG_hwpoison) != NOT_FOUND_NUMBER ||
++	    ((info->dump_level & DL_EXCLUDE_FREE) && info->page_is_buddy)) {
++		if (!__mark_unnecssary_reason_for_pages(cycle)) {
++			ERRMSG("Can't mark unnecessary pages.\n");
++			return FALSE;
++		}
++	}
++
++	/*
++	 * Exclude free pages.
++	 */
++	if ((info->dump_level & DL_EXCLUDE_FREE) && !info->page_is_buddy)
++		if (!set_page_exclude_free_page(cycle))
++			return FALSE;
++
++	/*
++	 * Exclude Xen user domain.
++	 */
++	if (info->flag_exclude_xen_dom) {
++		if (!exclude_xen_user_domain()) {
++			ERRMSG("Can't exclude xen user domain.\n");
++			return FALSE;
++		}
++	}
++
++	/*
++	 * Exclude pages filled with zero for creating an ELF dumpfile.
++	 *
++	 * Note: If creating a kdump-compressed dumpfile, makedumpfile
++	 *	 checks zero-pages while copying dumpable pages to a
++	 *	 dumpfile from /proc/vmcore. That is valuable for the
++	 *	 speed, because each page is read one time only.
++	 *	 Otherwise (if creating an ELF dumpfile), makedumpfile
++	 *	 should check zero-pages at this time because 2nd-bitmap
++	 *	 should be fixed for creating an ELF header. That is slow
++	 *	 due to reading each page two times, but it is necessary.
++	 */
++	if ((info->dump_level & DL_EXCLUDE_ZERO) &&
++	    (info->flag_elf_dumpfile || info->flag_mem_usage)) {
++		/*
++		 * 2nd-bitmap should be flushed at this time, because
++		 * exclude_zero_pages() checks 2nd-bitmap.
++		 */
++		if (!sync_2nd_bitmap())
++			return FALSE;
++
++		if (!set_page_exclude_zero_pages_cyclic(cycle)) {
++			ERRMSG("Can't exclude pages filled with zero for creating an ELF dumpfile.\n");
++			return FALSE;
++		}
++	}
++
++	if (!sync_2nd_bitmap())
++		return FALSE;
++
++	/* --exclude-unused-vm means exclude vmemmap page structures for unused pages */
++	if (info->flag_excludevm) {
++		if (!init_save_control())
++			return FALSE;
++		if (!find_unused_vmemmap_pages())
++			return FALSE;
++		if (!reset_save_control())
++			return FALSE;
++		delete_unused_vmemmap_pages();
++		finalize_save_control();
++		if (!sync_2nd_bitmap())
++			return FALSE;
++	}
++
++	return TRUE;
++}
++
+ int
+ prepare_bitmap1_buffer(void)
+ {
+@@ -7168,6 +7885,35 @@ prepare_bitmap1_buffer(void)
+ 	return TRUE;
+ }
+ 
++int prepare_reason_map_buffer(void)
++{
++	unsigned log tmp;
++	int size;
++	
++	tmp = divideup(info->max_mapnr * 8, info->page_size);
++	info->len_bytemap = tmp * info->page_size;
++	
++	if ((info->bytemap = malloc(sizeof(struct dump_bytemap))) == NULL) {
++                ERRMSG("Can't allocate memory for the bytemaps. %s\n",
++                       strerror(errno));
++                return FALSE;
++        }
++
++	if (info->fd_bitmap >= 0) {
++		size =  BUFSIZE_BITMAP * 8;
++	} else {
++		size = info->bufsize_cyclic * 8;
++	}
++
++	if ((info->bytemap->buf = (char *)malloc(BUFSIZE_BITMAP)) == NULL) {
++		ERRMSG("Can't allocate memory for the bytemaps's buffer. %s\n",
++		       strerror(errno));
++		return FALSE;
++	}
++	initialize_bytemap(info->bytemap);
++	return TRUE;
++}
++
+ int
+ prepare_bitmap2_buffer(void)
+ {
+@@ -7579,6 +8325,9 @@ write_kdump_header(void)
+ 	dh->block_size     = info->page_size;
+ 	dh->sub_hdr_size   = sizeof(kh) + size_note;
+ 	dh->sub_hdr_size   = divideup(dh->sub_hdr_size, dh->block_size);
++	info->orig_sub_hdr_size = dh->sub_hdr_size;
++	dh->sub_hdr_size   = dh->sub_hdr_size +  divideup(info->max_mapnr * 8, dh->block_size);
++
+ 	/* dh->max_mapnr may be truncated, full 64bit in kh.max_mapnr_64 */
+ 	dh->max_mapnr      = MIN(info->max_mapnr, UINT_MAX);
+ 	dh->nr_cpus        = get_nr_cpus();
+@@ -7617,6 +8366,7 @@ write_kdump_header(void)
+ 	kh.max_mapnr_64 = info->max_mapnr;
+ 	kh.phys_base  = info->phys_base;
+ 	kh.dump_level = info->dump_level;
++	kh.orig_size  = info->orig_sub_header_size;
+ 	if (info->flag_split) {
+ 		kh.split = 1;
+ 		/*
+@@ -7922,6 +8672,10 @@ create_dump_bitmap(void)
+ 		if (!create_2nd_bitmap(&cycle))
+ 			goto out;
+ 
++		if (!create_reason_map(&cycle))
++			goto out;
++
++
+ 		if (!(info->num_dumpable = get_num_dumpable_cyclic()))
+ 			goto out;
+ 	}
+@@ -9370,6 +10124,33 @@ out:
+ 	return ret;
+ }
+ 
++int
++write_kdump_reason_map_buffer(struct cycle *cycle)
++{
++	off_t offset;
++	int increment;
++	int ret = FALSE;
++
++
++	if (info->flag_elf_dumpfile)
++		return FALSE;
++
++	increment = divideup(cycle->end_pfn - cycle->start_pfn,
++			     REASON_PER_BYTE);
++
++	offset = info->offset_reason_map;
++	if (!write_buffer(info->fd_dumpfile, offset,
++			  info->reason_map->buf, increment, info->name_dumpfile))
++		goto out;
++
++	info->offset_reason_map += increment;
++
++	ret = TRUE;
++out:
++
++	return ret;
++}
++
+ int
+ write_kdump_bitmap2_buffer(struct cycle *cycle)
+ {
+@@ -9415,6 +10196,12 @@ write_kdump_bitmap2(struct cycle *cycle) {
+ 	}
+ }
+ 
++int
++write_kdump_reason_map(struct cycle *cycle) {
++	if (info->reason_map->fd < 0) {
++		return write_kdump_reason_map_buffer(cycle);
++	}
++}
+ int
+ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_data *cd_page)
+ {
+@@ -9485,6 +10272,8 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 	if (info->flag_cyclic) {
+ 		if (!prepare_bitmap2_buffer())
+ 			return FALSE;
++		if (!prepare_reason_map_buffer())
++			return FALSE;
+ 	}
+ 
+ 	/*
+@@ -9502,6 +10291,15 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 		if (!write_kdump_bitmap2(&cycle))
+ 			return FALSE;
+ 
++
++		if (info->flag_cyclic) {
++			if (!create_reason_map(&cycle))
++				return FALSE;
++		}
++
++		if (!write_kdump_reason_map(&cycle))
++			return FALSE;
++
+ 		if (info->num_threads) {
+ 			if (!write_kdump_pages_parallel_cyclic(cd_header,
+ 							cd_page, &pd_zero,
+@@ -10540,6 +11338,9 @@ write_cache_enospc:
+ 			ERRMSG("This dumpfile may lost some important data.\n");
+ 	}
+ out:
++	if (ret == FALSE)
++		info->kh.last_dump_level = info->dump_level;	
++
+ 	free_cache_data(&cd_header);
+ 	free_cache_data(&cd_page);
+ 
+@@ -10761,6 +11562,8 @@ create_dumpfile(void)
+ 	print_vtop();
+ 
+ 	num_retry = 0;
++
++	info->kh.last_dump_level = -1;
+ retry:
+ 	if (info->flag_refiltering)
+ 		update_dump_level();
+diff --git a/makedumpfile.h b/makedumpfile.h
+index 85e5a49..9129974 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -226,11 +226,13 @@ test_bit(int nr, unsigned long addr)
+ #define LASTCHAR(s)	(s[strlen(s)-1])
+ 
+ #define BITPERBYTE		(8)
++#define REASON_PER_BYTE		(2)
+ #define PGMM_CACHED		(512)
+ #define PFN_EXCLUDED		(256)
+ #define BUFSIZE			(1024)
+ #define BUFSIZE_FGETS		(1500)
+ #define BUFSIZE_BITMAP		(4096)
++#define BUFSIZE_REASON_MAP	(4096)
+ #define PFN_BUFBITMAP		(BITPERBYTE*BUFSIZE_BITMAP)
+ #define FILENAME_BITMAP		"kdump_bitmapXXXXXX"
+ #define FILENAME_STDOUT		"STDOUT"
+@@ -1294,6 +1296,14 @@ struct dump_bitmap {
+ 	off_t		offset;
+ };
+ 
++struct dump_reason_map {
++	int		fd;
++	int		no_block;
++	char		*file_name;
++	char		*buf;
++	off_t		offset;
++};
++
+ struct cache_data {
+ 	int	fd;
+ 	char	*file_name;
+@@ -1452,6 +1462,7 @@ struct DumpInfo {
+ 	long		page_size;           /* size of page */
+ 	long		page_shift;
+ 	mdf_pfn_t	max_mapnr;   /* number of page descriptor */
++	long		orig_sub_hdr_size;
+ 	unsigned long   page_offset;
+ 	unsigned long   section_size_bits;
+ 	unsigned long   max_physmem_bits;
+@@ -1516,9 +1527,12 @@ struct DumpInfo {
+ 	 */
+ 	int		block_order;
+ 	off_t		offset_bitmap1;
++	off_t		offset_reason_map;
+ 	unsigned long	len_bitmap;          /* size of bitmap(1st and 2nd) */
++	unsigned long	len_reason_map;
+ 	struct dump_bitmap 		*bitmap1;
+ 	struct dump_bitmap 		*bitmap2;
++	struct dump_reason_map		*reason_map;
+ 	struct disk_dump_header		*dump_header;
+ 	struct kdump_sub_header		sub_header;
+ 

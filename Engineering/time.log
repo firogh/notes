@@ -65,3 +65,7 @@ hexadecimal: a934
 CONFIG_HZ=100
 crash-ppc64le> runq -T
   CPU 23: 229.50 secs
+
+
+# TSC
+TSC Clocksource Switching to HPET During High I/O Load: https://www.suse.com/support/kb/doc/?id=000021035

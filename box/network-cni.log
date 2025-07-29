@@ -1,0 +1,1024 @@
+#==[ Network namespace cni-6a244093-38d6-64cb-e62c-022157b7a533 ]======================#
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+3: eth0@if119: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 82:ae:ef:99:33:9b brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.2.135.203/32 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::80ae:efff:fe99:339b/64 scope link 
+       valid_lft forever preferred_lft forever
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip route
+default via 169.254.1.1 dev eth0 
+169.254.1.1 dev eth0 scope link 
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip -6 route
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip -stats link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX:  bytes packets errors dropped  missed   mcast           
+           100       2      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+           100       2      0       0       0       0 
+3: eth0@if119: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+    link/ether 82:ae:ef:99:33:9b brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    RX:  bytes packets errors dropped  missed   mcast           
+        843408    3305      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+       7397289    3490      0       1       0       0 
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip -stats neighbor
+169.254.1.1 dev eth0 lladdr ee:ee:ee:ee:ee:ee ref 1 used 613/1/613 probes 4 REACHABLE
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ping -n -c1 -W1 127.0.0.1
+exec of "ping" failed: No such file or directory
+
+# Connectivity Test, Local Interface 127.0.0.1: Failure
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ping -n -c1 -W1 10.2.135.203
+exec of "ping" failed: No such file or directory
+
+# Connectivity Test, Local Interface 10.2.135.203: Failure
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ping -n -c1 -W1 169.254.1.1
+exec of "ping" failed: No such file or directory
+
+# Connectivity Test, Default Route 169.254.1.1: Failure
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip route show table local
+local 10.2.135.203 dev eth0 proto kernel scope host src 10.2.135.203 
+local 127.0.0.0/8 dev lo proto kernel scope host src 127.0.0.1 
+local 127.0.0.1 dev lo proto kernel scope host src 127.0.0.1 
+broadcast 127.255.255.255 dev lo proto kernel scope link src 127.0.0.1 
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip route show table main
+default via 169.254.1.1 dev eth0 
+169.254.1.1 dev eth0 scope link 
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip route show table default
+Error: ipv4: FIB table does not exist.
+Dump terminated
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip route show table cache
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip -6 route show table cache
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip rule show
+0:	from all lookup local
+32766:	from all lookup main
+32767:	from all lookup default
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d qdisc show dev lo
+qdisc noqueue 0: root refcnt 2 
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d class show dev lo
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d filter show dev lo
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d qdisc show dev eth0
+qdisc noqueue 0: root refcnt 2 
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d class show dev eth0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 tc -s -d filter show dev eth0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ss -nap
+Netid State     Recv-Q Send-Q         Local Address:Port               Peer Address:Port    Process                           
+nl    UNCONN    0      0                          0:0                              *                                          
+nl    UNCONN    4352   0                          4:22750                          *                                          
+nl    UNCONN    768    0                          4:0                              *                                          
+nl    UNCONN    0      0                          6:0                              *                                          
+nl    UNCONN    0      0                          9:0                              *                                          
+nl    UNCONN    0      0                         10:0                              *                                          
+nl    UNCONN    0      0                         12:0                              *                                          
+nl    UNCONN    0      0                         15:0                              *                                          
+nl    UNCONN    0      0                         16:0                              *                                          
+nl    UNCONN    0      0                         20:0                              *                                          
+u_str ESTAB     0      0                          * 53879829                      * 53879828 users:(("java",pid=30959,fd=224))
+u_str ESTAB     0      0                          * 53849675                      * 0        users:(("java",pid=30959,fd=206))
+u_str ESTAB     0      0                          * 53813142                      * 0        users:(("java",pid=30959,fd=191))
+u_str ESTAB     0      0                          * 53879828                      * 53879829 users:(("java",pid=30959,fd=223))
+tcp   TIME-WAIT 0      0               10.2.135.203:39230              10.2.135.215:8083                                      
+tcp   TIME-WAIT 0      0               10.2.135.203:35288             10.111.63.245:80                                        
+tcp   TIME-WAIT 0      0               10.2.135.203:47990             10.111.63.245:80                                        
+tcp   TIME-WAIT 0      0               10.2.135.203:34820              10.2.135.215:8083                                      
+tcp   TIME-WAIT 0      0               10.2.135.203:39812             10.111.63.245:80                                        
+tcp   TIME-WAIT 0      0               10.2.135.203:49542              10.2.135.215:8083                                      
+tcp   LISTEN    0      3                          *:9250                          *:*        users:(("java",pid=30959,fd=214))
+tcp   LISTEN    0      50                         *:9090                          *:*        users:(("java",pid=30959,fd=190))
+tcp   LISTEN    0      100                        *:1091                          *:*        users:(("java",pid=30959,fd=225))
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:34372    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:44754    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:59612    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:34400    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:43514    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:53494    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:39852    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:39840    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:39830    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:43536    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:43454    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:34378    [::ffff:10.101.103.71]:8080                                      
+tcp   ESTAB     0      0      [::ffff:10.2.135.203]:43468    [::ffff:10.101.103.71]:8080     users:(("java",pid=30959,fd=218))
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:34394    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:38256    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:59614    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:53510    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:38254    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:38260    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:53482    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:43520    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:59610    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:53508    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:38244    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:43528    [::ffff:10.101.103.71]:8080                                      
+tcp   TIME-WAIT 0      0      [::ffff:10.2.135.203]:39814    [::ffff:10.101.103.71]:8080                                      
+sctp  LISTEN    0      10              10.2.135.203:3869                    0.0.0.0:*        users:(("java",pid=30959,fd=220))
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip ntable show
+inet arp_cache 
+    thresh1 128 thresh2 512 thresh3 1024 gc_int 30000 
+    refcnt 1 reachable 23220 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 1000 
+
+inet arp_cache 
+    dev eth0 
+    refcnt 2 reachable 23328 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 1000 
+
+inet arp_cache 
+    dev lo 
+    refcnt 2 reachable 20552 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 1000 
+
+inet6 ndisc_cache 
+    thresh1 128 thresh2 512 thresh3 1024 gc_int 30000 
+    refcnt 1 reachable 40420 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 0 
+
+inet6 ndisc_cache 
+    dev eth0 
+    refcnt 4 reachable 25496 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 0 
+
+inet6 ndisc_cache 
+    dev lo 
+    refcnt 1 reachable 18568 base_reachable 30000 retrans 1000 
+    gc_stale 60000 delay_probe 5000 queue 101 
+    app_probes 0 ucast_probes 3 mcast_probes 3 
+    anycast_delay 1000 proxy_delay 800 proxy_queue 64 locktime 0 
+
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 nstat -az
+#kernel
+SctpCurrEstab                   0                  0.0
+SctpActiveEstabs                0                  0.0
+SctpPassiveEstabs               1                  0.0
+SctpAborteds                    1                  0.0
+SctpShutdowns                   0                  0.0
+SctpOutOfBlues                  0                  0.0
+SctpChecksumErrors              0                  0.0
+SctpOutCtrlChunks               256                0.0
+SctpOutOrderChunks              203                0.0
+SctpOutUnorderChunks            0                  0.0
+SctpInCtrlChunks                50                 0.0
+SctpInOrderChunks               490                0.0
+SctpInUnorderChunks             0                  0.0
+SctpFragUsrMsgs                 0                  0.0
+SctpReasmUsrMsgs                0                  0.0
+SctpOutSCTPPacks                319                0.0
+SctpInSCTPPacks                 524                0.0
+SctpT1InitExpireds              0                  0.0
+SctpT1CookieExpireds            0                  0.0
+SctpT2ShutdownExpireds          0                  0.0
+SctpT3RtxExpireds               14                 0.0
+SctpT4RtoExpireds               0                  0.0
+SctpT5ShutdownGuardExpireds     0                  0.0
+SctpDelaySackExpireds           1                  0.0
+SctpAutocloseExpireds           0                  0.0
+SctpT3Retransmits               14                 0.0
+SctpPmtudRetransmits            0                  0.0
+SctpFastRetransmits             1                  0.0
+SctpInPktSoftirq                521                0.0
+SctpInPktBacklog                3                  0.0
+SctpInPktDiscards               0                  0.0
+SctpInDataChunkDiscards         0                  0.0
+IpInReceives                    3299               0.0
+IpInHdrErrors                   0                  0.0
+IpInAddrErrors                  0                  0.0
+IpForwDatagrams                 0                  0.0
+IpInUnknownProtos               0                  0.0
+IpInDiscards                    0                  0.0
+IpInDelivers                    3299               0.0
+IpOutRequests                   3478               0.0
+IpOutDiscards                   0                  0.0
+IpOutNoRoutes                   0                  0.0
+IpReasmTimeout                  0                  0.0
+IpReasmReqds                    0                  0.0
+IpReasmOKs                      0                  0.0
+IpReasmFails                    0                  0.0
+IpFragOKs                       0                  0.0
+IpFragFails                     0                  0.0
+IpFragCreates                   0                  0.0
+IcmpInMsgs                      0                  0.0
+IcmpInErrors                    0                  0.0
+IcmpInCsumErrors                0                  0.0
+IcmpInDestUnreachs              0                  0.0
+IcmpInTimeExcds                 0                  0.0
+IcmpInParmProbs                 0                  0.0
+IcmpInSrcQuenchs                0                  0.0
+IcmpInRedirects                 0                  0.0
+IcmpInEchos                     0                  0.0
+IcmpInEchoReps                  0                  0.0
+IcmpInTimestamps                0                  0.0
+IcmpInTimestampReps             0                  0.0
+IcmpInAddrMasks                 0                  0.0
+IcmpInAddrMaskReps              0                  0.0
+IcmpOutMsgs                     0                  0.0
+IcmpOutErrors                   0                  0.0
+IcmpOutDestUnreachs             0                  0.0
+IcmpOutTimeExcds                0                  0.0
+IcmpOutParmProbs                0                  0.0
+IcmpOutSrcQuenchs               0                  0.0
+IcmpOutRedirects                0                  0.0
+IcmpOutEchos                    0                  0.0
+IcmpOutEchoReps                 0                  0.0
+IcmpOutTimestamps               0                  0.0
+IcmpOutTimestampReps            0                  0.0
+IcmpOutAddrMasks                0                  0.0
+IcmpOutAddrMaskReps             0                  0.0
+TcpActiveOpens                  299                0.0
+TcpPassiveOpens                 0                  0.0
+TcpAttemptFails                 1                  0.0
+TcpEstabResets                  0                  0.0
+TcpInSegs                       2669               0.0
+TcpOutSegs                      7060               0.0
+TcpRetransSegs                  0                  0.0
+TcpInErrs                       0                  0.0
+TcpOutRsts                      1                  0.0
+TcpInCsumErrors                 0                  0.0
+UdpInDatagrams                  106                0.0
+UdpNoPorts                      0                  0.0
+UdpInErrors                     0                  0.0
+UdpOutDatagrams                 106                0.0
+UdpRcvbufErrors                 0                  0.0
+UdpSndbufErrors                 0                  0.0
+UdpInCsumErrors                 0                  0.0
+UdpIgnoredMulti                 0                  0.0
+UdpMemErrors                    0                  0.0
+UdpLiteInDatagrams              0                  0.0
+UdpLiteNoPorts                  0                  0.0
+UdpLiteInErrors                 0                  0.0
+UdpLiteOutDatagrams             0                  0.0
+UdpLiteRcvbufErrors             0                  0.0
+UdpLiteSndbufErrors             0                  0.0
+UdpLiteInCsumErrors             0                  0.0
+UdpLiteIgnoredMulti             0                  0.0
+UdpLiteMemErrors                0                  0.0
+Ip6InReceives                   7                  0.0
+Ip6InHdrErrors                  0                  0.0
+Ip6InTooBigErrors               0                  0.0
+Ip6InNoRoutes                   0                  0.0
+Ip6InAddrErrors                 0                  0.0
+Ip6InUnknownProtos              0                  0.0
+Ip6InTruncatedPkts              0                  0.0
+Ip6InDiscards                   0                  0.0
+Ip6InDelivers                   0                  0.0
+Ip6OutForwDatagrams             0                  0.0
+Ip6OutRequests                  14                 0.0
+Ip6OutDiscards                  0                  0.0
+Ip6OutNoRoutes                  0                  0.0
+Ip6ReasmTimeout                 0                  0.0
+Ip6ReasmReqds                   0                  0.0
+Ip6ReasmOKs                     0                  0.0
+Ip6ReasmFails                   0                  0.0
+Ip6FragOKs                      0                  0.0
+Ip6FragFails                    0                  0.0
+Ip6FragCreates                  0                  0.0
+Ip6InMcastPkts                  7                  0.0
+Ip6OutMcastPkts                 14                 0.0
+Ip6InOctets                     648                0.0
+Ip6OutOctets                    900                0.0
+Ip6InMcastOctets                648                0.0
+Ip6OutMcastOctets               900                0.0
+Ip6InBcastOctets                0                  0.0
+Ip6OutBcastOctets               0                  0.0
+Ip6InNoECTPkts                  7                  0.0
+Ip6InECT1Pkts                   0                  0.0
+Ip6InECT0Pkts                   0                  0.0
+Ip6InCEPkts                     0                  0.0
+Icmp6InMsgs                     0                  0.0
+Icmp6InErrors                   0                  0.0
+Icmp6OutMsgs                    14                 0.0
+Icmp6OutErrors                  0                  0.0
+Icmp6InCsumErrors               0                  0.0
+Icmp6InDestUnreachs             0                  0.0
+Icmp6InPktTooBigs               0                  0.0
+Icmp6InTimeExcds                0                  0.0
+Icmp6InParmProblems             0                  0.0
+Icmp6InEchos                    0                  0.0
+Icmp6InEchoReplies              0                  0.0
+Icmp6InGroupMembQueries         0                  0.0
+Icmp6InGroupMembResponses       0                  0.0
+Icmp6InGroupMembReductions      0                  0.0
+Icmp6InRouterSolicits           0                  0.0
+Icmp6InRouterAdvertisements     0                  0.0
+Icmp6InNeighborSolicits         0                  0.0
+Icmp6InNeighborAdvertisements   0                  0.0
+Icmp6InRedirects                0                  0.0
+Icmp6InMLDv2Reports             0                  0.0
+Icmp6OutDestUnreachs            0                  0.0
+Icmp6OutPktTooBigs              0                  0.0
+Icmp6OutTimeExcds               0                  0.0
+Icmp6OutParmProblems            0                  0.0
+Icmp6OutEchos                   0                  0.0
+Icmp6OutEchoReplies             0                  0.0
+Icmp6OutGroupMembQueries        0                  0.0
+Icmp6OutGroupMembResponses      0                  0.0
+Icmp6OutGroupMembReductions     0                  0.0
+Icmp6OutRouterSolicits          8                  0.0
+Icmp6OutRouterAdvertisements    0                  0.0
+Icmp6OutNeighborSolicits        1                  0.0
+Icmp6OutNeighborAdvertisements  0                  0.0
+Icmp6OutRedirects               0                  0.0
+Icmp6OutMLDv2Reports            5                  0.0
+Icmp6OutType133                 8                  0.0
+Icmp6OutType135                 1                  0.0
+Icmp6OutType143                 5                  0.0
+Udp6InDatagrams                 0                  0.0
+Udp6NoPorts                     0                  0.0
+Udp6InErrors                    0                  0.0
+Udp6OutDatagrams                0                  0.0
+Udp6RcvbufErrors                0                  0.0
+Udp6SndbufErrors                0                  0.0
+Udp6InCsumErrors                0                  0.0
+Udp6IgnoredMulti                0                  0.0
+Udp6MemErrors                   0                  0.0
+UdpLite6InDatagrams             0                  0.0
+UdpLite6NoPorts                 0                  0.0
+UdpLite6InErrors                0                  0.0
+UdpLite6OutDatagrams            0                  0.0
+UdpLite6RcvbufErrors            0                  0.0
+UdpLite6SndbufErrors            0                  0.0
+UdpLite6InCsumErrors            0                  0.0
+UdpLite6MemErrors               0                  0.0
+TcpExtSyncookiesSent            0                  0.0
+TcpExtSyncookiesRecv            0                  0.0
+TcpExtSyncookiesFailed          0                  0.0
+TcpExtEmbryonicRsts             0                  0.0
+TcpExtPruneCalled               0                  0.0
+TcpExtRcvPruned                 0                  0.0
+TcpExtOfoPruned                 0                  0.0
+TcpExtOutOfWindowIcmps          0                  0.0
+TcpExtLockDroppedIcmps          0                  0.0
+TcpExtArpFilter                 0                  0.0
+TcpExtTW                        266                0.0
+TcpExtTWRecycled                0                  0.0
+TcpExtTWKilled                  0                  0.0
+TcpExtPAWSActive                0                  0.0
+TcpExtPAWSEstab                 0                  0.0
+TcpExtDelayedACKs               1                  0.0
+TcpExtDelayedACKLocked          0                  0.0
+TcpExtDelayedACKLost            0                  0.0
+TcpExtListenOverflows           0                  0.0
+TcpExtListenDrops               0                  0.0
+TcpExtTCPHPHits                 68                 0.0
+TcpExtTCPPureAcks               1369               0.0
+TcpExtTCPHPAcks                 153                0.0
+TcpExtTCPRenoRecovery           0                  0.0
+TcpExtTCPSackRecovery           0                  0.0
+TcpExtTCPSACKReneging           0                  0.0
+TcpExtTCPSACKReorder            0                  0.0
+TcpExtTCPRenoReorder            0                  0.0
+TcpExtTCPTSReorder              0                  0.0
+TcpExtTCPFullUndo               0                  0.0
+TcpExtTCPPartialUndo            0                  0.0
+TcpExtTCPDSACKUndo              0                  0.0
+TcpExtTCPLossUndo               0                  0.0
+TcpExtTCPLostRetransmit         0                  0.0
+TcpExtTCPRenoFailures           0                  0.0
+TcpExtTCPSackFailures           0                  0.0
+TcpExtTCPLossFailures           0                  0.0
+TcpExtTCPFastRetrans            0                  0.0
+TcpExtTCPSlowStartRetrans       0                  0.0
+TcpExtTCPTimeouts               0                  0.0
+TcpExtTCPLossProbes             0                  0.0
+TcpExtTCPLossProbeRecovery      0                  0.0
+TcpExtTCPRenoRecoveryFail       0                  0.0
+TcpExtTCPSackRecoveryFail       0                  0.0
+TcpExtTCPRcvCollapsed           0                  0.0
+TcpExtTCPBacklogCoalesce        0                  0.0
+TcpExtTCPDSACKOldSent           0                  0.0
+TcpExtTCPDSACKOfoSent           0                  0.0
+TcpExtTCPDSACKRecv              0                  0.0
+TcpExtTCPDSACKOfoRecv           0                  0.0
+TcpExtTCPAbortOnData            0                  0.0
+TcpExtTCPAbortOnClose           0                  0.0
+TcpExtTCPAbortOnMemory          0                  0.0
+TcpExtTCPAbortOnTimeout         0                  0.0
+TcpExtTCPAbortOnLinger          0                  0.0
+TcpExtTCPAbortFailed            0                  0.0
+TcpExtTCPMemoryPressures        0                  0.0
+TcpExtTCPMemoryPressuresChrono  0                  0.0
+TcpExtTCPSACKDiscard            0                  0.0
+TcpExtTCPDSACKIgnoredOld        0                  0.0
+TcpExtTCPDSACKIgnoredNoUndo     0                  0.0
+TcpExtTCPSpuriousRTOs           0                  0.0
+TcpExtTCPMD5NotFound            0                  0.0
+TcpExtTCPMD5Unexpected          0                  0.0
+TcpExtTCPMD5Failure             0                  0.0
+TcpExtTCPSackShifted            0                  0.0
+TcpExtTCPSackMerged             0                  0.0
+TcpExtTCPSackShiftFallback      0                  0.0
+TcpExtTCPBacklogDrop            0                  0.0
+TcpExtPFMemallocDrop            0                  0.0
+TcpExtTCPMinTTLDrop             0                  0.0
+TcpExtTCPDeferAcceptDrop        0                  0.0
+TcpExtIPReversePathFilter       0                  0.0
+TcpExtTCPTimeWaitOverflow       0                  0.0
+TcpExtTCPReqQFullDoCookies      0                  0.0
+TcpExtTCPReqQFullDrop           0                  0.0
+TcpExtTCPRetransFail            0                  0.0
+TcpExtTCPRcvCoalesce            32                 0.0
+TcpExtTCPOFOQueue               0                  0.0
+TcpExtTCPOFODrop                0                  0.0
+TcpExtTCPOFOMerge               0                  0.0
+TcpExtTCPChallengeACK           0                  0.0
+TcpExtTCPSYNChallenge           0                  0.0
+TcpExtTCPFastOpenActive         0                  0.0
+TcpExtTCPFastOpenActiveFail     0                  0.0
+TcpExtTCPFastOpenPassive        0                  0.0
+TcpExtTCPFastOpenPassiveFail    0                  0.0
+TcpExtTCPFastOpenListenOverflow 0                  0.0
+TcpExtTCPFastOpenCookieReqd     0                  0.0
+TcpExtTCPFastOpenBlackhole      0                  0.0
+TcpExtTCPSpuriousRtxHostQueues  0                  0.0
+TcpExtBusyPollRxPackets         0                  0.0
+TcpExtTCPAutoCorking            0                  0.0
+TcpExtTCPFromZeroWindowAdv      0                  0.0
+TcpExtTCPToZeroWindowAdv        0                  0.0
+TcpExtTCPWantZeroWindowAdv      0                  0.0
+TcpExtTCPSynRetrans             0                  0.0
+TcpExtTCPOrigDataSent           5673               0.0
+TcpExtTCPHystartTrainDetect     3                  0.0
+TcpExtTCPHystartTrainCwnd       60                 0.0
+TcpExtTCPHystartDelayDetect     0                  0.0
+TcpExtTCPHystartDelayCwnd       0                  0.0
+TcpExtTCPACKSkippedSynRecv      0                  0.0
+TcpExtTCPACKSkippedPAWS         0                  0.0
+TcpExtTCPACKSkippedSeq          0                  0.0
+TcpExtTCPACKSkippedFinWait2     0                  0.0
+TcpExtTCPACKSkippedTimeWait     0                  0.0
+TcpExtTCPACKSkippedChallenge    0                  0.0
+TcpExtTCPWinProbe               0                  0.0
+TcpExtTCPKeepAlive              0                  0.0
+TcpExtTCPMTUPFail               0                  0.0
+TcpExtTCPMTUPSuccess            0                  0.0
+TcpExtTCPDelivered              5971               0.0
+TcpExtTCPDeliveredCE            0                  0.0
+TcpExtTCPAckCompressed          0                  0.0
+TcpExtTCPZeroWindowDrop         0                  0.0
+TcpExtTCPRcvQDrop               0                  0.0
+TcpExtTCPWqueueTooBig           0                  0.0
+TcpExtTCPFastOpenPassiveAltKey  0                  0.0
+TcpExtTcpTimeoutRehash          0                  0.0
+TcpExtTcpDuplicateDataRehash    0                  0.0
+TcpExtTCPDSACKRecvSegs          0                  0.0
+TcpExtTCPDSACKIgnoredDubious    0                  0.0
+TcpExtTCPMigrateReqSuccess      0                  0.0
+TcpExtTCPMigrateReqFailure      0                  0.0
+IpExtInNoRoutes                 0                  0.0
+IpExtInTruncatedPkts            0                  0.0
+IpExtInMcastPkts                0                  0.0
+IpExtOutMcastPkts               0                  0.0
+IpExtInBcastPkts                0                  0.0
+IpExtOutBcastPkts               0                  0.0
+IpExtInOctets                   796562             0.0
+IpExtOutOctets                  7347677            0.0
+IpExtInMcastOctets              0                  0.0
+IpExtOutMcastOctets             0                  0.0
+IpExtInBcastOctets              0                  0.0
+IpExtOutBcastOctets             0                  0.0
+IpExtInCsumErrors               0                  0.0
+IpExtInNoECTPkts                2934               0.0
+IpExtInECT1Pkts                 0                  0.0
+IpExtInECT0Pkts                 524                0.0
+IpExtInCEPkts                   0                  0.0
+IpExtReasmOverlaps              0                  0.0
+MPTcpExtMPCapableSYNRX          0                  0.0
+MPTcpExtMPCapableSYNTX          0                  0.0
+MPTcpExtMPCapableSYNACKRX       0                  0.0
+MPTcpExtMPCapableACKRX          0                  0.0
+MPTcpExtMPCapableFallbackACK    0                  0.0
+MPTcpExtMPCapableFallbackSYNACK 0                  0.0
+MPTcpExtMPFallbackTokenInit     0                  0.0
+MPTcpExtMPTCPRetrans            0                  0.0
+MPTcpExtMPJoinNoTokenFound      0                  0.0
+MPTcpExtMPJoinSynRx             0                  0.0
+MPTcpExtMPJoinSynAckRx          0                  0.0
+MPTcpExtMPJoinSynAckHMacFailure 0                  0.0
+MPTcpExtMPJoinAckRx             0                  0.0
+MPTcpExtMPJoinAckHMacFailure    0                  0.0
+MPTcpExtDSSNotMatching          0                  0.0
+MPTcpExtInfiniteMapRx           0                  0.0
+MPTcpExtDSSNoMatchTCP           0                  0.0
+MPTcpExtDataCsumErr             0                  0.0
+MPTcpExtOFOQueueTail            0                  0.0
+MPTcpExtOFOQueue                0                  0.0
+MPTcpExtOFOMerge                0                  0.0
+MPTcpExtNoDSSInWindow           0                  0.0
+MPTcpExtDuplicateData           0                  0.0
+MPTcpExtAddAddr                 0                  0.0
+MPTcpExtEchoAdd                 0                  0.0
+MPTcpExtPortAdd                 0                  0.0
+MPTcpExtMPJoinPortSynRx         0                  0.0
+MPTcpExtMPJoinPortSynAckRx      0                  0.0
+MPTcpExtMPJoinPortAckRx         0                  0.0
+MPTcpExtMismatchPortSynRx       0                  0.0
+MPTcpExtMismatchPortAckRx       0                  0.0
+MPTcpExtRmAddr                  0                  0.0
+MPTcpExtRmSubflow               0                  0.0
+MPTcpExtMPPrioTx                0                  0.0
+MPTcpExtMPPrioRx                0                  0.0
+MPTcpExtRcvPruned               0                  0.0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip xfrm state list
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip xfrm policy list
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip maddr show
+1:	lo
+	inet  224.0.0.1
+	inet6 ff02::1
+	inet6 ff01::1
+3:	eth0
+	link  33:33:00:00:00:01
+	link  01:00:5e:00:00:01
+	link  33:33:ff:99:33:9b
+	inet  224.0.0.1
+	inet6 ff02::1:ff99:339b
+	inet6 ff02::1
+	inet6 ff01::1
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip mroute show
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool lo
+Settings for lo:
+	Link detected: yes
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -k lo
+Features for lo:
+rx-checksumming: on [fixed]
+tx-checksumming: on
+	tx-checksum-ipv4: off [fixed]
+	tx-checksum-ip-generic: on [fixed]
+	tx-checksum-ipv6: off [fixed]
+	tx-checksum-fcoe-crc: off [fixed]
+	tx-checksum-sctp: on [fixed]
+scatter-gather: on
+	tx-scatter-gather: on [fixed]
+	tx-scatter-gather-fraglist: on [fixed]
+tcp-segmentation-offload: on
+	tx-tcp-segmentation: on
+	tx-tcp-ecn-segmentation: on
+	tx-tcp-mangleid-segmentation: on
+	tx-tcp6-segmentation: on
+generic-segmentation-offload: on
+generic-receive-offload: on
+large-receive-offload: off [fixed]
+rx-vlan-offload: off [fixed]
+tx-vlan-offload: off [fixed]
+ntuple-filters: off [fixed]
+receive-hashing: off [fixed]
+highdma: on [fixed]
+rx-vlan-filter: off [fixed]
+vlan-challenged: on [fixed]
+tx-lockless: on [fixed]
+netns-local: on [fixed]
+tx-gso-robust: off [fixed]
+tx-fcoe-segmentation: off [fixed]
+tx-gre-segmentation: off [fixed]
+tx-gre-csum-segmentation: off [fixed]
+tx-ipxip4-segmentation: off [fixed]
+tx-ipxip6-segmentation: off [fixed]
+tx-udp_tnl-segmentation: off [fixed]
+tx-udp_tnl-csum-segmentation: off [fixed]
+tx-gso-partial: off [fixed]
+tx-tunnel-remcsum-segmentation: off [fixed]
+tx-sctp-segmentation: on
+tx-esp-segmentation: off [fixed]
+tx-udp-segmentation: on
+tx-gso-list: on
+fcoe-mtu: off [fixed]
+tx-nocache-copy: off [fixed]
+loopback: on [fixed]
+rx-fcs: off [fixed]
+rx-all: off [fixed]
+tx-vlan-stag-hw-insert: off [fixed]
+rx-vlan-stag-hw-parse: off [fixed]
+rx-vlan-stag-filter: off [fixed]
+l2-fwd-offload: off [fixed]
+hw-tc-offload: off [fixed]
+esp-hw-offload: off [fixed]
+esp-tx-csum-hw-offload: off [fixed]
+rx-udp_tunnel-port-offload: off [fixed]
+tls-hw-tx-offload: off [fixed]
+tls-hw-rx-offload: off [fixed]
+rx-gro-hw: off [fixed]
+tls-hw-record: off [fixed]
+rx-gro-list: off
+macsec-hw-offload: off [fixed]
+rx-udp-gro-forwarding: off
+hsr-tag-ins-offload: off [fixed]
+hsr-tag-rm-offload: off [fixed]
+hsr-fwd-offload: off [fixed]
+hsr-dup-offload: off [fixed]
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -i lo
+Cannot get driver information: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -S lo
+no stats available
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -g lo
+netlink error: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -l lo
+netlink error: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -m lo
+netlink error: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool eth0
+Settings for eth0:
+	Supported ports: [  ]
+	Supported link modes:   Not reported
+	Supported pause frame use: No
+	Supports auto-negotiation: No
+	Supported FEC modes: Not reported
+	Advertised link modes:  Not reported
+	Advertised pause frame use: No
+	Advertised auto-negotiation: No
+	Advertised FEC modes: Not reported
+	Speed: 10000Mb/s
+	Duplex: Full
+	Auto-negotiation: off
+	Port: Twisted Pair
+	PHYAD: 0
+	Transceiver: internal
+	MDI-X: Unknown
+	Link detected: yes
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -k eth0
+Features for eth0:
+rx-checksumming: on
+tx-checksumming: on
+	tx-checksum-ipv4: off [fixed]
+	tx-checksum-ip-generic: on
+	tx-checksum-ipv6: off [fixed]
+	tx-checksum-fcoe-crc: off [fixed]
+	tx-checksum-sctp: on
+scatter-gather: on
+	tx-scatter-gather: on
+	tx-scatter-gather-fraglist: on
+tcp-segmentation-offload: on
+	tx-tcp-segmentation: on
+	tx-tcp-ecn-segmentation: on
+	tx-tcp-mangleid-segmentation: on
+	tx-tcp6-segmentation: on
+generic-segmentation-offload: on
+generic-receive-offload: off
+large-receive-offload: off [fixed]
+rx-vlan-offload: on
+tx-vlan-offload: on
+ntuple-filters: off [fixed]
+receive-hashing: off [fixed]
+highdma: on
+rx-vlan-filter: off [fixed]
+vlan-challenged: off [fixed]
+tx-lockless: on [fixed]
+netns-local: off [fixed]
+tx-gso-robust: off [fixed]
+tx-fcoe-segmentation: off [fixed]
+tx-gre-segmentation: on
+tx-gre-csum-segmentation: on
+tx-ipxip4-segmentation: on
+tx-ipxip6-segmentation: on
+tx-udp_tnl-segmentation: on
+tx-udp_tnl-csum-segmentation: on
+tx-gso-partial: off [fixed]
+tx-tunnel-remcsum-segmentation: off [fixed]
+tx-sctp-segmentation: on
+tx-esp-segmentation: off [fixed]
+tx-udp-segmentation: on
+tx-gso-list: on
+fcoe-mtu: off [fixed]
+tx-nocache-copy: off
+loopback: off [fixed]
+rx-fcs: off [fixed]
+rx-all: off [fixed]
+tx-vlan-stag-hw-insert: on
+rx-vlan-stag-hw-parse: on
+rx-vlan-stag-filter: off [fixed]
+l2-fwd-offload: off [fixed]
+hw-tc-offload: off [fixed]
+esp-hw-offload: off [fixed]
+esp-tx-csum-hw-offload: off [fixed]
+rx-udp_tunnel-port-offload: off [fixed]
+tls-hw-tx-offload: off [fixed]
+tls-hw-rx-offload: off [fixed]
+rx-gro-hw: off [fixed]
+tls-hw-record: off [fixed]
+rx-gro-list: off
+macsec-hw-offload: off [fixed]
+rx-udp-gro-forwarding: off
+hsr-tag-ins-offload: off [fixed]
+hsr-tag-rm-offload: off [fixed]
+hsr-fwd-offload: off [fixed]
+hsr-dup-offload: off [fixed]
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -i eth0
+driver: veth
+version: 1.0
+firmware-version: 
+expansion-rom-version: 
+bus-info: 
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: no
+supports-priv-flags: no
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -S eth0
+NIC statistics:
+     peer_ifindex: 119
+     rx_queue_0_xdp_packets: 0
+     rx_queue_0_xdp_bytes: 0
+     rx_queue_0_drops: 0
+     rx_queue_0_xdp_redirect: 0
+     rx_queue_0_xdp_drops: 0
+     rx_queue_0_xdp_tx: 0
+     rx_queue_0_xdp_tx_errors: 0
+     tx_queue_0_xdp_xmit: 0
+     tx_queue_0_xdp_xmit_errors: 0
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -g eth0
+netlink error: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -l eth0
+Channel parameters for eth0:
+Pre-set maximums:
+RX:		1
+TX:		1
+Other:		n/a
+Combined:	1
+Current hardware settings:
+RX:		1
+TX:		1
+Other:		n/a
+Combined:	1
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 /usr/sbin/ethtool -m eth0
+netlink error: Operation not supported
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 firewall-cmd --list-all
+exec of "firewall-cmd" failed: No such file or directory
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables -t filter -nvL
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables-save -t filter
+# Generated by iptables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables -t nat -nvL
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables-save -t nat
+# Generated by iptables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables -t mangle -nvL
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables-save -t mangle
+# Generated by iptables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*mangle
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables -t raw -nvL
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 iptables-save -t raw
+# Generated by iptables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*raw
+:PREROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables -t filter -nvL
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables-save -t filter
+# Generated by ip6tables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables -t nat -nvL
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables-save -t nat
+# Generated by ip6tables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables -t mangle -nvL
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+#==[ Command ]======================================#
+# /sbin/ip netns exec cni-6a244093-38d6-64cb-e62c-022157b7a533 ip6tables-save -t mangle
+# Generated by ip6tables-save v1.8.7 on Fri Mar 22 08:56:11 2024
+*mangle
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+# Completed on Fri Mar 22 08:56:11 2024
+
+#==[ Command ]======================================#
+# ip6tables
+
+# NOTE: The ip6table_raw module is not loaded, skipping check
+
+#==[ Verification ]=================================#
+# RPM Not Installed: nftables
+

@@ -1,0 +1,32 @@
+docker run -it registry.suse.com/suse/sle15:15.4  bash
+docker run -it registry.suse.com/suse/sle15:15.2  bash
+
+INTERNAL-USE-ONLY-4467-c6b8
+
+https://documentation.suse.com/en-us/container/all/single-html/SLES-container/
+
+
+sudo docker pull opensuse/leap
+
+sudo docker run -it  opensuse/leap:latest bash
+
+# Mount dir to a container
+https://stackoverflow.com/questions/28302178/how-can-i-add-a-volume-to-an-existing-docker-container
+$ docker ps  -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS                          PORTS               NAMES
+5a8f89adeead        ubuntu:14.04          "/bin/bash"              About a minute ago   Exited (0) About a minute ago                       agitated_newton
+
+$ docker commit 5a8f89adeead newimagename
+$ docker run -ti -v "$PWD/somedir":/somedir newimagename /bin/bash
+If it's all OK, stop your old container, and use this new one.
+
+You can also commit a container using its name, for example:
+
+docker commit agitated_newton newimagename
+
+https://stackoverflow.com/questions/56209021/how-to-mount-a-host-directory-into-a-running-docker-container
+# Create a new image from the container
+docker commit CONTAINERID NEWIMAGENAME
+
+# Create a new container on the top of the new image
+docker run -v HOSTLOCATION:CONTAINERLOCATION NEWIMAGENAME

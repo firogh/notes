@@ -1,0 +1,200 @@
+Andreas
+Prepare reproduction setup
+==========================
+Grab two SLES 15 SP4 VMs. 
+On the VM to act as client :
+- add IP 10.223.29.50/24 on the network interface
+
+On the VM to act as application host with IPVS :
+- add IP 10.223.29.51/24 on the network interface (matches server side in comment 0)
+SUSEConnect -p SLES-LTSS/15.4/x86_64; SUSEConnect -p sle-module-containers/15.4/x86_64
+zypper -n in ipvsadm gcc lksctp-tools-devel docker
+systemctl enable --now docker
+Create a docker network that matches customer's IPs :
+docker network create --subnet 10.2.135.0/24 --ip-range 10.2.135.128/25 --gateway 10.2.135.1 sctpapps
+
+Configure IPVS :
+ipvsadm -A --sctp-service 10.223.29.51:39289 -s rr
+ipvsadm -a --sctp-service 10.223.29.51:39289 -r 10.2.135.203:3869 -m
+ipvsadm -Ln     # just to show the config
+
+Place the testcase source from comment 25 somewhere.
+Make the following changes before compiling in order to match the port numbers used by the customer :
+- Set MY_PORT_NUM 3869 in server.c 
+- Set MY_PORT_NUM 39289 in client.c
+Compile the testcase with make.
+
+scp client to 10.223.29.50:/tmp
+mkdir /tmp/sctpapp
+cp server /tmp/sctpapp
+
+Create docker container image :
+cd /tmp/sctpapp
+cat <<-EOF > Dockerfile
+FROM registry.suse.com/bci/bci-base:15.4
+RUN zypper -n in coreutils iputils iproute2 openssh-clients tcpdump
+COPY server /usr/local/bin/server
+RUN chmod +x /usr/local/bin/server
+ENTRYPOINT ip a && /usr/local/bin/server
+EOF
+
+Build container :
+docker build --tag sctpserver .
+
+Check that a repository named sctpserver exists :
+docker images
+
+Reproduction
+============
+Start the container connected to the network created above and with the IP address used by customer :
+docker run --network sctpapps --ip 10.2.135.203 sctpserver
+
+This will show the IP addresses of the container and
+"Waiting for connection"
+which means the server is listening for input.
+The container will block the terminal, so you'll need to open a new one to the server for tcpdumping etc.
+
+Go back to the client VM and kick off the client binary with the IPVS server address as argument :
+/tmp/client 10.223.29.51
+
+This will simply terminate silently, but on the container terminal you would show :
+New client connected
+Received data: Hello world!
+Waiting for connection
+
+Done.
+
+The following command kills the container :
+docker kill `docker ps|grep -v CONTAINER|cut -d' ' -f1`
+
+
+
+# LOG
+
+[260041.285492] IPVS: ip_vs_rr_schedule(): Scheduling...
+[260041.285541] IPVS: RR: server 10.2.135.203:3869 activeconns 0 refcnt 1 weight 1
+[260041.285557] IPVS: Bind-dest SCTP c:10.145.138.66:54750 v:10.100.52.182:39289 d:10.2.135.203:3869 fwd:M s:1 conn->flags:100 conn->refcnt:1 dest->refcnt:2
+[260041.285579] IPVS: Schedule fwd:M c:10.145.138.66:54750 v:10.100.52.182:39289 d:10.2.135.203:3869 conn->flags:140 conn->refcnt:2
+[260041.285587] SCTP input   10.2.135.203:3869->10.145.138.66:54750 state: NONE->INIT1 conn->refcnt:2
+[260041.286375] SCTP output   10.2.135.203:3869->10.145.138.66:54750 state: INIT1->C-SENT conn->refcnt:2
+[260041.287716] SCTP input   10.2.135.203:3869->10.145.138.66:54750 state: C-SENT->C-REPLIED conn->refcnt:2
+[260041.287847] SCTP output   10.2.135.203:3869->10.145.138.66:54750 state: C-REPLIED->ESTABLISHED conn->refcnt:2
+[260041.289308] SUSEDEBUGe: ffff99be447e1000 80010000174a29  10.100.52.182 31129 > 10.145.138.66 -8491 len 2092 csum e98dbb36
+[260041.289334] CPU: 0 PID: 2377 Comm: server Kdump: loaded Tainted: G           OE     N 5.14.21-150400.24.100-default #1 SLE15-SP4 f4c06561ddbf4cb021469e5853dae4a4bfef0c30
+[260041.289342] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 0.0.0 02/06/2015
+[260041.289352] Call Trace:
+[260041.289383]  <IRQ>
+[260041.289422]  dump_stack_lvl+0x45/0x5b
+[260041.289498]  entry_handler+0x87/0xb6 [ipvs 638ef614aff97db7b91fd0ca35b74080a798f3aa]
+[260041.289518]  pre_handler_kretprobe+0x8e/0x170
+[260041.289550]  ? sctp_gso_segment+0x1/0x210 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.289604]  kprobe_ftrace_handler+0x138/0x1b0
+[260041.289653]  0xffffffffc0c7e0c8
+[260041.289665]  ? sctp_csum_update+0x10/0x10 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.289677]  ? sctp_gso_segment+0x1/0x210 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.289688]  sctp_gso_segment+0x5/0x210 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.289712]  inet_gso_segment+0x158/0x3c0
+[260041.289742]  skb_mac_gso_segment+0xa9/0x120
+[260041.289766]  __skb_gso_segment+0xba/0x190
+[260041.289769]  ? netif_skb_features+0xbc/0x2a0
+[260041.289772]  validate_xmit_skb+0x15b/0x310
+[260041.289774]  validate_xmit_skb_list+0x45/0x70
+[260041.289781]  sch_direct_xmit+0x107/0x360
+[260041.289800]  __dev_queue_xmit+0x482/0xb10
+[260041.289804]  ? ip_finish_output2+0x197/0x5a0
+[260041.289814]  ip_finish_output2+0x197/0x5a0
+[260041.289824]  ? skb_gso_validate_network_len+0x27/0x90
+[260041.289831]  ? ip_output+0x71/0x110
+[260041.289834]  ip_output+0x71/0x110
+[260041.289837]  ? __ip_finish_output+0x280/0x280
+[260041.289840]  ip_forward+0x3f6/0x4f0
+[260041.289843]  ? ip4_key_hashfn+0xc0/0xc0
+[260041.289850]  ip_sabotage_in+0x58/0x70 [br_netfilter ae2dc8d4d11f7b206fb558472d709a1846cb3b86]
+[260041.289857]  nf_hook_slow+0x43/0xc0
+[260041.289864]  ip_rcv+0xbf/0x110
+[260041.289870]  ? ip_local_deliver+0x110/0x110
+[260041.289873]  __netif_receive_skb_one_core+0x89/0xa0
+[260041.289876]  netif_receive_skb+0x39/0x160
+[260041.289879]  br_pass_frame_up+0xbe/0x180 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.289939]  ? fdb_find_rcu+0xeb/0x160 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.289949]  br_handle_frame_finish+0x162/0x500 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.289960]  ? br_pass_frame_up+0x180/0x180 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.289970]  br_nf_hook_thresh+0x4d/0x100 [br_netfilter ae2dc8d4d11f7b206fb558472d709a1846cb3b86]
+[260041.289974]  ? br_pass_frame_up+0x180/0x180 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.289988]  br_nf_pre_routing_finish+0x14a/0x400 [br_netfilter ae2dc8d4d11f7b206fb558472d709a1846cb3b86]
+[260041.289991]  ? br_pass_frame_up+0x180/0x180 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.290009]  ? nf_nat_ipv4_pre_routing+0x25/0x80 [nf_nat 730902bdd9fad6de54c378f51c529172994a78b9]
+[260041.290023]  br_nf_pre_routing+0x2e7/0x560 [br_netfilter ae2dc8d4d11f7b206fb558472d709a1846cb3b86]
+[260041.290029]  ? br_nf_forward_ip+0x4c0/0x4c0 [br_netfilter ae2dc8d4d11f7b206fb558472d709a1846cb3b86]
+[260041.290033]  br_handle_frame+0x1d3/0x380 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.290043]  ? br_pass_frame_up+0x180/0x180 [bridge 39721f9c0b2be22ea72ea6fbc88fcce7d557bcfe]
+[260041.290053]  __netif_receive_skb_core+0x2ee/0x10c0
+[260041.290057]  ? ip_rcv+0xe2/0x110
+[260041.290060]  ? __netif_receive_skb_one_core+0x3c/0xa0
+[260041.290062]  __netif_receive_skb_one_core+0x3c/0xa0
+[260041.290064]  process_backlog+0xb0/0x180
+[260041.290067]  __napi_poll+0x2d/0x180
+[260041.290070]  net_rx_action+0x24c/0x2a0
+[260041.290073]  __do_softirq+0xd5/0x2c0
+[260041.290084]  do_softirq+0x71/0x80
+[260041.290107]  </IRQ>
+[260041.290108]  <TASK>
+[260041.290109]  __local_bh_enable_ip+0x64/0x70
+[260041.290112]  ip_finish_output2+0x1aa/0x5a0
+[260041.290115]  ? skb_gso_validate_network_len+0x27/0x90
+[260041.290118]  ? ip_output+0x71/0x110
+[260041.290120]  ip_output+0x71/0x110
+[260041.290123]  ? __ip_finish_output+0x280/0x280
+[260041.290126]  __ip_queue_xmit+0x16b/0x3f0
+[260041.290133]  ? __alloc_skb+0xe5/0x1c0
+[260041.290136]  sctp_packet_transmit+0x501/0x960 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290158]  sctp_outq_flush+0x251/0xb20 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290182]  sctp_do_sm+0x1e3/0x1c10 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290216]  ? __kmalloc_node_track_caller+0x1ba/0x3b0
+[260041.290235]  ? __alloc_skb+0x8c/0x1c0
+[260041.290237]  ? update_load_avg+0x1cc/0x640
+[260041.290249]  ? kmalloc_reserve+0x2e/0x80
+[260041.290252]  ? kmem_cache_alloc+0x15b/0x4c0
+[260041.290254]  ? ksize+0x14/0x30
+[260041.290267]  ? copyin+0x1c/0x30
+[260041.290280]  ? _copy_from_iter+0x76/0x570
+[260041.290282]  ? sctp_chunkify+0x27/0xb0 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290296]  ? _sctp_make_chunk+0x9e/0xe0 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290310]  ? sctp_user_addto_chunk+0x37/0xa0 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290324]  sctp_primitive_SEND+0x2f/0x40 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290337]  sctp_sendmsg_to_asoc+0x68c/0x890 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290355]  ? aa_label_sk_perm.part.4+0xff/0x150
+[260041.290370]  sctp_sendmsg+0x518/0xa80 [sctp e3abbcf91b3e21c9b0421e352a7681def72725e3]
+[260041.290384]  ? aa_sk_perm+0x7b/0x1f0
+[260041.290387]  ? sock_kmalloc+0x33/0x60
+[260041.290389]  ? sock_sendmsg+0x58/0x70
+[260041.290397]  sock_sendmsg+0x58/0x70
+[260041.290409]  ____sys_sendmsg+0x1ee/0x250
+[260041.290413]  ___sys_sendmsg+0x88/0xd0
+[260041.290416]  ? __wake_up_common+0x74/0x130
+[260041.290420]  ? current_time+0x42/0x80
+[260041.290426]  ? file_update_time+0x64/0x110
+[260041.290428]  ? pipe_write+0x3cd/0x650
+[260041.290435]  ? __sys_sendmsg+0x5e/0xa0
+[260041.290438]  __sys_sendmsg+0x5e/0xa0
+[260041.290442]  do_syscall_64+0x5b/0x80
+[260041.290448]  ? vfs_write+0x220/0x280
+[260041.290455]  ? ksys_write+0x50/0xe0
+[260041.290458]  ? syscall_trace_enter.isra.20+0xa9/0x1e0
+[260041.290464]  ? syscall_exit_to_user_mode+0x28/0x40
+[260041.290468]  ? do_syscall_64+0x67/0x80
+[260041.290470]  ? common_interrupt+0x8b/0xa0
+[260041.290472]  entry_SYSCALL_64_after_hwframe+0x61/0xcb
+[260041.290487] RIP: 0033:0x7fc706428e23
+[260041.290490] Code: 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 64 8b 04 25 18 00 00 00 85 c0 75 14 b8 2e 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 55 f3 c3 0f 1f 00 41 54 55 41 89 d4 53 48 89
+[260041.290492] RSP: 002b:00007fff745a31f8 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
+[260041.290498] RAX: ffffffffffffffda RBX: 0000000000000004 RCX: 00007fc706428e23
+[260041.290503] RDX: 0000000000000000 RSI: 00007fff745a3240 RDI: 0000000000000004
+[260041.290504] RBP: 0000000000000003 R08: 0000000000000000 R09: 0000000000000000
+[260041.290509] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000080
+[260041.290516] R13: 00000000017702a0 R14: 00007fff745a32b4 R15: 0000000000000000
+[260041.290519]  </TASK>
+[260041.290554] SUSEDEBUGr: ffff99bebc942000 seg 0 10.100.52.182 31129 > 10.145.138.66 -8491 len 1418 csum e98dbb36
+[260041.290558] SUSEDEBUGr: ffff99bebc942800 seg 0 10.100.52.182 31129 > 10.145.138.66 -8491 len 754 csum e98dbb36
+[260044.349991] SCTP input   10.2.135.203:3869->10.145.138.66:54750 state: ESTABLISHED->CLOSED conn->refcnt:2
+

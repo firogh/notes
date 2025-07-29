@@ -1,0 +1,9 @@
+
+
+FILE_PAGES = INACTIVE_FILE + ACTIVE_FILE + SWAPCACHE + SHMEM.
+
+
+slab memory
+sar -r -f sa20250313 |grep --color=never PM | grep -v 'kbmemfree\|LINUX' | awk '{print $1,$2, (33300081964 - $3 - $5 -$7 - $8) }'
+
+sar -r -f sa20250313 |grep --color=never PM | grep -v 'kbmemfree\|LINUX' | awk 'BEGIN { print "\t", "free", "cached", "active", "inactive", "slab" } {print $1,$2, $3/1024/1024, "GB", $8/1024/1024, "GB", $11/1024/1024, "GB", $12/1024/1024, "GB", (33300081964 - $3 - $5 -$7 - $8)/1024/1024,"GB" }'

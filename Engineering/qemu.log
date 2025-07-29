@@ -1,0 +1,35 @@
+# virsh attach-interface --type bridge --source br1 --model virtio vm4
+
+https://segmentfault.com/a/1190000009491002
+
+# 2. Add a TCP Serial Port
+Locate the <devices> section in the XML file, then add a <serial> element for TCP, like this:
+<serial type="tcp">
+  <source mode="bind" host="127.0.0.1" service="1234"/>
+  <protocol type="raw"/>
+</serial>
+
+# 3. Add GDB Server Support (-s and -S)
+To start the VM in a paused state and enable the GDB server, add the following under the <domain> element (often near the top of the file):
+<qemu:commandline xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0">
+  <qemu:arg value="-s"/>
+  <qemu:arg value="-S"/>
+</qemu:commandline>
+
+# 4. gdb /path/to/guest/vmlinux
+(gdb) target remote :1234
+
+
+# RUN
+/usr/bin/qemu-system-x86_64 \
+    -name guest=sle15sp6,debug-threads=on \
+    -machine pc-q35-8.2,usb=off \
+    -accel kvm \
+    -cpu host \
+    -m size=1048576000k \
+    -smp 1 \
+    -uuid 1aba30a2-c577-474d-aec4-f8c8b3937898 \
+    -boot order=c \
+    -drive file=/var/lib/libvirt/images/sle15sp6.qcow2,format=qcow2,if=virtio \
+    -serial mon:stdio \
+    -nographic -s -S

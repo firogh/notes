@@ -32,3 +32,10 @@ If I have understood correctly the customer is going to maintain the patches
 themselves in SLE15-SP2 and there is no work to do for us. Can you please
 confirm? I'll close the bug as WONTFIX in this case.
 
+
+# close with feedback
+> This can be closed. //bug 1213396
+Would it be possible to ask how this was resolved on your side? Was I right
+about the double free? Did the problem disappear? Were the probes I provided
+helpful?
+

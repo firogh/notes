@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
 #
-#
-# Licensed under the Apache License, Version 2.0 (the "License")
-# Copyright (C) 2016 Sasha Goldshtein.
-
 from bcc import BPF
 from time import sleep
 from datetime import datetime

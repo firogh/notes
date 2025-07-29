@@ -1,0 +1,7 @@
+
+
+# tracepoint
+tracepoint_probe_register
+
+
+register_trace_sched_wakeup

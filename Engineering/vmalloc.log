@@ -1,0 +1,4 @@
+
+# per-cpu deferred freeing mechanism
+Anyway back to the free_work interference. vmalloc allocator has a per-cpu deferred freeing mechanism available. This is either used when vfree_atomic is used or vfree is called from IRQ context. There are not that many users of vfree_atomic in 15sp4 kernel AFAICS but the most notable one is the kernel side of the process stack/LDT. So regular fork/exit on that particular CPU would trigger this. I would assume this doesn't really happen in the cpu isolated workloads but it would be great to double check.
+

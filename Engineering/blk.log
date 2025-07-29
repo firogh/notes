@@ -1,0 +1,115 @@
+
+
+# requests tags
+
+request_queue::queue_ctx::hctxs::sched_tags::static_rqs
+
+crash> gdb source gdb_script.log
+crash> print_rqs < static_rqs.log
+
+cat gdb_script.log
+define print_rqs
+	set $req = (struct request**)$arg0
+	#print $req
+	set $idx = 0
+	while $idx < 256
+		set $rq=$req[$idx]
+		set $hctx=$rq->mq_hctx
+		if $hctx > 0
+			print /d $idx
+			print $rq
+		#	print $hctx
+		end
+		set $idx=$idx+1
+	end
+crash> request_queue.queue_ctx ff2dbfe10e4321a0 
+  queue_ctx = 0x7d44dbc021e640,
+
+crash> blk_mq_ctx.hctxs 0x7d44dbc021e640:all
+
+crash> blk_mq_tags.bitmap_tags,breserved_tags < sched_tags.log
+  bitmap_tags = 0xff2dbfe10e432580,
+  breserved_tags = 0xff2dbfe10e4325b8,
+
+gdb p **$req@2
+
+blk_mq_is_sbitmap_shared
+
+# inflight: sent to 
+static const struct blk_mq_ops scsi_mq_ops_no_commit = {
+        .get_budget     = scsi_mq_get_budget,
+        .put_budget     = scsi_mq_put_budget,
+        .queue_rq       = scsi_queue_rq,
+        .complete       = scsi_complete,
+
+scsi_queue_rq -> scsi_dispatch_cmd
+
+crash> scsi_device.host 0xff2dbfe10e416000
+  host = 0xff2dbfc1e2cde000,
+crash> Scsi_Host 0xff2dbfc1e2cde000
+
+crash> Scsi_Host.hostt 0xff2dbfc1e2cde000
+  hostt = 0xffffffffc08a81c0 <mpt3sas_driver_template>,
+
+static struct scsi_host_template mpt3sas_driver_template = {
+        .module                         = THIS_MODULE,
+        .name                           = "Fusion MPT SAS Host",
+        .proc_name                      = MPT3SAS_DRIVER_NAME,
+        .queuecommand                   = scsih_qcmd,
+
+# request timeout
+blk_mq_start_request
+crash> request_queue.timeout ff2dbfe10e4321a0
+  timeout = {
+    entry = {
+      next = 0x0,
+      pprev = 0xff2dbfe0ffd231b0
+    },
+    expires = 0x114727fe9,
+    function = 0xffffffffac6d7960 <blk_rq_timed_out_timer>,
+    flags = 0x20000028
+  },
+  timeout_work = {
+    data = {
+      counter = 0x4a0
+    },
+    entry = {
+      next = 0xff2dbfe10e432560,
+      prev = 0xff2dbfe10e432560
+    },
+    func = 0xffffffffac6e4590 <blk_mq_timeout_work>
+  },
+
+
+# complete
+static void scsi_complete(struct request *rq) 
+{
+        struct scsi_cmnd *cmd = blk_mq_rq_to_pdu(rq);
+        enum scsi_disposition disposition;
+
+        INIT_LIST_HEAD(&cmd->eh_entry);
+
+        atomic_inc(&cmd->device->iodone_cnt);
+
+
+# stat
+crash> request_queue.queuedata ff2dbfe10e4321a0
+  queuedata = 0xff2dbfe10e416000
+
+crash> scsi_device.iorequest_cnt,iodone_cnt,ioerr_cnt 0xff2dbfe10e416000
+
+
+
+
+
+# Throttling
+https://bugzilla.suse.com/show_bug.cgi?id=1224772
+Yeah, this looks like a classic priority inversion issue. They write a file. Background worker sees the dirty data, starts writing it back as low priority writeback that gets throttled by writeback throttling. Then fsync(2) runs which would submit it as "high priority" IO but the IO was already submitted as low prio so fsync is blocked for a long time.
+
+Generally, there's no great solution for this with writeback throttling controller because it is very simple. So I'd recommend to just turn off writeback throttling and in case they need some form of IO control, we can talk how to do it with more advanced frameworks such as blk-iocost.
+
+Writeback throttling can be turned off by doing:
+echo 0 >/sys/block/<device>/queue/wbt_lat_usec
+
+Configure the blk-iocost weight-based throttling feature
+

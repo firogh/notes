@@ -1,0 +1,31 @@
+
+# secure boot
+mokutil --disable-validation
+
+# dracut
+man dracut.modules
+man dracut.conf
+## add gdb to initrd
+set allow_unsupported_modules 1 in
+/lib/modprobe.d/10-unsupported-modules.conf
+
+add the following to /etc/modprobe.d/custommodule.conf 
+softdep mlx5_core pre: kp_mlx
+
+add the following to /etc/dracut.conf.d/99-debug.conf 
+install_items+=" gdb date python3.6m"
+### module-setup.sh
+install() {
+        instmods "$moddir/kp_mlx.ko" 
+
+        inst_script "$moddir/kp_gcore" /usr/bin/kp_gcore
+        inst_script "$moddir/kp_savecore.sh" /usr/bin/kp_savecore
+
+        inst_hook pre-pivot 90 "${moddir}/kp_savecore.sh"
+
+        inst_multiple /usr/lib64/python3.6/*
+        inst_multiple /usr/lib64/python3.6/encodings/*
+
+#    inst_simple "$moddir/kprobe.service" "${systemdsystemunitdir}"/kprobe.service
+#    $SYSTEMCTL -q --root "$initdir" add-wants initrd.target "kprobe.service"
+}

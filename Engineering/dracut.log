@@ -1,0 +1,21 @@
+
+# dracut debug
+rd.shell rd.debug log_buf_len=1M
+
+# usefull options
+rd.shell
+Drop to a shell, if the initramfs fails.
+
+rd.debug
+Set -x for the dracut shell.
+
+rd.break=[cmdline|pre-udev|pre-trigger|initqueue|pre-mount|mount|pre-pivot|cleanup]
+Drop the shell on defined breakpoint (use egrep 'rd.?break' /usr/lib/dracut/modules.d/99base/init.sh to find the breakpoints supported by your dracut version)
+
+rd.udev.info
+Set udev to loglevel info (this is the default level)
+
+rd.udev.debug
+Set udev to loglevel debug
+
+

@@ -1,0 +1,10 @@
+
+# overview
+timer refill runtime: __refill_cfs_bandwidth_runtime
+allocate runtime to runtime_remaining: account_cfs_rq_runtime ...-> __assign_cfs_rq_runtime
+throttle_cfs_rq
+
+usage 1: cpu.shares
+
+usage 2: cfs_quota_us, cfs_period_us
+

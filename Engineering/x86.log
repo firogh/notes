@@ -1,0 +1,5 @@
+crash> p hardirq_stack_ptr:27
+per_cpu(hardirq_stack_ptr, 27) = $1 = (void *) 0xffffbfd571e1cff8
+
+crash> struct exception_stacks exception_stacks:27 -o
+

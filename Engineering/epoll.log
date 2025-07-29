@@ -1,0 +1,20 @@
+sock_def_readable
+
+wake_up_interruptible_sync_poll
+
+
+ep_poll_callback
+
+epoll_insert -> init_poll_funcptr -> set ep_ptable_queue_proc
+
+        /* List of ready file descriptors */
+        struct list_head rdllist;
+
+__ep_eventpoll_poll
+
+
+https://www.reddit.com/r/kernel/comments/poynj4/what_does_napi_busy_loop_do_when_syscalling_epoll/
+
+https://docs.kernel.org/networking/napi.html
+
+Real world tips, tricks, and notes of using epoll-based busy polling to reduce latency - Joe Damato

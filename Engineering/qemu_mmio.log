@@ -1,0 +1,183 @@
+
+
+# References
+https://terenceli.github.io/%E6%8A%80%E6%9C%AF/2018/09/03/kvm-mmio
+
+# QI
+vtd_handle_gcmd_write -> vtd_handle_gcmd_qie
+
+# Flow
+
+EPT violation
+vmx_handle_exit: see vt_x86_ops
+handle_ept_violation
+nested_vmx_reflect_vmexit EXIT_REASON_EPT_VIOLATION
+
+kvm_vcpu_ioctl
+kvm_arch_vcpu_ioctl_run
+
+vcpu_mmio_write
+
+    /* Invalidation Queue Tail Register, 64-bit */
+    case DMAR_IQT_REG:
+        if (size == 4) { 
+            vtd_set_long(s, addr, val);
+        } else {
+            vtd_set_quad(s, addr, val);
+        }
+        vtd_handle_iqt_write(s);
+
+
+
+# (gdb) bt
+#0  vtd_fetch_inv_desc (s=<optimized out>, s=<optimized out>) at ../hw/i386/intel_iommu.c:2779
+#1  0x0000555555c9a2ee in vtd_handle_iqt_write (s=0x555557e9fbe0) at ../hw/i386/intel_iommu.c:2823
+#2  vtd_mem_write.lto_priv.3361 (opaque=0x555557e9fbe0, addr=<optimized out>, val=<optimized out>, size=<optimized out>)
+    at ../hw/i386/intel_iommu.c:3070
+#3  0x0000555555b58752 in memory_region_write_accessor (mr=0x555557e9ff20, addr=136, value=<optimized out>, size=4, shift=<optimized out>, 
+    mask=<optimized out>, attrs=...) at ../system/memory.c:497
+#4  0x0000555555b5d2e1 in access_with_adjusted_size (addr=addr@entry=136, value=value@entry=0x7f05e7137398, size=size@entry=4, 
+    access_size_min=<optimized out>, access_size_max=<optimized out>, access_fn=0x555555b586d0 <memory_region_write_accessor>, 
+    mr=0x555557e9ff20, attrs=...) at ../system/memory.c:573
+#5  0x0000555555b5d4c5 in memory_region_dispatch_write (mr=0x555557e9ff20, addr=136, data=<optimized out>, op=<optimized out>, attrs=...)
+    at ../system/memory.c:1528
+#6  0x0000555555d9607a in flatview_write_continue (fv=fv@entry=0x7f05e01ffcf0, addr=addr@entry=4275634312, attrs=..., 
+    ptr=ptr@entry=0x7ffff7fb0028, len=len@entry=4, addr1=<optimized out>, l=<optimized out>, mr=0x555557e9ff20) at ../system/physmem.c:2716
+#7  0x0000555555d962d3 in flatview_write.lto_priv.2451 (fv=0x7f05e01ffcf0, addr=addr@entry=4275634312, attrs=attrs@entry=..., 
+    buf=buf@entry=0x7ffff7fb0028, len=len@entry=4) at ../system/physmem.c:2758
+#8  0x0000555555d96365 in address_space_write (as=0x555556e27040 <address_space_memory>, addr=4275634312, attrs=..., buf=0x7ffff7fb0028, len=4)
+    at ../system/physmem.c:2865
+#9  0x0000555555f63ee9 in kvm_cpu_exec (cpu=cpu@entry=0x5555571733e0) at ../accel/kvm/kvm-all.c:2915
+#10 0x0000555555f662d5 in kvm_vcpu_thread_fn (arg=arg@entry=0x5555571733e0) at ../accel/kvm/kvm-accel-ops.c:51
+#11 0x0000555555f1bb26 in qemu_thread_start (args=<optimized out>) at ../util/qemu-thread-posix.c:541
+#12 0x00007ffff50a761c in start_thread () from /lib64/libc.so.6
+#13 0x00007ffff512eaa8 in clone3 () from /lib64/libc.so.6
+
+
+# (gdb) bt
+#0  memcpy () at /usr/include/bits/string_fortified.h:29
+#1  flatview_read_continue (fv=fv@entry=0x7f05e01ffcf0, addr=addr@entry=2002944, attrs=..., ptr=ptr@entry=0x7f05e7137180, len=len@entry=16, 
+    addr1=<optimized out>, l=<optimized out>, mr=<optimized out>) at ../system/physmem.c:2800
+#2  0x0000555555d98ca0 in flatview_read.lto_priv.2452 (fv=0x7f05e01ffcf0, addr=addr@entry=2002944, attrs=attrs@entry=..., 
+    buf=buf@entry=0x7f05e7137180, len=len@entry=16) at ../system/physmem.c:2836
+#3  0x0000555555d98d35 in address_space_read_full (as=0x555556e27040 <address_space_memory>, addr=2002944, attrs=..., buf=0x7f05e7137180, len=16)
+    at ../system/physmem.c:2849
+#4  0x0000555555c98f10 in dma_memory_rw_relaxed () at /usr/src/debug/qemu-8.2.5-150600.3.6.1.x86_64/include/sysemu/dma.h:87
+#5  dma_memory_rw () at /usr/src/debug/qemu-8.2.5-150600.3.6.1.x86_64/include/sysemu/dma.h:130
+#6  dma_memory_read (attrs=..., len=<optimized out>, buf=0x7f05e7137180, addr=<optimized out>, as=<optimized out>)
+    at /usr/src/debug/qemu-8.2.5-150600.3.6.1.x86_64/include/sysemu/dma.h:150
+#7  vtd_get_inv_desc.isra.24 (inv_desc=0x7f05e7137180) at ../hw/i386/intel_iommu.c:2496
+#8  vtd_process_inv_desc (s=0x555557e9fbe0) at ../hw/i386/intel_iommu.c:2708
+#9  vtd_fetch_inv_desc (s=<optimized out>, s=<optimized out>) at ../hw/i386/intel_iommu.c:2796
+#10 0x0000555555c9a2ee in vtd_handle_iqt_write (s=0x555557e9fbe0) at ../hw/i386/intel_iommu.c:2823
+#11 vtd_mem_write.lto_priv.3361 (opaque=0x555557e9fbe0, addr=<optimized out>, val=<optimized out>, size=<optimized out>)
+    at ../hw/i386/intel_iommu.c:3070
+#12 0x0000555555b58752 in memory_region_write_accessor (mr=0x555557e9ff20, addr=136, value=<optimized out>, size=4, shift=<optimized out>, 
+    mask=<optimized out>, attrs=...) at ../system/memory.c:497
+#13 0x0000555555b5d2e1 in access_with_adjusted_size (addr=addr@entry=136, value=value@entry=0x7f05e7137398, size=size@entry=4, 
+    access_size_min=<optimized out>, access_size_max=<optimized out>, access_fn=0x555555b586d0 <memory_region_write_accessor>, 
+    mr=0x555557e9ff20, attrs=...) at ../system/memory.c:573
+#14 0x0000555555b5d4c5 in memory_region_dispatch_write (mr=0x555557e9ff20, addr=136, data=<optimized out>, op=<optimized out>, attrs=...)
+    at ../system/memory.c:1528
+#15 0x0000555555d9607a in flatview_write_continue (fv=fv@entry=0x7f05e01ffcf0, addr=addr@entry=4275634312, attrs=..., 
+    ptr=ptr@entry=0x7ffff7fb0028, len=len@entry=4, addr1=<optimized out>, l=<optimized out>, mr=0x555557e9ff20) at ../system/physmem.c:2716
+#16 0x0000555555d962d3 in flatview_write.lto_priv.2451 (fv=0x7f05e01ffcf0, addr=addr@entry=4275634312, attrs=attrs@entry=..., 
+    buf=buf@entry=0x7ffff7fb0028, len=len@entry=4) at ../system/physmem.c:2758
+#17 0x0000555555d96365 in address_space_write (as=0x555556e27040 <address_space_memory>, addr=4275634312, attrs=..., buf=0x7ffff7fb0028, len=4)
+--Type <RET> for more, q to quit, c to continue without paging--
+    at ../system/physmem.c:2865
+#18 0x0000555555f63ee9 in kvm_cpu_exec (cpu=cpu@entry=0x5555571733e0) at ../accel/kvm/kvm-all.c:2915
+#19 0x0000555555f662d5 in kvm_vcpu_thread_fn (arg=arg@entry=0x5555571733e0) at ../accel/kvm/kvm-accel-ops.c:51
+#20 0x0000555555f1bb26 in qemu_thread_start (args=<optimized out>) at ../util/qemu-thread-posix.c:541
+#21 0x00007ffff50a761c in start_thread () from /lib64/libc.so.6
+#22 0x00007ffff512eaa8 in clone3 () from /lib64/libc.so.6
+
+# QI enable
+
+Thread 3 "qemu-system-x86" hit Breakpoint 1, vtd_handle_gcmd_qie (en=<optimized out>, s=<optimized out>) at ../hw/i386/intel_iommu.c:2314
+2314	../hw/i386/intel_iommu.c: No such file or directory.
+(gdb) bt
+#0  vtd_handle_gcmd_qie (en=<optimized out>, s=<optimized out>) at ../hw/i386/intel_iommu.c:2314
+#1  vtd_handle_gcmd_write (s=0x555557e9fbe0) at ../hw/i386/intel_iommu.c:2432
+#2  vtd_mem_write.lto_priv.3361 (opaque=0x555557e9fbe0, addr=<optimized out>, val=<optimized out>, size=<optimized out>)
+    at ../hw/i386/intel_iommu.c:2955
+#3  0x0000555555b58752 in memory_region_write_accessor (mr=0x555557e9ff20, addr=24, value=<optimized out>, size=4, shift=<optimized out>, 
+    mask=<optimized out>, attrs=...) at ../system/memory.c:497
+#4  0x0000555555b5d2e1 in access_with_adjusted_size (addr=addr@entry=24, value=value@entry=0x7f05e7137398, size=size@entry=4, 
+    access_size_min=<optimized out>, access_size_max=<optimized out>, access_fn=0x555555b586d0 <memory_region_write_accessor>, 
+    mr=0x555557e9ff20, attrs=...) at ../system/memory.c:573
+#5  0x0000555555b5d4c5 in memory_region_dispatch_write (mr=0x555557e9ff20, addr=24, data=<optimized out>, op=<optimized out>, attrs=...)
+    at ../system/memory.c:1528
+#6  0x0000555555d9607a in flatview_write_continue (fv=fv@entry=0x7f05e01ffcf0, addr=addr@entry=4275634200, attrs=..., 
+    ptr=ptr@entry=0x7ffff7fb0028, len=len@entry=4, addr1=<optimized out>, l=<optimized out>, mr=0x555557e9ff20) at ../system/physmem.c:2716
+#7  0x0000555555d962d3 in flatview_write.lto_priv.2451 (fv=0x7f05e01ffcf0, addr=addr@entry=4275634200, attrs=attrs@entry=..., 
+    buf=buf@entry=0x7ffff7fb0028, len=len@entry=4) at ../system/physmem.c:2758
+#8  0x0000555555d96365 in address_space_write (as=0x555556e27040 <address_space_memory>, addr=4275634200, attrs=..., buf=0x7ffff7fb0028, len=4)
+    at ../system/physmem.c:2865
+#9  0x0000555555f63ee9 in kvm_cpu_exec (cpu=cpu@entry=0x5555571733e0) at ../accel/kvm/kvm-all.c:2915
+#10 0x0000555555f662d5 in kvm_vcpu_thread_fn (arg=arg@entry=0x5555571733e0) at ../accel/kvm/kvm-accel-ops.c:51
+#11 0x0000555555f1bb26 in qemu_thread_start (args=<optimized out>) at ../util/qemu-thread-posix.c:541
+#12 0x00007ffff50a761c in start_thread () from /lib64/libc.so.6
+#13 0x00007ffff512eaa8 in clone3 () from /lib64/libc.so.6
+
+
+static void vtd_handle_gcmd_qie(IntelIOMMUState *s, bool en)
+{
+    uint64_t iqa_val = vtd_get_quad_raw(s, DMAR_IQA_REG);
+
+static void __dmar_enable_qi(struct intel_iommu *iommu)
+{
+        u32 sts; 
+        unsigned long flags;
+        struct q_inval *qi = iommu->qi;
+        u64 val = virt_to_phys(qi->desc);
+
+        qi->free_head = qi->free_tail = 0; 
+        qi->free_cnt = QI_LENGTH;
+
+        /*   
+         * Set DW=1 and QS=1 in IQA_REG when Scalable Mode capability
+         * is present.
+         */
+        if (ecap_smts(iommu->ecap))
+                val |= BIT_ULL(11) | BIT_ULL(0);
+
+        raw_spin_lock_irqsave(&iommu->register_lock, flags);
+
+        /* write zero to the tail reg */
+        writel(0, iommu->reg + DMAR_IQT_REG);
+
+        dmar_writeq(iommu->reg + DMAR_IQA_REG, val);
+
+
+# base addr
+## good
+(gdb) p (IntelIOMMUState *) 0x555557e337f0
+$2 = (IntelIOMMUState *) 0x555557e337f0
+(gdb) p $1->csr
+$3 = "\020\000\000\000\000\000\000\000\006\002&\"\214\000\322\000Z\017\360\000\000\000\000\000\000\000\000\005\000\000\000\005", '\000' <repeats >
+(gdb) p &$1->csr
+$4 = (uint8_t (*)[560]) 0x555557e33f70
+(gdb) x/g 0x555557e34000
+0x555557e34000:	69111808
+(gdb) x/gx 0x555557e34000
+0x555557e34000:	0x00000000041e9000
+
+## wrong
+(gdb) p (IntelIOMMUState *)0x555557e9fbe0
+$1 = (IntelIOMMUState *) 0x555557e9fbe0
+(gdb) p $1->csr
+$2 = "\020\000\000\000\000\000\000\000\006\002&\"\214\000\322\000Z\017\360\000\000\000\000\000\000\000\000\004", '\000' <repeats 31 times>, "\200>
+(gdb) p &$1->csr
+$3 = (uint8_t (*)[560]) 0x555557ea0360
+(gdb) x/gx 0x555557ea03f0
+0x555557ea03f0:	0x00000100001e9000
+
+static Property vtd_properties[] = {
+    DEFINE_PROP_UINT32("version", IntelIOMMUState, version, 0),
+    DEFINE_PROP_ON_OFF_AUTO("eim", IntelIOMMUState, intr_eim,
+                            ON_OFF_AUTO_AUTO),
+    DEFINE_PROP_BOOL("x-buggy-eim", IntelIOMMUState, buggy_eim, false),
+    DEFINE_PROP_UINT8("aw-bits", IntelIOMMUState, aw_bits,
+                      VTD_HOST_ADDRESS_WIDTH),
+

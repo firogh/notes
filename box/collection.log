@@ -1,0 +1,1 @@
+mkdir /tmp/suse/; while sleep 5; do ts=$(date +%Y-%m-%d_%H:%M:%S.%6N); mkdir /tmp/suse/$ts ; rsync -R /proc/[[:digit:]]*/smaps /tmp/suse/$ts; done

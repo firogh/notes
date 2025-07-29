@@ -1,0 +1,10 @@
+ qemu-system-x86-5767  [000]  3637.946555: function:             vmx_handle_exit
+ qemu-system-x86-5767  [000]  3637.946567: kernel_stack:         <stack trace >
+=> ffffffffc1cf5099
+=> vmx_handle_exit (ffffffffc174a679)
+=> kvm_arch_vcpu_ioctl_run (ffffffffc160c08e)
+=> kvm_vcpu_ioctl (ffffffffc15d976e)
+=> __x64_sys_ioctl (ffffffffa44e9031)
+=> do_syscall_64 (ffffffffa5208982)
+=> entry_SYSCALL_64_after_hwframe (ffffffffa540012f)
+

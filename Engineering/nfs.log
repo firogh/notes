@@ -1,0 +1,37 @@
+
+
+# internals
+nfsd_create_serv
+        serv = svc_create_pooled(nfsd_programs, ARRAY_SIZE(nfsd_programs),
+                                 &nn->nfsd_svcstats,
+                                 nfsd_max_blksize, nfsd);
+
+
+# legacy
+https://bugzilla.suse.com/show_bug.cgi?id=1211417
+While I still cannot understand why I don't see duplicate requests in the packet capture, it is clear that the client is not handling replies to WRITE requests properly.
+There are quite a few (960) requests in trace7 that don't appear to have replies.  This isn't conclusive though as the packets a truncated (the default if you don't give "-s 0" to tcpdump).  It is quite possible for a single IP packet to contain multiple replies.  When we only have truncated packets, we can easily miss some replies (and even some requests).
+
+The "pending.txt" file makes it clear that the client is waiting for replies - and only for WRITE requests.  The trace7 capture show replies to write requests right up to the end of the capture.  One possible explanation is that the client is not processing those replies properly.
+
+After rpc_debug tracing was turned on for the RPC layer we see regular "xs_data_ready..." messages confirming that the client is being told that replies are arriving.  These are often followed by a series of "decode_attr" messages.  For a WRITE reply these should be change id, size, ctime and mtime.  I cannot find that pattern of decode_attr messages.
+That seems to suggest that the write reply isn't getting from the sunrpc layer back to the nfs layer.
+
+The NFS code is transitioning from using "rpc_debug" for tracing to instead use tracepoints and "tracecmd".  So to get full tracing it is necessary to enable both.
+
+ rpcdebug -m rpc -s all
+ rpcdebug -m nfs -s all
+ trace-cmd record -e nfs -e sunrpc
+  # reproduce problem
+ #interrupt trace-cmd
+ rpcdebug -m rpc -c all
+ rpcdebug -m nfs -c all
+ # a "trace.dat" file should be created. You can examine it with
+ trace-cmd report
+
+The trace events might show what is happening to the message collected by xs_data_ready
+
+If you could repeat the data collection already provided, but give "-s 0" to tcpdump, and run "trace-cmd record", that could be quite helpful.
+
+
+# 

@@ -1,0 +1,219 @@
+(gdb) p init_task
+$1 = {thread_info = {flags = 0, syscall_work = 0, status = 0, cpu = 0}, __state = 0, saved_state = 0, stack = 0xffffffff82e00000, usage = {
+    refs = {counter = 2}}, flags = 69206016, ptrace = 0, on_cpu = 1, wake_entry = {llist = {next = 0x0 <fixed_percpu_data>}, {u_flags = 48, 
+      a_flags = {counter = 48}}, src = 0, dst = 0}, wakee_flips = 0, wakee_flip_decay_ts = 0, last_wakee = 0x0 <fixed_percpu_data>, 
+  recent_used_cpu = 0, wake_cpu = 0, on_rq = 1, prio = 120, static_prio = 120, normal_prio = 120, rt_priority = 0, se = {load = {
+      weight = 1048576, inv_weight = 4194304}, run_node = {__rb_parent_color = 0, rb_right = 0x0 <fixed_percpu_data>, 
+      rb_left = 0x0 <fixed_percpu_data>}, group_node = {next = 0xffffffff82e0f368 <init_task+168>, prev = 0xffffffff82e0f368 <init_task+168>}, 
+    on_rq = 0, exec_start = 366606792, sum_exec_runtime = 0, vruntime = 0, prev_sum_exec_runtime = 0, nr_migrations = 0, depth = 0, 
+    parent = 0x0 <fixed_percpu_data>, cfs_rq = 0xff1101f58ea36200, my_q = 0x0 <fixed_percpu_data>, runnable_weight = 0, avg = {
+      last_update_time = 0, load_sum = 0, runnable_sum = 0, util_sum = 0, period_contrib = 0, load_avg = 0, runnable_avg = 0, util_avg = 0, 
+      util_est = {enqueued = 0, ewma = 0}}}, rt = {run_list = {next = 0xffffffff82e0f440 <init_task+384>, 
+      prev = 0xffffffff82e0f440 <init_task+384>}, timeout = 0, watchdog_stamp = 0, time_slice = 25, on_rq = 0, on_list = 0, 
+    back = 0x0 <fixed_percpu_data>, suse_kabi_padding = 0x0 <fixed_percpu_data>}, dl = {rb_node = {__rb_parent_color = 18446744071610365048, 
+      rb_right = 0x0 <fixed_percpu_data>, rb_left = 0x0 <fixed_percpu_data>}, dl_runtime = 0, dl_deadline = 0, dl_period = 0, dl_bw = 0, 
+    dl_density = 0, runtime = 0, deadline = 0, flags = 0, dl_throttled = 0, dl_yielded = 0, dl_non_contending = 0, dl_overrun = 0, dl_timer = {
+      node = {node = {__rb_parent_color = 18446744071610365136, rb_right = 0x0 <fixed_percpu_data>, rb_left = 0x0 <fixed_percpu_data>}, 
+        expires = 0}, _softexpires = 0, function = 0xffffffff8112a0b0 <dl_task_timer>, base = 0xff1101f58ea26680, state = 0 '\000', 
+      is_rel = 0 '\000', is_soft = 0 '\000', is_hard = 1 '\001'}, inactive_timer = {node = {node = {__rb_parent_color = 18446744071610365200, 
+          rb_right = 0x0 <fixed_percpu_data>, rb_left = 0x0 <fixed_percpu_data>}, expires = 0}, _softexpires = 0, 
+      function = 0xffffffff81127ab0 <inactive_task_timer>, base = 0xff1101f58ea26680, state = 0 '\000', is_rel = 0 '\000', is_soft = 0 '\000', 
+      is_hard = 1 '\001'}, pi_se = 0xffffffff82e0f478 <init_task+440>}, sched_class = 0xffffffff826b7700 <idle_sched_class>, core_node = {
+    __rb_parent_color = 0, rb_right = 0x0 <fixed_percpu_data>, rb_left = 0x0 <fixed_percpu_data>}, core_cookie = 0, core_occupation = 0, 
+  sched_task_group = 0xffffffff839db5c0 <root_task_group>, stats = {wait_start = 0, wait_max = 0, wait_count = 0, wait_sum = 0, 
+    iowait_count = 0, iowait_sum = 0, sleep_start = 0, sleep_max = 0, sum_sleep_runtime = 0, block_start = 0, block_max = 0, 
+    sum_block_runtime = 0, exec_max = 0, slice_max = 0, nr_migrations_cold = 0, nr_failed_migrations_affine = 0, 
+    nr_failed_migrations_running = 0, nr_failed_migrations_hot = 0, nr_forced_migrations = 0, nr_wakeups = 0, nr_wakeups_sync = 0, 
+    nr_wakeups_migrate = 0, nr_wakeups_local = 0, nr_wakeups_remote = 0, nr_wakeups_affine = 0, nr_wakeups_affine_attempts = 0, 
+    nr_wakeups_passive = 0, nr_wakeups_idle = 0, core_forceidle_sum = 0}, preempt_notifiers = {first = 0x0 <fixed_percpu_data>}, btrace_seq = 0, 
+  policy = 0, nr_cpus_allowed = 1, cpus_ptr = 0xffffffff82e0f6e8 <init_task+1064>, user_cpus_ptr = 0x0 <fixed_percpu_data>, cpus_mask = {bits = {
+      1, 0, 0, 0, 0, 18446744073709551615 <repeats 123 times>}}, migration_pending = 0x0 <fixed_percpu_data>, migration_disabled = 0, 
+--Type <RET> for more, q to quit, c to continue without paging--
+  migration_flags = 0, rcu_read_lock_nesting = 0, rcu_read_unlock_special = {b = {blocked = 0 '\000', need_qs = 0 '\000', exp_hint = 0 '\000', 
+      need_mb = 0 '\000'}, s = 0}, rcu_node_entry = {next = 0xffffffff82e0fb00 <init_task+2112>, prev = 0xffffffff82e0fb00 <init_task+2112>}, 
+  rcu_blocked_node = 0x0 <fixed_percpu_data>, rcu_tasks_nvcsw = 0, rcu_tasks_holdout = 0 '\000', rcu_tasks_idx = 0 '\000', 
+  rcu_tasks_idle_cpu = -1, rcu_tasks_holdout_list = {next = 0xffffffff82e0fb28 <init_task+2152>, prev = 0xffffffff82e0fb28 <init_task+2152>}, 
+  trc_reader_nesting = 0, trc_ipi_to_cpu = 0, trc_reader_special = {b = {blocked = 0 '\000', need_qs = 0 '\000', exp_hint = 0 '\000', 
+      need_mb = 0 '\000'}, s = 0}, trc_holdout_list = {next = 0xffffffff82e0fb48 <init_task+2184>, prev = 0xffffffff82e0fb48 <init_task+2184>}, 
+  trc_blkd_node = {next = 0xffffffff82e0fb58 <init_task+2200>, prev = 0xffffffff82e0fb58 <init_task+2200>}, trc_blkd_cpu = 0, sched_info = {
+    pcount = 0, run_delay = 0, last_arrival = 0, last_queued = 0}, tasks = {next = 0xffffffff82e0fb90 <init_task+2256>, 
+    prev = 0xffffffff82e0fb90 <init_task+2256>}, pushable_tasks = {prio = 140, prio_list = {next = 0xffffffff82e0fba8 <init_task+2280>, 
+      prev = 0xffffffff82e0fba8 <init_task+2280>}, node_list = {next = 0xffffffff82e0fbb8 <init_task+2296>, 
+      prev = 0xffffffff82e0fbb8 <init_task+2296>}}, pushable_dl_tasks = {__rb_parent_color = 0, rb_right = 0x0 <fixed_percpu_data>, 
+    rb_left = 0x0 <fixed_percpu_data>}, mm = 0x0 <fixed_percpu_data>, active_mm = 0xffffffff82fe5b40 <init_mm>, exit_state = 0, exit_code = 0, 
+  exit_signal = 0, pdeath_signal = 0, jobctl = 0, personality = 0, sched_reset_on_fork = 0, sched_contributes_to_load = 0, sched_migrated = 0, 
+  sched_remote_wakeup = 0, sched_rt_mutex = 0, in_execve = 0, in_iowait = 0, restore_sigmask = 0, in_user_fault = 0, in_lru_fault = 0, 
+  no_cgroup_migration = 0, frozen = 0, use_memdelay = 0, in_memstall = 0, in_page_owner = 0, in_eventfd = 0, pasid_activated = 0, 
+  reported_split_lock = 0, in_thrashing = 0, atomic_flags = 0, restart_block = {arch_data = 0, fn = 0xffffffff810d7bc0 <do_no_restart_syscall>, {
+      futex = {uaddr = 0x0 <fixed_percpu_data>, val = 0, flags = 0, bitset = 0, time = 0, uaddr2 = 0x0 <fixed_percpu_data>}, nanosleep = {
+        clockid = 0, type = TT_NONE, {rmtp = 0x0 <fixed_percpu_data>, compat_rmtp = 0x0 <fixed_percpu_data>}, expires = 0}, poll = {
+        ufds = 0x0 <fixed_percpu_data>, nfds = 0, has_timeout = 0, tv_sec = 0, tv_nsec = 0}}}, pid = 0, tgid = 0, 
+  stack_canary = 14866852279160165888, real_parent = 0xffffffff82e0f2c0 <init_task>, parent = 0xffffffff82e0f2c0 <init_task>, children = {
+    next = 0xffffffff82e0fc78 <init_task+2488>, prev = 0xffffffff82e0fc78 <init_task+2488>}, sibling = {
+    next = 0xffffffff82e0fc88 <init_task+2504>, prev = 0xffffffff82e0fc88 <init_task+2504>}, group_leader = 0xffffffff82e0f2c0 <init_task>, 
+  ptraced = {next = 0xffffffff82e0fca0 <init_task+2528>, prev = 0xffffffff82e0fca0 <init_task+2528>}, ptrace_entry = {
+    next = 0xffffffff82e0fcb0 <init_task+2544>, prev = 0xffffffff82e0fcb0 <init_task+2544>}, thread_pid = 0xffffffff82e707e0 <init_struct_pid>, 
+  pid_links = {{next = 0x0 <fixed_percpu_data>, pprev = 0x0 <fixed_percpu_data>}, {next = 0x0 <fixed_percpu_data>, 
+      pprev = 0x0 <fixed_percpu_data>}, {next = 0x0 <fixed_percpu_data>, pprev = 0x0 <fixed_percpu_data>}, {next = 0x0 <fixed_percpu_data>, 
+      pprev = 0x0 <fixed_percpu_data>}}, thread_group = {next = 0xffffffff82e0fd08 <init_task+2632>, 
+    prev = 0xffffffff82e0fd08 <init_task+2632>}, thread_node = {next = 0xffffffff82e13070 <init_signals+16>, 
+    prev = 0xffffffff82e13070 <init_signals+16>}, vfork_done = 0xff1101000003a240, set_child_tid = 0x0 <fixed_percpu_data>, 
+--Type <RET> for more, q to quit, c to continue without paging--
+  clear_child_tid = 0x0 <fixed_percpu_data>, worker_private = 0xff1101000003a200, utime = 0, stime = 0, gtime = 0, prev_cputime = {utime = 0, 
+    stime = 0, lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}}, vtime = {
+    seqcount = {sequence = 2}, starttime = 366607894, state = VTIME_IDLE, cpu = 0, utime = 0, stime = 0, gtime = 0}, tick_dep_mask = {
+    counter = 0}, nvcsw = 0, nivcsw = 0, start_time = 0, start_boottime = 0, min_flt = 0, maj_flt = 0, posix_cputimers = {bases = {{
+        nextevt = 18446744073709551615, tqhead = {rb_root = {rb_root = {rb_node = 0x0 <fixed_percpu_data>}, 
+            rb_leftmost = 0x0 <fixed_percpu_data>}}}, {nextevt = 18446744073709551615, tqhead = {rb_root = {rb_root = {
+              rb_node = 0x0 <fixed_percpu_data>}, rb_leftmost = 0x0 <fixed_percpu_data>}}}, {nextevt = 18446744073709551615, tqhead = {
+          rb_root = {rb_root = {rb_node = 0x0 <fixed_percpu_data>}, rb_leftmost = 0x0 <fixed_percpu_data>}}}}, timers_active = 0, 
+    expiry_active = 0}, posix_cputimers_work = {work = {next = 0x0 <fixed_percpu_data>, func = 0xffffffff811a7cb0 <posix_cpu_timers_work>}, 
+    mutex = {owner = {counter = 0}, wait_lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, 
+              tail = 0}}}}, osq = {tail = {counter = 0}}, wait_list = {next = 0xffffffff82e0fe50 <init_task+2960>, 
+        prev = 0xffffffff82e0fe50 <init_task+2960>}}, scheduled = 0}, ptracer_cred = 0x0 <fixed_percpu_data>, 
+  real_cred = 0xffffffff82e70f40 <init_cred>, cred = 0xffffffff82e70f40 <init_cred>, cached_requested_key = 0x0 <fixed_percpu_data>, 
+  comm = "swapper/0\000\000\000\000\000\000", nameidata = 0x0 <fixed_percpu_data>, sysvsem = {undo_list = 0x0 <fixed_percpu_data>}, sysvshm = {
+    shm_clist = {next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}}, last_switch_count = 0, last_switch_time = 0, 
+  fs = 0xffffffff83001280 <init_fs>, files = 0xffffffff82ff92c0 <init_files>, io_uring = 0x0 <fixed_percpu_data>, 
+  nsproxy = 0xffffffff82e70a40 <init_nsproxy>, signal = 0xffffffff82e13060 <init_signals>, sighand = 0xffffffff82e12840 <init_sighand>, 
+  blocked = {sig = {0}}, real_blocked = {sig = {0}}, saved_sigmask = {sig = {0}}, pending = {list = {next = 0xffffffff82e0ff10 <init_task+3152>, 
+      prev = 0xffffffff82e0ff10 <init_task+3152>}, signal = {sig = {0}}}, sas_ss_sp = 0, sas_ss_size = 0, sas_ss_flags = 0, 
+  task_works = 0x0 <fixed_percpu_data>, audit_context = 0x0 <fixed_percpu_data>, loginuid = {val = 4294967295}, sessionid = 4294967295, 
+  seccomp = {mode = 0, filter_count = {counter = 0}, filter = 0x0 <fixed_percpu_data>}, syscall_dispatch = {selector = 0x0 <fixed_percpu_data>, 
+    offset = 0, len = 0, on_dispatch = false}, parent_exec_id = 0, self_exec_id = 0, alloc_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {
+              locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}}}, pi_lock = {raw_lock = {{val = {counter = 0}, {
+          locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, wake_q = {next = 0x0 <fixed_percpu_data>}, pi_waiters = {
+    rb_root = {rb_node = 0x0 <fixed_percpu_data>}, rb_leftmost = 0x0 <fixed_percpu_data>}, pi_top_task = 0x0 <fixed_percpu_data>, 
+  pi_blocked_on = 0x0 <fixed_percpu_data>, journal_info = 0x0 <fixed_percpu_data>, bio_list = 0x0 <fixed_percpu_data>, 
+  plug = 0x0 <fixed_percpu_data>, reclaim_state = 0x0 <fixed_percpu_data>, io_context = 0x0 <fixed_percpu_data>, 
+  capture_control = 0x0 <fixed_percpu_data>, ptrace_message = 0, last_siginfo = 0x0 <fixed_percpu_data>, ioac = {rchar = 0, wchar = 0, 
+    syscr = 0, syscw = 0, read_bytes = 0, write_bytes = 0, cancelled_write_bytes = 0}, psi_flags = 0, acct_rss_mem1 = 0, acct_vm_mem1 = 0, 
+--Type <RET> for more, q to quit, c to continue without paging--
+  acct_timexpd = 0, mems_allowed = {bits = {18446744073709551615 <repeats 16 times>}}, mems_allowed_seq = {seqcount = {sequence = 0}}, 
+  cpuset_mem_spread_rotor = 0, cpuset_slab_spread_rotor = 0, cgroups = 0xffffffff82fbbbc0 <init_css_set>, cg_list = {
+    next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}, closid = 0, rmid = 0, robust_list = 0x0 <fixed_percpu_data>, 
+  compat_robust_list = 0x0 <fixed_percpu_data>, pi_state_list = {next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}, 
+  pi_state_cache = 0x0 <fixed_percpu_data>, futex_exit_mutex = {owner = {counter = 0}, wait_lock = {raw_lock = {{val = {counter = 0}, {
+            locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, osq = {tail = {counter = 0}}, wait_list = {
+      next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}}, futex_state = 0, perf_event_ctxp = 0x0 <fixed_percpu_data>, 
+  perf_event_mutex = {owner = {counter = 0}, wait_lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {
+            locked_pending = 0, tail = 0}}}}, osq = {tail = {counter = 0}}, wait_list = {next = 0xffffffff82e10178 <init_task+3768>, 
+      prev = 0xffffffff82e10178 <init_task+3768>}}, perf_event_list = {next = 0xffffffff82e10188 <init_task+3784>, 
+    prev = 0xffffffff82e10188 <init_task+3784>}, mempolicy = 0xff11010000212640, il_prev = 0, pref_node_fork = 0, numa_scan_seq = 0, 
+  numa_scan_period = 1000, numa_scan_period_max = 0, numa_preferred_nid = -1, numa_migrate_retry = 0, node_stamp = 0, 
+  last_task_numa_placement = 0, last_sum_exec_runtime = 0, numa_work = {next = 0xffffffff82e101d8 <init_task+3864>, 
+    func = 0xffffffff81113cf0 <task_numa_work>}, numa_group = 0x0 <fixed_percpu_data>, numa_faults = 0x0 <fixed_percpu_data>, 
+  total_numa_faults = 0, numa_faults_locality = {0, 0, 0}, numa_pages_migrated = 0, rseq = 0x0 <fixed_percpu_data>, rseq_len = 0, rseq_sig = 0, 
+  rseq_event_mask = 0, mm_cid = 0, last_mm_cid = 0, migrate_from_cpu = 0, mm_cid_active = 0, cid_work = {
+    next = 0xffffffff82e10248 <init_task+3976>, func = 0xffffffff81106fa0 <task_mm_cid_work>}, tlb_ubc = {arch = {cpumask = {bits = {
+          0 <repeats 128 times>}}}, flush_required = false, writable = false}, splice_pipe = 0x0 <fixed_percpu_data>, task_frag = {
+    page = 0x0 <fixed_percpu_data>, offset = 0, size = 0}, delays = 0x0 <fixed_percpu_data>, make_it_fail = 0, fail_nth = 0, nr_dirtied = 0, 
+  nr_dirtied_pause = 0, dirty_paused_when = 0, latency_record_count = 0, latency_record = {{backtrace = {0 <repeats 12 times>}, count = 0, 
+      time = 0, max = 0} <repeats 32 times>}, timer_slack_ns = 50000, default_timer_slack_ns = 0, curr_ret_stack = -1, curr_ret_depth = -1, 
+  ret_stack = 0x0 <fixed_percpu_data>, ftrace_timestamp = 0, trace_overrun = {counter = 0}, tracing_graph_pause = {counter = 0}, 
+  trace_recursion = 0, memcg_in_oom = 0x0 <fixed_percpu_data>, memcg_oom_gfp_mask = 0, memcg_oom_order = 0, memcg_nr_pages_over_high = 0, 
+  active_memcg = 0x0 <fixed_percpu_data>, throttle_disk = 0x0 <fixed_percpu_data>, utask = 0x0 <fixed_percpu_data>, sequential_io = 0, 
+  sequential_io_avg = 0, kmap_ctrl = {<No data fields>}, rcu = {next = 0x0 <fixed_percpu_data>, func = 0x0 <fixed_percpu_data>}, rcu_users = {
+    refs = {counter = 0}}, pagefault_disabled = 0, oom_reaper_list = 0x0 <fixed_percpu_data>, oom_reaper_timer = {entry = {
+      next = 0x0 <fixed_percpu_data>, pprev = 0x0 <fixed_percpu_data>}, expires = 0, function = 0x0 <fixed_percpu_data>, flags = 0}, 
+  stack_vm_area = 0x0 <fixed_percpu_data>, stack_refcount = {refs = {counter = 1}}, patch_state = -1, security = 0x0 <fixed_percpu_data>, 
+  bpf_storage = 0x0 <fixed_percpu_data>, bpf_ctx = 0x0 <fixed_percpu_data>, mce_vaddr = 0x0 <fixed_percpu_data>, mce_kflags = 0, mce_addr = 0, 
+--Type <RET> for more, q to quit, c to continue without paging--
+  mce_ripv = 0, mce_whole_page = 0, __mce_reserved = 0, mce_kill_me = {next = 0x0 <fixed_percpu_data>, func = 0x0 <fixed_percpu_data>}, 
+  mce_count = 0, kretprobe_instances = {first = 0x0 <fixed_percpu_data>}, rethooks = {first = 0x0 <fixed_percpu_data>}, l1d_flush_kill = {
+    next = 0x0 <fixed_percpu_data>, func = 0x0 <fixed_percpu_data>}, suse_kabi_padding = 0x0 <fixed_percpu_data>, thread = {tls_array = {{
+        limit0 = 0, base0 = 0, base1 = 0, type = 0, s = 0, dpl = 0, p = 0, limit1 = 0, avl = 0, l = 0, d = 0, g = 0, base2 = 0}, {limit0 = 0, 
+        base0 = 0, base1 = 0, type = 0, s = 0, dpl = 0, p = 0, limit1 = 0, avl = 0, l = 0, d = 0, g = 0, base2 = 0}, {limit0 = 0, base0 = 0, 
+        base1 = 0, type = 0, s = 0, dpl = 0, p = 0, limit1 = 0, avl = 0, l = 0, d = 0, g = 0, base2 = 0}}, sp = 18446744071610318680, es = 0, 
+    ds = 0, fsindex = 0, gsindex = 0, fsbase = 0, gsbase = 0, ptrace_bps = {0x0 <fixed_percpu_data>, 0x0 <fixed_percpu_data>, 
+      0x0 <fixed_percpu_data>, 0x0 <fixed_percpu_data>}, virtual_dr6 = 0, ptrace_dr7 = 0, cr2 = 0, trap_nr = 0, error_code = 0, 
+    io_bitmap = 0x0 <fixed_percpu_data>, iopl_emul = 0, iopl_warn = 0, sig_on_uaccess_err = 0, pkru = 0, features = 0, features_locked = 0, 
+    shstk = {base = 0, size = 0}, fpu = {last_cpu = 0, avx512_timestamp = 0, fpstate = 0x0 <fixed_percpu_data>, 
+      __task_fpstate = 0x0 <fixed_percpu_data>, perm = {__state_perm = 0, __state_size = 0, __user_state_size = 0}, guest_perm = {
+        __state_perm = 0, __state_size = 0, __user_state_size = 0}, __fpstate = {size = 0, user_size = 0, xfeatures = 0, user_xfeatures = 0, 
+        xfd = 0, is_valloc = 0, is_guest = 0, is_confidential = 0, in_use = 0, regs = {fsave = {cwd = 0, swd = 0, twd = 0, fip = 0, fcs = 0, 
+            foo = 0, fos = 0, st_space = {0 <repeats 20 times>}, status = 0}, fxsave = {cwd = 0, swd = 0, twd = 0, fop = 0, {{rip = 0, rdp = 0}, 
+              {fip = 0, fcs = 0, foo = 0, fos = 0}}, mxcsr = 0, mxcsr_mask = 0, st_space = {0 <repeats 32 times>}, xmm_space = {
+              0 <repeats 64 times>}, padding = {0 <repeats 12 times>}, {padding1 = {0 <repeats 12 times>}, sw_reserved = {
+                0 <repeats 12 times>}}}, soft = {cwd = 0, swd = 0, twd = 0, fip = 0, fcs = 0, foo = 0, fos = 0, st_space = {
+              0 <repeats 20 times>}, ftop = 0 '\000', changed = 0 '\000', lookahead = 0 '\000', no_update = 0 '\000', rm = 0 '\000', 
+            alimit = 0 '\000', info = 0x0 <fixed_percpu_data>, entry_eip = 0}, xsave = {i387 = {cwd = 0, swd = 0, twd = 0, fop = 0, {{rip = 0, 
+                  rdp = 0}, {fip = 0, fcs = 0, foo = 0, fos = 0}}, mxcsr = 0, mxcsr_mask = 0, st_space = {0 <repeats 32 times>}, xmm_space = {
+                0 <repeats 64 times>}, padding = {0 <repeats 12 times>}, {padding1 = {0 <repeats 12 times>}, sw_reserved = {
+                  0 <repeats 12 times>}}}, header = {xfeatures = 0, xcomp_bv = 0, reserved = {0, 0, 0, 0, 0, 0}}, 
+            extended_state_area = 0xffffffff82e11a80 <init_task+10176> ""}, __padding = '\000' <repeats 4095 times>}}}}}
+
+
+(gdb) p &init_mm
+$3 = (struct mm_struct *) 0xffffffff82fe5b40 <init_mm>
+
+(gdb) p init_mm
+$2 = {{{mm_count = {counter = 3}}, mm_mt = {{ma_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {
+                    locked_pending = 0, tail = 0}}}}}}, ma_external_lock = {<No data fields>}}, ma_flags = 771, 
+      ma_root = 0x0 <fixed_percpu_data>}, get_unmapped_area = 0x0 <fixed_percpu_data>, mmap_base = 0, mmap_legacy_base = 0, 
+    mmap_compat_base = 0, mmap_compat_legacy_base = 0, task_size = 0, pgd = 0xffffffff82e36000 <init_top_pgt>, membarrier_state = {counter = 0}, 
+    mm_users = {counter = 2}, pcpu_cid = 0x0 <fixed_percpu_data>, mm_cid_next_scan = 0, pgtables_bytes = {counter = 8192}, map_count = 0, 
+    page_table_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}}}, 
+    mmap_lock = {count = {counter = 0}, owner = {counter = 0}, osq = {tail = {counter = 0}}, wait_lock = {raw_lock = {{val = {counter = 0}, {
+              locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, wait_list = {next = 0xffffffff82fe5c08 <init_mm+200>, 
+        prev = 0xffffffff82fe5c08 <init_mm+200>}}, mmlist = {next = 0xffffffff82fe5c18 <init_mm+216>, prev = 0xffffffff82fe5c18 <init_mm+216>}, 
+    mm_lock_seq = 0, hiwater_rss = 0, hiwater_vm = 0, total_vm = 0, locked_vm = 0, pinned_vm = {counter = 0}, data_vm = 0, exec_vm = 0, 
+    stack_vm = 0, def_flags = 0, write_protect_seq = {sequence = 0}, arg_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+                pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}}}, start_code = 18446744071578845184, end_code = 18446744071595622400, 
+    start_data = 0, end_data = 18446744071613336320, start_brk = 0, brk = 18446744071627079680, start_stack = 0, arg_start = 0, arg_end = 0, 
+    env_start = 0, env_end = 0, saved_auxv = {0 <repeats 52 times>}, rss_stat = {{lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+                pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, count = 0, list = {next = 0x0 <fixed_percpu_data>, 
+          prev = 0x0 <fixed_percpu_data>}, counters = 0x0 <fixed_percpu_data>}, {lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+                pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, count = 0, list = {next = 0x0 <fixed_percpu_data>, 
+          prev = 0x0 <fixed_percpu_data>}, counters = 0x0 <fixed_percpu_data>}, {lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+                pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, count = 0, list = {next = 0x0 <fixed_percpu_data>, 
+          prev = 0x0 <fixed_percpu_data>}, counters = 0x0 <fixed_percpu_data>}, {lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+                pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, count = 0, list = {next = 0x0 <fixed_percpu_data>, 
+          prev = 0x0 <fixed_percpu_data>}, counters = 0x0 <fixed_percpu_data>}}, binfmt = 0x0 <fixed_percpu_data>, context = {ctx_id = 1, 
+      tlb_gen = {counter = 0}, ldt_usr_sem = {count = {counter = 0}, owner = {counter = 0}, osq = {tail = {counter = 0}}, wait_lock = {
+          raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, wait_list = {
+          next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}}, ldt = 0x0 <fixed_percpu_data>, flags = 0, lam_cr3_mask = 0, 
+      untag_mask = 0, lock = {owner = {counter = 0}, wait_lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {
+                locked_pending = 0, tail = 0}}}}, osq = {tail = {counter = 0}}, wait_list = {next = 0xffffffff82fe5f88 <init_mm+1096>, 
+          prev = 0xffffffff82fe5f88 <init_mm+1096>}}, vdso = 0x0 <fixed_percpu_data>, vdso_image = 0x0 <fixed_percpu_data>, 
+      perf_rdpmc_allowed = {counter = 0}, pkey_allocation_map = 0, execute_only_pkey = 0, suse_kabi_padding = 0x0 <fixed_percpu_data>}, 
+--Type <RET> for more, q to quit, c to continue without paging--c
+    flags = 0, ioctx_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, 
+                tail = 0}}}}}}, ioctx_table = 0x0 <fixed_percpu_data>, owner = 0x0 <fixed_percpu_data>, 
+    user_ns = 0xffffffff82e69d40 <init_user_ns>, exe_file = 0x0 <fixed_percpu_data>, notifier_subscriptions = 0x0 <fixed_percpu_data>, 
+    numa_next_scan = 0, numa_scan_offset = 0, numa_scan_seq = 0, tlb_flush_pending = {counter = 0}, tlb_flush_batched = {counter = 0}, 
+    uprobes_state = {xol_area = 0x0 <fixed_percpu_data>}, hugetlb_usage = {counter = 0}, async_put_work = {data = {counter = 0}, entry = {
+        next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}, func = 0x0 <fixed_percpu_data>}, pasid = 4294967295, 
+    ksm_merging_pages = 0, ksm_rmap_items = 0, lru_gen = {list = {next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}, bitmap = 0, 
+      memcg = 0x0 <fixed_percpu_data>}, suse_kabi_padding = 0x0 <fixed_percpu_data>}, cpu_bitmap = 0xffffffff82fe6080 <init_mm+1344>}
+
+pgd = 0xffffffff82e36000 <init_top_pgt>
+
+cr3            0x2e36001           [ PDBR=11830 PCID=1 ]
+cr4            0x210b0             [ PCIDE LA57 PGE PAE PSE ]
+
+(gdb) set *0xffffffff82e364c0 = 32
+
+>>> hex(0xffffffff82e36000 - 0x2e36000)
+'0xffffffff80000000'
+
+>>> hex(0xffa0000000007000 + 0x88 * 8)
+0xffa0000000007440
+
+>>> (0xffa0000000007440 >> 48)&(512 -1) 
+416
+
+0xffffffff82e36d00 <init_top_pgt+3328>:	0x0000010000000067
+
+>>> (0xffa0000000007440 >> 39)&(512 -1) 
+0
+>>> (0xffa0000000007440 >> 30)&(512 -1) 
+0
+>>> (0xffa0000000007440 >> 21)&(512 -1) 
+0
+>>> (0xffa0000000007440 >> 12)&(512 -1) 
+7
+
+>>> 512 - 416 
+96
+

@@ -1,0 +1,460 @@
+         Starting save kernel crash dump...
+TRACE: KdumpTool::readConfiguration
+TRACE: ConfigParser: Adding KDUMP_KERNELVER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_CPUS to variable list (default: '1')
+Unable to ioctl(KDSETLED) -- are you not on the console? (Inappropriate ioctl for device)
+TRACE: ConfigParser: Adding KDUMP_COMMANDLINE to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_COMMANDLINE_APPEND to variable list (default: '')
+TRACE: ConfigParser: Adding KEXEC_OPTIONS to variable list (default: '')
+TRACE: ConfigParser: Adding MAKEDUMPFILE_OPTIONS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_IMMEDIATE_REBOOT to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMP_TRANSFER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SAVEDIR to variable list (default: '/var/log/dump')
+TRACE: ConfigParser: Adding KDUMP_KEEP_OLD_DUMPS to variable list (default: '0')
+TRACE: ConfigParser: Adding KDUMP_FREE_DISK_SIZE to variable list (default: '64')
+TRACE: ConfigParser: Adding KDUMP_VERBOSE to variable list (default: '0')
+TRACE: ConfigParser: Adding KDUMP_DUMPLEVEL to variable list (default: '31')
+TRACE: ConfigParser: Adding KDUMP_DUMPFORMAT to variable list (default: 'compressed')
+TRACE: ConfigParser: Adding KDUMP_CONTINUE_ON_ERROR to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMP_REQUIRED_PROGRAMS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_PRESCRIPT to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_POSTSCRIPT to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_COPY_KERNEL to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMPTOOL_FLAGS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NETCONFIG to variable list (default: 'auto')
+TRACE: ConfigParser: Adding KDUMP_NET_TIMEOUT to variable list (default: '30')
+TRACE: ConfigParser: Adding KDUMP_SMTP_SERVER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SMTP_USER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SMTP_PASSWORD to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NOTIFICATION_TO to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NOTIFICATION_CC to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_HOST_KEY to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SSH_IDENTITY to variable list (default: '')
+TRACE: ProcessFilter::execute(/bin/sh, )
+TRACE: SubProcess::spawn(/bin/sh, )
+DEBUG: Forked child PID 326
+TRACE: SubProcess::wait() on 326
+DEBUG: PID 326 exited with status 0x0000
+TRACE: ShellConfigParser: Parsing line KDUMPTOOL_FLAGS=
+TRACE: ShellConfigParser: Setting KDUMPTOOL_FLAGS to 
+TRACE: ShellConfigParser: Parsing line KDUMP_COMMANDLINE=
+TRACE: ShellConfigParser: Setting KDUMP_COMMANDLINE to 
+TRACE: ShellConfigParser: Parsing line KDUMP_COMMANDLINE_APPEND=
+TRACE: ShellConfigParser: Setting KDUMP_COMMANDLINE_APPEND to 
+TRACE: ShellConfigParser: Parsing line KDUMP_CONTINUE_ON_ERROR=yes
+TRACE: ShellConfigParser: Setting KDUMP_CONTINUE_ON_ERROR to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_COPY_KERNEL=yes
+TRACE: ShellConfigParser: Setting KDUMP_COPY_KERNEL to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_CPUS=1
+TRACE: ShellConfigParser: Setting KDUMP_CPUS to 1
+TRACE: ShellConfigParser: Parsing line KDUMP_DUMPFORMAT=lzo
+TRACE: ShellConfigParser: Setting KDUMP_DUMPFORMAT to lzo
+TRACE: ShellConfigParser: Parsing line KDUMP_DUMPLEVEL=31
+TRACE: ShellConfigParser: Setting KDUMP_DUMPLEVEL to 31
+TRACE: ShellConfigParser: Parsing line KDUMP_FREE_DISK_SIZE=64
+TRACE: ShellConfigParser: Setting KDUMP_FREE_DISK_SIZE to 64
+TRACE: ShellConfigParser: Parsing line KDUMP_HOST_KEY=
+TRACE: ShellConfigParser: Setting KDUMP_HOST_KEY to 
+TRACE: ShellConfigParser: Parsing line KDUMP_IMMEDIATE_REBOOT=yes
+TRACE: ShellConfigParser: Setting KDUMP_IMMEDIATE_REBOOT to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_KEEP_OLD_DUMPS=5
+TRACE: ShellConfigParser: Setting KDUMP_KEEP_OLD_DUMPS to 5
+TRACE: ShellConfigParser: Parsing line KDUMP_KERNELVER=
+TRACE: ShellConfigParser: Setting KDUMP_KERNELVER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_NETCONFIG=auto
+TRACE: ShellConfigParser: Setting KDUMP_NETCONFIG to auto
+TRACE: ShellConfigParser: Parsing line KDUMP_NET_TIMEOUT=30
+TRACE: ShellConfigParser: Setting KDUMP_NET_TIMEOUT to 30
+TRACE: ShellConfigParser: Parsing line KDUMP_NOTIFICATION_CC=
+TRACE: ShellConfigParser: Setting KDUMP_NOTIFICATION_CC to 
+TRACE: ShellConfigParser: Parsing line KDUMP_NOTIFICATION_TO=
+TRACE: ShellConfigParser: Setting KDUMP_NOTIFICATION_TO to 
+TRACE: ShellConfigParser: Parsing line KDUMP_POSTSCRIPT=
+TRACE: ShellConfigParser: Setting KDUMP_POSTSCRIPT to 
+TRACE: ShellConfigParser: Parsing line KDUMP_PRESCRIPT=
+TRACE: ShellConfigParser: Setting KDUMP_PRESCRIPT to 
+TRACE: ShellConfigParser: Parsing line KDUMP_REQUIRED_PROGRAMS=
+TRACE: ShellConfigParser: Setting KDUMP_REQUIRED_PROGRAMS to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SAVEDIR=file:///mnt1/var/crash
+TRACE: ShellConfigParser: Setting KDUMP_SAVEDIR to file:///mnt1/var/crash
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_PASSWORD=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_PASSWORD to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_SERVER=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_SERVER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_USER=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_USER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SSH_IDENTITY=
+TRACE: ShellConfigParser: Setting KDUMP_SSH_IDENTITY to 
+TRACE: ShellConfigParser: Parsing line KDUMP_TRANSFER=
+TRACE: ShellConfigParser: Setting KDUMP_TRANSFER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_VERBOSE=3
+TRACE: ShellConfigParser: Setting KDUMP_VERBOSE to 3
+TRACE: ShellConfigParser: Parsing line KEXEC_OPTIONS=
+TRACE: ShellConfigParser: Setting KEXEC_OPTIONS to 
+TRACE: ShellConfigParser: Parsing line MAKEDUMPFILE_OPTIONS=
+TRACE: ShellConfigParser: Setting MAKEDUMPFILE_OPTIONS to 
+TRACE: DeleteDumps::execute()
+DEBUG: Using root dir /kdump, dry run: 0
+DEBUG: keep 5 old dumps
+TRACE: URLParser::URLParser(file:///mnt1/var/crash)
+TRACE: Scheme explicitly set to file
+DEBUG: URL parsed as: protocol=file, host=, port=-1, username=, password=, path=/mnt1/var/crash
+TRACE: getCanonicalPathRoot(/mnt1/var/crash, /kdump)
+TRACE: Real path using root dir (/kdump): /kdump/mnt1/var/crash
+DEBUG: Using directory /kdump/mnt1/var/crash
+TRACE: FileUtil::listdir(/kdump/mnt1/var/crash,15FilterKdumpDirs)
+DEBUG: Nothing to delete.
+TRACE: getErrorCode: Returning error code of 0
+TRACE: KdumpTool::~KdumpTool()
+TRACE: KdumpTool::readConfiguration
+TRACE: ConfigParser: Adding KDUMP_KERNELVER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_CPUS to variable list (default: '1')
+TRACE: ConfigParser: Adding KDUMP_COMMANDLINE to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_COMMANDLINE_APPEND to variable list (default: '')
+TRACE: ConfigParser: Adding KEXEC_OPTIONS to variable list (default: '')
+TRACE: ConfigParser: Adding MAKEDUMPFILE_OPTIONS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_IMMEDIATE_REBOOT to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMP_TRANSFER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SAVEDIR to variable list (default: '/var/log/dump')
+TRACE: ConfigParser: Adding KDUMP_KEEP_OLD_DUMPS to variable list (default: '0')
+TRACE: ConfigParser: Adding KDUMP_FREE_DISK_SIZE to variable list (default: '64')
+TRACE: ConfigParser: Adding KDUMP_VERBOSE to variable list (default: '0')
+TRACE: ConfigParser: Adding KDUMP_DUMPLEVEL to variable list (default: '31')
+TRACE: ConfigParser: Adding KDUMP_DUMPFORMAT to variable list (default: 'compressed')
+TRACE: ConfigParser: Adding KDUMP_CONTINUE_ON_ERROR to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMP_REQUIRED_PROGRAMS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_PRESCRIPT to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_POSTSCRIPT to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_COPY_KERNEL to variable list (default: 'yes')
+TRACE: ConfigParser: Adding KDUMPTOOL_FLAGS to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NETCONFIG to variable list (default: 'auto')
+TRACE: ConfigParser: Adding KDUMP_NET_TIMEOUT to variable list (default: '30')
+TRACE: ConfigParser: Adding KDUMP_SMTP_SERVER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SMTP_USER to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SMTP_PASSWORD to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NOTIFICATION_TO to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_NOTIFICATION_CC to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_HOST_KEY to variable list (default: '')
+TRACE: ConfigParser: Adding KDUMP_SSH_IDENTITY to variable list (default: '')
+TRACE: ProcessFilter::execute(/bin/sh, )
+TRACE: SubProcess::spawn(/bin/sh, )
+DEBUG: Forked child PID 328
+TRACE: SubProcess::wait() on 328
+DEBUG: PID 328 exited with status 0x0000
+TRACE: ShellConfigParser: Parsing line KDUMPTOOL_FLAGS=
+TRACE: ShellConfigParser: Setting KDUMPTOOL_FLAGS to 
+TRACE: ShellConfigParser: Parsing line KDUMP_COMMANDLINE=
+TRACE: ShellConfigParser: Setting KDUMP_COMMANDLINE to 
+TRACE: ShellConfigParser: Parsing line KDUMP_COMMANDLINE_APPEND=
+TRACE: ShellConfigParser: Setting KDUMP_COMMANDLINE_APPEND to 
+TRACE: ShellConfigParser: Parsing line KDUMP_CONTINUE_ON_ERROR=yes
+TRACE: ShellConfigParser: Setting KDUMP_CONTINUE_ON_ERROR to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_COPY_KERNEL=yes
+TRACE: ShellConfigParser: Setting KDUMP_COPY_KERNEL to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_CPUS=1
+TRACE: ShellConfigParser: Setting KDUMP_CPUS to 1
+TRACE: ShellConfigParser: Parsing line KDUMP_DUMPFORMAT=lzo
+TRACE: ShellConfigParser: Setting KDUMP_DUMPFORMAT to lzo
+TRACE: ShellConfigParser: Parsing line KDUMP_DUMPLEVEL=31
+TRACE: ShellConfigParser: Setting KDUMP_DUMPLEVEL to 31
+TRACE: ShellConfigParser: Parsing line KDUMP_FREE_DISK_SIZE=64
+TRACE: ShellConfigParser: Setting KDUMP_FREE_DISK_SIZE to 64
+TRACE: ShellConfigParser: Parsing line KDUMP_HOST_KEY=
+TRACE: ShellConfigParser: Setting KDUMP_HOST_KEY to 
+TRACE: ShellConfigParser: Parsing line KDUMP_IMMEDIATE_REBOOT=yes
+TRACE: ShellConfigParser: Setting KDUMP_IMMEDIATE_REBOOT to yes
+TRACE: ShellConfigParser: Parsing line KDUMP_KEEP_OLD_DUMPS=5
+TRACE: ShellConfigParser: Setting KDUMP_KEEP_OLD_DUMPS to 5
+TRACE: ShellConfigParser: Parsing line KDUMP_KERNELVER=
+TRACE: ShellConfigParser: Setting KDUMP_KERNELVER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_NETCONFIG=auto
+TRACE: ShellConfigParser: Setting KDUMP_NETCONFIG to auto
+TRACE: ShellConfigParser: Parsing line KDUMP_NET_TIMEOUT=30
+TRACE: ShellConfigParser: Setting KDUMP_NET_TIMEOUT to 30
+TRACE: ShellConfigParser: Parsing line KDUMP_NOTIFICATION_CC=
+TRACE: ShellConfigParser: Setting KDUMP_NOTIFICATION_CC to 
+TRACE: ShellConfigParser: Parsing line KDUMP_NOTIFICATION_TO=
+TRACE: ShellConfigParser: Setting KDUMP_NOTIFICATION_TO to 
+TRACE: ShellConfigParser: Parsing line KDUMP_POSTSCRIPT=
+TRACE: ShellConfigParser: Setting KDUMP_POSTSCRIPT to 
+TRACE: ShellConfigParser: Parsing line KDUMP_PRESCRIPT=
+TRACE: ShellConfigParser: Setting KDUMP_PRESCRIPT to 
+TRACE: ShellConfigParser: Parsing line KDUMP_REQUIRED_PROGRAMS=
+TRACE: ShellConfigParser: Setting KDUMP_REQUIRED_PROGRAMS to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SAVEDIR=file:///mnt1/var/crash
+TRACE: ShellConfigParser: Setting KDUMP_SAVEDIR to file:///mnt1/var/crash
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_PASSWORD=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_PASSWORD to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_SERVER=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_SERVER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SMTP_USER=
+TRACE: ShellConfigParser: Setting KDUMP_SMTP_USER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_SSH_IDENTITY=
+TRACE: ShellConfigParser: Setting KDUMP_SSH_IDENTITY to 
+TRACE: ShellConfigParser: Parsing line KDUMP_TRANSFER=
+TRACE: ShellConfigParser: Setting KDUMP_TRANSFER to 
+TRACE: ShellConfigParser: Parsing line KDUMP_VERBOSE=3
+TRACE: ShellConfigParser: Setting KDUMP_VERBOSE to 3
+TRACE: ShellConfigParser: Parsing line KEXEC_OPTIONS=
+TRACE: ShellConfigParser: Setting KEXEC_OPTIONS to 
+TRACE: ShellConfigParser: Parsing line MAKEDUMPFILE_OPTIONS=
+TRACE: ShellConfigParser: Setting MAKEDUMPFILE_OPTIONS to 
+TRACE: execute
+DEBUG: dump: /proc/vmcore, root: /kdump, crashrelease: , hostname: germ47, nomail: 0
+TRACE: URLParser::URLParser(file:///mnt1/var/crash)
+TRACE: Scheme explicitly set to file
+DEBUG: URL parsed as: protocol=file, host=, port=-1, username=, password=, path=/mnt1/var/crash
+TRACE: getCanonicalPathRoot(/mnt1/var/crash, /kdump)
+TRACE: Real path using root dir (/kdump): /kdump/mnt1/var/crash
+TRACE: URLParser::URLParser(file:///mnt1/var/crash/2024-01-04-15:44)
+TRACE: Scheme explicitly set to file
+DEBUG: URL parsed as: protocol=file, host=, port=-1, username=, password=, path=/mnt1/var/crash/2024-01-04-15:44
+TRACE: getCanonicalPathRoot(/mnt1/var/crash/2024-01-04-15:44, /kdump)
+TRACE: Real path using root dir (/kdump): /kdump/mnt1/var/crash/2024-01-04-15:44
+TRACE: SaveDump::getTransfer(0x7ffd2eac83c0)
+DEBUG: Returning FileTransfer
+TRACE: mkdir(/kdump/mnt1/var/crash/2024-01-04-15:44, 1)
+TRACE: mkdir(/kdump, 0)
+DEBUG: ::mkdir(/kdump)
+TRACE: mkdir(/kdump/mnt1, 0)
+DEBUG: ::mkdir(/kdump/mnt1)
+TRACE: mkdir(/kdump/mnt1/var, 0)
+DEBUG: ::mkdir(/kdump/mnt1/var)
+TRACE: mkdir(/kdump/mnt1/var/crash, 0)
+DEBUG: ::mkdir(/kdump/mnt1/var/crash)
+TRACE: mkdir(/kdump/mnt1/var/crash/2024-01-04-15:44, 0)
+DEBUG: ::mkdir(/kdump/mnt1/var/crash/2024-01-04-15:44)
+TRACE: FileUtil::fileSize(/proc/vmcore)
+TRACE: ProcessDataProvider::ProcessDataProvider(makedumpfile --dump-dmesg -F /proc/vmcore, makedumpfile --dump-dmesg /proc/vmcore)
+Extracting dmesg
+-------------------------------------------------------------------------------
+TRACE: AbstractDataProvider::setProgress, p=0x7ffd2eac8170
+TRACE: FileTransfer::perform(0x7ffd2eac81c0, [ "dmesg.txt" ])
+TRACE: FileTransfer::performFile(0x7ffd2eac81c0, [ "/kdump/mnt1/var/crash/2024-01-04-15:44/dmesg.txt" ])
+TRACE: ProcessDataProvider::saveToFile([ "/kdump/mnt1/var/crash/2024-01-04-15:44/dmesg.txt" ])
+TRACE: Executing 'makedumpfile --dump-dmesg /proc/vmcore /kdump/mnt1/var/crash/2024-01-04-15:44/dmesg.txt'
+
+The dmesg log is saved to /kdump/mnt1/var/crash/2024-01-04-15:44/dmesg.txt.
+
+makedumpfile Completed.
+-------------------------------------------------------------------------------
+TRACE: isXenCoreDump(3)
+TRACE: FindElfNoteByName(3, 4096, 2832, Xen)
+TRACE: ProcessDataProvider::ProcessDataProvider(makedumpfile  -d 31 -l /proc/vmcore -F, makedumpfile  -d 31 -l /proc/vmcore)
+Saving dump using makedumpfile
+-------------------------------------------------------------------------------
+TRACE: AbstractDataProvider::setProgress, p=0x7ffd2eac8170
+TRACE: FileTransfer::perform(0x563ac0835dd0, [ "vmcore" ])
+TRACE: FileTransfer::performFile(0x563ac0835dd0, [ "/kdump/mnt1/var/crash/2024-01-04-15:44/vmcore" ])
+TRACE: ProcessDataProvider::saveToFile([ "/kdump/mnt1/var/crash/2024-01-04-15:44/vmcore" ])
+TRACE: Executing 'makedumpfile  -d 31 -l /proc/vmcore /kdump/mnt1/var/crash/2024-01-04-15:44/vmcore'
+Copying data                                      : [100.0 %] \           eta: 0s
+
+The dumpfile is saved to /kdump/mnt1/var/crash/2024-01-04-15:44/vmcore.
+
+makedumpfile Completed.
+-------------------------------------------------------------------------------
+TRACE: SaveDump::sendNotification
+DEBUG: Email not configured.
+TRACE: SaveDump::check_one("file:///mnt1/var/crash/2024-01-04-15:44")
+TRACE: FileUtil::freeDiskSize(/kdump/mnt1/var/crash/2024-01-04-15:44)
+DEBUG: Free MB: 18699, Configuration: 64
+TRACE: Vmcoreinfo::readFromELF(/proc/vmcore)
+DEBUG: PT_NOTE size: 2832, offset: 4096
+DEBUG: Found VMCOREINFO, offset: 736, size: 2096
+TRACE: Line: OSRELEASE=5.3.18-150300.59.144-default
+TRACE: OSRELEASE=5.3.18-150300.59.144-default
+TRACE: Line: NUMBER(SUSE_PRODUCT_CODE)=17761024
+TRACE: NUMBER(SUSE_PRODUCT_CODE)=17761024
+TRACE: Line: PAGESIZE=4096
+TRACE: PAGESIZE=4096
+TRACE: Line: SYMBOL(init_uts_ns)=ffffffff9b414600
+TRACE: SYMBOL(init_uts_ns)=ffffffff9b414600
+TRACE: Line: SYMBOL(node_online_map)=ffffffff9b625680
+TRACE: SYMBOL(node_online_map)=ffffffff9b625680
+TRACE: Line: SYMBOL(swapper_pg_dir)=ffffffff9b40a000
+TRACE: SYMBOL(swapper_pg_dir)=ffffffff9b40a000
+TRACE: Line: SYMBOL(_stext)=ffffffff99c00000
+TRACE: SYMBOL(_stext)=ffffffff99c00000
+TRACE: Line: SYMBOL(vmap_area_list)=ffffffff9b4f7ce0
+TRACE: SYMBOL(vmap_area_list)=ffffffff9b4f7ce0
+TRACE: Line: SYMBOL(mem_section)=ffff9c70bef2e000
+TRACE: SYMBOL(mem_section)=ffff9c70bef2e000
+TRACE: Line: LENGTH(mem_section)=4096
+TRACE: LENGTH(mem_section)=4096
+TRACE: Line: SIZE(mem_section)=32
+TRACE: SIZE(mem_section)=32
+TRACE: Line: OFFSET(mem_section.section_mem_map)=0
+TRACE: OFFSET(mem_section.section_mem_map)=0
+TRACE: Line: NUMBER(MAX_PHYSMEM_BITS)=46
+TRACE: NUMBER(MAX_PHYSMEM_BITS)=46
+TRACE: Line: SIZE(page)=64
+TRACE: SIZE(page)=64
+TRACE: Line: SIZE(pglist_data)=172928
+TRACE: SIZE(pglist_data)=172928
+TRACE: Line: SIZE(zone)=1664
+TRACE: SIZE(zone)=1664
+TRACE: Line: SIZE(free_area)=104
+TRACE: SIZE(free_area)=104
+TRACE: Line: SIZE(list_head)=16
+TRACE: SIZE(list_head)=16
+TRACE: Line: SIZE(nodemask_t)=128
+TRACE: SIZE(nodemask_t)=128
+TRACE: Line: OFFSET(page.flags)=0
+TRACE: OFFSET(page.flags)=0
+TRACE: Line: OFFSET(page._refcount)=52
+TRACE: OFFSET(page._refcount)=52
+TRACE: Line: OFFSET(page.mapping)=24
+TRACE: OFFSET(page.mapping)=24
+TRACE: Line: OFFSET(page.lru)=8
+TRACE: OFFSET(page.lru)=8
+TRACE: Line: OFFSET(page._mapcount)=48
+TRACE: OFFSET(page._mapcount)=48
+TRACE: Line: OFFSET(page.private)=40
+TRACE: OFFSET(page.private)=40
+TRACE: Line: OFFSET(page.compound_dtor)=16
+TRACE: OFFSET(page.compound_dtor)=16
+TRACE: Line: OFFSET(page.compound_order)=17
+TRACE: OFFSET(page.compound_order)=17
+TRACE: Line: OFFSET(page.compound_head)=8
+TRACE: OFFSET(page.compound_head)=8
+TRACE: Line: OFFSET(pglist_data.node_zones)=0
+TRACE: OFFSET(pglist_data.node_zones)=0
+TRACE: Line: OFFSET(pglist_data.nr_zones)=172192
+TRACE: OFFSET(pglist_data.nr_zones)=172192
+TRACE: Line: OFFSET(pglist_data.node_start_pfn)=172200
+TRACE: OFFSET(pglist_data.node_start_pfn)=172200
+TRACE: Line: OFFSET(pglist_data.node_spanned_pages)=172216
+TRACE: OFFSET(pglist_data.node_spanned_pages)=172216
+TRACE: Line: OFFSET(pglist_data.node_id)=172224
+TRACE: OFFSET(pglist_data.node_id)=172224
+TRACE: Line: OFFSET(zone.free_area)=192
+TRACE: OFFSET(zone.free_area)=192
+TRACE: Line: OFFSET(zone.vm_stat)=1472
+TRACE: OFFSET(zone.vm_stat)=1472
+TRACE: Line: OFFSET(zone.spanned_pages)=120
+TRACE: OFFSET(zone.spanned_pages)=120
+TRACE: Line: OFFSET(free_area.free_list)=0
+TRACE: OFFSET(free_area.free_list)=0
+TRACE: Line: OFFSET(list_head.next)=0
+TRACE: OFFSET(list_head.next)=0
+TRACE: Line: OFFSET(list_head.prev)=8
+TRACE: OFFSET(list_head.prev)=8
+TRACE: Line: OFFSET(vmap_area.va_start)=0
+TRACE: OFFSET(vmap_area.va_start)=0
+TRACE: Line: OFFSET(vmap_area.list)=40
+TRACE: OFFSET(vmap_area.list)=40
+TRACE: Line: LENGTH(zone.free_area)=11
+TRACE: LENGTH(zone.free_area)=11
+TRACE: Line: SYMBOL(log_buf)=ffffffff9b46a8a8
+TRACE: SYMBOL(log_buf)=ffffffff9b46a8a8
+TRACE: Line: SYMBOL(log_buf_len)=ffffffff9b46a8a0
+TRACE: SYMBOL(log_buf_len)=ffffffff9b46a8a0
+TRACE: Line: SYMBOL(log_first_idx)=ffffffff9bd365c8
+TRACE: SYMBOL(log_first_idx)=ffffffff9bd365c8
+TRACE: Line: SYMBOL(clear_idx)=ffffffff9bd36594
+TRACE: SYMBOL(clear_idx)=ffffffff9bd36594
+TRACE: Line: SYMBOL(log_next_idx)=ffffffff9bd365b8
+TRACE: SYMBOL(log_next_idx)=ffffffff9bd365b8
+TRACE: Line: SIZE(printk_log)=16
+TRACE: SIZE(printk_log)=16
+TRACE: Line: OFFSET(printk_log.ts_nsec)=0
+TRACE: OFFSET(printk_log.ts_nsec)=0
+TRACE: Line: OFFSET(printk_log.len)=8
+TRACE: OFFSET(printk_log.len)=8
+TRACE: Line: OFFSET(printk_log.text_len)=10
+TRACE: OFFSET(printk_log.text_len)=10
+TRACE: Line: OFFSET(printk_log.dict_len)=12
+TRACE: OFFSET(printk_log.dict_len)=12
+TRACE: Line: LENGTH(free_area.free_list)=6
+TRACE: LENGTH(free_area.free_list)=6
+TRACE: Line: NUMBER(NR_FREE_PAGES)=0
+TRACE: NUMBER(NR_FREE_PAGES)=0
+TRACE: Line: NUMBER(PG_lru)=4
+TRACE: NUMBER(PG_lru)=4
+TRACE: Line: NUMBER(PG_private)=13
+TRACE: NUMBER(PG_private)=13
+TRACE: Line: NUMBER(PG_swapcache)=10
+TRACE: NUMBER(PG_swapcache)=10
+TRACE: Line: NUMBER(PG_swapbacked)=19
+TRACE: NUMBER(PG_swapbacked)=19
+TRACE: Line: NUMBER(PG_slab)=9
+TRACE: NUMBER(PG_slab)=9
+TRACE: Line: NUMBER(PG_hwpoison)=23
+TRACE: NUMBER(PG_hwpoison)=23
+TRACE: Line: NUMBER(PG_head_mask)=65536
+TRACE: NUMBER(PG_head_mask)=65536
+TRACE: Line: NUMBER(PAGE_BUDDY_MAPCOUNT_VALUE)=-129
+TRACE: NUMBER(PAGE_BUDDY_MAPCOUNT_VALUE)=-129
+TRACE: Line: NUMBER(HUGETLB_PAGE_DTOR)=2
+TRACE: NUMBER(HUGETLB_PAGE_DTOR)=2
+TRACE: Line: NUMBER(PAGE_OFFLINE_MAPCOUNT_VALUE)=-257
+TRACE: NUMBER(PAGE_OFFLINE_MAPCOUNT_VALUE)=-257
+TRACE: Line: NUMBER(phys_base)=37748736
+TRACE: NUMBER(phys_base)=37748736
+TRACE: Line: SYMBOL(init_top_pgt)=ffffffff9b40a000
+TRACE: SYMBOL(init_top_pgt)=ffffffff9b40a000
+TRACE: Line: NUMBER(pgtable_l5_enabled)=0
+TRACE: NUMBER(pgtable_l5_enabled)=0
+TRACE: Line: SYMBOL(node_data)=ffffffff9b620ee0
+TRACE: SYMBOL(node_data)=ffffffff9b620ee0
+TRACE: Line: LENGTH(node_data)=1024
+TRACE: LENGTH(node_data)=1024
+TRACE: Line: KERNELOFFSET=18c00000
+TRACE: KERNELOFFSET=18c00000
+TRACE: Line: NUMBER(KERNEL_IMAGE_SIZE)=1073741824
+TRACE: NUMBER(KERNEL_IMAGE_SIZE)=1073741824
+TRACE: Line: NUMBER(sme_mask)=0
+TRACE: NUMBER(sme_mask)=0
+TRACE: Line: CRASHTIME=1704379437
+TRACE: CRASHTIME=1704379437
+DEBUG: Using crashtime: 2024-01-04 15:43 (+0100), crashrelease: 5.3.18-150300.59.144-default
+TRACE: SaveDump::generateInfo
+TRACE: AbstractDataProvider::setProgress, p=0x7ffd2eac81b0
+TRACE: FileTransfer::perform(0x7ffd2eac7fb0, [ "README.txt" ])
+TRACE: FileTransfer::performPipe(0x7ffd2eac7fb0, [ "/kdump/mnt1/var/crash/2024-01-04-15:44/README.txt" ])
+TRACE: FileTransfer::open(/kdump/mnt1/var/crash/2024-01-04-15:44/README.txt)
+TRACE: AbstractDataProvider::prepare
+Generating README              Starting.TRACE: FileTransfer::close()           
+TRACE: AbstractDataProvider::finish
+Generating README              Finished.                                       
+TRACE: SaveDump::copyKernel()
+TRACE: SaveDump::findMapfile()
+DEBUG: Trying /kdump/boot/System.map-5.3.18-150300.59.144-default
+TRACE: SaveDump::findKernel()
+DEBUG: Trying /kdump/boot/vmlinux-5.3.18-150300.59.144-default
+DEBUG: Trying /kdump/boot/vmlinux-5.3.18-150300.59.144-default.gz
+TRACE: AbstractDataProvider::setProgress, p=0x7ffd2eac81f0
+TRACE: FileTransfer::perform(0x7ffd2eac8290, [ "System.map-5.3.18-150300.59.144-default" ])
+TRACE: FileTransfer::performPipe(0x7ffd2eac8290, [ "/kdump/mnt1/var/crash/2024-01-04-15:44/System.map-5.3.18-150300.59.144-default" ])
+TRACE: FileTransfer::open(/kdump/mnt1/var/crash/2024-01-04-15:44/System.map-5.3.18-150300.59.144-default)
+TRACE: FileDataProvider::prepare
+TRACE: AbstractDataProvider::prepare
+Copying System.map             |------------------------------------------|  0%TRACE: FileTransfer::close()
+TRACE: FileDataProvider::finish
+TRACE: AbstractDataProvider::finish
+Copying System.map             Finished.                                       
+TRACE: AbstractDataProvider::setProgress, p=0x7ffd2eac8240
+TRACE: FileTransfer::perform(0x7ffd2eac82e0, [ "vmlinux-5.3.18-150300.59.144-default.gz" ])
+TRACE: FileTransfer::performPipe(0x7ffd2eac82e0, [ "/kdump/mnt1/var/crash/2024-01-04-15:44/vmlinux-5.3.18-150300.59.144-default.gz" ])
+TRACE: FileTransfer::open(/kdump/mnt1/var/crash/2024-01-04-15:44/vmlinux-5.3.18-150300.59.144-default.gz)
+TRACE: FileDataProvider::prepare
+TRACE: AbstractDataProvider::prepare
+Copying kernel                 |########################################--| 95%TRACE: FileTransfer::close()
+TRACE: FileDataProvider::finish
+TRACE: AbstractDataProvider::finish
+Copying kernel                 Finished.                                       
+TRACE: getErrorCode: Returning error code of 0
+TRACE: KdumpTool::~KdumpTool()
+TRACE: SaveDump::~SaveDump()
+umount: /kdump/mnt0: not mounted.
+umount: /kdump/mnt1/var: not mounted.
+umount: /sys/fs/cgroup/unified: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+umount: /: not mounted.
+Rebooting.
+[   10.104800] disable async PF for cpu 0
+[   10.203125] reboot: Restarting system
+[   10.204388] reboot: machine restart

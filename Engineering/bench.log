@@ -1,1 +1,4 @@
 iozone -R -a -c -i 0 -i 1 -b x.xls
+
+
+bench syscall basic -l 500000

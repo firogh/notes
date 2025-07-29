@@ -1,0 +1,26 @@
+
+
+# Transmit queue timeout
+
+> @Thomas, is it possible to find the reason that the transmit queue was
+> stopped by the driver(i40e)?
+
+
+it's always the other around and the question is why wasn't the transmit done workqueue scheduled in time.
+
+Most common reasons:
+- interrupt didn't come through
+- other tasks on the same CPU prevent running of the workqueue
+
+looking at runq:
+
+CPU 48 RUNQUEUE: ffff8881d52339c0
+  CURRENT: PID: 20336  TASK: ffff888015b78000  COMMAND: "qemu-system-i38"
+  RT PRIO_ARRAY: ffff8881d5233c00
+     [no tasks queued]
+  CFS RB_ROOT: ffff8881d5233a80
+     [120] PID: 303    TASK: ffff888101b14000  COMMAND: "ksoftirqd/48"
+
+So there was an interrupt, which scheduled the workqueue, but it looks like qemu hasn't finished in time.
+
+Looking more at runq, there are a few tasks sitting in run queues on CPUs, which aren't scheduled even as the CPU is idle. Looks strange to me, but not an expert about process schedulung

@@ -1,0 +1,5 @@
+list -h 0xffff88032b28d4e0 -l napi_struct.dev_list -s napi_struct
+
+
+# rss
+ps | sed 's/>//' | grep -v 'RSS' | awk '{print $8,$9; t = t+$8}END{print t," total"}' | sort -n

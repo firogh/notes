@@ -1,0 +1,293 @@
+dmar_drhd_units
+
+
+p *(struct intel_iommu *)
+
+p *(struct q_inval *)
+
+
+crash> rd dmar_drhd_units 2
+ffffffff8304eeb0:  ff110100001ae700 ff110100001ae700   ................
+
+
+crash> dmar_drhd_unit ff110100001ae700
+
+
+#define DMAR_IQT_REG    0x88    /* Invalidation queue tail register */
+
+
+>>> hex(0xffa0000000007000 + 0x88 * 8)
+0xffa0000000007440
+
+>>> (0xffa0000000007440 >> 48)&(512 -1)
+416
+
+>>> (0xffa0000000007440 >> 39)&(512 -1)
+0
+>>> (0xffa0000000007440 >> 30)&(512 -1)
+0
+>>> (0xffa0000000007440 >> 21)&(512 -1)
+0
+>>> (0xffa0000000007440 >> 12)&(512 -1)
+7
+
+>>> 512 - 416
+96
+
+>>> hex(4275634176)
+'0xfed90000'
+
+
+__dmar_enable_qi
+
+(gdb) set *((int*)0xffa00000000070c0) = 0x4000000
+(gdb) x 0xffa00000000070c0
+0xffa00000000070c0:	0x0000000004000000
+(gdb) x 0xffa00000000070e0
+0xffa00000000070e0:	0x0000000000000000
+
+(gdb) p *(struct intel_iommu *)0xff1101000004fc00
+$4 = {reg = 0xffa0000000007000, reg_phys = 4275634176, reg_size = 4096, cap = 59110346977575430, ecap = 15732570, vccap = 0, ecmdcap = {0, 0, 0, 
+    0}, gcmd = 67108864, register_lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, 
+          tail = 0}}}}, seq_id = 0, agaw = 1, msagaw = 1, irq = 0, pr_irq = 0, perf_irq = 0, segment = 0, 
+  name = "dmar0\000\000\000\000\000\000\000", domain_ids = 0x0 <fixed_percpu_data>, copied_tables = 0x0 <fixed_percpu_data>, lock = {{rlock = {
+        raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}}}, 
+  root_entry = 0x0 <fixed_percpu_data>, flush = {flush_context = 0x0 <fixed_percpu_data>, flush_iotlb = 0x0 <fixed_percpu_data>}, 
+  prq = 0x0 <fixed_percpu_data>, prq_name = '\000' <repeats 15 times>, prq_seq_number = 0, prq_complete = {done = 0, wait = {lock = {raw_lock = {
+          {val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, task_list = {
+        next = 0x0 <fixed_percpu_data>, prev = 0x0 <fixed_percpu_data>}}}, iopf_queue = 0x0 <fixed_percpu_data>, 
+  iopfq_name = '\000' <repeats 15 times>, iopf_lock = {owner = {counter = 0}, wait_lock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', 
+            pending = 0 '\000'}, {locked_pending = 0, tail = 0}}}}, osq = {tail = {counter = 0}}, wait_list = {next = 0xff1101000004fd18, 
+      prev = 0xff1101000004fd18}}, qi = 0xff110100002075c0, iommu_state = {0, 0, 0, 0}, device_rbtree = {rb_node = 0x0 <fixed_percpu_data>}, 
+  device_rbtree_lock = {{rlock = {raw_lock = {{val = {counter = 0}, {locked = 0 '\000', pending = 0 '\000'}, {locked_pending = 0, 
+              tail = 0}}}}}}, ir_table = 0xff11010000033040, ir_domain = 0xff11010000800000, iommu = {list = {next = 0x0 <fixed_percpu_data>, 
+      prev = 0x0 <fixed_percpu_data>}, ops = 0x0 <fixed_percpu_data>, fwnode = 0x0 <fixed_percpu_data>, dev = 0x0 <fixed_percpu_data>, 
+    singleton_group = 0x0 <fixed_percpu_data>, max_pasids = 0}, node = -1, flags = 0, drhd = 0xff110100001af900, 
+  perf_statistic = 0x0 <fixed_percpu_data>, pmu = 0x0 <fixed_percpu_data>}
+(gdb)
+
+(gdb) p * (struct q_inval *)0xff110100002075c0
+$6 = {q_lock = {raw_lock = {{val = {counter = 1}, {locked = 1 '\001', pending = 0 '\000'}, {locked_pending = 1, tail = 0}}}}, 
+  desc = 0xff1101000020f000, desc_status = 0xff11010000051c00, free_head = 2, free_tail = 0, free_cnt = 254}
+
+(gdb) p & ((struct q_inval*)0)->desc_status
+$7 = (int **) 0x10 <fixed_percpu_data+16>
+
+wait_index = 1
+
+x/5xw 0xff1101000020f000
+0xff1101000020f000:	0x00000004	0x00000000	0x00000000	0x00000000
+
+shift = 4
+
+1447	in ../drivers/iommu/intel/dmar.c
+   0xffffffff8186f787 <+647>:	shl    %cl,%eax
+   0xffffffff8186f789 <+649>:	mov    0x0(%r13),%rdx
+
+../arch/x86/include/asm/io.h:
+69	../arch/x86/include/asm/io.h: No such file or directory.
+   0xffffffff8186f78d <+653>:	mov    %eax,0x88(%rdx)
+
+../drivers/iommu/intel/dmar.c:
+1449	../drivers/iommu/intel/dmar.c: No such file or directory.
+   0xffffffff8186f793 <+659>:	mov    0x10(%r15),%rcx
+   0xffffffff8186f797 <+663>:	cmpl   $0x2,(%rcx,%rsi,4)
+   0xffffffff8186f79b <+667>:	mov    %rcx,%rdx
+   0xffffffff8186f79e <+670>:	je     0xffffffff8186fae4 <qi_submit_sync+1508>
+
+../arch/x86/include/asm/io.h:
+69	../arch/x86/include/asm/io.h: No such file or directory.
+   0xffffffff8186f7a4 <+676>:	mov    %r14d,0x10(%rsp)
+   0xffffffff8186f7a9 <+681>:	jmp    0xffffffff8186f808 <qi_submit_sync+776>
+   0xffffffff8186f7ab <+683>:	mov    %ebp,%r10d
+   0xffffffff8186f7ae <+686>:	and    $0x10,%r10d
+
+../drivers/iommu/intel/dmar.c:
+1293	../drivers/iommu/intel/dmar.c: No such file or directory.
+   0xffffffff8186f7b2 <+690>:	test   %r10d,%r10d
+   0xffffffff8186f7b5 <+693>:	je     0xffffffff8186f7d2 <qi_submit_sync+722>
+
+
+#12 0xffffffff81c49742 in _printk (fmt=fmt@entry=0xffffffff82688a80 "\0013DMAR: QI HEAD: %s qw0 = 0x%llx, qw1 = 0x%llx\n")
+    at ../kernel/printk/printk.c:2388
+#13 0xffffffff8186f8c6 in qi_dump_fault (fault=16, iommu=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1257
+#14 qi_check_fault (wait_index=1, index=0, iommu=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1286
+#15 qi_submit_sync (iommu=iommu@entry=0xff1101000004fc00, desc=desc@entry=0xffffffff82e03e10, count=count@entry=1, options=options@entry=0)
+    at ../drivers/iommu/intel/dmar.c:1457
+#16 0xffffffff8186fd5b in qi_global_iec (iommu=iommu@entry=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1503
+--Type <RET> for more, q to quit, c to continue without paging--
+#17 0xffffffff8187c822 in iommu_set_irq_remapping (iommu=iommu@entry=0xff1101000004fc00, mode=<optimized out>)
+    at ../drivers/iommu/intel/irq_remapping.c:492
+#18 0xffffffff8187dd65 in intel_setup_irq_remapping (iommu=iommu@entry=0xff1101000004fc00) at ../drivers/iommu/intel/irq_remapping.c:613
+#19 0xffffffff83612fe6 in intel_setup_irq_remapping (iommu=0xff1101000004fc00) at ../drivers/iommu/intel/irq_remapping.c:536
+#20 intel_prepare_irq_remapping () at ../drivers/iommu/intel/irq_remapping.c:770
+#21 0xffffffff83613541 in irq_remapping_prepare () at ../drivers/iommu/irq_remapping.c:104
+#22 0xffffffff835c1003 in enable_IR_x2apic () at ../arch/x86/kernel/apic/apic.c:1961
+#23 0xffffffff835c5f52 in default_setup_apic_routing () at ../arch/x86/kernel/apic/probe_64.c:23
+#24 0xffffffff835c0e69 in apic_intr_mode_init () at ../arch/x86/kernel/apic/apic.c:1439
+#25 0xffffffff835ae070 in x86_late_time_init () at ../arch/x86/kernel/time.c:100
+#26 0xffffffff8359e392 in start_kernel () at ../init/main.c:1045
+#27 0xffffffff835ad940 in x86_64_start_reservations (
+    real_mode_data=real_mode_data@entry=0x8b000 <error: Cannot access memory at address 0x8b000>) at ../arch/x86/kernel/head64.c:555
+#28 0xffffffff835ada31 in x86_64_start_kernel (real_mode_data=0x8b000 <error: Cannot access memory at address 0x8b000>)
+    at ../arch/x86/kernel/head64.c:536
+#29 0xffffffff810001ef in secondary_startup_64 () at ../arch/x86/kernel/head_64.S:362
+#30 0x0000000000000000 in ?? ()
+
+(gdb) p x86_init.irqs.intr_mode_select
+$21 = (void (*)(void)) 0xffffffff835c0c20 <apic_intr_mode_select>
+(gdb) p x86_init.timers.timer_init
+$22 = (void (*)(void)) 0xffffffff835ae0a0 <hpet_time_init>
+(gdb) p x86_init.irqs.intr_mode_init
+$23 = (void (*)(void)) 0xffffffff835c0df0 <apic_intr_mode_init>
+
+(gdb) bt
+#0  writel (addr=0xffffc9000000b088, val=32) at ../arch/x86/include/asm/io.h:69
+#1  qi_submit_sync (iommu=iommu@entry=0xffff898000057a00, desc=desc@entry=0xffffffff82e03e10, count=count@entry=1, options=options@entry=0)
+    at ../drivers/iommu/intel/dmar.c:1447
+#2  0xffffffff8186fd5b in qi_global_iec (iommu=iommu@entry=0xffff898000057a00) at ../drivers/iommu/intel/dmar.c:1503
+#3  0xffffffff8187c822 in iommu_set_irq_remapping (iommu=iommu@entry=0xffff898000057a00, mode=<optimized out>)
+    at ../drivers/iommu/intel/irq_remapping.c:492
+#4  0xffffffff8187dd65 in intel_setup_irq_remapping (iommu=iommu@entry=0xffff898000057a00) at ../drivers/iommu/intel/irq_remapping.c:613
+#5  0xffffffff83612fe6 in intel_setup_irq_remapping (iommu=0xffff898000057a00) at ../drivers/iommu/intel/irq_remapping.c:536
+#6  intel_prepare_irq_remapping () at ../drivers/iommu/intel/irq_remapping.c:770
+#7  0xffffffff83613541 in irq_remapping_prepare () at ../drivers/iommu/irq_remapping.c:104
+#8  0xffffffff835c1003 in enable_IR_x2apic () at ../arch/x86/kernel/apic/apic.c:1961
+#9  0xffffffff835c5f52 in default_setup_apic_routing () at ../arch/x86/kernel/apic/probe_64.c:23
+#10 0xffffffff835c0e69 in apic_intr_mode_init () at ../arch/x86/kernel/apic/apic.c:1439
+#11 0xffffffff835ae070 in x86_late_time_init () at ../arch/x86/kernel/time.c:100
+#12 0xffffffff8359e392 in start_kernel () at ../init/main.c:1045
+#13 0xffffffff835ad940 in x86_64_start_reservations (
+    real_mode_data=real_mode_data@entry=0x14240 <exception_stacks+25152> <error: Cannot access memory at address 0x14240>)
+    at ../arch/x86/kernel/head64.c:555
+#14 0xffffffff835ada31 in x86_64_start_kernel (real_mode_data=0x14240 <exception_stacks+25152> <error: Cannot access memory at address 0x14240>)
+    at ../arch/x86/kernel/head64.c:536
+#15 0xffffffff810001ef in secondary_startup_64 () at ../arch/x86/kernel/head_64.S:362
+#16 0x0000000000000000 in ?? ()
+(gdb) p *(struct q_inval *) 0xffff89800021ba40
+$17 = {q_lock = {raw_lock = {{val = {counter = 1}, {locked = 1 '\001', pending = 0 '\000'}, {locked_pending = 1, tail = 0}}}}, 
+  desc = 0xffff898000224000, desc_status = 0xffff898000059c00, free_head = 2, free_tail = 0, free_cnt = 254}
+
+
+
+
+[    0.611006][    T0] printk: console [ttyS0] enabled
+[    0.711618][    T0] ACPI: Core revision 20230628
+[    0.712312][    T0] APIC: Switch to symmetric I/O mode setup
+[    0.712938][    T0] DMAR: Host address width 39
+[    0.713443][    T0] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.714128][    T0] DMAR: dmar0: reg_base_addr fed90000 ver 1:0 cap d2008c22260206 ecap f00f5a
+[    0.715088][    T0] DMAR-IR: IOAPIC id 0 under DRHD base  0xfed90000 IOMMU 0
+[    0.715866][    T0] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+qemu-system-x86_64: vtd_process_inv_desc: invalid inv desc: hi=6a8efd2517f65d29, lo=bfa2cdbfa3a8613b (unknown type)
+qemu-system-x86_64: Interrupt Mask set, irq is not generated
+[   91.712405][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[   92.887613][    T0] DMAR: QI HEAD: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+
+
+
+#13 0xffffffff8186f93a in qi_dump_fault (fault=16, iommu=0xffff898000057a00) at ../drivers/iommu/intel/dmar.c:1266
+#14 qi_check_fault (wait_index=3, index=2, iommu=0xffff898000057a00) at ../drivers/iommu/intel/dmar.c:1286
+#15 qi_submit_sync (iommu=<optimized out>, desc=desc@entry=0xffffffff82e03d78, count=count@entry=1, options=options@entry=0)
+    at ../drivers/iommu/intel/dmar.c:1457
+--Type <RET> for more, q to quit, c to continue without paging--c
+#16 0xffffffff8187cc68 in qi_flush_iec (iommu=<optimized out>, index=index@entry=1, mask=mask@entry=0) at ../drivers/iommu/intel/irq_remapping.c:156
+#17 0xffffffff8187cd57 in modify_irte (irq_iommu=0xffff89800021b700, irte_modified=irte_modified@entry=0xffffffff82e03de8)
+    at ../drivers/iommu/intel/irq_remapping.c:196
+#18 0xffffffff8187cde6 in intel_irq_remapping_deactivate (domain=<optimized out>, irq_data=<optimized out>)
+    at ../drivers/iommu/intel/irq_remapping.c:1398
+#19 0xffffffff8115dd57 in __irq_domain_deactivate_irq (irq_data=irq_data@entry=0xffff898000055228) at ../kernel/irq/irqdomain.c:1801
+#20 0xffffffff811601ee in irq_domain_deactivate_irq (irq_data=irq_data@entry=0xffff898000055228) at ../kernel/irq/irqdomain.c:1858
+#21 0xffffffff835c2af9 in check_timer () at ../arch/x86/kernel/apic/io_apic.c:2240
+#22 setup_IO_APIC () at ../arch/x86/kernel/apic/io_apic.c:2420
+#23 0xffffffff835c0eeb in apic_bsp_setup (upmode=<optimized out>) at ../arch/x86/kernel/apic/apic.c:2654
+#24 apic_intr_mode_init () at ../arch/x86/kernel/apic/apic.c:1444
+#25 0xffffffff835ae070 in x86_late_time_init () at ../arch/x86/kernel/time.c:100
+#26 0xffffffff8359e392 in start_kernel () at ../init/main.c:1045
+#27 0xffffffff835ad940 in x86_64_start_reservations (
+    real_mode_data=real_mode_data@entry=0x14240 <exception_stacks+25152> <error: Cannot access memory at address 0x14240>)
+    at ../arch/x86/kernel/head64.c:555
+#28 0xffffffff835ada31 in x86_64_start_kernel (real_mode_data=0x14240 <exception_stacks+25152> <error: Cannot access memory at address 0x14240>)
+    at ../arch/x86/kernel/head64.c:536
+#29 0xffffffff810001ef in secondary_startup_64 () at ../arch/x86/kernel/head_64.S:362
+#30 0x0000000000000000 in ?? ()
+
+(gdb) p apic_intr_mode
+$24 = APIC_SYMMETRIC_IO
+
+[    0.611006][    T0] printk: console [ttyS0] enabled
+[    0.711618][    T0] ACPI: Core revision 20230628
+[    0.712312][    T0] APIC: Switch to symmetric I/O mode setup
+[    0.712938][    T0] DMAR: Host address width 39
+[    0.713443][    T0] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.714128][    T0] DMAR: dmar0: reg_base_addr fed90000 ver 1:0 cap d2008c22260206 ecap f00f5a
+[    0.715088][    T0] DMAR-IR: IOAPIC id 0 under DRHD base  0xfed90000 IOMMU 0
+[    0.715866][    T0] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+qemu-system-x86_64: vtd_process_inv_desc: invalid inv desc: hi=6a8efd2517f65d29, lo=bfa2cdbfa3a8613b (unknown type)
+qemu-system-x86_64: Interrupt Mask set, irq is not generated
+[   91.712405][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[   92.887613][    T0] DMAR: QI HEAD: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+[   94.132469][    T0] DMAR: QI PRIOR: UNKNOWN qw0 = 0x0, qw1 = 0x0
+[   96.231859][    T0] DMAR: Invalidation Queue Error (IQE) cleared
+[   98.966345][    T0] DMAR-IR: Enabled IRQ remapping in x2apic mode
+[   99.403364][    T0] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[   99.404235][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[   99.404238][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000059c04
+[   99.405923][    T0] DMAR: QI PRIOR: UNKNOWN qw0 = 0x0, qw1 = 0x0
+[   99.406610][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[   99.406612][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000059c04
+[   99.408305][    T0] DMAR: QI PRIOR: UNKNOWN qw0 = 0x0, qw1 = 0x0
+[   99.409015][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[   99.409016][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000059c04
+[   99.410698][    T0] DMAR: QI PRIOR: UNKNOWN qw0 = 0x0, qw1 = 0x0
+
+
+(gdb) bt
+#0  vtd_process_inv_desc (s=<optimized out>) at ../hw/i386/intel_iommu.c:2717
+#1  vtd_fetch_inv_desc (s=<optimized out>, s=<optimized out>) at ../hw/i386/intel_iommu.c:2796
+#2  0x0000555555c9a2ee in vtd_handle_iqt_write (s=0x555557e9fbe0) at ../hw/i386/intel_iommu.c:2823
+#3  vtd_mem_write.lto_priv.3361 (opaque=0x555557e9fbe0, addr=<optimized out>, val=<optimized out>, size=<optimized out>)
+    at ../hw/i386/intel_iommu.c:3070
+#4  0x0000555555b58752 in memory_region_write_accessor (mr=0x555557e9ff20, addr=136, value=<optimized out>, size=4, shift=<optimized out>, 
+    mask=<optimized out>, attrs=...) at ../system/memory.c:497
+#5  0x0000555555b5d2e1 in access_with_adjusted_size (addr=addr@entry=136, value=value@entry=0x7f05e7137398, size=size@entry=4, 
+    access_size_min=<optimized out>, access_size_max=<optimized out>, access_fn=0x555555b586d0 <memory_region_write_accessor>, mr=0x555557e9ff20, 
+    attrs=...) at ../system/memory.c:573
+#6  0x0000555555b5d4c5 in memory_region_dispatch_write (mr=0x555557e9ff20, addr=136, data=<optimized out>, op=<optimized out>, attrs=...)
+    at ../system/memory.c:1528
+#7  0x0000555555d9607a in flatview_write_continue (fv=fv@entry=0x7f05e00caba0, addr=addr@entry=4275634312, attrs=..., ptr=ptr@entry=0x7ffff7fb0028, 
+    len=len@entry=4, addr1=<optimized out>, l=<optimized out>, mr=0x555557e9ff20) at ../system/physmem.c:2716
+#8  0x0000555555d962d3 in flatview_write.lto_priv.2451 (fv=0x7f05e00caba0, addr=addr@entry=4275634312, attrs=attrs@entry=..., 
+    buf=buf@entry=0x7ffff7fb0028, len=len@entry=4) at ../system/physmem.c:2758
+#9  0x0000555555d96365 in address_space_write (as=0x555556e27040 <address_space_memory>, addr=4275634312, attrs=..., buf=0x7ffff7fb0028, len=4)
+    at ../system/physmem.c:2865
+#10 0x0000555555f63ee9 in kvm_cpu_exec (cpu=cpu@entry=0x5555571733e0) at ../accel/kvm/kvm-all.c:2915
+#11 0x0000555555f662d5 in kvm_vcpu_thread_fn (arg=arg@entry=0x5555571733e0) at ../accel/kvm/kvm-accel-ops.c:51
+#12 0x0000555555f1bb26 in qemu_thread_start (args=<optimized out>) at ../util/qemu-thread-posix.c:541
+#13 0x00007ffff50a761c in start_thread () from /lib64/libc.so.6
+#14 0x00007ffff512eaa8 in clone3 () from /lib64/libc.so.6
+(gdb) info set args
+Argument list to give program being debugged when it is started is "-kernel vmlinuz-6.4.0-150600.23.17-default -nographic -serial mon:stdio -append con.
+(gdb) 
+
+(gdb) info locals 
+inv_desc = {{lo = 93825035533280, hi = 93824999672406}, {val = {93825035533280, 93824999672406, 93824998541008, 93825000519101}}, {iec = {type = 0, 
+      granularity = 0, resved_1 = 4149215, index_mask = 10, index = 21845, reserved_2 = 0}}}
+desc_type = <optimized out>
+inv_desc = <optimized out>
+desc_type = <optimized out>
+print_once_ = false
+(gdb) p/x inv_desc
+$1 = {{lo = 0x555557e9fbe0, hi = 0x555555c6ca56}, {val = {0x555557e9fbe0, 0x555555c6ca56, 0x555555b586d0, 0x555555d3b5bd}}, {iec = {type = 0x0, 
+      granularity = 0x0, resved_1 = 0x3f4fdf, index_mask = 0xa, index = 0x5555, reserved_2 = 0x0}}}
+(gdb) info proc mappings 
+process 218913
+Mapped address spaces:
+
+          Start Addr           End Addr       Size     Offset  Perms  objfile
+      0x555555554000     0x55555630e000   0xdba000        0x0  r-xp   /usr/bin/qemu-system-x86_64
+      0x55555630e000     0x555556c9c000   0x98e000   0xdb9000  r--p   /usr/bin/qemu-system-x86_64
+      0x555556c9c000     0x555556df5000   0x159000  0x1747000  rw-p   /usr/bin/qemu-system-x86_64
+      0x555556df5000     0x555556e28000    0x33000        0x0  rw-p   [heap]
+      0x555556e28000     0x5555582a1000  0x1479000        0x0  rw-p   [heap]
+      0x7f05d8000000     0x7f05d8021000    0x21000        0x0  rw-p 

@@ -1,0 +1,15 @@
+
+
+arch/x86/kernel/cpu/common.c:1917:	load_sp0((unsigned long)(cpu_entry_stack(cpu) + 1));
+
+syscall_return_via_sysret:
+        IBRS_EXIT
+        POP_REGS pop_rdi=0
+
+        /*
+         * Now all regs are restored except RSP and RDI.
+         * Save old stack pointer and switch to trampoline stack.
+         */
+        movq    %rsp, %rdi
+        movq    PER_CPU_VAR(cpu_tss_rw + TSS_sp0), %rsp
+

@@ -1,0 +1,4 @@
+trace-cmd record -e kmem:kmem_cache_alloc -f bytes_alloc==512 -e kmem:kmalloc -f bytes_alloc==512 -e kmem:kmalloc_node -f bytes_alloc==512 -e kmem:kmem_cache_alloc_node -f bytes_alloc==512
+
+trace-cmd record -p function -e kmem:kmem_cache_alloc -f bytes_alloc==512 -e kmem:kmalloc -f bytes_alloc==512 -e kmem:kmalloc_node -f bytes_alloc==512 -e kmem:kmem_cache_alloc_node -f bytes_alloc==512  -T
+

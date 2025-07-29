@@ -1,0 +1,37 @@
+
+
+# IFF_UP
+## ioctl
+ioctl(4, SIOCGIFFLAGS, {ifr_name="wlp4s0", ifr_flags=IFF_BROADCAST|IFF_MULTICAST}) = 0 
+ioctl(4, SIOCSIFFLAGS, {ifr_name="wlp4s0", ifr_flags=IFF_UP|IFF_BROADCAST|IFF_RUNNING|IFF_MULTICAST}) = 0 
+
+
+## netlink
+__dev_open
+NETDEV_UP
+sendmsg(3, {msg_name={sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, msg_namelen=12, msg_iov=[{iov_base=[{nlmsg_len=32, nlmsg_type=RTM_NEWLINK, nlmsg_flags=NLM_F_REQUEST|NLM_F_ACK, nlmsg_seq=1727539599, nlmsg_pid=0}, {ifi_family=AF_UNSPEC, ifi_type=ARPHRD_NETROM, ifi_index=if_nametoindex("wlp4s0"), ifi_flags=IFF_UP, ifi_change=0x1}
+
+# systemd failing rename net interface
+https://www.freedesktop.org/software/systemd/man/latest/systemd.link.html
+/usr/lib/systemd/network/99-default.link
+
+man 7 systemd.net-naming-scheme
+man udev
+
+/usr/lib/udev/rules.d/80-net-setup-link.rules
+
+udevadm info /sys/class/net/eth0
+
+dev_change_name
+
+commit 53584e7b61373c26635b906eb64e98fbd3fd3ba4
+Author: Nick Rosbrook <nick.rosbrook@canonical.com>
+Date:   Fri Dec 2 15:35:25 2022 -0500
+    udev: attempt device rename even if interface is up
+    Currently rename_netif() will not attempt to rename a device if it is
+    already up, because the kernel will return -EBUSY unless live renaming
+    is allowed on the device. This restriction will be removed in a future
+    kernel version [1].
+    [1] https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=bd039b5ea2a9
+
+

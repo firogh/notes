@@ -1,0 +1,154 @@
+(gdb) c
+Continuing.
+[Switching to Thread 1.4]
+
+Thread 4 hit Breakpoint 1, qi_submit_sync (iommu=0xff1100000404fc00, desc=desc@entry=0xffa000000001f878, count=count@entry=1, 
+    options=options@entry=0) at ../drivers/iommu/intel/dmar.c:1372
+1372	../drivers/iommu/intel/dmar.c: No such file or directory.
+(gdb) bt
+#0  qi_submit_sync (iommu=0xff1100000404fc00, desc=desc@entry=0xffa000000001f878, count=count@entry=1, options=options@entry=0)
+    at ../drivers/iommu/intel/dmar.c:1372
+#1  0xffffffff8187cc68 in qi_flush_iec (iommu=<optimized out>, index=index@entry=32, mask=mask@entry=0)
+    at ../drivers/iommu/intel/irq_remapping.c:156
+#2  0xffffffff8187cd57 in modify_irte (irq_iommu=0xff11000035863180, irte_modified=0xff11000035863198)
+    at ../drivers/iommu/intel/irq_remapping.c:196
+#3  0xffffffff8187cf44 in intel_ir_reconfigure_irte (irqd=<optimized out>, force=force@entry=true) at ../drivers/iommu/intel/irq_remapping.c:1144
+#4  0xffffffff8187cf72 in intel_irq_remapping_activate (domain=<optimized out>, irq_data=<optimized out>, reserve=<optimized out>)
+    at ../drivers/iommu/intel/irq_remapping.c:1387
+#5  0xffffffff8115ddc7 in __irq_domain_activate_irq (irqd=0xff11000035863d40, reserve=reserve@entry=true) at ../kernel/irq/irqdomain.c:1818
+#6  0xffffffff8115de09 in __irq_domain_activate_irq (irqd=irqd@entry=0xff1100002c8d0428, reserve=reserve@entry=true)
+    at ../kernel/irq/irqdomain.c:1815
+#7  0xffffffff811601a9 in irq_domain_activate_irq (irq_data=irq_data@entry=0xff1100002c8d0428, reserve=reserve@entry=true)
+    at ../kernel/irq/irqdomain.c:1841
+#8  0xffffffff81163544 in msi_init_virq (vflags=<optimized out>, virq=38, domain=0xff11000009d226c0) at ../kernel/irq/msi.c:1238
+#9  __msi_domain_alloc_irqs (dev=dev@entry=0xff11000032ac90d0, domain=domain@entry=0xff11000009d226c0, ctrl=ctrl@entry=0xffa000000001fa50)
+    at ../kernel/irq/msi.c:1310
+#10 0xffffffff8116379a in __msi_domain_alloc_locked (ctrl=0xffa000000001fa50, dev=0xff11000032ac90d0) at ../kernel/irq/msi.c:1358
+#11 msi_domain_alloc_locked (dev=dev@entry=0xff11000032ac90d0, ctrl=ctrl@entry=0xffa000000001fa50) at ../kernel/irq/msi.c:1363
+#12 0xffffffff81164286 in msi_domain_alloc_irqs_all_locked (dev=dev@entry=0xff11000032ac90d0, domid=domid@entry=0, nirqs=nirqs@entry=2)
+    at ../kernel/irq/msi.c:1441
+#13 0xffffffff81703a37 in pci_msi_setup_msi_irqs (dev=dev@entry=0xff11000032ac9000, nvec=nvec@entry=2, type=type@entry=17)
+    at ../drivers/pci/msi/irqdomain.c:17
+#14 0xffffffff817034a8 in msix_setup_interrupts (affd=0x0 <fixed_percpu_data>, nvec=2, entries=0x0 <fixed_percpu_data>, dev=0xff11000032ac9000)
+    at ../drivers/pci/msi/msi.c:674
+#15 msix_capability_init (affd=0x0 <fixed_percpu_data>, nvec=2, entries=<optimized out>, dev=0xff11000032ac9000) at ../drivers/pci/msi/msi.c:731
+#16 __pci_enable_msix_range (dev=dev@entry=0xff11000032ac9000, entries=entries@entry=0x0 <fixed_percpu_data>, minvec=minvec@entry=2, 
+    maxvec=maxvec@entry=2, affd=affd@entry=0x0 <fixed_percpu_data>, flags=flags@entry=4) at ../drivers/pci/msi/msi.c:837
+#17 0xffffffff81701b39 in pci_alloc_irq_vectors_affinity (dev=0xff11000032ac9000, min_vecs=min_vecs@entry=2, max_vecs=max_vecs@entry=2, flags=4, 
+--Type <RET> for more, q to quit, c to continue without paging--
+    affd=affd@entry=0x0 <fixed_percpu_data>) at ../drivers/pci/msi/api.c:270
+#18 0xffffffff817e1bba in vp_request_msix_vectors (desc=0x0 <fixed_percpu_data>, per_vq_vectors=false, nvectors=<optimized out>, 
+    vdev=0xff11000031ddb800) at ../drivers/virtio/virtio_pci_common.c:133
+#19 vp_find_vqs_msix (vdev=vdev@entry=0xff11000031ddb800, nvqs=nvqs@entry=64, vqs=vqs@entry=0xff1100002c8d2e00, 
+    callbacks=callbacks@entry=0xff1100002c8d2a00, names=names@entry=0xff1100002c8d6a00, per_vq_vectors=per_vq_vectors@entry=false, 
+    ctx=0x0 <fixed_percpu_data>, desc=<optimized out>) at ../drivers/virtio/virtio_pci_common.c:309
+#20 0xffffffff817e1f4e in vp_find_vqs (vdev=vdev@entry=0xff11000031ddb800, nvqs=64, vqs=0xff1100002c8d2e00, callbacks=0xff1100002c8d2a00, 
+    names=0xff1100002c8d6a00, ctx=0x0 <fixed_percpu_data>, desc=0x0 <fixed_percpu_data>) at ../drivers/virtio/virtio_pci_common.c:411
+#21 0xffffffff817e0f07 in vp_modern_find_vqs (vdev=0xff11000031ddb800, nvqs=<optimized out>, vqs=<optimized out>, callbacks=<optimized out>, 
+    names=<optimized out>, ctx=<optimized out>, desc=0x0 <fixed_percpu_data>) at ../drivers/virtio/virtio_pci_modern.c:365
+#22 0xffffffff8184de9a in virtio_find_vqs (desc=0x0 <fixed_percpu_data>, names=<optimized out>, callbacks=<optimized out>, vqs=<optimized out>, 
+    nvqs=64, vdev=0xff1100000404fc00) at ../include/linux/virtio_config.h:229
+#23 init_vqs (portdev=portdev@entry=0xff11000009d23740) at ../drivers/char/virtio_console.c:1888
+#24 0xffffffff8184e1af in virtcons_probe (vdev=0xff11000031ddb800) at ../drivers/char/virtio_console.c:2053
+#25 0xffffffff817dbb7c in virtio_dev_probe (_d=0xff11000031ddb810) at ../drivers/virtio/virtio.c:305
+#26 0xffffffff818e80d6 in call_driver_probe (drv=0xffffffff8304ab00 <virtio_console>, drv=0xffffffff8304ab00 <virtio_console>, 
+    dev=0xff11000031ddb810) at ../drivers/base/dd.c:579
+#27 really_probe (dev=0xff11000031ddb810, drv=0xffffffff8304ab00 <virtio_console>) at ../drivers/base/dd.c:658
+#28 0xffffffff818e8419 in __driver_probe_device (drv=drv@entry=0xffffffff8304ab00 <virtio_console>, dev=dev@entry=0xff11000031ddb810)
+    at ../drivers/base/dd.c:800
+#29 0xffffffff818e851f in driver_probe_device (drv=drv@entry=0xffffffff8304ab00 <virtio_console>, dev=dev@entry=0xff11000031ddb810)
+    at ../drivers/base/dd.c:830
+#30 0xffffffff818e87d1 in __driver_attach (dev=0xff11000031ddb810, data=0xffffffff8304ab00 <virtio_console>) at ../drivers/base/dd.c:1216
+#31 0xffffffff818e5977 in bus_for_each_dev (bus=<optimized out>, start=start@entry=0x0 <fixed_percpu_data>, 
+    data=data@entry=0xffffffff8304ab00 <virtio_console>, fn=fn@entry=0xffffffff818e86d0 <__driver_attach>) at ../drivers/base/bus.c:368
+#32 0xffffffff818e77fa in driver_attach (drv=drv@entry=0xffffffff8304ab00 <virtio_console>) at ../drivers/base/dd.c:1233
+#33 0xffffffff818e6e0c in bus_add_driver (drv=drv@entry=0xffffffff8304ab00 <virtio_console>) at ../drivers/base/bus.c:673
+#34 0xffffffff818e9602 in driver_register (drv=drv@entry=0xffffffff8304ab00 <virtio_console>) at ../drivers/base/driver.c:246
+#35 0xffffffff817db56c in register_virtio_driver (driver=driver@entry=0xffffffff8304ab00 <virtio_console>) at ../drivers/virtio/virtio.c:357
+--Type <RET> for more, q to quit, c to continue without paging--
+#36 0xffffffff8360db71 in virtio_console_init () at ../drivers/char/virtio_console.c:2258
+#37 0xffffffff81001331 in do_one_initcall (fn=0xffffffff8360daf0 <virtio_console_init>) at ../init/main.c:1241
+#38 0xffffffff8359e6d8 in do_initcall_level (command_line=0xff110000041acd00 "BOOT_IMAGE", level=6) at ../init/main.c:1314
+#39 do_initcalls () at ../init/main.c:1330
+#40 do_basic_setup () at ../init/main.c:1349
+#41 kernel_init_freeable () at ../init/main.c:1566
+#42 0xffffffff81c5d296 in kernel_init (unused=<optimized out>) at ../init/main.c:1457
+#43 0xffffffff81002de9 in ret_from_fork () at ../arch/x86/entry/entry_64.S:310
+#44 0x0000000000000000 in ?? ()
+
+
+
+[    0.465622][    T0] ftrace: allocating 47183 entries in 185 pages
+[    0.489736][    T0] ftrace: allocated 185 pages with 5 groups
+[    0.492057][    T0] Dynamic Preempt: none
+[    0.492817][    T0] rcu: Preemptible hierarchical RCU implementation.
+[    0.492819][    T0] rcu: 	RCU event tracing is enabled.
+[    0.492821][    T0] rcu: 	RCU restricting CPUs from NR_CPUS=8192 to nr_cpu_ids=289.
+[    0.492823][    T0] 	Trampoline variant of Tasks RCU enabled.
+[    0.492824][    T0] 	Rude variant of Tasks RCU enabled.
+[    0.492825][    T0] 	Tracing variant of Tasks RCU enabled.
+[    0.492826][    T0] rcu: RCU calculated value of scheduler-enlistment delay is 26 jiffies.
+[    0.492828][    T0] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=289
+[    0.497390][    T0] NR_IRQS: 524544, nr_irqs: 2736, preallocated irqs: 16
+[    0.497799][    T0] rcu: srcu_init: Setting srcu_struct sizes to big.
+[    0.507050][    T0] Console: colour VGA+ 80x25
+[    0.507105][    T0] printk: console [ttyS0] enabled
+[    0.614390][    T0] ACPI: Core revision 20230628
+[    0.614982][    T0] APIC: Switch to symmetric I/O mode setup
+[    0.615614][    T0] DMAR: Host address width 39
+[    0.616113][    T0] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.616788][    T0] DMAR: dmar0: reg_base_addr fed90000 ver 1:0 cap d2008c22260206 ecap f00f5a
+[    0.617726][    T0] DMAR-IR: IOAPIC id 0 under DRHD base  0xfed90000 IOMMU 0
+[    0.618490][    T0] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+[    0.620193][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[    0.620196][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000051c04
+[    0.621827][    T0] DMAR: QI PRIOR: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+[    0.622742][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[    0.622742][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000051c04
+[    0.624388][    T0] DMAR: QI PRIOR: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+[    0.625317][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[    0.625318][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000051c04
+[    0.627081][    T0] DMAR: QI PRIOR: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+[    0.628005][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[    0.628005][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000051c04
+[    0.629667][    T0] DMAR: QI PRIOR: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+[    0.630591][    T0] DMAR: VT-d detected Invalidation Queue Error: Reason 0
+[    0.630592][    T0] DMAR: QI HEAD: Invalidation Wait qw0 = 0x200000025, qw1 = 0x10000051c04
+[    0.632228][    T0] DMAR: QI PRIOR: Interrupt Entry Cache Invalidation qw0 = 0x4, qw1 = 0x0
+
+localhost:~ # [  457.783440][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  458.127582][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  458.340305][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  458.552774][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  458.764378][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  458.976727][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  459.188482][ T1891] virtio_balloon virtio4: Out of puff! Can't get 1 pages
+[  459.313816][ T3555] in:imklog invoked oom-killer: gfp_mask=0x140cca(GFP_HIGHUSER_MOVABLE|__GFP_COMP), order=0, oom_score_adj=0
+[  459.314792][ T3555] CPU: 134 PID: 3555 Comm: in:imklog Not tainted 6.4.0-150600.23.17-default #1 SLE15-SP6 5eff937aa9559314e63d74eec60fba157a5d
+bfd6
+[  459.315759][ T3555] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS rel-1.16.2-3-gd478f380-rebuilt.opensuse.org 04/01/2014
+[  459.316697][ T3555] Call Trace:
+[  459.316968][ T3555]  <TASK>
+[  459.317196][ T3555]  dump_stack_lvl+0x57/0x80
+[  459.317569][ T3555]  dump_header+0x4a/0x230
+[  459.317924][ T3555]  oom_kill_process+0x138/0x190
+[  459.318277][ T3555]  out_of_memory+0x10b/0x570
+[  459.318622][ T3555]  __alloc_pages_slowpath.constprop.76+0xa81/0xda0
+[  459.319119][ T3555]  __alloc_pages+0x306/0x350
+[  459.319452][ T3555]  folio_alloc+0x17/0x40
+[  459.319765][ T3555]  ? filemap_get_entry+0xde/0x150
+[  459.320131][ T3555]  filemap_alloc_folio+0xb2/0x100
+[  459.320497][ T3555]  __filemap_get_folio+0xbe/0x400
+[  459.320896][ T3555]  ? page_cache_ra_unbounded+0x13b/0x180
+[  459.321310][ T3555]  filemap_fault+0x479/0xfd0
+[  459.321866][ T3555]  ? next_uptodate_page+0xe2/0x1f0
+[  459.322250][ T3555]  ? filemap_map_pages+0x14b/0x620
+[  459.322696][ T3555]  __do_fault+0x2d/0x140
+[  459.323025][ T3555]  do_pte_missing+0x2c3/0x7f0
+[  459.323432][ T3555]  __handle_mm_fault+0x5d9/0xba0
+[  459.323897][ T3555]  handle_mm_fault+0x119/0x2f0
+[  459.324439][ T3555]  do_user_addr_fault+0x245/0x890
+[  459.325011][ T3555]  exc_page_fault+0x69/0x150
+[  459.325362][ T3555]  asm_exc_page_fault+0x22/0x30
+[  459.325737][ T3555] RIP: 0033:0x7f74cece68c9
+

@@ -1,0 +1,131 @@
+
+
+list -H dmar_drhd_units -s dmar_drhd_unit
+
+for_each_iommu
+
+#
+p intel_iommu_enabled 
+
+#
+p dmar_disabled
+
+
+p swiotlb_force_bounce
+
+p swiotlb_force_disable
+
+# 
+p x86_swiotlb_enable
+
+
+p amd_iommu_detected
+
+p iommu_detected
+
+p x86_init.iommu.iommu_init
+p x86_platform.iommu_shutdown
+
+init: pci_iommu_alloc()
+
+# DMA engine
+4）调用dma_async_device_register将struct dma_device变量注册到kernel中。
+p dma_device_list
+
+  memmap=64K\$0x7e1f6000
+
+00000000-00000fff : Reserved
+00001000-0009ffff : System RAM
+000a0000-000bffff : PCI Bus 0000:00
+000f0000-000fffff : System ROM
+00100000-7e1f5017 : System RAM
+  19000000-19dfffff : Kernel code
+  19e00000-1a72bfff : Kernel rodata
+  1a800000-1ab57dff : Kernel data
+  1b24e000-1c3fffff : Kernel bss
+  6d000000-7b9fffff : Crash kernel
+7e1f5018-7e21d057 : System RAM
+7e21d058-7e21e017 : System RAM
+7e21e018-7e227c57 : System RAM
+7e227c58-7e271fff : System RAM
+7e272000-7e27afff : Reserved
+7e27b000-7f8eefff : System RAM
+7f8ef000-7fb6efff : Reserved
+7fb6f000-7fb7efff : ACPI Tables
+7fb7f000-7fbfefff : ACPI Non-volatile Storage
+7fbff000-7ffdffff : System RAM
+7ffe0000-7fffffff : Reserved
+
+
+
+
+
+
+# dmesg
+DMAR: No ATSR found
+DMAR: No SATC found
+DMAR: IOMMU feature fl1gp_support inconsistent
+DMAR: IOMMU feature pgsel_inv inconsistent
+DMAR: IOMMU feature nwfs inconsistent
+DMAR: IOMMU feature eafs inconsistent
+DMAR: IOMMU feature prs inconsistent
+DMAR: IOMMU feature nest inconsistent
+DMAR: IOMMU feature mts inconsistent
+DMAR: IOMMU feature sc_support inconsistent
+DMAR: IOMMU feature dev_iotlb_support inconsistent
+DMAR: dmar0: Using Queued invalidation
+DMAR: dmar1: Using Queued invalidation
+Trying to unpack rootfs image as initramfs...
+pci 0000:00:02.0: Adding to iommu group 0
+pci 0000:00:00.0: Adding to iommu group 1
+pci 0000:00:08.0: Adding to iommu group 2
+pci 0000:00:14.0: Adding to iommu group 3
+pci 0000:00:14.2: Adding to iommu group 3
+pci 0000:00:16.0: Adding to iommu group 4
+pci 0000:00:17.0: Adding to iommu group 5
+pci 0000:00:1c.0: Adding to iommu group 6
+pci 0000:00:1c.2: Adding to iommu group 7
+pci 0000:00:1f.0: Adding to iommu group 8
+pci 0000:00:1f.2: Adding to iommu group 8
+pci 0000:00:1f.3: Adding to iommu group 8
+pci 0000:00:1f.4: Adding to iommu group 8
+pci 0000:00:1f.6: Adding to iommu group 8
+pci 0000:02:00.0: Adding to iommu group 9
+pci 0000:04:00.0: Adding to iommu group 10
+DMAR: Intel(R) Virtualization Technology for Directed I/O
+PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+
+
+# debug dma issue:
+Let us continue with this idea.
+
+1. Edit /etc/default/grub
+
+Append the following parameters to GRUB_CMDLINE_LINUX_DEFAULT
+memmap=4M\\\$0x1008c718000 iommu=force intel_iommu=on
+
+2. Update grub.cfg
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+3. Edit /usr/lib/kdump/load.sh
+Add memmap to arguments of remove_from_commandline like:
+
+> --- a/load.sh
+> +++ b/load.sh
+> @@ -115,7 +115,7 @@ function build_kdump_commandline()
+>          local nr_cpus
+>          commandline=$(
+>              remove_from_commandline \
+> -                'root|resume|crashkernel|splash|mem|BOOT_IMAGE|showopts|zfcp\.allow_lun_scan|hugepages|acpi_no_memhotplug|cgroup_disable|unknown_nmi_panic|rd\.udev\.children-max' \
+> +                'root|resume|crashkernel|memmap|splash|mem|BOOT_IMAGE|showopts|zfcp\.allow_lun_scan|hugepages|acpi_no_memhotplug|cgroup_disable|unknown_nmi_panic|rd\.udev\.children-max' \
+
+
+Removing memmap from the kdump-capture kernel's command line is necessary because grub can't handle '$' well which can cause the kdump-caputre kernel hang for this case. 
+
+
+4. Install the new debug kernel:
+	https://ptf.suse.com/2/5d0981855eecb9f040ed3a0fff8af236/sles15-sp5/28407/x86_64/20240729-test
+This new debug kernel is based on the old one and with CONFIG_DMA_API_DEBUG enabled.
+
+CONFIG_DMA_API_DEBUG can cause performance degradation. As we only use it for debugging, I think it's tolerable.
+

@@ -65,3 +65,9 @@ srv-sapgad-Snapshot4.vmem
 srv-sapgad-Snapshot4.vmsn
 crash -e emacs --kaslr auto --hex vmlinux.gz vmlinux.debug  srv-sapgad-Snapshot4.vmsn
 
+https://qiita.com/testnin2/items/1f6f23e5be9ba0c4b9c1
+https://bugzilla.suse.com/show_bug.cgi?id=1195532#c0
+As none of our attempts were successful, we took a snapshot in the hung state and collected the .vmsn and .vmem files from vmware. I was able to open it in crash.
+      KERNEL: core/vmlinux-4.12.14-122.106-default.gz
+   DEBUGINFO: core/vmlinux-4.12.14-122.106-default.debug
+    DUMPFILE: TADDM-DEV-000-Snapshot3.vmsn

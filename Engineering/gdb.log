@@ -1,0 +1,23 @@
+
+
+
+gdb source gdb_script.log
+print_rqs < static_rqs.log
+
+
+
+gdb set $req = (struct request**) 0xff2dbfc2ecf4c800
+gdb p **$req@11
+
+
+crash> gdb set $a = (int [4]) {1, 2 ,3 }
+crash> p $a
+$53 = {0x1, 0x2, 0x3, 0x0}
+
+crash> p sizeof($a)/sizeof(int)
+$54 = 0x4
+(gdb) p sizeof(array)/sizeof(*array)
+
+
+
+set debug infrun on

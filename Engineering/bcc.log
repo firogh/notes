@@ -40,3 +40,5 @@ cp /proc/slabinfo ./slabinfo_after.log
 cp /proc/kpageflags ./kpageflags
 cp /proc/kpagecount ./kpagecount
 cp /proc/kallsyms ./kallsyms
+
+

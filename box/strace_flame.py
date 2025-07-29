@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-data_file = "/mounts/ziu/SFSC00325817/SFSC00335322/firo/firo.log"
+#data_file = "/mounts/ziu/SFSC00325817/SFSC00335322/firo/firo.log"
+data_file = "/home/firo/Downloads/dl360s-79_20240609_vcpu_threads.lst.txt"
 
 def main():
     with open(data_file) as f:
@@ -44,4 +45,4 @@ def main():
         # print("%s %d"%(k,v *1000000))
 
 if __name__ == "__main__":
-    main(
+    main()

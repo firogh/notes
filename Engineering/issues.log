@@ -13,4 +13,15 @@ cat ../firo/slabinfo.log | awk 'BEGIN{sum=0;}{sum += $6*$15/256;print $1" : " $6
 
 stress-ng --vm-bytes $(awk '/MemAvailable/{printf "%d\n", $2 * 0.9;}' < /proc/meminfo)k --vm-keep -m 1
 
+## user space
+Michal Hocko 2022-12-19 08:39:35 UTC
+(In reply to Firo Yang from comment #31)
+> Is this issue still reproducible in customer's environment? If so, maybe
+> using strace to trace some memory-related system calls would be helpful.
+> Something like:
+> 
+> strace -o /tmp/t.log -e mmap -e brk -k -p <pid of net-snmpd>
+
+You can use --trace=memory which should capture all directly memory related system calls. But after reading through the bug history I am not sure this is going to help much. If valgrind is not able to report anything then it likely means that the memory is still referenced so it looks like a state build up over time that is still reach reachable.
+
 

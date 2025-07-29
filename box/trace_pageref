@@ -1,0 +1,246 @@
+#!/usr/bin/env python3
+
+from bcc import BPF
+from time import sleep
+import struct
+import json
+import sys
+import argparse
+import code
+from datetime import datetime
+
+program = """
+#include <linux/mm.h>
+#include <linux/bpf.h>
+
+struct pfn_stack_entry {
+    u64 pfn;
+    u64 stack_id;
+    int val;
+    int count;
+    void *mapping;
+    unsigned long flags;
+    int ret;
+    int type;
+};
+
+BPF_STACK_TRACE(stack_traces, 10240);
+BPF_HASH(stack_counts, u64, u64, 10240);
+BPF_RINGBUF_OUTPUT(events, 1 << 16);
+
+static int trace_page_ref(struct pt_regs *ctx, u64 pfn, unsigned long flags, 
+        void *mapping, int count, int val, int ret, int type ) {
+    struct pfn_stack_entry *entry;
+    u64 stack_id = stack_traces.get_stackid(ctx, BPF_F_REUSE_STACKID);
+
+    u64 *old = stack_counts.lookup(&stack_id);
+    u64 new = 1;
+    if (old) {
+        new = *old + 1;
+    }
+    stack_counts.update(&stack_id, &new);
+    entry = events.ringbuf_reserve(sizeof(*entry));
+    if (!entry)
+        return 0;
+    
+    entry->pfn = pfn;
+    entry->stack_id = stack_id;
+    entry->count = count;
+    entry->flags = flags;
+    entry->mapping = mapping;
+    entry->val = val;
+    entry->ret = ret;
+    entry->type = type;
+
+    events.ringbuf_submit(entry, 0);
+    return 0;
+}
+"""
+
+bpf_source_kernel = """
+/*
+static int trace_page_ref(struct pt_regs *ctx, u64 pfn, unsigned long flags, 
+        void *mapping, int count, int val, int ret, int type ) {
+    */
+ 
+TRACEPOINT_PROBE(page_ref, page_ref_mod) {
+        return trace_page_ref((struct pt_regs *)args, args->pfn, 
+                    args->flags, args->mapping, args->count, args->val, args->count, 0);
+}
+TRACEPOINT_PROBE(page_ref, page_ref_mod_unless) {
+        if (!args->ret)
+            return 0;
+        return trace_page_ref((struct pt_regs *)args, args->pfn, 
+                    args->flags, args->mapping, args->count, args->val, args->count, 1);
+}
+
+TRACEPOINT_PROBE(page_ref, page_ref_set) {
+        return trace_page_ref((struct pt_regs *)args, args->pfn, 
+                    args->flags, args->mapping, args->count, args->val, args->count, 2);
+}
+
+TRACEPOINT_PROBE(page_ref, page_ref_mod_and_return) {
+        return trace_page_ref((struct pt_regs *)args, args->pfn, 
+                    args->flags, args->mapping, args->count, args->val, args->ret, 3);
+}
+
+
+TRACEPOINT_PROBE(page_ref, page_ref_mod_and_test) {
+
+        return trace_page_ref((struct pt_regs *)args, args->pfn, 
+                    args->flags, args->mapping, args->count, args->val, args->ret, 4);
+}
+/*
+
+
+*/
+"""
+
+program += bpf_source_kernel
+b = BPF(text=program)
+
+print("Tracing page_ref:* → PFN → Unlimited Stack Traces... Press Ctrl+C to stop.")
+
+pfn_events = {}
+pfn_state = {}
+possible_leak_pfn = [] # collection of possible leaked pfns
+
+def handle_event(cpu, data, size):
+    event = b["events"].event(data)
+    pfn = event.pfn
+
+    if pfn not in pfn_events:
+        pfn_events[pfn] = []
+
+    if pfn not in pfn_state:
+        pfn_state[pfn] = 0
+
+    if event.count == 0:
+        pfn_state[pfn] = 0 # 0 stands for unknown state
+        pfn_events[pfn] = [] # Release irrelant events
+    else:
+        pfn_events[pfn].append(event)
+
+    if pfn_state[pfn] == 0:
+        if event.mapping != 0 and event.count != 0:
+            pfn_state[pfn] =1 # once used as pagecache
+    elif pfn_state[pfn] == 1:
+        if event.mapping == 0 and event.count > 0:
+            pfn_state[pfn] = 2 # possiblely leaked
+            possible_leak_pfn.append(pfn)
+
+b["events"].open_ring_buffer(handle_event)
+bpf = b
+
+pid = -1
+def xs(bpf, stack_id):
+        stack_traces = bpf["stack_traces"]
+        trace = []
+        for addr in stack_traces.walk(stack_id):
+                sym = bpf.sym(addr, pid,
+                                      show_module=True,
+                                      show_offset=True)
+                trace.append(str(sym))
+        trace = "\n\t\t".join(trace)
+        print(trace)
+
+def save_data():
+    tag =  datetime.now().strftime("%Y_%m_%d_%I_%M_%S_%p")
+    tag = "suse_"+tag
+    dump_stack_traces("./", tag)
+    dump_page_stackid("./", tag)
+
+examples = """
+EXAMPLES:
+
+./trace_pageref
+"""
+
+description = """
+Trace possiblely leaked page refefences.
+"""
+
+parser = argparse.ArgumentParser(description=description,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=examples)
+
+parser.add_argument("-i", "--interval", default=5, type=int,
+        help="interval in seconds to print the number of possiblely leaked page refefences")
+
+parser.add_argument("-l", "--limit", default=1000, type=int,
+        help="exit once possibly leaked page refereces reaches this limit")
+
+args = parser.parse_args()
+leak_limit = args.limit
+interval = args.interval
+
+def leak_stat():
+    print(f"Number of possiblely leaked pages:{len(possible_leak_pfn)}, total tracked pfns {len(pfn_state)}")
+
+def save_stack_traces(stack_counters, filename):
+    stack_traces = bpf["stack_traces"]
+    f = open(filename, "w+")
+    for stack_id, count in stack_counters:
+        trace = ["=> %ld %ld "%(stack_id.value, count.value)]
+        try:
+                for addr in stack_traces.walk(stack_id.value):
+                        sym = bpf.sym(addr, pid,
+                                              show_module=True,
+                                              show_offset=True)
+                        trace.append(str(sym))
+               # trace = "\n\t\t".join(trace)
+                trace = " ".join(trace)
+                trace +="\n"
+        except KeyError:
+                trace = "stack information lost\n"
+        f.write(trace)
+"""
+struct pfn_stack_entry {
+    u64 pfn;
+    u64 stack_id;
+    int val;
+    int count;
+    void *mapping;
+    unsigned long flags;
+    int ret;
+    int type;
+};"""
+
+def save_events(items, filename):
+    f = open(filename, "w+")
+    for pfn, events in items:
+        for e in events:
+            f.write(f"{pfn} {e.stack_id} {e.val} {e.count} {hex(e.mapping if e.mapping is not None else 0)} {hex(e.flags)} {e.ret} {e.type} \n")
+
+def save_leak(filename):
+    f = open(filename, "w+")
+    for pfn in possible_leak_pfn:
+        f.write(f"{pfn} \n")
+
+def save_data():
+    tag =  datetime.now().strftime("%Y_%m_%d_%I_%M_%S_%p")
+    tag = "xsuse_"+tag+"_"
+    stack_counters_items = bpf["stack_counts"].items()
+    save_stack_traces(stack_counters_items, "./"+tag+"stack_traces.log")
+    events_items = pfn_events.items()
+    save_events(events_items, "./"+tag+"pageref_events.log")
+    save_leak("./"+tag+"possible_leak_page.log")
+    
+interval = 2
+try:
+    while True:
+        b.ring_buffer_poll()
+        print(f"Number of possiblely leaked pages:{len(possible_leak_pfn)}, total tracked pfns {len(pfn_state)}")
+        sleep(interval)
+except KeyboardInterrupt:
+    print("Interrupted...")
+
+print("Please wait...")
+print("Saving data...")
+#code.interact(local=locals())
+#save_debug_data_from_bpf_maps()
+save_data()
+sys.stdout.flush()
+print("Done...")
+#sleep(1)
+exit(0)

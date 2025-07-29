@@ -4,3 +4,8 @@ for BR in `git branch -r|grep -vE '/(users|ptf)/'|sed 's@->.*@@'`; do
   git grep 'atomic_add_unless(&sk->sk_refcnt, 1, -1'  $BR -- 'patches.*'
 done
 
+# Git rebase
+## Preserve the old tags
+git rebase --exec 'git tag old-$(git describe --tags --exact-match || echo NO_TAG)' main
+
+

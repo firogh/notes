@@ -1,0 +1,20 @@
+
+
++From cfd355145c32bb7ccb65fccbe2d67280dc2119e1 Mon Sep 17 00:00:00 2001
++From: Prasad Sodagudi <psodagud@codeaurora.org>
++Date: Fri, 3 Aug 2018 13:56:06 -0700
++Subject: [PATCH] stop_machine: Atomically queue and wake stopper threads
+
++From 2610e88946632afb78aa58e61f11368ac4c0af7b Mon Sep 17 00:00:00 2001
++From: "Isaac J. Manjarres" <isaacm@codeaurora.org>
++Date: Tue, 17 Jul 2018 12:35:29 -0700
++Subject: [PATCH] stop_machine: Disable preemption after queueing stopper
++ threads
++References: bsc#1088810, bsc#1161702
++Git-commit: 2610e88946632afb78aa58e61f11368ac4c0af7b
++Patch-mainline: v4.18-rc8
++
++This commit:
++
++  9fb8d5dc4b64 ("stop_machine, Disable preemption when waking two stopper threads")
+

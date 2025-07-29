@@ -1,0 +1,8 @@
+gio info -a "metadata::evince::bookmarks" .pdf > bookmarks.log
+
+awk -v RS='[,\n]' 1 < bookmarks.log | grep -v '(' | sed 's/)//' | sed 's/\'//g'
+
+https://github.com/yutayamamoto/pdfoutline
+
+./ptoc.py fukushi.pdf  /tmp/toc.toc out.pdf
+

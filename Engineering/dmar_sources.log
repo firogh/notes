@@ -1,0 +1,38 @@
+
+
+intel_prepare_irq_remapping
+Queued invalidation will be enabled to
+
+  <qemu:commandline>
+    <qemu:arg value='-s'/>
+    <qemu:arg value='-S'/>
+  </qemu:commandline>
+
+
+#11 0xffffffff81152a6b in vprintk_emit (facility=<optimized out>, level=<optimized out>, dev_info=<optimized out>, fmt=<optimized out>, 
+    args=<optimized out>) at ../kernel/printk/printk.c:2363
+#12 0xffffffff81c49742 in _printk (fmt=fmt@entry=0xffffffff82688a80 "\0013DMAR: QI HEAD: %s qw0 = 0x%llx, qw1 = 0x%llx\n")
+    at ../kernel/printk/printk.c:2388
+#13 0xffffffff8186f8c6 in qi_dump_fault (fault=16, iommu=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1257
+#14 qi_check_fault (wait_index=1, index=0, iommu=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1286
+#15 qi_submit_sync (iommu=iommu@entry=0xff1101000004fc00, desc=desc@entry=0xffffffff82e03e10, count=count@entry=1, options=options@entry=0)
+    at ../drivers/iommu/intel/dmar.c:1457
+#16 0xffffffff8186fd5b in qi_global_iec (iommu=iommu@entry=0xff1101000004fc00) at ../drivers/iommu/intel/dmar.c:1503
+--Type <RET> for more, q to quit, c to continue without paging--
+#17 0xffffffff8187c822 in iommu_set_irq_remapping (iommu=iommu@entry=0xff1101000004fc00, mode=<optimized out>)
+    at ../drivers/iommu/intel/irq_remapping.c:492
+#18 0xffffffff8187dd65 in intel_setup_irq_remapping (iommu=iommu@entry=0xff1101000004fc00) at ../drivers/iommu/intel/irq_remapping.c:613
+#19 0xffffffff83612fe6 in intel_setup_irq_remapping (iommu=0xff1101000004fc00) at ../drivers/iommu/intel/irq_remapping.c:536
+#20 intel_prepare_irq_remapping () at ../drivers/iommu/intel/irq_remapping.c:770
+#21 0xffffffff83613541 in irq_remapping_prepare () at ../drivers/iommu/irq_remapping.c:104
+#22 0xffffffff835c1003 in enable_IR_x2apic () at ../arch/x86/kernel/apic/apic.c:1961
+#23 0xffffffff835c5f52 in default_setup_apic_routing () at ../arch/x86/kernel/apic/probe_64.c:23
+#24 0xffffffff835c0e69 in apic_intr_mode_init () at ../arch/x86/kernel/apic/apic.c:1439
+#25 0xffffffff835ae070 in x86_late_time_init () at ../arch/x86/kernel/time.c:100
+#26 0xffffffff8359e392 in start_kernel () at ../init/main.c:1045
+#27 0xffffffff835ad940 in x86_64_start_reservations (
+    real_mode_data=real_mode_data@entry=0x8b000 <error: Cannot access memory at address 0x8b000>) at ../arch/x86/kernel/head64.c:555
+#28 0xffffffff835ada31 in x86_64_start_kernel (real_mode_data=0x8b000 <error: Cannot access memory at address 0x8b000>)
+    at ../arch/x86/kernel/head64.c:536
+#29 0xffffffff810001ef in secondary_startup_64 () at ../arch/x86/kernel/head_64.S:362
+#30 0x0000000000000000 in ?? ()

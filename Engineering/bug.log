@@ -1,0 +1,10 @@
+1611 static int do_open(struct inode *inode, struct file *filp)
+1612 {
+1613         struct apm_user *as;
+1614                
+1615         as = kmalloc(sizeof(*as), GFP_KERNEL);
+1616         if (as == NULL) 
+1617                 return -ENOMEM;
+1618 
+1619         as->magic = APM_BIOS_MAGIC;
+  ⮀ NORMAL ⮀  arch/x86/kernel/apm_32.c

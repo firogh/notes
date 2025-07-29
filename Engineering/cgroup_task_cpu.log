@@ -1,0 +1,20 @@
+static int cpu_cfs_quota_write_s64(struct cgroup_subsys_state *css, 
+                                   struct cftype *cftype, s64 cfs_quota_us)
+{
+        return tg_set_cfs_quota(css_tg(css), cfs_quota_us);
+}
+
+cfs_rq 
+
+crash> task_struct.se ff1b94103bc50000 | grep cfs_rq
+    cfs_rq = 0xff1b94086f52fa00,
+
+crash> cfs_rq.throttled 0xff1b94086f52fa00
+  throttled = 0x1,   # Thottled.
+
+crash> task_struct.cgroups ff1b94103bc50000
+  cgroups = 0xff1b9405f74e3c00,
+crash> css_set.dfl_cgrp  0xff1b9405f74e3c00
+  dfl_cgrp = 0xff1b940c22985000,
+crash> cgroup.kn 0xff1b940c22985000
+  kn = 0xff1b940bc2462f80,

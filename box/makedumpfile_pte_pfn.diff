@@ -1,0 +1,443 @@
+diff --git a/arch/x86_64.c b/arch/x86_64.c
+index ebf3447..a3d7857 100644
+--- a/arch/x86_64.c
++++ b/arch/x86_64.c
+@@ -297,6 +297,277 @@ get_versiondep_info_x86_64(void)
+ 	return TRUE;
+ }
+ 
++/*
++int pmd_huge(pmd_t pmd)
++{
++        return !pmd_none(pmd) &&
++                (pmd_val(pmd) & (_PAGE_PRESENT|_PAGE_PSE)) != _PAGE_PRESENT;
++}
++
++int pud_huge(pud_t pud)
++{
++        return !!(pud_val(pud) & _PAGE_PSE);
++}
++*/
++
++int add_pfn(unsigned long pfn)
++{
++	int nr = info->pte_pfn_nr;
++	int cap = info->pte_pfn_capacity;
++	int *pte_pfn;
++	int size;
++
++	if (nr < cap) {
++		info->pte_pfn[nr] = pfn;
++		info->pte_pfn_nr++;
++	} else {
++		size = (cap + 1024) * sizeof(int);
++		pte_pfn = malloc(size);
++		if (!pte_pfn) {
++			ERRMSG("Can't allocate memory for parallel_info.\n");	
++			return FALSE;
++		}
++		if (cap)
++			memcpy(pte_pfn, info->pte_pfn, size);
++		free(info->pte_pfn);
++		info->pte_pfn = pte_pfn;
++		info->pte_pfn_capacity = cap + 1024;
++		info->pte_pfn[nr] = pfn;
++		info->pte_pfn_nr++;
++		
++	}
++	return 0;	
++}
++
++int note_kernel_pmd_pfn(unsigned long pmd_pa)
++{
++	int i;
++	unsigned long pmd_entry;
++	unsigned long pmd_table[512];
++	unsigned long entry_mask = ENTRY_MASK;
++
++	if (!readmem(PADDR, pmd_pa, pmd_table, sizeof pmd_table)) {
++		ERRMSG("Can't get pud_pte: %lx.\n", pmd_pa);
++		return FALSE;
++	}
++
++	for (i = 0; i < 512; i++)
++	{
++		pmd_entry = pmd_table[i];
++		if (!(pmd_entry & _PAGE_PRESENT)) {
++			continue;
++		}
++		
++		/* 2-MB huge page */
++		if (pmd_entry & _PAGE_PSE) {
++			ERRMSG("PMD 2-MB huge page: %lx.\n", pmd_entry);
++			continue;
++		}
++
++		/* pmd_entry points to a PTE table */
++		add_pfn((pmd_entry & entry_mask)>>12);
++	}
++	return 0;
++}
++
++int note_kernel_pud_pfn(unsigned long pud_pa)
++{
++	int i;
++	unsigned long pud_entry;
++	unsigned long pud_table[512];
++	unsigned long entry_mask = ENTRY_MASK;
++
++	if (!readmem(PADDR, pud_pa, pud_table, sizeof pud_table)) {
++		ERRMSG("Can't get pud_pte: %lx.\n", pud_pa);
++		return FALSE;
++	}
++
++	for (i = 0; i < 512; i++)
++	{
++		pud_entry = pud_table[i];
++		if (!(pud_entry & _PAGE_PRESENT)) {
++			continue;
++		}
++		/* 1-GB huge page */
++		if (pud_entry & _PAGE_PSE) {
++			ERRMSG("PUD 1-GB huge page: %lx.\n", pud_entry);
++			continue;
++		}
++
++		add_pfn((pud_entry & entry_mask)>> 12);
++		note_kernel_pmd_pfn(pud_entry & entry_mask);
++	}
++	return 0;
++}
++
++int note_kernel_p4d_pfn(unsigned long p4d_pa)
++{
++	int i;
++	unsigned long p4d_entry;
++	unsigned long p4d_table[512];
++	unsigned long entry_mask = ENTRY_MASK;
++
++	if (!readmem(PADDR, p4d_pa, p4d_table, sizeof p4d_table)) {
++		ERRMSG("Can't get p4d_pte: %lx.\n", p4d_pa);
++		return 1;
++	}
++
++	for (i = 0; i < 512; i++)
++	{
++		p4d_entry = p4d_table[i];
++		if (!(p4d_entry & _PAGE_PRESENT)) {
++			continue;
++		}
++
++		add_pfn((p4d_entry & entry_mask)>>12);
++		note_kernel_pmd_pfn(p4d_entry & entry_mask);
++	}
++	return 0;
++}
++
++int note_kernel_pgd_pfn()
++{
++        int i;
++	unsigned long pgd_entry;
++	unsigned long pgd_table[512];
++        unsigned long pgd_va;
++	unsigned long entry_mask = ENTRY_MASK;
++
++        if (SYMBOL(init_level4_pgt) != NOT_FOUND_SYMBOL)
++                pgd_va = SYMBOL(init_level4_pgt);
++        else if (SYMBOL(init_top_pgt) != NOT_FOUND_SYMBOL)
++                pgd_va = SYMBOL(init_top_pgt);
++        else {
++                ERRMSG("Can't get the symbol of init_level4_pgt/init_top_pgt.\n");
++                return FALSE;
++        }
++/*
++        pagetable = init_level4_pgt - __START_KERNEL_map + info->phys_base;
++
++        if (!readmem(PADDR, pagetable, &pgd, sizeof pgd)) {
++                ERRMSG("Can't get pgd (page_dir:%lx).\n", page_dir);
++                return NOT_PADDR;
++        }
++*/
++        if (!readmem(VADDR, pgd_va, pgd_table, sizeof pgd_table)) {
++                ERRMSG("Can't get pgd (page_dir:%lx).\n", pgd_va);
++                return FALSE;
++        }
++        //if (check_5level_paging()) 
++        if (0) 
++	{
++		// Get P4D.
++/*
++                for (i = pgd_index; i < 512; i++)
++                {
++                        pgd_entry = pgd_addr + i * sizeof(unsigned long);
++			if (!p4d_paddr)
++				continue;
++
++                        if (!readmem(PADDR, p4d_pa, entry, sizeof p4d_pte)) {
++                                ERRMSG("Can't get p4d_pte (p4d_paddr:%lx).\n", p4d_paddr);
++                                return NOT_PADDR;
++                        }
++                        if (info->vaddr_for_vtop == vaddr)
++                                MSG("  P4D : %16lx => %16lx\n", p4d_paddr, p4d_pte);
++
++                        if (!(p4d_pte & _PAGE_PRESENT)) {
++                                ERRMSG("Can't get a valid p4d_pte.\n");
++                                return NOT_PADDR;
++                        }    
++			note_kernel_p4d_pfn(entry, pfn);
++                }
++*/
++        }else {
++		unsigned long start_addr = 0xffff800000000000;
++		for (i = pgd_index(start_addr); i < 512; i++)
++		{
++			pgd_entry = pgd_table[i];
++			if (!(pgd_entry & _PAGE_PRESENT))
++				continue;
++			add_pfn((pgd_entry &entry_mask)>>12);
++			note_kernel_pud_pfn(pgd_entry & entry_mask);
++		}
++        }    
++	return TRUE;
++}
++/*
++	12	21	30	39	47	56
++	4KB	2MB	1GB	512GB	256TB	128PB
++
++	4 level page table
++	start addr ffff800000000000
++	end addr ffffffffffffffff
++
++*/
++
++void swap(int *a, int *b) {
++    int temp = *a; 
++    *a = *b; 
++    *b = temp;
++}
++
++void heapify(int arr[], int n, int i) {
++    int largest = i;  // Initialize largest as root
++    while (1) {
++        int left = 2 * i + 1;   // Left child
++        int right = 2 * i + 2;  // Right child
++
++        if (left < n && arr[left] > arr[largest]) {
++            largest = left;
++        }
++        if (right < n && arr[right] > arr[largest]) {
++            largest = right;
++        }
++        if (largest == i) {
++            break;
++        }
++        swap(&arr[i], &arr[largest]);
++        i = largest;  // Move down to the largest child position
++    }
++}
++void heap_sort(int arr[], int n) {
++    // Build max heap
++    for (int i = n / 2 - 1; i >= 0; i--) {
++        heapify(arr, n, i);
++    }
++    // Extract elements from the heap one by one
++    for (int i = n - 1; i > 0; i--) {
++        swap(&arr[0], &arr[i]);
++        heapify(arr, i, 0);
++    }
++}
++int remove_duplicates(int arr[], int n) {
++    if (n == 0) return 0;
++
++    int j = 0;  // Index of the next unique element
++    for (int i = 1; i < n; i++) {
++        if (arr[j] != arr[i]) {
++            j++;
++            arr[j] = arr[i];
++        }
++    }
++    return j + 1;  // New size of the array without duplicates
++}
++int note_kernel_page_table_pfn()
++{
++//        int total_mem = get_total();
++	info->pte_pfn_nr = 0;
++	info->pte_pfn_capacity = 0;
++	info->pte_pfn = NULL;
++
++	note_kernel_pgd_pfn();
++	MSG("Note page table pfn %d %d\n", info->pte_pfn_nr, info->pte_pfn_capacity);
++
++	heap_sort(info->pte_pfn, info->pte_pfn_nr);
++	MSG("Sorted pfn array\n");
++	info->pte_pfn_nr = remove_duplicates(info->pte_pfn, info->pte_pfn_nr);
++	for (int i = 0; i < info->pte_pfn_nr; i++)
++		MSG("0x%x ", info->pte_pfn[i]<<12);
++	MSG("Removed duplcates pfn array %d %d\n", info->pte_pfn_nr, info->pte_pfn_capacity);
++
++	return TRUE;
++}
+ /*
+  * Translate a virtual address to a physical address by using 4 levels paging.
+  */
+diff --git a/makedumpfile.c b/makedumpfile.c
+index c65598d..d833727 100644
+--- a/makedumpfile.c
++++ b/makedumpfile.c
+@@ -7654,6 +7654,11 @@ int
+ create_dump_bitmap(void)
+ {
+ 	int ret = FALSE;
++	int idx =0;
++	int pfn;
++	struct cycle pre_cycle;
++	struct cycle pfn_cycle;
++			
+ 
+ 	if (info->flag_split) {
+ 		if (!prepare_splitblock_table())
+@@ -7682,6 +7687,33 @@ create_dump_bitmap(void)
+ 			goto out;
+ 
+ 		if (info->nr_ranges == 1) {
++			idx =0;
++			pre_cycle = cycle;
++			pfn_cycle = cycle;
++			
++			while (idx < info->pte_pfn_nr ) {
++				pfn = info->pte_pfn[idx++]	
++				if (pfn < cycle.end_pfn ) {
++					if ( cycle.start_pfn < pfn) {
++						pre_cycle.start_pfn = cycle.start_pfn;
++						pre_cycle.end_pfn = pfn;
++						pre_cycle.flags = 0;
++						if (!create_2nd_bitmap(&pre_cycle))
++							goto out;
++					}
++					// [ )
++					pfn_cycle.start_pfn =pfn;
++					pfn_cycle.end_pfn = pfn + 1;
++					pfn_cycle.flags |= MRF_MANDATORY;
++					if (!create_2nd_bitmap(&pfn_cycle))
++						goto out;
++
++					cycle.start_pfn = pfn + 1;
++				} else {
++					ERRMSG("PTE PFN goes beyond maxpfn %x %lx\n", pfn, cycle.end_pfn);
++					break;
++				}
++			}
+ 			if (!create_2nd_bitmap(&cycle))
+ 				goto out;
+ 		} else {
+@@ -7691,10 +7723,36 @@ create_dump_bitmap(void)
+ 				memset(&sub_cycle, 0, sizeof(struct cycle));
+ 				sub_cycle.flags = info->mr[i].flags;	
+ 				ERRMSG("sub cycle %llx %llx %llx.\n", start, end, sub_cycle.flags);
++				idx = 0;
+ 				for_each_cycle(start, end, &sub_cycle)
+ 				{
+-					ERRMSG("per sub cycle %llx %llx %llx %d\n", sub_cycle.start_pfn, sub_cycle.end_pfn, sub_cycle.flags, 
+-							info->flag_cyclic);
++					ERRMSG("per sub cycle %llx %llx %llx %d\n", sub_cycle.start_pfn, 
++						sub_cycle.end_pfn, sub_cycle.flags,info->flag_cyclic);
++					pre_cycle = sub_cycle;
++					pfn_cycle = sub_cycle;
++					
++					while (idx < info->pte_pfn_nr ) {
++						pfn = info->pte_pfn[idx++]	
++						if (pfn < sub_cycle.end_pfn ) {
++							if ( sub_cycle.start_pfn < pfn) {
++								pre_cycle.start_pfn = sub_cycle.start_pfn;
++								pre_cycle.end_pfn = pfn;
++								if (!create_2nd_bitmap(&pre_cycle))
++									goto out;
++							}
++							// [ )
++							pfn_cycle.start_pfn =pfn;
++							pfn_cycle.end_pfn = pfn + 1;
++							pfn_cycle.flags |= MRF_MANDATORY;
++							if (!create_2nd_bitmap(&pfn_cycle))
++								goto out;
++
++							sub_cycle.start_pfn = pfn + 1;
++						} else {
++							idx--; // Processed in next cycle;
++							break;
++						}
++					}
+ 					if (!create_2nd_bitmap(&sub_cycle))
+ 						goto out;
+ 				}
+@@ -9347,6 +9405,9 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 	struct disk_dump_header *dh = info->dump_header;
+ 	unsigned char buf[info->page_size];
+ 	struct timespec ts_start;
++        struct cycle pre_cycle;
++        struct cycle pfn_cycle;
++	int idx, pfn;
+ 
+ 	cd_header->offset
+ 		= (DISKDUMP_HEADER_BLOCKS + dh->sub_hdr_size + dh->bitmap_blocks)
+@@ -9400,6 +9461,9 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 			return FALSE;
+ 	}
+ 
++	ERRMSG("\nBefore note_kernel_page_table_pfn\n");
++	note_kernel_page_table_pfn();
++	ERRMSG("\nAfter note_kernel_page_table_pfn\n");
+ 	/*
+ 	 * Initialize physcial memory ranges.
+ 	int nr_ranges= 3;
+@@ -9412,6 +9476,7 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 	/*
+ 	 * Write pages and bitmap cyclically.
+ 	 */
++	idx = 0;
+ 	for (int i = 0; i < info->nr_ranges; i++) 
+ 	{
+ 		mdf_pfn_t start = info->mr[i].start_pfn;
+@@ -9425,6 +9490,29 @@ write_kdump_pages_and_bitmap_cyclic(struct cache_data *cd_header, struct cache_d
+ 			ERRMSG("per cycle %llx %llx %llx %d .\n", cycle.start_pfn, cycle.end_pfn, cycle.flags
+ 					,info->flag_cyclic);
+ 			if (info->flag_cyclic) {
++				pre_cycle = cycle;
++				pfn_cycle = cycle;
++				while (idx < info->pte_pfn_nr ) {
++					pfn = info->pte_pfn[idx++]      
++					if (pfn < cycle.end_pfn ) {
++						if (cycle.start_pfn < pfn) {
++							pre_cycle.start_pfn = cycle.start_pfn;
++							pre_cycle.end_pfn = pfn;
++							if (!create_2nd_bitmap(&pre_cycle))
++								goto out;
++						}
++						pfn_cycle.start_pfn =pfn; 
++						pfn_cycle.end_pfn = pfn + 1;
++						pfn_cycle.flags |= MRF_MANDATORY;
++						if (!create_2nd_bitmap(&pfn_cycle))
++							goto out;
++
++						cycle.start_pfn = pfn + 1;
++					} else {
++						idx--; // Processed in next cycle;
++						break;
++					}
++				}
+ 				if (!create_2nd_bitmap(&cycle))
+ 					return FALSE;
+ 			}
+diff --git a/makedumpfile.h b/makedumpfile.h
+index f1b0959..d36c8e5 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -1395,6 +1395,9 @@ struct DumpInfo {
+ 	int		flag_excludevm;      /* -e - excluding unused vmemmap pages */
+ 	int		flag_use_count;      /* _refcount is named _count in struct page */
+ 	int		flag_dry_run;        /* do not create a vmcore file */
++	int		pte_pfn_nr;	     /* number of pfn stored in page table entry */
++	int		pte_pfn_capacity;    /* size of pte_pfn */
++	int 		*pte_pfn;    /* pfn stored in page table entry */
+ 	unsigned long	vaddr_for_vtop;      /* virtual address for debugging */
+ 	long		page_size;           /* size of page */
+ 	long		page_shift;

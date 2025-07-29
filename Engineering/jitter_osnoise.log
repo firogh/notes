@@ -1,0 +1,11 @@
+  echo 200000 > /sys/kernel/debug/tracing/buffer_size_kb
+  echo 1 > /sys/kernel/debug/tracing/tracing_thresh
+  echo 2-16,34-48 > /sys/kernel/debug/tracing/osnoise/cpus
+  cd /sys/kernel/debug/tracing/
+  echo 0 >events/enable
+  echo 1 > events/osnoise/irq_noise/enable
+  echo 1 > events/osnoise/nmi_noise/enable
+  echo 1 > events/osnoise/softirq_noise/enable
+  echo 1 > events/osnoise/thread_noise/enable
+  echo nop > current_tracer
+  echo osnoise > current_tracer

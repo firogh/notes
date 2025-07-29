@@ -1,0 +1,17 @@
+
+
+
+gpg --keyserver pgp.mit.edu --recv-keys 78237EB8
+
+gpg --list-keys --keyid-format short
+
+
+gpg --sign-key --ask-cert-level --default-key 5AC37F2B35D68CA21A6B2455C04E1C22FE1019DD  colin.hamilton@suse.com
+gpg --sign-key --ask-cert-level <email address>
+gpg -a --export <email address> > signed.key
+gpg -a -e -r <email address> -o encrypted.signed.key ./signed.key
+gpg --keyserver keys.gnupg.net --send-key <key ID> 
+
+
+
+Replace the text "<key ID>" in the above command with the key ID which is "A7A7B4AD" in this example. Send the file encrypted.signed.key to the key owner in email so they can decrypt and import it into their key ring.

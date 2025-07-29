@@ -1,0 +1,75 @@
+
+# first surmmary
+TL;DR from the analyses 
+Focusing on important cpus 3 - 7 and 35- 38
+- no TLB flushes - GOOD (BPR TLB flushes are gone)
+- CPU assignment is weird because CPU HT siblings are busy with different applications while other cores are mostly idle - BAD
+    - there is some IRQ involvement especially on cpus 4 and 36 (siblings) - that seems like networking traffic handling - BAD?
+- there are short (<=27us) preemptions by kernel threads even on - unlikely bad
+     - This TESTING kernel likely doesn't contain our patches to silence kworkers! - BAD
+- PF activity is minor (only 48 events on important CPUs), none of them taking more than 33us - BAD?
+
+Appart from that we can see reschedules - BAD?
+ [002] -> [034]
+ [034] -> [002]
+Those CPUs are reportedly servicing and they likely shouldn't be isolated in the first place. Nevertheless we recommend extending isolcpus kernel cmd line by "domain,".
+
+# CPU quota comment 338 bug 1217895
+I have discussed our latest findings in traces with our scheduler experts and the most plausible explanation is the scheduling throttling due to cpu quota enforcement and RT tasks throttling.
+
+Deploying cpu quota or cpu share control on otherwise cpu isolated workloads is not only very questionable it can be actively harmful to the workload. CPU isolation functionality in general relies on a proper cpu partitioning which shields the latency sensitive and userspace mostly workloads from any other unrelated activity. Therefore CPU quota can only hurt the latency sensitive workloads rather than protect them from unrelated activity.
+
+An example of how the cpu quota could look like is as follows:
+     fh_sender-1150438 [003] d.h3.  9199.277351: sched_wakeup: comm=runc:[2:INIT] pid=1177526 prio=120 target_cpu=003
+[...]
+      fh_sender-1150438 [003] d..2.  9199.284439: sched_switch: prev_comm=fh_sender prev_pid=1150438 prev_prio=120 prev_state=R ==> next_comm=swapper/3 next_pid=0 next_prio=120
+          <idle>-0       [003] d..2.  9199.368145: sched_switch: prev_comm=swapper/3 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=runc:[2:INIT] next_pid=1177526 next_prio=120
+   runc:[2:INIT]-1177526 [003] .....  9199.368147: sys_nanosleep -> 0x0
+   runc:[2:INIT]-1177526 [003] d....  9199.368148: rcu_dyntick: Start 1 0 0x4ea
+
+The task (pid=1177526) is woken up, yet we schedule into idle _before_ scheduling into the woken task. The overall latency is 90.797ms which is a lot
+
+[...]
+Please also be aware that RT tasks might be throttled as well if they exceed their slice too much. This would be reflected by a one off message in the kernel log "sched: RT throttling activated". The wake up stall in comment 333 could be attributed to RT throttling.
+          <idle>-0       [005] dN.2.  9212.112215: sched_wakeup: comm=scheduler pid=1150979 prio=49 target_cpu=005
+          <idle>-0       [005] dN.1.  9212.112216: csd_function_exit: func=sched_ttwu_pending, csd=000000008ffd6c75
+          <idle>-0       [005] d..2.  9212.346678: sched_switch: prev_comm=swapper/5 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=scheduler next_pid=1150979 next_prio=49
+       scheduler-1150979 [005] .....  9212.346679: sys_futex -> 0x0
+       scheduler-1150979 [005] d....  9212.346681: rcu_dyntick: Start 1 0 0x37e
+
+The CPU is idle when it wakes up the RT task (scheduler), yet it takes ~200ms for scheduler to kick in which could be explained by the RT throttling.
+
+I do not think it makes any sense to investigate further with any cpu bandwidth control in place. If there are still unexpected wakeup latencies after cpu quota and cpu share control are disabled on _anything_ running on isolated cpus then we can have a deeper look. For the global RT throttling it might make sense to increase the default value. If RT tasks are running for long periods of time.
+
+## comment 355
+I still see the rt bandwidth timer active. Which means RT bandwidth is still running:
+
+datalogdir.1710228904> grep sched_rt_period_timer trace.1710245272 | wc -l
+61
+
+## 371
+CFS bandwidth is still used:
+
+$ grep sched_cfs_period_timer trace.1712576194 | wc -l
+45236
+## comment 368
+Is CPU quota still enabled? I haven't checked which specific cgroups are affected but
+ grep nr_throttled cgroup.171257* | sed 's@.*/@@' | sort -u
+
+tells there is throttling going on.
+
+## comment 369
+This is a draft response because I haven't read the bug in detail. When we agree on an appropriate response, we can make a public comment.
+
+The OS cannot guarantee a specific limit on overhead within a given timeframe as the level of interference is related to the application behavior, userspace configuration and the hardware itself. If the application requests or userspace configuration requires intervention from the OS for functional correctness then it must happen. Similarly, limiting the overhead to a specific percentage of CPU usage encounters the same problem -- the overhead may be due to what the application or configuration requires.
+
+The history of the bug indicates that CPU quotas and RT throttling were significant sources of interference. With CPU quotas, the OS is providing a service explicitly requested by the userspace configuration. The appropriate action is to disable the quotas if they are causing problems and should not be required. With RT throttling, it is a safety mechanism to reduce the risk of livelocking due to an RT priority task preventing the kernel making forward progress. If it is certain that the task will not cause a livelocking issue then the appropriate action is to disable RT throttling by setting the kernel.sched_rt_runtime_us sysctl to -1. With both quotas and RT throttling, the degree of interference and the timing is unpredictable. While it may be possible to limit throttling within a 500us window via kernel.sched_rt_runtime_us and setting the sched_rt_runtime_us to a limit within that window, it is not guaranteed that the throttling will occur at a convenient time and the throttling behavior is providing the requested safety net. In both cases, when any throttling occurs due to the configuration, all bets are off with respect to meeting precise deadlines as the configured quota to complete a quantum of work has been exceeded.
+
+
+
+# tsc
+Frederic Weisbecker  Jun 6th at 12:22 AM
+tsc=reliable disables the clocksource watchdog. It's an annoying timer that fires every 1/2 seconds. But it only happens on some broken hardware. Also I haven't seen the clocksource_watchdog from latest traces. And I don't recall seeing it ever.
+
+# stop load balncing
+isolcpus=managed_irq,domain,2-31,34-63

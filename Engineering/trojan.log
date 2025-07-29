@@ -1,0 +1,47 @@
+https://my.vultr.com/
+https://github.com/wulabing/Xray_onekey
+https://github.com/FranzKafkaYu/x-ui/wiki/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85
+
+
+fiirosun.top 91.195.240.123
+https://www.namesilo.com/account_domain_manage_dns.php
+	vultr 207.148.112.37
+www	A	207.148.112.37	0	3603*	3rd-party
+
+https://trojan.bojin.co/
+curl -O https://raw.githubusercontent.com/xxxbrian/trojan.sh/main/trojan.sh && chmod +x trojan.sh && ./trojan.sh
+
+systemctl restart trojan
+
+
+{
+    "run_type": "client",
+    "local_addr": "127.0.0.1",
+    "local_port": 1080,
+    "remote_addr": "fiirosun.top",
+    "remote_port": 443,
+    "password": [
+        "day1day2"
+    ],
+    "log_level": 1,
+    "ssl": {
+        "verify": true,
+        "verify_hostname": true,
+        "cert": "",
+        "cipher_tls13":"TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_256_GCM_SHA384",
+        "sni": "",
+        "alpn": [
+            "h2",
+            "http/1.1"
+        ],
+        "reuse_session": true,
+        "session_ticket": false,
+        "curves": ""
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true,
+        "fast_open": false,
+        "fast_open_qlen": 20
+    }
+}

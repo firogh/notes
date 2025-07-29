@@ -1,0 +1,265 @@
+
+
+
+# SCTP
+sctp_compute_cksum
+
+ip_vs_in_hook -> ip_vs_try_to_schedule
+sctp_conn_schedule -> ip_vs_service_find(sctp_dnat_handler,) &  ip_vs_schedule-> ip_vs_conn_new -> ip_vs_bind_xmit
+static inline void ip_vs_bind_xmit(struct ip_vs_conn *cp) 
+{
+        switch (IP_VS_FWD_METHOD(cp)) {
+        case IP_VS_CONN_F_MASQ:
+                cp->packet_xmit = ip_vs_nat_xmit;
+
+
+
+ip_vs_nfct_expect_callbac
+(IP_VS_FWD_METHOD(cp) == IP_VS_CONN_F_MASQ
+
+## core
+https://blog.csdn.net/sinat_20184565/article/details/101271253
+ip_vs_service_find ?
+
+## match?
+ip_vs_in_hook -> packet_xmit -> ip_vs_nat_xmit
+
+# IPVS new
+/*
+ *      It is hooked at the NF_INET_LOCAL_OUT chain, used only for VS/NAT.
+ *      Check if packet is reply for established ip_vs_conn.
+ */
+static unsigned int
+ip_vs_local_reply4(void *priv, struct sk_buff *skb,
+                   const struct nf_hook_state *state)
+{
+        return ip_vs_out(net_ipvs(state->net), state->hook, skb, AF_INET);
+}
+/*
+ *      It is hooked at the NF_INET_FORWARD and NF_INET_LOCAL_IN chain,
+ *      used only for VS/NAT.
+ *      Check if packet is reply for established ip_vs_conn.
+ */
+static unsigned int
+ip_vs_reply4(void *priv, struct sk_buff *skb,
+             const struct nf_hook_state *state)
+{
+        return ip_vs_out(net_ipvs(state->net), state->hook, skb, AF_INET);
+}
+ip_vs_out ===> local-out
+ip_vs_conn_out_get
+[ 8882.403597] IPVS: lookup/out SCTP 10.145.138.66:46673->10.100.52.182:39289 not hit
+
+ip_vs_conn_in_get
+[ 8882.403605] IPVS: lookup/in SCTP 10.145.138.66:46673->10.100.52.182:39289 not hit
+
+
+ip_vs_schedule
+ip_vs_conn_new
+[ 8882.403657] IPVS: Bind-dest SCTP c:10.145.138.66:46673 v:10.100.52.182:39289 d:10.2.135.203:3869 fwd:M s:1 conn->flags:100 conn->refcnt:1 dest->refcnt:2
+[ 8882.403692] IPVS: Schedule fwd:M c:10.145.138.66:46673 v:10.100.52.182:39289 d:10.2.135.203:3869 conn->flags:140 conn->refcnt:2
+
+
+# IPVS source
+
+static const struct nf_hook_ops ip_vs_ops4[] = {
+        /* After packet filtering, change source only for VS/NAT */
+        {
+                .hook           = ip_vs_reply4,
+                .pf             = NFPROTO_IPV4,
+                .hooknum        = NF_INET_LOCAL_IN,
+                .priority       = NF_IP_PRI_NAT_SRC - 2, 
+        },
+        /* After packet filtering, forward packet through VS/DR, VS/TUN,
+         * or VS/NAT(change destination), so that filtering rules can be
+         * applied to IPVS. */
+        {
+                .hook           = ip_vs_remote_request4,
+                .pf             = NFPROTO_IPV4,
+                .hooknum        = NF_INET_LOCAL_IN,
+                .priority       = NF_IP_PRI_NAT_SRC - 1, 
+        },   
+        /* Before ip_vs_in, change source only for VS/NAT */
+        {    
+                .hook           = ip_vs_local_reply4,
+                .pf             = NFPROTO_IPV4,
+                .hooknum        = NF_INET_LOCAL_OUT,
+                .priority       = NF_IP_PRI_NAT_DST + 1, 
+        },
+        /* After mangle, schedule and forward local requests */
+        {
+                .hook           = ip_vs_local_request4,
+ip_vs_bind_dest
+        IP_VS_DBG_BUF(7, "Bind-dest %s c:%s:%d v:%s:%d "
+                      "d:%s:%d fwd:%c s:%u conn->flags:%X conn->refcnt:%d "
+                      "dest->refcnt:%d\n",
+ip_vs_in
+ip_vs_set_state
+sctp_state_transition
+ 51 [ 6839.695052] SCTP input   10.2.135.203:3869->10.100.52.182:54136 state: NONE->INIT1 conn->refcnt:2
+
+
+
+
+
+# IPVS
+ip_vs_schedule
+[ 5879.843853] IPVS: ip_vs_rr_schedule(): Scheduling...
+[ 5879.843902] IPVS: RR: server 10.2.135.203:3869 activeconns 0 refcnt 1 weight 1
+[ 5879.843933] IPVS: Schedule fwd:M c:10.145.138.66:40803 v:10.100.52.182:39289 d:10.2.135.203:3869 conn->flags:140 conn->refcnt:2
+
+[ 6839.693219] IPVS: lookup/out TCP 10.100.2.40:50458->10.100.52.182:22 not hit
+[ 6839.693241] IPVS: lookup/in TCP 10.100.2.40:50458->10.100.52.182:22 not hit
+[ 6839.694984] IPVS: lookup/out SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.694989] IPVS: lookup/in SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.694993] IPVS: lookup service: fwm 0 SCTP 10.100.52.182:39289 hit
+[ 6839.695009] IPVS: lookup/in SCTP 10.100.52.182:39289->10.100.52.182:54136 not hit
+[ 6839.695011] IPVS: ip_vs_rr_schedule(): Scheduling...
+[ 6839.695013] IPVS: RR: server 10.2.135.203:3869 activeconns 0 refcnt 2 weight 1
+[ 6839.695017] IPVS: Bind-dest SCTP c:10.100.52.182:54136 v:10.100.52.182:39289 d:10.2.135.203:3869 fwd:M s:1 conn->flags:100 conn->refcnt:1 dest->refcnt:3
+[ 6839.695045] IPVS: Schedule fwd:M c:10.100.52.182:54136 v:10.100.52.182:39289 d:10.2.135.203:3869 conn->flags:140 conn->refcnt:2
+[ 6839.695052] SCTP input   10.2.135.203:3869->10.100.52.182:54136 state: NONE->INIT1 conn->refcnt:2
+[ 6839.695207] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695212] SCTP output   10.2.135.203:3869->10.100.52.182:54136 state: INIT1->C-SENT conn->refcnt:3
+[ 6839.695237] IPVS: lookup/out SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.695240] IPVS: lookup/in SCTP 10.100.52.182:54136->10.100.52.182:39289 hit
+[ 6839.695242] SCTP input   10.2.135.203:3869->10.100.52.182:54136 state: C-SENT->C-REPLIED conn->refcnt:2
+[ 6839.695340] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695344] SCTP output   10.2.135.203:3869->10.100.52.182:54136 state: C-REPLIED->ESTABLISHED conn->refcnt:3
+[ 6839.695486] IPVS: lookup/out SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.695490] IPVS: lookup/in SCTP 10.100.52.182:54136->10.100.52.182:39289 hit
+[ 6839.695553] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695634] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695706] IPVS: lookup/out SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.695710] IPVS: lookup/in SCTP 10.100.52.182:54136->10.100.52.182:39289 hit
+[ 6839.695747] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695750] SCTP output   10.2.135.203:3869->10.100.52.182:54136 state: ESTABLISHED->S-SENT conn->refcnt:3
+[ 6839.695768] IPVS: lookup/out SCTP 10.100.52.182:54136->10.100.52.182:39289 not hit
+[ 6839.695771] IPVS: lookup/in SCTP 10.100.52.182:54136->10.100.52.182:39289 hit
+[ 6839.695773] SCTP input   10.2.135.203:3869->10.100.52.182:54136 state: S-SENT->CLOSED conn->refcnt:2
+[ 6839.695826] IPVS: lookup/out SCTP 10.2.135.203:3869->10.100.52.182:54136 hit
+[ 6839.695949] IPVS: lookup/out TCP 10.100.52.182:22->10.100.2.40:50458 not hit
+[ 6839.695952] IPVS: lookup/in TCP 10.100.52.182:22->10.100.2.40:50458 not hit
+[ 6839.696075] IPVS: lookup/out TCP 10.100.2.40:50458->10.100.52.182:22 not hit
+[ 6839.696081] IPVS: lookup/in TCP 10.100.2.40:50458->10.100.52.182:22 not hit
+
+[ 6868.026633] IPVS: Unbind-dest SCTP c:10.100.52.182:52146 v:10.100.52.182:39289 d:10.2.135.203:3869 fwd:M s:13 conn->flags:100 conn->refcnt:0 dest->refcnt:3
+[ 6900.794568] IPVS: Unbind-dest SCTP c:10.100.52.182:54136 v:10.100.52.182:39289 d:10.2.135.203:3869 fwd:M s:13 conn->flags:100 conn->refcnt:0 dest->refcnt:2
+
+
+# tx-checksum-generic
+int skb_csum_hwoffload_help(struct sk_buff *skb, 
+                            const netdev_features_t features)
+{
+        if (unlikely(skb_csum_is_sctp(skb)))
+                return !!(features & NETIF_F_SCTP_CRC) ? 0 : 
+                        skb_crc32c_csum_help(skb);
+
+        if (features & NETIF_F_HW_CSUM)
+                return 0;
+
+# TSO
+__efx_enqueue_skb
+                case 0: /* No TSO on this queue, SW fallback needed */
+                default:
+                        rc = -EINVAL;
+                        break;
+                }
+                if (rc == -EINVAL) {
+                        rc = efx_tx_tso_fallback(tx_queue, skb);
+                        tx_queue->tso_fallbacks++;
+                        if (rc == 0)
+                                return 0;
+                }
+
+crash> p inet_offloads
+inet_offloads = $4 = 
+ {0x0, 0x0, 0x0, 0x0, 0xffffffff8e475a00 <ipip_offload>, 0x0, 0xffffffff8e474b40 <tcpv4_offload>,
+tcp_gso_segment
+seq += mss;
+
+# Bonding
+
+http://www.uni-koeln.de/~pbogusze/posts/LACP_configuration_using_iproute2.html
+static netdev_tx_t bond_3ad_xor_xmit(struct sk_buff *skb,
+                                     struct net_device *dev)
+{
+        struct bonding *bond = netdev_priv(dev);
+        struct bond_up_slave *slaves;
+        struct slave *slave;
+
+        slaves = rcu_dereference(bond->usable_slaves);
+        slave = bond_xmit_3ad_xor_slave_get(bond, skb, slaves);
+        if (likely(slave))
+                return bond_dev_queue_xmit(bond, skb, slave->dev);
+
+        return bond_tx_drop(dev, skb);
+}
+
+# firewalld
+firewall-cmd --permanent --zone=public --add-port=8000/tcp
+systemctl restart firewalld.service
+
+
+# https://serverfault.com/questions/1079631/interface-following-a-link
+Complete example:
+
+ip link add name vethtest1 up type veth peer name vethtest1peer
+ip link add name vethtest2 up type veth peer name vethtest2peer
+ip link set dev vethtest2peer up
+ip address add 192.0.2.2/25 dev vethtest1
+ip address add 192.0.2.3/24 dev vethtest2
+Setting the addresses installs the automatic kernel LAN routes. vethtest1 whose peer interface wasn't brought up will have a NO-CARRIER status and its routes will get a linkdown flag.
+
+# ip route show to root 192.0.2.0/24
+192.0.2.0/25 dev vethtest1 proto kernel scope link src 192.0.2.2 linkdown 
+192.0.2.0/24 dev vethtest2 proto kernel scope link src 192.0.2.3 
+A route to 192.0.2.100 will use vethtest1 since it got a narrower route (despite having the linkdown flag).
+
+# ip route get 192.0.2.100
+192.0.2.100 dev vethtest1 src 192.0.2.2 uid 0 
+    cache 
+Then with the new setting:
+
+sysctl -w net.ipv4.conf.vethtest1.ignore_routes_with_linkdown=1
+comes the new behavior:
+
+# ip route show to root 192.0.2.0/24
+192.0.2.0/25 dev vethtest1 proto kernel scope link src 192.0.2.2 dead linkdown 
+192.0.2.0/24 dev vethtest2 proto kernel scope link src 192.0.2.3 
+# ip -4 netconf show dev vethtest1
+inet vethtest1 forwarding on rp_filter off mc_forwarding off proxy_neigh off ignore_routes_with_linkdown on 
+# ip route get 192.0.2.100
+192.0.2.100 dev vethtest2 src 192.0.2.3 uid 0 
+    cache 
+Now if the interface gets carrier (simulated here by bringing up its peer interface):
+
+ip link set dev vethtest1peer up
+route is restored through it:
+
+# ip route show to root 192.0.2.0/24
+192.0.2.0/25 dev vethtest1 proto kernel scope link src 192.0.2.2 
+192.0.2.0/24 dev vethtest2 proto kernel scope link src 192.0.2.3 
+# ip route get 192.0.2.100
+192.0.2.100 dev vethtest1 src 192.0.2.2 uid 0 
+    cache 
+
+
+# pskb_may_pull
+15:46:03     firo | mkubecek: what does the first p stand for in pskb_may_pull()?         │ dzejrou
+              │15:48:04      --> | ydfan (Thunderbird@2a07:de40:b2bf:1b::10a3) has joined #sdi           │ enzo
+              │15:54:50      <-- | bogdano (bogdano@barendartchuk.tcp.ovpn1.dmz-prg2.suse.org) has quit  │ firo
+              │                  | (Ping timeout: 120 seconds)                                           │ ggherdov
+              │16:06:17    jikos | firo: paged. It's skb with scattered data buffer.                     │ gongjie
+              │16:18:02 mkubecek | See the difference between skb_pull() and pskb_pull(). skb_pull() only│ hmuelle
+              │                  | works if you do not pull past the linear part and BUGs otherwise;     │ hvdheuvel
+              │                  | pskb_pull() tries to handle the case when you try pulling beyond the  │ ismael
+              │                  | linear part and tries to reorganize the data (which might fail).      │ jcejka
+              │16:25:36     firo | Cool. Thanks! jikos++ mkubecek++
+
+# GSO gso_size
+firo@snow ~/kernel > grep -nr gso_size net/ | grep = | grep gso_size
+net/ipv4/tcp_input.c:1513:		TCP_SKB_CB(skb)->tcp_gso_size = 0;
+net/sctp/output.c:540:		skb_shinfo(head)->gso_size = GSO_BY_FRAGS;
+
+

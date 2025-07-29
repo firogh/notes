@@ -1,0 +1,1 @@
+ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no -o PasswordAuthentication=yes -v    fyang@10.100.2.40

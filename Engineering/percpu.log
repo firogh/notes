@@ -1,0 +1,46 @@
+crash> p exception_stacks
+PER-CPU DATA TYPE:
+  struct exception_stacks exception_stacks;
+PER-CPU ADDRESSES:
+  [0]: ffff9ddcd6a0c000
+  [1]: ffff9ddcd6a8c000
+  [2]: ffff9ddcd6b0c000
+  [3]: ffff9ddcd6b8c000
+crash> struct -o exception_stacks ffff9ddcd6a0c000
+struct exception_stacks {
+  [ffff9ddcd6a0c000] char DF_stack_guard[0];
+  [ffff9ddcd6a0c000] char DF_stack[8192];
+  [ffff9ddcd6a0e000] char NMI_stack_guard[0];
+  [ffff9ddcd6a0e000] char NMI_stack[8192];
+  [ffff9ddcd6a10000] char DB_stack_guard[0];
+  [ffff9ddcd6a10000] char DB_stack[8192];
+  [ffff9ddcd6a12000] char MCE_stack_guard[0];
+  [ffff9ddcd6a12000] char MCE_stack[8192];
+  [ffff9ddcd6a14000] char VC_stack_guard[0];
+  [ffff9ddcd6a14000] char VC_stack[8192];
+  [ffff9ddcd6a16000] char VC2_stack_guard[0];
+  [ffff9ddcd6a16000] char VC2_stack[8192];
+  [ffff9ddcd6a18000] char IST_top_guard[0];
+}
+SIZE: 49152
+
+crash> rd __per_cpu_offset 4
+ffffffffb9c28d20:  ffff9ddcd6a00000 ffff9ddcd6a80000   ................
+ffffffffb9c28d30:  ffff9ddcd6b00000 ffff9ddcd6b80000   ................
+
+0000000000000000 A fixed_percpu_data
+0000000000000000 A __per_cpu_start
+0000000000001000 A cpu_debug_store
+0000000000002000 A irq_stack_backing_store
+0000000000006000 A cpu_tss_rw
+000000000000b000 A gdt_page
+000000000000c000 A exception_stacks
+0000000000018000 A entry_stack_storage
+0000000000019000 A espfix_waddr
+0000000000019008 A espfix_stack
+
+rodata_resource
+
+      relocate: ffffffffc9000000  (KASLR offset: 37000000 / 880MB)
+
+setup_per_cpu_areas

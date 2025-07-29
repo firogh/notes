@@ -83,6 +83,18 @@ Oct 15 00:13:47 virt93 systemd[1]: Started Load kdump kernel and initrd.
 virt93:~ # cat /proc/xen/capabilities 
 control_d
 
+static ssize_t capabilities_read(struct file *file, char __user *buf,
+                                 size_t size, loff_t *off)
+{
+        char *tmp = ""; 
+
+        if (xen_initial_domain())
+                tmp = "control_d\n";
+
+#define xen_initial_domain()    (xen_domain() && \
+                                 (xen_start_flags & SIF_INITDOMAIN))
+
+
 
 ## PV domains
 [    0.000000] Hypervisor detected: Xen PV

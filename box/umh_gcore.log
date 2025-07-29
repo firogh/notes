@@ -1,0 +1,42 @@
+germ164:~ # [ 1265.833940][  T517] BUG: scheduling while atomic: systemd-udevd/517/0x00000002
+[ 1265.835663][  T360] BUG: scheduling while atomic: kworker/u4:4/360/0x00000002
+[ 1265.841348][    C0] BUG: workqueue leaked lock or atomic: kworker/u4:4/0x7fffffff/360
+[ 1265.841348][    C0]      last function: call_usermodehelper_exec_work
+[ 1265.841383][  T360] BUG: scheduling while atomic: kworker/u4:4/360/0x00000000
+[ 1265.851945][    C1] ------------[ cut here ]------------
+[ 1265.851962][    C1] kernel BUG at ../mm/vmalloc.c:2395!
+[ 1265.851983][    C1] invalid opcode: 0000 [#1] PREEMPT SMP PTI
+[ 1265.851985][    C1] CPU: 1 PID: 517 Comm: systemd-udevd Kdump: loaded Tainted: G        W  OE     N 5.14.21-150400.24.100-default #1 SLE15-SP4 f4c06561ddbf4cb021469e5853dae4a4bfef0c30
+[ 1265.851988][    C1] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 0.0.0 02/06/2015
+[ 1265.851989][    C1] RIP: 0010:__get_vm_area_node.constprop.52+0x14e/0x150
+[ 1265.852008][    C1] Code: 00 00 83 f9 0c 0f 4c c8 b8 1e 00 00 00 83 f9 1e 0f 4f c8 49 d3 e2 4d 89 d5 e9 10 ff ff ff 48 89 ef e8 56 95 03 00 31 ed eb a7 <0f> 0b 0f 1f 44 00 00 41 57 41 56 41 55 41 54 55 53 48 81 ec a8 00
+[ 1265.852009][    C1] RSP: 0018:ffffa546c02dfbf0 EFLAGS: 00010206
+[ 1265.852011][    C1] RAX: 000000007fffffff RBX: 0000000000004000 RCX: ffffa546c0000000
+[ 1265.852013][    C1] RDX: 0000000000000022 RSI: 0000000000004000 RDI: 0000000000004000
+[ 1265.852013][    C1] RBP: 00000000ffffffff R08: ffffc546bfffffff R09: 00000000ffffffff
+[ 1265.852014][    C1] R10: ffffa546c02dfc68 R11: ffff9916c19c5550 R12: 0000000001200000
+[ 1265.852015][    C1] R13: ffff9916d47b8000 R14: ffffa546c02dfe20 R15: 00000000ffffffff
+[ 1265.852017][    C1] FS:  00007f853e6a1b00(0000) GS:ffff99173c500000(0000) knlGS:0000000000000000
+[ 1265.852018][    C1] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1265.852019][    C1] CR2: 00007f0db40341b8 CR3: 000000007dc72003 CR4: 0000000000170ee0
+[ 1265.852023][    C1] Call Trace:
+[ 1265.852035][    C1]  <TASK>
+[ 1265.852037][    C1]  __vmalloc_node_range+0x67/0x360
+[ 1265.852041][    C1]  ? kernel_clone+0x9b/0x400
+[ 1265.852043][    C1]  ? copy_process+0x1db/0x2130
+[ 1265.852044][    C1]  ? __slab_alloc.isra.91+0x1c/0x40
+[ 1265.852066][    C1]  ? __slab_alloc.isra.91+0x1c/0x40
+[ 1265.852068][    C1]  ? kmem_cache_alloc_node+0x103/0x4e0
+[ 1265.852071][    C1]  copy_process+0x5fe/0x2130
+[ 1265.852073][    C1]  ? kernel_clone+0x9b/0x400
+[ 1265.852075][    C1]  ? entry_handler+0x7a/0xa0 [kp_mlx 960d58f66d34266531fc63ca27348e8ea4b47939]
+[ 1265.852078][    C1]  ? pre_handler_kretprobe+0xa1/0x170
+[ 1265.852082][    C1]  ? kernel_clone+0x1/0x400
+[ 1265.852083][    C1]  ? kprobe_ftrace_handler+0x138/0x1b0
+[ 1265.852086][    C1]  kernel_clone+0x9b/0x400
+[ 1265.852088][    C1]  elfcorehdr_read+0x40/0x40
+[ 1265.852092][    C1]  do_syscall_64+0x5b/0x80
+[ 1265.852095][    C1]  ? syscall_exit_to_user_mode+0x28/0x40
+[ 1265.852098][    C1]  ? do_syscall_64+0x67/0x80
+[ 1265.852100][    C1]  ? exc_page_fault+0x67/0x150
+[ 1265.852102][    C1]  entry_SYSCALL_64_after_hwframe+0x61/0xcb

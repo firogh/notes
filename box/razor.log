@@ -1,0 +1,4 @@
+>>> ********************************************
+>>> * To complete installation, please run:    *
+>>> * # sudo gpasswd -a <yourUsername> plugdev *
+>>> ********************************************

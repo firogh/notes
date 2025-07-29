@@ -1,0 +1,325 @@
+diff --git a/pidstat.c b/pidstat.c
+index 799a1fc..0bad428 100644
+--- a/pidstat.c
++++ b/pidstat.c
+@@ -67,10 +67,44 @@ int cpu_nr = 0;			/* Nb of processors on the machine */
+ unsigned long tlmkb;		/* Total memory in kB */
+ long interval = -1;
+ long count = 0;
++long running_time = 5;		/* Long-running process, default 5 seconds */
++char vm_flags[64][2];		/* VmFlags from /proc/<pid>/smaps */
++unsigned long vm_flags_size[64];
+ unsigned int pidflag = 0;	/* General flags */
+ unsigned int tskflag = 0;	/* TASK/CHILD stats */
+ unsigned int actflag = 0;	/* Activity flag */
+ 
++/*
++const char mnemonics[BITS_PER_LONG][2] = {
++                [0 ... (BITS_PER_LONG-1)] = "??",
++
++                [ilog2(VM_READ)]        = "rd",
++                [ilog2(VM_WRITE)]       = "wr",
++                [ilog2(VM_EXEC)]        = "ex",
++                [ilog2(VM_SHARED)]      = "sh",
++                [ilog2(VM_MAYREAD)]     = "mr",
++                [ilog2(VM_MAYWRITE)]    = "mw",
++                [ilog2(VM_MAYEXEC)]     = "me",
++                [ilog2(VM_MAYSHARE)]    = "ms",
++                [ilog2(VM_GROWSDOWN)]   = "gd",
++                [ilog2(VM_PFNMAP)]      = "pf",
++                [ilog2(VM_LOCKED)]      = "lo",
++                [ilog2(VM_IO)]          = "io",
++                [ilog2(VM_SEQ_READ)]    = "sr",
++                [ilog2(VM_RAND_READ)]   = "rr",
++                [ilog2(VM_DONTCOPY)]    = "dc",
++                [ilog2(VM_DONTEXPAND)]  = "de",
++                [ilog2(VM_LOCKONFAULT)] = "lf",
++                [ilog2(VM_ACCOUNT)]     = "ac",
++                [ilog2(VM_NORESERVE)]   = "nr",
++                [ilog2(VM_HUGETLB)]     = "ht",
++                [ilog2(VM_SYNC)]        = "sf",
++                [ilog2(VM_ARCH_1)]      = "ar",
++                [ilog2(VM_WIPEONFORK)]  = "wf",
++                [ilog2(VM_DONTDUMP)]    = "dd",
++}
++*/
++
+ struct sigaction alrm_act, int_act, chld_act;
+ int signal_caught = 0;
+ 
+@@ -90,7 +124,8 @@ void usage(char *progname)
+ 		progname);
+ 
+ 	fprintf(stderr, _("Options are:\n"
+-			  "[ -d ] [ -H ] [ -h ] [ -I ] [ -l ] [ -R ] [ -r ] [ -s ] [ -t ] [ -U [ <username> ] ]\n"
++			  "[ -d ] [ -H ] [ -h ] [ -I ] [ -l ] [ -R [ -P <seconds> ] -F { <vmflags> [,...] } ]"
++			  "[ -r ] [ -s ] [ -t ] [ -U [ <username> ] ]\n"
+ 			  "[ -u ] [ -V ] [ -v ] [ -w ] [ -C <command> ] [ -G <process_name> ]\n"
+ 			  "[ -p { <pid> [,...] | SELF | ALL } ] [ -T { TASK | CHILD | ALL } ]\n"
+ 			  "[ --dec={ 0 | 1 | 2 } ] [ --human ]\n"));
+@@ -444,12 +479,12 @@ int read_proc_pid_stat(pid_t pid, struct st_pid *plist,
+ 
+ 	rc = sscanf(start,
+ 		    "%*s %*d %*d %*d %*d %*d %*u %llu %llu"
+-		    " %llu %llu %llu %llu %lld %lld %*d %*d %u %*u %*d %llu %llu"
++		    " %llu %llu %llu %llu %lld %lld %*d %*d %u %*u %lld %llu %llu"
+ 		    " %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u %*u"
+ 		    " %*u %u %u %u %llu %llu %lld\n",
+ 		    &pst->minflt, &pst->cminflt, &pst->majflt, &pst->cmajflt,
+ 		    &pst->utime,  &pst->stime, &pst->cutime, &pst->cstime,
+-		    thread_nr, &pst->vsz, &pst->rss, &pst->processor,
++		    thread_nr, &pst->starttime, &pst->vsz, &pst->rss, &pst->processor,
+ 		    &pst->priority, &pst->policy,
+ 		    &pst->blkio_swapin_delays, &pst->gtime, &pst->cgtime);
+ 
+@@ -569,6 +604,85 @@ int read_proc_pid_status(pid_t pid, struct st_pid *plist, pid_t tgid, int curr)
+ 	return 0;
+ }
+ 
++int read_proc_pid_smap_vmflags(pid_t pid, struct st_pid *plist, pid_t tgid, int curr)
++{
++	FILE *fp;
++	char filename[128], line[256], flag[2];
++	int count = 1;
++	unsigned long size;
++	char *p, *t;
++	unsigned long *q;
++	struct pid_stats *pst = plist->pstats[curr];
++
++	if (tgid) {
++		sprintf(filename, TASK_SMAP, tgid, pid);
++	}
++	else {
++		sprintf(filename, PID_SMAP, pid);
++	}
++
++	if ((fp = fopen(filename, "rt")) == NULL)
++		/* No such process */
++		return 1;
++
++/*
++	if (NULL != fgets(line, sizeof(line), fp))
++		if (strstr(line, "Size:"))
++			sscanf(line + sizeof("Sized:"), "%lu", &size);
++*/
++	// printf("smap fliename %s\n", filename);
++	memset(pst->vm_flags_size, 0, sizeof(unsigned long) * 32);
++
++	while (fgets(line, sizeof(line), fp) != NULL){
++		if (!strncmp(line, "Size:", 5))
++			sscanf(line + sizeof("Size:"), "%lu", &size);
++
++		if (!strncmp(line, "VmF", 3)) {
++		//	sscanf(line, "%lu", &pst->stack_size);		
++			for (t = strtok(line, " "); t; t = strtok(NULL, " ")) {
++				p = vm_flags[0];
++				q = &(pst->vm_flags_size[0]);
++				for (; *p != 0; p += 2) {
++					if (!strncmp(t, p, 2))
++						*q += size;
++					q++;
++				}
++			}
++		}
++	}
++//	printf("smap size %d %ld \n", size, vm_flags_size[0]);
++	
++/*
++	fseek(fp, -2, SEEK_END);
++	fread(flag, 2, 2, fp);
++	printf("smap flag SEEK_END %s\n", flag);
++	
++	//while (strstr(flag, ": ", 2))
++
++	while ((flag[0] == ':') &&  (flag[1] == ':'))
++	{
++		printf("smap flag %s\n", flag);
++		p = vm_flags[0]; 
++		q = &vm_flags_size[0];
++		for (; *p != 0; p += 2)
++		{
++			if (!strncmp(flag, p, 2))
++				*q += size;
++			q++;
++		}
++		count += 1;
++		fseek(fp, -2 * count, SEEK_END);
++		fread(flag, 2, 2, fp);
++		if (count > 2)
++			break;
++	}
++*/
++
++	fclose(fp);
++
++	return 0;
++}
++
+ /*
+  *****************************************************************************
+  * Read information from /proc/#[/task/##}/smaps.
+@@ -819,9 +933,25 @@ int read_proc_pid_fd(pid_t pid, struct st_pid *plist, pid_t tgid, int curr)
+ int read_pid_stats(pid_t pid, struct st_pid *plist, unsigned int *thread_nr,
+ 		   pid_t tgid, int curr)
+ {
++	struct timespec ts;
++	struct pid_stats *pst = plist->pstats[curr];
++
+ 	if (read_proc_pid_stat(pid, plist, thread_nr, tgid, curr))
+ 		return 1;
+ 
++	if (DISPLAY_LONG_RUNNING(pidflag)) {
++		clock_gettime(CLOCK_MONOTONIC, &ts);
++		/* TODO
++		 * sysconf(_SC_CLK_TCK)
++		 */
++		if((ts.tv_sec - running_time) * 100 < pst->starttime)
++			return 1;
++	}
++
++	if (DISPLAY_MEM_AGGREGATE(pidflag)) {
++		if (read_proc_pid_smap_vmflags(pid, plist, tgid, curr))
++			return 1;
++	}
+ 	/*
+ 	 * No need to test the return code here: Not finding
+ 	 * the schedstat files shouldn't make pidstat stop.
+@@ -1680,10 +1810,23 @@ int write_pid_task_memory_stats(int prev, int curr, int dis, int disp_avg,
+ 	struct pid_stats *pstc, *pstp;
+ 	struct st_pid *plist;
+ 	int rc, again = 0;
++	char *p;
++	unsigned long *q;
+ 
+ 	if (dis) {
+ 		PRINT_ID_HDR(prev_string, pidflag);
++
++		if (DISPLAY_LONG_RUNNING(pidflag)) 
++			printf("  starttime");
++
++		if (DISPLAY_MEM_AGGREGATE(pidflag)) {
++			p = vm_flags[0];
++			for (; *p != 0; p += 2)
++				printf("      vf_%c%c", p[0], p[1]);
++		}
++
+ 		printf("  minflt/s  majflt/s     VSZ     RSS   %%MEM  Command\n");
++					
+ 	}
+ 
+ 	for (plist = pid_list; plist != NULL; plist = plist->next) {
+@@ -1708,6 +1851,17 @@ int write_pid_task_memory_stats(int prev, int curr, int dis, int disp_avg,
+ 
+ 		print_line_id(curr_string, plist);
+ 
++		if (DISPLAY_LONG_RUNNING(pidflag)) {
++			cprintf_u64(NO_UNIT, 1, 10, pstc->starttime);
++		}
++
++		if (DISPLAY_MEM_AGGREGATE(pidflag)) {
++			p = vm_flags[0];
++			q = &(pstc->vm_flags_size[0]);
++			for (; *p != 0; p += 2)
++				cprintf_u64(NO_UNIT, 1, 10, *q++);
++		}
++		
+ 		cprintf_f(NO_UNIT, 2, 9, 2,
+ 			  S_VALUE(pstp->minflt, pstc->minflt, itv),
+ 			  S_VALUE(pstp->majflt, pstc->majflt, itv));
+@@ -2638,6 +2792,27 @@ int main(int argc, char **argv)
+ 			opt++;
+ 		}
+ 
++		else if (!strcmp(argv[opt], "-F")) {
++			if (!argv[++opt]) {
++				usage(argv[0]);
++			}
++
++			int i = 0;
++			printf("-F argv %s\n", argv[opt]);
++			for (t = strtok(argv[opt], ","); t; t = strtok(NULL, ",")) {
++				printf("-F i %d %s\n", i,  t);
++				vm_flags[i][0] = t[0];
++				vm_flags[i][1] = t[1];
++				i++;
++			}
++			vm_flags[i][0] = 0;
++			vm_flags[i][1] = 0;
++			printf("-F i %d flags %s : %c : %s\n", i, vm_flags[i-1], vm_flags[i][0],  t);
++			pidflag |= P_D_MEM_AGGREGATE;
++			opt++;
++			printf("-F opt %s\n", argv[opt]);
++
++		}
+ 		/* Option used individually. See below for grouped option */
+ 		else if (!strcmp(argv[opt], "-U")) {
+ 			/* Display username instead of UID */
+@@ -2652,7 +2827,25 @@ int main(int argc, char **argv)
+ 				}
+ 			}
+ 		}
++		/* Display only long-running processes' memory usage */
++		else if (!strcmp(argv[opt], "-P")) {
++			t = argv[++opt];
++
++			if (t && t[0] != '-' && 
++				strspn(t, DIGITS) == strlen(t)) {
++				running_time = atoi(t);
++				pidflag |= P_D_LONG_RUNNING;
++			} else
++				usage(argv[0]);
+ 
++			++opt;
++			printf("-P %s %ld\n", t, running_time);
++			/*
++			if (pid < 1) {
++				usage(argv[0]);
++			}
++			*/
++		}
+ 		else if (!strncmp(argv[opt], "-", 1)) {
+ 			for (i = 1; *(argv[opt] + i); i++) {
+ 
+@@ -2768,6 +2961,8 @@ int main(int argc, char **argv)
+ 		}
+ 	}
+ 
++	printf("interval %d count %d\n", interval, count);
++
+ 	if (interval < 0) {
+ 		/* Interval not set => display stats since boot time */
+ 		interval = 0;
+diff --git a/pidstat.h b/pidstat.h
+index 9113d2e..fe665dc 100644
+--- a/pidstat.h
++++ b/pidstat.h
+@@ -70,9 +70,13 @@
+ #define P_F_PROCSTR	0x0400
+ #define P_D_UNIT	0x0800
+ #define P_D_SEC_EPOCH	0x1000
++#define P_D_MEM_AGGREGATE	0x2000
++#define P_D_LONG_RUNNING	0x4000
+ 
+ #define DISPLAY_PID(m)		(((m) & P_D_PID) == P_D_PID)
+ #define DISPLAY_ALL_PID(m)	(((m) & P_D_ALL_PID) == P_D_ALL_PID)
++#define DISPLAY_MEM_AGGREGATE(m) (((m) & P_D_MEM_AGGREGATE) == P_D_MEM_AGGREGATE)
++#define DISPLAY_LONG_RUNNING(m) (((m) & P_D_LONG_RUNNING) == P_D_LONG_RUNNING)
+ #define IRIX_MODE_OFF(m)	(((m) & P_F_IRIX_MODE) == P_F_IRIX_MODE)
+ #define COMMAND_STRING(m)	(((m) & P_F_COMMSTR) == P_F_COMMSTR)
+ #define DISPLAY_ACTIVE_PID(m)	(((m) & P_D_ACTIVE_PID) == P_D_ACTIVE_PID)
+@@ -176,6 +180,7 @@ struct pid_stats {
+ 	unsigned long long gtime			__attribute__ ((packed));
+ 	long long          cgtime			__attribute__ ((packed));
+ 	unsigned long long wtime			__attribute__ ((packed));
++	unsigned long long starttime			__attribute__ ((packed));
+ 	unsigned long long vsz				__attribute__ ((packed));
+ 	unsigned long long rss				__attribute__ ((packed));
+ 	unsigned long      nvcsw			__attribute__ ((packed));
+@@ -187,6 +192,7 @@ struct pid_stats {
+ 	unsigned int       policy			__attribute__ ((packed));
+ 	unsigned int       threads			__attribute__ ((packed));
+ 	unsigned int       fd_nr			__attribute__ ((packed));
++	unsigned long      vm_flags_size[32]		__attribute__ ((packed));
+ };
+ 
+ #define PID_STATS_SIZE	(sizeof(struct pid_stats))

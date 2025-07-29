@@ -1,0 +1,8 @@
+Yeah, checking the situation here the change in comment 89 indeed is not a correct fix... Refreshing my vague memories... There's a difference between pinning a page and getting a reference to the page (different counters are used). What is IMO needed is:
+
++        if (user_backed_iter(iter))
++                bio_set_flag(bio, BIO_PAGE_REFFED);
+
+This is because asm_bio_map_user_iov() uses iov_iter_get_pages_alloc2() which ends up using __iov_iter_get_pages_alloc() and eventually calls get_user_pages_fast() (as traces are showing) which grabs ordinary page reference, not a page pin. Upstream, IO paths in various drivers have been updated to use iov_iter_extract_pages() to acquire a page pin instead of page reference but oracleasm has not been updated yet, hence it still acquires only regular page references and needs to use BIO_PAGE_REFFED.
+
+Longer term oracleasm should be converted to use iov_iter_extract_pages() but that's probably not SLE15-SP6 material.

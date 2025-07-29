@@ -1,0 +1,40 @@
+
+
+# assign irq
+bsc#1237867
+assign_irq_vector
+ #9 [ffff8816afbfbd88] msi_domain_set_affinity at ffffffff810e3462
+#10 [ffff8816afbfbdb0] irq_do_set_affinity at ffffffff810dcc4e
+#11 [ffff8816afbfbdc8] irq_set_affinity_locked at ffffffff810dce19
+#12 [ffff8816afbfbde8] __irq_set_affinity at ffffffff810dce92
+#13 [ffff8816afbfbe18] write_irq_affinity at ffffffff810e23e4
+#14 [ffff8816afbfbe50] proc_reg_write at ffffffff8126e3dc
+#15 [ffff8816afbfbe68] __vfs_write at ffffffff812080c6
+#16 [ffff8816afbfbee0] vfs_write at ffffffff8120874d
+#17 [ffff8816afbfbf18] sys_write at ffffffff81209422
+#18 [ffff8816afbfbf50] entry_SYSCALL_64_fastpath at ffffffff81604021
+
+# affinity
+trace-cmd  record -p function -l assign_irq_vector -l irq_affinity_list_proc_write --func-stack -F echo 0 > /proc/irq/31/smp_affinity_list
+
+trace-cmd report
+version = 6
+cpus=1
+            echo-10969 [000] 90100.317757: function:             irq_affinity_list_proc_write
+            echo-10969 [000] 90100.317850: kernel_stack:         <stack trace>
+=> mem_cgroup_commit_charge (ffffffff811fbeb9)
+=> irq_affinity_list_proc_write (ffffffff810e23d0)
+=> irq_affinity_list_proc_write (ffffffff810e23d5)
+=> irq_affinity_list_proc_write (ffffffff810e23d5)
+=> proc_reg_write (ffffffff8126e3ac)
+=> do_mmap (ffffffff811c607c)
+=> __vfs_write (ffffffff812080a6)
+=> security_file_permission (ffffffff812a31ae)
+=> rw_verify_area (ffffffff812084f9)
+=> percpu_down_read (ffffffff810cbaf3)
+=> vfs_write (ffffffff8120872d)
+=> SyS_write (ffffffff81209402)
+=> trace_do_page_fault (ffffffff81068f8c)
+=> entry_SYSCALL_64_fastpath (ffffffff81604021)
+
+

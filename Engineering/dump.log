@@ -1,0 +1,12 @@
+
+
+# makedumpfile
+
+address_markers
+
+setup_cpu_entry_area
+
+idt_map_in_cea
+
+# vmcoreinfo
+grep SYMBOL vmcoreinfo | sed -n 's/SYMBOL(\(.*\))=.*/\1/p' | while read line; do grep -w $line /proc/kallsyms | awk '{print("SYMBOL("$3")="$1);}'  ; done
